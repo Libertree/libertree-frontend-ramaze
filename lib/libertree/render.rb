@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'net/http'
 
 module Libertree
@@ -17,7 +18,7 @@ module Libertree
   def self.hashtaggify(s)
     return ''  if s.nil?
 
-    s.gsub(/(?<=^|\s)#([a-z0-9-]+)(?=\s|\b|$)/i) {
+    s.gsub(/(?<=^|\s)#(\p{Word}+)(?=\s|\b|$)/i) {
       %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
     }
   end
