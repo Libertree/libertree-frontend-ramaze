@@ -1,0 +1,47 @@
+.main {
+    width: 95%;
+}
+
+.menu {
+    width: 95%;
+    text-align: left;
+    .menu-item {
+        margin-right: 5px;
+        float: left;
+    }
+    #menu-account {
+        margin-left: 60px;
+    }
+}
+
+.menu #main-menu-container {
+    margin-right: 0px;
+}
+
+#account-window {
+    top: 71px;
+    left: 0.5em;
+    width: 150px;
+    padding: 0.5em;
+}
+
+#notifications-window {
+    top: 71px;
+    left: 0.5em;
+    width: 280px;
+    min-height: 100px;
+    padding: 0.5em;
+}
+
+#num-notifications-unseen {
+    top: 30px;
+    left: 28px;
+}
+
+textarea.comment, form.comment .form-buttons {
+    width: 100%;
+}
+
+form.comment table {
+    width: 80%;
+}

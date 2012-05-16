@@ -1,0 +1,70 @@
+$dark_green: #1f6132;
+$main_green: #639463;
+$light_green: #a3d4a3;
+$lighter_green: #ADE1AD;
+$faint_green: #e2efe2;
+$sky: #72d4f0;
+$cocoa_bean: #4c321a;
+$iced_coffee: #cc8a4e;
+$light_tan: #D9B798;
+$faint_tan: #f9d7b8;
+$autumn_red: #c2503e;
+
+$shadow: #202000;
+
+/* -------------- */
+
+$header_gradient_start: top;
+$header_gradient_stop: bottom;
+
+body.body {
+    background-color: $faint_green;
+}
+
+.menu {
+    border-bottom: 2px solid $dark_green;
+    background: $faint_green;
+    background: -moz-linear-gradient($header_gradient_start,  $faint_green 0%, $light_green 100%);
+    background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$faint_green), color-stop(100%,$light_green));
+    background: -webkit-linear-gradient($header_gradient_start,  $faint_green 0%,$light_green 100%);
+    background: -o-linear-gradient($header_gradient_start,  $faint_green 0%,$light_green 100%);
+    background: -ms-linear-gradient($header_gradient_start,  $faint_green 0%,$light_green 100%);
+    background: linear-gradient($header_gradient_start,  $faint_green 0%,$light_green 100%);
+}
+
+.main {
+    background-color: $faint_green;
+}
+
+a {
+    color: $dark_green;
+    border-bottom: 1px dotted $dark_green;
+    text-decoration: none;
+}
+a:visited {
+    color: $main_green;
+    border-bottom: 1px dotted $main_green;
+}
+a:hover {
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
+}
+a:active {
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
+}
+
+textarea, input[type="text"], input[type="password"] {
+    background-color: $faint_tan;
+    border: 1px solid $iced_coffee;
+    color: $cocoa_bean;
+}
+
+#num-notifications-unseen {
+    background-color: $autumn_red;
+    color: white;
+}
+
+.filler {
+    color: $cocoa_bean;
+}

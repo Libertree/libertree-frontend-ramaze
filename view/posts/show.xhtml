@@ -1,0 +1,50 @@
+<div class="post" data-post-id="#{@post.id}">
+  <table><tr>
+    <td class="post">
+      <div class="post-tools">
+        <?r if @post.read_by?(account) ?>
+          <a class="mark-unread">mark post unread</a>
+          <a class="mark-read hidden">mark post read</a>
+        <?r else ?>
+          <a class="mark-unread hidden">mark post unread</a>
+          <a class="mark-read">mark post read</a>
+        <?r end ?>
+
+        <?r if @post.member == account.member ?>
+          <a href="/posts/edit/#{@post.id}" class="edit">edit</a>
+          <?r if @post.comments.size == 0 ?>
+            <a href="#" class="delete">delete</a>
+          <?r end ?>
+        <?r end ?>
+
+        <?r if @post.like_by(account.member) ?>
+          <a class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
+          <a class="like hidden">like</a>
+        <?r else ?>
+          <a class="like">like</a>
+          <a class="unlike hidden">unlike</a>
+        <?r end ?>
+        <a href="#" id="comments-show" title="show comments">&lt;&lt;</a>
+        <br/>
+        <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{@post.likes.map { |l| l.member.name_display }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="likes"/> <span class="value">#{@post.likes.size}</a></span>
+      </div>
+
+      <div class="post-proper">
+        #{member_avatar_link(@post.member)}
+        <div class="member-name">#{member_name_link(@post.member)}</div>
+        <div class="age">#{ago(@post.time_created)}</div>
+        <?r if @post.time_created != @post.time_updated ?>
+          <span class="age-update">(updated #{ago(@post.time_updated)})</span>
+        <?r end ?>
+        <div class="post-text typed-text">
+          #{@post.text_rendered}
+        </div>
+      </div>
+    </td>
+
+    <td class="comments">
+      <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
+      #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: false }
+    </td>
+  </tr></table>
+</div>

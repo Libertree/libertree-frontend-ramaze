@@ -1,0 +1,19 @@
+<h2>Search Results for "#{@q}"</h2>
+
+You can <a href="/rivers/ensure_exists/#{CGI.escape(@q)}">turn this search into a river</a>.
+
+<h3>Posts</h3>
+
+<ul>
+<?r @posts.each do |p| ?>
+  <li>#{ago(p.time_created)} #{member_name_link(p.member)} <a href="/posts/show/#{p.id}">#{p.glimpse}</a></li>
+<?r end ?>
+</ul>
+
+<h3>Comments</h3>
+
+<ul>
+<?r @comments.each do |c| ?>
+  <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="/posts/show/#{c.post.id}#comment-#{c.id}">#{c.glimpse}</a></li>
+<?r end ?>
+</ul>

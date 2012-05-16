@@ -1,0 +1,33 @@
+<head>
+  <title>#{( @num_unseen && ( @num_unseen > 0 ) ) ? "(#{@num_unseen})" : ''} Libertree#{ @subtitle ? " - #{@subtitle}" : '' }</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+  <link href="/css/application.css?t=#{File.mtime('public/css/application.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+
+  #{ @stylesheet_extra }
+  #{ css 'ui-lightness/jquery-ui-1.8.18.custom' }
+
+  #{ js 'jquery-1.7.2.min' }
+  #{ js 'jquery-ui-1.8.18.custom.min' }
+  #{ js 'jquery.mousewheel.min' }
+  #{ js 'jquery.expandable' }
+  <script src="/js/application.js?t=#{File.mtime('public/js/application.js').to_i}" type="text/javascript"></script>
+
+  <script src="/js/comments.js?t=#{File.mtime('public/js/comments.js').to_i}" type="text/javascript"></script>
+  <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
+  <script src="/js/notifications.js?t=#{File.mtime('public/js/notifications.js').to_i}" type="text/javascript"></script>
+  <script src="/js/post.js?t=#{File.mtime('public/js/post.js').to_i}" type="text/javascript"></script>
+  <script src="/js/post-new.js?t=#{File.mtime('public/js/post-new.js').to_i}" type="text/javascript"></script>
+  <script src="/js/river-new.js?t=#{File.mtime('public/js/river-new.js').to_i}" type="text/javascript"></script>
+  <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
+
+  <style type="text/css">
+    #{account.custom_css}
+  </style>
+
+  <script type="text/javascript">
+    host = #{request.host.inspect};
+
+    #{account.custom_js}
+  </script>
+</head>

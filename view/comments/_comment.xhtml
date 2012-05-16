@@ -1,0 +1,23 @@
+<div class="comment #{@hidden ? 'hidden' : ''}" id="comment-#{@comment.id}" data-comment-id="#{@comment.id}" data-commenter-member-id="#{@comment.member.id}">
+  <div class="num-likes #{@comment.likes.empty? ? 'hidden' : ''}" title="#{@comment.likes.map { |l| l.member.name_display }.join(', ')}">#{@comment.likes.size} like#{plural_s(@comment.likes.size)}</div>
+  <div class="comment-tools">
+    <a class="go-ref-back">back</a>
+    <?r if @comment.like_by(account.member) ?>
+      <a class="unlike" data-comment-like-id="#{@comment.like_by(account.member).id}"><img src="/images/icon-unlike.png" class="size-16" alt="unlike" title="Unlike this comment"/></a>
+      <a class="like hidden"><img src="/images/icon-like.png" class="size-16" alt="like" title="Like this comment"/></a>
+    <?r else ?>
+      <a class="like"><img src="/images/icon-like.png" class="size-16" alt="like" title="Like this comment"/></a>
+      <a class="unlike hidden"><img src="/images/icon-unlike.png" class="size-16" alt="unlike" title="Unlike this comment"/></a>
+    <?r end ?>
+    <?r if @comment.member == account.member ?>
+      <a class="delete"><img src="/images/icon-delete.png" class="size-16" alt="delete" title="delete"/></a>
+    <?r end ?>
+    <a class="link" href="/posts/show/#{@comment.post.id}#comment-#{@comment.id}"><img src="/images/icon-link.png" class="size-16" alt="link for this comment" title="link for this comment"/></a>
+  </div>
+  #{member_avatar_link(@comment.member)}
+  <div class="member-name">#{member_name_link(@comment.member)}</div>
+  <div class="age">#{ago(@comment.time_created)}</div>
+  <div class="text typed-text">
+    #{comment_text_rendered_and_participants_linked(@comment)}
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="comments #{@hidden ? 'hidden' : ''}">
+  #{@post.comments.size} comment#{plural_s(@post.comments.size)}
+  <?r if @hidden ?>
+    <a href="#" class="more-comments" data-n="3">show more comments</a>
+  <?r end ?>
+  <a href="#" class="jump-to-comment">Comment</a>
+
+  <?r @post.comments.each do |c| ?>
+    #{ Controller::Comments.render_partial '_comment', comment: c, hidden: @hidden }
+  <?r end ?>
+
+  <form method="POST" action="/comments/create" class="comment">
+    <img class="avatar" src="#{account.member.avatar_path}"/>
+    <input type="hidden" name="post_id" value="#{@post.id}"/>
+    <table>
+      <tr><td>
+        <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]['textarea-comment-new']}</textarea>
+      </td></tr>
+      <tr><td class="form-buttons">
+        <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="Clear" tabindex="4"/>
+        <input class="preview" type="button" value="Preview" tabindex="3" data-type="comment"/>
+        <input type="submit" value="Comment" tabindex="2"/>
+      </td></tr>
+    </table>
+  </form>
+</div>

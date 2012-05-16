@@ -1,0 +1,15 @@
+<?r
+@set_keys.each do |post_or_comment|
+  notifications = @sets[post_or_comment]
+  actors = notifications.map { |n| n.subject.member }
+  notif = notifications[0]
+  case notif.subject
+  when Libertree::Model::Comment
+    ?>#{ render_partial '_comment', notification: notif, comment: notif.subject, actors: actors }<?r
+  when Libertree::Model::CommentLike
+    ?>#{ render_partial '_comment_like', notification: notif, like: notif.subject, actors: actors }<?r
+  when Libertree::Model::PostLike
+    ?>#{ render_partial '_post_like', notification: notif, like: notif.subject, actors: actors }<?r
+  end
+end
+?>

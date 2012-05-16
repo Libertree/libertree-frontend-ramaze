@@ -1,0 +1,17 @@
+<div class="profile">
+
+  <h2>#{@member.name_display}</h2>
+
+  <img src="#{@member.avatar_path}" alt="#{@member.username}"/>
+
+  <h3>#{@member.handle}</h3>
+
+  <?r if @member == account.member ?>
+  <a href="/profiles/edit">Edit</a>
+  <?r end ?>
+
+  <div class="description">
+    #{ Libertree.render(@profile.description) }
+  </div>
+
+</div>

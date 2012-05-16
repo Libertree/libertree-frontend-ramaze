@@ -1,0 +1,12 @@
+# Either live or development
+environment: live
+
+websocket_listen_host: 0.0.0.0
+
+# graphicsmagick: false means use ImageMagick
+graphicsmagick: true
+
+# API throttling.
+# The number of seconds callers must wait between API calls
+# (or the request is rejected)
+api_min_time_between: 5

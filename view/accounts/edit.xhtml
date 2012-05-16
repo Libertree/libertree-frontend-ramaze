@@ -1,0 +1,31 @@
+<h3>Account Settings</h3>
+
+<div>
+  <a href="/profiles/edit">Edit Profile</a><br/>
+  <a href="/rivers">Manage Rivers</a>
+</div>
+
+<form action="update" method="POST">
+  Custom CSS: <textarea name="custom_css" cols="80" rows="5">#{account.custom_css}</textarea><br/>
+  Custom JS: <textarea name="custom_js" cols="80" rows="5">#{account.custom_js}</textarea><br/>
+  <input type="submit" value="Save"/>
+</form>
+
+<h4>Invite Others</h4>
+
+<a href="/invitations/create">Generate a new invitation</a>
+
+<?r if @invitations.any? ?>
+<h4>My Invitations</h4>
+<textarea cols="100" rows="5">#{
+  @invitations.map { |i| "http://#{@host}/signup?invitation_code=#{i.code}" }.join("\n")
+}</textarea>
+<?r end ?>
+
+<h4>Member API</h4>
+
+<div>
+Current API token: #{account.api_token || '(none)'}
+</div>
+
+<a href="/accounts/generate_api_token">Generate API token</a>

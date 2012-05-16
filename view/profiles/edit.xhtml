@@ -1,0 +1,17 @@
+<h2>My Profile</h2>
+
+<form action="update" method="POST">
+  Display name: <input type="text" name="name_display" value="#{@profile.name_display}"/><br/>
+  About Me (Markdown allowed):<br/>
+  <textarea name="description" cols="60" rows="10">#{@profile.description}</textarea><br/>
+  <input type="submit" value="Update"/>
+  <a href="/profiles/show/#{account.member.id}">Cancel</a>
+</form>
+
+<h4>Avatar</h4>
+
+<form action="avatar_upload" method="POST" enctype="multipart/form-data">
+  Upload file: <input type="file" name="file" /><br />
+  <input type="submit" name="submit" value="Submit" />
+</form>
+

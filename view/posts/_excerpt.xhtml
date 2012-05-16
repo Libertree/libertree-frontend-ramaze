@@ -1,0 +1,55 @@
+<div class="post-excerpt" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? DateTime.parse(@post['time_updated_overall']).to_time.to_i : @post.time_created.to_time.to_i }">
+  <table><tr>
+    <td class="meta"><div class="height-fixed">
+      <div class="member">
+        #{member_avatar_link(@post.member)}
+        <span class="member-name">#{member_name_link(@post.member)}</span>
+      </div>
+      <div class="post-stats">
+        <span class="age">#{ago(@post.time_created)}</span><br/>
+        <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="Liked by #{@post.likes.map { |l| l.member.name_display }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="likes"/> <span class="value">#{@post.likes.size}</span></span><br/>
+        <span class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{@post.comments.count} comment#{plural_s(@post.comments.count)} by #{@post.comments.map { |l| l.member.name_display }.uniq.join(', ')}"><img src="/images/icon-comment.png" class="size-16" alt="comments"/> #{@post.comments.size}</span><br/>
+      </div>
+      <div class="post-tools">
+        <?r if @post.like_by(account.member) ?>
+          <a class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
+          <a class="like hidden">like</a>
+        <?r else ?>
+          <a class="like">like</a>
+          <a class="unlike hidden">unlike</a>
+        <?r end ?>
+
+        <a class="comment">comment</a>
+
+        <?r if @post.member == account.member ?>
+          <a href="/posts/edit/#{@post.id}" class="edit">edit</a>
+          <?r if @post.comments.size == 0 ?>
+            <a class="delete" href="#">delete</a>
+          <?r end ?>
+        <?r end ?>
+
+        <?r if @post.read_by?(account) ?>
+          <a class="mark-unread" href="#">mark&nbsp;unread</a>
+          <a class="mark-read hidden" href="#">mark&nbsp;read</a>
+        <?r else ?>
+          <a class="mark-unread hidden" href="#">mark&nbsp;unread</a>
+          <a class="mark-read" href="#">mark&nbsp;read</a>
+        <?r end ?>
+
+        <div class="link-view-post">
+          <a href="/posts/show/#{@post.id}" title="Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window">view&nbsp;post</a>
+        </div>
+      </div>
+    </div></td>
+    <td class="excerpt">
+      <div class="height-fixed"><div class="overflowed">
+        <div class="post-text typed-text">
+          #{Libertree.render(@post.text)}
+        </div>
+        #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: true }
+      </div></div>
+      <div class="show-more"><a href="#">show more</a></div>
+      <div class="show-less"><a href="#">show less</a></div>
+    </td>
+  </tr></table>
+</div>

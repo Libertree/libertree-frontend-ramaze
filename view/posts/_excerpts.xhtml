@@ -1,0 +1,9 @@
+<?r if @posts.empty? ?>
+  <p id="no-more-posts">
+  No more posts.
+  </p>
+<?r else ?>
+  <?r @posts.each do |post| ?>
+    #{ render_partial '_excerpt', post: post }
+  <?r end ?>
+<?r end ?>

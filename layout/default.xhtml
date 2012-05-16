@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+#{ render_file 'layout/_head.xhtml' }
+
+<body class="body">
+  <div class="bg">
+    #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
+    <div class="main has-shadow">
+
+      <div class="flash error">#{flash[:error]}</div>
+      <div class="flash notice">#{flash[:notice]}</div>
+
+      #{@content}
+    </div>
+  </div>
+</body>
+
+</html>
