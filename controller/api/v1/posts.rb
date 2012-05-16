@@ -13,6 +13,8 @@ module Controller
         end
 
         def create
+          respond '', 503
+
           if ! request.post?
             respond '', 405
           end
