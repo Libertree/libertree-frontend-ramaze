@@ -127,7 +127,7 @@ $(document).ready( function() {
   } );
 
   $('.post-excerpt').live( {
-    mousemove: function() {
+    mouseover: function() {
       $(this).find('.post-tools').show();
     },
     mouseout: function() {
