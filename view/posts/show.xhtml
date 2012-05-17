@@ -1,6 +1,8 @@
 <div class="post" data-post-id="#{@post.id}">
+  <?r if session[:layout] != 'narrow' ?>
   <table><tr>
     <td class="post">
+  <?r end ?>
       <div class="post-tools">
         <?r if @post.read_by?(account) ?>
           <a class="mark-unread">mark post unread</a>
@@ -40,11 +42,15 @@
           #{@post.text_rendered}
         </div>
       </div>
+  <?r if session[:layout] != 'narrow' ?>
     </td>
 
     <td class="comments">
       <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
+  <?r end ?>
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: false }
+  <?r if session[:layout] != 'narrow' ?>
     </td>
   </tr></table>
+  <?r end ?>
 </div>

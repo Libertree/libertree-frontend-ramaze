@@ -119,7 +119,9 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  setCommentAreaHeight();
+  if( ! showHoverables ) {
+    setCommentAreaHeight();
+  }
 
   match = document.URL.match(/#comment-([0-9]+)/);
   if( match ) {
