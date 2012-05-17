@@ -1,6 +1,11 @@
 <div class="post-excerpt" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? DateTime.parse(@post['time_updated_overall']).to_time.to_i : @post.time_created.to_time.to_i }">
-  <table><tr>
-    <td class="meta"><div class="height-fixed">
+  <?r if session[:layout] == 'narrow' ?>
+    <div class="meta">
+  <?r else ?>
+    <table><tr>
+      <td class="meta">
+  <?r end ?>
+    <div class="height-fixed">
       <div class="member">
         #{member_avatar_link(@post.member)}
         <span class="member-name">#{member_name_link(@post.member)}</span>
@@ -40,8 +45,14 @@
           <a href="/posts/show/#{@post.id}" title="Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window">view&nbsp;post</a>
         </div>
       </div>
-    </div></td>
+    </div>
+  <?r if session[:layout] == 'narrow' ?>
+    </div>
+    <div class="excerpt">
+  <?r else ?>
+    </td>
     <td class="excerpt">
+  <?r end ?>
       <div class="height-fixed"><div class="overflowed">
         <div class="post-text typed-text">
           #{Libertree.render(@post.text)}
@@ -50,6 +61,10 @@
       </div></div>
       <div class="show-more"><a href="#">show more</a></div>
       <div class="show-less"><a href="#">show less</a></div>
-    </td>
-  </tr></table>
+  <?r if session[:layout] == 'narrow' ?>
+    </div>
+  <?r else ?>
+      </td>
+    </tr></table>
+  <?r end ?>
 </div>

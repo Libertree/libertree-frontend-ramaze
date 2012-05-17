@@ -50,3 +50,12 @@ form.comment table {
 input#search {
     width: 35px;
 }
+
+.post-excerpt {
+    div.meta {
+        margin-bottom: 1em;
+        .post-tools {
+            float: none;
+        }
+    }
+}
