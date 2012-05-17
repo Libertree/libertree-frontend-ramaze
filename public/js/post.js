@@ -87,15 +87,6 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-excerpt').hover(
-    function() {
-      $(this).find('.post-tools').show();
-    },
-    function() {
-      $(this).find('.post-tools').hide();
-    }
-  );
-
   $('.post-tools .delete').live( 'click', function() {
     if( confirm('Delete this post?') ) {
       var post = $(this).closest('div[data-post-id]');
