@@ -24,6 +24,10 @@ $(document).ready( function() {
           var num_likes = post.find('.post-tools .num-likes, .post-stats .num-likes');
           num_likes.find('.value').text( h['num_likes'] );
           num_likes.show();
+          if( post.find('.mark-unread.hidden').length ) {
+            post.find('.mark-read').addClass('hidden');
+            post.find('.mark-unread').removeClass('hidden');
+          }
         }
       );
     }
