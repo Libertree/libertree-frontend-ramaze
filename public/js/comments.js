@@ -119,7 +119,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  if( ! showHoverables ) {
+  if( layout != 'narrow' ) {
     setCommentAreaHeight();
   }
 

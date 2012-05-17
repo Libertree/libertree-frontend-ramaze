@@ -146,7 +146,7 @@ $(document).ready( function() {
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
   $('textarea').expandable();
 
-  if( revealHoverables ) {
+  if( layout == 'narrow' ) {
     $('*').mouseover();
   }
 } );

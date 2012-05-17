@@ -27,7 +27,6 @@ module Controller
 
       if logged_in?
         @num_unseen = account.num_notifications_unseen
-        @reveal_hoverables = session[:layout] == 'narrow'
         session[:saved_text] ||= Hash.new
         Libertree::Model::SessionAccount.find_or_create(
           sid: session.sid,
