@@ -4,12 +4,12 @@
     <span style="float: left; margin: 10px 0px 0px 0px; font-size: 28px; font-weight: bold; color: #447057;">Libertree</span>
   <?r end ?>
   <?r if logged_in? ?>
-    <div class="menu-item" id="menu-account">
+    <a class="menu-item" id="menu-account" href="#">
       <?r if @account_name ?>
         #{account.member.name_display}
       <?r end ?>
       <img class="avatar" src="#{account.member.avatar_path}"/>
-    </div>
+    </a>
     <div id="account-window" class="window has-shadow">
       <a href="/profiles/show/#{account.member.id}"><img src="/images/icon-account.png" alt="Profile"/> Profile</a><br/>
       <a href="/accounts/edit"><img src="/images/icon-settings.png" alt="Settings"/> Settings</a><br/>
@@ -22,19 +22,21 @@
     </div>
 
     <div id="main-menu-container">
-      <div
-        class="menu-item #{ (request.fullpath !~ /home/) ? 'away' : ''}"
+      <a
+        href="/home"
+        class="menu-item"
         id="menu-home"
-        title="#{(request.fullpath !~ /home/) ? 'Go Home' : 'You are at Home'}">
-      </div>
+        title="#{(request.fullpath !~ /home/) ? 'Go Home' : 'You are at Home'}"><img src="/images/icon-home.png" alt="Home"/></a>
       #{ render_file 'layout/_notifications.xhtml' }
-      <div class="menu-item" id="menu-post-new" title="New Post"></div>
+      <a href="/posts/new" class="menu-item" id="menu-post-new" title="New Post"><img src="/images/icon-edit.png" alt="New Post"/></a>
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q"/>
       </form>
     </div>
   <?r else ?>
-    <a href="/signup"><img src="/images/icon-signup.png" alt="Sign up"/>Sign up</a>
-    <a href="/login"><img src="/images/icon-login.png" alt="Log out"/> Log in</a>
+    <div id="logged-out-menu">
+      <a href="/signup"><img src="/images/icon-signup.png" alt="Sign up"/>Sign up</a>
+      <a href="/login" class="menu-item-logged-out"><img src="/images/icon-login.png" alt="Log out"/> Log in</a>
+    </div>
   <?r end ?>
 </div></div>

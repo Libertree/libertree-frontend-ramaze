@@ -1,4 +1,4 @@
-<div class="menu-item #{account.num_notifications_unseen == 0 ? 'none' : ''}" id="menu-notifications" title="#{account.num_notifications_unseen > 0 ? account.num_notifications_unseen : 'No'} notifications">
+<a href="#" class="menu-item #{account.num_notifications_unseen == 0 ? 'none' : ''}" id="menu-notifications" title="#{account.num_notifications_unseen > 0 ? account.num_notifications_unseen : 'No'} notifications">
   <span id="num-notifications-unseen" class="#{account.num_notifications_unseen == 0 ? 'hidden' : ''}">#{account.num_notifications_unseen}</span>
-</div>
+</a>
 <div id="notifications-window" class="window has-shadow"></div>

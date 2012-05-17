@@ -53,15 +53,7 @@ function saveTextAreaText() {
 
 $(document).ready( function() {
 
-  $('#menu-home').click( function() {
-    window.location = '/home';
-    return false;
-  } );
-  $('#menu-post-new').click( function() {
-    window.location = '/posts/new';
-    return false;
-  } );
-
+  /* TODO: This looks refactorable */
   $('#menu-account').click( function() {
     if( $('#account-window').is(':visible') ) {
       hideWindows();

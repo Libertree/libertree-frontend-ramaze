@@ -120,6 +120,7 @@ textarea, input[type="text"], input[type="password"] {
 
         a {
             margin-left: 10px;
+            border-bottom: 0px;
         }
 
         .avatar {
@@ -139,23 +140,21 @@ textarea, input[type="text"], input[type="password"] {
             cursor: pointer;
         }
 
+        #logged-out-menu  {
+            padding-top: 14px;
+        }
+
         #main-menu-container {
             margin-right: 380px;
             padding-top: 10px;
             height: 26px;
         }
 
-        #menu-home {
-            background: url('/images/icon-home.png') top left no-repeat;
-        }
         #menu-notifications {
             background: url('/images/icon-notifications.png') top left no-repeat;
         }
         #menu-notifications.none {
             background: url('/images/icon-notifications-none.png') top left no-repeat;
-        }
-        #menu-post-new {
-            background: url('/images/icon-edit.png') top left no-repeat;
         }
         #menu-account {
             width: auto;
