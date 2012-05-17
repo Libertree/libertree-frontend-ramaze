@@ -14,9 +14,9 @@
       <a href="/profiles/show/#{account.member.id}"><img src="/images/icon-account.png" alt="Profile"/> Profile</a><br/>
       <a href="/accounts/edit"><img src="/images/icon-settings.png" alt="Settings"/> Settings</a><br/>
       <?r if session[:layout] == 'narrow' ?>
-        <a href="/layout/wide">wide display</a></br>
+        <a href="/layout/wide">large display</a></br>
       <?r else ?>
-        <a href="/layout/narrow">narrow display</a></br>
+        <a href="/layout/narrow">small display</a></br>
       <?r end ?>
       <a href="/logout"><img src="/images/icon-logout.png" alt="Log out"/> Log out</a>
     </div>
