@@ -145,4 +145,8 @@ $(document).ready( function() {
   setInterval( updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
   $('textarea').expandable();
+
+  if( revealHoverables ) {
+    $('*').mouseover();
+  }
 } );

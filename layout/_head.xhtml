@@ -26,7 +26,8 @@
   </style>
 
   <script type="text/javascript">
-    host = #{request.host.inspect};
+    var host = #{request.host.inspect};
+    var revealHoverables = #{ @reveal_hoverables.inspect };
 
     #{account.custom_js}
   </script>
