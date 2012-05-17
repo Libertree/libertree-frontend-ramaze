@@ -5,6 +5,10 @@ module Controller
         layout nil
 
         def set_account_from_token
+          if request['token'].nil?
+            respond '', 400
+          end
+
           @account = Libertree::Model::Account[ api_token: request['token'] ]
           if @account.nil?
             respond '', 404
