@@ -3,12 +3,14 @@ module Controller
     map '/'
 
     def index
+      force_mobile_to_narrow
     end
 
     def login
       if logged_in?
         redirect Home.r(:/)
       end
+      force_mobile_to_narrow
 
       @logging_in = true
       if request.post?
@@ -38,6 +40,7 @@ module Controller
     # TODO: Move to Accounts controller?
     def signup
       redirect '/'  if logged_in?
+      force_mobile_to_narrow
 
       @invitation_code = request['invitation_code']
 

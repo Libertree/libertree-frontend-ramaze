@@ -3,8 +3,13 @@
 }
 
 .menu {
-    width: 95%;
     text-align: left;
+    #menu-narrower {
+        width: 100%;
+        #main-menu-container {
+            margin-right: 0px;
+        }
+    }
     .menu-item {
         margin-right: 5px;
         float: left;
@@ -12,10 +17,6 @@
     #menu-account {
         margin-left: 60px;
     }
-}
-
-.menu #main-menu-container {
-    margin-right: 0px;
 }
 
 #account-window {
@@ -44,4 +45,8 @@ textarea.comment, form.comment .form-buttons {
 
 form.comment table {
     width: 80%;
+}
+
+input#search {
+    width: 35px;
 }

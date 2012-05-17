@@ -69,5 +69,12 @@ module Controller
     def error_404
       render_file "#{Ramaze.options.views[0]}/404.xhtml"
     end
+
+    def force_mobile_to_narrow
+      if request.env['HTTP_USER_AGENT'] =~ /Mobile/ && session[:layout] != 'narrow'
+        session[:layout] = 'narrow'
+        redirect r(:/)
+      end
+    end
   end
 end
