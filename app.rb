@@ -47,5 +47,7 @@ require_relative 'controller/rivers'
 require_relative 'controller/api/v1/base'
 require_relative 'controller/api/v1/posts'
 
-Ramaze::Cache.options.session = Ramaze::Cache::MemCache.using(compression: false)
+if $conf['memcache']
+  Ramaze::Cache.options.session = Ramaze::Cache::MemCache.using(compression: false)
+end
 Rack::RouteExceptions.route( Exception, '/error' )

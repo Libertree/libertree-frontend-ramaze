@@ -7,7 +7,7 @@
 * GraphicsMagick or ImageMagick
 
 It is recommended to use RVM for Ruby and gem management, but this is not
-required.
+required.  memcached is recommended, but not required.
 
 ### Installation and Setup
 

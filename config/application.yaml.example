@@ -6,6 +6,9 @@ websocket_listen_host: 0.0.0.0
 # graphicsmagick: false means use ImageMagick
 graphicsmagick: true
 
+# Whether to store session data in memcache
+memcache: false
+
 # API throttling.
 # The number of seconds callers must wait between API calls
 # (or the request is rejected)
