@@ -262,6 +262,17 @@ form.comment {
         height: 40px;
         width: 40px;
     }
+
+    a.attach {
+        display: none;
+    }
+}
+
+form.comment.detached {
+    position: absolute;
+    background: $faint_green;
+    padding: 1.5em;
+    border: 1px solid $main_green;
 }
 
 textarea.comment, form.comment .form-buttons {
@@ -289,6 +300,10 @@ textarea.comment, form.comment .form-buttons {
 div.post {
     margin: 0px auto;
     padding: 10px;
+
+    > table {
+        width: 100%;
+    }
 
     td.post {
         padding-right: 1em;

@@ -117,6 +117,28 @@ $(document).ready( function() {
     clearInterval(timerSaveTextAreas);
   } );
 
+  $('form.comment .detach').live( 'click', function() {
+    var form = $(this).closest('form.comment');
+    var top = form.offset().top;
+    form.css('top', top + 'px');
+    form.addClass('detached');
+    form.addClass('has-shadow');
+    form.find('.detach').hide();
+    form.find('.attach').show();
+    return false;
+  } );
+
+  $('form.comment .attach').live( 'click', function() {
+    var form = $(this).closest('form.comment');
+    /* var top = form.offset().top; */
+    /* form.css('top', top + 'px'); */
+    form.removeClass('detached');
+    form.removeClass('has-shadow');
+    form.find('.attach').hide();
+    form.find('.detach').show();
+    return false;
+  } );
+
   /* ---------------------------------------------------- */
 
   if( layout != 'narrow' ) {
