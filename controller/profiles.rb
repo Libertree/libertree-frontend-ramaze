@@ -32,9 +32,13 @@ module Controller
     def update
       return  if ! request.post?
 
+      name_display = request['name_display']
+      if name_display.strip.empty?
+        name_display = nil
+      end
       begin
         account.member.profile.set(
-          name_display: request['name_display'],
+          name_display: name_display,
           description: request['description']
         )
         Libertree::Model::Job.create(
