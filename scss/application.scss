@@ -100,12 +100,14 @@ textarea, input[type="text"], input[type="password"] {
 #tree-icon {
     float: left;
     margin-right: 10px;
+    height: 40px;
+    width: 40px;
 }
 
 .menu {
     font-size: $font_small;
     text-align: right;
-    height: 56px;
+    height: 40px;
     position: fixed;
     top: 0px;
     left: 50%;
@@ -146,7 +148,7 @@ textarea, input[type="text"], input[type="password"] {
 
         #main-menu-container {
             margin-right: 380px;
-            padding-top: 10px;
+            padding-top: 6px;
             height: 26px;
         }
 
@@ -158,8 +160,13 @@ textarea, input[type="text"], input[type="password"] {
         }
         #menu-account {
             width: auto;
-            padding-top: 5px;
-            font-size: $font_normal;
+            padding-top: 4px;
+            font-size: $font_small;
+
+            img {
+                height: 32px;
+                width: 32px;
+            }
         }
     }
 }
