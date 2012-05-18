@@ -2,7 +2,7 @@
 
 River: <select id="river-selector">
   <?r account.rivers.each do |r| ?>
-    <option value="#{r.id}" #{r == session[:river_current] ? 'selected' : ''}>#{r.label}</option>
+    <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
   <?r end ?>
 </select>
 

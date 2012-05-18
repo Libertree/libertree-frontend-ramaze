@@ -61,7 +61,6 @@ module Controller
           'post_id' => post.id,
         }.to_json
       )
-      session[:post_current] = post
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)
@@ -72,10 +71,6 @@ module Controller
       if @post
         @subtitle = %{#{@post.member.username} - "#{@post.glimpse}"}
         @post.mark_as_read_by account
-        session[:post_current] = @post
-        @river = session[:river_current] || account.rivers[0]
-        @river_post_order = session[:river_post_order]
-        @posts = @river.posts
 
         Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
           n.seen = true
@@ -142,7 +137,6 @@ module Controller
           'post_id' => post.id,
         }.to_json
       )
-      session[:post_current] = post
       session[:saved_text]['textarea-post-edit'] = nil
 
       redirect Main.r(:home)

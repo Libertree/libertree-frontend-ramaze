@@ -24,12 +24,11 @@ module Controller
       redirect_referrer  if ! request.post?
 
       begin
-        session[:river_current] = river = Libertree::Model::River.create(
+        river = Libertree::Model::River.create(
           account_id: account.id,
           label: request['label'],
           query: request['query'].downcase
         )
-        session[:post_current] ||= river.posts[-1]
       rescue PGError => e
         if e.message =~ /rivers_account_id_query_key/
           flash[:error] = 'You already have a river for that.'
@@ -68,7 +67,7 @@ module Controller
     end
 
     def ensure_exists(query, label = nil)
-      session[:river_current] = river = Libertree::Model::River.find_or_create(
+      river = Libertree::Model::River.find_or_create(
         account_id: account.id,
         label: label || query,
         query: query

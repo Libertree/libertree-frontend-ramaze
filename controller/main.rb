@@ -16,7 +16,6 @@ module Controller
       if request.post?
         a = account_login( request.subset('username', 'password') )
         if a
-          session[:post_current] = account.first_unread_post
           if session[:back]
             target = session[:back]
             session[:back] = nil

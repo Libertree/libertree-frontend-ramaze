@@ -15,25 +15,10 @@ module Controller
     end
 
     def index(river_id = nil)
-      @rivers = account.rivers
-      if @rivers.any?
-        session[:river_current] = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || session[:river_current]
-
-        if session[:river_current].nil? || ! @rivers.include?(session[:river_current])
-          session[:river_current] = account.home_river || @rivers[0]
-        end
-
-        post = session[:river_current].posts[-1]
-        if post
-          session[:post_current] ||= post
-        end
-      end
-
-      @selected_post = session[:post_current]
+      @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || account.rivers[0]
       @river_post_order = session[:river_post_order]
-      if session[:river_current]
-        @river = session[:river_current]
-        @posts = session[:river_current].posts( order_by: @river_post_order, limit: 16 )
+      if @river
+        @posts = @river.posts( order_by: @river_post_order, limit: 16 )
       else
         @posts = []
       end
