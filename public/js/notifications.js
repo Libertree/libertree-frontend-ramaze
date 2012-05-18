@@ -8,6 +8,9 @@ function updateNumNotificationsUnseen(n) {
     $('#num-notifications-unseen').show();
     $('#menu-notifications').removeClass('none');
     title = title.replace( /^\([0-9]+\)/, '('+n+')' );
+    if( ! title.match(/^\([0-9]+\)/) ) {
+      title = '('+n+') ' + title;
+    }
   }
   $('head title').text(title);
   $('#num-notifications-unseen').html(n);
@@ -78,4 +81,6 @@ $(document).ready( function() {
     } );
   } );
 
+  /* Cover up occasional inconsistency in backend code */
+  updateNumNotificationsUnseen( $('#num-notifications-unseen').text() );
 } );
