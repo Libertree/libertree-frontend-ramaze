@@ -25,10 +25,13 @@ module Libertree
   def self.urls_resolved(s)
     return ''  if s.nil?
 
-    s.gsub(%r{href="(http://.+)"}) {
-      resolution = resolve_redirection($1)
-      %|href="#{resolution}"|
-    }
+    html = Nokogiri::HTML(s)
+    html.css('a').each do |a|
+      if a['href'] =~ %r{http://}
+        a['href'] = resolve_redirection(a['href'])
+      end
+    end
+    html.to_xhtml
   end
 
   def self.resolve_redirection( url_s )
