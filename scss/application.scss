@@ -495,12 +495,6 @@ form.search {
     }
 }
 
-#hashtags-input {
-    input {
-        width: 440px;
-    }
-}
-
 a.like, a.unlike, a.commenter-ref {
     cursor: pointer;
 }
@@ -601,4 +595,23 @@ div.river {
     .query {
         font-family: monospace;
     }
+}
+textarea.custom {
+    width: 500px;
+}
+textarea#invitations {
+    width: 85%;
+}
+
+#textarea-post-new {
+    width: 500px;
+}
+#hashtags-input {
+    input {
+        width: 500px;
+    }
+}
+
+#textarea-description {
+    width: 500px;
 }

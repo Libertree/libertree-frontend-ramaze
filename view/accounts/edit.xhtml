@@ -6,8 +6,8 @@
 </div>
 
 <form action="update" method="POST">
-  Custom CSS: <textarea name="custom_css" cols="80" rows="5">#{account.custom_css}</textarea><br/>
-  Custom JS: <textarea name="custom_js" cols="80" rows="5">#{account.custom_js}</textarea><br/>
+  Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
+  Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
   <input type="submit" value="Save"/>
 </form>
 
@@ -17,7 +17,7 @@
 
 <?r if @invitations.any? ?>
 <h4>My Invitations</h4>
-<textarea cols="100" rows="5">#{
+<textarea id="invitations" rows="5">#{
   @invitations.map { |i| "http://#{@host}/signup?invitation_code=#{i.code}" }.join("\n")
 }</textarea>
 <?r end ?>

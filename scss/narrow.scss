@@ -28,6 +28,23 @@ body.body {
     }
 }
 
+textarea {
+    width: 85%;
+}
+
+#post-new, #textarea-description {
+    width: 90%;
+}
+#textarea-post-new {
+    width: 100%;
+}
+#hashtags-input {
+    width: 100%;
+    input {
+        width: 100%;
+    }
+}
+
 #account-window {
     top: 71px;
     width: 150px;
