@@ -21,7 +21,8 @@ $dbh ||= M4DBI.connect(
   :PostgreSQL,
   host:     conf_db['host'],
   database: conf_db['database'],
-  username: conf_db['username']
+  username: conf_db['username'],
+  password: config['password']
 )
 
 require 'libertree/model'
