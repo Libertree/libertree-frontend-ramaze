@@ -74,8 +74,16 @@ module Libertree
     end
   end
 
+  def self.strip_javascript(s)
+    html = Nokogiri::HTML(s)
+    html.css('a').each do |a|
+      a['href'] = a['href'].gsub('javascript:', 'nojavascript:')
+    end
+    html.to_xhtml
+  end
+
   def self.render(s)
-    urls_resolved( markdownify( hashtaggify(s) ) )
+    strip_javascript( urls_resolved( markdownify( hashtaggify(s) ) ) )
   end
 
   module HasRenderableText
