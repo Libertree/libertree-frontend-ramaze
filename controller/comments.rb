@@ -41,7 +41,7 @@ module Controller
       end
 
       if request.referrer =~ /home/
-        redirect Home.r(:/)
+        redirect request.referrer.gsub(/#post-\d+$/,'') + "#post-#{post.id}"
       else
         redirect "/posts/show/#{post.id}#comment-#{comment.id}"
       end

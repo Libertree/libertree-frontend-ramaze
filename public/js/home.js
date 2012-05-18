@@ -10,6 +10,12 @@ function showShowMores() {
   } );
 }
 
+/* TODO: This is lame.  We need to refactor the markup so the header
+isn't involved in the scrolling area. */
+function moveOutFromUnderHeader() {
+  $('.bg').scrollTop( $('.bg').scrollTop() - 150 );
+}
+
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -35,7 +41,7 @@ $(document).ready( function() {
         div.height('auto'); /* cancel explicit height set by animation */
         if( wantsToComment ) {
           excerpt.find('textarea.comment').focus();
-          $('.bg').scrollTop( $('.bg').scrollTop() - 150 ); /* move out from under header */
+          moveOutFromUnderHeader();
           wantsToComment = false;
         }
       }
@@ -94,4 +100,8 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   showShowMores();
+  /* TODO: This is so lame.  Refactor overall anchor-jump experience. */
+  if( document.URL.match(/#post-[0-9]+/) ) {
+    setTimeout( moveOutFromUnderHeader, 500 );
+  }
 } );
