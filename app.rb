@@ -22,7 +22,7 @@ $dbh ||= M4DBI.connect(
   host:     conf_db['host'],
   database: conf_db['database'],
   username: conf_db['username'],
-  password: config['password']
+  password: conf_db['password']
 )
 
 require 'libertree/model'
