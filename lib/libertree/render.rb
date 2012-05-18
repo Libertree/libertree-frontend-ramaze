@@ -81,7 +81,7 @@ module Libertree
     html = Nokogiri::HTML(s)
     html.css('a').each do |a|
       if a['href']
-        a['href'] = a['href'].gsub('javascript:', 'nojavascript:')
+        a['href'] = a['href'].gsub(/javascript:/i, 'nojavascript:')
       end
     end
     html.to_xhtml
