@@ -77,7 +77,7 @@ $(document).ready( function() {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
 
-    var target = $(this).closest('form.comment, #post-new, form#post-edit');
+    var target = $(this).closest('form.comment, #post-new form, form#post-edit');
     var type = $(this).data('type');
     var textType = null;
     if( type == 'post' ) { textType = 'post-text'; }
@@ -89,7 +89,7 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          $('<div class="preview-box" class="'+type+'"><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>').insertAfter(target);
+          target.append( $('<div class="preview-box" class="'+type+'"><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           target.closest('div.comments').scrollTop(99999);
         }
       }
