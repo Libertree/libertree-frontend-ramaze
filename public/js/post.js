@@ -70,7 +70,7 @@ $(document).ready( function() {
   $('#comments-show').click( function() {
     $('#comments-show').hide();
     $('td.comments, td.post').removeClass('expanded').animate(
-      {width: '500px'},
+      {width: '441px'},
       500,
       'easeOutQuint',
       function () {
