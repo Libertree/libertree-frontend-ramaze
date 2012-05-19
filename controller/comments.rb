@@ -37,7 +37,7 @@ module Controller
           }.to_json
         )
 
-        session[:saved_text]['textarea-comment-new'] = nil
+        session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
       end
 
       if request.referrer =~ /home/
