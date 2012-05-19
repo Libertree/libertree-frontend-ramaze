@@ -50,10 +50,17 @@ module Controller
       text = ( request['text'] + hashtags )
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
+      text = cleanse(text) || ''
+
+      if text.empty?
+        flash[:error] = 'Post may not be empty.'
+        redirect_referrer
+      end
+
       post = Libertree::Model::Post.create(
         'member_id' => account.member.id,
         'public'    => true,
-        'text'      => cleanse(text)
+        'text'      => text
       )
       Libertree::Model::Job.create(
         task: 'request:POST',
