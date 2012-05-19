@@ -97,6 +97,17 @@ textarea, input[type="text"], input[type="password"] {
     margin: 60px auto 0px auto;
 }
 
+.flash {
+  padding: 1em 50px;
+  margin: 0 0 1em;
+  &.error {
+    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em #FFCAAA;
+  }
+  &.notice {
+    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em #FAFAAA;
+  }
+}
+
 #tree-icon {
     float: left;
     margin-right: 10px;

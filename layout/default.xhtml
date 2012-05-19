@@ -8,8 +8,13 @@
     #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
     <div class="main has-shadow">
 
-      <div class="flash error">#{flash[:error]}</div>
-      <div class="flash notice">#{flash[:notice]}</div>
+      <?r if flash[:error] ?>
+        <div class="flash error">#{flash[:error]}</div>
+      <?r end ?>
+
+      <?r if flash[:notice] ?>
+        <div class="flash notice">#{flash[:notice]}</div>
+      <?r end ?>
 
       #{@content}
     </div>
