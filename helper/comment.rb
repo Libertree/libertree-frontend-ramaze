@@ -16,10 +16,12 @@ module Ramaze
             '@' + name.split(/[ :,-]/, 2)[0],
           ].each do |n|
             dict[n] = template % n
+            dict[n.downcase] = template % n
           end
           (2..20).each do |len|
             partial_name = name[0...len]
             dict["@#{partial_name}"] = ( template % partial_name )
+            dict["@#{partial_name.downcase}"] = ( template % partial_name )
           end
 
           # Turn possible shortenings into regexp with multiple comparisons,
@@ -27,7 +29,7 @@ module Ramaze
           # characters in display names may cause false positives, but this
           # seems not likely, so we'll take our chances and just have simpler
           # code.
-          s.gsub!( /#{dict.keys.sort.reverse.join('|')}/i, dict )
+          s.gsub!( /#{dict.keys.sort.reverse.join('|')}/, dict )
         end
 
         s
