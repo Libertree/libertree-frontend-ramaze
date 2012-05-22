@@ -66,6 +66,7 @@ module Controller
           n.seen = true
         end
       end
+      account.dirty
       account.num_notifications_unseen
     end
 
@@ -74,6 +75,7 @@ module Controller
       if n && n.account_id == account.id
         n.seen = false
       end
+      account.dirty
       account.num_notifications_unseen
     end
 
@@ -83,6 +85,7 @@ module Controller
           notif.seen = true
         end
       end
+      account.dirty
       account.num_notifications_unseen
     end
 
