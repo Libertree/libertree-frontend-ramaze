@@ -71,7 +71,7 @@ module Controller
     end
 
     def force_mobile_to_narrow
-      if request.env['HTTP_USER_AGENT'] =~ /Mobile|PlayStation/ && session[:layout] != 'narrow'
+      if request.env['HTTP_USER_AGENT'] =~ /Mobile|PlayStation|webOS.*(Pre|Pixi)/ && session[:layout] != 'narrow'
         session[:layout] = 'narrow'
         redirect r(:/)
       end
