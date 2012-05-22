@@ -82,6 +82,7 @@ module Controller
         Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
           n.seen = true
         end
+        account.dirty
       else
         respond "404: Not Found", 404
       end
