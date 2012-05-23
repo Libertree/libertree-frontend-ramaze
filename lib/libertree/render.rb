@@ -23,11 +23,16 @@ module Libertree
     }
   end
 
-  def self.urls_resolved(s)
-    return ''  if s.nil?
+  def self.post_processing(s)
+    return ''  if s.nil? or s.empty?
 
     html = Nokogiri::HTML(s)
     html.css('a').each do |a|
+      # strip javascript
+      if a['href']
+        a['href'] = a['href'].gsub(/javascript:/i, 'nojavascript:')
+      end
+      # resolve uris
       if a['href'] =~ %r{http://}
         a['href'] = resolve_redirection(a['href'])
       end
@@ -78,18 +83,8 @@ module Libertree
     end
   end
 
-  def self.strip_javascript(s)
-    html = Nokogiri::HTML(s)
-    html.css('a').each do |a|
-      if a['href']
-        a['href'] = a['href'].gsub(/javascript:/i, 'nojavascript:')
-      end
-    end
-    html.to_xhtml
-  end
-
   def self.render(s)
-    strip_javascript( urls_resolved( markdownify( hashtaggify(s) ) ) )
+    post_processing( markdownify( hashtaggify(s) ) )
   end
 
   module HasRenderableText
