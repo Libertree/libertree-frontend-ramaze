@@ -117,25 +117,25 @@ $(document).ready( function() {
     clearInterval(timerSaveTextAreas);
   } );
 
-  $('form.comment .detach').live( 'click', function() {
-    var form = $(this).closest('form.comment');
-    var top = form.offset().top;
-    form.css('top', top + 'px');
-    form.addClass('detached');
-    form.addClass('has-shadow');
-    form.find('.detach').hide();
-    form.find('.attach').show();
+  $('.detachable .detach').live( 'click', function() {
+    var detachable = $(this).closest('.detachable');
+    var top = detachable.offset().top;
+    detachable.css('top', top + 'px');
+    detachable.addClass('detached');
+    detachable.addClass('has-shadow');
+    detachable.find('.detach').hide();
+    detachable.find('.attach').show();
+    detachable.draggable();
     return false;
   } );
 
-  $('form.comment .attach').live( 'click', function() {
-    var form = $(this).closest('form.comment');
-    /* var top = form.offset().top; */
-    /* form.css('top', top + 'px'); */
-    form.removeClass('detached');
-    form.removeClass('has-shadow');
-    form.find('.attach').hide();
-    form.find('.detach').show();
+  $('.detachable .attach').live( 'click', function() {
+    var detachable = $(this).closest('.detachable');
+    detachable.removeClass('detached');
+    detachable.removeClass('has-shadow');
+    detachable.find('.attach').hide();
+    detachable.find('.detach').show();
+    detachable.draggable('destroy');
     return false;
   } );
 
