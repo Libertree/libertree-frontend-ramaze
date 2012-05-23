@@ -313,6 +313,10 @@ form.comment {
             border-top: 0px;
         }
     }
+
+    .preview-box {
+        max-width: 500px;
+    }
 }
 
 textarea.comment, form.comment .form-buttons {
