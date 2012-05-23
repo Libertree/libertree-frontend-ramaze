@@ -34,11 +34,11 @@ describe Libertree do
 
   describe '#render' do
     it 'should linkify hashtags' do
-      subject.render('#simple').should == %{<p><a class="hashtag" data-hashtag="simple">#simple</a></p>\n}
+      subject.render('#simple').should == Nokogiri::HTML(%{<p><a class="hashtag" data-hashtag="simple">#simple</a></p>\n}).to_xhtml
     end
 
     it 'should not linkify apparent hashtags with invalid characters' do
-      subject.render('#ab_c').should == "<p>#ab_c</p>\n"
+      subject.render('#ab_c').should == Nokogiri::HTML("<p>#ab_c</p>\n").to_xhtml
     end
 
     it 'should not linkify hashtag edge cases' do
