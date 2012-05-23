@@ -3,7 +3,7 @@ require 'net/http'
 
 module Libertree
   def self.markdownify(s)
-    return ''  if s.nil?
+    return ''  if s.nil? or s.empty?
 
     markdown ||= Redcarpet::Markdown.new(
       Libertree::Markdown.new( hard_wrap: true ),
@@ -16,7 +16,7 @@ module Libertree
   end
 
   def self.hashtaggify(s)
-    return ''  if s.nil?
+    return ''  if s.nil? or s.empty?
 
     s.force_encoding('utf-8').gsub(/(?<=^|\s)#(\p{Word}+)(?=\s|\b|$)/i) {
       %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
