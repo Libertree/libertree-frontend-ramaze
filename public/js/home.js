@@ -53,11 +53,23 @@ $(document).ready( function() {
     $(this).hide();
     $(this).siblings('.show-more').show();
     var excerpt = $(this).closest('.excerpt');
+
+    var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
+
+    var top = excerpt.position().top;
+    var bgTop = $('.bg').scrollTop();
+    if( top < 100 ){
+      $('.bg').animate(
+        { scrollTop: bgTop + ( top - 100 ) },
+        animationSpeed
+      );
+    }
+
     var div = excerpt.find('.height-normal');
     div.animate(
       /* TODO: DRY up with CSS definition of height */
       { height: '200px' },
-      ( excerpt.find('.overflowed').height() - 200 ) * 2,
+      animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
         div.removeClass('height-normal').addClass('height-fixed');
