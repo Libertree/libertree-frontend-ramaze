@@ -1,5 +1,7 @@
 require 'redcarpet'
+require 'nokogiri'
 require_relative '../lib/libertree/render'
+require_relative '../lib/libertree/markdown'
 
 describe Libertree do
   describe '#hashtaggify' do
