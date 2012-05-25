@@ -164,11 +164,9 @@ textarea, input[type="text"], input[type="password"] {
         }
 
         #menu-notifications {
-            background: url('/images/icon-notifications.png') top left no-repeat;
+            white-space: nowrap;
         }
-        #menu-notifications.none {
-            background: url('/images/icon-notifications-none.png') top left no-repeat;
-        }
+
         #menu-account {
             width: auto;
             padding-top: 4px;
@@ -424,8 +422,8 @@ div.post {
     font-weight: bold;
     font-size: 14px;
     padding: 1px 2px 2px 2px;
-    top: 15px;
-    left: 0px;
+    top: 8px;
+    left: -28px;
     position: relative;
 }
 
