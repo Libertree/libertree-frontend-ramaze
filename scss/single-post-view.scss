@@ -1,10 +1,10 @@
 @import "colours.scss";
 
 .single-post-view {
-  div.post-wrapper {
+  div.post {
     position: relative;
 
-    div.post {
+    div.post-pane {
       position: absolute;
       width: 50%;
       float: left;

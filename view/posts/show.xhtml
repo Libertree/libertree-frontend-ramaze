@@ -1,6 +1,6 @@
-<div class="post-wrapper" data-post-id="#{@post.id}">
+<div class="post" data-post-id="#{@post.id}">
   <?r if session[:layout] != 'narrow' ?>
-    <div class="post">
+    <div class="post-pane">
   <?r end ?>
       <div class="post-tools">
         <?r if @post.read_by?(account) ?>
