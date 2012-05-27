@@ -44,7 +44,7 @@
   <?r if session[:layout] != 'narrow' ?>
     </div>
 
-    <div class="comments-wrapper">
+    <div class="comments-pane">
       <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
   <?r end ?>
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: false }
