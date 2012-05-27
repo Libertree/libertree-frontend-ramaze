@@ -1,7 +1,6 @@
-<div class="post" data-post-id="#{@post.id}">
+<div class="post-wrapper" data-post-id="#{@post.id}">
   <?r if session[:layout] != 'narrow' ?>
-  <table><tr>
-    <td class="post">
+    <div class="post">
   <?r end ?>
       <div class="post-tools">
         <?r if @post.read_by?(account) ?>
@@ -43,14 +42,13 @@
         </div>
       </div>
   <?r if session[:layout] != 'narrow' ?>
-    </td>
+    </div>
 
-    <td class="comments">
+    <div class="comments-wrapper">
       <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
   <?r end ?>
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: false }
   <?r if session[:layout] != 'narrow' ?>
-    </td>
-  </tr></table>
+    </div>
   <?r end ?>
 </div>

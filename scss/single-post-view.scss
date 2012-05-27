@@ -1,0 +1,44 @@
+@import "colours.scss";
+
+.single-post-view {
+  div.post-wrapper {
+    position: relative;
+
+    div.post {
+      position: absolute;
+      width: 50%;
+      float: left;
+      padding: 0 15px 0 0;
+      border-right: 1px solid $main_green;
+      overflow: auto;
+      vertical-align: top;
+
+      .post-proper {
+        width: 100%;
+        img {
+          max-width: 450px;
+        }
+        .post-text {
+          width: 100%;
+          word-wrap: break-word;
+        }
+      }
+    }
+    div.post.expanded {
+      img {
+        max-width: 920px;
+      }
+    }
+    div.comments-wrapper {
+      margin-left: 50%;
+      padding-left: 15px + 15px;
+      div.comments {
+        overflow-y: auto;
+        vertical-align: top;
+        img {
+          max-width: 450px;
+        }
+      }
+    }
+  }
+}
