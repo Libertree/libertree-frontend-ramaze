@@ -9,7 +9,7 @@
       <?r if @account_name ?>
         #{account.member.name_display}
       <?r end ?>
-      <img class="avatar" src="#{account.member.avatar_path}"/>
+      #{ member_img(account.member) }
     </a>
     <div id="account-window" class="window has-shadow">
       <a href="/profiles/show/#{account.member.id}"><img src="/images/icon-account.png" alt="Profile"/> Profile</a><br/>

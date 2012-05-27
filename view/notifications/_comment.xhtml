@@ -1,6 +1,6 @@
 <?r if @comment ?>
   <div class="notification #{@notification.seen ? 'seen' : 'unseen'}" data-notification-id="#{@notification.id}">
-    <img class="avatar" src="#{@comment.member.avatar_path}"/> #{ anded_list( @actors.map(&:name_display).uniq ) } commented on
+    #{ member_img(@comment.member) } #{ anded_list( @actors.map(&:name_display).uniq ) } commented on
     <?r if @comment.post.member.account == account ?>
       your
     <?r else ?>

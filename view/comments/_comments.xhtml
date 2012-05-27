@@ -13,7 +13,7 @@
     <div class="drag-handle-bar"></div>
     <div class="content">
       <form method="POST" action="/comments/create" class="comment">
-        <img class="avatar" src="#{account.member.avatar_path}"/>
+        #{ member_img(account.member) }
         <input type="hidden" name="post_id" value="#{@post.id}"/>
         <table>
           <tr><td>
