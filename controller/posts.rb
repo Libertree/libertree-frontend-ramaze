@@ -126,8 +126,8 @@ module Controller
 
     def update
       redirect_referrer  if ! request.post?
-      if request['submit'] == 'Cancel'
-        redirect_referrer
+      if request.params.has_key? 'cancel'
+        redirect Main.r(:home)
       end
 
       text = request['text']
