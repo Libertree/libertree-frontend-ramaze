@@ -33,6 +33,11 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Arial, sans-serif;
     margin-top: 0px;
 }
+div, p, form {
+    + h2, + h3, + h4 {
+        margin-top: 1em;
+    }
+}
 h1 { font-size: $font_extra_extra_large; }
 h2 { font-size: $font_extra_large; }
 h3 { font-size: $font_large; }
