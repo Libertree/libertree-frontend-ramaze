@@ -99,6 +99,7 @@ $(document).ready( function() {
           $('#post-excerpts').append(html);
           loadingMorePostExcerpts = false;
           removeSpinner('#post-excerpts');
+          showShowMores();
         }
       } );
     }
