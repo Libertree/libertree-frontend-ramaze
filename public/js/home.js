@@ -50,9 +50,9 @@ $(document).ready( function() {
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
     var top = excerpt.position().top;
-    var bgTop = $('.bg').scrollTop();
+    var bgTop = $('#scrollable').scrollTop();
     if( top < 100 ){
-      $('.bg').animate(
+      $('#scrollable').animate(
         { scrollTop: bgTop + ( top - 100 ) },
         animationSpeed
       );
@@ -77,8 +77,8 @@ $(document).ready( function() {
     excerpt.find('.show-more').click();
   } );
 
-  $('.bg').scroll( function () {
-    if( $('.bg').scrollTop() + $('.bg').height() >= $('.main').height() ) {
+  $('#scrollable').scroll( function () {
+    if( $('#scrollable').scrollTop() + $('#scrollable').height() >= $('.main').height() ) {
       if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
         return;
       }
