@@ -25,20 +25,31 @@ $(document).ready( function() {
 
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments') );
+    var heightDifference = overflowed.height() - excerpt.height();
+    var animationSpeed = heightDifference * 2;
 
     div.animate(
       { height: overflowed.height() + 'px' },
-      ( overflowed.height() - excerpt.height() ) * 2,
+      animationSpeed,
       function() {
         div.removeClass('height-fixed').addClass('height-normal');
         markPostRead( excerptParent.data('post-id') );
         div.height('auto'); /* cancel explicit height set by animation */
-        if( wantsToComment ) {
+      }
+    );
+
+    if( wantsToComment ) {
+      var bgTop = $('#scrollable').scrollTop();
+      $('#scrollable').animate(
+        { scrollTop: bgTop + heightDifference },
+        animationSpeed,
+        function() {
           excerpt.find('textarea.comment').focus();
           wantsToComment = false;
         }
-      }
-    );
+      );
+    }
+
     return false;
   } );
 
