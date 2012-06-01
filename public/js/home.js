@@ -40,8 +40,12 @@ $(document).ready( function() {
 
     if( wantsToComment ) {
       var bgTop = $('#scrollable').scrollTop();
+      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('#scrollable').height();
+      if( excerptTruncation < 0 ) {
+        excerptTruncation = 0;
+      }
       $('#scrollable').animate(
-        { scrollTop: bgTop + heightDifference },
+        { scrollTop: bgTop + heightDifference + excerptTruncation },
         animationSpeed,
         function() {
           excerpt.find('textarea.comment').focus();
