@@ -24,7 +24,7 @@ $(document).ready( function() {
     var excerptParent = $(this).closest('.post-excerpt');
 
     excerptParent.find('div.comments.hidden').removeClass('hidden');
-    showMoreComments( excerpt.find('.comments') );
+    showMoreComments( excerpt.find('.comments'), 3 );
     var heightDifference = overflowed.height() - excerpt.height();
     var animationSpeed = heightDifference * 2;
 

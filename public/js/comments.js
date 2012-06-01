@@ -1,5 +1,4 @@
-function showMoreComments(comments) {
-  var n = comments.find('.more-comments').data('n');
+function showMoreComments(comments, n) {
   var comment_ids = '';
 
   for( i = 0; i < n; i++ ) {
@@ -8,7 +7,7 @@ function showMoreComments(comments) {
     comment.removeClass('hidden');
   }
   if( comments.find('div.comment.hidden:last').length == 0 ) {
-    comments.find('.more-comments').hide();
+    comments.find('span.more-comments').hide();
   }
   $.get(
     '/notifications/seen_comments' + comment_ids,
@@ -32,8 +31,8 @@ function setCommentAreaHeight() {
 }
 
 $(document).ready( function() {
-  $('.more-comments').live( 'click', function() {
-    showMoreComments( $(this).closest('.comments') );
+  $('a.more-comments').live( 'click', function() {
+    showMoreComments( $(this).closest('.comments'), $(this).data('n') );
   } );
   $('.jump-to-comment').live( 'click', function() {
     var comments = $(this).closest('div.comments');
