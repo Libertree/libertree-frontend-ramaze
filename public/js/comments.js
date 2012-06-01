@@ -36,7 +36,16 @@ $(document).ready( function() {
     showMoreComments( $(this).closest('.comments') );
   } );
   $('.jump-to-comment').live( 'click', function() {
-    $(this).siblings('form.comment').find('textarea').focus().hide().fadeIn();
+    var comments = $(this).closest('div.comments');
+    comments.animate(
+      { scrollTop: comments.scrollTop() + comments.height() + 200 },
+      ( $('.detachable').position().top - 500 ) * 2,
+      'easeOutQuint',
+      function() {
+        comments.find('textarea').focus().hide().fadeIn();
+      }
+    );
+
   } );
   $('div.comment').live( {
     mouseover: function() {
