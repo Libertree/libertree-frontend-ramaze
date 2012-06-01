@@ -99,6 +99,25 @@ describe Ramaze::Helper::Comment do
         processed.should =~ /data-member-id="#{@george2.id}"/
         processed.should_not =~ /data-member-id="#{@george.id}"/
       end
+
+      it 'should not be confused by Regexp characters in display names' do
+        regexp_boy = Libertree::Model::Member.create(
+          FactoryGirl.attributes_for(:member, :username => ".*-[]()", :server_id => @server.id)
+        )
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => regexp_boy.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting, indeed."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@#{regexp_boy.username} you have a weird name."))
+
+        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed.should =~ /data-member-id="#{regexp_boy.id}"/
+      end
     end
 
     context 'with less than two comments' do
