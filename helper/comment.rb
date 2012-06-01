@@ -27,11 +27,8 @@ module Ramaze
         end
 
         # Turn possible shortenings into regexp with multiple comparisons,
-        # starting with the longest.  Periods and other regexp-syntax
-        # characters in display names may cause false positives, but this
-        # seems not likely, so we'll take our chances and just have simpler
-        # code.
-        s.gsub( /#{dict.keys.sort.reverse.join('|')}/, dict )
+        # starting with the longest.
+        s.gsub( /#{dict.keys.map{|k|Regexp.quote(k)}.sort.reverse.join('|')}/, dict )
 
       end
     end
