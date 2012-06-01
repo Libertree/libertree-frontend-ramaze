@@ -636,6 +636,10 @@ table.table {
         font-size: $font_large;
         margin-top: 10px;
     }
+
+    .jump-to-comment {
+        display: none;
+    }
 }
 
 #no-more-posts {
