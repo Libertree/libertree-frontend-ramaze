@@ -1,3 +1,4 @@
+require 'nokogiri'
 require 'redcarpet'
 require 'factory_girl'
 require 'rspec'
