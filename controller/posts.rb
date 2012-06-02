@@ -127,28 +127,26 @@ module Controller
 
     def update
       redirect_referrer  if ! request.post?
-      if request['submit'] == 'Cancel'
-        redirect_referrer
+      post = Libertree::Model::Post[ request['post_id'].to_i ]
+      redirect_referrer  if post.nil? || post.member != account.member
+
+      if ! request.params['cancel']
+        text = request['text']
+        # TODO: DRY up along with #encode! calls in #create action
+        text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
+        text.encode!('UTF-8', 'UTF-16')
+
+        post.revise cleanse(text)
+        Libertree::Model::Job.create(
+          task: 'request:POST',
+          params: {
+            'post_id' => post.id,
+          }.to_json
+        )
+        session[:saved_text]['textarea-post-edit'] = nil
       end
 
-      text = request['text']
-      # TODO: DRY up along with #encode! calls in #create action
-      text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
-      text.encode!('UTF-8', 'UTF-16')
-
-      post = Libertree::Model::Post[ request['post_id'].to_i ]
-      redirect_referrer  if post.member != account.member
-
-      post.revise cleanse(text)
-      Libertree::Model::Job.create(
-        task: 'request:POST',
-        params: {
-          'post_id' => post.id,
-        }.to_json
-      )
-      session[:saved_text]['textarea-post-edit'] = nil
-
-      redirect Main.r(:home)
+      redirect Posts.r(:show, post.id)
     end
   end
 end

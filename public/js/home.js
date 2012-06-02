@@ -10,12 +10,6 @@ function showShowMores() {
   } );
 }
 
-/* TODO: This is lame.  We need to refactor the markup so the header
-isn't involved in the scrolling area. */
-function moveOutFromUnderHeader() {
-  $('.bg').scrollTop( $('.bg').scrollTop() - 150 );
-}
-
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -30,22 +24,36 @@ $(document).ready( function() {
     var excerptParent = $(this).closest('.post-excerpt');
 
     excerptParent.find('div.comments.hidden').removeClass('hidden');
-    showMoreComments( excerpt.find('.comments') );
+    showMoreComments( excerpt.find('.comments'), 3 );
+    var heightDifference = overflowed.height() - excerpt.height();
+    var animationSpeed = heightDifference * 2;
 
     div.animate(
       { height: overflowed.height() + 'px' },
-      ( overflowed.height() - excerpt.height() ) * 2,
+      animationSpeed,
       function() {
         div.removeClass('height-fixed').addClass('height-normal');
         markPostRead( excerptParent.data('post-id') );
         div.height('auto'); /* cancel explicit height set by animation */
-        if( wantsToComment ) {
-          excerpt.find('textarea.comment').focus();
-          moveOutFromUnderHeader();
-          wantsToComment = false;
-        }
       }
     );
+
+    if( wantsToComment ) {
+      var bgTop = $('#scrollable').scrollTop();
+      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('#scrollable').height();
+      if( excerptTruncation < 0 ) {
+        excerptTruncation = 0;
+      }
+      $('#scrollable').animate(
+        { scrollTop: bgTop + heightDifference + excerptTruncation },
+        animationSpeed,
+        function() {
+          excerpt.find('textarea.comment').focus();
+          wantsToComment = false;
+        }
+      );
+    }
+
     return false;
   } );
 
@@ -57,9 +65,9 @@ $(document).ready( function() {
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
     var top = excerpt.position().top;
-    var bgTop = $('.bg').scrollTop();
+    var bgTop = $('#scrollable').scrollTop();
     if( top < 100 ){
-      $('.bg').animate(
+      $('#scrollable').animate(
         { scrollTop: bgTop + ( top - 100 ) },
         animationSpeed
       );
@@ -84,8 +92,8 @@ $(document).ready( function() {
     excerpt.find('.show-more').click();
   } );
 
-  $('.bg').scroll( function () {
-    if( $('.bg').scrollTop() + $('.bg').height() >= $('.main').height() ) {
+  $('#scrollable').scroll( function () {
+    if( $('#scrollable').scrollTop() + $('#scrollable').height() >= $('.main').height() ) {
       if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
         return;
       }
@@ -99,6 +107,7 @@ $(document).ready( function() {
           $('#post-excerpts').append(html);
           loadingMorePostExcerpts = false;
           removeSpinner('#post-excerpts');
+          showShowMores();
         }
       } );
     }
@@ -112,8 +121,4 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   showShowMores();
-  /* TODO: This is so lame.  Refactor overall anchor-jump experience. */
-  if( document.URL.match(/#post-[0-9]+/) ) {
-    setTimeout( moveOutFromUnderHeader, 500 );
-  }
 } );

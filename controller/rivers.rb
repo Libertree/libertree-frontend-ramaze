@@ -38,7 +38,7 @@ module Controller
         end
       end
 
-      redirect Home.r(:/)
+      redirect Home.r(:/, river.id)
     end
 
     def destroy(river_id)
@@ -63,7 +63,7 @@ module Controller
 
       @river.revise request.params
 
-      redirect Home.r(:/)
+      redirect r(:/)
     end
 
     def ensure_exists(query, label = nil)

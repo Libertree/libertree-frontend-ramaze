@@ -1,7 +1,12 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
   #{@post.comments.size} comment#{plural_s(@post.comments.size)}
   <?r if @hidden ?>
-    <a href="#" class="more-comments" data-n="3">show more comments</a>
+    <span class="more-comments">
+      show
+      <a href="#" class="more-comments" data-n="3">more</a> /
+      <a href="#" class="more-comments" data-n="#{@post.comments.size}">all</a>
+      comments
+    </span>
   <?r end ?>
   <a href="#" class="jump-to-comment">Comment</a>
 

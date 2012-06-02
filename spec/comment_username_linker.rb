@@ -1,3 +1,4 @@
+require 'nokogiri'
 require 'redcarpet'
 require 'factory_girl'
 require 'rspec'
@@ -20,6 +21,9 @@ describe Ramaze::Helper::Comment do
     )
     @george = Libertree::Model::Member.create(
       FactoryGirl.attributes_for(:member, :username => "George Harrison", :server_id => @server.id)
+    )
+    @george2 = Libertree::Model::Member.create(
+      FactoryGirl.attributes_for(:member, :username => "George Benson", :server_id => @server.id)
     )
     @post = Libertree::Model::Post.create(
       FactoryGirl.attributes_for(:post, :member_id => @author.id)
@@ -73,6 +77,47 @@ describe Ramaze::Helper::Comment do
                                      :text => "@george: indeed. I thought you'd like that."))
         processed = @s.comment_text_rendered_and_participants_linked(comment)
         processed.should =~ /data-member-id="#{@george.id}"/
+      end
+
+      it 'should match only the most recent name in ambiguous situations' do
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @george.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting."))
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @george2.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting, indeed."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@george: I mean you, George Benson."))
+
+        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed.should =~ /data-member-id="#{@george2.id}"/
+        processed.should_not =~ /data-member-id="#{@george.id}"/
+      end
+
+      it 'should not be confused by Regexp characters in display names' do
+        regexp_boy = Libertree::Model::Member.create(
+          FactoryGirl.attributes_for(:member, :username => ".*-[]()", :server_id => @server.id)
+        )
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => regexp_boy.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting, indeed."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@#{regexp_boy.username} you have a weird name."))
+
+        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed.should =~ /data-member-id="#{regexp_boy.id}"/
       end
     end
 

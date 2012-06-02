@@ -8,7 +8,7 @@ module Controller
 
     def edit
       @invitations = account.invitations_not_accepted
-      @host = request.host
+      @host = request.host_with_port
     end
 
     def update

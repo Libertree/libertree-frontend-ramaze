@@ -1,5 +1,4 @@
-function showMoreComments(comments) {
-  var n = comments.find('.more-comments').data('n');
+function showMoreComments(comments, n) {
   var comment_ids = '';
 
   for( i = 0; i < n; i++ ) {
@@ -8,7 +7,7 @@ function showMoreComments(comments) {
     comment.removeClass('hidden');
   }
   if( comments.find('div.comment.hidden:last').length == 0 ) {
-    comments.find('.more-comments').hide();
+    comments.find('span.more-comments').hide();
   }
   $.get(
     '/notifications/seen_comments' + comment_ids,
@@ -32,11 +31,20 @@ function setCommentAreaHeight() {
 }
 
 $(document).ready( function() {
-  $('.more-comments').live( 'click', function() {
-    showMoreComments( $(this).closest('.comments') );
+  $('a.more-comments').live( 'click', function() {
+    showMoreComments( $(this).closest('.comments'), $(this).data('n') );
   } );
   $('.jump-to-comment').live( 'click', function() {
-    $(this).siblings('form.comment').find('textarea').focus().hide().fadeIn();
+    var comments = $(this).closest('div.comments');
+    comments.animate(
+      { scrollTop: comments.scrollTop() + comments.height() + 200 },
+      ( $('.detachable').position().top - 500 ) * 2,
+      'easeOutQuint',
+      function() {
+        comments.find('textarea').focus().hide().fadeIn();
+      }
+    );
+
   } );
   $('div.comment').live( {
     mouseover: function() {
@@ -120,9 +128,9 @@ $(document).ready( function() {
   $('.detachable .detach').live( 'click', function() {
     var detachable = $(this).closest('.detachable');
     var top = detachable.offset().top;
-    detachable.css('top', top + 'px');
     detachable.addClass('detached');
     detachable.addClass('has-shadow');
+    detachable.css('top', ( $('#scrollable').scrollTop() + top ) + 'px');
     detachable.find('.detach').hide();
     detachable.find('.attach').show();
     detachable.draggable();
