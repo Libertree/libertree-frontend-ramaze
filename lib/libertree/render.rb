@@ -26,7 +26,7 @@ module Libertree
   def self.post_processing(s)
     return ''  if s.nil? or s.empty?
 
-    html = Nokogiri::HTML(s)
+    html = Nokogiri::HTML::fragment(s)
     html.css('a').each do |a|
       # strip javascript
       if a['href']
