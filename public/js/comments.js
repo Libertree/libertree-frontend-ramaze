@@ -128,9 +128,9 @@ $(document).ready( function() {
   $('.detachable .detach').live( 'click', function() {
     var detachable = $(this).closest('.detachable');
     var top = detachable.offset().top;
-    detachable.css('top', top + 'px');
     detachable.addClass('detached');
     detachable.addClass('has-shadow');
+    detachable.css('top', ( $('#scrollable').scrollTop() + top ) + 'px');
     detachable.find('.detach').hide();
     detachable.find('.attach').show();
     detachable.draggable();
