@@ -1,12 +1,13 @@
 # encoding: utf-8
 require 'net/http'
+require 'nokogiri'
 
 module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
     markdown ||= Redcarpet::Markdown.new(
-      Libertree::Markdown.new( hard_wrap: true ),
+      Libertree::Markdown.new,
       {
         autolink: true,
         space_after_headers: true,

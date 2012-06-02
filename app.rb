@@ -3,7 +3,6 @@ require 'm4dbi'
 require 'rdbi-driver-postgresql'
 require 'syck'
 require 'mini_magick'
-require 'loofah'
 require 'redcarpet'
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )

@@ -104,7 +104,7 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( cleanse( request['s'] ) )
+      respond Libertree.render( request['s'] )
     end
 
     # This is not in the Posts controller because we will handle many other search

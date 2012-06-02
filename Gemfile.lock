@@ -67,8 +67,6 @@ GEM
     innate (2012.03)
       rack (~> 1.4.1)
     kgio (2.7.3)
-    loofah (1.2.0)
-      nokogiri (>= 1.4.4)
     m4dbi (0.8.1)
       metaid
       rdbi
@@ -153,9 +151,9 @@ DEPENDENCIES
   libertree-client!
   libertree-db!
   linecache19!
-  loofah
   m4dbi
   mini_magick
+  nokogiri
   pg
   pony
   racksh

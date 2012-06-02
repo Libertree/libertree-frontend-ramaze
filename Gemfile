@@ -12,8 +12,8 @@ gem 'pony'   # email lib
 gem 'em-websocket'
 gem 'rcrypt'
 gem 'redcarpet'
+gem 'nokogiri'
 gem 'mini_magick'
-gem 'loofah'
 gem 'sass'
 
 gem 'libertree-db', path: '../libertree-db/rb'

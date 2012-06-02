@@ -20,15 +20,14 @@ module Controller
       return  if ! request.post?
 
       post = Libertree::Model::Post[ request['post_id'].to_i ]
-      text = cleanse(request['text']) || ''
 
-      if post and not text.empty?
+      if post && ! request['text'].empty?
         # TODO: Check that the member is allowed to view and comment on the post.
         # (when we introduce such restrictions in the system)
         comment = Libertree::Model::Comment.create(
           'member_id' => account.member.id,
           'post_id'   => post.id,
-          'text'      => text
+          'text'      => request['text']
         )
 
         Libertree::Model::Job.create(
