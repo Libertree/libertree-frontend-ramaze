@@ -1,0 +1,24 @@
+<h2>Libertree Administration</h2>
+
+<h3>Forests</h3>
+
+<div class="forests">
+  <?r @forests.each do |f| ?>
+    <div class="forest">
+      <div class="name">#{f.name}</div>
+      <div class="servers">
+        <?r f.servers.each do |s| ?>
+          <div class="server">#{s.name}</div>
+        <?r end ?>
+      </div>
+    </div>
+  <?r end ?>
+</div>
+
+<h3>Servers</h3>
+
+<div class="servers">
+  <?r @servers.each do |s| ?>
+    <div class="server">#{s.name_display}</div>
+  <?r end ?>
+</div>
