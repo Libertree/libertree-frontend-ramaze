@@ -74,6 +74,7 @@ module Controller
     end
 
     def show(post_id)
+      @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
       if @post
         @subtitle = %{#{@post.member.username} - "#{@post.glimpse}"}

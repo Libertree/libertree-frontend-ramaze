@@ -54,27 +54,17 @@ $(document).ready( function() {
   } )
 
   $('#comments-hide').click( function() {
+    $('div.post-pane').css('position','relative');
     $('div.comments, #comments-hide').hide();
     $('#comments-show').show();
-    $('td.post').addClass('expanded').animate(
-      {width: '980px'},
-      500,
-      'easeOutQuint'
-    );
-    $('td.comments').animate(
-      {width: '20px'},
-      500,
-      'easeOutQuint'
-    );
+    $('div.post-pane, div.comments-pane').toggleClass('expanded-post', 500);
   } );
   $('#comments-show').click( function() {
     $('#comments-show').hide();
-    $('td.comments, td.post').removeClass('expanded').animate(
-      {width: '441px'},
-      500,
-      'easeOutQuint',
+    $('div.comments-pane, div.post-pane').toggleClass('expanded-post', 500).promise().done(
       function () {
         $('div.comments, #comments-hide').show();
+        $('div.post-pane').css('position','absolute');
       }
     );
   } );
