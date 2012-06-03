@@ -18,7 +18,6 @@ module Libertree
 
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
-
     s.force_encoding('utf-8').gsub(/(?<=^|\s)#([\p{Word}\p{Pd}&&[^_]]+)(?=\s|\b|$)/i) {
       %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
     }
@@ -85,7 +84,7 @@ module Libertree
   end
 
   def self.render(s)
-    post_processing( markdownify( hashtaggify(s) ) )
+    markdownify(s)
   end
 
   module HasRenderableText
