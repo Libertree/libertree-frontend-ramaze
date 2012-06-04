@@ -30,6 +30,7 @@
         title="#{(request.fullpath !~ /home/) ? 'Go Home' : 'You are at Home'}"><img src="/images/icon-home.png" alt="Home"/></a>
       #{ render_file 'layout/_notifications.xhtml' }
       <a href="/posts/new" class="menu-item" id="menu-post-new" title="New Post"><img src="/images/icon-edit.png" alt="New Post"/></a>
+      <a href="http://issues.libertreeproject.org" class="menu-item" title="Known Issues"><img src="/images/icon-exclamation.png" alt="known issues list"/></a>
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q" tabindex="99"/>
       </form>
