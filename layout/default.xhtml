@@ -3,7 +3,7 @@
 
 #{ render_file 'layout/_head.xhtml' }
 
-<body class="body">
+<body class="body #{ @view }">
   <div class="bg">
     #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
     <div id="scrollable">

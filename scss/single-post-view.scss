@@ -1,0 +1,49 @@
+@import "colours.scss";
+
+.single-post-view {
+  $distance_to_separator: 15px;
+  div.post {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    img {
+      max-width: 100%;
+    }
+
+    div.post-pane {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      float: left;
+      padding: 0 $distance_to_separator 0 0;
+      border-right: 1px solid $main_green;
+      overflow: auto;
+      vertical-align: top;
+
+      .post-proper {
+        width: 100%;
+        .post-text {
+          width: 100%;
+          word-wrap: break-word;
+        }
+      }
+      &.expanded-post {
+        width: 100%;
+        position: relative;
+        border: none;
+        padding: 0;
+      }
+    }
+    div.comments-pane {
+      margin-left: 50%;
+      padding-left: 2 * $distance_to_separator;
+      div.comments {
+        overflow-y: auto;
+        vertical-align: top;
+      }
+      &.expanded-post {
+        width: 0;
+      }
+    }
+  }
+}
