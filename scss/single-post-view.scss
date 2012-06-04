@@ -6,6 +6,9 @@
     position: relative;
     overflow: hidden;
     padding: 0;
+    img {
+      max-width: 100%;
+    }
 
     div.post-pane {
       position: absolute;
@@ -19,9 +22,6 @@
 
       .post-proper {
         width: 100%;
-        img {
-          max-width: 450px;
-        }
         .post-text {
           width: 100%;
           word-wrap: break-word;
@@ -32,9 +32,6 @@
         position: relative;
         border: none;
         padding: 0;
-        img {
-          max-width: 920px;
-        }
       }
     }
     div.comments-pane {
@@ -43,9 +40,6 @@
       div.comments {
         overflow-y: auto;
         vertical-align: top;
-        img {
-          max-width: 450px;
-        }
       }
       &.expanded-post {
         width: 0;
