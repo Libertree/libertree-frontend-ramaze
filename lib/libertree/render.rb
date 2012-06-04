@@ -1,12 +1,13 @@
 # encoding: utf-8
 require 'net/http'
+require 'nokogiri'
 
 module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
     markdown ||= Redcarpet::Markdown.new(
-      Libertree::Markdown.new( hard_wrap: true ),
+      Libertree::Markdown.new,
       {
         autolink: true,
         space_after_headers: true,
@@ -17,7 +18,6 @@ module Libertree
 
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
-
     s.force_encoding('utf-8').gsub(/(?<=^|\s)#([\p{Word}\p{Pd}&&[^_]]+)(?=\s|\b|$)/i) {
       %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
     }
@@ -84,7 +84,7 @@ module Libertree
   end
 
   def self.render(s)
-    post_processing( markdownify( hashtaggify(s) ) )
+    markdownify(s)
   end
 
   module HasRenderableText

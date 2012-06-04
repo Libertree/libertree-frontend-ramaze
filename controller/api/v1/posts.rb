@@ -4,8 +4,6 @@ module Controller
       class Posts < Base
         map '/api/v1/posts'
 
-        helper :cleanse
-
         layout nil
 
         before_all do
@@ -20,7 +18,7 @@ module Controller
           post = Libertree::Model::Post.create(
             'member_id' => @account.member.id,
             'public'    => true,
-            'text'      => cleanse( request['text'] )
+            'text'      => request['text']
           )
           Libertree::Model::Job.create(
             task: 'request:POST',
