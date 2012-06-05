@@ -2,7 +2,7 @@ module Libertree
   class Markdown < Redcarpet::Render::HTML
     include Redcarpet::Render::SmartyPants
     def initialize(extensions={})
-      super(extensions.merge( :hard_wrap => true, :filter_html => true ))
+      super(extensions.merge( :filter_html => true ))
     end
 
     def postprocess(full_document)
@@ -11,6 +11,7 @@ module Libertree
 
     def paragraph(text)
       text = Libertree::hashtaggify(text)
+      text.gsub!("\n", '<br/>')
       return "<p>#{text}</p>"
     end
   end
