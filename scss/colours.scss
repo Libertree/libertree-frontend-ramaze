@@ -26,7 +26,6 @@ body.body {
 }
 
 .menu {
-    border-bottom: 2px solid $dark_green;
     background: $menu_colour_1;
     background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 100%);
     background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$menu_colour_1), color-stop(100%,$menu_colour_2));
