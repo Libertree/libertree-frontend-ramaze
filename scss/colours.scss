@@ -3,6 +3,7 @@ $main_green: #639463;
 $light_green: #a3d4a3;
 $lighter_green: #ADE1AD;
 $faint_green: #EDFAED;
+$grey_translucent: rgba(245,245,245,0.70);
 $sky: #72d4f0;
 $cocoa_bean: #4c321a;
 $iced_coffee: #cc8a4e;
@@ -33,7 +34,8 @@ body.body {
 }
 
 .main {
-    background-color: $faint_green;
+    background-color: $faint_green; /* fallback for browsers that don't support opacity in colour definitions */
+    background-color: $grey_translucent;
 }
 
 a {
