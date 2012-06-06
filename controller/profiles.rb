@@ -1,7 +1,6 @@
 module Controller
   class Profiles < Base
     map '/profiles'
-    map '/p'
 
     before_all do
       require_login
@@ -15,19 +14,6 @@ module Controller
       else
         :default
       end
-    end
-
-    def index( username )
-      return  if username.nil?
-
-      account = Libertree::Model::Account[ username: username ]
-      if account.nil?
-        redirect_referrer
-      end
-
-      render_file("#{Ramaze.options.views[0]}/profiles/show.xhtml",
-                  { :profile => account.member.profile,
-                    :member => account.member })
     end
 
     def show( member_id )
