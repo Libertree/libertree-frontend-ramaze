@@ -258,11 +258,11 @@ div.comment {
 
     .comment-tools {
         float: right;
-        cursor: pointer;
         visibility: hidden;
 
         a {
             margin-left: 10px;
+            cursor: pointer;
         }
     }
 
