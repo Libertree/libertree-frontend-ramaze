@@ -12,11 +12,12 @@
 
     div.post-pane {
       position: absolute;
+      height: 100%; // make the post pane at least as high as the comments pane
       width: 50%;
       float: left;
       padding: 0 $distance_to_separator 0 0;
       border-right: 1px solid $main_green;
-      overflow: auto;
+      overflow: hidden;
       vertical-align: top;
 
       .post-proper {
