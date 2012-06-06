@@ -40,6 +40,52 @@
       div.comments {
         overflow-y: auto;
         vertical-align: top;
+
+        form.comment {
+          clear: right;
+          a.detach {
+            display: inline;
+          }
+
+          .form-buttons {
+            margin-left: 40px;
+          }
+        }
+
+        .detachable {
+          .drag-handle-bar {
+            display: none;
+            height: 1.5em;
+            background: $main_green;
+            cursor: move;
+          }
+        }
+
+        .detachable.detached {
+          position: fixed;
+          z-index: 2;
+          border: 1px solid $main_green;
+
+          .drag-handle-bar {
+            display: block;
+          }
+
+          .content {
+            background: $faint_green;
+            padding: 1.5em;
+
+            form.comment {
+              margin: 0px;
+              padding: 0px;
+              border-top: 0px;
+            }
+          }
+
+          .preview-box {
+            max-width: 500px;
+          }
+        }
+
       }
       &.expanded-post {
         width: 0;

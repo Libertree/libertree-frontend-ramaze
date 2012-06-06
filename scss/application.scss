@@ -289,42 +289,8 @@ form.comment {
         width: 40px;
     }
 
-    a.attach {
+    a.attach, a.detach {
         display: none;
-    }
-}
-
-.detachable {
-    .drag-handle-bar {
-        display: none;
-        height: 1.5em;
-        background: $main_green;
-        cursor: move;
-    }
-}
-
-.detachable.detached {
-    position: fixed;
-    z-index: 2;
-    border: 1px solid $main_green;
-
-    .drag-handle-bar {
-        display: block;
-    }
-
-    .content {
-        background: $faint_green;
-        padding: 1.5em;
-
-        form.comment {
-            margin: 0px;
-            padding: 0px;
-            border-top: 0px;
-        }
-    }
-
-    .preview-box {
-        max-width: 500px;
     }
 }
 
