@@ -46,8 +46,8 @@ module Libertree
       return cached.url_expanded
     end
 
+    resolution = url_s
     begin
-      resolution = url_s
       url = URI.parse(url_s)
       res = nil
       num_redirections = 0
@@ -68,19 +68,20 @@ module Libertree
             num_redirections += 1
           else
             resolution = url.to_s
-            Libertree::Model::UrlExpansion.create(
-              :url_short => url_s,
-              :url_expanded => resolution
-            )
             break
           end
         end
-
-        resolution
       end
     rescue Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
-      url_s
+      # Use URL as is.  Arbo can delete url_expansions record to force retry.
     end
+
+    Libertree::Model::UrlExpansion.create(
+      :url_short => url_s,
+      :url_expanded => resolution
+    )
+
+    resolution
   end
 
   def self.render(s)
