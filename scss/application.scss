@@ -213,8 +213,9 @@ textarea, input[type="text"], input[type="password"] {
     font-weight: bold;
 }
 
-.age {
+.age, .age-update {
     font-size: $font_small;
+    color: #888888;
 }
 
 .avatar {
