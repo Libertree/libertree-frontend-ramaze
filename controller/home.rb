@@ -15,6 +15,7 @@ module Controller
     end
 
     def index(river_id = nil)
+      @load_home_js = true
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || account.rivers[0]
       @river_post_order = session[:river_post_order]
       if @river

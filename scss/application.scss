@@ -2,7 +2,6 @@
 
 Attributions:
 
-Tree bark background from http://mmb-stock.deviantart.com/art/Texture3-chestnut-tree-bark-184821156
 Default leaf avatar by http://joshladella005.deviantart.com
 Icon set by http://icons8.com/
 
@@ -45,7 +44,7 @@ h4 { font-size: $font_normal; }
 h5, h6 { font-size: $font_small; }
 
 .bg {
-    background: url('/images/bark-bg.jpg') top center repeat; /* http://mmb-stock.deviantart.com/art/Texture3-chestnut-tree-bark-184821156 */
+    background: url('/images/bg.jpg') top center repeat;
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -93,9 +92,8 @@ a:active {
     border-bottom: 1px dotted;
 }
 a.icon:hover { background: none };
-a.member-name {
+a.member-name, a.member-name:visited {
     border: 0px;
-    color: #261818;
 }
 
 textarea, input[type="text"], input[type="password"] {
@@ -259,11 +257,11 @@ div.comment {
 
     .comment-tools {
         float: right;
-        cursor: pointer;
         visibility: hidden;
 
         a {
             margin-left: 10px;
+            cursor: pointer;
         }
     }
 
@@ -278,7 +276,7 @@ div.comment {
     display: none;
 }
 
-div.comment, form.comment {
+div.comment, .detachable .content {
     margin-top: 20px;
     border-top: 1px dotted #666666;
     padding-top: 10px;
@@ -290,41 +288,8 @@ form.comment {
         width: 40px;
     }
 
-    a.attach {
+    a.attach, a.detach {
         display: none;
-    }
-}
-
-.detachable {
-    .drag-handle-bar {
-        display: none;
-        height: 1.5em;
-        background: $main_green;
-        cursor: move;
-    }
-}
-
-.detachable.detached {
-    position: absolute;
-    border: 1px solid $main_green;
-
-    .drag-handle-bar {
-        display: block;
-    }
-
-    .content {
-        background: $faint_green;
-        padding: 1.5em;
-
-        form.comment {
-            margin: 0px;
-            padding: 0px;
-            border-top: 0px;
-        }
-    }
-
-    .preview-box {
-        max-width: 500px;
     }
 }
 
@@ -410,9 +375,9 @@ textarea.comment, form.comment .form-buttons {
 }
 
 .has-shadow {
-    -moz-box-shadow: 4px 4px 6px $shadow;
-    -webkit-box-shadow: 4px 4px 6px $shadow;
-    box-shadow: 4px 4px 6px $shadow;
+    -moz-box-shadow: 0px 4px 20px $shadow;
+    -webkit-box-shadow: 0px 4px 20px $shadow;
+    box-shadow: 0px 4px 20px $shadow;
 }
 
 .notification {
@@ -505,7 +470,7 @@ form.search {
     }
 }
 
-a.like, a.unlike, a.commenter-ref {
+a.like, a.unlike, a.commenter-ref, a.mark-unread, a.mark-read {
     cursor: pointer;
 }
 
@@ -554,6 +519,10 @@ table.table {
             margin-left: 0px;
             margin-right: 5px;
         }
+    }
+
+    table {
+      width: 100%;
     }
 
     td {
@@ -633,4 +602,10 @@ textarea#invitations {
 
 #textarea-description {
     width: 500px;
+}
+
+#form-river-new, #form-river-edit {
+    input[type="text"] {
+        width: 400px;
+    }
 }

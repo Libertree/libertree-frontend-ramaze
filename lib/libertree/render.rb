@@ -1,12 +1,13 @@
 # encoding: utf-8
 require 'net/http'
+require 'nokogiri'
 
 module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
     markdown ||= Redcarpet::Markdown.new(
-      Libertree::Markdown.new( hard_wrap: true ),
+      Libertree::Markdown.new,
       {
         autolink: true,
         space_after_headers: true,
@@ -17,7 +18,6 @@ module Libertree
 
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
-
     s.force_encoding('utf-8').gsub(/(?<=^|\s)#([\p{Word}\p{Pd}&&[^_]]+)(?=\s|\b|$)/i) {
       %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
     }
@@ -46,8 +46,8 @@ module Libertree
       return cached.url_expanded
     end
 
+    resolution = url_s
     begin
-      resolution = url_s
       url = URI.parse(url_s)
       res = nil
       num_redirections = 0
@@ -68,23 +68,24 @@ module Libertree
             num_redirections += 1
           else
             resolution = url.to_s
-            Libertree::Model::UrlExpansion.create(
-              :url_short => url_s,
-              :url_expanded => resolution
-            )
             break
           end
         end
-
-        resolution
       end
     rescue Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
-      url_s
+      # Use URL as is.  Arbo can delete url_expansions record to force retry.
     end
+
+    Libertree::Model::UrlExpansion.create(
+      :url_short => url_s,
+      :url_expanded => resolution
+    )
+
+    resolution
   end
 
   def self.render(s)
-    post_processing( markdownify( hashtaggify(s) ) )
+    markdownify(s)
   end
 
   module HasRenderableText

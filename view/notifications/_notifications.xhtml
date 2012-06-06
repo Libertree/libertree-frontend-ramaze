@@ -5,11 +5,11 @@
   notif = notifications[0]
   case notif.subject
   when Libertree::Model::Comment
-    ?>#{ render_partial '_comment', notification: notif, comment: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_comment', notifications: notifications, comment: notif.subject, actors: actors }<?r
   when Libertree::Model::CommentLike
-    ?>#{ render_partial '_comment_like', notification: notif, like: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_comment_like', notifications: notifications, like: notif.subject, actors: actors }<?r
   when Libertree::Model::PostLike
-    ?>#{ render_partial '_post_like', notification: notif, like: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_post_like', notifications: notifications, like: notif.subject, actors: actors }<?r
   end
 end
 ?>

@@ -57,23 +57,27 @@ module Controller
       @n_more = sets_.values.reduce(0) { |sum, notif_array| sum + notif_array.size }
     end
 
-    def seen(notification_id)
-      if notification_id == 'all'
+    def seen(*notification_ids)
+      if notification_ids[0] == 'all'
         Libertree::DB.dbh.u "UPDATE notifications SET seen = TRUE WHERE account_id = ?", account.id
       else
-        n = Libertree::Model::Notification[ notification_id.to_i ]
-        if n && n.account_id == account.id
-          n.seen = true
+        notification_ids.each do |notification_id|
+          n = Libertree::Model::Notification[ notification_id.to_i ]
+          if n && n.account_id == account.id
+            n.seen = true
+          end
         end
       end
       account.dirty
       account.num_notifications_unseen
     end
 
-    def unseen(notification_id)
-      n = Libertree::Model::Notification[ notification_id.to_i ]
-      if n && n.account_id == account.id
-        n.seen = false
+    def unseen(*notification_ids)
+      notification_ids.each do |notification_id|
+        n = Libertree::Model::Notification[ notification_id.to_i ]
+        if n && n.account_id == account.id
+          n.seen = false
+        end
       end
       account.dirty
       account.num_notifications_unseen

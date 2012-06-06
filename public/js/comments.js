@@ -127,10 +127,11 @@ $(document).ready( function() {
 
   $('.detachable .detach').live( 'click', function() {
     var detachable = $(this).closest('.detachable');
-    var top = detachable.offset().top;
+    var offset = detachable.offset();
     detachable.addClass('detached');
     detachable.addClass('has-shadow');
-    detachable.css('top', ( $('#scrollable').scrollTop() + top ) + 'px');
+    detachable.css('top', offset.top + 'px');
+    detachable.css('left', offset.left + 'px');
     detachable.find('.detach').hide();
     detachable.find('.attach').show();
     detachable.draggable();
@@ -139,6 +140,7 @@ $(document).ready( function() {
 
   $('.detachable .attach').live( 'click', function() {
     var detachable = $(this).closest('.detachable');
+    detachable.find('.comment').css('width', '365px');
     detachable.removeClass('detached');
     detachable.removeClass('has-shadow');
     detachable.find('.attach').hide();

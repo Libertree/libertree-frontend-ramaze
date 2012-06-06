@@ -6,22 +6,22 @@
     position: relative;
     overflow: hidden;
     padding: 0;
+    img {
+      max-width: 100%;
+    }
 
     div.post-pane {
       position: absolute;
-      height: 100%;
+      height: 100%; // make the post pane at least as high as the comments pane
       width: 50%;
       float: left;
       padding: 0 $distance_to_separator 0 0;
       border-right: 1px solid $main_green;
-      overflow: auto;
+      overflow: hidden;
       vertical-align: top;
 
       .post-proper {
         width: 100%;
-        img {
-          max-width: 450px;
-        }
         .post-text {
           width: 100%;
           word-wrap: break-word;
@@ -32,9 +32,6 @@
         position: relative;
         border: none;
         padding: 0;
-        img {
-          max-width: 920px;
-        }
       }
     }
     div.comments-pane {
@@ -43,9 +40,47 @@
       div.comments {
         overflow-y: auto;
         vertical-align: top;
-        img {
-          max-width: 450px;
+
+        form.comment {
+          margin-left: 45px;
+          a.detach {
+            display: inline;
+          }
         }
+
+        .detachable {
+          .drag-handle-bar {
+            display: none;
+            height: 1.5em;
+            background: $main_green;
+            cursor: move;
+          }
+          .comment {
+            max-width: 100%;
+          }
+        }
+
+        .detachable.detached {
+          position: fixed;
+          z-index: 2;
+          border: 1px solid $main_green;
+
+          .drag-handle-bar {
+            display: block;
+          }
+
+          .content {
+            background: $faint_green;
+            padding: 1.5em;
+            margin: 0px;
+            border-top: 0px;
+          }
+
+          .preview-box {
+            max-width: 500px;
+          }
+        }
+
       }
       &.expanded-post {
         width: 0;

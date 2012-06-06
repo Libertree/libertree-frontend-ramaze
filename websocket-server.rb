@@ -43,6 +43,7 @@ EventMachine.run do
   EventMachine.add_periodic_timer(2) do
     $sockets.each do |sid,s|
       account = s[:account]
+      account.dirty
       ws = s[:ws]
 
       posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id LIMIT 1", s[:last_post_id])
@@ -57,13 +58,13 @@ EventMachine.run do
         s[:last_post_id] = post.id
       end
 
-      notifs = Libertree::Model::Notification.s("SELECT * FROM notifications WHERE id > ? AND account_id = ? ORDER BY id LIMIT 1", s[:last_notification_id], s[:account].id)
+      notifs = Libertree::Model::Notification.s("SELECT * FROM notifications WHERE id > ? AND account_id = ? ORDER BY id LIMIT 1", s[:last_notification_id], account.id)
       notifs.each do |n|
         ws.send(
           {
             'command' => 'notification',
             'id' => n.id,
-            'n' => s[:account].num_notifications_unseen
+            'n' => account.num_notifications_unseen
           }.to_json
         )
         s[:last_notification_id] = n.id

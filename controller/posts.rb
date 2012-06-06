@@ -50,7 +50,6 @@ module Controller
       text = ( request['text'] + hashtags )
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
-      text = cleanse(text) || ''
 
       if text.empty?
         flash[:error] = 'Post may not be empty.'
@@ -136,7 +135,7 @@ module Controller
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
 
-        post.revise cleanse(text)
+        post.revise text
         Libertree::Model::Job.create(
           task: 'request:POST',
           params: {

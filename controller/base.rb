@@ -1,6 +1,6 @@
 module Controller
   class Base < Ramaze::Controller
-    helper :user, :xhtml, :age, :cleanse, :comment, :member, :wording
+    helper :user, :xhtml, :age, :comment, :member, :wording
     trait :user_model => ::Libertree::Model::Account
 
     layout do |path|

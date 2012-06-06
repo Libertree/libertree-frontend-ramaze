@@ -50,23 +50,25 @@ $(document).ready( function() {
   } );
 
   $('.notification.unseen').live( 'click', function() {
-    var id = $(this).data('notification-id');
-    $('.notification[data-notification-id="'+id+'"]')
-      .removeClass('unseen')
-      .addClass('seen')
-    ;
-    $.get('/notifications/seen/' + id, function(data) {
+    var ids = $(this).data('notification-ids');
+    $(this).removeClass('unseen').addClass('seen');
+    /* Also toggle on Notifications page */
+    $.each( ids, function(j, id) {
+      $('.notification[data-notification-ids="['+id+']"]').removeClass('unseen').addClass('seen');
+    } );
+    $.get('/notifications/seen/' + ids.join('/'), function(data) {
       updateNumNotificationsUnseen(data);
     } );
   } );
 
   $('.notification.seen').live( 'click', function() {
-    var id = $(this).data('notification-id');
-    $('.notification[data-notification-id="'+id+'"]')
-      .removeClass('seen')
-      .addClass('unseen')
-    ;
-    $.get('/notifications/unseen/' + id, function(data) {
+    var ids = $(this).data('notification-ids');
+    $(this).removeClass('seen').addClass('unseen');
+    /* Also toggle on Notifications page */
+    $.each( ids, function(j, id) {
+      $('.notification[data-notification-ids="['+id+']"]').removeClass('seen').addClass('unseen');
+    } );
+    $.get('/notifications/unseen/' + ids.join('/'), function(data) {
       updateNumNotificationsUnseen(data);
     } );
   } );

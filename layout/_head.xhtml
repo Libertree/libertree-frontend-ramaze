@@ -15,12 +15,14 @@
   <script src="/js/application.js?t=#{File.mtime('public/js/application.js').to_i}" type="text/javascript"></script>
 
   <script src="/js/comments.js?t=#{File.mtime('public/js/comments.js').to_i}" type="text/javascript"></script>
-  <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
   <script src="/js/notifications.js?t=#{File.mtime('public/js/notifications.js').to_i}" type="text/javascript"></script>
   <script src="/js/post.js?t=#{File.mtime('public/js/post.js').to_i}" type="text/javascript"></script>
   <script src="/js/post-new.js?t=#{File.mtime('public/js/post-new.js').to_i}" type="text/javascript"></script>
   <script src="/js/river-new.js?t=#{File.mtime('public/js/river-new.js').to_i}" type="text/javascript"></script>
   <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
+  <?r if @load_home_js ?>
+    <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
+  <?r end ?>
 
   <style type="text/css">
     #{account.custom_css}

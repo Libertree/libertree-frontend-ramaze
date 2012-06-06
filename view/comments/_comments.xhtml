@@ -11,27 +11,23 @@
   <a href="#" class="jump-to-comment">Comment</a>
 
   <?r @post.comments.each do |c| ?>
-    #{ Controller::Comments.render_partial '_comment', comment: c, hidden: @hidden }
+    #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, post: @post }
   <?r end ?>
 
   <div class="detachable">
     <div class="drag-handle-bar"></div>
     <div class="content">
+      #{ member_img(account.member) }
       <form method="POST" action="/comments/create" class="comment">
-        #{ member_img(account.member) }
         <input type="hidden" name="post_id" value="#{@post.id}"/>
-        <table>
-          <tr><td>
-            <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
-          </td></tr>
-          <tr><td class="form-buttons">
-            <a class="detach" href="#">detach</a>
-            <a class="attach" href="#">attach</a>
-            <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="Clear" tabindex="4"/>
-            <input class="preview" type="button" value="Preview" tabindex="3" data-type="comment"/>
-            <input type="submit" value="Comment" tabindex="2"/>
-          </td></tr>
-        </table>
+        <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
+        <div class="form-buttons">
+          <a class="detach" href="#">detach</a>
+          <a class="attach" href="#">attach</a>
+          <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="Clear" tabindex="4"/>
+          <input class="preview" type="button" value="Preview" tabindex="3" data-type="comment"/>
+          <input type="submit" value="Comment" tabindex="2"/>
+        </div>
       </form>
     </div>
   </div>
