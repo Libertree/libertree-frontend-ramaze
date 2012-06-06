@@ -1,12 +1,12 @@
 module Ramaze
   module Helper
     module Comment
-      def comment_text_rendered_and_participants_linked( comment )
+      def comment_text_rendered_and_participants_linked( comment, comments )
         s = comment.text_rendered
-        i = comment.post.comments.index(comment)
+        i = comments.index(comment)
         dict = {}
 
-        commenters = comment.post.comments[0...i].map(&:member) - [comment.member]
+        commenters = comments[0...i].map(&:member) - [comment.member]
         commenters.each do |commenter|
           name = commenter.name_display
           template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="Click to see previous comment by #{name}">@%s</a>|
