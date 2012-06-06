@@ -15,9 +15,7 @@ function showShowMores() {
 $(document).ready( function() {
 
   $('.excerpt .show-more').live( 'click', function() {
-    $(this).hide();
-    $(this).siblings('.show-less').show();
-
+    var showMoreLink = $(this);
     var excerpt = $(this).closest('.excerpt');
     var div = excerpt.find('.height-fixed');
     var overflowed = excerpt.find('.overflowed');
@@ -35,6 +33,9 @@ $(document).ready( function() {
         div.removeClass('height-fixed').addClass('height-normal');
         markPostRead( excerptParent.data('post-id') );
         div.height('auto'); /* cancel explicit height set by animation */
+        showMoreLink.hide();
+        showMoreLink.siblings('.show-less').show();
+
       }
     );
 
