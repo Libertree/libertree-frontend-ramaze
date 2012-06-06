@@ -140,6 +140,7 @@ $(document).ready( function() {
 
   $('.detachable .attach').live( 'click', function() {
     var detachable = $(this).closest('.detachable');
+    detachable.find('.comment').css('width', '365px');
     detachable.removeClass('detached');
     detachable.removeClass('has-shadow');
     detachable.find('.attach').hide();
