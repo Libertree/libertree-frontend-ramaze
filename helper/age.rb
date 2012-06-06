@@ -4,12 +4,12 @@ module Ramaze
       def ago(datetime)
         total_seconds = DateTime.now.to_time.to_i - datetime.to_time.to_i
         total_minutes = total_seconds / 60
-        display_seconds = total_seconds % 60
         total_hours = total_minutes / 60
+
+        display_seconds = total_seconds % 60
         display_minutes = total_minutes % 60
         display_hours = total_hours % 60
-        total_days = total_hours / 24
-        display_days = total_days % 24
+        display_days = total_hours / 24
 
         if display_days > 0
           "#{display_days} day#{plural_s(display_days)} ago"
