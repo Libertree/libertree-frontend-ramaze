@@ -11,7 +11,7 @@
   <a href="#" class="jump-to-comment">Comment</a>
 
   <?r @post.comments.each do |c| ?>
-    #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, comments: @post.comments }
+    #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, post: @post }
   <?r end ?>
 
   <div class="detachable">
