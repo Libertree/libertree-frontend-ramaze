@@ -277,7 +277,7 @@ div.comment {
     display: none;
 }
 
-div.comment, form.comment {
+div.comment, .detachable .content {
     margin-top: 20px;
     border-top: 1px dotted #666666;
     padding-top: 10px;
@@ -520,6 +520,10 @@ table.table {
             margin-left: 0px;
             margin-right: 5px;
         }
+    }
+
+    table {
+      width: 100%;
     }
 
     td {

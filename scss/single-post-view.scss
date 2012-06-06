@@ -42,13 +42,9 @@
         vertical-align: top;
 
         form.comment {
-          clear: right;
+          margin-left: 45px;
           a.detach {
             display: inline;
-          }
-
-          .form-buttons {
-            margin-left: 40px;
           }
         }
 
@@ -58,6 +54,9 @@
             height: 1.5em;
             background: $main_green;
             cursor: move;
+          }
+          .comment {
+            max-width: 100%;
           }
         }
 
@@ -73,12 +72,8 @@
           .content {
             background: $faint_green;
             padding: 1.5em;
-
-            form.comment {
-              margin: 0px;
-              padding: 0px;
-              border-top: 0px;
-            }
+            margin: 0px;
+            border-top: 0px;
           }
 
           .preview-box {
