@@ -1,7 +1,7 @@
 <?r if @like ?>
-  <div class="notification #{@notification.seen ? 'seen' : 'unseen'}" data-notification-id="#{@notification.id}">
+  <div class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
     #{member_img(@like.member)} #{ anded_list( @actors.map(&:name_display).uniq ) } liked your
     <a href="/posts/show/#{@like.post.id}" title="#{@like.post.glimpse}">post</a>.
-    <div class="age">#{ago(@notification.time_created)}</div>
+    <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>
 <?r end ?>
