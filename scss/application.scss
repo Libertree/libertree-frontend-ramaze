@@ -305,6 +305,7 @@ form.comment {
 
 .detachable.detached {
     position: fixed;
+    z-index: 2;
     border: 1px solid $main_green;
 
     .drag-handle-bar {
