@@ -92,9 +92,8 @@ a:active {
     border-bottom: 1px dotted;
 }
 a.icon:hover { background: none };
-a.member-name {
+a.member-name, a.member-name:visited {
     border: 0px;
-    color: #261818;
 }
 
 textarea, input[type="text"], input[type="password"] {

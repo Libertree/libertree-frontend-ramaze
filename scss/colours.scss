@@ -58,6 +58,10 @@ a:active {
     border-bottom: 1px dotted $autumn_red;
 }
 
+a.member-name, a.member-name:visited {
+    color: #261818;
+}
+
 textarea, input[type="text"], input[type="password"] {
     background-color: $faint_tan;
     border: 1px solid $iced_coffee;
