@@ -49,6 +49,7 @@ require_relative 'controller/api/v1/posts'
 
 require_relative 'controller/admin/base'
 require_relative 'controller/admin/main'
+require_relative 'controller/admin/servers'
 
 if $conf['memcache']
   Ramaze::Cache.options.session = Ramaze::Cache::MemCache.using(compression: false)

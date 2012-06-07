@@ -17,6 +17,10 @@
 
 <h3>Servers</h3>
 
+<form action="/admin/servers/create" method="POST">
+  Hostname: <input type="text" name="host"/> <input type="submit" value="Add"/>
+</form>
+
 <div class="servers">
   <?r @servers.each do |s| ?>
     <div class="server">#{s.name_display}</div>
