@@ -2,6 +2,7 @@ require 'oembed'
 
 module Libertree
   module Embedder
+    # FIXME: same as in libertree-backend-rb
     OEmbed::Providers.register *[ OEmbed::Providers::Youtube,
                                   OEmbed::Providers::Vimeo,
                                   OEmbed::Providers::Flickr,
