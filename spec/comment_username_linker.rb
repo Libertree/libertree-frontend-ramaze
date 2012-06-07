@@ -64,7 +64,7 @@ describe Ramaze::Helper::Comment do
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
-      it 'should replace names irrespective of case' do
+      it 'should replace lowercase matches of uppercase names' do
         Libertree::Model::Comment.create(
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @george.id,
@@ -77,6 +77,24 @@ describe Ramaze::Helper::Comment do
                                      :text => "@george: indeed. I thought you'd like that."))
         processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
+      end
+
+      it 'should replace uppercase matches of lowercase names' do
+        lower = Libertree::Model::Member.create(
+          FactoryGirl.attributes_for(:member, :username => "somename", :server_id => @server.id)
+        )
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => lower.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@SomeName: indeed. I thought you'd like that."))
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        processed.should =~ /data-member-id="#{lower.id}"/
       end
 
       it 'should match only the most recent name in ambiguous situations' do
