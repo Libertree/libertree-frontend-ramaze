@@ -368,6 +368,10 @@ textarea.comment, form.comment .form-buttons {
     padding: 5px;
     font-size: $font_normal;
 
+    a {
+        line-height: 28px;
+    }
+
     img {
         vertical-align: middle;
         height: 24px;
