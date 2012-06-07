@@ -119,6 +119,28 @@ describe Ramaze::Helper::Comment do
         processed.should_not =~ /data-member-id="#{@george.id}"/
       end
 
+      it 'should handle more than one mention' do
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @george.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting."))
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @author.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting, indeed."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@george: I agree. @john: I also agree."))
+
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        processed.should =~ /data-member-id="#{@george.id}"/
+        processed.should =~ /data-member-id="#{@author.id}"/
+      end
+
       it 'should not be confused by Regexp characters in display names' do
         regexp_boy = Libertree::Model::Member.create(
           FactoryGirl.attributes_for(:member, :username => ".*-[]()", :server_id => @server.id)
