@@ -16,19 +16,19 @@ module Ramaze
             "@#{name}",
             '@' + name.split(/[ :,-]/, 2)[0],
           ].each do |n|
-            dict[n] = template % n
             dict[n.downcase] = template % n
           end
           (2..20).each do |len|
             partial_name = name[0...len]
-            dict["@#{partial_name}"] = ( template % partial_name )
             dict["@#{partial_name.downcase}"] = ( template % partial_name )
           end
         end
 
         # Turn possible shortenings into regexp with multiple comparisons,
         # starting with the longest.
-        s.gsub( /#{dict.keys.map{|k|Regexp.quote(k)}.sort.reverse.join('|')}/, dict )
+        s.gsub( /#{dict.keys.map{|k|Regexp.quote(k)}.sort.reverse.join('|')}/i ) do |m|
+          dict[m.downcase]
+        end
 
       end
     end
