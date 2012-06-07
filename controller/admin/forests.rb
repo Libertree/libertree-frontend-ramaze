@@ -31,10 +31,10 @@ module Controller
 
       def add( forest_id, server_id )
         f = Libertree::Model::Forest[forest_id.to_i]
-        return  if f.nil?
-
         s = Libertree::Model::Server[server_id.to_i]
-        return  if s.nil?
+        if f.nil? || s.nil?
+          redirect Admin::Main.r(:/)
+        end
 
         begin
           f.add s
@@ -44,6 +44,16 @@ module Controller
           else
             raise e
           end
+        end
+
+        redirect Admin::Main.r(:/)
+      end
+
+      def ensure_absent( forest_id, server_id )
+        f = Libertree::Model::Forest[forest_id.to_i]
+        s = Libertree::Model::Server[server_id.to_i]
+        if f && s
+          f.remove s
         end
 
         redirect Admin::Main.r(:/)

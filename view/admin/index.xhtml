@@ -15,7 +15,7 @@ This (local) tree is automatically a part of each forest originating from it.
   <?r @forests.each do |f| ?>
     <div class="forest" data-forest-id="#{f.id}">
       <div class="name">#{f.name}</div>
-      #{ Controller::Admin::Servers.render_partial '_servers', servers: f.servers }
+      #{ Controller::Admin::Servers.render_partial '_servers', servers: f.servers, forest: f }
     </div>
   <?r end ?>
 </div>
