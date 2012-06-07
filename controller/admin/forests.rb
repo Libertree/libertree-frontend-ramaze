@@ -28,6 +28,26 @@ module Controller
 
         redirect_referrer
       end
+
+      def add( forest_id, server_id )
+        f = Libertree::Model::Forest[forest_id.to_i]
+        return  if f.nil?
+
+        s = Libertree::Model::Server[server_id.to_i]
+        return  if s.nil?
+
+        begin
+          f.add s
+        rescue PGError => e
+          if e.message =~ /violates unique constraint/
+            flash[:error] = 'The tree is already a member of the forest.'
+          else
+            raise e
+          end
+        end
+
+        redirect Admin::Main.r(:/)
+      end
     end
   end
 end

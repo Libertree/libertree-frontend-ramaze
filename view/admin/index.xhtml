@@ -2,31 +2,28 @@
 
 <h3>Forests</h3>
 
+<p>
+Drag trees in and out of forests.
+This (local) tree is automatically a part of each forest originating from it.
+</p>
+
 <form action="/admin/forests/create" method="POST">
   Name: <input type="text" name="name"/> <input type="submit" value="Add"/>
 </form>
 
 <div class="forests">
   <?r @forests.each do |f| ?>
-    <div class="forest">
+    <div class="forest" data-forest-id="#{f.id}">
       <div class="name">#{f.name}</div>
-      <div class="servers">
-        <?r f.servers.each do |s| ?>
-          <div class="server">#{s.name}</div>
-        <?r end ?>
-      </div>
+      #{ Controller::Admin::Servers.render_partial '_servers', servers: f.servers }
     </div>
   <?r end ?>
 </div>
 
-<h3>Servers</h3>
+<h3>Remote Trees</h3>
 
 <form action="/admin/servers/create" method="POST">
   Hostname: <input type="text" name="host"/> <input type="submit" value="Add"/>
 </form>
 
-<div class="servers">
-  <?r @servers.each do |s| ?>
-    <div class="server">#{s.name_display}</div>
-  <?r end ?>
-</div>
+#{ Controller::Admin::Servers.render_partial '_servers', servers: @servers }

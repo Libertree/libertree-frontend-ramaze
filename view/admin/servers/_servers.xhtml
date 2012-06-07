@@ -1,0 +1,8 @@
+<div class="servers">
+  <?r @servers.each do |s| ?>
+    <div class="server" data-server-id="#{s.id}">
+      <span class="name">#{s.name_display}</span>
+      (#{s.ip})
+    </div>
+  <?r end ?>
+</div>

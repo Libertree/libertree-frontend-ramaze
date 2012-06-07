@@ -1,5 +1,22 @@
+@import "colours.scss";
+
 .forest {
-    background: #cceecc;
+    background: $light_green;
     padding: 0.5em;
     margin-bottom: 0.5em;
+
+    .name {
+        font-weight: bold;
+    }
+}
+
+.server {
+    background: $light_tan;
+    padding: 0.3em;
+    margin-bottom: 0.3em;
+    cursor: move;
+
+    .name {
+        font-weight: bold;
+    }
 }

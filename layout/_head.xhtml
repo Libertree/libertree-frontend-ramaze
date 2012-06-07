@@ -26,6 +26,9 @@
   <?r if @load_home_js ?>
     <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
   <?r end ?>
+  <?r if account.admin? ?>
+    <script src="/js/admin.js?t=#{File.mtime('public/js/admin.js').to_i}" type="text/javascript"></script>
+  <?r end ?>
 
   <style type="text/css">
     #{account.custom_css}
