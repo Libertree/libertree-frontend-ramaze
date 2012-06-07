@@ -67,6 +67,7 @@ module Controller
           'post_id' => post.id,
         }.to_json
       )
+      Libertree::Embedder.autoembed(text)
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)

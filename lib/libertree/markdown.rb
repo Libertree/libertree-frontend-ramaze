@@ -12,7 +12,7 @@ module Libertree
     def paragraph(text)
       text = Libertree::hashtaggify(text)
       text.gsub!("\n", '<br/>')
-      return "<p>#{text}</p>"
+      return "<p>#{text}</p>\n"
     end
   end
 end
