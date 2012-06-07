@@ -44,7 +44,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George Harrison: indeed. I thought you'd like that."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
@@ -60,7 +60,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George: indeed. I thought you'd like that."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
@@ -75,7 +75,7 @@ describe Ramaze::Helper::Comment do
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
                                      :text => "@george: indeed. I thought you'd like that."))
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
@@ -96,7 +96,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@george: I mean you, George Benson."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george2.id}"/
         processed.should_not =~ /data-member-id="#{@george.id}"/
       end
@@ -116,7 +116,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@#{regexp_boy.username} you have a weird name."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{regexp_boy.id}"/
       end
     end
@@ -129,7 +129,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George: hope you find this interesting."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should == comment.text_rendered
       end
     end
