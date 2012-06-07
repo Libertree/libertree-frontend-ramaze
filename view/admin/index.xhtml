@@ -2,6 +2,10 @@
 
 <h3>Forests</h3>
 
+<form action="/admin/forests/create" method="POST">
+  Name: <input type="text" name="name"/> <input type="submit" value="Add"/>
+</form>
+
 <div class="forests">
   <?r @forests.each do |f| ?>
     <div class="forest">
