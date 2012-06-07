@@ -14,8 +14,8 @@ module Controller
       end
 
       def index
-        @forests = Libertree::Model::Forest.all
-        @servers = Libertree::Model::Server.all
+        @forests = Libertree::Model::Forest.all.sort_by(&:name)
+        @servers = Libertree::Model::Server.all.sort_by(&:name_display)
       end
     end
   end
