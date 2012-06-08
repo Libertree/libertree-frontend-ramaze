@@ -1,6 +1,10 @@
 <div class="servers">
   <?r @servers.each do |s| ?>
-    <div class="server" data-server-id="#{s.id}" #{ @forest ? 'data-forest-id="'+@forest.id.to_s+'"' : ''}>
+     <div
+      class="server #{ ( ! @forest || @forest.local? ) ? 'draggable' : '' }"
+      data-server-id="#{s.id}"
+      #{ @forest ? 'data-forest-id="'+@forest.id.to_s+'"' : ''}
+    >
       <span class="name">#{s.name_display}</span>
       (#{s.ip})
     </div>

@@ -14,7 +14,9 @@
     background: $light_tan;
     padding: 0.3em;
     margin-bottom: 0.3em;
-    cursor: move;
+    &.draggable {
+        cursor: move;
+    }
 
     .name {
         font-weight: bold;

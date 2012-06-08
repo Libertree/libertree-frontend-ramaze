@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  $('.server').draggable( {
+  $('.server.draggable').draggable( {
     revert: true
   } );
   $('.forest').droppable( {
