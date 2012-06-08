@@ -19,6 +19,9 @@
       <?r else ?>
         <a href="/layout/narrow">small display</a></br>
       <?r end ?>
+      <?r if account.admin? ?>
+        <a href="/admin"><img src="/images/icon-admin.png" alt="Administrate"/> Administrate</a><br/>
+      <?r end ?>
       <a href="/logout"><img src="/images/icon-logout.png" alt="Log out"/> Log out</a>
     </div>
 
