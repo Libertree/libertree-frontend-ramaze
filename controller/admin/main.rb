@@ -16,6 +16,7 @@ module Controller
       def index
         @forests = Libertree::Model::Forest.all.sort_by(&:name)
         @servers = Libertree::Model::Server.all.sort_by(&:name_display)
+        @local_host = request.host
       end
     end
   end

@@ -4,7 +4,7 @@
 
 <p>
 Drag trees in and out of forests.
-This (local) tree is automatically a part of each forest originating from it.
+The local tree is automatically a part of each forest originating from it.
 </p>
 
 <form action="/admin/forests/create" method="POST">
@@ -15,19 +15,20 @@ This (local) tree is automatically a part of each forest originating from it.
   <?r @forests.each do |f| ?>
     <div class="forest" data-forest-id="#{f.id}">
       <span class="name">#{f.name}</span>
-      <?r if f.local? ?>
-        (originated here)
-      <?r end ?>
+      <div class="origin">
+        Origin:
+        <?r if f.local? ?>
+          this tree
+        <?r else ?>
+          #{f.origin.name_display}
+        <?r end ?>
+      </div>
       #{ Controller::Admin::Servers.render_partial '_servers', servers: f.servers, forest: f }
     </div>
   <?r end ?>
 </div>
 
 <h3>Trees</h3>
-
-<p>
-This (local) tree is not shown in this list.
-</p>
 
 <form action="/admin/servers/create" method="POST">
   Hostname: <input type="text" name="host"/> <input type="submit" value="Add"/>
