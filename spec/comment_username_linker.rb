@@ -44,7 +44,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George Harrison: indeed. I thought you'd like that."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
@@ -60,11 +60,11 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George: indeed. I thought you'd like that."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
-      it 'should replace names irrespective of case' do
+      it 'should replace lowercase matches of uppercase names' do
         Libertree::Model::Comment.create(
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @george.id,
@@ -75,8 +75,26 @@ describe Ramaze::Helper::Comment do
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
                                      :text => "@george: indeed. I thought you'd like that."))
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george.id}"/
+      end
+
+      it 'should replace uppercase matches of lowercase names' do
+        lower = Libertree::Model::Member.create(
+          FactoryGirl.attributes_for(:member, :username => "somename", :server_id => @server.id)
+        )
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => lower.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@SomeName: indeed. I thought you'd like that."))
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        processed.should =~ /data-member-id="#{lower.id}"/
       end
 
       it 'should match only the most recent name in ambiguous situations' do
@@ -96,9 +114,31 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@george: I mean you, George Benson."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{@george2.id}"/
         processed.should_not =~ /data-member-id="#{@george.id}"/
+      end
+
+      it 'should handle more than one mention' do
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @george.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting."))
+        Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @author.id,
+                                     :post_id => @post.id,
+                                     :text => "Very interesting, indeed."))
+        comment = Libertree::Model::Comment.create(
+          FactoryGirl.attributes_for(:comment,
+                                     :member_id => @paul.id,
+                                     :post_id => @post.id,
+                                     :text => "@george: I agree. @john: I also agree."))
+
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        processed.should =~ /data-member-id="#{@george.id}"/
+        processed.should =~ /data-member-id="#{@author.id}"/
       end
 
       it 'should not be confused by Regexp characters in display names' do
@@ -116,7 +156,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@#{regexp_boy.username} you have a weird name."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should =~ /data-member-id="#{regexp_boy.id}"/
       end
     end
@@ -129,7 +169,7 @@ describe Ramaze::Helper::Comment do
                                      :post_id => @post.id,
                                      :text => "@George: hope you find this interesting."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment)
+        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
         processed.should == comment.text_rendered
       end
     end

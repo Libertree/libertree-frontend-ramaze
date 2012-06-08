@@ -213,8 +213,9 @@ textarea, input[type="text"], input[type="password"] {
     font-weight: bold;
 }
 
-.age {
+.age, .age-update {
     font-size: $font_small;
+    color: #888888;
 }
 
 .avatar {
@@ -367,6 +368,10 @@ textarea.comment, form.comment .form-buttons {
     padding: 5px;
     font-size: $font_normal;
 
+    a {
+        line-height: 28px;
+    }
+
     img {
         vertical-align: middle;
         height: 24px;
@@ -470,7 +475,7 @@ form.search {
     }
 }
 
-a.like, a.unlike, a.commenter-ref, a.mark-unread, a.mark-read {
+a.like, a.unlike, a.commenter-ref, a.mark-unread, a.mark-read, a.comment {
     cursor: pointer;
 }
 
