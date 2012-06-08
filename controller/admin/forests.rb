@@ -70,6 +70,7 @@ module Controller
             task: 'request:FOREST',
             params: {
               'forest_id' => f.id,
+              'server_ids' => [s.id],
             }.to_json
           )
         end
