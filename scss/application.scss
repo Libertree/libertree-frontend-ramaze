@@ -219,7 +219,8 @@ textarea, input[type="text"], input[type="password"] {
 
 .typed-text {
     line-height: 1.4em;
-    text-align: justify;
+    text-align: left;
+    word-wrap: break-word;
     a img { border-bottom: 2px dotted $dark_green; }
     a:visited img { border-bottom: 2px dotted $light_green; }
     a:hover img { border-bottom: 2px dotted $autumn_red; }
