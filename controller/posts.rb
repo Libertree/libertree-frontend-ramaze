@@ -68,7 +68,6 @@ module Controller
         },
         *post.forests
       )
-      Libertree::Embedder.autoembed(text)
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)
