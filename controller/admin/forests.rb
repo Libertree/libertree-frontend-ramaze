@@ -38,7 +38,7 @@ module Controller
       def add( forest_id, server_id )
         f = Libertree::Model::Forest[forest_id.to_i]
         s = Libertree::Model::Server[server_id.to_i]
-        if f.nil? || s.nil?
+        if f.nil? || s.nil? || ! f.local?
           redirect Admin::Main.r(:/)
         end
 
@@ -64,7 +64,7 @@ module Controller
       def ensure_absent( forest_id, server_id )
         f = Libertree::Model::Forest[forest_id.to_i]
         s = Libertree::Model::Server[server_id.to_i]
-        if f && s
+        if f && s && f.local?
           f.remove s
           Libertree::Model::Job.create(
             task: 'request:FOREST',
