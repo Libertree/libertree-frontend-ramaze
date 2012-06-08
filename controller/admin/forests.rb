@@ -21,9 +21,15 @@ module Controller
       def create
         redirect_referrer  if ! request.post?
 
-        Libertree::Model::Forest.create(
+        forest = Libertree::Model::Forest.create(
           name: request['name'],
           local_is_member: true
+        )
+        Libertree::Model::Job.create(
+          task: 'request:FOREST',
+          params: {
+            'forest_id' => forest.id,
+          }.to_json
         )
 
         redirect_referrer
@@ -38,6 +44,12 @@ module Controller
 
         begin
           f.add s
+          Libertree::Model::Job.create(
+            task: 'request:FOREST',
+            params: {
+              'forest_id' => f.id,
+            }.to_json
+          )
         rescue PGError => e
           if e.message =~ /violates unique constraint/
             flash[:error] = 'The tree is already a member of the forest.'
@@ -54,6 +66,12 @@ module Controller
         s = Libertree::Model::Server[server_id.to_i]
         if f && s
           f.remove s
+          Libertree::Model::Job.create(
+            task: 'request:FOREST',
+            params: {
+              'forest_id' => f.id,
+            }.to_json
+          )
         end
 
         redirect Admin::Main.r(:/)
