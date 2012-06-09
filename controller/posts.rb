@@ -76,7 +76,7 @@ module Controller
       @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
       if @post
-        @subtitle = %{#{@post.member.username} - "#{@post.glimpse}"}
+        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
         @post.mark_as_read_by account
 
         Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
