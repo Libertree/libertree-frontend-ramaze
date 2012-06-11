@@ -18,11 +18,11 @@ module Controller
         )
 
         Libertree::Model::Job.create_for_forests(
-          like.forests,
-          task: 'request:COMMENT-LIKE',
-          params: {
-            'comment_like_id' => like.id,
-          }
+          {
+            task: 'request:COMMENT-LIKE',
+            params: { 'comment_like_id' => like.id, }
+          },
+          like.forests
         )
 
         return {
@@ -38,11 +38,11 @@ module Controller
       like = Libertree::Model::CommentLike[ comment_like_id.to_i ]
       if like && like.member == account.member
         Libertree::Model::Job.create_for_forests(
-          like.forests,
-          task: 'request:COMMENT-LIKE-DELETE',
-          params: {
-            'comment_like_id' => like.id,
-          }
+          {
+            task: 'request:COMMENT-LIKE-DELETE',
+            params: { 'comment_like_id' => like.id, }
+          },
+          like.forests
         )
         like.delete_cascade
       end

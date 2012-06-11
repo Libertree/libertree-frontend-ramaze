@@ -19,11 +19,11 @@ module Controller
         )
 
         Libertree::Model::Job.create_for_forests(
-          like.forests,
-          task: 'request:POST-LIKE',
-          params: {
-            'post_like_id' => like.id,
-          }
+          {
+            task: 'request:POST-LIKE',
+            params: { 'post_like_id' => like.id, }
+          },
+          like.forests
         )
 
         # TODO: Use partial for number of likes
@@ -40,11 +40,11 @@ module Controller
       like = Libertree::Model::PostLike[ post_like_id.to_i ]
       if like && like.member == account.member
         Libertree::Model::Job.create_for_forests(
-          like.forests,
-          task: 'request:POST-LIKE-DELETE',
-          params: {
-            'post_like_id' => like.id,
-          }
+          {
+            task: 'request:POST-LIKE-DELETE',
+            params: { 'post_like_id' => like.id, }
+          },
+          like.forests
         )
         like.delete_cascade
       end
