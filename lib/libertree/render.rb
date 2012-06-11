@@ -9,7 +9,7 @@ module Libertree
     markdown ||= Redcarpet::Markdown.new(
       Libertree::Markdown.new,
       {
-        autolink: true,
+        autolink: false,
         space_after_headers: true,
       }
     )
@@ -25,6 +25,10 @@ module Libertree
 
   def self.post_processing(s)
     return ''  if s.nil? or s.empty?
+
+    # Crude autolinker.
+    # We cannot do this with redcarpet, as enabling :autolink breaks the normal_text callback
+    s.gsub!(%r{(https?://[a-zA-Z0-9_/\.#-]+)}, "<a href='\\1'>\\1</a>")
 
     html = Nokogiri::HTML::fragment(s)
     html.css('a').each do |a|
