@@ -13,5 +13,12 @@ describe Libertree do
     it 'should not strip tags in code blocks' do
       subject.render('`<span>tag soup</span>`').should =~ /&lt;span&gt;tag soup&lt;\/span&gt;/
     end
+
+    it 'should autolink URLs' do
+      subject.render('http://nice.com').should =~ %r{<a href='http://nice.com'>http://nice.com</a>}
+      subject.render('hello http://nice.com').should =~ %r{hello <a href='http://nice.com'>http://nice.com</a>}
+      subject.render('This is a link:\n\nhttp://nice.com').should =~ %r{<a href='http://nice.com'>http://nice.com</a>}
+    end
+
   end
 end
