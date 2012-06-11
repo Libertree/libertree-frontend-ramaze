@@ -8,14 +8,7 @@ Icon set by http://icons8.com/
 */
 
 @import "colours.scss";
-
-$font_extra_extra_large: 26px;
-$font_extra_large: 23px;
-$font_large: 20px;
-$font_normal: 18px;
-$font_small: 16px;
-$font_extra_small: 14px;
-$font_extra_extra_small: 12px;
+@import "fonts.scss";
 
 html {
     height: 100%;
@@ -501,76 +494,6 @@ table.table {
     td:first-child {
         white-space: nowrap;
         font-family: monospace;
-    }
-}
-
-.post-excerpt {
-    border-bottom: 1px dotted $main_green;
-
-    .avatar {
-        float: left;
-    }
-
-    .post-stats {
-        clear: left;
-        margin-left: 50px;
-    }
-
-    .post-tools {
-        display: none;
-        float: left;
-        text-align: left;
-        margin-left: 50px;
-        a {
-            margin-left: 0px;
-            margin-right: 5px;
-        }
-    }
-
-    table {
-      width: 100%;
-    }
-
-    td {
-        padding: 1em 0px;
-        div.height-fixed {
-            height: 200px;
-            overflow: hidden;
-        }
-    }
-    td.meta {
-        width: 250px;
-        vertical-align: top;
-    }
-    .excerpt {
-        img {
-            max-height: 60px;
-        }
-        img:hover {
-            max-height: 100%;
-            max-width: 640px;
-        }
-        .end-of-text {
-            opacity: 0.2;
-            font-size: $font_extra_extra_small;
-        }
-
-        .show-more, .show-less {
-            display: none;
-            text-align: center;
-            a {
-                padding: 0px 150px;
-            }
-        }
-    }
-
-    .link-view-post {
-        font-size: $font_large;
-        margin-top: 10px;
-    }
-
-    .jump-to-comment {
-        display: none;
     }
 }
 
