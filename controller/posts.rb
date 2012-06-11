@@ -62,11 +62,11 @@ module Controller
         'text'      => text
       )
       Libertree::Model::Job.create_for_forests(
-        post.forests,
-        task: 'request:POST',
-        params: {
-          'post_id' => post.id,
-        }
+        {
+          task: 'request:POST',
+          params: { 'post_id' => post.id, }
+        },
+        *post.forests
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -109,11 +109,11 @@ module Controller
       post = Libertree::Model::Post[post_id.to_i]
       if post && post.member == account.member && post.comments.size == 0
         Libertree::Model::Job.create_for_forests(
-          post.forests,
-          task: 'request:POST-DELETE',
-          params: {
-            'post_id' => post.id,
-          }
+          {
+            task: 'request:POST-DELETE',
+            params: { 'post_id' => post.id, }
+          },
+          *post.forests
         )
         post.delete_cascade
       end
@@ -139,11 +139,11 @@ module Controller
 
         post.revise text
         Libertree::Model::Job.create_for_forests(
-          post.forests,
-          task: 'request:POST',
-          params: {
-            'post_id' => post.id,
-          }
+          {
+            task: 'request:POST',
+            params: { 'post_id' => post.id, }
+          },
+          *post.forests
         )
         session[:saved_text]['textarea-post-edit'] = nil
       end

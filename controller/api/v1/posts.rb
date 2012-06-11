@@ -21,11 +21,11 @@ module Controller
             'text'      => request['text']
           )
           Libertree::Model::Job.create_for_forests(
-            post.forests,
-            task: 'request:POST',
-            params: {
-              'post_id' => post.id,
-            }
+            {
+              task: 'request:POST',
+              params: { 'post_id' => post.id, }
+            },
+            *post.forests
           )
 
           { 'success' => true }.to_json

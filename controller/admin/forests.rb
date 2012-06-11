@@ -50,11 +50,11 @@ module Controller
             if s && f.local?
               f.add s
               Libertree::Model::Job.create_for_forests(
-                f,
-                task: 'request:FOREST',
-                params: {
-                  'forest_id' => f.id,
-                }
+                {
+                  task: 'request:FOREST',
+                  params: { 'forest_id' => f.id, }
+                },
+                f
               )
             end
           end
@@ -83,11 +83,11 @@ module Controller
           s = Libertree::Model::Server[server_id.to_i]
           if s
             Libertree::Model::Job.create_for_forests(
-              f,
-              task: 'request:FOREST',
-              params: {
-                'forest_id' => f.id,
-              }
+              {
+                task: 'request:FOREST',
+                params: { 'forest_id' => f.id, }
+              },
+              f
             )
             f.remove s
           end
