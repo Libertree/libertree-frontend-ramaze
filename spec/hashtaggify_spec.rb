@@ -51,8 +51,8 @@ describe Libertree do
       subject.render('`#simple`').should == Nokogiri::HTML::fragment(%{<p><code>#simple</code></p>}).to_xhtml
     end
 
-    it 'should not linkify apparent hashtags with invalid characters' do
-      subject.render('#ab_c').should == Nokogiri::HTML::fragment("<p>#ab_c</p>\n").to_xhtml
+    it 'should linkify hashtags up to, but excluding, invalid characters.' do
+      subject.render('#ab_c').should == Nokogiri::HTML::fragment(%{<p><a class="hashtag" data-hashtag="ab">#ab</a>_c</p>\n}).to_xhtml
     end
 
     it 'should not linkify hashtag edge cases' do
