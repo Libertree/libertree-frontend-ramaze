@@ -61,11 +61,12 @@ module Controller
         'public'    => true,
         'text'      => text
       )
-      Libertree::Model::Job.create(
+      Libertree::Model::Job.create_for_forests(
+        post.forests,
         task: 'request:POST',
         params: {
           'post_id' => post.id,
-        }.to_json
+        }
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -76,7 +77,7 @@ module Controller
       @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
       if @post
-        @subtitle = %{#{@post.member.username} - "#{@post.glimpse}"}
+        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
         @post.mark_as_read_by account
 
         Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
@@ -107,11 +108,12 @@ module Controller
     def destroy(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post && post.member == account.member && post.comments.size == 0
-        Libertree::Model::Job.create(
+        Libertree::Model::Job.create_for_forests(
+          post.forests,
           task: 'request:POST-DELETE',
           params: {
             'post_id' => post.id,
-          }.to_json
+          }
         )
         post.delete_cascade
       end
@@ -136,11 +138,12 @@ module Controller
         text.encode!('UTF-8', 'UTF-16')
 
         post.revise text
-        Libertree::Model::Job.create(
+        Libertree::Model::Job.create_for_forests(
+          post.forests,
           task: 'request:POST',
           params: {
             'post_id' => post.id,
-          }.to_json
+          }
         )
         session[:saved_text]['textarea-post-edit'] = nil
       end

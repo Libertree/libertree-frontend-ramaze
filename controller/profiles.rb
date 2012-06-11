@@ -41,11 +41,11 @@ module Controller
           name_display: name_display,
           description: request['description']
         )
-        Libertree::Model::Job.create(
+        Libertree::Model::Job.create_for_forests(
           task: 'request:MEMBER',
           params: {
             'member_id' => account.member.id,
-          }.to_json
+          }
         )
       rescue PGError => e
         if e.message =~ /valid_name_display/
@@ -92,11 +92,11 @@ module Controller
       File.chmod  0644, save_path
 
       account.member.avatar_path = "/images/avatars/#{basename}"
-      Libertree::Model::Job.create(
+      Libertree::Model::Job.create_for_forests(
         task: 'request:MEMBER',
         params: {
           'member_id' => account.member.id,
-        }.to_json
+        }
       )
 
       flash[:notice] = "Avatar changed."

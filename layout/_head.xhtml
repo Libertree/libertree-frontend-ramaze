@@ -5,6 +5,9 @@
   <link href="/css/application.css?t=#{File.mtime('public/css/application.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/single-post-view.css?t=#{File.mtime('public/css/single-post-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/excerpts-view.css?t=#{File.mtime('public/css/excerpts-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+  <?r if account.admin? ?>
+    <link href="/css/admin.css?t=#{File.mtime('public/css/admin.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+  <?r end ?>
 
   #{ @stylesheet_extra }
   #{ css 'ui-lightness/jquery-ui-1.8.18.custom' }
@@ -23,6 +26,9 @@
   <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
   <?r if @load_home_js ?>
     <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
+  <?r end ?>
+  <?r if account.admin? ?>
+    <script src="/js/admin.js?t=#{File.mtime('public/js/admin.js').to_i}" type="text/javascript"></script>
   <?r end ?>
 
   <style type="text/css">
