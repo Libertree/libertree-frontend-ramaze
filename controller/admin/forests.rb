@@ -25,12 +25,6 @@ module Controller
           name: request['name'],
           local_is_member: true
         )
-        Libertree::Model::Job.create(
-          task: 'request:FOREST',
-          params: {
-            'forest_id' => forest.id,
-          }.to_json
-        )
 
         redirect_referrer
       end
@@ -55,11 +49,12 @@ module Controller
             s = Libertree::Model::Server[server_id.to_i]
             if s && f.local?
               f.add s
-              Libertree::Model::Job.create(
+              Libertree::Model::Job.create_for_forests(
+                f,
                 task: 'request:FOREST',
                 params: {
                   'forest_id' => f.id,
-                }.to_json
+                }
               )
             end
           end
@@ -87,14 +82,14 @@ module Controller
         else
           s = Libertree::Model::Server[server_id.to_i]
           if s
-            f.remove s
-            Libertree::Model::Job.create(
+            Libertree::Model::Job.create_for_forests(
+              f,
               task: 'request:FOREST',
               params: {
                 'forest_id' => f.id,
-                'server_ids' => [s.id],
-              }.to_json
+              }
             )
+            f.remove s
           end
         end
 
