@@ -71,11 +71,11 @@ module Controller
           email: email
         )
         invitation.account_id = a.id
-        Libertree::Model::Job.create(
+        Libertree::Model::Job.create_for_forests(
           task: 'request:MEMBER',
           params: {
             'member_id' => a.member.id,
-          }.to_json
+          }
         )
 
         account_login request.subset('username', 'password')
