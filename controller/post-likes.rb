@@ -23,7 +23,7 @@ module Controller
             task: 'request:POST-LIKE',
             params: { 'post_like_id' => like.id, }
           },
-          like.forests
+          *like.forests
         )
 
         # TODO: Use partial for number of likes
@@ -44,7 +44,7 @@ module Controller
             task: 'request:POST-LIKE-DELETE',
             params: { 'post_like_id' => like.id, }
           },
-          like.forests
+          *like.forests
         )
         like.delete_cascade
       end

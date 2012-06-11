@@ -66,7 +66,7 @@ module Controller
           task: 'request:POST',
           params: { 'post_id' => post.id, }
         },
-        post.forests
+        *post.forests
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -113,7 +113,7 @@ module Controller
             task: 'request:POST-DELETE',
             params: { 'post_id' => post.id, }
           },
-          post.forests
+          *post.forests
         )
         post.delete_cascade
       end
@@ -143,7 +143,7 @@ module Controller
             task: 'request:POST',
             params: { 'post_id' => post.id, }
           },
-          post.forests
+          *post.forests
         )
         session[:saved_text]['textarea-post-edit'] = nil
       end

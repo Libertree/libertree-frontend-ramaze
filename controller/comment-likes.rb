@@ -22,7 +22,7 @@ module Controller
             task: 'request:COMMENT-LIKE',
             params: { 'comment_like_id' => like.id, }
           },
-          like.forests
+          *like.forests
         )
 
         return {
@@ -42,7 +42,7 @@ module Controller
             task: 'request:COMMENT-LIKE-DELETE',
             params: { 'comment_like_id' => like.id, }
           },
-          like.forests
+          *like.forests
         )
         like.delete_cascade
       end

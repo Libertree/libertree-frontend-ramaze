@@ -36,7 +36,7 @@ module Controller
             task: 'request:COMMENT',
             params: { 'comment_id' => comment.id, }
           },
-          comment.forests
+          *comment.forests
         )
 
         session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
@@ -65,7 +65,7 @@ module Controller
             task: 'request:COMMENT-DELETE',
             params: { 'comment_id' => comment.id, }
           },
-          comment.forests
+          *comment.forests
         )
         comment.delete_cascade
       end

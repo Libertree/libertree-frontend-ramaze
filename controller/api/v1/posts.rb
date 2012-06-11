@@ -25,7 +25,7 @@ module Controller
               task: 'request:POST',
               params: { 'post_id' => post.id, }
             },
-            post.forests
+            *post.forests
           )
 
           { 'success' => true }.to_json
