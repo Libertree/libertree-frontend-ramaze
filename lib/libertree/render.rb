@@ -11,6 +11,7 @@ module Libertree
       {
         autolink: false,
         space_after_headers: true,
+        no_intra_emphasis: true,
       }
     )
     markdown.render s

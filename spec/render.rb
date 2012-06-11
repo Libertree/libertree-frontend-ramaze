@@ -20,5 +20,9 @@ describe Libertree do
       subject.render('This is a link:\n\nhttp://nice.com').should =~ %r{<a href='http://nice.com'>http://nice.com</a>}
     end
 
+    it 'should not mangle underscores in URLs' do
+      subject.render('http://this_is_too_cool.com').should =~ %r{this_is_too_cool}
+    end
+
   end
 end
