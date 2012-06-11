@@ -69,6 +69,20 @@ $(document).ready( function() {
     );
   } );
 
+  $('.post-excerpt .ignore').live( 'click', function() {
+    var post = $(this).closest('div.post-excerpt');
+    $.get(
+      '/posts/ignores/create/' + post.data('post-id') + '.json',
+      function(response) {
+        var h = $.parseJSON(response);
+        if( h.success ) {
+          post.slideUp(1000);
+        }
+      }
+    );
+    return false;
+  } );
+
   $('.mark-unread').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     $.get(
