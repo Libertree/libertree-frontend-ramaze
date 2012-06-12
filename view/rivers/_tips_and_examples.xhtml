@@ -6,6 +6,7 @@
   Example: <i>#music -#classical</i> will find posts about music, but not classical music.</li>
   <li>Use the special term <i>:unread</i> to include only posts which you have not read yet.</li>
   <li>Use the special term <i>:tree</i> to include only posts by members of the same tree as you.</li>
+  <li>Use double quotes to match multi-word phrases, or exact matches involving symbols.</li>
   <li>You can also <a href="/rivers/ensure_beginner_rivers_exist">have the beginner rivers recreated for you</a>.</li>
 </ul>
 
@@ -38,12 +39,20 @@
     <tr>
       <td>environment</td>
       <td>
-        Posts that mention the environment, whether or not they were hashtagged with #environment.
+        Posts that mention the environment, whether or not they were hashtagged with #environment
       </td>
     </tr>
     <tr>
       <td>:tree #bug #feature</td>
       <td>Bug reports and feature requests made by your treemates</td>
+    </tr>
+    <tr>
+      <td>"new york"</td>
+      <td>Posts about New York, but not posts only having the word new</td>
+    </tr>
+    <tr>
+      <td>brazil -"world cup"</td>
+      <td>Posts about Brazil, but not those mentioning the World Cup</td>
     </tr>
   </tbody>
 </table>
