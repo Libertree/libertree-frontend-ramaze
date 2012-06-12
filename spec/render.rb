@@ -15,9 +15,16 @@ describe Libertree do
     end
 
     it 'should autolink URLs' do
-      subject.render('http://nice.com').should =~ %r{<a href='http://nice.com'>http://nice.com</a>}
-      subject.render('hello http://nice.com').should =~ %r{hello <a href='http://nice.com'>http://nice.com</a>}
-      subject.render('This is a link:\n\nhttp://nice.com').should =~ %r{<a href='http://nice.com'>http://nice.com</a>}
+      url = "http://elephly.net"
+      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
+      subject.render("hello #{url}").should =~ %r{hello <a href="#{url}">#{url}</a>}
+      subject.render("This is a link:\n\n#{url}").should =~ %r{<a href="#{url}">#{url}</a>}
+
+      url = "http://elephly.net/index.pl?abc=def&yyz=rush"
+      subject.render(url).should =~ Regexp.new(Regexp.escape("<a href=\"#{url.gsub('&','&amp;')}\">#{url.gsub('&','&amp;')}</a>"))
+
+      url = "www.gnu.org"
+      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
     end
 
     it 'should not mangle underscores in URLs' do
