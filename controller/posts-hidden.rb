@@ -1,6 +1,6 @@
 module Controller
-  class PostIgnores < Base
-    map '/posts/ignores'
+  class PostsHidden < Base
+    map '/posts/hidden'
 
     before_all do
       require_login
@@ -12,7 +12,7 @@ module Controller
       post = Libertree::Model::Post[ post_id.to_i ]
 
       if post
-        ignore = Libertree::Model::PostIgnore.find_or_create(
+        Libertree::Model::PostHidden.find_or_create(
           'account_id' => account.id,
           'post_id'    => post.id,
         )
@@ -23,10 +23,10 @@ module Controller
       ""
     end
 
-    def destroy(post_ignore_id)
-      ignore = Libertree::Model::PostIgnore[ post_ignore_id.to_i ]
-      if ignore && ignore.account == account
-        ignore.delete
+    def destroy(post_hidden_id)
+      ph = Libertree::Model::PostHidden[ post_hidden_id.to_i ]
+      if ph && ph.account == account
+        ph.delete
       end
     end
   end

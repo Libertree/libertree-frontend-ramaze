@@ -69,11 +69,11 @@ $(document).ready( function() {
     );
   } );
 
-  $('.post-excerpt .ignore').live( 'click', function() {
-    if( confirm('Ignoring a post prevents it from showing in your rivers or triggering notifications.  Ignore this post?') ) {
+  $('.post-excerpt .hide').live( 'click', function() {
+    if( confirm('Hiding a post prevents it from showing in your rivers or triggering notifications.  Hide this post?') ) {
       var post = $(this).closest('div.post-excerpt');
       $.get(
-        '/posts/ignores/create/' + post.data('post-id') + '.json',
+        '/posts/hidden/create/' + post.data('post-id') + '.json',
         function(response) {
           var h = $.parseJSON(response);
           if( h.success ) {
