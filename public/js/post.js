@@ -70,18 +70,20 @@ $(document).ready( function() {
   } );
 
   $('.post-excerpt .hide').live( 'click', function() {
-    if( confirm('Hiding a post prevents it from showing in your rivers or triggering notifications.  Hide this post?') ) {
-      var post = $(this).closest('div.post-excerpt');
-      $.get(
-        '/posts/hidden/create/' + post.data('post-id') + '.json',
-        function(response) {
-          var h = $.parseJSON(response);
-          if( h.success ) {
-            post.slideUp(1000);
-          }
+    $(this).hide();
+    $(this).siblings('.confirm-hide').show();
+  } );
+  $('.post-excerpt .confirm-hide').live( 'click', function() {
+    var post = $(this).closest('div.post-excerpt');
+    $.get(
+      '/posts/hidden/create/' + post.data('post-id') + '.json',
+      function(response) {
+        var h = $.parseJSON(response);
+        if( h.success ) {
+          post.slideUp(1000);
         }
-      );
-    }
+      }
+    );
     return false;
   } );
 

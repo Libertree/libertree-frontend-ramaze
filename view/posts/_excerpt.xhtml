@@ -27,7 +27,8 @@
         <?r end ?>
       <?r end ?>
 
-      <a class="hide" href="#">hide</a>
+      <a class="hide" href="#" title="Hiding a post prevents it from showing in your rivers or triggering notifications.">hide</a>
+      <a class="confirm-hide" href="#" title="Click to confirm hiding of this post.">confirm</a>
 
       <?r if @post.read_by?(account) ?>
         <a class="mark-unread" href="#">mark&nbsp;unread</a>

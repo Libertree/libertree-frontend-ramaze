@@ -24,6 +24,10 @@
                 margin-left: 0px;
                 margin-right: 5px;
             }
+            a.confirm-hide {
+                display: none;
+                font-weight: bold;
+            }
         }
 
         $meta_width: 250px;
