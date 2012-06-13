@@ -20,6 +20,7 @@
       #{ member_img(account.member) }
       <form method="POST" action="/comments/create" class="comment">
         <input type="hidden" name="post_id" value="#{@post.id}"/>
+        #{ Controller::Main.render_partial '_markdown_injector' }
         <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
         <div class="form-buttons">
           <a class="detach" href="#">detach</a>

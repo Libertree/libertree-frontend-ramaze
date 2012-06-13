@@ -1,6 +1,7 @@
 <table id="post-new"><tr><td>
   <h3>New Post</h3>
   <form action="/posts/create" method="POST">
+    #{ Controller::Main.render_partial '_markdown_injector' }
     <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
     <div id="hashtags-input" class="input-and-filler">
       <div class="filler">(enter hashtags here)</div>

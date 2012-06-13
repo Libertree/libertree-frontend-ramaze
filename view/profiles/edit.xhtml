@@ -2,7 +2,8 @@
 
 <form action="update" method="POST">
   Display name: <input type="text" name="name_display" value="#{@profile.name_display}"/><br/>
-  About Me (Markdown allowed):<br/>
+  About Me (Markdown allowed):
+  #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="description" id="textarea-description" rows="10">#{@profile.description}</textarea><br/>
   <input type="submit" value="Update"/>
   <a href="/profiles/show/#{account.member.id}">Cancel</a>
