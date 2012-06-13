@@ -169,6 +169,25 @@ textarea, input[type="text"], input[type="password"] {
                 width: 32px;
             }
         }
+
+        #account-window {
+            top: 46px;
+            right: 18px;
+            width: 180px;
+            padding: 5px;
+
+            a {
+                line-height: 28px;
+                margin-left: 0px;
+            }
+
+            img {
+                vertical-align: middle;
+                height: 24px;
+                width: 24px;
+            }
+        }
+
     }
 }
 
@@ -328,23 +347,6 @@ textarea.comment, form.comment .form-buttons {
     top: 8px;
     left: -28px;
     position: relative;
-}
-
-#account-window {
-    top: 46px;
-    right: 18px;
-    width: 150px;
-    padding: 5px;
-
-    a {
-        line-height: 28px;
-    }
-
-    img {
-        vertical-align: middle;
-        height: 24px;
-        width: 24px;
-    }
 }
 
 .has-shadow {

@@ -25,5 +25,16 @@ module Controller
       account.generate_api_token
       redirect_referrer
     end
+
+    def font(choice = nil)
+      case choice
+      when 'small'
+        account.font_css = 'fonts-small'
+      else
+        account.font_css = nil
+      end
+
+      redirect_referrer
+    end
   end
 end
