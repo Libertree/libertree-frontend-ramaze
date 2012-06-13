@@ -29,7 +29,8 @@ module Controller
         # TODO: Use partial for number of likes
         return {
           'post_like_id' => like.id,
-          'num_likes' => post.likes.count,
+          'num_likes'    => post.likes.count,
+          'liked_by'     => "Liked by #{post.likes.map { |l| l.member.name_display }.join(', ')}",
         }.to_json
       end
 
@@ -49,7 +50,10 @@ module Controller
         like.delete_cascade
       end
 
-      like.post.likes.count
+      return {
+        'num_likes'    => like.post.likes.count,
+        'liked_by'     => "Liked by #{like.post.likes.map { |l| l.member.name_display }.join(', ')}",
+      }.to_json
     end
   end
 end

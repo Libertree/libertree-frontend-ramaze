@@ -28,6 +28,7 @@ module Controller
         return {
           'comment_like_id' => like.id,
           'num_likes'       => "#{comment.likes.count} like#{plural_s(comment.likes.count)}",
+          'liked_by'        => comment.likes.map { |l| l.member.name_display }.join(', '),
         }.to_json
       end
 
@@ -47,7 +48,10 @@ module Controller
         like.delete_cascade
       end
 
-      "#{like.comment.likes.count} like#{plural_s(like.comment.likes.count)}"
+      return {
+        'num_likes'       => "#{like.comment.likes.count} like#{plural_s(like.comment.likes.count)}",
+        'liked_by'        => like.comment.likes.map { |l| l.member.name_display }.join(', ')
+      }.to_json
     end
   end
 end

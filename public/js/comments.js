@@ -97,6 +97,7 @@ $(document).ready( function() {
           link.addClass('hidden');
           link.siblings('a.unlike').removeClass('hidden').data('comment-like-id', h['comment_like_id']);
           comment.find('.num-likes').text( h['num_likes'] ).show();
+          comment.find('.num-likes').attr('title', h['liked_by']);
         }
       );
     }
@@ -109,12 +110,16 @@ $(document).ready( function() {
       $.get(
         '/likes/comments/destroy/' + link.data('comment-like-id'),
         function(response) {
+          var h = $.parseJSON(response);
           link.addClass('hidden');
           link.siblings('a.like').removeClass('hidden');
           var num_likes = comment.find('.num-likes');
-          num_likes.text( response );
-          if( response == '0 likes' ) {
+          num_likes.text( h['num_likes'] );
+          if( h['num_likes'] == '0 likes' ) {
             num_likes.hide();
+          }
+          else {
+            comment.find('.num-likes').attr('title', h['liked_by']);
           }
         }
       );
