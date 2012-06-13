@@ -8,7 +8,6 @@ Icon set by http://icons8.com/
 */
 
 @import "colours.scss";
-@import "fonts.scss";
 
 html {
     height: 100%;
@@ -17,12 +16,10 @@ html {
 body.body {
     padding: 0px;
     margin: 0px;
-    font-family: Arial, sans-serif;
     color: #261818;
     height: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, sans-serif;
     margin-top: 0px;
 }
 div, p, form {
@@ -30,11 +27,6 @@ div, p, form {
         margin-top: 1em;
     }
 }
-h1 { font-size: $font_extra_extra_large; }
-h2 { font-size: $font_extra_large; }
-h3 { font-size: $font_large; }
-h4 { font-size: $font_normal; }
-h5, h6 { font-size: $font_small; }
 
 .bg {
     background: url('/images/bg.jpg') top center repeat;
@@ -118,7 +110,6 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .menu {
-    font-size: $font_small;
     text-align: right;
     height: 40px;
     position: fixed;
@@ -172,7 +163,6 @@ textarea, input[type="text"], input[type="password"] {
         #menu-account {
             width: auto;
             padding-top: 4px;
-            font-size: $font_small;
 
             img {
                 height: 32px;
@@ -201,13 +191,7 @@ textarea, input[type="text"], input[type="password"] {
     height: 40px;
 }
 
-.member-name {
-    font-size: $font_normal;
-    font-weight: bold;
-}
-
 .age, .age-update {
-    font-size: $font_small;
     color: #888888;
 }
 
@@ -233,7 +217,6 @@ textarea, input[type="text"], input[type="password"] {
 
 .post-text {
     clear: left;
-    font-size: $font_normal;
 }
 
 div.comment {
@@ -243,11 +226,8 @@ div.comment {
         height: 30px;
         width: 30px;
     }
-    .member-name { font-size: $font_small }
-    .age { font-size: $font_extra_small; }
     .text {
         clear: left;
-        font-size: $font_small;
     }
 
     .comment-tools {
@@ -328,7 +308,6 @@ textarea.comment, form.comment .form-buttons {
     width: 300px;
     min-height: 100px;
     padding: 10px;
-    font-size: $font_small;
 
     .header {
         margin-bottom: 8px;
@@ -336,8 +315,6 @@ textarea.comment, form.comment .form-buttons {
 
         .title {
             float: left;
-            font-weight: bold;
-            font-size: $font_normal;
         }
 
         .tools {
@@ -347,8 +324,6 @@ textarea.comment, form.comment .form-buttons {
 }
 
 #num-notifications-unseen {
-    font-weight: bold;
-    font-size: 14px;
     padding: 1px 2px 2px 2px;
     top: 8px;
     left: -28px;
@@ -360,7 +335,6 @@ textarea.comment, form.comment .form-buttons {
     right: 18px;
     width: 150px;
     padding: 5px;
-    font-size: $font_normal;
 
     a {
         line-height: 28px;
@@ -391,11 +365,9 @@ textarea.comment, form.comment .form-buttons {
     }
 }
 .notification.unseen {
-    font-weight: bold;
     opacity: 1.0;
 }
 .notification.seen {
-    font-weight: normal;
     opacity: 0.8;
 }
 
@@ -407,7 +379,6 @@ blockquote {
     border-left: 4px solid $iced_coffee;
     padding: 0.5em 0px 0.1em 1em;
     margin-left: 0px;
-    font-style: italic;
     text-align: left;
 }
 
@@ -432,7 +403,6 @@ blockquote {
     input {
         margin-left: 10px;
         height: 24px;
-        font-size: $font_extra_small;
     }
 }
 
@@ -452,7 +422,6 @@ a.hashtag {
     position: absolute;
     left: 34px;
     cursor: text;
-    font-size: $font_extra_small;
     vertical-align: middle;
     padding-top: 2px;
 }
@@ -481,7 +450,6 @@ table.table {
     border: 1px solid $main_green;
     border-collapse: collapse;
     th {
-        font-weight: bold;
         text-align: left;
     }
     th, td {
@@ -493,7 +461,6 @@ table.table {
 #query-examples {
     td:first-child {
         white-space: nowrap;
-        font-family: monospace;
     }
 }
 
@@ -507,9 +474,6 @@ div.river {
 
     .river-tools {
         margin-left: 20px
-    }
-    .query {
-        font-family: monospace;
     }
 }
 textarea.custom {
@@ -553,7 +517,6 @@ textarea#invitations {
         background-color: $faint_tan;
         color: black;
         border-bottom: 0px;
-        font-size: $font_extra_extra_small;
         margin-left: 0.5em;
         cursor: pointer;
     }

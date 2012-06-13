@@ -1,5 +1,4 @@
 @import "colours.scss";
-@import "fonts.scss";
 
 .excerpts-view {
     .post-excerpt {
@@ -27,7 +26,6 @@
             }
             a.confirm-hide {
                 display: none;
-                font-weight: bold;
             }
         }
 
@@ -57,7 +55,6 @@
             }
             .end-of-text {
                 opacity: 0.2;
-                font-size: $font_extra_extra_small;
             }
 
             .show-more, .show-less {
@@ -70,7 +67,6 @@
         }
 
         .link-view-post {
-            font-size: $font_large;
             margin-top: 10px;
         }
 
