@@ -14,6 +14,18 @@ module Controller
     def update
       redirect_referrer  if ! request.post?
 
+      begin
+        if request['excerpt_max_height'].nil? || request['excerpt_max_height'].empty?
+          account.excerpt_max_height = nil
+        else
+          account.excerpt_max_height = request['excerpt_max_height'].to_i
+        end
+      rescue PGError => e
+        if e.message =~ /valid_excerpt_max_height/
+          flash[:error] = 'Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.'
+          redirect_referrer
+        end
+      end
       account.custom_css = request['custom_css']
       account.custom_js = request['custom_js']
 
