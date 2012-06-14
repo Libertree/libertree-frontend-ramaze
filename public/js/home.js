@@ -35,7 +35,9 @@ $(document).ready( function() {
       function() {
         div.removeClass('height-fixed').addClass('height-normal');
         markPostRead( excerptParent.data('post-id') );
-        div.height('auto'); /* cancel explicit height set by animation */
+        /* cancel explicit height set by animation */
+        div.height('auto');
+        div.css('max-height', 'none');
         showMoreLink.hide();
         showMoreLink.siblings('.show-less').show();
 
