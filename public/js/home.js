@@ -27,7 +27,10 @@ $(document).ready( function() {
     var animationSpeed = heightDifference * 2;
 
     div.animate(
-      { height: overflowed.height() + 'px' },
+      {
+        height: overflowed.height() + 'px',
+        'max-height': overflowed.height() + 'px'
+      },
       animationSpeed,
       function() {
         div.removeClass('height-fixed').addClass('height-normal');
