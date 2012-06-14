@@ -21,6 +21,7 @@ $(document).ready( function() {
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
 
+    div.data( 'contracted-height', div.height() );
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
     var heightDifference = overflowed.height() - excerpt.height();
@@ -81,7 +82,7 @@ $(document).ready( function() {
 
     var div = excerpt.find('.height-normal');
     div.animate(
-      { height: excerptMaxHeight+'px' },
+      { height: div.data('contracted-height')+'px' },
       animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
