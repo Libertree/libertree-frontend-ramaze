@@ -47,6 +47,7 @@
   <script type="text/javascript">
     var host = #{ request.host.inspect };
     var layout = #{ session[:layout].to_s.inspect };
+    var excerptMaxHeight = #{account.excerpt_max_height};
 
     #{account.custom_js}
   </script>

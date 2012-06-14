@@ -76,8 +76,7 @@ $(document).ready( function() {
 
     var div = excerpt.find('.height-normal');
     div.animate(
-      /* TODO: DRY up with CSS definition of height */
-      { height: '200px' },
+      { height: excerptMaxHeight+'px' },
       animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
