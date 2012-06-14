@@ -36,6 +36,11 @@
   <?r end ?>
 
   <style type="text/css">
+    .excerpts-view .post-excerpt div.excerpt .height-fixed {
+      max-height: #{
+        account.excerpt_max_height ?  account.excerpt_max_height.to_s+'px' : 'auto'
+      };
+    }
     #{account.custom_css}
   </style>
 

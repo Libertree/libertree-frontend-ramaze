@@ -34,14 +34,14 @@
 
         div.meta {
             width: $meta_width;
-            height: $excerpt_height;
+            min-height: $excerpt_height;
             vertical-align: top;
             overflow: hidden;
             float: left;
         }
         div.excerpt {
             .height-fixed {
-                height: $excerpt_height;
+                min-height: $excerpt_height;
                 overflow: hidden;
             }
 
