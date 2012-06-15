@@ -39,6 +39,14 @@ function insertCommentHtmlFor( postId, commentId ) {
       o.insertBefore( post.find('.comments .detachable') );
       var height = o.height();
       o.hide().slideDown(height*5);
+
+      if( $('textarea.comment.focused').length ) {
+        var comments = post.find('div.comments');
+        comments.animate(
+          { scrollTop: comments.scrollTop() + comments.height() + 200 },
+          height*5
+        );
+      }
     }
   );
 }
@@ -59,7 +67,6 @@ $(document).ready( function() {
         comments.find('textarea').focus().hide().fadeIn();
       }
     );
-
   } );
   $('div.comment').live( {
     mouseover: function() {
@@ -185,6 +192,13 @@ $(document).ready( function() {
     detachable.find('.detach').show();
     detachable.draggable('destroy');
     return false;
+  } );
+
+  $('textarea.comment').live( 'focus', function() {
+    $(this).addClass('focused');
+  } );
+  $('textarea.comment').live( 'blur', function() {
+    $(this).removeClass('focused');
   } );
 
   /* ---------------------------------------------------- */
