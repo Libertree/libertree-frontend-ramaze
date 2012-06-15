@@ -7,7 +7,7 @@ module Controller
     end
 
     layout do |path|
-      if path =~ %r{^_}
+      if path =~ %r{^_|create}
         nil
       elsif session[:layout] == 'narrow'
         :narrow
@@ -17,36 +17,32 @@ module Controller
     end
 
     def create
-      return  if ! request.post?
-      redirect_referrer  if request['text'].empty?
+      return '{}'  if ! request.post?
+      return '{}'  if request['text'].empty?
 
       post = Libertree::Model::Post[ request['post_id'].to_i ]
 
-      if post
-        # TODO: Check that the member is allowed to view and comment on the post.
-        # (when we introduce such restrictions in the system)
-        comment = Libertree::Model::Comment.create(
-          'member_id' => account.member.id,
-          'post_id'   => post.id,
-          'text'      => request['text']
-        )
+      return '{}'  if post.nil?
 
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:COMMENT',
-            params: { 'comment_id' => comment.id, }
-          },
-          *comment.forests
-        )
+      # TODO: Check that the member is allowed to view and comment on the post.
+      # (when we introduce such restrictions in the system)
+      comment = Libertree::Model::Comment.create(
+        'member_id' => account.member.id,
+        'post_id'   => post.id,
+        'text'      => request['text']
+      )
 
-        session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
-      end
+      Libertree::Model::Job.create_for_forests(
+        {
+          task: 'request:COMMENT',
+          params: { 'comment_id' => comment.id, }
+        },
+        *comment.forests
+      )
 
-      if request.referrer =~ /home/
-        redirect request.referrer.gsub(/#post-\d+$/,'') + "#post-#{post.id}"
-      else
-        redirect "/posts/show/#{post.id}#comment-#{comment.id}"
-      end
+      session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
+
+      { 'success' => true }.to_json
     end
 
     def _comments(post_id, hidden = false)

@@ -126,8 +126,26 @@ $(document).ready( function() {
     }
   } )
 
-  $('form.comment input[type="submit"]').live( 'click', function() {
+  $('form.comment input.submit').live( 'click', function() {
+    var form = $(this).closest('form.comment');
+    var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
+    $.post(
+      '/comments/create',
+      {
+        post_id: form.data('post-id'),
+        text: textarea.val()
+      },
+      function(response) {
+        var h = $.parseJSON(response);
+        if( h.success ) {
+          textarea.val('');
+          form.closest('.comments').find('.success').fadeIn();
+        } else {
+          alert('Failed to post comment.');
+        }
+      }
+    );
   } );
 
   $('.detachable .detach').live( 'click', function() {

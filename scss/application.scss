@@ -238,6 +238,13 @@ textarea, input[type="text"], input[type="password"] {
     clear: left;
 }
 
+div.comments {
+    .success {
+        display: none;
+        margin-bottom: 1em;
+    }
+}
+
 div.comment {
     margin-right: 20px;
 
