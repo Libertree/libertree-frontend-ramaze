@@ -35,7 +35,10 @@ function insertCommentHtmlFor( postId, commentId ) {
   $.get(
     '/comments/_comment/' + commentId,
     function(html) {
-      $(html).insertBefore( post.find('.comments .detachable') );
+      var o = $(html);
+      o.insertBefore( post.find('.comments .detachable') );
+      var height = o.height();
+      o.hide().slideDown(height*5);
     }
   );
 }
