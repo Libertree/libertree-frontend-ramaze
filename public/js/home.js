@@ -20,6 +20,8 @@ $(document).ready( function() {
     var div = excerpt.find('.height-fixed');
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
+    var postId = excerptParent.data('post-id');
+    $.get('/accounts/watch_post/'+postId);
 
     div.data( 'contracted-height', div.height() );
     excerptParent.find('div.comments.hidden').removeClass('hidden');
@@ -35,7 +37,7 @@ $(document).ready( function() {
       animationSpeed,
       function() {
         div.removeClass('height-fixed').addClass('height-normal');
-        markPostRead( excerptParent.data('post-id') );
+        markPostRead(postId);
         /* cancel explicit height set by animation */
         div.height('auto');
         div.css('max-height', 'none');

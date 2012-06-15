@@ -19,6 +19,7 @@ def onmessage(ws, data)
     account: session_account.account,
     last_post_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts"),
     last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
+    last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments")
   }
 end
 
@@ -58,7 +59,11 @@ EventMachine.run do
         s[:last_post_id] = post.id
       end
 
-      notifs = Libertree::Model::Notification.s("SELECT * FROM notifications WHERE id > ? AND account_id = ? ORDER BY id LIMIT 1", s[:last_notification_id], account.id)
+      notifs = Libertree::Model::Notification.s(
+        "SELECT * FROM notifications WHERE id > ? AND account_id = ? ORDER BY id LIMIT 1",
+        s[:last_notification_id],
+        account.id
+      )
       notifs.each do |n|
         ws.send(
           {
@@ -68,6 +73,33 @@ EventMachine.run do
           }.to_json
         )
         s[:last_notification_id] = n.id
+      end
+
+      comments = Libertree::Model::Comment.s(
+        %{
+          SELECT
+            c.*
+          FROM
+              comments c
+            , accounts a
+          WHERE
+            c.id > a.watched_post_last_comment_id
+            AND c.post_id = a.watched_post_id
+            AND a.id = ?
+          ORDER BY
+            c.id
+        },
+        account.id
+      )
+      comments.each do |c|
+        ws.send(
+          {
+            'command'   => 'comment',
+            'commentId' => c.id,
+            'postId'    => c.post.id,
+          }.to_json
+        )
+        account.watched_post_last_comment_id = c.id
       end
     end
   end

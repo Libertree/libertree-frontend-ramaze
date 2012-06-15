@@ -53,6 +53,11 @@ module Controller
       return ""  if @post.nil?
     end
 
+    def _comment(comment_id)
+      @comment = Libertree::Model::Comment[comment_id.to_i]
+      @post = @comment.post
+    end
+
     def destroy(comment_id)
       comment = Libertree::Model::Comment[ comment_id.to_i ]
       if comment && comment.member == account.member

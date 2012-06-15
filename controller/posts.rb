@@ -79,6 +79,7 @@ module Controller
       if @post
         @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
         @post.mark_as_read_by account
+        account.watch_post @post
 
         Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
           n.seen = true

@@ -30,6 +30,18 @@ function setCommentAreaHeight() {
   }
 }
 
+function insertCommentHtmlFor( postId, commentId ) {
+  var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+  $.get(
+    '/comments/_comment/' + commentId,
+    function(html) {
+      $(html).insertBefore( post.find('.comments .detachable') );
+    }
+  );
+}
+
+/* ---------------------------------------------- */
+
 $(document).ready( function() {
   $('a.more-comments').live( 'click', function() {
     showMoreComments( $(this).closest('.comments'), $(this).data('n') );

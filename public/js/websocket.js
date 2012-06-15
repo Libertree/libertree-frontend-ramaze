@@ -29,6 +29,9 @@ $(document).ready( function() {
     var data = $.parseJSON(e.data);
 
     switch( data.command ) {
+      case 'comment':
+        insertCommentHtmlFor( data.postId, data.commentId );
+        break;
       case 'post':
         /* TODO */
         break;
