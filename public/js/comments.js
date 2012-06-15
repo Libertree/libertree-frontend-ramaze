@@ -154,7 +154,7 @@ $(document).ready( function() {
       function(response) {
         var h = $.parseJSON(response);
         if( h.success ) {
-          textarea.val('');
+          textarea.val('').height(50);
           form.closest('.comments').find('.success').fadeIn();
         } else {
           alert('Failed to post comment.');
