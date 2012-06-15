@@ -38,13 +38,17 @@ function insertCommentHtmlFor( postId, commentId ) {
       var o = $(html);
       o.insertBefore( post.find('.comments .detachable') );
       var height = o.height();
-      o.hide().slideDown(height*5);
+      var animationDuration = height*5;
+      o.hide().slideDown(animationDuration);
 
       if( $('textarea.comment.focused').length ) {
-        var comments = post.find('div.comments');
-        comments.animate(
-          { scrollTop: comments.scrollTop() + comments.height() + 200 },
-          height*5
+        var scrollable = post.find('div.comments');
+        if( $('.excerpts-view').length ) {
+          scrollable = $('#scrollable');
+        }
+        scrollable.animate(
+          { scrollTop: scrollable.scrollTop() + height },
+          animationDuration
         );
       }
     }
