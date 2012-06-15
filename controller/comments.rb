@@ -42,7 +42,10 @@ module Controller
 
       session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
 
-      { 'success' => true }.to_json
+      {
+        'success' => true,
+        'commentId' => comment.id,
+      }.to_json
     end
 
     def _comments(post_id, hidden = false)

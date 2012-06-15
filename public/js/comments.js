@@ -40,6 +40,7 @@ function insertCommentHtmlFor( postId, commentId ) {
       var height = o.height();
       var animationDuration = height*5;
       o.hide().slideDown(animationDuration);
+      $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
 
       if( $('textarea.comment.focused').length ) {
         var scrollable = post.find('div.comments');
@@ -166,7 +167,10 @@ $(document).ready( function() {
         var h = $.parseJSON(response);
         if( h.success ) {
           textarea.val('').height(50);
-          form.closest('.comments').find('.success').fadeIn();
+          form.closest('.comments').find('.success')
+            .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
+            .fadeIn()
+          ;
         } else {
           alert('Failed to post comment.');
         }
