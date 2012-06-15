@@ -28,9 +28,7 @@
   <script src="/js/river.js?t=#{File.mtime('public/js/river.js').to_i}" type="text/javascript"></script>
   <script src="/js/river-new.js?t=#{File.mtime('public/js/river-new.js').to_i}" type="text/javascript"></script>
   <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
-  <?r if @load_home_js ?>
-    <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
-  <?r end ?>
+  <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
   <?r if account.admin? ?>
     <script src="/js/admin.js?t=#{File.mtime('public/js/admin.js').to_i}" type="text/javascript"></script>
   <?r end ?>

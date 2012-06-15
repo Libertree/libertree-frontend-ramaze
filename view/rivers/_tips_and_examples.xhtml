@@ -7,6 +7,7 @@
   <li>Use the special term <i>:unread</i> to include only posts which you have not read yet.</li>
   <li>Use the special term <i>:tree</i> to include only posts by members of the same tree as you.</li>
   <li>Use double quotes to match multi-word phrases, or exact matches involving symbols.</li>
+  <li>Use the special term <i>:from</i> followed by a name in quotes to match all posts by that person.  Example: <code>:from "Linus Torvalds"</code></li>
   <li>You can also <a href="/rivers/ensure_beginner_rivers_exist">have the beginner rivers recreated for you</a>.</li>
 </ul>
 
@@ -53,6 +54,14 @@
     <tr>
       <td>brazil -"world cup"</td>
       <td>Posts about Brazil, but not those mentioning the World Cup</td>
+    </tr>
+    <tr>
+      <td>:from "rekado"</td>
+      <td>Posts written by rekado</td>
+    </tr>
+    <tr>
+      <td>#photography -:from "Photophile"</td>
+      <td>Posts tagged with #photography, but not those by Photophile</td>
     </tr>
   </tbody>
 </table>

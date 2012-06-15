@@ -14,4 +14,13 @@
     #{ Libertree.render(@profile.description) }
   </div>
 
+  <hr/>
+
+  <h3>Posts by #{@member.name_display}</h3>
+
+  <div id="post-excerpts">
+    <?r @member.posts(12).each do |post| ?>
+      #{ Controller::Posts.render_partial '_excerpt', post: post }
+    <?r end ?>
+  </div>
 </div>

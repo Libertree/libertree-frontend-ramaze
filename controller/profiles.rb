@@ -23,6 +23,7 @@ module Controller
       end
 
       @profile = @member.profile
+      @view = 'excerpts-view'
     end
 
     def edit
