@@ -167,6 +167,7 @@ $(document).ready( function() {
         var h = $.parseJSON(response);
         if( h.success ) {
           textarea.val('').height(50);
+          $('.preview-box').remove();
           form.closest('.comments').find('.success')
             .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
             .fadeIn()
