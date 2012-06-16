@@ -83,7 +83,7 @@ EventMachine.run do
               comments c
             , accounts a
           WHERE
-            c.id > a.watched_post_last_comment_id
+            c.id > COALESCE( a.watched_post_last_comment_id, 0 )
             AND c.post_id = a.watched_post_id
             AND a.id = ?
           ORDER BY
