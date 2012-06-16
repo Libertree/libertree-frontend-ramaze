@@ -154,6 +154,8 @@ $(document).ready( function() {
   } )
 
   $('form.comment input.submit').live( 'click', function() {
+    var submitButton = $(this);
+    submitButton.attr('disabled', 'disabled');
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
@@ -175,6 +177,7 @@ $(document).ready( function() {
         } else {
           alert('Failed to post comment.');
         }
+        submitButton.removeAttr('disabled');
       }
     );
   } );
