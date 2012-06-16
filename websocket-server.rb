@@ -75,6 +75,7 @@ EventMachine.run do
         s[:last_notification_id] = n.id
       end
 
+      # TODO: This SQL belongs in a class method on a model.
       comments = Libertree::Model::Comment.s(
         %{
           SELECT
