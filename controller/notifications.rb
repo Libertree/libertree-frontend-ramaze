@@ -46,8 +46,9 @@ module Controller
           target = n.subject.comment
         end
 
-        @set_keys << target
-        @sets[target] << n
+        key = [target, n.subject.class]
+        @set_keys << key
+        @sets[key] << n
       end
       @set_keys = @set_keys.uniq[0...5]
 
