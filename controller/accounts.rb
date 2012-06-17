@@ -28,6 +28,8 @@ module Controller
       end
       if request['custom_link'] && ! request['custom_link'].empty?
         account.custom_link = request['custom_link']
+      else
+        account.custom_link = nil
       end
       account.custom_css = request['custom_css']
       account.custom_js = request['custom_js']
