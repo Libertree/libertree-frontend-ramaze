@@ -26,7 +26,9 @@ module Controller
           redirect_referrer
         end
       end
-      account.custom_link = request['custom_link']
+      if request['custom_link'] && ! request['custom_link'].empty?
+        account.custom_link = request['custom_link']
+      end
       account.custom_css = request['custom_css']
       account.custom_js = request['custom_js']
 
