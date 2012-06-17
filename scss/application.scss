@@ -406,6 +406,9 @@ blockquote {
         padding-top: 0px;
         margin-top: 0px;
         border-bottom: 1px solid $iced_coffee;
+        a.close {
+            float: right;
+        }
     }
 }
 
