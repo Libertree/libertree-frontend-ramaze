@@ -32,7 +32,10 @@
       <a href="/logout"><img src="/images/icon-logout.png" alt="Log out"/> Log out</a>
     </div>
 
-    <div id="main-menu-container">
+    <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
+      <?r if account.custom_link ?>
+        <a href="#{account.custom_link}" class="menu-item"><img src="/images/icon-link.png" alt="custom"/></a>
+      <?r end ?>
       <a
         href="/home"
         class="menu-item"
