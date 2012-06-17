@@ -128,6 +128,10 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('.height-fixed img').live( 'mouseover', function() {
+    showShowMores();
+  } );
+
   /* ---------------------------------------------------- */
 
   showShowMores();
