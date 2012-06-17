@@ -113,6 +113,8 @@ module Controller
       @q = request['q']
       @posts = Libertree::Model::Post.search(@q)
       @comments = Libertree::Model::Comment.search(@q)
+      @profiles = Libertree::Model::Profile.search(@q)
+      @view = 'search'
     end
 
     def textarea_save

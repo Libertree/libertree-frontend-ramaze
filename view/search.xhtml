@@ -1,5 +1,13 @@
 <h2>Search Results for "#{@q}"</h2>
 
+<h3>Profiles</h3>
+
+<ul>
+<?r @profiles.each do |p| ?>
+  <li class="profile">#{member_avatar_link(p.member)} #{member_name_link(p.member)}</li>
+<?r end ?>
+</ul>
+
 <h3>Posts</h3>
 
 <ul>

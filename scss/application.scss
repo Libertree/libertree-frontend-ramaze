@@ -538,3 +538,13 @@ textarea#invitations {
 .markdown-injector:hover {
     opacity: 1.0;
 }
+
+.search {
+    li.profile {
+        list-style-type: none;
+    }
+    img.avatar {
+        width: 16px;
+        height: 16px;
+    }
+}
