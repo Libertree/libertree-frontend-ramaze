@@ -176,10 +176,12 @@ $(document).ready( function() {
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
-          form.closest('.comments').find('.success')
-            .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
-            .fadeIn()
-          ;
+          if( $('#comment-'+h.commentId).length == 0 ) {
+            form.closest('.comments').find('.success')
+              .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
+              .fadeIn()
+            ;
+          }
         } else {
           alert('Failed to post comment.');
         }
