@@ -1,0 +1,1 @@
+<a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? || @hidden ? 'hidden' : ''}" title="#{@post.comments.count} comment#{plural_s(@post.comments.count)} by #{@post.comments.map { |l| l.member.name_display }.uniq.join(', ')}"><img src="/images/icon-comment.png" class="size-16" alt="comments"/> #{@post.comments.size}</a>

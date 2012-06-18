@@ -7,7 +7,7 @@
     <div class="post-stats">
       <span class="age">#{ago(@post.time_created)}</span><br/>
       <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="Liked by #{@post.likes.map { |l| l.member.name_display }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="likes"/> <span class="value">#{@post.likes.size}</span></span><br/>
-      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{@post.comments.count} comment#{plural_s(@post.comments.count)} by #{@post.comments.map { |l| l.member.name_display }.uniq.join(', ')}"><img src="/images/icon-comment.png" class="size-16" alt="comments"/> #{@post.comments.size}</a><br/>
+      #{ render_partial '_num_comments', post: @post }<br/>
     </div>
     <div class="post-tools">
       <?r if ! account.subscribed_to?(@post) ?>

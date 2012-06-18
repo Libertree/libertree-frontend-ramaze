@@ -1,4 +1,7 @@
 <div class="comment #{@hidden ? 'hidden' : ''}" id="comment-#{@comment.id}" data-comment-id="#{@comment.id}" data-commenter-member-id="#{@comment.member.id}">
+  <?r if @render_num_comments ?>
+    #{ Controller::Posts.render_partial '_num_comments', post: @post, hidden: true }
+  <?r end ?>
   <div class="num-likes #{@comment.likes.empty? ? 'hidden' : ''}" title="#{@comment.likes.map { |l| l.member.name_display }.join(', ')}">#{@comment.likes.size} like#{plural_s(@comment.likes.size)}</div>
   <div class="comment-tools">
     <a class="go-ref-back">back</a>

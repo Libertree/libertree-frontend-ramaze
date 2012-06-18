@@ -59,6 +59,7 @@ module Controller
     def _comment(comment_id)
       @comment = Libertree::Model::Comment[comment_id.to_i]
       @post = @comment.post
+      @render_num_comments = true
     end
 
     def destroy(comment_id)
