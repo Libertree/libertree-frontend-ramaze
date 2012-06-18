@@ -30,7 +30,8 @@ $(document).ready( function() {
 
     switch( data.command ) {
       case 'heartbeat':
-        $('html').append('<!-- heartbeat: '+data.timestamp+' -->');
+        /* Do nothing on heartbeat.  Heartbeats seem to increase/ensure websocket feature reliability. */
+        /* $('html').append('<!-- heartbeat: '+data.timestamp+' -->'); */
         break;
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );
