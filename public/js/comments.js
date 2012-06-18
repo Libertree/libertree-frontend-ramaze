@@ -159,10 +159,12 @@ $(document).ready( function() {
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
+    var postId = form.data('post-id');
+
     $.post(
       '/comments/create',
       {
-        post_id: form.data('post-id'),
+        post_id: postId,
         text: textarea.val()
       },
       function(response) {
@@ -170,6 +172,10 @@ $(document).ready( function() {
         if( h.success ) {
           textarea.val('').height(50);
           $('.preview-box').remove();
+          var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+          post.find('.subscribe').addClass('hidden');
+          post.find('.unsubscribe').removeClass('hidden');
+
           form.closest('.comments').find('.success')
             .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
             .fadeIn()
