@@ -317,6 +317,7 @@ textarea.comment, form.comment .form-buttons {
 
     a {
         margin-left: 5px;
+        cursor: pointer;
     }
 }
 
@@ -452,10 +453,6 @@ form.search {
         background-repeat: no-repeat;
         padding-right: 30px;
     }
-}
-
-a.like, a.unlike, a.commenter-ref, a.mark-unread, a.mark-read, a.comment {
-    cursor: pointer;
 }
 
 a.go-ref-back {
