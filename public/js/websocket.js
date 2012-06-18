@@ -29,9 +29,6 @@ $(document).ready( function() {
     var data = $.parseJSON(e.data);
 
     switch( data.command ) {
-      case 'heartbeat':
-        $('html').append('<!-- heartbeat: '+data.timestamp+' -->');
-        break;
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );
         break;

@@ -47,16 +47,6 @@ EventMachine.run do
       account.dirty
       ws = s[:ws]
 
-      # Heartbeat every 60 seconds
-      if Time.now.strftime("%S") =~ /[0][01]/
-        ws.send(
-          {
-            'command'   => 'heartbeat',
-            'timestamp' => Time.now.strftime('%H:%M:%S'),
-          }.to_json
-        )
-      end
-
       posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id LIMIT 1", s[:last_post_id])
       posts.each do |post|
         ws.send(
