@@ -232,15 +232,5 @@ $(document).ready( function() {
   match = document.URL.match(/#comment-([0-9]+)/);
   if( match ) {
     window.location = window.location;  /* Hack for Firefox */
-  } else {
-    match = document.URL.match(/#comment-new/);
-    if( match ) {
-      $('.textarea-comment-new').focus();
-    }
-  }
-
-  var comments_area = $('.comments');
-  if( comments_area.length ) {
-    comments_area.scrollTop( comments_area.get(0).scrollHeight + 1000 );
   }
 } );
