@@ -10,6 +10,14 @@
       <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{@post.comments.count} comment#{plural_s(@post.comments.count)} by #{@post.comments.map { |l| l.member.name_display }.uniq.join(', ')}"><img src="/images/icon-comment.png" class="size-16" alt="comments"/> #{@post.comments.size}</a><br/>
     </div>
     <div class="post-tools">
+      <?r if ! account.subscribed_to?(@post) ?>
+        <a class="subscribe">subscribe</a>
+        <a class="unsubscribe hidden">unsubscribe</a>
+      <?r else ?>
+        <a class="subscribe hidden">subscribe</a>
+        <a class="unsubscribe">unsubscribe</a>
+      <?r end ?>
+
       <?r if @post.like_by(account.member) ?>
         <a class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
         <a class="like hidden">like</a>

@@ -3,6 +3,14 @@
     <div class="post-pane">
   <?r end ?>
       <div class="post-tools">
+        <?r if ! account.subscribed_to?(@post) ?>
+          <a class="subscribe">subscribe</a>
+          <a class="unsubscribe hidden">unsubscribe</a>
+        <?r else ?>
+          <a class="subscribe hidden">subscribe</a>
+          <a class="unsubscribe">unsubscribe</a>
+        <?r end ?>
+
         <?r if @post.read_by?(account) ?>
           <a class="mark-unread">mark post unread</a>
           <a class="mark-read hidden">mark post read</a>

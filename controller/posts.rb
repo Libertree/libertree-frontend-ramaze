@@ -106,6 +106,22 @@ module Controller
       ""
     end
 
+    def subscribe(post_id)
+      post = Libertree::Model::Post[post_id.to_i]
+      if post
+        account.subscribe_to post
+      end
+      ""
+    end
+
+    def unsubscribe(post_id)
+      post = Libertree::Model::Post[post_id.to_i]
+      if post
+        account.unsubscribe_from post
+      end
+      ""
+    end
+
     def destroy(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post && post.member == account.member && post.comments.size == 0

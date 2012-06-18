@@ -109,4 +109,27 @@ $(document).ready( function() {
     }
     return false;
   } );
+
+  $('.post-tools .subscribe').live( 'click', function() {
+    var post = $(this).closest('div.post, div.post-excerpt');
+    $.get(
+      '/posts/subscribe/' + post.data('post-id'),
+      function() {
+        post.find('.subscribe').addClass('hidden');
+        post.find('.unsubscribe').removeClass('hidden');
+      }
+    );
+    return false;
+  } );
+  $('.post-tools .unsubscribe').live( 'click', function() {
+    var post = $(this).closest('div.post, div.post-excerpt');
+    $.get(
+      '/posts/unsubscribe/' + post.data('post-id'),
+      function() {
+        post.find('.unsubscribe').addClass('hidden');
+        post.find('.subscribe').removeClass('hidden');
+      }
+    );
+    return false;
+  } );
 } );
