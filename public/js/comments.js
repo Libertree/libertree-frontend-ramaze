@@ -41,9 +41,6 @@ function insertCommentHtmlFor( postId, commentId ) {
       var animationDuration = height*5;
       o.hide().slideDown(animationDuration);
       $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
-      var numComments = o.find('.num-comments');
-      numComments.removeClass('hidden');
-      post.find('.post-stats .num-comments').replaceWith(numComments);
 
       if( $('textarea.comment.focused').length ) {
         var scrollable = post.find('div.comments');
