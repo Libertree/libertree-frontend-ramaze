@@ -1,5 +1,5 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  #{@post.comments.size} comment#{plural_s(@post.comments.size)}
+  <span class="num-comments">#{@post.comments.size}</span> comment#{plural_s(@post.comments.size)}
   <?r if @hidden ?>
     <span class="more-comments">
       show
