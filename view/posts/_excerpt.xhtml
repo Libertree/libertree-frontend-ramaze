@@ -11,11 +11,11 @@
     </div>
     <div class="post-tools">
       <?r if ! account.subscribed_to?(@post) ?>
-        <a class="subscribe">subscribe</a>
-        <a class="unsubscribe hidden">unsubscribe</a>
+        <a class="subscribe" title="Start receiving notifications about comments on this post">subscribe</a>
+        <a class="unsubscribe hidden" title="Stop receiving notifications about comments on this post">unsubscribe</a>
       <?r else ?>
-        <a class="subscribe hidden">subscribe</a>
-        <a class="unsubscribe">unsubscribe</a>
+        <a class="subscribe hidden" title="Start receiving notifications about comments on this post">subscribe</a>
+        <a class="unsubscribe" title="Stop receiving notifications about comments on this post">unsubscribe</a>
       <?r end ?>
 
       <?r if @post.like_by(account.member) ?>
