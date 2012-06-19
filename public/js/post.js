@@ -75,6 +75,7 @@ $(document).ready( function() {
   $('.post-excerpt .hide').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.confirm-hide').show();
+    return false;
   } );
   $('.post-excerpt .confirm-hide').live( 'click', function() {
     var post = $(this).closest('div.post-excerpt');
