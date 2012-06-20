@@ -12,6 +12,7 @@ describe Libertree do
       subject.hashtaggify('#99bottles').should == '<a class="hashtag" data-hashtag="99bottles">#99bottles</a>'
       subject.hashtaggify('#number1').should == '<a class="hashtag" data-hashtag="number1">#number1</a>'
       subject.hashtaggify('#hash-tag').should == '<a class="hashtag" data-hashtag="hash-tag">#hash-tag</a>'
+      subject.hashtaggify('#hash_tag').should == '<a class="hashtag" data-hashtag="hash_tag">#hash_tag</a>'
       subject.hashtaggify('surrounding #simple words').should == 'surrounding <a class="hashtag" data-hashtag="simple">#simple</a> words'
       subject.hashtaggify('surrounding #simple').should == 'surrounding <a class="hashtag" data-hashtag="simple">#simple</a>'
       subject.hashtaggify('#simple words').should == '<a class="hashtag" data-hashtag="simple">#simple</a> words'
@@ -24,8 +25,8 @@ describe Libertree do
     end
 
     it 'should not linkify apparent hashtags with invalid characters' do
-      subject.hashtaggify('#ab_c').should == '#ab_c'
       subject.hashtaggify('#<3').should == '#<3'
+      subject.hashtaggify('#ab|c').should == '<a class="hashtag" data-hashtag="ab">#ab</a>|c'
     end
 
     it 'should not linkify hashtag edge cases' do
