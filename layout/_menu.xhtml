@@ -4,7 +4,13 @@
     <span style="float: left; margin: 4px 0px 0px 0px; font-size: 28px; font-weight: bold; color: #447057;">Libertree</span>
     <span style="float: left; margin: 13px 0px 0px 6px; color: #003300; font-style: italic;">alpha</span>
   <?r end ?></a>
-  <?r if logged_in? ?>
+
+  <?r if ! logged_in? ?>
+    <div id="logged-out-menu">
+      <a href="/signup"><img src="/images/icon-signup.png" alt="Sign up"/>Sign up</a>
+      <a href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>
+    </div>
+  <?r else ?>
     <a class="menu-item" id="menu-account" href="#">
       <?r if @account_name ?>
         #{account.member.name_display}
@@ -47,11 +53,6 @@
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q" tabindex="99"/>
       </form>
-    </div>
-  <?r else ?>
-    <div id="logged-out-menu">
-      <a href="/signup"><img src="/images/icon-signup.png" alt="Sign up"/>Sign up</a>
-      <a href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>
     </div>
   <?r end ?>
 </div></div>
