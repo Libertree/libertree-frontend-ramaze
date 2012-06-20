@@ -129,6 +129,13 @@ textarea, input[type="text"], input[type="password"] {
             margin-left: 10px;
             border-bottom: 0px;
         }
+        a.home {
+            float: left;
+            margin-left: 0px;
+            span {
+                float: left;
+            }
+        }
 
         .avatar {
             float: none;
