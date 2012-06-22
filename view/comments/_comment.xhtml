@@ -12,7 +12,7 @@
     <?r if @comment.member == account.member ?>
       <a class="delete"><img src="/images/icon-delete.png" class="size-16" alt="delete" title="delete"/></a>
     <?r end ?>
-    <a class="link" href="/posts/show/#{@post.id}#comment-#{@comment.id}"><img src="/images/icon-link.png" class="size-16" alt="link for this comment" title="link for this comment"/></a>
+    <a class="link" href="/posts/show/#{@post.id}#comment-#{@comment.id}"><img src="/images/icon-link.png" class="size-16" alt="shareable link for this comment" title="shareable link for this comment"/></a>
   </div>
   #{member_avatar_link(@comment.member)}
   <div class="member-name">#{member_name_link(@comment.member)}</div>
