@@ -79,7 +79,7 @@ module Libertree
           end
         end
       end
-    rescue Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
+    rescue SocketError, Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
       # Use URL as is.  Arbo can delete url_expansions record to force retry.
     end
 
