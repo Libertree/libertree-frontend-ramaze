@@ -67,8 +67,7 @@ module Libertree
             break
           end
 
-          req = Net::HTTP::Get.new(url.path)
-          res = Net::HTTP.start(host, port) { |http|  http.request(req) }
+          res = Net::HTTP.get_response(url)
 
           if res.header['location']
             url = URI.parse(res.header['location'])
