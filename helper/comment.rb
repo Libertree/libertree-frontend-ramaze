@@ -9,7 +9,7 @@ module Ramaze
         commenters = comments[0...i].map(&:member) - [comment.member]
         commenters.each do |commenter|
           name = commenter.name_display
-          template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="Click to see previous comment by #{CGI.escape_html(name)}">@%s</a>|
+          template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="Click to see previous comment by #{::CGI.escape_html(name)}">@%s</a>|
 
           # Mapping between possible name shortenings and the replacement strings (hyperlinks)
           [
