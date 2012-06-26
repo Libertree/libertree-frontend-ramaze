@@ -63,8 +63,13 @@ a.member-name, a.member-name:visited {
     color: #261818;
 }
 
-textarea, input[type="text"], input[type="password"] {
+textarea,
+input[type="text"],
+input[type="password"],
+.chzn-container-multi .chzn-choices,
+.chzn-container-active .chzn-choices {
     background-color: $faint_tan;
+    background-image: none;
     border: 1px solid $iced_coffee;
     color: $cocoa_bean;
 }
