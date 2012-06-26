@@ -6,7 +6,7 @@
     <?r else ?>
       #{@comment.post.member.name_display}'s
     <?r end ?>
-    <a href="/posts/show/#{@comment.post.id}#comment-#{@comment.id}" title="#{@comment.post.glimpse}">post</a>.
+    <a href="/posts/show/#{@comment.post.id}#comment-#{@comment.id}" title="#{CGI.escape_html(@comment.post.glimpse)}">post</a>.
     <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>
 <?r end ?>
