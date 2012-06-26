@@ -1,3 +1,5 @@
+@import "colours.scss";
+
 select#recipients {
     width: 400px;
 }
@@ -8,4 +10,17 @@ select#recipients {
 
 .search-choice-close {
     border-bottom: 0px;
+}
+
+.message {
+    border-bottom: 1px dotted $main_green;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    .text {
+        margin-top: 1em;
+    }
+}
+
+form#new-message {
+    display: none;
 }
