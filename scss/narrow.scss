@@ -84,5 +84,12 @@ input#search {
                 float: none;
             }
         }
+        div.excerpt {
+            .show-more, .show-less {
+                a {
+                    padding: 0px 50px;
+                }
+            }
+        }
     }
 }
