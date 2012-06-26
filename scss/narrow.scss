@@ -72,6 +72,10 @@ input#search {
 }
 
 .excerpts-view {
+    .back-to-top {
+        float: right;
+    }
+
     .post-excerpt {
         div.meta {
             float: none;
