@@ -71,11 +71,14 @@ input#search {
     width: 35px;
 }
 
-.post-excerpt {
-    div.meta {
-        margin-bottom: 1em;
-        .post-tools {
+.excerpts-view {
+    .post-excerpt {
+        div.meta {
             float: none;
+            margin-bottom: 1em;
+            .post-tools {
+                float: none;
+            }
         }
     }
 }
