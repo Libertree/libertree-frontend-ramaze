@@ -3,20 +3,18 @@
 
 #{ render_file 'layout/_head.xhtml', stylesheet_extra: %|<link href="/css/narrow.css?t=#{File.mtime('public/css/narrow.css').to_i}" media="screen" rel="stylesheet" type="text/css" />| }
 
-<body class="body #{ @view }">
+<body id="scrollable" class="body #{ @view }">
   #{ render_file 'layout/_menu.xhtml', title: false, account_name: false }
-  <div id="scrollable">
-    <div class="main">
-      <?r if flash[:error] ?>
-        <div class="flash error">#{flash[:error]}</div>
-      <?r end ?>
+  <div class="main">
+    <?r if flash[:error] ?>
+      <div class="flash error">#{flash[:error]}</div>
+    <?r end ?>
 
-      <?r if flash[:notice] ?>
-        <div class="flash notice">#{flash[:notice]}</div>
-      <?r end ?>
+    <?r if flash[:notice] ?>
+      <div class="flash notice">#{flash[:notice]}</div>
+    <?r end ?>
 
-      #{@content}
-    </div>
+    #{@content}
   </div>
 </body>
 
