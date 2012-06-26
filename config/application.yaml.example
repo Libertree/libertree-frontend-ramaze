@@ -13,3 +13,7 @@ memcache: false
 # The number of seconds callers must wait between API calls
 # (or the request is rejected)
 api_min_time_between: 5
+
+# Some text to insert into the HTML title of every page.
+# This could be the tree's name, for example.
+# title_insert: "A New Tree"
