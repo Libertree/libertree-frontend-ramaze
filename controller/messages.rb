@@ -43,7 +43,7 @@ module Controller
 
       session[:saved_text]["textarea-message-new"] = nil
 
-      redirect_referrer
+      redirect r(:show, message.id)
     end
 
     def show(message_id)
