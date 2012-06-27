@@ -117,7 +117,17 @@ div.river .query {
 }
 
 .message {
-    .sender, .recipients {
-        font-size: $font_normal;
-    }
+    font-size: $font_normal;
+}
+
+.chzn-container {
+    font-size: $font_normal;
+}
+
+.chzn-container-multi .chzn-choices .search-choice {
+    line-height: $font_normal;
+}
+
+.chzn-container-multi .chzn-choices .search-choice .search-choice-close {
+    top: $chosen_deleter_top;
 }
