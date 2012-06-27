@@ -26,8 +26,6 @@
       </div>
       <div class="timestamp">#{ago(m.time_created)}</div>
     </div>
-    <div class="text typed-text">
-      #{Libertree.render(m.text)}
-    </div>
+    <a class="text" href="/messages/show/#{m.id}">#{::CGI.escape_html(m.glimpse)}</a>
   </div>
 <?r end ?>
