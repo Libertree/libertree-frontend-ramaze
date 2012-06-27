@@ -56,6 +56,7 @@ module Controller
       @message = Libertree::Model::Message[message_id.to_i]
       redirect_referrer  if @message.nil?
       redirect_referrer  if ! @message.visible_to?(account)
+      Libertree::Model::Notification.mark_seen_for_account_and_message(account, @message)
     end
 
     def _new
