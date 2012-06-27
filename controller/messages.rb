@@ -60,7 +60,7 @@ module Controller
     end
 
     def _new
-      @contacts = Libertree::Model::Member.all.sort_by(&:name_display)
+      @contacts = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
     end
   end
 end
