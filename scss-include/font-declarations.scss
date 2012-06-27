@@ -115,3 +115,9 @@ div.river .query {
         }
     }
 }
+
+.message {
+    .sender, .recipients {
+        font-size: $font_normal;
+    }
+}
