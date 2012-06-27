@@ -31,15 +31,21 @@ module Controller
         recipient_member_ids: request['recipients']
       )
 
-      # Libertree::Model::Job.create(
-        # {
-          # task: 'request:MESSAGE',
-          # params: {
-            # 'message_id' => message.id,
-            # 'server_id'  => xx,
-          # }.to_json,
-        # }
-      # )
+      message.recipients.group_by { |r|
+        r.tree
+      }.each do |tree, recipients|
+        next  if tree.nil?
+        Libertree::Model::Job.create(
+          {
+            task: 'request:MESSAGE',
+            params: {
+              'message_id'          => message.id,
+              'server_id'           => tree.id,
+              'recipient_usernames' => recipients.map(&:username)
+            }.to_json,
+          }
+        )
+      end
 
       session[:saved_text]["textarea-message-new"] = nil
 
