@@ -13,7 +13,9 @@
       <div class="timestamp">#{ago(@message.time_created)}</div>
       <div class="message-tools">
         <a class="reply" href="#">reply</a>
-        <a class="reply-to-all" href="#">reply to all</a>
+        <?r if @message.recipients.count > 1 ?>
+          <a class="reply-to-all" href="#">reply to all</a>
+        <?r end ?>
       </div>
     </div>
     <div class="text typed-text">
