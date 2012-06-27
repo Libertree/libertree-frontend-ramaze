@@ -2,16 +2,25 @@
 
   <div class="message">
     <div class="meta">
-      <div class="sender">From: #{member_avatar_link(@message.sender)} #{member_name_link(@message.sender)}</div>
+      <div class="sender" data-member-id="#{@message.sender.id}">From: #{member_avatar_link(@message.sender)} #{member_name_link(@message.sender)}</div>
       <div class="recipients">
         To:
-        #{ @message.recipients.map { |r| member_name_link(r) }.join(', ') }
+        <?r @message.recipients.each_with_index do |r,i| ?>
+          #{ i == 0 ? '' : ','}
+          <span class="recipient" data-member-id="#{r.id}">#{member_name_link(r)}</span>
+        <?r end ?>
       </div>
       <div class="timestamp">#{ago(@message.time_created)}</div>
+      <div class="message-tools">
+        <a class="reply" href="#">reply</a>
+        <a class="reply-to-all" href="#">reply to all</a>
+      </div>
     </div>
     <div class="text typed-text">
       #{Libertree.render(@message.text)}
     </div>
   </div>
+
+  #{ render_partial '_new' }
 
 <?r end ?>

@@ -2,17 +2,7 @@
 
 <h3><a id="toggle-new-message" href="#">New Message</a></h3>
 
-<form id="new-message" action="/messages/create" method="POST">
-  <select id="recipients" name="recipients[]" multiple="" class="enhanced" data-placeholder="Recipients">
-    <?r @contacts.each do |c| ?>
-      <option value="#{c.id}">#{c.name_display} (#{c.handle})</option>
-    <?r end ?>
-  </select>
-  #{ Controller::Main.render_partial '_markdown_injector' }
-  <textarea name="text" rows="5" id="textarea-message-new" tabindex="1">#{session[:saved_text]['textarea-message-new']}</textarea><br/>
-  <input class="preview" type="button" value="Preview" tabindex="3" data-type="post"/>
-  <input type="submit" value="Send" tabindex="2"/>
-</form>
+#{ render_partial '_new' }
 
 <h3>Messages</h3>
 

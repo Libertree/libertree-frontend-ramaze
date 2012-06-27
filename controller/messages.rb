@@ -18,7 +18,7 @@ module Controller
 
     def index
       @messages = account.messages
-      @contacts = Libertree::Model::Member.all.sort_by(&:name_display)
+      @view = 'messages-index'
     end
 
     def create
@@ -50,6 +50,10 @@ module Controller
       @message = Libertree::Model::Message[message_id.to_i]
       redirect_referrer  if @message.nil?
       redirect_referrer  if ! @message.visible_to?(account)
+    end
+
+    def _new
+      @contacts = Libertree::Model::Member.all.sort_by(&:name_display)
     end
   end
 end
