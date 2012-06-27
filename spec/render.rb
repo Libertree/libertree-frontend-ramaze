@@ -25,6 +25,9 @@ describe Libertree do
 
       url = "www.gnu.org"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
+
+      # should also work in lists
+      subject.render("- #{url}").should =~ %r{<a href="#{url}">#{url}</a>}
     end
 
     it 'should not mangle underscores in URLs' do

@@ -1,5 +1,5 @@
 function updateNumNotificationsUnseen(n) {
-  var title = $('head title').text();
+  var title = document.title;
   if( n == 0 ) {
     $('#num-notifications-unseen').hide();
     $('#menu-notifications').addClass('none');
@@ -12,7 +12,7 @@ function updateNumNotificationsUnseen(n) {
       title = '('+n+') ' + title;
     }
   }
-  $('head title').text(title);
+  document.title = title;
   $('#num-notifications-unseen').html(n);
 }
 

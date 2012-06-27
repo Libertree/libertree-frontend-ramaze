@@ -26,6 +26,9 @@ body.body {
     #menu-account {
         margin-left: 60px;
     }
+    form.search {
+        margin-left: 5px;
+    }
 }
 
 textarea {
@@ -71,11 +74,25 @@ input#search {
     width: 35px;
 }
 
-.post-excerpt {
-    div.meta {
-        margin-bottom: 1em;
-        .post-tools {
+.excerpts-view {
+    .back-to-top {
+        float: right;
+    }
+
+    .post-excerpt {
+        div.meta {
             float: none;
+            margin-bottom: 1em;
+            .post-tools {
+                float: none;
+            }
+        }
+        div.excerpt {
+            .show-more, .show-less {
+                a {
+                    padding: 0px 50px;
+                }
+            }
         }
     }
 }

@@ -113,10 +113,6 @@ $(document).ready( function() {
     $(this).closest('.input-and-filler').find('input').focus();
   } );
 
-  $('.hashtag').live( 'click', function() {
-    window.location = '/rivers/ensure_exists/%23' + $(this).data('hashtag');
-  } );
-
   $('.textarea-clear').live( 'click', function() {
     var id = $(this).data('textarea-id');
     $('#'+id).val('');

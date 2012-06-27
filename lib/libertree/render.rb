@@ -21,7 +21,7 @@ module Libertree
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
     s.force_encoding('utf-8').gsub(/(?<=^|\s)#([\p{Word}\p{Pd}]+)(?=\s|\b|$)/i) {
-      %|<a class="hashtag" data-hashtag="#{$1.downcase}">##{$1}</a>|
+      %|<a href="/rivers/ensure_exists/%23#{$1.downcase}" class="hashtag">##{$1}</a>|
     }
   end
 
@@ -31,7 +31,7 @@ module Libertree
     # Crude autolinker.
     # We cannot do this with redcarpet, as enabling :autolink breaks the normal_text callback
     # This has to be done after processing with markdown, as the markdown renderer filters all HTML.
-    s.gsub!(%r{(?<=^|\s|^<p>)(https?://[^\b\s$<]+|www\.[^\b\s$<]+)}, "<a href='\\1'>\\1</a>")
+    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(https?://[^\b\s$<]+|www\.[^\b\s$<]+)}, "<a href='\\1'>\\1</a>")
 
     html = Nokogiri::HTML::fragment(s)
     html.css('a').each do |a|
@@ -67,8 +67,7 @@ module Libertree
             break
           end
 
-          req = Net::HTTP::Get.new(url.path)
-          res = Net::HTTP.start(host, port) { |http|  http.request(req) }
+          res = Net::HTTP.get_response(url)
 
           if res.header['location']
             url = URI.parse(res.header['location'])
@@ -79,7 +78,7 @@ module Libertree
           end
         end
       end
-    rescue Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
+    rescue SocketError, Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError
       # Use URL as is.  Arbo can delete url_expansions record to force retry.
     end
 

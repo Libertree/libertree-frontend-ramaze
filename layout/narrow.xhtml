@@ -3,7 +3,7 @@
 
 #{ render_file 'layout/_head.xhtml', stylesheet_extra: %|<link href="/css/narrow.css?t=#{File.mtime('public/css/narrow.css').to_i}" media="screen" rel="stylesheet" type="text/css" />| }
 
-<body class="body #{ @view }">
+<body id="scrollable" class="body #{ @view }">
   #{ render_file 'layout/_menu.xhtml', title: false, account_name: false }
   <div class="main">
     <?r if flash[:error] ?>
