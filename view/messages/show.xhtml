@@ -1,0 +1,17 @@
+<?r if @message ?>
+
+  <div class="message">
+    <div class="meta">
+      <div class="sender">From: #{member_avatar_link(@message.sender)} #{member_name_link(@message.sender)}</div>
+      <div class="recipients">
+        To:
+        #{ @message.recipients.map { |r| member_name_link(r) }.join(', ') }
+      </div>
+      <div class="timestamp">#{ago(@message.time_created)}</div>
+    </div>
+    <div class="text typed-text">
+      #{Libertree.render(@message.text)}
+    </div>
+  </div>
+
+<?r end ?>
