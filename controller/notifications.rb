@@ -44,6 +44,8 @@ module Controller
           target = n.subject.post
         when Libertree::Model::CommentLike
           target = n.subject.comment
+        when Libertree::Model::Message
+          target = n.subject
         end
 
         key = [target, n.subject.class]

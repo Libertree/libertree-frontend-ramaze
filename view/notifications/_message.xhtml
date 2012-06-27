@@ -1,0 +1,5 @@
+<div class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
+  #{ member_img(@message.sender) } #{ @actors[0].name_display } sent you a
+  <a href="/messages/show/#{@message.id}" title="#{::CGI.escape_html(@message.glimpse)}">message</a>.
+  <div class="age">#{ago(@notifications[0].time_created)}</div>
+</div>
