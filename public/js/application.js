@@ -77,7 +77,7 @@ $(document).ready( function() {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
 
-    var target = $(this).closest('form.comment, #post-new form, form#post-edit');
+    var target = $(this).closest('form.comment, #post-new form, form#post-edit, form#new-message');
     var type = $(this).data('type');
     var textType = null;
     if( type == 'post' ) { textType = 'post-text'; }
