@@ -24,4 +24,16 @@ select#recipients {
 
 form#new-message {
     display: none;
+
+    .message-note-toggler {
+        margin-left: 2em;
+        position: relative;
+        top: 4px;
+    }
+    p.message-note {
+        display: none;
+        border: 2px solid $light_tan;
+        padding: 1em;
+        margin-top: 0.5em;
+    }
 }

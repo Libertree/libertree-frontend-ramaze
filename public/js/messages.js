@@ -22,5 +22,9 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('.message-note-toggler').click( function() {
+    $('.message-note').slideToggle();
+  } );
+
   $('select.enhanced').chosen();
 } );
