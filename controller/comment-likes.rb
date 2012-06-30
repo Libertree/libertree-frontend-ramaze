@@ -17,14 +17,6 @@ module Controller
           'comment_id' => comment.id,
         )
 
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:COMMENT-LIKE',
-            params: { 'comment_like_id' => like.id, }
-          },
-          *like.forests
-        )
-
         return {
           'comment_like_id' => like.id,
           'num_likes'       => "#{comment.likes.count} like#{plural_s(comment.likes.count)}",
@@ -38,13 +30,6 @@ module Controller
     def destroy(comment_like_id)
       like = Libertree::Model::CommentLike[ comment_like_id.to_i ]
       if like && like.member == account.member
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:COMMENT-LIKE-DELETE',
-            params: { 'comment_like_id' => like.id, }
-          },
-          *like.forests
-        )
         like.delete_cascade
       end
 
