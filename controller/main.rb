@@ -12,6 +12,10 @@ module Controller
       end
       force_mobile_to_narrow
 
+      if account_login( request.subset('password_reset_code') )
+        redirect Accounts.r(:password_reset)
+      end
+
       @logging_in = true
       if request.post?
         a = account_login( request.subset('username', 'password') )
@@ -129,6 +133,36 @@ module Controller
       if session[:saved_text]
         session[:saved_text][id] = nil
       end
+    end
+
+    def request_password_reset
+      Ramaze::Log.debug request.inspect
+      return  if ! request.post?
+
+      a = Libertree::Model::Account.set_up_password_reset_for( request['email'] )
+      if a
+        # TODO: Make a generic method for queuing email
+        Libertree::Model::Job.create(
+          task: 'email',
+          params: {
+            'to'      => request['email'],
+            'subject' => '[Libertree] Password reset',
+            'body'    => %{
+Someone (IP address: #{request.ip}) has requested that a password reset link
+be sent to this email address.  If you wish to change your Libertree password
+now, visit:
+
+http://#{request.host_with_port}/login?password_reset_code=#{a.password_reset_code}
+
+This link is only valid for 1 hour.
+            }
+          }.to_json
+        )
+      end
+
+      flash[:notice] = "A password reset link has been sent for the account with that email address."
+
+      redirect_referrer
     end
   end
 end

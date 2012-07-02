@@ -60,5 +60,17 @@ module Controller
         account.watch_post post
       end
     end
+
+    def password_reset
+      return  if ! request.post?
+
+      if request['password'] != request['password_again']
+        flash[:error] = "Passwords did not match.  Please reenter."
+      else
+        account.password = request['password']
+        flash[:notice] = "Password reset."
+        redirect r(:edit)
+      end
+    end
   end
 end
