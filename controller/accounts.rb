@@ -68,6 +68,8 @@ module Controller
         flash[:error] = "Passwords did not match.  Please reenter."
       else
         account.password = request['password']
+        account.password_reset_code = nil
+        account.password_reset_expiry = nil
         flash[:notice] = "Password reset."
         redirect r(:edit)
       end
