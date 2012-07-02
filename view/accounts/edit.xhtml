@@ -8,7 +8,7 @@
 
 <form action="update" method="POST">
   Email: <input type="text" name="email" size="30" value="#{account.email}"/> (for password recovery; never public)<br/>
-  Post excerpt maximum height: <input type="text" name="excerpt_max_height" value="#{account.excerpt_max_height}"/><br/>
+  Post excerpt maximum height: <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>pixels<br/>
   Custom menu link: <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
   Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
   Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
