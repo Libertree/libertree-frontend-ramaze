@@ -26,10 +26,17 @@ module Controller
           redirect_referrer
         end
       end
+
       if request['custom_link'] && ! request['custom_link'].empty?
         account.custom_link = request['custom_link']
       else
         account.custom_link = nil
+      end
+
+      if request['email'].nil? || request['email'].strip.empty?
+        account.email = nil
+      else
+        account.email = request['email']
       end
       account.custom_css = request['custom_css']
       account.custom_js = request['custom_js']
