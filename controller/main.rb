@@ -13,7 +13,7 @@ module Controller
       force_mobile_to_narrow
 
       if account_login( request.subset('password_reset_code') )
-        redirect Accounts.r(:password_reset)
+        redirect Accounts.r(:change_password)
       end
 
       @logging_in = true

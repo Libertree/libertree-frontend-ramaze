@@ -61,7 +61,7 @@ module Controller
       end
     end
 
-    def password_reset
+    def change_password
       return  if ! request.post?
 
       if request['password'] != request['password_again']
