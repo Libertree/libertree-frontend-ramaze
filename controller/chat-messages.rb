@@ -41,7 +41,7 @@ module Controller
         to_member_id: request['to_member_id'].to_i,
         text: request['text']
       )
-      ""
+      { 'success' => true }.to_json
     end
 
     def seen(*chat_message_ids)

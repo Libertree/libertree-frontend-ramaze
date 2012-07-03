@@ -58,4 +58,33 @@ $(document).ready( function() {
     $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
   } );
+
+  $('#chat-window .textarea-chat').live( 'keydown', function(event) {
+    if( event.keyCode != 13 ) {
+      return;
+    }
+
+    var textarea = $(this);
+
+    textarea.attr('disabled', 'disabled');
+    clearInterval(timerSaveTextAreas);
+    var memberId = $(this).closest('.log').data('member-id');
+
+    $.post(
+      '/chat/create',
+      {
+        to_member_id: memberId,
+        text: textarea.val()
+      },
+      function(response) {
+        var h = $.parseJSON(response);
+        if( h.success ) {
+          textarea.val('');
+        } else {
+          alert('Failed to send chat message.');
+        }
+        textarea.removeAttr('disabled');
+      }
+    );
+  } );
 } );
