@@ -1,13 +1,18 @@
 function fetchChatMessage(chatMessage) {
-  var log = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"]');
+  var messages = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"] .messages');
   $.get(
     '/chat/_message/' + chatMessage.id,
     function(html) {
       var o = $(html);
-      o.appendTo( log.find('.messages') );
+      o.appendTo(messages);
       var height = o.height();
       var animationDuration = height*5;
       o.hide().slideDown(animationDuration);
+
+      messages.animate(
+        { scrollTop: messages.scrollTop() + height + 30 },
+        animationDuration
+      );
     }
   );
 }
@@ -33,6 +38,7 @@ $(document).ready( function() {
           checkForSessionDeath(html);
           removeSpinner('#chat-window');
           $('select#chat-new-partner').chosen();
+          $('#chat-window .log .messages').scrollTop(999999);
         }
       ).
       toggle()

@@ -44,20 +44,26 @@
 
     .logs {
         clear: both;
-        .message {
-            margin: 0px 0px 5px 0px;
-            padding: 0.5em;
-            .sender {
-                float: left;
-                font-weight: bold;
-            }
-            .age {
-                float: right;
-            }
-            .text {
-                clear: both;
+
+        .messages {
+            overflow: auto;
+            max-height: 600px;
+            .message {
+                margin: 0px 0px 5px 0px;
+                padding: 0.5em;
+                .sender {
+                    float: left;
+                    font-weight: bold;
+                }
+                .age {
+                    float: right;
+                }
+                .text {
+                    clear: both;
+                }
             }
         }
+
         form {
             margin-left: 0.5em;
             textarea {

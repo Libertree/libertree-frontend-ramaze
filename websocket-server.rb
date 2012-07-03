@@ -119,8 +119,9 @@ EventMachine.run do
         end
 
         chat_messages = Libertree::Model::ChatMessage.s(
-          "SELECT * FROM chat_messages WHERE id > ? AND to_member_id = ? ORDER BY id",
+          "SELECT * FROM chat_messages WHERE id > ? AND ( to_member_id = ? OR from_member_id = ? ) ORDER BY id",
           socket_data[:last_chat_message_id],
+          account.member.id,
           account.member.id
         )
         chat_messages.each do |cm|
