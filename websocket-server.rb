@@ -21,7 +21,8 @@ def onmessage(ws, data)
   $sessions[sid][:sockets][ws] ||= {
     last_post_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts"),
     last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
-    last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments")
+    last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments"),
+    last_chat_message_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM chat_messages WHERE to_member_id = ?", session_account.account.member.id),
   }
 end
 
@@ -115,6 +116,22 @@ EventMachine.run do
             }.to_json
           )
           account.watched_post_last_comment_id = c.id
+        end
+
+        chat_messages = Libertree::Model::ChatMessage.s(
+          "SELECT * FROM chat_messages WHERE id > ? AND to_member_id = ? ORDER BY id",
+          socket_data[:last_chat_message_id],
+          account.member.id
+        )
+        chat_messages.each do |cm|
+          ws.send(
+            {
+              'command'         => 'chat-message',
+              'id'              => cm.id,
+              'partnerMemberId' => cm.partner_for(account).id,
+            }.to_json
+          )
+          socket_data[:last_chat_message_id] = cm.id
         end
       end
     end

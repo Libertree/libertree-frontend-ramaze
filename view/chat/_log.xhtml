@@ -1,10 +1,7 @@
-<div class="log">
+<div class="log" data-member-id="#{@partner.id}">
   <div class="messages">
     <?r @chat_messages.each do |cm| ?>
-      <div class="message">
-        <span class="age">#{ago(cm.time_created)}</span>
-        #{cm.text}
-      </div>
+      #{ render_partial "_message/#{cm.id}" }
     <?r end ?>
   </div>
 

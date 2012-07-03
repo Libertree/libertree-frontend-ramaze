@@ -26,6 +26,13 @@ module Controller
       @chat_messages = Libertree::Model::ChatMessage.between(account, @partner)
     end
 
+    def _message(chat_message_id)
+      @message = Libertree::Model::ChatMessage[ chat_message_id.to_i ]
+      if @message.from_member_id != account.member.id && @message.to_member_id != account.member.id
+        @message = nil
+      end
+    end
+
     def create
       return  if ! request.post?
       Libertree::Model::ChatMessage.create(

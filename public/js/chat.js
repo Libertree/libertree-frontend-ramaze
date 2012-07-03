@@ -1,5 +1,15 @@
-function receiveChatMessage(cm) {
-  alert(cm.text);
+function fetchChatMessage(chatMessage) {
+  var log = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"]');
+  $.get(
+    '/chat/_message/' + chatMessage.id,
+    function(html) {
+      var o = $(html);
+      o.appendTo( log.find('.messages') );
+      var height = o.height();
+      var animationDuration = height*5;
+      o.hide().slideDown(animationDuration);
+    }
+  );
 }
 
 function switchToOrCreateChatConversationWith(member_id) {
