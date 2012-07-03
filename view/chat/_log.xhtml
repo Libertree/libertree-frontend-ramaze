@@ -1,4 +1,4 @@
-<div class="log" data-member-id="#{@partner.id}">
+<div class="log #{@active ? 'active' : ''}" data-member-id="#{@partner.id}">
   <div class="messages">
     <?r @chat_messages.each do |cm| ?>
       #{ render_partial "_message/#{cm.id}" }

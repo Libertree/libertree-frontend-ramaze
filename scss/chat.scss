@@ -33,41 +33,56 @@
         .tab {
             background-color: $faint_green;
             float: left;
-            border-top: 2px solid $main_green;
-            border-right: 2px solid $main_green;
-            border-left: 2px solid $main_green;
+            border-top: 1px solid $main_green;
+            border-right: 1px solid $main_green;
+            border-left: 1px solid $main_green;
             margin-top: 5px;
             margin-left: 3px;
             padding: 2px;
+            opacity: 0.7;
+            cursor: pointer;
+
+            &.active {
+                font-weight: bold;
+                border-top: 2px solid $main_green;
+                border-right: 2px solid $main_green;
+                border-left: 2px solid $main_green;
+                opacity: 1.0;
+            }
         }
     }
 
     .logs {
         clear: both;
 
-        .messages {
-            overflow: auto;
-            max-height: 500px;
-            .message {
-                margin: 0px 0px 5px 0px;
-                padding: 0.5em;
-                .sender {
-                    float: left;
-                    font-weight: bold;
-                }
-                .age {
-                    float: right;
-                }
-                .text {
-                    clear: both;
+        .log {
+            display: none;
+            &.active { display: block; }
+
+            .messages {
+                overflow: auto;
+                max-height: 500px;
+                .message {
+                    margin: 0px 0px 5px 0px;
+                    padding: 0.5em;
+                    .sender {
+                        float: left;
+                        font-weight: bold;
+                    }
+                    .age {
+                        float: right;
+                    }
+                    .text {
+                        clear: both;
+                    }
                 }
             }
-        }
 
-        form {
-            margin-left: 0.5em;
-            textarea {
-                width: 90%;
+            form {
+                margin-left: 0.5em;
+                textarea {
+                    width: 90%;
+                }
             }
         }
     }

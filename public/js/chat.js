@@ -51,4 +51,11 @@ $(document).ready( function() {
     $('select#chat-new-partner').find('option[value="0"]').remove();
     $('select#chat-new-partner').trigger("liszt:updated");
   } );
+
+  $('#chat-window .tab').live( 'click', function() {
+    var memberId = $(this).data('member-id');
+    $('#chat-window .tab, #chat-window .log').removeClass('active');
+    $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
+    $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+  } );
 } );

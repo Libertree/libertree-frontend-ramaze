@@ -14,6 +14,7 @@ module Controller
       @n = account.num_chat_unseen
       @chat_messages = account.chat_messages_unseen
       @partners = @chat_messages.map(&:sender).uniq
+      @partner_active = @partners[0]
     end
 
     def _tab(member_id)
