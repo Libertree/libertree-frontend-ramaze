@@ -77,7 +77,7 @@ module Controller
         account.password = request['password']
         account.password_reset_code = nil
         account.password_reset_expiry = nil
-        flash[:notice] = "Password reset."
+        flash[:notice] = "Password changed."
         redirect r(:edit)
       end
     end
