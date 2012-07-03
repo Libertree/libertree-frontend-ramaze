@@ -1,0 +1,29 @@
+<div class="header">
+  <span class="title">Chat</span>
+  <span class="n hidden">#{@n}</span>
+</div>
+
+<div id="online-contacts">
+<!-- TODO -->
+</div>
+
+<div id="chat-new-partner-wrapper">
+<select id="chat-new-partner" name="partner" data-placeholder="Start new chat with...">
+  <option value="0">Start new chat with...</option>
+  <?r @contacts.each do |c| ?>
+    <option value="#{c.id}">#{c.name_display} (#{c.handle})</option>
+  <?r end ?>
+</select>
+</div>
+
+<div class="tabs">
+  <?r @partners.each do |partner| ?>
+    #{ render_partial "_tab/#{partner.id}" }
+  <?r end ?>
+</div>
+
+<div class="logs">
+  <?r @partners.each do |partner| ?>
+    #{ render_partial "_log/#{partner.id}" }
+  <?r end ?>
+</div>

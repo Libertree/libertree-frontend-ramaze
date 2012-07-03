@@ -2,11 +2,11 @@ function updateNumNotificationsUnseen(n) {
   var title = document.title;
   if( n == 0 ) {
     $('#num-notifications-unseen').hide();
-    $('#menu-notifications').addClass('none');
+    $('#menu-notifications').addClass('none'); /* this may no longer be used, and could be removed */
     title = title.replace( /^\([0-9]+\) /, '' );
   } else {
     $('#num-notifications-unseen').show();
-    $('#menu-notifications').removeClass('none');
+    $('#menu-notifications').removeClass('none'); /* this may no longer be used, and could be removed */
     title = title.replace( /^\([0-9]+\)/, '('+n+')' );
     if( ! title.match(/^\([0-9]+\)/) ) {
       title = '('+n+') ' + title;

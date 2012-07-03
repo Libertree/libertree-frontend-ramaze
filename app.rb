@@ -32,6 +32,7 @@ require_relative 'lib/libertree/markdown'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
+require_relative 'controller/chat-messages'
 require_relative 'controller/comment-likes'
 require_relative 'controller/comments'
 require_relative 'controller/home'

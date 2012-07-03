@@ -1,0 +1,15 @@
+<div class="log">
+  <div class="messages">
+    <?r @chat_messages.each do |cm| ?>
+      <div class="message">
+        <span class="age">#{ago(cm.time_created)}</span>
+        #{cm.text}
+      </div>
+    <?r end ?>
+  </div>
+
+  <form>
+    <textarea name="text" rows="3" class="textarea-chat" tabindex="1"></textarea><br/>
+    <input type="submit" value="Send" tabindex="2"/>
+  </form>
+</div>

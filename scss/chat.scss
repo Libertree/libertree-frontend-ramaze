@@ -1,0 +1,61 @@
+@import "colours.scss";
+
+/* TODO: move colours into colours.scss (or whatever it is) */
+/* TODO: move font specifications into font-declarations.scss */
+
+#chat-window {
+    top: 41px;
+    left: 50%;
+    margin-left: -100px;
+    padding: 0px 0px 5px 0px;
+    width: 400px;
+
+    .header {
+        .title {
+            font-weight: bold;
+        }
+        padding: 0.3em;
+    }
+
+
+    #chat-new-partner-wrapper {
+        padding: 8px 0px;
+        background-color: $light_green;
+        select#chat-new-partner {
+            width: 380px;
+        }
+    }
+
+    .tabs {
+        width: 100%;
+        height: 35px;
+        background-color: $light_green;
+        .tab {
+            background-color: $faint_green;
+            float: left;
+            border-top: 2px solid $main_green;
+            border-right: 2px solid $main_green;
+            border-left: 2px solid $main_green;
+            margin-top: 5px;
+            margin-left: 3px;
+            padding: 2px;
+        }
+    }
+
+    .logs {
+        clear: both;
+        .message {
+            margin: 0px 0px 5px 0px;
+            padding: 0.5em;
+            .age {
+                float: right;
+            }
+        }
+        form {
+            margin-left: 0.5em;
+            textarea {
+                width: 90%;
+            }
+        }
+    }
+}
