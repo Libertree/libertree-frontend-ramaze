@@ -17,6 +17,24 @@ function fetchChatMessage(chatMessage) {
   );
 }
 
+function updateNumChatUnseen(n) {
+  if( n == 0 ) {
+    $('#num-chat-unseen').hide();
+  } else {
+    $('#num-chat-unseen').show();
+  }
+  $('#num-chat-unseen').html(n);
+}
+
+function markChatConversationSeen(memberId) {
+  $.get(
+    '/chat/seen/'+memberId,
+    function(html) {
+      updateNumChatUnseen(html);
+    }
+  );
+}
+
 function switchToOrCreateChatConversationWith(member_id) {
 
 }
@@ -39,6 +57,8 @@ $(document).ready( function() {
           removeSpinner('#chat-window');
           $('select#chat-new-partner').chosen();
           $('#chat-window .log .messages').scrollTop(999999);
+          var o = $(html);
+          markChatConversationSeen( o.find('.log.active').data('member-id') );
         }
       ).
       toggle()
@@ -57,6 +77,7 @@ $(document).ready( function() {
     $('#chat-window .tab, #chat-window .log').removeClass('active');
     $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+    markChatConversationSeen(memberId);
   } );
 
   $('#chat-window .textarea-chat').live( 'keydown', function(event) {

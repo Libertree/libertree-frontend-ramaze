@@ -44,32 +44,8 @@ module Controller
       { 'success' => true }.to_json
     end
 
-    def seen(*chat_message_ids)
-      # TODO
-
-      # if notification_ids[0] == 'all'
-        # Libertree::DB.dbh.u "UPDATE notifications SET seen = TRUE WHERE account_id = ?", account.id
-      # else
-        # notification_ids.each do |notification_id|
-          # n = Libertree::Model::Notification[ notification_id.to_i ]
-          # if n && n.account_id == account.id
-            # n.seen = true
-          # end
-        # end
-      # end
-      account.dirty
-      account.num_chat_unseen
-    end
-
-    def unseen(*chat_message_ids)
-      # TODO
-
-      # notification_ids.each do |notification_id|
-        # n = Libertree::Model::Notification[ notification_id.to_i ]
-        # if n && n.account_id == account.id
-          # n.seen = false
-        # end
-      # end
+    def seen(member_id)
+      Libertree::Model::ChatMessage.mark_seen_between(account, member_id)
       account.dirty
       account.num_chat_unseen
     end
