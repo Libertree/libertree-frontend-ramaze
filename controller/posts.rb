@@ -124,7 +124,7 @@ module Controller
 
     def destroy(post_id)
       post = Libertree::Model::Post[post_id.to_i]
-      if post && post.member == account.member && post.comments.size == 0
+      if post && post.member == account.member
         Libertree::Model::Job.create_for_forests(
           {
             task: 'request:POST-DELETE',

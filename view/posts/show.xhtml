@@ -21,9 +21,7 @@
 
         <?r if @post.member == account.member ?>
           <a href="/posts/edit/#{@post.id}" class="edit">edit</a>
-          <?r if @post.comments.size == 0 ?>
-            <a href="#" class="delete">delete</a>
-          <?r end ?>
+          <a href="#" class="delete">delete</a>
         <?r end ?>
 
         <?r if @post.like_by(account.member) ?>
