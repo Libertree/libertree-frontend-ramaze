@@ -5,7 +5,7 @@ require 'uri'
 module Jobs
   module Frontend
 
-    module FetchAvatar
+    class FetchAvatar
       def self.perform(params)
         member = Libertree::Model::Member[ params['member_id'] ]
 
@@ -38,7 +38,7 @@ module Jobs
           # ignore
         end
       end
-
+    end
   end
 end
 
