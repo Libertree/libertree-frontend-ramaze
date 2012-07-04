@@ -1,0 +1,115 @@
+@import "colours.scss";
+
+/* TODO: move colours into colours.scss (or whatever it is) */
+/* TODO: move font specifications into font-declarations.scss */
+
+#chat-window {
+    top: 41px;
+    left: 50%;
+    margin-left: -100px;
+    padding: 0px 0px 5px 0px;
+    width: 400px;
+
+    .header {
+        .title {
+            font-weight: bold;
+        }
+        padding: 0.3em;
+    }
+
+
+    #chat-new-partner-wrapper {
+        padding: 8px 0px;
+        background-color: $light_green;
+        select#chat-new-partner {
+            width: 380px;
+        }
+    }
+
+    .tabs {
+        width: 100%;
+        height: 35px;
+        background-color: $light_green;
+        overflow: hidden;
+
+        .tab {
+            background-color: $faint_green;
+            float: left;
+            border-top: 1px solid $main_green;
+            border-right: 1px solid $main_green;
+            border-left: 1px solid $main_green;
+            margin-top: 5px;
+            margin-left: 3px;
+            padding: 2px;
+            opacity: 0.7;
+            cursor: pointer;
+
+            &.active {
+                font-weight: bold;
+                border-top: 2px solid $main_green;
+                border-right: 2px solid $main_green;
+                border-left: 2px solid $main_green;
+                opacity: 1.0;
+            }
+
+            .label {
+                max-width: 75px;
+                overflow: hidden;
+                white-space: nowrap;
+                float: left;
+            }
+            a.close {
+                margin-left: 4px;
+            }
+        }
+    }
+
+    .logs {
+        clear: both;
+
+        .log {
+            display: none;
+            &.active { display: block; }
+
+            .messages {
+                overflow: auto;
+                max-height: 500px;
+                .message {
+                    margin: 0px 0px 5px 0px;
+                    padding: 0.5em;
+                    .sender {
+                        float: left;
+                        font-weight: bold;
+                    }
+                    .age {
+                        float: right;
+                    }
+                    .text {
+                        clear: both;
+                    }
+                }
+            }
+
+            form {
+                margin-left: 0.5em;
+                textarea {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
+
+#num-chat-unseen {
+    padding: 1px 2px 2px 2px;
+    top: -14px;
+    left: -5px;
+    position: relative;
+    float: right;
+}
+.num-chat-unseen {
+    padding: 1px 2px 2px 2px;
+    position: relative;
+    margin-left: 2px;
+    float: right;
+}

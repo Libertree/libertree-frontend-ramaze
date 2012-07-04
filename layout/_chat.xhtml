@@ -1,0 +1,12 @@
+<a
+  href="#"
+  class="menu-item"
+  id="menu-chat"
+  title="#{account.num_chat_unseen > 0 ? account.num_chat_unseen.to_s+' chat messages' : ''}"><img
+
+  src="/images/icon-chat.png"
+  alt="Chat"/><span
+
+  id="num-chat-unseen"
+  class="#{account.num_chat_unseen == 0 ? 'hidden' : ''}">#{account.num_chat_unseen}</span></a>
+<div id="chat-window" class="window has-shadow"></div>

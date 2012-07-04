@@ -50,7 +50,7 @@ div.comment {
     }
 }
 
-#num-notifications-unseen {
+#num-notifications-unseen, #num-chat-unseen {
     font-weight: bold;
     font-size: 14px;
 }
@@ -130,4 +130,18 @@ div.river .query {
 
 .chzn-container-multi .chzn-choices .search-choice .search-choice-close {
     top: $chosen_deleter_top;
+}
+
+#chat-window {
+    select {
+        font-size: $font_normal;
+    }
+    .logs {
+        .message {
+            font-size: $font_normal;
+            .age {
+                font-size: $font_extra_small;
+            }
+        }
+    }
 }
