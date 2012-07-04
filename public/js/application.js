@@ -66,7 +66,8 @@ $(document).ready( function() {
   } );
 
   $(document).click( function(event) {
-    if( $(event.target).closest('.window').length == 0 ) {
+    var t = $(event.target);
+    if( t.closest('.window').length == 0 && ! t.hasClass('result-selected') ) {
       hideWindows();
     }
   } );
