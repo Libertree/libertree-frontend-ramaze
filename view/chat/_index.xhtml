@@ -18,12 +18,12 @@
 
 <div class="tabs">
   <?r @partners.each do |partner| ?>
-    #{ render_partial "_tab/#{partner.id}", active: partner == @partner_active }
+    #{ render_partial "_tab/#{partner.id}/#{partner == @partner_active ? 'active' : ''}" }
   <?r end ?>
 </div>
 
 <div class="logs">
   <?r @partners.each do |partner| ?>
-    #{ render_partial "_log/#{partner.id}", active: partner == @partner_active }
+    #{ render_partial "_log/#{partner.id}/#{partner == @partner_active ? 'active' : ''}" }
   <?r end ?>
 </div>

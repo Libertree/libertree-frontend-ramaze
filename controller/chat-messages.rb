@@ -17,14 +17,16 @@ module Controller
       @partner_active = @partners[0]
     end
 
-    def _tab(member_id)
+    def _tab(member_id, active = false)
       @partner = Libertree::Model::Member[member_id.to_i]
       @chat_messages = Libertree::Model::ChatMessage.between(account, @partner)
+      @active = active
     end
 
-    def _log(member_id)
+    def _log(member_id, active = false)
       @partner = Libertree::Model::Member[member_id.to_i]
       @chat_messages = Libertree::Model::ChatMessage.between(account, @partner)
+      @active = active
     end
 
     def _message(chat_message_id)

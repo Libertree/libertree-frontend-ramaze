@@ -35,8 +35,21 @@ function markChatConversationSeen(memberId) {
   );
 }
 
-function switchToOrCreateChatConversationWith(member_id) {
-
+function fetchChatConversationWith(memberId) {
+  $('#chat-window .active').removeClass('active');
+  $.get(
+    '/chat/_tab/'+memberId+'/active',
+    function(html) {
+      $(html).appendTo('#chat-window .tabs');
+    }
+  );
+  $.get(
+    '/chat/_log/'+memberId+'/active',
+    function(html) {
+      $(html).appendTo('#chat-window .logs');
+      $('#chat-window .log .messages').scrollTop(999999);
+    }
+  );
 }
 
 $(document).ready( function() {
@@ -55,7 +68,10 @@ $(document).ready( function() {
         function(html) {
           checkForSessionDeath(html);
           removeSpinner('#chat-window');
-          $('select#chat-new-partner').chosen();
+          $('select#chat-new-partner').chosen().change( function() {
+            fetchChatConversationWith( $('select#chat-new-partner').val() );
+            return false;
+          } );
           $('#chat-window .log .messages').scrollTop(999999);
           var o = $(html);
           markChatConversationSeen( o.find('.log.active').data('member-id') );
