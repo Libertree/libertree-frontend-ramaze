@@ -178,6 +178,7 @@ $(document).ready( function() {
     }
     $('#chat-window .tab[data-member-id="'+memberId+'"]').remove();
     $('#chat-window .log[data-member-id="'+memberId+'"]').remove();
+    $.get('/chat/closed/'+memberId);
     if( $('#chat-window .tab.active').length == 0 && tabToActivate.length ) {
       activateChatConversation( tabToActivate.data('member-id') );
     }

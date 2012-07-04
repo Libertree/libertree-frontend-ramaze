@@ -15,8 +15,11 @@ module Controller
         sort_by { |m| m.name_display.downcase }
       @contacts_online = @contacts  # TODO
       @n = account.num_chat_unseen
-      @chat_messages = account.chat_messages_unseen
-      @partners = @chat_messages.map(&:sender).uniq
+      @partners = account.
+        chat_partners_current.
+        reject { |m|
+          session[:chats_closed].include? m.id
+        }
       @partner_active = @partners[0]
     end
 
@@ -35,6 +38,7 @@ module Controller
       @partner = Libertree::Model::Member[member_id.to_i]
       @chat_messages = Libertree::Model::ChatMessage.between(account, @partner)
       @active = active
+      session[:chats_closed].delete @partner.id
     end
 
     def _message(chat_message_id)
@@ -71,6 +75,10 @@ module Controller
       Libertree::Model::ChatMessage.mark_seen_between(account, member_id)
       account.dirty
       account.num_chat_unseen
+    end
+
+    def closed(member_id)
+      session[:chats_closed] << member_id.to_i
     end
   end
 end
