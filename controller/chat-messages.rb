@@ -18,7 +18,7 @@ module Controller
       @partners = account.
         chat_partners_current.
         reject { |m|
-          session[:chats_closed].include? m.id
+          session[:chats_closed].include?(m.id) # && ! m.has_unseen_from_other
         }
       @partner_active = @partners.find(&:has_unseen_from_other) || @partners[0]
     end
