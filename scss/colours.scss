@@ -74,7 +74,7 @@ input[type="password"],
     color: $cocoa_bean;
 }
 
-#num-notifications-unseen, #num-chat-unseen {
+#num-notifications-unseen, #num-chat-unseen, .num-chat-unseen {
     background-color: $autumn_red;
     color: white;
 }

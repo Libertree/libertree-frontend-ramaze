@@ -26,11 +26,23 @@ function updateNumChatUnseen(n) {
   $('#num-chat-unseen').html(n);
 }
 
+function updateNumChatUnseenForPartner(memberId, n) {
+  var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
+  var indicator = tab.find('.num-chat-unseen');
+  if( n == 0 ) {
+    indicator.hide();
+  } else {
+    indicator.show();
+  }
+  indicator.html(n);
+}
+
 function markChatConversationSeen(memberId) {
   $.get(
     '/chat/seen/'+memberId,
     function(html) {
       updateNumChatUnseen(html);
+      updateNumChatUnseenForPartner(memberId, 0);
     }
   );
 }
@@ -60,6 +72,20 @@ function activateChatConversation(memberId) {
   $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
   $('#chat-window .log.active .textarea-chat').focus();
 }
+
+function receiveChatMessage(data) {
+  fetchChatMessage(data);
+
+  var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
+  if( tab.hasClass('active') ) {
+    markChatConversationSeen(data.partnerMemberId);
+  } else {
+    updateNumChatUnseen(data.numUnseen);
+    updateNumChatUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
+  }
+}
+
+/* ---------------------------------------------------------------------------- */
 
 $(document).ready( function() {
   $('#menu-chat').click( function() {

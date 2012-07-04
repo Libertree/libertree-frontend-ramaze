@@ -34,7 +34,7 @@ $(document).ready( function() {
         /* $('html').append('<!-- heartbeat: '+data.timestamp+' -->'); */
         break;
       case 'chat-message':
-        fetchChatMessage(data);
+        receiveChatMessage(data);
         break;
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );

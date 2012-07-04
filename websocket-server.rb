@@ -125,11 +125,14 @@ EventMachine.run do
           account.member.id
         )
         chat_messages.each do |cm|
+          partner = cm.partner_for(account)
           ws.send(
             {
-              'command'         => 'chat-message',
-              'id'              => cm.id,
-              'partnerMemberId' => cm.partner_for(account).id,
+              'command'             => 'chat-message',
+              'id'                  => cm.id,
+              'partnerMemberId'     => partner.id,
+              'numUnseen'           => account.num_chat_unseen,
+              'numUnseenForPartner' => account.num_chat_unseen_from_partner(partner),
             }.to_json
           )
           socket_data[:last_chat_message_id] = cm.id

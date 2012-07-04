@@ -21,6 +21,11 @@ module Controller
       @partner = Libertree::Model::Member[member_id.to_i]
       @chat_messages = Libertree::Model::ChatMessage.between(account, @partner)
       @active = active
+      if @active
+        @n = 0
+      else
+        @n = account.num_chat_unseen_from_partner(@partner)
+      end
     end
 
     def _log(member_id, active = false)
