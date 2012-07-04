@@ -88,7 +88,7 @@ function receiveChatMessage(data) {
     fetchChatConversationWith(data.partnerMemberId, false);
   }
 
-  if( tab.hasClass('active') ) {
+  if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
     markChatConversationSeen(data.partnerMemberId);
   } else {
     updateNumChatUnseen(data.numUnseen);
