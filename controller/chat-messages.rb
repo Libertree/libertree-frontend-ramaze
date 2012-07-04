@@ -20,7 +20,7 @@ module Controller
         reject { |m|
           session[:chats_closed].include? m.id
         }
-      @partner_active = @partners[0]
+      @partner_active = @partners.find(&:has_unseen_from_other) || @partners[0]
     end
 
     def _tab(member_id, active = false)
