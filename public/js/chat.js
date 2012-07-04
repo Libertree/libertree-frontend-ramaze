@@ -46,8 +46,10 @@ function fetchChatConversationWith(memberId) {
   $.get(
     '/chat/_log/'+memberId+'/active',
     function(html) {
-      $(html).appendTo('#chat-window .logs');
-      $('#chat-window .log .messages').scrollTop(999999);
+      var o = $(html);
+      o.appendTo('#chat-window .logs');
+      o.find('.messages').scrollTop(999999);
+      o.find('.textarea-chat').focus();
     }
   );
 }
@@ -75,6 +77,7 @@ $(document).ready( function() {
           $('#chat-window .log .messages').scrollTop(999999);
           var o = $(html);
           markChatConversationSeen( o.find('.log.active').data('member-id') );
+          $('#chat-window .log.active .textarea-chat').focus();
         }
       ).
       toggle()
@@ -94,6 +97,7 @@ $(document).ready( function() {
     $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
     markChatConversationSeen(memberId);
+    $('#chat-window .log.active .textarea-chat').focus();
   } );
 
   $('#chat-window .textarea-chat').live( 'keydown', function(event) {
