@@ -48,6 +48,11 @@ function markChatConversationSeen(memberId) {
 }
 
 function fetchChatConversationWith(memberId, andActivate) {
+  if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
+    activateChatConversation(memberId);
+    return false;
+  }
+
   $.get(
     '/chat/_tab/'+memberId,
     function(html) {
@@ -62,7 +67,6 @@ function fetchChatConversationWith(memberId, andActivate) {
       o.find('.messages').scrollTop(999999);
       o.find('.textarea-chat').focus();
       if( andActivate ) {
-        $('#chat-window .active').removeClass('active');
         activateChatConversation(memberId);
       }
     }
