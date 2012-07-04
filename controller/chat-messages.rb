@@ -9,7 +9,10 @@ module Controller
     layout nil
 
     def _index
-      @contacts = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
+      @contacts = Libertree::Model::Member.
+        all.
+        reject { |m| m == account.member }.
+        sort_by { |m| m.name_display.downcase }
       @contacts_online = @contacts  # TODO
       @n = account.num_chat_unseen
       @chat_messages = account.chat_messages_unseen
