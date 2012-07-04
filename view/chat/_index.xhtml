@@ -9,7 +9,7 @@
 
 <div id="chat-new-partner-wrapper">
 <select id="chat-new-partner" name="partner" data-placeholder="Start new chat with...">
-  <option value="0">Start new chat with...</option>
+  <option value="0">Start new chat with...</option> <!-- Hack because Chosen isn't using data-placeholder -->
   <?r @contacts.each do |c| ?>
     <option value="#{c.id}">#{c.name_display} (#{c.handle})</option>
   <?r end ?>

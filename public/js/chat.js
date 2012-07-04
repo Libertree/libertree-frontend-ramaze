@@ -119,6 +119,8 @@ $(document).ready( function() {
           $('select#chat-new-partner').chosen().change( function() {
             var memberId = $('select#chat-new-partner').val();
             fetchChatConversationWith(memberId, true);
+            $('select#chat-new-partner').val('0');
+            $('select#chat-new-partner').trigger("liszt:updated");
             return false;
           } );
           $('#chat-window .log .messages').scrollTop(999999);
@@ -130,12 +132,6 @@ $(document).ready( function() {
       toggle()
     ;
     return false;
-  } );
-
-  /* Hack because Chosen isn't working as advertised re: data-placeholder */
-  $('#chat_new_partner_chzn').live( 'click', function() {
-    $('select#chat-new-partner').find('option[value="0"]').remove();
-    $('select#chat-new-partner').trigger("liszt:updated");
   } );
 
   $('#chat-window .tab').live( 'click', function() {
