@@ -74,6 +74,7 @@ function activateChatConversation(memberId) {
   $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
   $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
   $('#chat-window .log.active .textarea-chat').focus();
+  $('#chat-window .log.active .messages').scrollTop(999999);
 }
 
 function receiveChatMessage(data) {
