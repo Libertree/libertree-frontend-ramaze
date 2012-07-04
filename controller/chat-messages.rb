@@ -49,26 +49,36 @@ module Controller
     end
 
     def create
-      return  if ! request.post?
-
-      cm = Libertree::Model::ChatMessage.create(
-        from_member_id: account.member.id,
-        to_member_id: request['to_member_id'].to_i,
-        text: request['text']
-      )
-      if cm.recipient.tree
-        Libertree::Model::Job.create(
-          {
-            task: 'request:CHAT',
-            params: {
-              'chat_message_id' => cm.id,
-              'server_id'       => cm.recipient.tree.id,
-            }.to_json,
-          }
-        )
+      if ! request.post?
+        return { 'success' => false }.to_json
       end
 
-      { 'success' => true }.to_json
+      begin
+        cm = Libertree::Model::ChatMessage.create(
+          from_member_id: account.member.id,
+          to_member_id: request['to_member_id'].to_i,
+          text: request['text']
+        )
+        if cm.recipient.tree
+          Libertree::Model::Job.create(
+            {
+              task: 'request:CHAT',
+              params: {
+                'chat_message_id' => cm.id,
+                'server_id'       => cm.recipient.tree.id,
+              }.to_json,
+            }
+          )
+        end
+
+        { 'success' => true }.to_json
+      rescue PGError => e
+        if e.message =~ /text_not_empty/
+          { 'success' => false }.to_json
+        else
+          raise e
+        end
+      end
     end
 
     def seen(member_id)
