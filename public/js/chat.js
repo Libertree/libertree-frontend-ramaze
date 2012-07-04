@@ -54,6 +54,13 @@ function fetchChatConversationWith(memberId) {
   );
 }
 
+function activateChatConversation(memberId) {
+  $('#chat-window .tab, #chat-window .log').removeClass('active');
+  $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
+  $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+  $('#chat-window .log.active .textarea-chat').focus();
+}
+
 $(document).ready( function() {
   $('#menu-chat').click( function() {
     if( $('#chat-window').is(':visible') ) {
@@ -93,11 +100,8 @@ $(document).ready( function() {
 
   $('#chat-window .tab').live( 'click', function() {
     var memberId = $(this).data('member-id');
-    $('#chat-window .tab, #chat-window .log').removeClass('active');
-    $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
-    $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+    activateChatConversation(memberId);
     markChatConversationSeen(memberId);
-    $('#chat-window .log.active .textarea-chat').focus();
   } );
 
   $('#chat-window .textarea-chat').live( 'keydown', function(event) {
@@ -127,5 +131,20 @@ $(document).ready( function() {
         textarea.removeAttr('disabled');
       }
     );
+  } );
+
+  $('#chat-window .tab .close').live( 'click', function() {
+    var tab = $(this).closest('.tab');
+    var memberId = tab.data('member-id');
+    var tabToActivate = tab.next();
+    if( tabToActivate.length == 0 ) {
+      tabToActivate = tab.prev();
+    }
+    $('#chat-window .tab[data-member-id="'+memberId+'"]').remove();
+    $('#chat-window .log[data-member-id="'+memberId+'"]').remove();
+    if( $('#chat-window .tab.active').length == 0 && tabToActivate.length ) {
+      activateChatConversation( tabToActivate.data('member-id') );
+    }
+    return false;
   } );
 } );

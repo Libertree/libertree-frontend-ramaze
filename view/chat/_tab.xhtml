@@ -1,3 +1,4 @@
 <div class="tab #{@active ? 'active' : ''}" data-member-id="#{@partner.id}">
-  #{member_img(@partner, 'size-24')} #{@partner.name_display}
+  <div class="label">#{member_img(@partner, 'size-24')} #{@partner.name_display}</div>
+  <a href="#" class="close">x</a>
 </div>
