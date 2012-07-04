@@ -30,6 +30,8 @@
         width: 100%;
         height: 35px;
         background-color: $light_green;
+        overflow: hidden;
+
         .tab {
             background-color: $faint_green;
             float: left;
@@ -41,6 +43,9 @@
             padding: 2px;
             opacity: 0.7;
             cursor: pointer;
+            max-width: 80px;
+            overflow: hidden;
+            white-space: nowrap;
 
             &.active {
                 font-weight: bold;
