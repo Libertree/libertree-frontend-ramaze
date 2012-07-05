@@ -139,6 +139,7 @@ $(document).ready( function() {
               height: '400px'
             } )
             .resizable( {
+              minHeight: 170,
               resize: function(event, ui) {
                 syncChatUIDimensions();
               }
