@@ -184,4 +184,8 @@ $(document).ready( function() {
     }
     return false;
   } );
+
+  $('#chat-window').draggable( {
+    handle: '.header'
+  } );
 } );
