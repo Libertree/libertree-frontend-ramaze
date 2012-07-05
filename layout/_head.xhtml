@@ -3,7 +3,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
 
-  #{ css 'ui-lightness/jquery-ui-1.8.18.custom' }
   #{ css 'chosen' }
   <link href="/css/application.css?t=#{File.mtime('public/css/application.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/#{account.font_css || 'fonts'}.css?t=#{File.mtime('public/css/' + (account.font_css || 'fonts') + '.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
@@ -18,7 +17,7 @@
   #{ @stylesheet_extra }
 
   #{ js 'jquery-1.7.2.min' }
-  #{ js 'jquery-ui-1.8.18.custom.min' }
+  #{ js 'jquery-ui-1.8.21.custom.min' }
   #{ js 'jquery.mousewheel.min' }
   #{ js 'jquery.expandable' }
   #{ js 'jquery.cookie' }
