@@ -78,6 +78,7 @@ function activateChatConversation(memberId) {
   $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
   $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
   $('#chat-window .log.active .textarea-chat').focus();
+  syncChatUIDimensions()
   $('#chat-window .log.active .messages').scrollTop(999999);
 }
 
@@ -98,6 +99,15 @@ function receiveChatMessage(data) {
   fetchChatMessage(data);
 }
 
+function syncChatUIDimensions() {
+  $('#chat-window .log.active .messages').height(
+    $('#chat-window').height() - 150
+  );
+  $('#chat_new_partner_chzn').width(
+    $('#chat-window').width() - 10
+  );
+}
+
 /* ---------------------------------------------------------------------------- */
 
 $(document).ready( function() {
@@ -110,12 +120,31 @@ $(document).ready( function() {
     hideWindows();
     $('#chat-window').empty();
     addSpinner('#chat-window');
-    $('#chat-window').
-      load(
+    $('#chat-window')
+      .show()
+      .load(
         '/chat/_index',
         function(html) {
           checkForSessionDeath(html);
           removeSpinner('#chat-window');
+          $('#chat-window').hide();
+          $('#chat-window .log .messages').scrollTop(999999);
+          var o = $(html);
+          markChatConversationSeen( o.find('.log.active').data('member-id') );
+          $('#chat-window .log.active .textarea-chat').focus();
+
+          $('#chat-window')
+            .css( {
+              width: '400px',
+              height: '400px'
+            } )
+            .resizable( {
+              resize: function(event, ui) {
+                syncChatUIDimensions();
+              }
+            } )
+          ;
+
           $('select#chat-new-partner').chosen().change( function() {
             var memberId = $('select#chat-new-partner').val();
             fetchChatConversationWith(memberId, true);
@@ -123,13 +152,11 @@ $(document).ready( function() {
             $('select#chat-new-partner').trigger("liszt:updated");
             return false;
           } );
-          $('#chat-window .log .messages').scrollTop(999999);
-          var o = $(html);
-          markChatConversationSeen( o.find('.log.active').data('member-id') );
-          $('#chat-window .log.active .textarea-chat').focus();
+
+          syncChatUIDimensions();
+          $('#chat-window').show();
         }
-      ).
-      toggle()
+      )
     ;
     return false;
   } );

@@ -8,7 +8,7 @@
     left: 50%;
     margin-left: -100px;
     padding: 0px 0px 5px 0px;
-    width: 400px;
+    min-width: 300px;
 
     .header {
         .title {
@@ -74,7 +74,6 @@
 
             .messages {
                 overflow: auto;
-                max-height: 500px;
                 .message {
                     margin: 0px 0px 5px 0px;
                     padding: 0.5em;

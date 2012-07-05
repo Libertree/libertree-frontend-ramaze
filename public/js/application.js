@@ -16,6 +16,7 @@ function removeSpinner(target_selector) {
 }
 
 function hideWindows() {
+    $('#chat-window').resizable('destroy');
     $('.window').hide();
 }
 
