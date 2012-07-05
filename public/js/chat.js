@@ -138,10 +138,8 @@ $(document).ready( function() {
           checkForSessionDeath(html);
           removeSpinner('#chat-window');
           $('#chat-window').hide();
-          $('#chat-window .log .messages').scrollTop(999999);
           var o = $(html);
           markChatConversationSeen( o.find('.log.active').data('member-id') );
-          $('#chat-window .log.active .textarea-chat').focus();
 
           $('#chat-window')
             .resizable( {
@@ -165,6 +163,8 @@ $(document).ready( function() {
 
           syncChatUIDimensions();
           $('#chat-window').show();
+          $('#chat-window .log .messages').scrollTop(999999);
+          $('#chat-window .log.active .textarea-chat').focus();
         }
       )
     ;
