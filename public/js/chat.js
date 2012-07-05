@@ -101,10 +101,20 @@ function receiveChatMessage(data) {
 
 function syncChatUIDimensions() {
   $('#chat-window .log.active .messages').height(
-    $('#chat-window').height() - 150
+    $('#chat-window').height() - 157
   );
   $('#chat_new_partner_chzn').width(
     $('#chat-window').width() - 10
+  );
+}
+
+function rememberChatDimensions() {
+  $.get(
+    '/chat/remember_dimensions/'
+    + $('#chat-window').css('top')
+    + '/'+$('#chat-window').css('left')
+    + '/'+$('#chat-window').css('width')
+    + '/'+$('#chat-window').css('height')
   );
 }
 
@@ -134,14 +144,13 @@ $(document).ready( function() {
           $('#chat-window .log.active .textarea-chat').focus();
 
           $('#chat-window')
-            .css( {
-              width: '400px',
-              height: '400px'
-            } )
             .resizable( {
               minHeight: 170,
               resize: function(event, ui) {
                 syncChatUIDimensions();
+              },
+              stop: function(event, ui) {
+                rememberChatDimensions();
               }
             } )
           ;
@@ -214,6 +223,17 @@ $(document).ready( function() {
   } );
 
   $('#chat-window').draggable( {
-    handle: '.header'
+    handle: '.header',
+    stop: function(event, ui) {
+      rememberChatDimensions();
+    }
+  } );
+
+
+  $('#chat-window').css( {
+    top: chat_top,
+    left: chat_left,
+    width: chat_width,
+    height: chat_height
   } );
 } );

@@ -90,5 +90,12 @@ module Controller
     def closed(member_id)
       session[:chats_closed] << member_id.to_i
     end
+
+    def remember_dimensions(top, left, width, height)
+      session[:chat_dimensions][:top] = top
+      session[:chat_dimensions][:left] = left
+      session[:chat_dimensions][:width] = width
+      session[:chat_dimensions][:height] = height
+    end
   end
 end

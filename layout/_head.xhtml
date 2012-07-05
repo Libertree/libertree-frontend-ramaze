@@ -52,6 +52,17 @@
   <script type="text/javascript">
     var host = #{ request.host.inspect };
     var layout = #{ session[:layout].to_s.inspect };
+    <?r if session[:chat_dimensions] ?>
+      var chat_top = '#{ session[:chat_dimensions][:top] }';
+      var chat_left = '#{ session[:chat_dimensions][:left] }';
+      var chat_width = '#{ session[:chat_dimensions][:width] }';
+      var chat_height = '#{ session[:chat_dimensions][:height] }';
+    <?r else ?>
+      var chat_top = '40px';
+      var chat_left = '50%';
+      var chat_width = '400px';
+      var chat_height = '400px';
+    <?r end ?>
 
     #{account.custom_js}
   </script>
