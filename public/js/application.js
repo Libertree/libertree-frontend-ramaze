@@ -16,8 +16,9 @@ function removeSpinner(target_selector) {
 }
 
 function hideWindows() {
-    $('#chat-window').resizable('destroy');
-    $('.window').hide();
+  $('#chat-window').resizable('destroy');
+  $('.window').hide();
+  rememberChatDimensions();
 }
 
 function updateAges() {

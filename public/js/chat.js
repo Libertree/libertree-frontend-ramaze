@@ -113,6 +113,7 @@ function rememberChatDimensions() {
   $.cookie( 'chat-left', $('#chat-window').css('left') );
   $.cookie( 'chat-width', $('#chat-window').css('width') );
   $.cookie( 'chat-height', $('#chat-window').css('height') );
+  $.cookie( 'chat-open', $('#chat-window').is(':visible') );
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -165,6 +166,8 @@ $(document).ready( function() {
         }
       )
     ;
+    rememberChatDimensions();
+
     return false;
   } );
 
@@ -230,6 +233,9 @@ $(document).ready( function() {
     top: $.cookie('chat-top'),
     left: $.cookie('chat-left'),
     width: $.cookie('chat-width'),
-    height: $.cookie('chat-height')
+    height: $.cookie('chat-height'),
   } );
+  if( $.cookie('chat-open') == 'true' ) {
+    $('#menu-chat').click();
+  }
 } );
