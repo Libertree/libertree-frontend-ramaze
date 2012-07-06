@@ -229,6 +229,8 @@ $(document).ready( function() {
     }
   } );
 
+  $.cookie('chat-width', $.cookie('chat-width') || 400);
+  $.cookie('chat-height', $.cookie('chat-height') || 400);
   $('#chat-window').css( {
     top: $.cookie('chat-top'),
     left: $.cookie('chat-left'),
