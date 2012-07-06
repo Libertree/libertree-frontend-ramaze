@@ -6,6 +6,7 @@ require 'mini_magick'
 require 'redcarpet'
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
+$conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
 if $conf['graphicsmagick']
