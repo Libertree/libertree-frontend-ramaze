@@ -29,7 +29,6 @@ module Controller
         @num_unseen = account.num_notifications_unseen
         session[:saved_text] ||= Hash.new
         session[:chats_closed] ||= Set.new
-        session[:chat_dimensions] ||= Hash.new
         Libertree::Model::SessionAccount.find_or_create(
           sid: session.sid,
           account_id: account.id

@@ -109,13 +109,10 @@ function syncChatUIDimensions() {
 }
 
 function rememberChatDimensions() {
-  $.get(
-    '/chat/remember_dimensions/'
-    + $('#chat-window').css('top')
-    + '/'+$('#chat-window').css('left')
-    + '/'+$('#chat-window').css('width')
-    + '/'+$('#chat-window').css('height')
-  );
+  $.cookie( 'chat-top', $('#chat-window').css('top') );
+  $.cookie( 'chat-left', $('#chat-window').css('left') );
+  $.cookie( 'chat-width', $('#chat-window').css('width') );
+  $.cookie( 'chat-height', $('#chat-window').css('height') );
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -229,11 +226,10 @@ $(document).ready( function() {
     }
   } );
 
-
   $('#chat-window').css( {
-    top: chat_top,
-    left: chat_left,
-    width: chat_width,
-    height: chat_height
+    top: $.cookie('chat-top'),
+    left: $.cookie('chat-left'),
+    width: $.cookie('chat-width'),
+    height: $.cookie('chat-height')
   } );
 } );
