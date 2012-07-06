@@ -15,10 +15,14 @@ module Controller
             respond '', 405
           end
 
+          if request['source'].nil? || request['source'].strip.empty?
+            respond '', 400
+          end
+
           post = Libertree::Model::Post.create(
             'member_id' => @account.member.id,
             'public'    => true,
-            'text'      => request['text']
+            'text'      => request['text'] + "\n\n*posted with " + request['source'] + "*"
           )
           Libertree::Model::Job.create_for_forests(
             {
