@@ -22,7 +22,11 @@ def onmessage(ws, data)
     last_post_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts"),
     last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
     last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments"),
-    last_chat_message_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM chat_messages WHERE to_member_id = ?", session_account.account.member.id),
+    last_chat_message_id: Libertree::DB.dbh.sc(
+      "SELECT MAX(id) FROM chat_messages WHERE to_member_id = ? OR from_member_id = ?",
+      session_account.account.member.id,
+      session_account.account.member.id
+    ),
   }
 end
 
