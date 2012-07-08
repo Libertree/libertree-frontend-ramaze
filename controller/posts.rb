@@ -134,7 +134,12 @@ module Controller
         )
         post.delete_cascade
       end
-      redirect Home.r(:/)
+
+      if request.env['HTTP_REFERER'] =~ %r{/posts/show/#{post_id}}
+        redirect Home.r(:/)
+      else
+        redirect_referrer
+      end
     end
 
     def edit(post_id)
