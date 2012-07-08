@@ -14,22 +14,22 @@
     </div>
     <div class="post-tools">
       <?r if ! account.subscribed_to?(@post) ?>
-        <a class="subscribe" title="Start receiving notifications about comments on this post">subscribe</a>
-        <a class="unsubscribe hidden" title="Stop receiving notifications about comments on this post">unsubscribe</a>
+        <a href="#" class="subscribe" title="Start receiving notifications about comments on this post">subscribe</a>
+        <a href="#" class="unsubscribe hidden" title="Stop receiving notifications about comments on this post">unsubscribe</a>
       <?r else ?>
-        <a class="subscribe hidden" title="Start receiving notifications about comments on this post">subscribe</a>
-        <a class="unsubscribe" title="Stop receiving notifications about comments on this post">unsubscribe</a>
+        <a href="#" class="subscribe hidden" title="Start receiving notifications about comments on this post">subscribe</a>
+        <a href="#" class="unsubscribe" title="Stop receiving notifications about comments on this post">unsubscribe</a>
       <?r end ?>
 
       <?r if @post.like_by(account.member) ?>
-        <a class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
-        <a class="like hidden">like</a>
+        <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
+        <a href="#" class="like hidden">like</a>
       <?r else ?>
-        <a class="like">like</a>
-        <a class="unlike hidden">unlike</a>
+        <a href="#" class="like">like</a>
+        <a href="#" class="unlike hidden">unlike</a>
       <?r end ?>
 
-      <a class="comment">comment</a>
+      <a href="#" class="comment">comment</a>
 
       <?r if @post.member == account.member ?>
         <a href="/posts/edit/#{@post.id}" class="edit">edit</a>
