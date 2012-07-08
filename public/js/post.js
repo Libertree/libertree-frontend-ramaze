@@ -103,12 +103,12 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-tools .delete').live( 'click', function() {
+  $('.post-tools .delete').live( 'click', function(event) {
+    event.preventDefault();
     if( confirm('Delete this post?') ) {
       var post = $(this).closest('div[data-post-id]');
       window.location = '/posts/destroy/' + post.data('post-id');
     }
-    return false;
   } );
 
   $('.post-tools .subscribe').live( 'click', function() {
