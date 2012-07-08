@@ -9,6 +9,7 @@ module Controller
     def edit
       @invitations = account.invitations_not_accepted
       @host = request.host_with_port
+      @export_filename = "libertree-data-#{account.username}-#{Time.now.strftime('%Y-%m-%d')}.json"
     end
 
     def update
@@ -80,6 +81,18 @@ module Controller
         flash[:notice] = "Password changed."
         redirect r(:edit)
       end
+    end
+
+    provide(:json, :type => 'application/json') do |action, value|
+      state = JSON::Ext::Generator::State.new
+      state.indent = "  "
+      state.array_nl = "\n"
+      state.object_nl = "\n"
+      value.to_json(state)
+    end
+
+    def data(filename = nil)
+      account.data_hash
     end
   end
 end

@@ -34,3 +34,11 @@ Current API token: #{account.api_token || '(none)'}<br/>
 </div>
 
 <a href="/accounts/generate_api_token">Generate API token</a>
+
+<h4>Data Export</h4>
+
+<p>
+Download your account settings, profile, posts, comments and direct messages:
+</p>
+
+<a href="/accounts/data/#{@export_filename}">#{@export_filename}</a>
