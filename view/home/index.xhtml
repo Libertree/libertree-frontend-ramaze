@@ -1,14 +1,21 @@
-#{ render_partial '_menu', river_post_order: @river_post_order }
+<div id="river-menu" class="has-shadow">
+  River: <select id="river-selector">
+    <?r account.rivers.each do |r| ?>
+      <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
+    <?r end ?>
+  </select>
 
-River: <select id="river-selector">
-  <?r account.rivers.each do |r| ?>
-    <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
+  <a href="/rivers">manage rivers</a> |
+  <span class="menu-item"><a href="/home/mark_all_read">mark all read</a></span> |
+  sort by:
+  <?r if @river_post_order == :comment ?>
+    <span class="menu-item"><a href="/home/sort_by_time_created">post time</a></span>
+    <span class="menu-item inactive">update time</span>
+  <?r else ?>
+    <span class="menu-item inactive">post time</span>
+    <span class="menu-item"><a href="/home/sort_by_time_updated_overall">update time</a></span>
   <?r end ?>
-</select>
-
-<a href="/rivers">manage rivers</a>
-
-<hr/>
+</div>
 
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
   <?r @posts.reverse.each do |post| ?>

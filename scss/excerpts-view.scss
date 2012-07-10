@@ -1,6 +1,25 @@
 @import "colours.scss";
 
 .excerpts-view {
+    #river-menu {
+        top: 50px;
+        left: 50%;
+        margin: 0px 0px 0px -350px;
+        width: 700px;
+        padding: 0.5em;
+        background-color: $faint_green;
+        text-align: center;
+        .menu-item {
+            padding-left: 4px;
+            padding-right: 4px;
+            cursor: pointer;
+        }
+        .menu-item.inactive {
+            cursor: default;
+        }
+        position: fixed;
+    }
+
     .post-excerpt {
         width: 100%;
         padding: 1em 0px;
