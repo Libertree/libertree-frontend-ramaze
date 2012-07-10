@@ -202,6 +202,25 @@ textarea, input[type="text"], input[type="password"] {
     }
 }
 
+
+#river-menu {
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+    .menu-item {
+        padding-left: 4px;
+        padding-right: 4px;
+        cursor: pointer;
+    }
+    .menu-item.inactive {
+        cursor: default;
+    }
+    .menu-item + .menu-item {
+        border-left: 1px solid $main_green;
+    }
+    height: 40px;
+}
+
 .age, .age-update {
     color: #778877;
 }
