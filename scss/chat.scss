@@ -19,6 +19,13 @@
         cursor: move;
     }
 
+    #online-contacts {
+        padding: 5px;
+        margin: 0px;
+        .avatar {
+            cursor: pointer;
+        }
+    }
 
     #chat-new-partner-wrapper {
         padding: 8px 0px;

@@ -94,5 +94,9 @@ module Controller
     def data(filename = nil)
       account.data_hash
     end
+
+    def heartbeat
+      account.time_heartbeat = Time.now
+    end
   end
 end

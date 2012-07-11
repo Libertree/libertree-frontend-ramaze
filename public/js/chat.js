@@ -101,7 +101,7 @@ function receiveChatMessage(data) {
 
 function syncChatUIDimensions() {
   $('#chat-window .log.active .messages').height(
-    $('#chat-window').height() - 157
+    $('#chat-window').height() - 200
   );
   $('#chat_new_partner_chzn').width(
     $('#chat-window').width() - 10
@@ -114,6 +114,10 @@ function rememberChatDimensions() {
   $.cookie( 'chat-width', $('#chat-window').css('width') );
   $.cookie( 'chat-height', $('#chat-window').css('height') );
   $.cookie( 'chat-open', $('#chat-window').is(':visible') );
+}
+
+function heartbeat() {
+  $.get('/accounts/heartbeat');
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -229,6 +233,12 @@ $(document).ready( function() {
     }
   } );
 
+  $('#online-contacts .avatar').live( 'click', function() {
+    fetchChatConversationWith( $(this).data('member-id'), true);
+  } );
+
+  /* ------------------------------------------------------ */
+
   $.cookie('chat-width', $.cookie('chat-width') || 400);
   $.cookie('chat-height', $.cookie('chat-height') || 400);
   $('#chat-window').css( {
@@ -240,4 +250,6 @@ $(document).ready( function() {
   if( $.cookie('chat-open') == 'true' ) {
     $('#menu-chat').click();
   }
+
+  setInterval( heartbeat, 3 * 60 * 1000 );
 } );

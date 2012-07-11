@@ -27,6 +27,7 @@ module Controller
 
       if logged_in?
         @num_unseen = account.num_notifications_unseen
+        account.time_heartbeat = Time.now
         session[:saved_text] ||= Hash.new
         session[:chats_closed] ||= Set.new
         Libertree::Model::SessionAccount.find_or_create(

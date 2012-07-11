@@ -4,7 +4,14 @@
 </div>
 
 <div id="online-contacts">
-<!-- TODO -->
+Online:
+<?r if @contacts_online.empty? ?>
+  (no one)
+<?r else ?>
+  <?r @contacts_online.each do |c| ?>
+    #{member_img(c, 'avatar size-32')}
+  <?r end ?>
+<?r end ?>
 </div>
 
 <div id="chat-new-partner-wrapper">
