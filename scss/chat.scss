@@ -22,8 +22,11 @@
     #online-contacts {
         padding: 5px;
         margin: 0px;
-        .avatar {
-            cursor: pointer;
+        a {
+            margin: 0px;
+            .avatar {
+                cursor: pointer;
+            }
         }
     }
 
