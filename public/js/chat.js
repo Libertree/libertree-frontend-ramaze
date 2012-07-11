@@ -235,6 +235,7 @@ $(document).ready( function() {
 
   $('#online-contacts .avatar').live( 'click', function() {
     fetchChatConversationWith( $(this).data('member-id'), true);
+    return false;
   } );
 
   /* ------------------------------------------------------ */
