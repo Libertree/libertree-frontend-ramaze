@@ -6,7 +6,7 @@
 <div id="online-contacts">
 Online:
 <?r if @contacts_online.empty? ?>
-  (no one)
+  (no contacts online)
 <?r else ?>
   <?r @contacts_online.each do |c| ?>
     <a href="#">#{member_img(c, 'avatar size-32')}</a>
