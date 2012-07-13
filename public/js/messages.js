@@ -7,7 +7,7 @@ $(document).ready( function() {
   $('a.reply').click( function() {
     $('form#new-message #recipients option').removeAttr('selected');
     $('form#new-message #recipients option[value="'+$('.sender').data('member-id')+'"]').attr('selected','selected');
-    $('select.enhanced').trigger("liszt:updated");
+    $('select#recipients').trigger("liszt:updated");
     return false;
   } );
 
@@ -18,7 +18,7 @@ $(document).ready( function() {
       $('form#new-message #recipients option[value="'+$(this).data('member-id')+'"]').attr('selected','selected');
     } );
     $('form#new-message #recipients option[value="'+$('form#new-message').data('member-id')+'"]').removeAttr('selected');
-    $('select.enhanced').trigger("liszt:updated");
+    $('select#recipients').trigger("liszt:updated");
     return false;
   } );
 
@@ -26,5 +26,5 @@ $(document).ready( function() {
     $('.message-note').slideToggle();
   } );
 
-  $('select.enhanced').chosen();
+  $('select#recipients').chosen();
 } );

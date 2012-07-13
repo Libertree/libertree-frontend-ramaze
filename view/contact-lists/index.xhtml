@@ -5,6 +5,8 @@
   <input type="submit" value="Create"/>
 </form>
 
+<ul>
 <?r @lists.each do |l| ?>
-  <a href="/contact-lists/show/#{l.id}">#{l.name}</a>
+  <li><a href="/contact-lists/show/#{l.id}">#{l.name}</a></li>
 <?r end ?>
+</ul>
