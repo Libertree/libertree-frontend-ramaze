@@ -18,8 +18,7 @@ module Controller
         account_id: account.id
       )
 
-      flash[:notice] = %{Contact list "#{list.name}" created.}
-      redirect_referrer
+      redirect r(:show, list.id)
     end
 
     def show(contact_list_id)
