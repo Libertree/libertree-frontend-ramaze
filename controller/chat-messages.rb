@@ -13,7 +13,7 @@ module Controller
         all.
         reject { |m| m == account.member }.
         sort_by { |m| m.name_display.downcase }
-      @contacts_online = @contacts.find_all { |c| c.online? }
+      @contacts_online = account.contacts.find_all { |c| c.online? }
       @n = account.num_chat_unseen
       @partners = account.
         chat_partners_current.
