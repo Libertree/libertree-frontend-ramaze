@@ -100,10 +100,12 @@ textarea, input[type="text"], input[type="password"] {
   padding: 1em 50px;
   margin: 0 0 1em;
   &.error {
-    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em #FFCAAA;
+    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
+    border: 2px solid $red;
   }
   &.notice {
-    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em #FAFAAA;
+    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
+    border: 2px solid $sky;
   }
 }
 
