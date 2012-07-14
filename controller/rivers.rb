@@ -26,8 +26,8 @@ module Controller
       begin
         river = Libertree::Model::River.create(
           account_id: account.id,
-          label: request['label'],
-          query: request['query']
+          label: request['label'].to_s,
+          query: request['query'].to_s
         )
       rescue PGError => e
         if e.message =~ /rivers_account_id_query_key/

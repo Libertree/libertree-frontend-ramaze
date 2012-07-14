@@ -23,11 +23,11 @@ module Controller
 
     def create
       redirect_referrer  if ! request.post?
-      redirect_referrer  if request['text'].empty?
+      redirect_referrer  if request['text'].to_s.empty?
 
       message = Libertree::Model::Message.create_with_recipients(
         sender_member_id: account.member.id,
-        text: request['text'],
+        text: request['text'].to_s,
         recipient_member_ids: request['recipients']
       )
 

@@ -16,7 +16,7 @@ module Controller
       redirect_referrer  if ! request.post?
 
       begin
-        if request['excerpt_max_height'].nil? || request['excerpt_max_height'].empty?
+        if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
           account.excerpt_max_height = nil
         else
           account.excerpt_max_height = request['excerpt_max_height'].to_i
@@ -28,19 +28,19 @@ module Controller
         end
       end
 
-      if request['custom_link'] && ! request['custom_link'].empty?
-        account.custom_link = request['custom_link']
+      if request['custom_link'] && ! request['custom_link'].to_s.empty?
+        account.custom_link = request['custom_link'].to_s
       else
         account.custom_link = nil
       end
 
-      if request['email'].nil? || request['email'].strip.empty?
+      if request['email'].nil? || request['email'].to_s.strip.empty?
         account.email = nil
       else
-        account.email = request['email']
+        account.email = request['email'].to_s
       end
-      account.custom_css = request['custom_css']
-      account.custom_js = request['custom_js']
+      account.custom_css = request['custom_css'].to_s
+      account.custom_js = request['custom_js'].to_s
 
       flash[:notice] = "Settings saved."
       redirect_referrer
@@ -72,10 +72,10 @@ module Controller
     def change_password
       return  if ! request.post?
 
-      if request['password'] != request['password_again']
+      if request['password'].to_s != request['password_again'].to_s
         flash[:error] = "Passwords did not match.  Please reenter."
       else
-        account.password = request['password']
+        account.password = request['password'].to_s
         account.password_reset_code = nil
         account.password_reset_expiry = nil
         flash[:notice] = "Password changed."

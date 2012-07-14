@@ -33,8 +33,8 @@ module Controller
     def create
       redirect_referrer  if ! request.post?
 
-      if request['hashtags'] && ! request['hashtags'].strip.empty?
-        hashtags = "\n\n" + request['hashtags'].strip.
+      if request['hashtags'] && ! request['hashtags'].to_s.strip.empty?
+        hashtags = "\n\n" + request['hashtags'].to_s.strip.
           split(/[;., ]+/).
           map { |tag|
             if tag[0] != '#'
@@ -47,7 +47,7 @@ module Controller
         hashtags = ''
       end
 
-      text = ( request['text'] + hashtags )
+      text = ( request['text'].to_s + hashtags )
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
 
@@ -154,7 +154,7 @@ module Controller
       redirect_referrer  if post.nil? || post.member != account.member
 
       if ! request.params['cancel']
-        text = request['text']
+        text = request['text'].to_s
         # TODO: DRY up along with #encode! calls in #create action
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')

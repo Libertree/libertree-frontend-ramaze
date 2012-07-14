@@ -45,7 +45,7 @@ module Controller
       redirect '/'  if logged_in?
       force_mobile_to_narrow
 
-      @invitation_code = request['invitation_code']
+      @invitation_code = request['invitation_code'].to_s
 
       return  if ! request.post?
 
@@ -55,15 +55,15 @@ module Controller
         return
       end
 
-      if request['password'] != request['password-confirm']
+      if request['password'].to_s != request['password-confirm'].to_s
         flash[:error] = 'You mistyped your password.'
         return
       end
 
-      username = request['username'].strip
+      username = request['username'].to_s.strip
 
       # TODO: Constrain email addresses, or at least strip out unsafe HTML, etc. with Loofah, or such.
-      email = request['email'].strip
+      email = request['email'].to_s.strip
       if email.empty?
         email = nil
       end
@@ -71,7 +71,7 @@ module Controller
       begin
         a = Libertree::Model::Account.create(
           username: username,
-          password_encrypted: BCrypt::Password.create( request['password'] ),
+          password_encrypted: BCrypt::Password.create( request['password'].to_s ),
           email: email
         )
         invitation.account_id = a.id
@@ -108,13 +108,13 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'] )
+      respond Libertree.render( request['s'].to_s )
     end
 
     # This is not in the Posts controller because we will handle many other search
     # types from the one searh box in the near future.
     def search
-      @q = request['q']
+      @q = request['q'].to_s
       @posts = Libertree::Model::Post.search(@q)
       @comments = Libertree::Model::Comment.search(@q)
       @profiles = Libertree::Model::Profile.search(@q)
@@ -124,7 +124,7 @@ module Controller
     def textarea_save
       # Check valid session first.
       if session[:saved_text]
-        session[:saved_text][ request['id'] ] = request['text']
+        session[:saved_text][ request['id'].to_s ] = request['text'].to_s
       end
     end
 
@@ -139,13 +139,13 @@ module Controller
       Ramaze::Log.debug request.inspect
       return  if ! request.post?
 
-      a = Libertree::Model::Account.set_up_password_reset_for( request['email'] )
+      a = Libertree::Model::Account.set_up_password_reset_for( request['email'].to_s )
       if a
         # TODO: Make a generic method for queuing email
         Libertree::Model::Job.create(
           task: 'email',
           params: {
-            'to'      => request['email'],
+            'to'      => request['email'].to_s,
             'subject' => '[Libertree] Password reset',
             'body'    => %{
 Someone (IP address: #{request.ip}) has requested that a password reset link

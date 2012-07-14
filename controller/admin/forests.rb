@@ -22,7 +22,7 @@ module Controller
         redirect_referrer  if ! request.post?
 
         forest = Libertree::Model::Forest.create(
-          name: request['name'],
+          name: request['name'].to_s,
           local_is_member: true
         )
 

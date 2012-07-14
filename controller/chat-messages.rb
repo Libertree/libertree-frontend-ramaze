@@ -57,7 +57,7 @@ module Controller
         cm = Libertree::Model::ChatMessage.create(
           from_member_id: account.member.id,
           to_member_id: request['to_member_id'].to_i,
-          text: request['text']
+          text: request['text'].to_s
         )
         if cm.recipient.tree
           Libertree::Model::Job.create(

@@ -33,14 +33,14 @@ module Controller
     def update
       return  if ! request.post?
 
-      name_display = request['name_display']
+      name_display = request['name_display'].to_s
       if name_display.strip.empty?
         name_display = nil
       end
       begin
         account.member.profile.set(
           name_display: name_display,
-          description: request['description']
+          description: request['description'].to_s
         )
         Libertree::Model::Job.create_for_forests(
           task: 'request:MEMBER',

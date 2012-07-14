@@ -18,7 +18,7 @@ module Controller
 
     def create
       return '{}'  if ! request.post?
-      return '{}'  if request['text'].empty?
+      return '{}'  if request['text'].to_s.empty?
 
       post = Libertree::Model::Post[ request['post_id'].to_i ]
 
@@ -29,7 +29,7 @@ module Controller
       comment = Libertree::Model::Comment.create(
         'member_id' => account.member.id,
         'post_id'   => post.id,
-        'text'      => request['text']
+        'text'      => request['text'].to_s
       )
 
       Libertree::Model::Job.create_for_forests(
