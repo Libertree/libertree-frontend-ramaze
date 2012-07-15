@@ -38,6 +38,7 @@ module Controller
         Libertree::Model::Job.create(
           {
             task: 'request:MESSAGE',
+            queue: 'backend',
             params: {
               'message_id'          => message.id,
               'server_id'           => tree.id,
