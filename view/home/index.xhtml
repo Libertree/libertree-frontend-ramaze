@@ -1,7 +1,7 @@
 #{ render_partial '_menu', river_post_order: @river_post_order }
 
 River: <select id="river-selector">
-  <?r account.rivers.each do |r| ?>
+  <?r @rivers.each do |r| ?>
     <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
   <?r end ?>
 </select>
