@@ -3,9 +3,9 @@ require 'net/http'
 require 'uri'
 
 module Jobs
-  module Frontend
+  module Http
 
-    class FetchAvatar
+    class Avatar
       def self.perform(params)
         member = Libertree::Model::Member[ params['member_id'] ]
 
