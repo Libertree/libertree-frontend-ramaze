@@ -40,7 +40,11 @@ module Controller
         end
       end
 
-      redirect Home.r(:/, river.id)
+      if river.appended_to_all
+        redirect r(:/)
+      else
+        redirect Home.r(:/, river.id)
+      end
     end
 
     def destroy(river_id)
