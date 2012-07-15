@@ -3,6 +3,7 @@
 <form id="form-river-edit" class="form-river" method="POST" action="/rivers/update/#{@river.id}">
   Search: <input type="text" name="query" value="#{@river.query.gsub('"', '&quot;')}"/><br/>
   Label: <input type="text" name="label" value="#{@river.label.gsub('"', '&quot;')}"/><br/>
+  <input type="checkbox" name="appended_to_all" #{@river.appended_to_all ? 'checked' : ''}/>append to all other rivers<br/>
   <input type="submit" value="Update"/>
   <a href="/rivers">Cancel</a>
 </form>

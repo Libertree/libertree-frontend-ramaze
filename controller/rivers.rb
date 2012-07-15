@@ -17,7 +17,8 @@ module Controller
     end
 
     def index
-      @rivers = account.rivers
+      @rivers = account.rivers_not_appended
+      @rivers_global = account.rivers_appended
     end
 
     def create
@@ -27,7 +28,8 @@ module Controller
         river = Libertree::Model::River.create(
           account_id: account.id,
           label: request['label'].to_s,
-          query: request['query'].to_s
+          query: request['query'].to_s,
+          appended_to_all: !! request['appended_to_all']
         )
       rescue PGError => e
         if e.message =~ /rivers_account_id_query_key/
