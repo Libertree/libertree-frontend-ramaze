@@ -138,7 +138,6 @@ module Controller
         # TODO: Make a generic method for queuing email
         Libertree::Model::Job.create(
           task: 'email',
-          queue: 'backend',
           params: {
             'to'      => request['email'].to_s,
             'subject' => '[Libertree] Password reset',

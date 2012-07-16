@@ -52,7 +52,6 @@ module Controller
               Libertree::Model::Job.create_for_forests(
                 {
                   task: 'request:FOREST',
-                  queue: 'backend',
                   params: { 'forest_id' => f.id, }
                 },
                 f
@@ -86,7 +85,6 @@ module Controller
             Libertree::Model::Job.create_for_forests(
               {
                 task: 'request:FOREST',
-                queue: 'backend',
                 params: { 'forest_id' => f.id, }
               },
               f

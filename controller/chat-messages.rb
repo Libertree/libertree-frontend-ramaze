@@ -63,7 +63,6 @@ module Controller
           Libertree::Model::Job.create(
             {
               task: 'request:CHAT',
-              queue: 'backend',
               params: {
                 'chat_message_id' => cm.id,
                 'server_id'       => cm.recipient.tree.id,
