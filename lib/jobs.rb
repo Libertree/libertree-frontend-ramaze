@@ -3,6 +3,10 @@ require 'net/http'
 require 'uri'
 
 module Jobs
+  def self.list
+    [ "http:avatar" ]
+  end
+
   module Http
 
     class Avatar
