@@ -4,7 +4,7 @@ require 'uri'
 
 module Jobs
   def self.list
-    [ "http:avatar" ]
+    { "http:avatar" => Http::Avatar }
   end
 
   module Http
