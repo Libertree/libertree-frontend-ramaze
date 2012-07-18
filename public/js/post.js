@@ -134,7 +134,9 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-tools .collect').live( 'click', function() {
+  $('.post-tools .collect').live( 'click', function(e) {
+    var x = e.pageX;
+    var y = e.pageY;
     $('div.pools').remove();
     var post = $(this).closest('div.post, div.post-excerpt');
     var postId = post.data('post-id');
@@ -148,6 +150,7 @@ $(document).ready( function() {
             '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId
           );
           $('div.pools').remove();
+          fadingAlert('Post added to pool.', x, y);
         } );
       }
     );
