@@ -570,6 +570,7 @@ div.pools {
     border: 1px solid $main_green;
     background-color: $faint_green;
     padding: 1em;
+    display: block;
 
     select#pool-selector {
         width: 100%;
