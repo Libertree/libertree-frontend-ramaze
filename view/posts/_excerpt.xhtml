@@ -48,6 +48,9 @@
       <a class="confirm-hide" href="#" title="Click to confirm hiding of this post.">confirm</a>
 
       <a class="collect" href="#" title="Collect this post in a pool">collect</a>
+      <?r if @pool ?>
+        <a class="remove" data-pool-id="#{@pool.id}" href="#" title="Remove this post from this pool">remove</a>
+      <?r end ?>
 
       <div class="link-view-post">
         <a href="/posts/show/#{@post.id}" title="Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window">view&nbsp;post</a>

@@ -147,11 +147,28 @@ $(document).ready( function() {
         o.insertAfter(post.find('.meta'));
         $('select#pool-selector').chosen().change( function() {
           $.get(
-            '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId
+            '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
+            function() {
+              /* TODO: Check for success */
+              $('div.pools').remove();
+              fadingAlert('Post added to pool.', x, y);
+            }
           );
-          $('div.pools').remove();
-          fadingAlert('Post added to pool.', x, y);
         } );
+      }
+    );
+    return false;
+  } );
+
+  $('.post-tools .remove').live( 'click', function(e) {
+    var post = $(this).closest('div.post, div.post-excerpt');
+    var postId = post.data('post-id');
+    var poolId = $(this).data('pool-id');
+    $.get(
+      '/pools/remove_post/' + poolId + '/' + postId,
+      function() {
+        /* TODO: Check for success */
+        post.slideUp(1000);
       }
     );
     return false;

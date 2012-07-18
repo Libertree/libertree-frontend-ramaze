@@ -92,7 +92,7 @@ module Controller
       post = Libertree::Model::Post[ id: post_id.to_i ]
       redirect_referrer  if post.nil?
 
-      pool.delete post
+      pool.remove_post post
 
       redirect_referrer
     end
