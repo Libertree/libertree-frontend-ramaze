@@ -24,6 +24,12 @@ module Controller
       @post = Libertree::Model::Post[target_post_id.to_i]
     end
 
+    def show(pool_id)
+      @view = 'excerpts-view'
+      @pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      redirect r(:/)  if @pool.nil?
+    end
+
     def create
       redirect_referrer  if ! request.post?
 

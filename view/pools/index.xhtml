@@ -12,7 +12,7 @@ Use pools to collect posts.
 <ul>
   <?r @pools.each do |p| ?>
     <li>
-      #{p.name}
+      <a href="/pools/show/#{p.id}">#{p.name}</a>
     </li>
   <?r end ?>
 </ul>
