@@ -144,7 +144,7 @@ $(document).ready( function() {
       '/pools/_index/' + postId,
       function(html) {
         var o = $(html);
-        o.insertAfter(post.find('.meta'));
+        o.insertAfter(post.find('.meta, .post-pane'));
         $('select#pool-selector').chosen().change( function() {
           $.get(
             '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
