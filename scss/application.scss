@@ -564,8 +564,6 @@ textarea#invitations {
 div.pools {
     position: absolute;
     z-index: 2;
-    top: 140px;
-    left: 0px;
     width: 250px;
     border: 1px solid $main_green;
     background-color: $faint_green;
@@ -575,6 +573,15 @@ div.pools {
     select#pool-selector {
         width: 100%;
     }
+}
+
+.post-excerpt div.pools {
+    top: 150px;
+    left: 0px;
+}
+.post div.pools {
+    top: 20px;
+    left: 300px;
 }
 
 .fading-alert {
