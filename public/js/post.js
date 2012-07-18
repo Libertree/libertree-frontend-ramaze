@@ -133,4 +133,24 @@ $(document).ready( function() {
     );
     return false;
   } );
+
+  $('.post-tools .collect').live( 'click', function() {
+    $('div.pools').remove();
+    var post = $(this).closest('div.post, div.post-excerpt');
+    var postId = post.data('post-id');
+    $.get(
+      '/pools/_index/' + postId,
+      function(html) {
+        var o = $(html);
+        o.insertAfter(post.find('.meta'));
+        $('select#pool-selector').chosen().change( function() {
+          $.get(
+            '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId
+          );
+          $('div.pools').remove();
+        } );
+      }
+    );
+    return false;
+  } );
 } );

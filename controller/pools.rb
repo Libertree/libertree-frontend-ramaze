@@ -19,6 +19,10 @@ module Controller
     def index
       @pools = account.pools
     end
+    def _index(target_post_id)
+      @pools = account.pools
+      @post = Libertree::Model::Post[target_post_id.to_i]
+    end
 
     def create
       redirect_referrer  if ! request.post?
@@ -67,13 +71,13 @@ module Controller
 
     def add_post(pool_id, post_id)
       pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
-      redirect_referrer  if pool.nil?
+      return  if pool.nil?
       post = Libertree::Model::Post[ id: post_id.to_i ]
-      redirect_referrer  if post.nil?
+      return  if post.nil?
 
       pool << post
 
-      redirect_referrer
+      ""
     end
 
     def remove_post(pool_id, post_id)
