@@ -575,3 +575,13 @@ div.pools {
         width: 100%;
     }
 }
+
+.fading-alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    padding: 1em;
+    border: 1px solid $main_green;
+    background-color: $faint_green;
+}
