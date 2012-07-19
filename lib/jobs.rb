@@ -1,4 +1,5 @@
 require 'libertree/model'
+require 'libertree/job-processor'
 require 'net/http'
 require 'uri'
 
@@ -16,28 +17,25 @@ module Jobs
         begin
           uri = URI.parse(params['avatar_url'])
           if uri.path.empty?
-            log_error "URL contains no path: #{params['avatar_url']}"
+            raise Libertree::JobFailed, "URL contains no path: #{params['avatar_url']}"
           else
             Timeout.timeout(10) do
               Net::HTTP.start(uri.host, uri.port) { |http|
                 resp = http.get(uri.path)
                 ext = File.extname(uri.path)
                 if ! ['.png', '.gif', '.jpg', '.jpeg'].include?(ext.downcase)
-                  log_error "Invalid avatar file type: #{ext}"
-                  # TODO: mark this job as failed
+                  raise Libertree::JobFailed, "Invalid avatar file type: #{ext}"
                 else
                   File.open( "public/images/avatars/#{member.id}#{ext}", 'wb' ) { |file|
                     file.write(resp.body)
                   }
                   member.avatar_path = "/images/avatars/#{member.id}#{ext}"
-                  return true
                 end
               }
             end
           end
         rescue URI::InvalidURIError, ArgumentError => e
-          # TODO: mark this job as failed, because the URL cannot be parsed
-          log_error "Invalid URI: #{params['avatar_url']}"
+          raise Libertree::JobFailed, "Invalid URI: #{params['avatar_url']}"
         rescue Timeout::Error
           # ignore
         end
