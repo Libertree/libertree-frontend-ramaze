@@ -3,10 +3,12 @@ require 'oembed'
 module Libertree
   module Embedder
     # FIXME: add custom providers
-    OEmbed::Providers.register *[ OEmbed::Providers::Youtube,
-                                  OEmbed::Providers::Vimeo,
-                                  OEmbed::Providers::Flickr,
-                                  OEmbed::Providers::SoundCloud ]
+    OEmbed::Providers.register(
+      OEmbed::Providers::Youtube,
+      OEmbed::Providers::Vimeo,
+      OEmbed::Providers::Flickr,
+      OEmbed::Providers::SoundCloud
+    )
 
     Libertree::Model::Post.after_create do |post|
       self.autoembed(post.text)
