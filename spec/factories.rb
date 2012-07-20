@@ -1,3 +1,4 @@
+require 'factory_girl'
 require 'libertree/model'
 
 FactoryGirl.define do

@@ -6,6 +6,7 @@ require 'mini_magick'
 require 'redcarpet'
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
+$conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
 if $conf['graphicsmagick']
@@ -33,8 +34,10 @@ require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
+require_relative 'controller/chat-messages'
 require_relative 'controller/comment-likes'
 require_relative 'controller/comments'
+require_relative 'controller/contact-lists'
 require_relative 'controller/home'
 require_relative 'controller/invitations'
 require_relative 'controller/main'

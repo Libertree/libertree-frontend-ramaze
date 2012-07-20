@@ -16,7 +16,9 @@ function removeSpinner(target_selector) {
 }
 
 function hideWindows() {
-    $('.window').hide();
+  $('#chat-window').resizable('destroy');
+  $('.window').hide();
+  rememberChatDimensions();
 }
 
 function updateAges() {
@@ -66,7 +68,8 @@ $(document).ready( function() {
   } );
 
   $(document).click( function(event) {
-    if( $(event.target).closest('.window').length == 0 ) {
+    var t = $(event.target);
+    if( t.closest('.window').length == 0 && ! t.hasClass('result-selected') ) {
       hideWindows();
     }
   } );
@@ -137,7 +140,7 @@ $(document).ready( function() {
 
   setInterval( updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
-  $('textarea').expandable();
+  $('textarea').not('.textarea-chat').expandable();
 
   if( layout == 'narrow' ) {
     $('*').mouseover();

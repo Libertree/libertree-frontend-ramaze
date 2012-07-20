@@ -3,13 +3,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
 
-  #{ css 'ui-lightness/jquery-ui-1.8.18.custom' }
+  #{ css 'ui-lightness/jquery-ui-1.8.21.custom' }
   #{ css 'chosen' }
   <link href="/css/application.css?t=#{File.mtime('public/css/application.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/#{account.font_css || 'fonts'}.css?t=#{File.mtime('public/css/' + (account.font_css || 'fonts') + '.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/single-post-view.css?t=#{File.mtime('public/css/single-post-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/excerpts-view.css?t=#{File.mtime('public/css/excerpts-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <link href="/css/messages.css?t=#{File.mtime('public/css/messages.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/css/chat.css?t=#{File.mtime('public/css/chat.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <?r if account.admin? ?>
     <link href="/css/admin.css?t=#{File.mtime('public/css/admin.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
   <?r end ?>
@@ -17,23 +18,28 @@
   #{ @stylesheet_extra }
 
   #{ js 'jquery-1.7.2.min' }
-  #{ js 'jquery-ui-1.8.18.custom.min' }
+  #{ js 'jquery-ui-1.8.21.custom.min' }
   #{ js 'jquery.mousewheel.min' }
   #{ js 'jquery.expandable' }
   #{ js 'jquery.cookie' }
   #{ js 'chosen.jquery.min' }
+  #{ js 'textinputs_jquery' }
   <script src="/js/application.js?t=#{File.mtime('public/js/application.js').to_i}" type="text/javascript"></script>
 
   <script src="/js/comments.js?t=#{File.mtime('public/js/comments.js').to_i}" type="text/javascript"></script>
   <script src="/js/markdown-injector.js?t=#{File.mtime('public/js/markdown-injector.js').to_i}" type="text/javascript"></script>
   <script src="/js/notifications.js?t=#{File.mtime('public/js/notifications.js').to_i}" type="text/javascript"></script>
+  <script src="/js/chat.js?t=#{File.mtime('public/js/chat.js').to_i}" type="text/javascript"></script>
   <script src="/js/post.js?t=#{File.mtime('public/js/post.js').to_i}" type="text/javascript"></script>
   <script src="/js/post-new.js?t=#{File.mtime('public/js/post-new.js').to_i}" type="text/javascript"></script>
   <script src="/js/river.js?t=#{File.mtime('public/js/river.js').to_i}" type="text/javascript"></script>
   <script src="/js/river-new.js?t=#{File.mtime('public/js/river-new.js').to_i}" type="text/javascript"></script>
-  <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
   <script src="/js/home.js?t=#{File.mtime('public/js/home.js').to_i}" type="text/javascript"></script>
   <script src="/js/messages.js?t=#{File.mtime('public/js/messages.js').to_i}" type="text/javascript"></script>
+  <script src="/js/contact-lists.js?t=#{File.mtime('public/js/contact-lists.js').to_i}" type="text/javascript"></script>
+  <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
+    <script src="/js/websocket.js?t=#{File.mtime('public/js/websocket.js').to_i}" type="text/javascript"></script>
+  <?r end ?>
   <?r if account.admin? ?>
     <script src="/js/admin.js?t=#{File.mtime('public/js/admin.js').to_i}" type="text/javascript"></script>
   <?r end ?>

@@ -18,7 +18,7 @@ module Controller
 
     def create
       return '{}'  if ! request.post?
-      return '{}'  if request['text'].empty?
+      return '{}'  if request['text'].to_s.empty?
 
       post = Libertree::Model::Post[ request['post_id'].to_i ]
 
@@ -29,15 +29,7 @@ module Controller
       comment = Libertree::Model::Comment.create(
         'member_id' => account.member.id,
         'post_id'   => post.id,
-        'text'      => request['text']
-      )
-
-      Libertree::Model::Job.create_for_forests(
-        {
-          task: 'request:COMMENT',
-          params: { 'comment_id' => comment.id, }
-        },
-        *comment.forests
+        'text'      => request['text'].to_s
       )
 
       session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
@@ -64,13 +56,6 @@ module Controller
     def destroy(comment_id)
       comment = Libertree::Model::Comment[ comment_id.to_i ]
       if comment && comment.member == account.member
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:COMMENT-DELETE',
-            params: { 'comment_id' => comment.id, }
-          },
-          *comment.forests
-        )
         comment.delete_cascade
       end
       ""

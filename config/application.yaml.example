@@ -2,6 +2,9 @@
 environment: live
 
 websocket_listen_host: 0.0.0.0
+# These accounts (by username) will have websockets disabled
+# websocket_blacklist:
+  # - 'ruskie'
 
 # graphicsmagick: false means use ImageMagick
 graphicsmagick: true

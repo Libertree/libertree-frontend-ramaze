@@ -1,0 +1,18 @@
+<div class="river" data-river-id="#{@river.id}">
+  <?r if ! @not_linked ?>
+    <a href="/home/#{@river.id}">#{@river.label}</a>
+  <?r else ?>
+    #{@river.label}
+  <?r end ?>
+  <span class="river-tools">
+    <?r if @river.home? ?>
+      (home river)
+    <?r else ?>
+      <a href="/rivers/set_home/#{@river.id}"><img src="/images/icon-home.png" alt="Set as home river" title="Set as home river" class="size-16"/></a>
+    <?r end ?>
+    <a href="/rivers/edit/#{@river.id}"><img src="/images/icon-edit.png" alt="edit" title="edit" class="size-16"/></a>
+    <a class="delete" href="/rivers/destroy/#{@river.id}"><img src="/images/icon-delete.png" alt="delete" title="delete" class="size-16"/></a>
+  </span>
+  <br/>
+  <span class="query">#{@river.query}</span>
+</div>

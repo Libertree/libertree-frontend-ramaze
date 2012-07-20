@@ -18,10 +18,10 @@ body.body {
         #main-menu-container {
             margin-right: 0px;
         }
-    }
-    .menu-item {
-        margin-right: 5px;
-        float: left;
+        .menu-item {
+            margin-left: 5px;
+            float: right;
+        }
     }
     #menu-account {
         margin-left: 60px;
@@ -92,6 +92,26 @@ input#search {
                 a {
                     padding: 0px 50px;
                 }
+            }
+        }
+    }
+}
+
+#chat-window {
+    width: 280px;
+    left: 0.5em;
+    margin-left: 0px;
+
+    #chat-new-partner-wrapper {
+        select#chat-new-partner {
+            width: 260px;
+        }
+    }
+
+    .logs {
+        .log {
+            .messages {
+                max-height: 300px;
             }
         }
     }

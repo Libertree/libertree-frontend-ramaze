@@ -1,12 +1,4 @@
-require 'nokogiri'
-require 'redcarpet'
-require 'factory_girl'
-require 'rspec'
-
-require_relative 'factories.rb'
-require_relative '../helper/comment'
-require_relative '../lib/libertree/render'
-require_relative '../lib/libertree/markdown'
+require 'spec_helper'
 
 describe Ramaze::Helper::Comment do
   before :each do

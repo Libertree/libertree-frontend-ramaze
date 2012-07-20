@@ -6,6 +6,17 @@ require 'libertree/model'
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
 $sessions = Hash.new
 
+pid_dir = File.join( File.dirname(__FILE__), 'pids' )
+if ! Dir.exists?(pid_dir)
+  Dir.mkdir pid_dir
+end
+pid_file = File.join(pid_dir, 'websocket-server.pid')
+File.open(pid_file, 'w') do |f|
+  f.print Process.pid
+end
+
+puts "Starting websocket server (pid #{Process.pid})..."
+
 def onmessage(ws, data)
   sid = data['sid']
   session_account = Libertree::Model::SessionAccount[sid: sid]
@@ -21,7 +32,12 @@ def onmessage(ws, data)
   $sessions[sid][:sockets][ws] ||= {
     last_post_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts"),
     last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
-    last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments")
+    last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments"),
+    last_chat_message_id: Libertree::DB.dbh.sc(
+      "SELECT MAX(id) FROM chat_messages WHERE to_member_id = ? OR from_member_id = ?",
+      session_account.account.member.id,
+      session_account.account.member.id
+    ),
   }
 end
 
@@ -115,6 +131,26 @@ EventMachine.run do
             }.to_json
           )
           account.watched_post_last_comment_id = c.id
+        end
+
+        chat_messages = Libertree::Model::ChatMessage.s(
+          "SELECT * FROM chat_messages WHERE id > ? AND ( to_member_id = ? OR from_member_id = ? ) ORDER BY id",
+          socket_data[:last_chat_message_id],
+          account.member.id,
+          account.member.id
+        )
+        chat_messages.each do |cm|
+          partner = cm.partner_for(account)
+          ws.send(
+            {
+              'command'             => 'chat-message',
+              'id'                  => cm.id,
+              'partnerMemberId'     => partner.id,
+              'numUnseen'           => account.num_chat_unseen,
+              'numUnseenForPartner' => account.num_chat_unseen_from_partner(partner),
+            }.to_json
+          )
+          socket_data[:last_chat_message_id] = cm.id
         end
       end
     end

@@ -1,9 +1,6 @@
 # encoding: utf-8
 
-require 'redcarpet'
-require 'nokogiri'
-require_relative '../lib/libertree/render'
-require_relative '../lib/libertree/markdown'
+require 'spec_helper'
 
 describe Libertree do
   describe '#hashtaggify' do

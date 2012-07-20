@@ -15,17 +15,14 @@ module Controller
             respond '', 405
           end
 
+          if request['source'].nil? || request['source'].to_s.strip.empty?
+            respond '', 400
+          end
+
           post = Libertree::Model::Post.create(
             'member_id' => @account.member.id,
             'public'    => true,
-            'text'      => request['text']
-          )
-          Libertree::Model::Job.create_for_forests(
-            {
-              task: 'request:POST',
-              params: { 'post_id' => post.id, }
-            },
-            *post.forests
+            'text'      => request['text'].to_s + "\n\n*posted with " + request['source'].to_s + "*"
           )
 
           { 'success' => true }.to_json

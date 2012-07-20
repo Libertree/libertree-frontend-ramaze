@@ -7,7 +7,7 @@ module Ramaze
         else
           path = '/images/avatar-default.png'
         end
-        %|<img src="#{path}" class="#{styles}" alt="#{member.name_display}"/>|
+        %|<img src="#{path}" class="#{styles}" alt="#{member.name_display}" title="#{member.name_display}" data-member-id="#{member.id}"/>|
       end
 
       def member_avatar_link(member)

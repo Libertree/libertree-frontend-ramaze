@@ -33,20 +33,14 @@ module Controller
     def update
       return  if ! request.post?
 
-      name_display = request['name_display']
+      name_display = request['name_display'].to_s
       if name_display.strip.empty?
         name_display = nil
       end
       begin
         account.member.profile.set(
           name_display: name_display,
-          description: request['description']
-        )
-        Libertree::Model::Job.create_for_forests(
-          task: 'request:MEMBER',
-          params: {
-            'member_id' => account.member.id,
-          }
+          description: request['description'].to_s
         )
       rescue PGError => e
         if e.message =~ /valid_name_display/
@@ -93,12 +87,6 @@ module Controller
       File.chmod  0644, save_path
 
       account.member.avatar_path = "/images/avatars/#{basename}"
-      Libertree::Model::Job.create_for_forests(
-        task: 'request:MEMBER',
-        params: {
-          'member_id' => account.member.id,
-        }
-      )
 
       flash[:notice] = "Avatar changed."
       redirect_referrer

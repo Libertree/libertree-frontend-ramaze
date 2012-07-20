@@ -33,8 +33,8 @@ module Controller
     def create
       redirect_referrer  if ! request.post?
 
-      if request['hashtags'] && ! request['hashtags'].strip.empty?
-        hashtags = "\n\n" + request['hashtags'].strip.
+      if request['hashtags'] && ! request['hashtags'].to_s.strip.empty?
+        hashtags = "\n\n" + request['hashtags'].to_s.strip.
           split(/[;., ]+/).
           map { |tag|
             if tag[0] != '#'
@@ -47,7 +47,7 @@ module Controller
         hashtags = ''
       end
 
-      text = ( request['text'] + hashtags )
+      text = ( request['text'].to_s + hashtags )
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
 
@@ -60,13 +60,6 @@ module Controller
         'member_id' => account.member.id,
         'public'    => true,
         'text'      => text
-      )
-      Libertree::Model::Job.create_for_forests(
-        {
-          task: 'request:POST',
-          params: { 'post_id' => post.id, }
-        },
-        *post.forests
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -124,17 +117,15 @@ module Controller
 
     def destroy(post_id)
       post = Libertree::Model::Post[post_id.to_i]
-      if post && post.member == account.member && post.comments.size == 0
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:POST-DELETE',
-            params: { 'post_id' => post.id, }
-          },
-          *post.forests
-        )
+      if post && post.member == account.member
         post.delete_cascade
       end
-      redirect Home.r(:/)
+
+      if request.env['HTTP_REFERER'] =~ %r{/posts/show/#{post_id}}
+        redirect Home.r(:/)
+      else
+        redirect_referrer
+      end
     end
 
     def edit(post_id)
@@ -149,19 +140,12 @@ module Controller
       redirect_referrer  if post.nil? || post.member != account.member
 
       if ! request.params['cancel']
-        text = request['text']
+        text = request['text'].to_s
         # TODO: DRY up along with #encode! calls in #create action
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
 
         post.revise text
-        Libertree::Model::Job.create_for_forests(
-          {
-            task: 'request:POST',
-            params: { 'post_id' => post.id, }
-          },
-          *post.forests
-        )
         session[:saved_text]['textarea-post-edit'] = nil
       end
 

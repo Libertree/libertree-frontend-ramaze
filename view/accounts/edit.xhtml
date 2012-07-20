@@ -1,12 +1,14 @@
 <h3>Account Settings</h3>
 
-<div>
-  <a href="/profiles/edit">Edit Profile</a><br/>
-  <a href="/rivers">Manage Rivers</a>
+<div style="margin-bottom: 1em;">
+  <a href="/profiles/edit">Edit profile</a><br/>
+  <a href="/rivers">Manage rivers</a><br/>
+  <a href="/accounts/change_password">Change password</a>
 </div>
 
 <form action="update" method="POST">
-  Post excerpt maximum height: <input type="text" name="excerpt_max_height" value="#{account.excerpt_max_height}"/><br/>
+  Email: <input type="text" name="email" size="30" value="#{account.email}"/> (for password recovery; never public)<br/>
+  Post excerpt maximum height: <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>pixels<br/>
   Custom menu link: <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
   Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
   Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
@@ -32,3 +34,11 @@ Current API token: #{account.api_token || '(none)'}<br/>
 </div>
 
 <a href="/accounts/generate_api_token">Generate API token</a>
+
+<h4>Data Export</h4>
+
+<p>
+Download your account settings, profile, posts, comments and direct messages:
+</p>
+
+<a href="/accounts/data/#{@export_filename}">#{@export_filename}</a>

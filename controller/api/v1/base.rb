@@ -9,7 +9,7 @@ module Controller
             respond '', 400
           end
 
-          @account = Libertree::Model::Account[ api_token: request['token'] ]
+          @account = Libertree::Model::Account[ api_token: request['token'].to_s ]
           if @account.nil?
             respond '', 404
           end

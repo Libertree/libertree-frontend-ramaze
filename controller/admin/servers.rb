@@ -21,7 +21,7 @@ module Controller
       def create
         redirect_referrer  if ! request.post?
 
-        ip = IPSocket::getaddress(request['host'])
+        ip = IPSocket::getaddress(request['host'].to_s)
         Libertree::Model::Server.create(ip: ip)
 
         redirect_referrer
