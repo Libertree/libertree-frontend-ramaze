@@ -24,13 +24,6 @@ module Controller
             'public'    => true,
             'text'      => request['text'].to_s + "\n\n*posted with " + request['source'].to_s + "*"
           )
-          Libertree::Model::Job.create_for_forests(
-            {
-              task: 'request:POST',
-              params: { 'post_id' => post.id, }
-            },
-            *post.forests
-          )
 
           { 'success' => true }.to_json
         end

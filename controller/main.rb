@@ -75,12 +75,6 @@ module Controller
           email: email
         )
         invitation.account_id = a.id
-        Libertree::Model::Job.create_for_forests(
-          task: 'request:MEMBER',
-          params: {
-            'member_id' => a.member.id,
-          }
-        )
 
         account_login request.subset('username', 'password')
         redirect Home.r(:/)

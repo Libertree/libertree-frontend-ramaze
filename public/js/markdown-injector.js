@@ -20,6 +20,9 @@ $(document).ready( function() {
       case "image":
         textarea.surroundSelectedText("![IMAGE TITLE](", ")");
         break;
+      case "image-link":
+        textarea.surroundSelectedText("[![image/photo](", ")](URL)");
+        break;
       case "quote":
         textarea.surroundSelectedText("\n\n> ", "");
         break;

@@ -10,7 +10,8 @@ function markPostRead(post_id) {
 }
 
 $(document).ready( function() {
-  $('.post-tools a.like').live( 'click', function() {
+  $('.post-tools a.like').live( 'click', function(event) {
+    event.preventDefault();
     var link = $(this);
     var post = link.closest('div.post, .post-excerpt');
     if( post.length ) {
@@ -34,7 +35,8 @@ $(document).ready( function() {
     }
   } )
 
-  $('.post-tools a.unlike').live( 'click', function() {
+  $('.post-tools a.unlike').live( 'click', function(event) {
+    event.preventDefault();
     var link = $(this);
     var post = link.closest('div.post, .post-excerpt');
     if( post.length ) {
