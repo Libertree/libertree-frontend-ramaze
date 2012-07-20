@@ -1,10 +1,16 @@
+<div class="image-wrapper">
+  <img class="logo" src="images/logo.png" alt="Libertree" />
+</div>
+
 <form id="login" method="POST">
-  Username: <input type="text" name="username"/><br/>
-  Password: <input type="password" name="password"/><br/>
+  <div class="label">Username</div>
+  <input type="text" name="username"/><br/>
+  <div class="label">Password</div>
+  <input type="password" name="password"/>
   <input type="submit" value="Login"/>
 </form>
 
-<p style="margin-top: 1em;">
+<p class="note">
 Forgot your credentials?  You can
 <a href="/request_password_reset">reset your password</a>
 if your account has an email address on record.

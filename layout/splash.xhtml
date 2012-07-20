@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class='splash'>
+
+  <title>#{( @num_unseen && ( @num_unseen > 0 ) ) ? "(#{@num_unseen})" : ''} Libertree#{ $conf['title_insert'] ? " - #{::CGI.escape_html($conf['title_insert'])}" : '' }#{ @subtitle ? " - #{::CGI.escape_html(@subtitle)}" : '' }</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+  <link href="/css/splash.css?t=#{File.mtime('public/css/splash.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+
+<body class="#{ @view }">
+
+  <?r if flash[:error] ?>
+    <div class="flash error">#{flash[:error]}</div>
+  <?r end ?>
+
+  <?r if flash[:notice] ?>
+    <div class="flash notice">#{flash[:notice]}</div>
+  <?r end ?>
+
+  #{@content}
+</body>
+
+</html>
