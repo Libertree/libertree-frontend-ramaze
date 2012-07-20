@@ -21,15 +21,12 @@ module Libertree
     def self.autoembed(text)
       urls = extract_urls(text)
       urls.each do |url|
-        provider = OEmbed::Providers.find(url)
-        if provider
-          Libertree::Model::Job.create(
-            task: 'http:embed',
-            params: {
-              'url' => url
-            }.to_json
-          )
-        end
+        Libertree::Model::Job.create(
+          task: 'http:embed',
+          params: {
+            'url' => url
+          }.to_json
+        )
       end
     end
 
@@ -53,12 +50,8 @@ module Libertree
     end
 
     def self.extract_urls(text)
-      text.lines.reduce([]) do |list,line|
-        line.strip!
-        # FIXME: match against OEmbed::Providers.urls.keys instead?
-        list << line if line =~ %r|^http(s)?://.+|
-        list
-      end
+      all_keys = Regexp.union(OEmbed::Providers.urls.keys)
+      text.lines.find_all {|line| line =~ all_keys}.map(&:strip)
     end
 
   end
