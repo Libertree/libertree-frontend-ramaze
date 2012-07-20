@@ -8,6 +8,14 @@ module Libertree
                                   OEmbed::Providers::Flickr,
                                   OEmbed::Providers::SoundCloud ]
 
+    Libertree::Model::Post.after_create do |post|
+      self.autoembed(post.text)
+    end
+
+    def self.get(url)
+      OEmbed::Providers.get(url)
+    end
+
     def self.autoembed(text)
       urls = extract_urls(text)
       urls.each do |url|
