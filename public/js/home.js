@@ -94,7 +94,8 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-excerpt .post-tools a.comment').live( 'click', function() {
+  $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
+    event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
     wantsToComment = true;
     excerpt.find('.show-more').click();
