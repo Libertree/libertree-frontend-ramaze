@@ -44,6 +44,8 @@ module Libertree
         a['href'] = resolve_redirection(a['href'])
       end
     end
+
+    # FIXME: maybe this should only be done for posts
     Libertree::Embedder.replace_urls_with_objects( html.to_xhtml )
   end
 
