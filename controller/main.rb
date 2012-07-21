@@ -1,12 +1,19 @@
 module Controller
   class Main < Base
     map '/'
+    set_layout 'splash'
+    set_layout 'default' => [:search]
 
     def index
-      force_mobile_to_narrow
+      if logged_in?
+        redirect Home.r(:/)
+      else
+        redirect r(:login)
+      end
     end
 
     def login
+      @view = 'splash'
       if logged_in?
         redirect Home.r(:/)
       end
