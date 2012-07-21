@@ -7,7 +7,7 @@ module Controller
     end
 
     layout do |path|
-      if path =~ %r{\b_}
+      if path =~ %r{\b_|create_pool_and_add_post}
         nil
       elsif session[:layout] == 'narrow'
         :narrow
@@ -84,6 +84,19 @@ module Controller
       pool << post
 
       ""
+    end
+
+    def create_pool_and_add_post(pool_name, post_id)
+      post = Libertree::Model::Post[ id: post_id.to_i ]
+      return ''  if post.nil?
+
+      pool = Libertree::Model::Pool.find_or_create(
+        account_id: account.id,
+        name: pool_name.to_s
+      )
+      pool << post
+
+      { 'success' => true }.to_json
     end
 
     def remove_post(pool_id, post_id)

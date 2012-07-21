@@ -147,7 +147,9 @@ $(document).ready( function() {
       function(html) {
         var o = $(html);
         o.insertAfter(post.find('.meta, .post-pane'));
-        $('select#pool-selector').chosen().change( function() {
+        $('select#pool-selector').chosen( {
+          no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
+        } ).change( function() {
           $.get(
             '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
             function() {
@@ -157,6 +159,24 @@ $(document).ready( function() {
             }
           );
         } );
+      }
+    );
+    return false;
+  } );
+
+  $('.create-pool-and-add-post').live( 'click', function() {
+    var post = $(this).closest('.post, .post-excerpt');
+    var postId = post.data('post-id');
+    var poolName = post.find('.pools .chzn-search input').val();
+    $.get(
+      '/pools/create_pool_and_add_post/'+poolName+'/'+postId,
+      function(response) {
+        var h = $.parseJSON(response);
+        if(h.success) {
+          $('.pools.window').hide();
+        } else {
+          alert('Failed to create pool or add post.');
+        }
       }
     );
     return false;
