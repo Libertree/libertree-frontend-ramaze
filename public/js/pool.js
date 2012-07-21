@@ -46,6 +46,7 @@ $(document).ready( function() {
           );
         } else {
           o.show();
+          o.css( { left: (x-o.width()/2)+'px', top: (y+14)+'px' } );
           $('select#pool-selector').chosen( {
             no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
           } ).change( function() {
