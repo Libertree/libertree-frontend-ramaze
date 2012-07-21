@@ -37,9 +37,11 @@ module Libertree
     def self.replace_urls_with_objects(text)
       text.lines.reduce("") do |res,line|
         res << line
-        # matching against any link is two orders of magnitude faster
-        # than comparing against a list of supported link formats
-        m = line.strip.match(%r|^<a href="(http(s)?://.+)">\1</a>$|)
+        # Matching against any link is two orders of magnitude faster
+        # than comparing against a list of supported link formats.
+        # Note that we cannot fetch the URL after "href=" as it may have
+        # been modified by the URL resolver.
+        m = line.strip.match(%r|^<a href=".+">(http(s)?://.+)</a>$|)
         if m
           url = m[1]
           cached = Libertree::Model::EmbedCache[ url: url ]
