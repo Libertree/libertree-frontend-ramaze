@@ -1,3 +1,22 @@
+function createPoolAndAddPost(post) {
+  var postId = post.data('post-id');
+  var textField = post.find('.pools .chzn-search input');
+  textField.attr('disabled', 'disabled');
+  var poolName = textField.val();
+  $.get(
+    '/pools/create_pool_and_add_post/'+poolName+'/'+postId,
+    function(response) {
+      var h = $.parseJSON(response);
+      if(h.success) {
+        $('.pools.window').hide();
+      } else {
+        alert('Failed to create pool or add post.');
+      }
+      textField.removeAttr('disabled');
+    }
+  );
+}
+
 $(document).ready( function() {
   $('.post-tools .collect').live( 'click', function(e) {
     var x = e.pageX;
@@ -29,20 +48,17 @@ $(document).ready( function() {
 
   $('.create-pool-and-add-post').live( 'click', function() {
     var post = $(this).closest('.post, .post-excerpt');
-    var postId = post.data('post-id');
-    var poolName = post.find('.pools .chzn-search input').val();
-    $.get(
-      '/pools/create_pool_and_add_post/'+poolName+'/'+postId,
-      function(response) {
-        var h = $.parseJSON(response);
-        if(h.success) {
-          $('.pools.window').hide();
-        } else {
-          alert('Failed to create pool or add post.');
-        }
-      }
-    );
+    createPoolAndAddPost(post);
     return false;
+  } );
+
+  $('.pools .chzn-search input').live( 'keydown', function(event) {
+    if( event.keyCode != 13 ) {
+      return;
+    }
+
+    var post = $(this).closest('.post, .post-excerpt');
+    createPoolAndAddPost(post);
   } );
 
   $('.post-tools .remove').live( 'click', function(e) {
