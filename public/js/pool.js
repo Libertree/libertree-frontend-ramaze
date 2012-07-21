@@ -34,18 +34,31 @@ $(document).ready( function() {
       function(html) {
         var o = $(html);
         o.insertAfter(post.find('.meta, .post-pane'));
-        $('select#pool-selector').chosen( {
-          no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
-        } ).change( function() {
+        if( o.find('option').length == 2 ) {
+          var option = $('select#pool-selector option:last');
           $.get(
-            '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
+            '/pools/add_post/' + option.val() + '/' + postId,
             function() {
               /* TODO: Check for success */
               $('div.pools').remove();
-              fadingAlert('Post added to pool.', x, y);
+              fadingAlert('Post added to "'+option.text()+'" pool.', x, y);
             }
           );
-        } );
+        } else {
+          o.show();
+          $('select#pool-selector').chosen( {
+            no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
+          } ).change( function() {
+            $.get(
+              '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
+              function() {
+                /* TODO: Check for success */
+                $('div.pools').remove();
+                fadingAlert('Post added to pool.', x, y);
+              }
+            );
+          } );
+        }
       }
     );
     return false;
