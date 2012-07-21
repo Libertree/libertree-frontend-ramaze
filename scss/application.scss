@@ -555,3 +555,39 @@ textarea#invitations {
         height: 16px;
     }
 }
+
+div.pools {
+    position: fixed;
+    z-index: 2;
+    width: 250px;
+    border: 1px solid $main_green;
+    background-color: $faint_green;
+    padding: 1em;
+    display: none;
+
+    select#pool-selector {
+        width: 100%;
+    }
+}
+
+.post-excerpt div.pools {
+    top: 150px;
+    left: 0px;
+}
+.post div.pools {
+    top: 20px;
+    left: 300px;
+}
+div.pools .chzn-container .chzn-results li {
+    line-height: 24px;
+}
+
+.fading-alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    padding: 1em;
+    border: 1px solid $main_green;
+    background-color: $faint_green;
+}
