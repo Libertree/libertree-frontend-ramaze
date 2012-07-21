@@ -100,12 +100,10 @@ textarea, input[type="text"], input[type="password"] {
   padding: 1em 50px;
   margin: 0 0 1em;
   &.error {
-    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
-    border: 2px solid $red;
+    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em #FFCAAA;
   }
   &.notice {
-    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
-    border: 2px solid $sky;
+    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em #FAFAAA;
   }
 }
 
@@ -333,11 +331,11 @@ textarea.comment, form.comment .form-buttons {
     display: none;
     position: absolute;
     z-index: 4;
-    background-color: $sand;
+    background-color: $faint_green;
     border-top: 0px;
-    border-left: 1px solid $stone;
-    border-right: 1px solid $stone;
-    border-bottom: 1px solid $stone;
+    border-left: 1px solid $dark_green;
+    border-right: 1px solid $dark_green;
+    border-bottom: 1px solid $dark_green;
     text-align: left;
 }
 
