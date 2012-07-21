@@ -2,6 +2,7 @@ module Controller
   class Main < Base
     map '/'
     set_layout 'splash'
+    set_layout 'default' => [:search]
 
     def index
       if logged_in?
