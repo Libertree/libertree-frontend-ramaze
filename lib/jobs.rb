@@ -1,11 +1,15 @@
 require 'libertree/model'
 require 'libertree/job-processor'
+require 'libertree/embedder'
 require 'net/http'
 require 'uri'
 
 module Jobs
   def self.list
-    { "http:avatar" => Http::Avatar }
+    {
+      "http:avatar" => Http::Avatar,
+      "http:embed"  => Http::Embed,
+    }
   end
 
   module Http
@@ -41,6 +45,22 @@ module Jobs
         end
       end
     end
+
+    class Embed
+      def self.perform(params)
+        cached = Libertree::Model::EmbedCache[ url: params['url'] ]
+        unless cached
+          response = Libertree::Embedder.get(params['url'])
+          if response
+            Libertree::Model::EmbedCache.create(
+              url: params['url'],
+              object: response.html
+            )
+          end
+        end
+      end
+    end
+
   end
 end
 
