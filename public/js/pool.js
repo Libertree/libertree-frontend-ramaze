@@ -58,4 +58,10 @@ $(document).ready( function() {
     );
     return false;
   } );
+
+  $('li.pool a.delete').click( function() {
+    if( ! confirm('All record of collected posts will be lost.  Delete this pool?') ) {
+      return false;
+    }
+  } );
 } );
