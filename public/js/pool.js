@@ -19,6 +19,11 @@ function createPoolAndAddPost(post) {
 
 $(document).ready( function() {
   $('.post-tools .collect').live( 'click', function(e) {
+    if( $('.pools.window:visible').length ) {
+      $('.pools.window').hide();
+      return false;
+    }
+
     var x = e.pageX;
     var y = e.pageY;
     $('div.pools').remove();
