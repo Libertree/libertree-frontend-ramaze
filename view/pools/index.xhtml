@@ -1,0 +1,19 @@
+<h2>Pools</h2>
+
+<p>
+Use pools to collect posts.
+</p>
+
+<form action="/pools/create" method="POST">
+  Name: <input type="text" name="name"/>
+  <input type="submit" value="Create"/>
+</form>
+
+<ul>
+  <?r @pools.each do |p| ?>
+    <li class="pool">
+      <a href="/pools/show/#{p.id}">#{p.name}</a>
+      <a href="/pools/destroy/#{p.id}" class="delete"><img src="/images/icon-delete.png" alt="Delete" class="size-16"/></a>
+    </li>
+  <?r end ?>
+</ul>

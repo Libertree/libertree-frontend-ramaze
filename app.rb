@@ -30,6 +30,7 @@ require 'libertree/client'
 
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/markdown'
+require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
@@ -46,6 +47,7 @@ require_relative 'controller/profiles'
 require_relative 'controller/profiles_local'
 require_relative 'controller/posts-hidden'
 require_relative 'controller/post-likes'
+require_relative 'controller/pools'
 require_relative 'controller/posts'
 require_relative 'controller/rivers'
 

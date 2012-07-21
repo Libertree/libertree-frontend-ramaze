@@ -115,7 +115,8 @@ $(document).ready( function() {
     window.location = '#' + $(this).data('id-back');
   } );
 
-  $('div.comment a.like').live( 'click', function() {
+  $('div.comment a.like').live( 'click', function(event) {
+    event.preventDefault();
     var link = $(this);
     var comment = link.closest('div.comment');
     if( comment.length ) {
@@ -132,7 +133,8 @@ $(document).ready( function() {
     }
   } )
 
-  $('div.comment a.unlike').live( 'click', function() {
+  $('div.comment a.unlike').live( 'click', function(event) {
+    event.preventDefault();
     var link = $(this);
     var comment = link.closest('div.comment');
     if( comment.length ) {

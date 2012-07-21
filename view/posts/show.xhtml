@@ -24,6 +24,8 @@
           <a href="/posts/destroy/#{@post.id}" class="delete">delete</a>
         <?r end ?>
 
+        <a class="collect" href="#" title="Collect this post in a pool">collect</a>
+
         <?r if @post.like_by(account.member) ?>
           <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
           <a href="#" class="like hidden">like</a>
