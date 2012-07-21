@@ -60,6 +60,7 @@ $(document).ready( function() {
             );
           } );
         }
+        $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown()
       }
     );
     return false;
