@@ -19,6 +19,7 @@ function createPoolAndAddPost(post) {
 
 $(document).ready( function() {
   $('.post-tools .collect').live( 'click', function(e) {
+    e.preventDefault();
     if( $('.pools.window:visible').length ) {
       $('.pools.window').hide();
       return false;
@@ -66,7 +67,8 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.create-pool-and-add-post').live( 'click', function() {
+  $('.create-pool-and-add-post').live( 'click', function(e) {
+    e.preventDefault();
     var post = $(this).closest('.post, .post-excerpt');
     createPoolAndAddPost(post);
     return false;
@@ -82,6 +84,7 @@ $(document).ready( function() {
   } );
 
   $('.post-tools .remove').live( 'click', function(e) {
+    e.preventDefault();
     var post = $(this).closest('div.post, div.post-excerpt');
     var postId = post.data('post-id');
     var poolId = $(this).data('pool-id');
