@@ -1,4 +1,5 @@
 require 'oembed'
+require_relative 'embedding/custom-providers'
 
 module Libertree
   module Embedder
@@ -54,7 +55,9 @@ module Libertree
     end
 
     def self.extract_urls(text)
-      all_keys = Regexp.union(OEmbed::Providers.urls.keys)
+      all_keys = Regexp.union(
+        OEmbed::Providers.urls.keys.concat Libertree::Embedding::CustomProviders.urls.keys
+      )
       text.lines.find_all {|line| line =~ all_keys}.map(&:strip)
     end
 
