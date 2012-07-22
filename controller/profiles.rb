@@ -54,6 +54,23 @@ module Controller
       redirect r(:show, account.member.id)
     end
 
+    def avatar_reset
+      options = Controller::Accounts.options
+      dir = File.join(options.roots.first, options.publics.first, 'images', 'avatars')
+      basename = "#{account.member.id}.png"
+      avatar_path = File.expand_path(basename, dir)
+
+      begin
+        FileUtils.rm avatar_path
+        account.member.avatar_path = nil
+        flash[:notice] = "Avatar deleted."
+      rescue
+        flash[:error] = "Failed to reset avatar."
+      end
+
+      redirect_referrer
+    end
+
     def avatar_upload
       return  if ! request.post?
 
