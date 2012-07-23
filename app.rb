@@ -30,6 +30,7 @@ require 'libertree/client'
 
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/markdown'
+require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
