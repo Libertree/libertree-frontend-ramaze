@@ -102,8 +102,6 @@ $(document).ready( function() {
   } );
 
   $('#scrollable').scroll( function () {
-    $.cookie( 'home_scrolltop', $('#scrollable').scrollTop() );
-
     if( $('#scrollable').scrollTop() + $('#scrollable').height() >= $('.main').height() ) {
       if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
         return;
@@ -136,5 +134,4 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   showShowMores();
-  $('#scrollable').scrollTop( $.cookie('home_scrolltop') );
 } );
