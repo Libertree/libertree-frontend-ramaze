@@ -41,6 +41,7 @@ module Controller
       end
       account.custom_css = request['custom_css'].to_s
       account.custom_js = request['custom_js'].to_s
+      account.autoembed = request['autoembed'] || false
 
       flash[:notice] = "Settings saved."
       redirect_referrer
