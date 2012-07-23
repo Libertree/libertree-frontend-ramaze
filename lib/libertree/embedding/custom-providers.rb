@@ -1,13 +1,24 @@
+require 'nokogiri'
+
 module Libertree
   module Embedding
     class Error < StandardError; end
 
-    class CustomProviders
+    module CustomProviders
       def self.urls
-        [
+        {
           Youku.format => Youku,
           FreeMusicArchive.format => FreeMusicArchive,
-        ]
+        }
+      end
+
+      def self.get(url)
+        self.urls.each do |k,v|
+          if url =~ k
+            return v.get(url)
+          end
+        end
+        nil
       end
 
       class Youku
@@ -29,7 +40,7 @@ OBJECT
 
       class FreeMusicArchive
         def self.format
-          %r{http://freemusicarchive.org/music/(.+)}
+          %r{http://freemusicarchive.org/music/.+}
         end
 
         def self.get(url)

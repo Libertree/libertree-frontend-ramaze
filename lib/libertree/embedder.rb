@@ -3,7 +3,6 @@ require_relative 'embedding/custom-providers'
 
 module Libertree
   module Embedder
-    # FIXME: add custom providers
     OEmbed::Providers.register(
       OEmbed::Providers::Youtube,
       OEmbed::Providers::Vimeo,
@@ -16,7 +15,7 @@ module Libertree
     end
 
     def self.get(url)
-      OEmbed::Providers.get(url)
+      Libertree::Embedding::CustomProviders.get(url) || OEmbed::Providers.get(url).html
     end
 
     def self.autoembed(text)
