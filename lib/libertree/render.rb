@@ -45,8 +45,7 @@ module Libertree
       end
     end
 
-    # FIXME: maybe this should only be done for posts
-    Libertree::Embedder.replace_urls_with_objects( html.to_xhtml )
+    html.to_xhtml
   end
 
   def self.resolve_redirection( url_s )
@@ -92,13 +91,18 @@ module Libertree
     resolution
   end
 
-  def self.render(s)
-    markdownify(s)
+  def self.render(s, autoembed=false)
+    if autoembed
+      # FIXME: maybe this should only be done for posts
+      Libertree::Embedder.replace_urls_with_objects(markdownify(s))
+    else
+      markdownify(s)
+    end
   end
 
   module HasRenderableText
-    def text_rendered
-      Libertree.render self.text
+    def text_rendered(autoembed=false)
+      Libertree.render self.text, autoembed
     end
   end
 

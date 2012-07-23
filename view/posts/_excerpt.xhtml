@@ -61,7 +61,7 @@
     <div class="height-fixed">
     <div class="overflowed">
       <div class="post-text typed-text">
-        #{Libertree.render(@post.text)}
+        #{Libertree.render(@post.text, account.autoembed)}
       </div>
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: true }
     </div>
