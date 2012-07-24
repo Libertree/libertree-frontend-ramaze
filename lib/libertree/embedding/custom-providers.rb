@@ -23,14 +23,14 @@ module Libertree
 
       class Youku
         def self.format
-          %r{http://v.youku.com/v_show/id_(.+).html}
+          %r{http://v\.youku.com/v_show/id_(.+)\.html}
         end
 
         def self.get(url)
           m = url.match self.format
           if m
             return <<OBJECT
-<embed src="http://player.youku.com/player.php/sid/#{m[0]}/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+<embed src="http://player.youku.com/player.php/sid/#{m[1]}/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
 OBJECT
           else
             raise Libertree::Embedding::Error, "failed to extract video id"
@@ -40,7 +40,7 @@ OBJECT
 
       class FreeMusicArchive
         def self.format
-          %r{http://freemusicarchive.org/music/.+}
+          %r{http://freemusicarchive\.org/music/.+}
         end
 
         def self.get(url)
