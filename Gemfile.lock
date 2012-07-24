@@ -24,6 +24,12 @@ GIT
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
 
+GIT
+  remote: git://github.com/rekado/redcarpet.git
+  revision: a2cac90990e9322a5347d357a17287d330595469
+  specs:
+    redcarpet (2.1.1)
+
 PATH
   remote: ../libertree-client-rb
   specs:
@@ -96,7 +102,6 @@ GEM
     ramaze (2012.03.07)
       innate (>= 2012.03)
     rcrypt (0.1.0)
-    redcarpet (2.1.1)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -162,7 +167,7 @@ DEPENDENCIES
   rcrypt
   rdbi!
   rdbi-driver-postgresql!
-  redcarpet
+  redcarpet!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
   ruby-debug19
