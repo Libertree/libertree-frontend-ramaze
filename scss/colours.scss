@@ -18,7 +18,6 @@ $lighter_green: #ADE1AD;
 $faint_green: #EDFAED;
 $dust_translucent: rgba(242,241,233,0.70);
 $cocoa_bean: #4c321a;
-$iced_coffee: $path;
 $light_tan: #D9B798;
 $faint_tan: $sand;
 $autumn_red: #c2503e;
@@ -82,7 +81,7 @@ input[type="password"],
 .chzn-container-active .chzn-choices {
     background-color: $faint_tan;
     background-image: none;
-    border: 1px solid $iced_coffee;
+    border: 1px solid $path;
     color: $cocoa_bean;
 }
 

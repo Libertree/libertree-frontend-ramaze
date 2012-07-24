@@ -398,23 +398,23 @@ textarea.comment, form.comment .form-buttons {
 }
 
 blockquote {
-    border-left: 4px solid $iced_coffee;
+    border-left: 4px solid $path;
     padding: 0.5em 0px 0.1em 1em;
     margin-left: 0px;
     text-align: left;
 }
 
 .preview-box {
-    background-color: $faint_tan;
+    background-color: $sand;
     padding: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
-    border: 1px solid $iced_coffee;
+    border: 1px solid $path;
 
     h3.preview {
         padding-top: 0px;
         margin-top: 0px;
-        border-bottom: 1px solid $iced_coffee;
+        border-bottom: 1px solid $path;
         a.close {
             float: right;
         }
