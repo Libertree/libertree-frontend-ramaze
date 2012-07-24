@@ -13,6 +13,9 @@ module Libertree
     Libertree::Model::Post.after_create do |post|
       self.autoembed(post.text)
     end
+    Libertree::Model::Post.after_update do |post|
+      self.autoembed(post.text)
+    end
 
     def self.get(url)
       Libertree::Embedding::CustomProviders.get(url) || OEmbed::Providers.get(url).html
