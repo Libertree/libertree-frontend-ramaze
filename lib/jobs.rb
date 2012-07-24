@@ -54,7 +54,7 @@ module Jobs
           if response
             Libertree::Model::EmbedCache.create(
               url: params['url'],
-              object: response.html
+              object: response
             )
           end
         end
