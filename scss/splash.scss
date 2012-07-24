@@ -1,13 +1,14 @@
 @import "colours.scss";
 
 html.splash {
-  background: $dust;
+  background: url('/images/silhouette-dust.png') bottom center repeat-x $dust;
+  height: 100%;
 }
 
 body.splash {
   margin: 0 auto;
   width: 400px;
-  background: $dust;
+  background: transparent;
   color: $text;
 
   div.image-wrapper {
