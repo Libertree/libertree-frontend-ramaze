@@ -28,7 +28,8 @@ $(document).ready( function() {
     var x = e.pageX;
     var y = e.pageY;
     $('div.pools').remove();
-    var post = $(this).closest('div.post, div.post-excerpt');
+    var collect_link = $(this);
+    var post = collect_link.closest('div.post, div.post-excerpt');
     var postId = post.data('post-id');
     $.get(
       '/pools/_index/' + postId,
@@ -42,6 +43,7 @@ $(document).ready( function() {
             function() {
               /* TODO: Check for success */
               $('div.pools').remove();
+              collect_link.text('collected');
               fadingAlert('Post added to "'+option.text()+'" pool.', x, y);
             }
           );
@@ -56,6 +58,7 @@ $(document).ready( function() {
               function() {
                 /* TODO: Check for success */
                 $('div.pools').remove();
+                collect_link.text('collected');
                 fadingAlert('Post added to pool.', x, y);
               }
             );

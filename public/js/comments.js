@@ -160,6 +160,7 @@ $(document).ready( function() {
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
+    addSpinner( submitButton.closest('.form-buttons'), 16 );
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
@@ -190,6 +191,7 @@ $(document).ready( function() {
           alert('Failed to post comment.');
         }
         submitButton.removeAttr('disabled');
+        removeSpinner( submitButton.closest('.form-buttons') );
       }
     );
   } );

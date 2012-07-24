@@ -12,6 +12,7 @@
   Custom menu link: <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
   Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
   Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
+  Automatic embedding: <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
   <input type="submit" value="Save"/>
 </form>
 

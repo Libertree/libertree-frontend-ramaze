@@ -11,7 +11,7 @@ gem 'unicorn'
 gem 'pony'   # email lib
 gem 'em-websocket'
 gem 'rcrypt'
-gem 'redcarpet'
+gem 'redcarpet', :git => 'git://github.com/rekado/redcarpet.git'
 gem 'nokogiri'
 gem 'mini_magick'
 gem 'sass'

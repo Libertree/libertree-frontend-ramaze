@@ -107,11 +107,10 @@ textarea, input[type="text"], input[type="password"] {
   }
 }
 
-#tree-icon {
+#logo {
     float: left;
-    margin-right: 10px;
+    margin-right: 2px;
     height: 40px;
-    width: 40px;
 }
 
 .menu {
@@ -156,10 +155,6 @@ textarea, input[type="text"], input[type="password"] {
             margin-left: 10px;
             float: right;
             cursor: pointer;
-        }
-
-        #logged-out-menu  {
-            padding-top: 7px;
         }
 
         #main-menu-container {
@@ -438,7 +433,7 @@ blockquote {
     display: none;
 }
 
-a.hashtag {
+a.hashtag, a.commenter-ref {
     cursor: pointer;
 }
 

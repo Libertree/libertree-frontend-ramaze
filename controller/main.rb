@@ -1,12 +1,19 @@
 module Controller
   class Main < Base
     map '/'
+    set_layout 'splash'
+    set_layout 'default' => [:search]
 
     def index
-      force_mobile_to_narrow
+      if logged_in?
+        redirect Home.r(:/)
+      else
+        redirect r(:login)
+      end
     end
 
     def login
+      @view = 'splash'
       if logged_in?
         redirect Home.r(:/)
       end
@@ -102,7 +109,7 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s )
+      respond Libertree.render( request['s'].to_s, account.autoembed )
     end
 
     # This is not in the Posts controller because we will handle many other search

@@ -1,0 +1,35 @@
+@import "colours.scss";
+
+html.splash {
+  background: $dust;
+}
+
+body.splash {
+  margin: 0 auto;
+  width: 400px;
+  background: $dust;
+  color: $text;
+
+  div.image-wrapper {
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  div.label {
+    text-align: right;
+    margin-right: 0.5em;
+    width: 100px;
+    float: left;
+    clear: left;
+  }
+
+  p.note {
+    margin-top: 1.5em;
+    font-size: 0.9em;
+    color: $bark;
+  }
+
+  input[type="text"], input[type="password"] {
+    background: #fff;
+  }
+}
