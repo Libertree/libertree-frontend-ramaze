@@ -9,6 +9,7 @@ module Libertree
         {
           Youku.format => Youku,
           FreeMusicArchive.format => FreeMusicArchive,
+          TED.format => TED,
         }
       end
 
@@ -61,6 +62,31 @@ OBJECT
           end
         end
       end
+
+      class TED
+        def self.format
+          %r{http://www\.ted\.com/talks/.+\.html}
+        end
+
+        def self.get(url)
+          return unless url =~ self.format
+
+          uri = URI.parse(url)
+          Timeout.timeout(10) do
+            Net::HTTP.start(uri.host) do |http|
+              resp = http.get(uri.path)
+              html = Nokogiri::HTML(resp.body)
+              e = html.css('#embedthisvideo')[0]
+              if e
+                return e.attr('value')
+              else
+                raise Libertree::Embedding::Error, "failed to find embedding code"
+              end
+            end
+          end
+        end
+      end
+
     end
   end
 end
