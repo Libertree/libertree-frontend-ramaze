@@ -113,5 +113,17 @@ module Controller
       account.home_river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
       redirect_referrer
     end
+
+    def add_from(river_id, member_id)
+      river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
+      member = Libertree::Model::Member[ member_id.to_i ]
+      if river && member
+        river.revise(
+          'label' => river.label,
+          'query' => river.query + %| :from "#{member.name_display}"|
+        )
+      end
+      ''
+    end
   end
 end

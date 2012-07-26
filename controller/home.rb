@@ -15,7 +15,7 @@ module Controller
     end
 
     def index(river_id = nil)
-      @view = "excerpts-view"
+      @view = "excerpts-view home"
       @load_home_js = true
       @rivers = account.rivers_not_appended
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || @rivers[0]

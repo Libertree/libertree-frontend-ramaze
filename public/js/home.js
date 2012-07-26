@@ -122,7 +122,7 @@ $(document).ready( function() {
     }
   } );
 
-  $('#river-selector').change( function() {
+  $('.home #river-selector').change( function() {
     window.location = '/home/' + $(this).val();
     return false;
   } );
