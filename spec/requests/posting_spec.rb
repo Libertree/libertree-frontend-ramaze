@@ -15,6 +15,19 @@ describe 'a local member', :type => :request, :js => true do
 
       page.should have_content('A test post.')
     end
+
+    it 'can comment on the post' do
+      @post.comments.count.should == 0
+
+      visit "/posts/show/#{@post.id}"
+
+      fill_in 'text', with: 'A test comment.'
+      click_button 'Comment'
+
+      page.should have_content('Comment successfully posted.')
+      page.should have_no_content('A test comment.')
+      Libertree::Model::Post[@post.id].comments.count.should == 1
+    end
   end
 
   it 'can create a post' do
