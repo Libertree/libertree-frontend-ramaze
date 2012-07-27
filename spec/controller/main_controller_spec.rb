@@ -27,16 +27,17 @@ describe 'main', :type => :request, :js => true do
       page.should have_content('by post time')
       page.should have_content('River:')
     end
-  end
 
-  it 'rejects bad credentials' do
-    pending
-    visit '/login'
-    fill_in 'name', :with => 'nosuchuser'
-    fill_in 'password', :with => 'somepassword'
-    click_on 'Login'
+    it 'rejects bad credentials' do
+      visit '/login'
+      fill_in 'username', :with => @account.username
+      fill_in 'password', :with => 'wrongpassword'
+      click_on 'Login'
 
-    page.should have_no_content('Welcome to the Super Sports cars website')
-    page.should have_content('Invalid credentials')
+      page.should have_no_content('by post time')
+      page.should have_no_content('River:')
+      page.should have_content('Invalid credentials')
+      page.should have_button('Login')
+    end
   end
 end
