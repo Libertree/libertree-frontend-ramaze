@@ -16,5 +16,6 @@ end
 
 Ramaze.setup_dependencies
 Ramaze.options.roots << File.expand_path(File.dirname(__FILE__)+'/..')
+Ramaze::Log.loggers = [ Ramaze::Logger::RotatingInformer.new(File.dirname(__FILE__)+'/../log', 'test-%d-%m-%Y.log') ]
 
 $dbh.execute "TRUNCATE accounts CASCADE"
