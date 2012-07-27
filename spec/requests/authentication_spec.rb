@@ -24,8 +24,7 @@ describe 'main', :type => :request, :js => true do
       fill_in 'password', :with => 'testpass'
       click_on 'Login'
 
-      page.should have_content('by post time')
-      page.should have_content('River:')
+      page.should have_content('Test user logged in')
     end
 
     it 'rejects bad credentials' do

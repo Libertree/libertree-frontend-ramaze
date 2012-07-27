@@ -19,3 +19,19 @@ Ramaze.options.roots << File.expand_path(File.dirname(__FILE__)+'/..')
 Ramaze::Log.loggers = [ Ramaze::Logger::RotatingInformer.new(File.dirname(__FILE__)+'/../log', 'test-%d-%m-%Y.log') ]
 
 $dbh.execute "TRUNCATE accounts CASCADE"
+
+$post_login_path = '/test_user_logged_in'
+
+shared_context 'logged in' do
+  let(:account) {
+    a = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
+    a.password = 'testpass'
+    a
+  }
+  before do
+    visit '/login'
+    fill_in 'username', :with => account.username
+    fill_in 'password', :with => 'testpass'
+    click_on 'Login'
+  end
+end

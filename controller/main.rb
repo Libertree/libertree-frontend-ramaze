@@ -27,7 +27,10 @@ module Controller
       if request.post?
         a = account_login( request.subset('username', 'password') )
         if a
-          if session[:back]
+          if $post_login_path
+            # Used in spec suite
+            redirect $post_login_path
+          elsif session[:back]
             target = session[:back]
             session[:back] = nil
             redirect target
@@ -164,6 +167,11 @@ This link is only valid for 1 hour.
       flash[:notice] = "A password reset link has been sent for the account with that email address."
 
       redirect_referrer
+    end
+
+    # Used in specs, to reduce spec suite execution time
+    def test_user_logged_in
+      'Test user logged in'
     end
   end
 end
