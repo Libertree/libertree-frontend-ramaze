@@ -10,6 +10,11 @@ FactoryGirl.define do
     public_key OpenSSL::PKey::RSA.new(2048, 65537).public_key.to_pem
   end
 
+  factory :account, :class => Libertree::Model::Account do
+    sequence(:username) { |n| "account#{n}" }
+    password_encrypted '$2a$10$ZnELnOWKT3cUBc4UaFdCxuXU2O.WLOo6lTxLAnbIpbeHnK6bcbp9a'
+  end
+
   factory :member, :class => Libertree::Model::Member do
     sequence(:username) { |n| "member#{n}" }
     server

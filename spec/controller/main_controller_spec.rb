@@ -12,14 +12,21 @@ describe 'main', :type => :request, :js => true do
     page.should have_button('Login')
   end
 
-  it 'authenticates with good credentials' do
-    pending
-    visit '/login'
-    fill_in 'name', :with => 'wildfire'
-    fill_in 'password', :with => 'fildwire'
-    click_on 'Login'
+  context 'when an account exists' do
+    before :each do
+      @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
+      @account.password = 'testpass'
+    end
 
-    page.should have_content('Welcome to the Super Sports cars website')
+    it 'authenticates with good credentials' do
+      visit '/login'
+      fill_in 'username', :with => @account.username
+      fill_in 'password', :with => 'testpass'
+      click_on 'Login'
+
+      page.should have_content('by post time')
+      page.should have_content('River:')
+    end
   end
 
   it 'rejects bad credentials' do
