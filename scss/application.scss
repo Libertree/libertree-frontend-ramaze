@@ -518,7 +518,7 @@ textarea#invitations {
 }
 
 #form-river-new, #form-river-edit {
-    input[type="text"] {
+    input[type="text"], textarea {
         width: 400px;
     }
 }
