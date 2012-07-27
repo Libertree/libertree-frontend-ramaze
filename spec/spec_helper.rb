@@ -10,15 +10,9 @@ require_relative 'factories'
 require 'capybara/rspec'
 
 Capybara.configure do |config|
-  # config.default_driver = :rack_test
-  config.default_driver = :selenium
+  config.default_driver = :rack_test
   config.app            = Ramaze
 end
-
-# For in-browser testing instead of :rack_test
-# ::Capybara.default_driver = :selenium
-# ::Capybara.current_driver = ::Capybara.javascript_driver
-# ::Capybara.current_driver = :selenium
 
 Ramaze.setup_dependencies
 Ramaze.options.roots << File.expand_path(File.dirname(__FILE__)+'/..')
