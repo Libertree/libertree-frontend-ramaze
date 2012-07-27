@@ -3,6 +3,20 @@ require 'spec_helper'
 describe 'a local member', :type => :request, :js => true do
   include_context 'logged in'
 
+  context 'given an existing post' do
+    before :each do
+      @post = Libertree::Model::Post.create(
+        FactoryGirl.attributes_for( :post, member_id: account.member.id, text: 'A test post.' )
+      )
+    end
+
+    it 'can see the post' do
+      visit "/posts/show/#{@post.id}"
+
+      page.should have_content('A test post.')
+    end
+  end
+
   it 'can create a post' do
     visit '/posts/new'
     page.should have_content('New Post')
