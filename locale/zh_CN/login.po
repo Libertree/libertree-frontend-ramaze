@@ -1,0 +1,47 @@
+#: view/login.xhtml
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Login"
+msgstr "登陆"
+
+msgid "Not a member yet?"
+msgstr "你没有用户名吗？"
+
+msgid "Sign up now!"
+msgstr "这里注册！"
+
+msgid "Forgot your credentials?"
+msgstr "忘记了你密码吗？"
+
+msgid "You can"
+msgstr "如果有你的有限你可以"
+msgid "reset your password"
+msgstr "在这里充值密码。"
+msgid "if your account has an email address on record."
+msgstr " "
+
+msgid "Invalid credentials."
+msgstr "密码或者用户名错了。"
+
+msgid "A valid invitation code is required."
+msgstr "需要邀请码。"
+
+msgid "You mistyped your password."
+msgstr "密码打错了。"
+
+msgid "Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes."
+msgstr "用户名应该是两个字以上，只允许小写的英文字、数字、下划线、连字号。"
+
+msgid "[Libertree] Password reset"
+msgstr "[Libertree] 充值密码"
+
+msgid "A password reset link has been sent for the account with that email address."
+msgstr "已发给你充值密码的链接。"
+
+msgid "You have been logged out."
+msgstr "已登出。"
