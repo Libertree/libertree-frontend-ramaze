@@ -61,10 +61,12 @@ function insertCommentHtmlFor( postId, commentId ) {
 /* ---------------------------------------------- */
 
 $(document).ready( function() {
-  $('a.more-comments').live( 'click', function() {
+  $('a.more-comments').live( 'click', function(event) {
+    event.preventDefault();
     showMoreComments( $(this).closest('.comments'), $(this).data('n') );
   } );
-  $('.jump-to-comment').live( 'click', function() {
+  $('.jump-to-comment').live( 'click', function(event) {
+    event.preventDefault();
     var comments = $(this).closest('div.comments');
     comments.animate(
       { scrollTop: comments.scrollTop() + comments.height() + 200 },
@@ -83,7 +85,8 @@ $(document).ready( function() {
       $(this).find('.comment-tools').css('visibility', 'hidden');
     }
   } );
-  $('.comment .delete').live( 'click', function() {
+  $('.comment .delete').live( 'click', function(event) {
+    event.preventDefault();
     if( confirm('Delete this comment?') ) {
       var comment = $(this).closest('.comment');
       $.get( '/comments/destroy/' + comment.data('comment-id') );
@@ -92,7 +95,8 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.commenter-ref').live( 'click', function() {
+  $('.commenter-ref').live( 'click', function(event) {
+    event.preventDefault();
     var source = $(this);
     var member_id = source.data('member-id');
     var source_comment = source.closest('div.comment');
@@ -196,7 +200,8 @@ $(document).ready( function() {
     );
   } );
 
-  $('.detachable .detach').live( 'click', function() {
+  $('.detachable .detach').live( 'click', function(event) {
+    event.preventDefault();
     var detachable = $(this).closest('.detachable');
     var offset = detachable.offset();
     detachable.addClass('detached');
@@ -209,7 +214,8 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.detachable .attach').live( 'click', function() {
+  $('.detachable .attach').live( 'click', function(event) {
+    event.preventDefault();
     var detachable = $(this).closest('.detachable');
     detachable.find('.comment').css('width', '365px');
     detachable.removeClass('detached');
