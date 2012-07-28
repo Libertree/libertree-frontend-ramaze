@@ -1,10 +1,20 @@
 @import "colours.scss";
 
+body.excerpts-view .main {
+    width: 1000px;
+    margin: 30px auto 30px auto;
+    padding: 0;
+}
+
 .excerpts-view {
+    #header {
+      padding: 20px;
+      background: $dust;
+    }
     .post-excerpt {
         width: 100%;
-        padding: 1em 0px;
-        border-bottom: 1px dotted $main_green;
+        padding: 1em 0 1em;
+        border-bottom: 2px dotted $dust;
 
         .avatar {
             float: left;
@@ -39,8 +49,12 @@
             vertical-align: top;
             overflow: hidden;
             float: left;
+            padding-left: 30px;
+            padding-bottom: 1em;
         }
         div.excerpt {
+            padding-left: 20px;
+            padding-right: 30px;
             .height-fixed {
                 min-height: $excerpt_height;
                 overflow: hidden;

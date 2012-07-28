@@ -1,15 +1,5 @@
 #{ render_partial '_menu', river_post_order: @river_post_order }
 
-#{_('River:')} <select id="river-selector">
-  <?r @rivers.each do |r| ?>
-    <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
-  <?r end ?>
-</select>
-
-<a href="/rivers">#{_('manage rivers')}</a>
-
-<hr/>
-
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
   <?r @posts.reverse.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
