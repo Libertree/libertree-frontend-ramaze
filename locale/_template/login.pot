@@ -7,30 +7,24 @@
 #: view/login.xhtml
 
 msgid "Username"
-msgstr "Username"
-
 msgid "Password"
-msgstr "Password"
-
 msgid "Login"
-msgstr "Login"
-
 msgid "Not a member yet?"
-msgstr "Not a member yet?"
-
 # "Sign up now" is wrapped in a link
 msgid "Sign up now!"
-msgstr "Sign up now!"
-
 msgid "Forgot your credentials?"
-msgstr "Forgot your credentials?"
 
 # "reset your password" is wrapped in a link
 # "You can" is the text before the link, "if your account..."
 # is the text after the link.
 msgid "You can"
-msgstr "You can"
 msgid "reset your password"
-msgstr "reset your password"
 msgid "if your account has an email address on record."
-msgstr "if your account has an email address on record."
+
+msgid "Invalid credentials."
+msgid "A valid invitation code is required."
+msgid "You mistyped your password."
+msgid "Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes."
+msgid "[Libertree] Password reset"
+msgid "A password reset link has been sent for the account with that email address."
+msgid "You have been logged out."
