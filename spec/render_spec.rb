@@ -12,6 +12,23 @@ describe Libertree do
       subject.render('`<span>tag soup</span>`').should =~ /&lt;span&gt;tag soup&lt;\/span&gt;/
     end
 
+    it 'should not introduce extra space at the beginning of code blocks' do
+      subject.render(%{head
+
+      6 spaces before
+    4 spaces before
+       7 spaces before
+
+tail}).should == %{<p>head</p>
+
+<pre><code>  6 spaces before
+4 spaces before
+   7 spaces before
+</code></pre>
+
+<p>tail</p>}
+    end
+
     it 'should autolink URLs' do
       url = "http://elephly.net"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
