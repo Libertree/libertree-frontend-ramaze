@@ -13,6 +13,15 @@ module Controller
       end
     end
 
+    def lang(locale)
+      FastGettext.locale = locale
+      if request.env['HTTP_REFERER'] =~ %r{/lang/}
+        redirect Home.r(:/)
+      else
+        redirect_referrer
+      end
+    end
+
     def require_login
       if ! $skip_authentication && ! logged_in? && action.name != 'login' && action.name != 'logout'
         flash[:error] = 'Please log in.'
