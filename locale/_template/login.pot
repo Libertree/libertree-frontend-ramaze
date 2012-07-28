@@ -29,14 +29,7 @@ msgstr ""
 msgid "Forgot your credentials?"
 msgstr ""
 
-# "reset your password" is wrapped in a link
-# "You can" is the text before the link, "if your account..."
-# is the text after the link.
-msgid "You can"
-msgstr ""
-msgid "reset your password"
-msgstr ""
-msgid "if your account has an email address on record."
+msgid "You can %sreset your password%s if your account has an email address on record."
 msgstr ""
 
 msgid "Invalid credentials."
