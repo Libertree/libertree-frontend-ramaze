@@ -45,7 +45,7 @@ module Libertree
       end
     end
 
-    html.to_xhtml
+    html.to_s
   end
 
   def self.resolve_redirection( url_s )

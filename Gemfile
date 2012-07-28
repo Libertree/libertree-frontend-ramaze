@@ -16,6 +16,7 @@ gem 'nokogiri'
 gem 'mini_magick'
 gem 'sass'
 gem 'ruby-oembed'
+gem 'fast_gettext'
 
 gem 'libertree-db', path: '../libertree-db/rb'
 gem 'libertree-client', path: '../libertree-client-rb'

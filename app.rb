@@ -4,6 +4,13 @@ require 'rdbi-driver-postgresql'
 require 'syck'
 require 'mini_magick'
 require 'redcarpet'
+require 'fast_gettext'
+
+[ 'login', 'home', 'account' ].each do |domain|
+  FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
+end
+FastGettext.locale = 'en_GB'
+include FastGettext::Translation
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
 $conf['websocket_blacklist'] ||= []

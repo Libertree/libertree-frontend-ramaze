@@ -3,6 +3,9 @@ module Controller
     map '/home'
 
     before_all { require_login }
+    before(:index) do
+      FastGettext.text_domain = 'home'
+    end
 
     layout do |path|
       if path =~ /_post_icon/

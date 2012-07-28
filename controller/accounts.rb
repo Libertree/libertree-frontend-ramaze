@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      FastGettext.text_domain = 'account'
     end
 
     def edit
@@ -42,6 +43,8 @@ module Controller
       account.custom_css = request['custom_css'].to_s
       account.custom_js = request['custom_js'].to_s
       account.autoembed = !! request['autoembed']
+      account.locale = request['locale'].to_s
+      FastGettext.locale = request['locale'].to_s
 
       flash[:notice] = "Settings saved."
       redirect_referrer

@@ -1,0 +1,33 @@
+# 
+# Translators:
+#   <rekado+libertree@elephly.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2012-07-28 12:21+0000\n"
+"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/libertree/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: view/home/index.xhtml
+msgid "River:"
+msgstr "对话流："
+
+msgid "manage rivers"
+msgstr "对话流管理"
+
+#: view/home/_menu.xhtml
+msgid "by post time"
+msgstr "按日期显示"
+
+msgid "by update time"
+msgstr "按最新更新显示"
+
+msgid "mark all read"
+msgstr "已读标记"

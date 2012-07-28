@@ -1,0 +1,105 @@
+# 
+# Translators:
+#   <donnerkarlson@web.de>, 2012.
+# Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2012-07-28 13:04+0000\n"
+"Last-Translator: donnerkarlson <donnerkarlson@web.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: view/accounts/edit.xhtml
+msgid "Account Settings"
+msgstr "Einstellungen"
+
+msgid "Edit profile"
+msgstr "Profil ändern"
+
+msgid "Manage rivers"
+msgstr "Flüsse verwalten"
+
+msgid "Change password"
+msgstr "Kennwort ändern"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "(for password recovery; never public)"
+msgstr "(wird nur benutzt, um das Kennwort zurückzusetzen; wird niemals veröffentlicht)"
+
+msgid "Post excerpt maximum height:"
+msgstr "Maximalhöhe von Post-Auszügen:"
+
+msgid "pixels"
+msgstr "Pixel"
+
+msgid "Custom menu link:"
+msgstr "Benutzerdefinierter Menü-Link:"
+
+msgid "Custom CSS:"
+msgstr "Benutzerdefiniertes CSS:"
+
+msgid "Custom JS:"
+msgstr "Benutzerdefiniertes JS:"
+
+msgid "Automatic embedding:"
+msgstr "Automatisches Einbinden:"
+
+msgid "Language:"
+msgstr "Sprache:"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Invite Others"
+msgstr "Einladungen"
+
+msgid "Generate a new invitation"
+msgstr "Generiere eine neue Einladung"
+
+msgid "My Invitations"
+msgstr "Meine Einladungen"
+
+msgid "Member API"
+msgstr "Mitglieder API"
+
+msgid "Current API token:"
+msgstr "Aktueller API-Schlüssel:"
+
+msgid "(none)"
+msgstr "(keiner)"
+
+msgid "API documentation"
+msgstr "API-Dokumentation"
+
+msgid "Generate API token"
+msgstr "Generiere API-Schlüssel"
+
+msgid "Data Export"
+msgstr "Daten exportieren"
+
+msgid ""
+"Download your account settings, profile, posts, comments and direct "
+"messages:"
+msgstr "Lade deine Daten herunter (Einstellungen, Profil, Beiträge, Kommentare und Nachrichten):"
+
+#: view/accounts/change_password.xhtml
+msgid "Change Password"
+msgstr "Kennwort ändern"
+
+msgid "New password:"
+msgstr "Neues Kennwort:"
+
+msgid "Re-enter new password:"
+msgstr "Erneute Eingabe:"
+
+msgid "button|Change Password"
+msgstr "Bestätigen"
