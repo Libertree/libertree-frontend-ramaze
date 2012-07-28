@@ -1,51 +1,51 @@
-<h3>Account Settings</h3>
+<h3>#{_('Account Settings')}</h3>
 
 <div style="margin-bottom: 1em;">
-  <a href="/profiles/edit">Edit profile</a><br/>
-  <a href="/rivers">Manage rivers</a><br/>
-  <a href="/accounts/change_password">Change password</a>
+  <a href="/profiles/edit">#{_('Edit profile')}</a><br/>
+  <a href="/rivers">#{_('Manage rivers')}</a><br/>
+  <a href="/accounts/change_password">#{_('Change password')}</a>
 </div>
 
 <form action="update" method="POST">
-  Email: <input type="text" name="email" size="30" value="#{account.email}"/> (for password recovery; never public)<br/>
-  Post excerpt maximum height: <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>pixels<br/>
-  Custom menu link: <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
-  Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
-  Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
-  Automatic embedding: <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
-  Language:
+  #{_('Email:')} <input type="text" name="email" size="30" value="#{account.email}"/> #{_('(for password recovery; never public)')}<br/>
+  #{_('Post excerpt maximum height:')} <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}<br/>
+  #{_('Custom menu link:')} <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
+  #{_('Custom CSS:')} <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
+  #{_('Custom JS:')} <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
+  #{_('Automatic embedding:')} <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
+  #{_('Language:')}
     <select name="locale">
       #{lang_option("en_UK", "English")}
       #{lang_option("de_DE", "Deutsch")}
       #{lang_option("zh_CN", "中文（简体）")}
     </select><br/>
-  <input type="submit" value="Save"/>
+  <input type="submit" value="#{_('Save')}"/>
 </form>
 
-<h4>Invite Others</h4>
+<h4>#{_('Invite Others')}</h4>
 
-<a href="/invitations/create">Generate a new invitation</a>
+<a href="/invitations/create">#{_('Generate a new invitation')}</a>
 
 <?r if @invitations.any? ?>
-<h4>My Invitations</h4>
+<h4>#{_('My Invitations')}</h4>
 <textarea id="invitations" rows="5">#{
   @invitations.map { |i| "http://#{@host}/signup?invitation_code=#{i.code}" }.join("\n")
 }</textarea>
 <?r end ?>
 
-<h4>Member API</h4>
+<h4>#{_('Member API')}</h4>
 
 <div>
-Current API token: #{account.api_token || '(none)'}<br/>
-<a href="https://github.com/Libertree/libertree-frontend-ramaze/wiki/Member-API">API documentation</a>
+  #{_('Current API token:')} #{account.api_token || _('(none)') }<br/>
+  <a href="https://github.com/Libertree/libertree-frontend-ramaze/wiki/Member-API">#{_('API documentation')}</a>
 </div>
 
-<a href="/accounts/generate_api_token">Generate API token</a>
+<a href="/accounts/generate_api_token">#{_('Generate API token')}</a>
 
-<h4>Data Export</h4>
+<h4>#{_('Data Export')}</h4>
 
 <p>
-Download your account settings, profile, posts, comments and direct messages:
+#{_('Download your account settings, profile, posts, comments and direct messages:')}
 </p>
 
 <a href="/accounts/data/#{@export_filename}">#{@export_filename}</a>

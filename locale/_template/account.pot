@@ -1,0 +1,36 @@
+#: view/accounts/edit.xhtml
+
+msgid "Account Settings"
+msgid "Edit profile"
+msgid "Manage rivers"
+msgid "Change password"
+
+msgid "Email:"
+msgid "(for password recovery; never public)"
+msgid "Post excerpt maximum height:"
+msgid "pixels"
+msgid "Custom menu link:"
+msgid "Custom CSS:"
+msgid "Custom JS:"
+msgid "Automatic embedding:"
+msgid "Language:"
+msgid "Save"
+
+msgid "Invite Others"
+msgid "Generate a new invitation"
+msgid "My Invitations"
+msgid "Member API"
+msgid "Current API token:"
+msgid "(none)"
+msgid "API documentation"
+msgid "Generate API token"
+
+msgid "Data Export"
+msgid "Download your account settings, profile, posts, comments and direct messages:"
+
+#: view/accounts/change_password.xhtml
+
+msgid "Change Password"
+msgid "New password:"
+msgid "Re-enter new password:"
+msgid "button|Change Password"
