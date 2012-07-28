@@ -43,6 +43,9 @@ module Controller
           sid: session.sid,
           account_id: account.id
         )
+        if account.locale
+          FastGettext.locale = account.locale
+        end
       end
     end
 

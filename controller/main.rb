@@ -18,9 +18,6 @@ module Controller
     def login
       @view = 'splash'
       if logged_in?
-        if account.locale
-          FastGettext.locale = account.locale
-        end
         redirect Home.r(:/)
       end
       force_mobile_to_narrow
