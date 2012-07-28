@@ -3,6 +3,9 @@ module Controller
     map '/'
     set_layout 'splash'
     set_layout 'default' => [:search]
+    before(:login, :logout, :signup, :request_password_reset) do
+      FastGettext.text_domain = 'login'
+    end
 
     def index
       if logged_in?
@@ -13,9 +16,11 @@ module Controller
     end
 
     def login
-      FastGettext.text_domain = 'login'
       @view = 'splash'
       if logged_in?
+        if account.locale
+          FastGettext.locale = account.locale
+        end
         redirect Home.r(:/)
       end
       force_mobile_to_narrow
@@ -39,7 +44,7 @@ module Controller
             redirect Controller::Home.r(:/)
           end
         else
-          flash[:error] = 'Invalid credentials.'
+          flash[:error] = _('Invalid credentials.')
           redirect r(:login)
         end
       end
@@ -47,7 +52,7 @@ module Controller
 
     def logout
       account_logout
-      flash[:notice] = 'You have been logged out.'
+      flash[:notice] = _('You have been logged out.')
       redirect r(:login)
     end
 
@@ -62,12 +67,12 @@ module Controller
 
       invitation = Libertree::Model::Invitation[ code: @invitation_code, account_id: nil ]
       if invitation.nil?
-        flash[:error] = 'A valid invitation code is required.'
+        flash[:error] = _('A valid invitation code is required.')
         return
       end
 
       if request['password'].to_s != request['password-confirm'].to_s
-        flash[:error] = 'You mistyped your password.'
+        flash[:error] = _('You mistyped your password.')
         return
       end
 
@@ -94,7 +99,7 @@ module Controller
         when /duplicate key value violates unique constraint "accounts_username_key"/
           flash[:error] = "Username #{request['username'].inspect} is taken.  Please choose another."
         when /constraint "username_valid"/
-          flash[:error] = "Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes."
+          flash[:error] = _("Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.")
         else
           raise e
         end
@@ -151,7 +156,7 @@ module Controller
           task: 'email',
           params: {
             'to'      => request['email'].to_s,
-            'subject' => '[Libertree] Password reset',
+            'subject' => _('[Libertree] Password reset'),
             'body'    => %{
 Someone (IP address: #{request.ip}) has requested that a password reset link
 be sent to this email address.  If you wish to change your Libertree password
@@ -165,7 +170,7 @@ This link is only valid for 1 hour.
         )
       end
 
-      flash[:notice] = "A password reset link has been sent for the account with that email address."
+      flash[:notice] = _("A password reset link has been sent for the account with that email address.")
 
       redirect_referrer
     end

@@ -30,3 +30,24 @@ msgid "reset your password"
 msgstr "Kennwort hier zuruecksetzen,"
 msgid "if your account has an email address on record."
 msgstr "sofern deine Email-Adresse hinterlegt ist."
+
+msgid "Invalid credentials."
+msgstr "Kennwort oder Nutzername ungueltig."
+
+msgid "A valid invitation code is required."
+msgstr "Ein gueltiger Einladungs-Code ist erforderlich."
+
+msgid "You mistyped your password."
+msgstr "Du hast dich bei der Kennworteingabe vertippt."
+
+msgid "Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes."
+msgstr "Benutzernamen muessen mindestens zwei Zeichen lang sein. Gueltige Zeichen sind Kleinbuchstaben, Ziffern, Unterstriche und Bindestriche."
+
+msgid "[Libertree] Password reset"
+msgstr "[Libertree] Kennwort zuruecksetzen"
+
+msgid "A password reset link has been sent for the account with that email address."
+msgstr "Ein Link zum Zuruecksetzen deines Kennworts wurde an die hinterlegte Emailadresse geschickt."
+
+msgid "You have been logged out."
+msgstr "Du hast dich erfolgreich abgemeldet."
