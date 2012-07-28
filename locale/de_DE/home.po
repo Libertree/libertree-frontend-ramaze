@@ -1,0 +1,21 @@
+# Libertree translation (German).
+# Copyright (C) rekado
+# This file is distributed under the same license as the Libertree package that uses it.
+# rekado <rekado+libertree@elephly.net>, 2012.
+#
+
+#: view/home/index.xhtml
+
+msgid "River:"
+msgstr "Fluss:"
+msgid "manage rivers"
+msgstr "Fluesse verwalten"
+
+#: view/home/_menu.xhtml
+
+msgid "by post time"
+msgstr "nach Datum sortieren"
+msgid "by update time"
+msgstr "nach Aktualisierungsdatum sortieren"
+msgid "mark all read"
+msgstr "alle als gelesen markieren"
