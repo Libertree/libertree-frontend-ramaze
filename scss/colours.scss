@@ -22,8 +22,7 @@ $light_tan: #D9B798;
 $faint_tan: $sand;
 $autumn_red: #c2503e;
 
-$menu_colour_1: rgba(242, 235, 217, 0.90);
-$menu_colour_1_no_alpha: rgb(242, 235, 217);
+$menu_colour_1: $dust;
 $menu_colour_2: $stone;
 
 $shadow: #1a1f10;
@@ -38,13 +37,13 @@ body.body {
 }
 
 .menu {
-    background-color: $menu_colour_1_no_alpha;
-    background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 100%);
-    background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$menu_colour_1), color-stop(100%,$menu_colour_2));
-    background: -webkit-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 100%);
-    background: -o-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 100%);
-    background: -ms-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 100%);
-    background: linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 100%);
+    background-color: $menu_colour_1;
+    background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 70%);
+    background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$menu_colour_1), color-stop(70%,$menu_colour_2));
+    background: -webkit-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -o-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -ms-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
 }
 
 .main {
