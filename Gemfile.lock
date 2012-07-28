@@ -68,6 +68,7 @@ GEM
     eventmachine (0.12.10)
     factory_girl (3.6.0)
       activesupport (>= 3.0.0)
+    fast_gettext (0.6.8)
     ffi (1.0.11)
     i18n (0.6.0)
     innate (2012.03)
@@ -154,6 +155,7 @@ DEPENDENCIES
   dalli
   em-websocket
   factory_girl
+  fast_gettext
   libertree-client!
   libertree-db!
   linecache19!
