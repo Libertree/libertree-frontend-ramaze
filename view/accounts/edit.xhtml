@@ -13,10 +13,11 @@
   Custom CSS: <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
   Custom JS: <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
   Automatic embedding: <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
-  Language (#{account.locale}):
+  Language:
     <select name="locale">
       #{lang_option("en_UK", "English")}
-      #{lang_option("de_DE", "German")}
+      #{lang_option("de_DE", "Deutsch")}
+      #{lang_option("zh_CN", "中文（简体）")}
     </select><br/>
   <input type="submit" value="Save"/>
 </form>
