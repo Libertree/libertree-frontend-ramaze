@@ -1,0 +1,32 @@
+# Libertree translation (English UK).
+# Copyright (C) rekado
+# This file is distributed under the same license as the Libertree package that uses it.
+# rekado <rekado+libertree@elephly.net>, 2012.
+#
+
+#: view/login.xhtml
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Not a member yet?"
+msgstr "Not a member yet?"
+
+msgid "Sign up now!"
+msgstr "Sign up now!"
+
+msgid "Forgot your credentials?"
+msgstr "Forgot your credentials?"
+
+msgid "You can"
+msgstr "You can"
+msgid "reset your password"
+msgstr "reset your password"
+msgid "if your account has an email address on record."
+msgstr "if your account has an email address on record."

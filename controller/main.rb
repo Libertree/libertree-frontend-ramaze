@@ -13,6 +13,7 @@ module Controller
     end
 
     def login
+      FastGettext.text_domain = 'login'
       @view = 'splash'
       if logged_in?
         redirect Home.r(:/)

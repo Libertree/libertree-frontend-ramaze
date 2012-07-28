@@ -3,19 +3,21 @@
 </div>
 
 <form id="login" method="POST">
-  <div class="label">Username</div>
+  <div class="label">#{_('Username')}</div>
   <input type="text" name="username"/><br/>
-  <div class="label">Password</div>
+  <div class="label">#{_('Password')}</div>
   <input type="password" name="password"/>
-  <input type="submit" value="Login"/>
+  <input type="submit" value="#{_('Login')}"/>
 </form>
 
 <p class="note">
-Not a member yet? <a href="/signup">Sign up now</a>!
+#{_('Not a member yet?')}
+<a href="/signup">#{_('Sign up now!')}</a>
 </p>
 
 <p class="note">
-Forgot your credentials?  You can
-<a href="/request_password_reset">reset your password</a>
-if your account has an email address on record.
+#{_('Forgot your credentials?')}
+#{_('You can')}
+<a href="/request_password_reset">#{_('reset your password')}</a>
+#{_('if your account has an email address on record.')}
 </p>

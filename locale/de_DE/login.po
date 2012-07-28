@@ -1,0 +1,32 @@
+# Libertree translation (German).
+# Copyright (C) rekado
+# This file is distributed under the same license as the Libertree package that uses it.
+# rekado <rekado+libertree@elephly.net>, 2012.
+#
+
+#: view/login.xhtml
+
+msgid "Username"
+msgstr "Nutzername"
+
+msgid "Password"
+msgstr "Kennwort"
+
+msgid "Login"
+msgstr "Anmelden"
+
+msgid "Not a member yet?"
+msgstr "Noch kein Mitglied?"
+
+msgid "Sign up now!"
+msgstr "Registriere dich hier!"
+
+msgid "Forgot your credentials?"
+msgstr "Kennwort vergessen?"
+
+msgid "You can"
+msgstr "Du kannst dein"
+msgid "reset your password"
+msgstr "Kennwort hier zuruecksetzen,"
+msgid "if your account has an email address on record."
+msgstr "sofern deine Email-Adresse hinterlegt ist."
