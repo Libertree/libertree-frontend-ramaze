@@ -1,0 +1,104 @@
+# 
+# Translators:
+#   <rekado+libertree@elephly.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2012-07-28 12:38+0000\n"
+"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/libertree/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: view/accounts/edit.xhtml
+msgid "Account Settings"
+msgstr "帐户设置"
+
+msgid "Edit profile"
+msgstr "编辑配置文件"
+
+msgid "Manage rivers"
+msgstr "对话流管理"
+
+msgid "Change password"
+msgstr "密码更改"
+
+msgid "Email:"
+msgstr "邮箱："
+
+msgid "(for password recovery; never public)"
+msgstr "（密码恢复，非公开）"
+
+msgid "Post excerpt maximum height:"
+msgstr "单条摘录显示高度："
+
+msgid "pixels"
+msgstr "像素"
+
+msgid "Custom menu link:"
+msgstr "自定义菜单链接："
+
+msgid "Custom CSS:"
+msgstr "自定义CSS："
+
+msgid "Custom JS:"
+msgstr "自定义JS："
+
+msgid "Automatic embedding:"
+msgstr "自动嵌入："
+
+msgid "Language:"
+msgstr "语言："
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Invite Others"
+msgstr "邀请他人"
+
+msgid "Generate a new invitation"
+msgstr "新邀请码生成"
+
+msgid "My Invitations"
+msgstr "已生成的邀请"
+
+msgid "Member API"
+msgstr "用户API"
+
+msgid "Current API token:"
+msgstr "当前API记号："
+
+msgid "(none)"
+msgstr "（没有）"
+
+msgid "API documentation"
+msgstr "API文档"
+
+msgid "Generate API token"
+msgstr "API记号生成"
+
+msgid "Data Export"
+msgstr "数据输出"
+
+msgid ""
+"Download your account settings, profile, posts, comments and direct "
+"messages:"
+msgstr "下载用户设置、配置文件、评论、即时信息："
+
+#: view/accounts/change_password.xhtml
+msgid "Change Password"
+msgstr "密码更改"
+
+msgid "New password:"
+msgstr "新密码："
+
+msgid "Re-enter new password:"
+msgstr "新密码确认："
+
+msgid "button|Change Password"
+msgstr "更改"
