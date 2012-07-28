@@ -1,0 +1,16 @@
+# Libertree translation template.
+# Copyright (C) rekado
+# This file is distributed under the same license as the Libertree package that uses it.
+# rekado <rekado+libertree@elephly.net>, 2012.
+#
+
+#: view/home/index.xhtml
+
+msgid "River:"
+msgid "manage rivers"
+
+#: view/home/_menu.xhtml
+
+msgid "by post time"
+msgid "by update time"
+msgid "mark all read"
