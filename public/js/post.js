@@ -69,7 +69,7 @@ $(document).ready( function() {
     $('div.comments-pane, div.post-pane').toggleClass('expanded-post', 500).promise().done(
       function () {
         $('div.comments, #comments-hide').show();
-        $('div.post-pane').css('position','absolute');
+        $('div.post-pane').css('position','static');
       }
     );
   } );

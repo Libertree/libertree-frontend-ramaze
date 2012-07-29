@@ -16,11 +16,16 @@ body.single-post-view .main {
     }
 
     div.post-pane {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 50%;
+
+      position: static;
       padding: 1em;
       background: $dust;
-      position: absolute;
+      float: left;
       height: 100%; // make the post pane at least as high as the comments pane
-      width: 50%;
       box-shadow: 0 0 5px $shadow;
       overflow: hidden;
       vertical-align: top;
@@ -44,11 +49,14 @@ body.single-post-view .main {
       }
     }
     div.comments-pane {
-      margin-left: 2em;
-      padding: 1em 1em 2em 1em;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 50%;
+      padding: 0 0 0 1em;
       position: relative;
-      width: 45%;
-      left: 50%;
+      float: right;
+
       div.comments {
         overflow-y: auto;
         vertical-align: top;
@@ -95,7 +103,6 @@ body.single-post-view .main {
 
       }
       &.expanded-post {
-        width: 0;
         display: none;
       }
     }
