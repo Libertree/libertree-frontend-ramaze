@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-07-29 14:46+0000\n"
+"PO-Revision-Date: 2012-07-29 15:35+0000\n"
 "Last-Translator: Javafant <moritz.kiefer@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -86,11 +86,23 @@ msgstr "Zurück zum Anfang"
 msgid "Liked by %s"
 msgstr "Gefällt %s"
 
+msgid "One comment by %1$s"
+msgstr "Ein Kommentar von %1$s"
+
+msgid "%2$d comments by %1$s"
+msgstr "%2$d Kommentare von %1$s"
+
 msgid "comments"
 msgstr "Kommentare"
 
 msgid "comment"
 msgstr "Kommentieren"
+
+msgid "mark read"
+msgstr "Als gelesen markieren"
+
+msgid "mark unread"
+msgstr "Als ungelesen markieren"
 
 msgid ""
 "Hiding a post prevents it from showing in your rivers or triggering "
