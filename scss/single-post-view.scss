@@ -21,7 +21,7 @@ body.single-post-view .main {
       box-sizing: border-box;
       width: 50%;
 
-      position: static;
+      position: absolute;
       padding: 1em;
       background: $dust;
       float: left;
@@ -44,7 +44,7 @@ body.single-post-view .main {
         }
       }
       &.expanded-post {
-        width: auto;
+        width: 100%;
         position: relative;
       }
     }
@@ -53,7 +53,7 @@ body.single-post-view .main {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       width: 50%;
-      padding: 0 0 0 1em;
+      padding: 0 0 1em 1em;
       position: relative;
       float: right;
 
@@ -104,6 +104,7 @@ body.single-post-view .main {
       }
       &.expanded-post {
         display: none;
+        width: 0;
       }
     }
   }
