@@ -4,21 +4,19 @@
 #{ render_file 'layout/_head.xhtml' }
 
 <body class="body #{ @view }">
-  <div class="bg">
-    #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
-    <div id="scrollable">
-      <div class="main has-shadow">
+  #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
+  <div id="scrollable">
+    <div class="main has-shadow">
 
-        <?r if flash[:error] ?>
-          <div class="flash error">#{flash[:error]}</div>
-        <?r end ?>
+      <?r if flash[:error] ?>
+        <div class="flash error">#{flash[:error]}</div>
+      <?r end ?>
 
-        <?r if flash[:notice] ?>
-          <div class="flash notice">#{flash[:notice]}</div>
-        <?r end ?>
+      <?r if flash[:notice] ?>
+        <div class="flash notice">#{flash[:notice]}</div>
+      <?r end ?>
 
-        #{@content}
-      </div>
+      #{@content}
     </div>
   </div>
 </body>

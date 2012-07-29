@@ -28,13 +28,8 @@ div, p, form {
     }
 }
 
-.bg {
-    background: url('/images/bg-green.png') bottom center repeat-x $leaf;
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-}
 #scrollable {
+    background: url('/images/bg-green.png') bottom center repeat-x $leaf;
     overflow: auto;
     top: 42px;
     bottom: 0px;
