@@ -1,15 +1,15 @@
 <table id="post-new"><tr><td>
-  <h3>New Post</h3>
+  <h3>#{_('New Post')}</h3>
   <form action="/posts/create" method="POST">
     #{ Controller::Main.render_partial '_markdown_injector' }
     <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
     <div id="hashtags-input" class="input-and-filler">
-      <div class="filler">(enter hashtags here)</div>
+      <div class="filler">#{_('(enter hashtags here)')}</div>
       <input type="text" name="hashtags"></input>
     </div>
     <div class="form-buttons">
-      <input class="preview" type="button" value="Preview" tabindex="2" data-type="post"/>
-      <input type="submit" value="Post" tabindex="1"/>
+      <input class="preview" type="button" value="#{_('Preview')}" tabindex="2" data-type="post"/>
+      <input type="submit" value="#{_('Post')}" tabindex="1"/>
     </div>
   </form>
 </td></tr></table>
