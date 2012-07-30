@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      FastGettext.text_domain = 'post'
     end
 
     layout do |path|
