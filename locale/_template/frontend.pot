@@ -277,3 +277,43 @@ msgid "Re-enter new password:"
 msgstr ""
 msgid "button|Change Password"
 msgstr ""
+
+#: view/notifications/{index,_index}.xhtml
+
+msgid "Notifications"
+msgstr ""
+msgid "You have no new notifications."
+msgstr ""
+msgid "mark all seen"
+msgstr ""
+msgid "view all"
+msgstr ""
+msgid "%d more"
+msgstr ""
+
+#: view/notifications/_comment.xhtml
+msgid "%s commented on your %spost%s."
+msgstr ""
+msgid "%s commented on %s\'s %spost%s."
+msgstr ""
+
+#: view/notifications/_comment_like.xhtml
+msgid "%s liked your %scomment%s on your post."
+msgstr ""
+msgid "%s liked your %scomment%s on %s\'s post."
+msgstr ""
+
+#: view/notifications/_post_like.xhtml
+msgid "%s liked your %spost%s."
+msgstr ""
+
+#: view/notifications/_message.xhtml
+msgid "%s sent you a %smessage%s."
+msgstr ""
+
+
+#: helper/wording.rb
+msgid "list-comma|, "
+msgstr ""
+msgid "list-and| and "
+msgstr ""
