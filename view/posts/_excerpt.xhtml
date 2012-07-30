@@ -1,7 +1,7 @@
 <div class="post-excerpt" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? DateTime.parse(@post['time_updated_overall']).to_time.to_i : @post.time_created.to_time.to_i }">
   <div class="meta">
     <?r if session[:layout] == 'narrow' ?>
-      <a href="#river-menu" class="back-to-top" title="back to top"><img src="/images/up-arrow.png" alt="back to top" class="size-16"/></a>
+      <a href="#river-menu" class="back-to-top" title="#{_('back to top')}"><img src="/images/up-arrow.png" alt="back to top" class="size-16"/></a>
     <?r end ?>
     <div class="member">
       #{member_avatar_link(@post.member)}
@@ -9,51 +9,51 @@
     </div>
     <div class="post-stats">
       <span class="age">#{ago(@post.time_created)}</span><br/>
-      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="Liked by #{@post.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="likes"/> <span class="value">#{@post.likes.size}</span></span><br/>
-      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{@post.comments.count} comment#{plural_s(@post.comments.count)} by #{@post.comments.map { |l| l.member.name_display }.uniq.join(', ')}"><img src="/images/icon-comment.png" class="size-16" alt="comments"/> <span class="num-comments">#{@post.comments.size}</span></a><br/>
+      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % @post.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="#{_('likes')}"/> <span class="value">#{@post.likes.size}</span></span><br/>
+      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('One comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [@post.comments.map { |l| l.member.name_display }.uniq.join(', '), @post.comments.count]}"><img src="/images/icon-comment.png" class="size-16" alt="#{_('comments')}"/> <span class="num-comments">#{@post.comments.size}</span></a><br/>
     </div>
     <div class="post-tools">
       <?r if @post.like_by(account.member) ?>
-        <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">unlike</a>
-        <a href="#" class="like hidden">like</a>
+        <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
+        <a href="#" class="like hidden">#{_('like')}</a>
       <?r else ?>
-        <a href="#" class="like">like</a>
-        <a href="#" class="unlike hidden">unlike</a>
+        <a href="#" class="like">#{_('like')}</a>
+        <a href="#" class="unlike hidden">#{_('unlike')}</a>
       <?r end ?>
 
-      <a href="#" class="comment">comment</a>
+      <a href="#" class="comment">#{_('comment')}</a>
 
       <?r if ! account.subscribed_to?(@post) ?>
-        <a href="#" class="subscribe" title="Start receiving notifications about comments on this post">subscribe</a>
-        <a href="#" class="unsubscribe hidden" title="Stop receiving notifications about comments on this post">unsubscribe</a>
+        <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+        <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
       <?r else ?>
-        <a href="#" class="subscribe hidden" title="Start receiving notifications about comments on this post">subscribe</a>
-        <a href="#" class="unsubscribe" title="Stop receiving notifications about comments on this post">unsubscribe</a>
+        <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+        <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
       <?r end ?>
 
       <?r if @post.member == account.member ?>
-        <a href="/posts/edit/#{@post.id}" class="edit">edit</a>
-        <a href="/posts/destroy/#{@post.id}" class="delete" >delete</a>
+        <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
+        <a href="/posts/destroy/#{@post.id}" class="delete">#{_('delete')}</a>
       <?r end ?>
 
       <?r if @post.read_by?(account) ?>
-        <a class="mark-unread" href="#">mark&nbsp;unread</a>
-        <a class="mark-read hidden" href="#">mark&nbsp;read</a>
+        <a class="mark-unread" href="#">#{_('mark unread')}</a>
+        <a class="mark-read hidden" href="#">#{_('mark read')}</a>
       <?r else ?>
-        <a class="mark-unread hidden" href="#">mark&nbsp;unread</a>
-        <a class="mark-read" href="#">mark&nbsp;read</a>
+        <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
+        <a class="mark-read" href="#">#{_('mark read')}</a>
       <?r end ?>
 
-      <a class="hide" href="#" title="Hiding a post prevents it from showing in your rivers or triggering notifications.">hide</a>
-      <a class="confirm-hide" href="#" title="Click to confirm hiding of this post.">confirm</a>
+      <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
+      <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
 
-      <a class="collect" href="#" title="Collect this post in a pool">collect#{ @post.collected_by?(account) ? 'ed' : '' }</a>
+      <a class="collect" href="#" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
       <?r if @pool ?>
-        <a class="remove" data-pool-id="#{@pool.id}" href="#" title="Remove this post from this pool">remove</a>
+      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
       <?r end ?>
 
       <div class="link-view-post">
-        <a href="/posts/show/#{@post.id}" title="Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window">view&nbsp;post</a>
+        <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: true }
     </div>
     </div>
-    <div class="show-more"><a href="#">show more</a></div>
-    <div class="show-less"><a href="#">show less</a></div>
+    <div class="show-more"><a href="#">#{_('show more')}</a></div>
+    <div class="show-less"><a href="#">#{_('show less')}</a></div>
   </div>
 </div>

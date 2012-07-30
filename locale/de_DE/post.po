@@ -1,0 +1,144 @@
+# 
+# Translators:
+#   <moritz.kiefer@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2012-07-29 15:35+0000\n"
+"Last-Translator: Javafant <moritz.kiefer@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: view/posts/new.xhtml
+msgid "New Post"
+msgstr "Neuer Beitrag"
+
+msgid "(enter hashtags here)"
+msgstr "(Hashtags hier eintragen)"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Post"
+msgstr "Beitrag"
+
+#: view/posts/edit.xhtml
+msgid "Edit Post"
+msgstr "Beitrag bearbeiten"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: view/posts/show.xhtml
+msgid "Start receiving notifications about comments on this post"
+msgstr "Benachrichtigungen über Kommentare zu diesem Beitrag bekommen"
+
+msgid "subscribe"
+msgstr "Abonnieren"
+
+msgid "Stop receiving notifications about comments on this post"
+msgstr "Keine Benachrichtungen über Kommentare zu diesem Beitrag bekommen"
+
+msgid "unsubscribe"
+msgstr "Abbestellen"
+
+msgid "mark post unread"
+msgstr "Beitrag als ungelesen markieren"
+
+msgid "mark post read"
+msgstr "Beitrag als gelesen markieren"
+
+msgid "edit"
+msgstr "Bearbeiten"
+
+msgid "delete"
+msgstr "Löschen"
+
+msgid "collect"
+msgstr "Sammeln"
+
+msgid "unlike"
+msgstr "Gefällt mir nicht mehr"
+
+msgid "like"
+msgstr "Gefällt mir"
+
+msgid "likes"
+msgstr "Likes"
+
+#: view/posts/_excerpts.xhtml
+msgid "No more posts."
+msgstr "Keine weiteren Beiträge"
+
+#: view/posts/_excerpt.xhtml
+msgid "back to top"
+msgstr "Zurück zum Anfang"
+
+msgid "Liked by %s"
+msgstr "Gefällt %s"
+
+msgid "One comment by %1$s"
+msgstr "Ein Kommentar von %1$s"
+
+msgid "%2$d comments by %1$s"
+msgstr "%2$d Kommentare von %1$s"
+
+msgid "comments"
+msgstr "Kommentare"
+
+msgid "comment"
+msgstr "Kommentieren"
+
+msgid "mark read"
+msgstr "Als gelesen markieren"
+
+msgid "mark unread"
+msgstr "Als ungelesen markieren"
+
+msgid ""
+"Hiding a post prevents it from showing in your rivers or triggering "
+"notifications."
+msgstr "Versteckte Beiträge tauchen nicht in deinen Flüssen auf und lösen keine Benachrichtigungen aus."
+
+msgid "hide"
+msgstr "Verstecken"
+
+msgid "Click to confirm hiding of this post."
+msgstr "Klicke um den Beitrag wirklich zu verstecken"
+
+msgid "confirm"
+msgstr "Bestätigen"
+
+msgid "Collect this post in a pool"
+msgstr "Sammle diesen Beitrag in einem Pool"
+
+msgid "collected"
+msgstr "Gesammelt"
+
+msgid "Remove this post from this pool"
+msgstr "Entferne diesen Beitrag von diesem Pool"
+
+msgid "remove"
+msgstr "Entfernen"
+
+msgid ""
+"Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
+msgstr "Mittelklick, Shift+Klick oder Strg-Klick um es in einem neuen Tab/Fenster zu öffnen"
+
+msgid "view post"
+msgstr "Beitrag ansehen"
+
+msgid "show more"
+msgstr "Mehr anzeigen"
+
+msgid "show less"
+msgstr "Weniger anzeigen"

@@ -6,7 +6,7 @@ require 'mini_magick'
 require 'redcarpet'
 require 'fast_gettext'
 
-[ 'login', 'home', 'account' ].each do |domain|
+[ 'login', 'home', 'account', 'post' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
 FastGettext.locale = 'en_GB'
