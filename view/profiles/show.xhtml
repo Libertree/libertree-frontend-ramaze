@@ -26,8 +26,6 @@
     </select>
   </div>
 
-  <a href="">
-
   <div id="post-excerpts">
     <?r @member.posts(12).each do |post| ?>
       #{ Controller::Posts.render_partial '_excerpt', post: post }
