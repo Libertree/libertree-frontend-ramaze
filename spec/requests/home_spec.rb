@@ -28,12 +28,14 @@ describe 'a local member', :type => :request, :js => true do
     end
 
     it 'sees some of the posts' do
+      # Visit twice in order to get the posts to "settle" into the DB.
+      # Yes, this is as disturbing as it sounds.  :(
+      # TODO: Figure out what is going on with this spec.
       visit '/home'
-      using_wait_time(3) do
-        page.should have_content('Test post number 4.')
-        page.should have_content('Test post number 3.')
-        page.should have_content('seconds ago')
-      end
+      visit '/home'
+      page.should have_content('Test post number 4.')
+      page.should have_content('Test post number 3.')
+      page.should have_content('seconds ago')
     end
   end
 end
