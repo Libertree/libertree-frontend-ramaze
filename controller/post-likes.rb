@@ -22,7 +22,7 @@ module Controller
         return {
           'post_like_id' => like.id,
           'num_likes'    => post.likes.count,
-          'liked_by'     => "Liked by #{post.likes.map { |l| l.member.name_display }.join(', ')}",
+          'liked_by'     => _('Liked by %s') % post.likes.map { |l| l.member.name_display }.join(', '),
         }.to_json
       end
 
@@ -37,7 +37,7 @@ module Controller
 
       return {
         'num_likes'    => like.post.likes.count,
-        'liked_by'     => "Liked by #{like.post.likes.map { |l| l.member.name_display }.join(', ')}",
+        'liked_by'     => _('Liked by %s') % like.post.likes.map { |l| l.member.name_display }.join(', '),
       }.to_json
     end
   end
