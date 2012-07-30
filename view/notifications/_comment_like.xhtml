@@ -6,7 +6,7 @@
     <?r if @like.comment.post.member == account.member ?>
       #{_('%s liked your %scomment%s on your post.') % [who, link, "</a>"]}
     <?r else ?>
-      #{_('%s liked your %scomment%s on %s\'s post.') % [who, link, "</a>", @like.comment.post.member.name_display]}
+      #{_("%s liked your %scomment%s on %s's post.") % [who, link, "</a>", @like.comment.post.member.name_display]}
     <?r end ?>
     <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>

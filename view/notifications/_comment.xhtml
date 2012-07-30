@@ -6,7 +6,7 @@
     <?r if @comment.post.member.account == account ?>
       #{_('%s commented on your %spost%s.') % [who, link, "</a>"]}
     <?r else ?>
-      #{_('%s commented on %s\'s %spost%s.') % [who, @comment.post.member.name_display, link, "</a>"]}
+      #{_("%s commented on %s's %spost%s.") % [who, @comment.post.member.name_display, link, "</a>"]}
     <?r end ?>
     <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>

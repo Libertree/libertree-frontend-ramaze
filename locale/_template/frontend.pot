@@ -294,13 +294,13 @@ msgstr ""
 #: view/notifications/_comment.xhtml
 msgid "%s commented on your %spost%s."
 msgstr ""
-msgid "%s commented on %s\'s %spost%s."
+msgid "%s commented on %s's %spost%s."
 msgstr ""
 
 #: view/notifications/_comment_like.xhtml
 msgid "%s liked your %scomment%s on your post."
 msgstr ""
-msgid "%s liked your %scomment%s on %s\'s post."
+msgid "%s liked your %scomment%s on %s's post."
 msgstr ""
 
 #: view/notifications/_post_like.xhtml
