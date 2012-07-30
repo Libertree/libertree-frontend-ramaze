@@ -6,9 +6,10 @@ require 'mini_magick'
 require 'redcarpet'
 require 'fast_gettext'
 
-[ 'login', 'home', 'account', 'post' ].each do |domain|
+[ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
+FastGettext.default_text_domain = 'frontend'
 FastGettext.locale = 'en_GB'
 include FastGettext::Translation
 

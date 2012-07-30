@@ -3,9 +3,6 @@ module Controller
     map '/'
     set_layout 'splash'
     set_layout 'default' => [:search]
-    before(:login, :logout, :signup, :request_password_reset) do
-      FastGettext.text_domain = 'login'
-    end
 
     def index
       if logged_in?

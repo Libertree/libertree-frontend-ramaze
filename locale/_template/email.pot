@@ -13,18 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: view/home/index.xhtml
+#: view/login.xhtml
 
-msgid "River:"
-msgstr ""
-msgid "manage rivers"
-msgstr ""
-
-#: view/home/_menu.xhtml
-
-msgid "by post time"
-msgstr ""
-msgid "by update time"
-msgstr ""
-msgid "mark all read"
+msgid "[Libertree] Password reset"
 msgstr ""
