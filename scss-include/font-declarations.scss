@@ -1,9 +1,16 @@
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lora'), url(../lora.woff) format('woff');
+}
+
 body.body {
-    font-family: Arial, sans-serif;
+    font-family: 'Droid sans', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, sans-serif;
+    font-family: 'Lora', sans-serif;
 }
 h1 { font-size: $font_extra_extra_large; }
 h2 { font-size: $font_extra_large; }
@@ -21,6 +28,7 @@ h5, h6 { font-size: $font_small; }
 .member-name {
     font-size: $font_normal;
     font-weight: bold;
+    font-family: 'Lora';
 }
 
 .age, .age-update {
