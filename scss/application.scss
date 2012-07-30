@@ -63,6 +63,22 @@ pre, code {
     white-space: pre-wrap;
 }
 
+pre {
+    margin-left: 1em;
+}
+
+pre code {
+    border: none;
+    background: transparent;
+}
+
+code {
+    border: 1px solid $sand;
+    background: $dust;
+    border-radius: 3px;
+    padding: 2px;
+}
+
 a {
     border-bottom: 1px dotted;
     text-decoration: none;
