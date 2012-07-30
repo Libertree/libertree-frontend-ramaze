@@ -4,7 +4,6 @@ module Controller
 
     before_all do
       require_login
-      FastGettext.text_domain = 'account'
     end
 
     def edit
