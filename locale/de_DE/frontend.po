@@ -3,6 +3,7 @@
 #   <donnerkarlson@web.de>, 2012.
 #   <rekado+libertree@elephly.net>, 2012.
 #   <moritz.kiefer@gmail.com>, 2012.
+#   Jakob Kramer <jakob.kramer@gmx.de>, 2012.
 # Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
 msgid ""
 msgstr ""
@@ -57,9 +58,6 @@ msgid ""
 "letters, numbers, underscores and dashes."
 msgstr "Benutzernamen müssen mindestens zwei Zeichen lang sein. Gültige Zeichen sind Kleinbuchstaben, Ziffern, Unterstriche und Bindestriche."
 
-msgid "[Libertree] Password reset"
-msgstr "[Libertree] Kennwort zurücksetzen"
-
 msgid ""
 "A password reset link has been sent for the account with that email address."
 msgstr "Ein Link zum Zurücksetzen deines Kennworts wurde an die hinterlegte Emailadresse geschickt."
@@ -68,7 +66,6 @@ msgid "You have been logged out."
 msgstr "Du hast dich erfolgreich abgemeldet."
 
 #: view/home/index.xhtml
-
 msgid "River:"
 msgstr "Fluss:"
 
@@ -76,7 +73,6 @@ msgid "manage rivers"
 msgstr "Flüsse verwalten"
 
 #: view/home/_menu.xhtml
-
 msgid "by post time"
 msgstr "nach Datum sortieren"
 
@@ -97,7 +93,7 @@ msgid "Preview"
 msgstr "Vorschau"
 
 msgid "Post"
-msgstr "Beitrag"
+msgstr "Senden"
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -214,6 +210,81 @@ msgstr "Mehr anzeigen"
 msgid "show less"
 msgstr "Weniger anzeigen"
 
+#: view/comments/_comments.xhtml
+msgid "One comment"
+msgstr "Ein Kommentar"
+
+msgid "%d comments"
+msgstr ""
+
+msgid "show %smore%s / %sall%s comments"
+msgstr ""
+
+msgid "jump-to-comment|Comment"
+msgstr ""
+
+msgid "Comment successfully posted."
+msgstr ""
+
+msgid "detach"
+msgstr ""
+
+msgid "attach"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+#: view/comments/_comment.xhtml
+msgid "One like"
+msgstr ""
+
+msgid "%d likes"
+msgstr ""
+
+msgid "back-to-referencing-comment|back"
+msgstr ""
+
+msgid "Unlike this comment"
+msgstr ""
+
+msgid "Like this comment"
+msgstr ""
+
+msgid "shareable link for this comment"
+msgstr ""
+
+#: view/_markdown_injector.xhtml
+msgid "markdown|title"
+msgstr "Ueberschrift"
+
+msgid "markdown|subtitle"
+msgstr "Unterueberschrift"
+
+msgid "markdown|link"
+msgstr "Link"
+
+msgid "markdown|image"
+msgstr "Bild"
+
+msgid "markdown|image link"
+msgstr "Bild-Link"
+
+msgid "markdown|quote"
+msgstr "Zitat"
+
+msgid "markdown|list"
+msgstr "Liste"
+
+msgid "markdown|bold"
+msgstr "fett"
+
+msgid "markdown|italic"
+msgstr "kursiv"
+
 #: view/accounts/edit.xhtml
 msgid "Account Settings"
 msgstr "Einstellungen"
@@ -228,7 +299,7 @@ msgid "Change password"
 msgstr "Kennwort ändern"
 
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-Mail:"
 
 msgid "(for password recovery; never public)"
 msgstr "(wird nur benutzt, um das Kennwort zurückzusetzen; wird niemals veröffentlicht)"
@@ -267,7 +338,7 @@ msgid "My Invitations"
 msgstr "Meine Einladungen"
 
 msgid "Member API"
-msgstr "Mitglieder API"
+msgstr "Mitglieder-API"
 
 msgid "Current API token:"
 msgstr "Aktueller API-Schlüssel:"
