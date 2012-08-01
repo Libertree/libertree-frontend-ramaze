@@ -185,7 +185,8 @@ $(document).ready( function() {
       'newer',
       $('.post-excerpt:first').data('t'),
       function() {
-        $('.more-posts').hide();
+        $('.more-posts').hide().detach().prependTo('#post-excerpts');
+        $('.more-posts .n').text('0');
       }
     );
     return false;
