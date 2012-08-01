@@ -178,6 +178,7 @@ $(document).ready( function() {
     event.preventDefault();
 
     $('.more-posts-divider').remove();
+    $('#no-more-posts').remove();
     $('#post-excerpts').prepend('<div class="more-posts-divider"></div>');
     prependSpinner('#post-excerpts');
     loadPostExcerpts(
