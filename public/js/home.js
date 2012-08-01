@@ -165,7 +165,7 @@ $(document).ready( function() {
     showShowMores();
   } );
 
-  $('.refresh-page').live( 'click', function(event) {
+  $('.load-more').live( 'click', function(event) {
     event.preventDefault();
     prependSpinner('#post-excerpts');
     loadPostExcerpts(
