@@ -10,6 +10,30 @@ function showShowMores() {
   } );
 }
 
+function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
+  loadingMorePostExcerpts = true;
+  $.ajax( {
+    type: 'GET',
+    url: '/posts/_excerpts/' + riverId + '/' + older_or_newer + '/' + time,
+    success: function(html) {
+      var o = $(html);
+      o.css('display', 'none');
+      if( older_or_newer == 'newer' ) {
+        $('#post-excerpts').prepend(o);
+      } else {
+        $('#post-excerpts').append(html);
+      }
+      o.slideDown();
+      loadingMorePostExcerpts = false;
+      removeSpinner('#post-excerpts');
+      showShowMores();
+      if(onSuccess) {
+        onSuccess();
+      }
+    }
+  } );
+}
+
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -108,17 +132,11 @@ $(document).ready( function() {
       }
 
       addSpinner('#post-excerpts');
-      loadingMorePostExcerpts = true;
-      $.ajax( {
-        type: 'GET',
-        url: '/posts/_excerpts/' + $('#post-excerpts').data('river-id') + '/' + $('.post-excerpt:last').data('t'),
-        success: function(html) {
-          $('#post-excerpts').append(html);
-          loadingMorePostExcerpts = false;
-          removeSpinner('#post-excerpts');
-          showShowMores();
-        }
-      } );
+      loadPostExcerpts(
+        $('#post-excerpts').data('river-id'),
+        'older',
+        $('.post-excerpt:last').data('t')
+      );
     }
   } );
 

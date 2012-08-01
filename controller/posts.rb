@@ -20,13 +20,18 @@ module Controller
       @posts = Libertree::Model::Post.s("SELECT * FROM posts ORDER BY id DESC")
     end
 
-    def _excerpts( river_id, older_than = Time.now.to_i )
+    def _excerpts( river_id, older_or_newer = 'older', time = Time.now.to_i )
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
       if @river.nil?
         @posts = []
       else
         @river_post_order = session[:river_post_order]
-        @posts = @river.posts( order_by: @river_post_order, limit: 8, older_than: older_than.to_i ).reverse
+        @posts = @river.posts(
+          order_by: @river_post_order,
+          limit: 8,
+          time: time.to_i,
+          newer: ( older_or_newer == 'newer' ),
+        ).reverse
       end
     end
 

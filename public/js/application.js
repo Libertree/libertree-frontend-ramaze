@@ -11,6 +11,9 @@ function checkForSessionDeath(html) {
 function addSpinner(target_selector, size) {
   $(target_selector).append('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
 }
+function prependSpinner(target_selector, size) {
+  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
+}
 function removeSpinner(target_selector) {
   $('.spinner', target_selector).remove();
 }
@@ -68,9 +71,9 @@ function fadingAlert(message, x, y) {
 
 function indicateNewPosts(data) {
   $.each( data.riverIds, function(i, riverId) {
-    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(
-      '<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>'
-    );
+    var o = $('<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>');
+    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(o);
+    o.slideDown();
   } );
 }
 
@@ -161,7 +164,15 @@ $(document).ready( function() {
 
   $('.refresh-page').live( 'click', function(event) {
     event.preventDefault();
-    location.reload(true);
+    prependSpinner('#post-excerpts');
+    loadPostExcerpts(
+      $('#post-excerpts').data('river-id'),
+      'newer',
+      $('.post-excerpt:first').data('t'),
+      function() {
+        $('.more-posts').remove();
+      }
+    );
     return false;
   } );
 
