@@ -19,7 +19,7 @@ module Controller
 
         return {
           'comment_like_id' => like.id,
-          'num_likes'       => n_('One like', '%d likes', comment.likes.count) % comment.likes.count,
+          'num_likes'       => n_('1 like', '%d likes', comment.likes.count) % comment.likes.count,
           'liked_by'        => comment.likes.map { |l| l.member.name_display }.join(', '),
         }.to_json
       end
@@ -34,7 +34,7 @@ module Controller
       end
 
       return {
-        'num_likes'       => n_('One like', '%d likes', like.comment.likes.count) % like.comment.likes.count,
+        'num_likes'       => n_('1 like', '%d likes', like.comment.likes.count) % like.comment.likes.count,
         'liked_by'        => like.comment.likes.map { |l| l.member.name_display }.join(', ')
       }.to_json
     end
