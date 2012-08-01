@@ -11,6 +11,9 @@
 <hr/>
 
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
+  <div class="more-posts">
+    <a href="#" class="refresh-page"><span class="n">0</span> new post<span class="plurality">s</span></a>
+  </div>
   <?r @posts.reverse.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
   <?r end ?>

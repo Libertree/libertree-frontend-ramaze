@@ -12,9 +12,17 @@ function showShowMores() {
 
 function indicateNewPosts(data) {
   $.each( data.riverIds, function(i, riverId) {
-    var o = $('<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>');
-    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(o);
-    o.slideDown();
+    var indicator = $('#post-excerpts[data-river-id="'+riverId+'"] .more-posts');
+    if( indicator.length ) {
+      var n = parseInt( indicator.find('.n').text() ) + 1;
+      indicator.find('.n').text(n);
+      if( n == 1 ) {
+        indicator.find('.plurality').hide();
+      } else {
+        indicator.find('.plurality').show();
+      }
+      indicator.slideDown();
+    }
   } );
 }
 
@@ -165,7 +173,7 @@ $(document).ready( function() {
       'newer',
       $('.post-excerpt:first').data('t'),
       function() {
-        $('.more-posts').remove();
+        $('.more-posts').hide();
       }
     );
     return false;
