@@ -66,6 +66,14 @@ function fadingAlert(message, x, y) {
   );
 }
 
+function indicateNewPosts(data) {
+  $.each( data.riverIds, function(i, riverId) {
+    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(
+      '<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>'
+    );
+  } );
+}
+
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -148,6 +156,12 @@ $(document).ready( function() {
 
   $('.mark-read').live( 'click', function() {
     markPostRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
+    return false;
+  } );
+
+  $('.refresh-page').live( 'click', function(event) {
+    event.preventDefault();
+    location.reload(true);
     return false;
   } );
 

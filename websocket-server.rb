@@ -79,13 +79,16 @@ EventMachine.run do
 
         posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id LIMIT 1", socket_data[:last_post_id])
         posts.each do |post|
-          ws.send(
-            {
-              'command'   => 'post',
-              'id'        => post.id,
-              'river_ids' => post.rivers_belonged_to.map { |r| r.id }
-            }.to_json
-          )
+          rivers = post.rivers_belonged_to(account)
+          if rivers.any?
+            ws.send(
+              {
+                'command'   => 'post',
+                'id'        => post.id,
+                'riverIds' => rivers.map { |r| r.id }
+              }.to_json
+            )
+          end
           socket_data[:last_post_id] = post.id
         end
 

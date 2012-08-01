@@ -40,7 +40,7 @@ $(document).ready( function() {
         insertCommentHtmlFor( data.postId, data.commentId );
         break;
       case 'post':
-        /* TODO */
+        indicateNewPosts(data);
         break;
       case 'notification':
         updateNumNotificationsUnseen(data.n);
