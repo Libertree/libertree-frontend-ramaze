@@ -34,12 +34,21 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
     success: function(html) {
       var o = $(html);
       o.css('display', 'none');
+
+      /* Remove old copies of incoming excerpts that may already be in the DOM */
+      var container = $('<div/>');
+      container.prepend(o);
+      container.find('.post-excerpt').each( function() {
+        $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
+      } );
+
       if( older_or_newer == 'newer' ) {
         $('#post-excerpts').prepend(o);
       } else {
-        $('#post-excerpts').append(html);
+        $('#post-excerpts').append(o);
       }
       o.slideDown();
+
       loadingMorePostExcerpts = false;
       removeSpinner('#post-excerpts');
       showShowMores();
