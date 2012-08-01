@@ -167,6 +167,9 @@ $(document).ready( function() {
 
   $('.load-more').live( 'click', function(event) {
     event.preventDefault();
+
+    $('.more-posts-divider').remove();
+    $('#post-excerpts').prepend('<div class="more-posts-divider"></div>');
     prependSpinner('#post-excerpts');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
