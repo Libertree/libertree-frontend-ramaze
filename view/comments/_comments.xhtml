@@ -1,5 +1,5 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  #{n_('One comment', '%d comments', @post.comments.size) % @post.comments.size}
+  #{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}
   <?r if @hidden ?>
     <span class="more-comments">
       #{_('show %smore%s / %sall%s comments') % ["<a href=\"#\" class=\"more-comments\" data-n=\"3\">", "</a>", "<a href=\"#\" class=\"more-comments\" data-n=\"#{@post.comments.size}\">", "</a>"]}
