@@ -29,7 +29,7 @@ module Controller
         @posts = @river.posts(
           order_by: @river_post_order,
           limit: 8,
-          time: time.to_i,
+          time: time.to_f,
           newer: ( older_or_newer == 'newer' ),
         ).reverse
       end
