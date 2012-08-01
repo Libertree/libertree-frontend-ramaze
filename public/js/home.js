@@ -10,6 +10,14 @@ function showShowMores() {
   } );
 }
 
+function indicateNewPosts(data) {
+  $.each( data.riverIds, function(i, riverId) {
+    var o = $('<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>');
+    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(o);
+    o.slideDown();
+  } );
+}
+
 function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
   loadingMorePostExcerpts = true;
   $.ajax( {
@@ -147,6 +155,20 @@ $(document).ready( function() {
 
   $('.height-fixed img').live( 'mouseover', function() {
     showShowMores();
+  } );
+
+  $('.refresh-page').live( 'click', function(event) {
+    event.preventDefault();
+    prependSpinner('#post-excerpts');
+    loadPostExcerpts(
+      $('#post-excerpts').data('river-id'),
+      'newer',
+      $('.post-excerpt:first').data('t'),
+      function() {
+        $('.more-posts').remove();
+      }
+    );
+    return false;
   } );
 
   /* ---------------------------------------------------- */

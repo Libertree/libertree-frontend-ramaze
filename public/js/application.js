@@ -69,14 +69,6 @@ function fadingAlert(message, x, y) {
   );
 }
 
-function indicateNewPosts(data) {
-  $.each( data.riverIds, function(i, riverId) {
-    var o = $('<div class="more-posts"><a href="#" class="refresh-page">new posts</a></div>');
-    $('#post-excerpts[data-river-id="'+riverId+'"]').prepend(o);
-    o.slideDown();
-  } );
-}
-
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -159,20 +151,6 @@ $(document).ready( function() {
 
   $('.mark-read').live( 'click', function() {
     markPostRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
-    return false;
-  } );
-
-  $('.refresh-page').live( 'click', function(event) {
-    event.preventDefault();
-    prependSpinner('#post-excerpts');
-    loadPostExcerpts(
-      $('#post-excerpts').data('river-id'),
-      'newer',
-      $('.post-excerpt:first').data('t'),
-      function() {
-        $('.more-posts').remove();
-      }
-    );
     return false;
   } );
 
