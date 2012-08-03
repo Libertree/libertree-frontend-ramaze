@@ -43,11 +43,7 @@ module Controller
           sid: session.sid,
           account_id: account.id
         )
-        if account.locale
-          FastGettext.locale = account.locale
-        else
-          FastGettext.locale = 'en_GB'
-        end
+        FastGettext.locale = account.locale || 'en_GB'
       end
     end
 
