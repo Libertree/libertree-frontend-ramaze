@@ -6,7 +6,7 @@
 <body class="body #{ @view }">
   #{ render_file 'layout/_menu.xhtml', title: true, account_name: true }
   <div id="scrollable">
-    <div class="main has-shadow">
+    <div class="main">
 
       <?r if flash[:error] ?>
         <div class="flash error">#{flash[:error]}</div>

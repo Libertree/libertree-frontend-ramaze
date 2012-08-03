@@ -8,6 +8,7 @@ Icon set by http://icons8.com/
 */
 
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 html {
     height: 100%;
@@ -380,9 +381,7 @@ textarea.comment, form.comment .form-buttons {
 }
 
 .has-shadow {
-    -moz-box-shadow: 0px 4px 20px $shadow;
-    -webkit-box-shadow: 0px 4px 20px $shadow;
-    box-shadow: 0px 4px 20px $shadow;
+    @include shadow;
 }
 
 .notification {

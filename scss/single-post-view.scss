@@ -4,6 +4,7 @@ body.single-post-view .main {
     width: 1000px;
     margin: 30px auto 30px auto;
     padding: 0;
+    background: transparent;
 }
 
 .single-post-view {
@@ -11,6 +12,7 @@ body.single-post-view .main {
     position: relative;
     overflow: hidden;
     padding: 0;
+    border-radius: 10px 10px 0 10px;
     img {
       max-width: 100%;
     }
@@ -26,7 +28,9 @@ body.single-post-view .main {
       background: $dust;
       float: left;
       height: 100%; // make the post pane at least as high as the comments pane
-      box-shadow: 0 0 5px $shadow;
+      box-shadow: 0 0 8px $shadow;
+      z-index: 1;
+
       overflow: hidden;
       vertical-align: top;
 
@@ -61,6 +65,8 @@ body.single-post-view .main {
       padding: 0 0 1em 1em;
       position: relative;
       float: right;
+      background: $dust_translucent;
+      z-index: 0;
 
       div.comments {
         overflow-y: auto;

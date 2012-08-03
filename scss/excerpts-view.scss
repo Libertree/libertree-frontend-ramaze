@@ -1,20 +1,29 @@
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 body.excerpts-view .main {
     width: 1000px;
     margin: 30px auto 30px auto;
     padding: 0;
+    background: transparent;
 }
 
 .excerpts-view {
     #header {
       padding: 20px;
       background: $dust;
+      border-radius: 20px 20px 0 0;
+      margin-bottom: 0.6em;
+      @include shadow;
     }
+
     .post-excerpt {
+        @include shadow;
+        background: $dust_translucent;
         width: 100%;
         padding: 1em 0 1em;
         border-bottom: 2px dotted $dust;
+        margin-bottom: 0.6em;
 
         .avatar {
             float: left;
