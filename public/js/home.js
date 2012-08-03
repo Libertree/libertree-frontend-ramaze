@@ -2,10 +2,9 @@ var wantsToComment = false;
 var loadingMorePostExcerpts = false;
 
 function showShowMores() {
-  $('.overflowed').each( function() {
-    var wrapper = $(this).closest('.height-fixed');
-    if( $(this).height() > wrapper.height() ) {
-      wrapper.siblings('.show-more').show();
+  $('.excerpt').each( function() {
+    if( $(this).get(0).scrollHeight > $(this).height() ) {
+      $(this).children('.show-more').show();
     }
   } );
 }
@@ -17,33 +16,34 @@ $(document).ready( function() {
   $('.excerpt .show-more').live( 'click', function() {
     var showMoreLink = $(this);
     var excerpt = $(this).closest('.excerpt');
-    var div = excerpt.find('.height-fixed');
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
     var postId = excerptParent.data('post-id');
     $.get('/accounts/watch_post/'+postId);
 
-    div.data( 'contracted-height', div.height() );
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
-    var heightDifference = overflowed.height() - excerpt.height();
+
+    excerpt.data( 'contracted-height', excerpt.height() );
+    overflowed.data( 'contracted-height', overflowed.height() );
+    overflowed.css('height', 'auto');
+
+    var heightDifference = excerpt.get(0).scrollHeight - excerpt.height();
     var animationSpeed = heightDifference * 2;
 
-    div.animate(
+    excerpt.animate(
       {
-        height: overflowed.height() + 'px',
-        'max-height': overflowed.height() + 'px'
+        height: excerpt.get(0).scrollHeight + 'px',
+        'max-height': excerpt.get(0).scrollHeight + 'px'
       },
       animationSpeed,
       function() {
-        div.removeClass('height-fixed').addClass('height-normal');
         markPostRead(postId);
         /* cancel explicit height set by animation */
-        div.height('auto');
-        div.css('max-height', 'none');
+        excerpt.height('auto');
+        excerpt.css('max-height', 'none');
         showMoreLink.hide();
         showMoreLink.siblings('.show-less').show();
-
       }
     );
 
@@ -82,13 +82,13 @@ $(document).ready( function() {
       );
     }
 
-    var div = excerpt.find('.height-normal');
-    div.animate(
-      { height: div.data('contracted-height')+'px' },
+    var overflowed = excerpt.find('.overflowed');
+    excerpt.animate(
+      { height: excerpt.data('contracted-height')+'px' },
       animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
-        div.removeClass('height-normal').addClass('height-fixed');
+        overflowed.css('height', overflowed.data('contracted-height')+'px');
       }
     );
     return false;
