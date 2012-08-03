@@ -45,6 +45,8 @@ module Controller
         )
         if account.locale
           FastGettext.locale = account.locale
+        else
+          FastGettext.locale = 'en_GB'
         end
       end
     end

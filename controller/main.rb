@@ -1,8 +1,19 @@
 module Controller
   class Main < Base
     map '/'
-    set_layout 'splash'
-    set_layout 'default' => [:search]
+
+    layout do |path|
+      case path
+      when 'search'
+        if session[:layout] == 'narrow'
+          :narrow
+        else
+          :default
+        end
+      else
+        :splash
+      end
+    end
 
     def index
       if logged_in?
