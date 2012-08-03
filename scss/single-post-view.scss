@@ -30,13 +30,6 @@ body.single-post-view .main {
       overflow: hidden;
       vertical-align: top;
 
-      .post-tools {
-        display: block;
-        margin-bottom: .5em;
-        width: 100%;
-        float: none;
-      }
-
       .post-proper {
         width: 100%;
         .post-text {
@@ -47,6 +40,12 @@ body.single-post-view .main {
           margin: 0.5em -1em 1em;
           padding: 0.5em;
           background: $sand;
+        }
+        .post-tools {
+          display: block;
+          margin-bottom: .5em;
+          width: 100%;
+          float: none;
         }
       }
       &.expanded-post {
@@ -67,6 +66,7 @@ body.single-post-view .main {
         overflow-y: auto;
         vertical-align: top;
         padding-right: 20px;
+        min-height: 500px;
 
         form.comment {
           margin-left: 45px;
