@@ -4,7 +4,7 @@ var loadingMorePostExcerpts = false;
 function showShowMores() {
   $('.excerpt').each( function() {
     if( $(this).get(0).scrollHeight > $(this).height() ) {
-      $(this).children('.show-more').show();
+      $(this).siblings('.show-more').show();
     }
   } );
 }
@@ -13,9 +13,9 @@ function showShowMores() {
 
 $(document).ready( function() {
 
-  $('.excerpt .show-more').live( 'click', function() {
+  $('.post-excerpt .show-more').live( 'click', function() {
     var showMoreLink = $(this);
-    var excerpt = $(this).closest('.excerpt');
+    var excerpt = $(this).siblings('.excerpt');
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
     var postId = excerptParent.data('post-id');
@@ -66,10 +66,10 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.excerpt .show-less').live( 'click', function() {
+  $('.post-excerpt .show-less').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.show-more').show();
-    var excerpt = $(this).closest('.excerpt');
+    var excerpt = $(this).siblings('.excerpt');
 
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 

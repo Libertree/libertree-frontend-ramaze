@@ -83,17 +83,20 @@ body.excerpts-view .main {
             .end-of-text {
                 opacity: 0.2;
             }
+        }
 
-            .show-more, .show-less {
-                display: none;
-                text-align: center;
-                background: $sand;
-                position: relative;
-                a {
-                    width: 100%;
-                    display: block;
-                    border: none;
-                }
+        .show-more, .show-less {
+            display: none;
+            text-align: center;
+            background: $dust;
+            position: relative;
+            margin-top: 1em;
+            margin-bottom: -1em;
+            a {
+                width: 100%;
+                display: block;
+                border: none;
+                padding: 0.5em 0;
             }
         }
 
