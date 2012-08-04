@@ -83,10 +83,12 @@ body.excerpts-view .main {
             .show-more, .show-less {
                 display: none;
                 text-align: center;
+                background: $sand;
                 position: relative;
                 a {
                     width: 100%;
                     display: block;
+                    border: none;
                 }
             }
         }
