@@ -39,7 +39,7 @@ $(document).ready( function() {
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );
         break;
-      case 'post':
+      case 'river-posts':
         indicateNewPosts(data);
         break;
       case 'notification':

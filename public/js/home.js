@@ -11,19 +11,11 @@ function showShowMores() {
 }
 
 function indicateNewPosts(data) {
-  $.each( data.riverIds, function(i, riverId) {
-    var indicator = $('#post-excerpts[data-river-id="'+riverId+'"] .more-posts');
-    if( indicator.length ) {
-      var n = parseInt( indicator.find('.n').text() ) + 1;
-      indicator.find('.n').text(n);
-      if( n == 1 ) {
-        indicator.find('.plurality').hide();
-      } else {
-        indicator.find('.plurality').show();
-      }
-      indicator.slideDown();
-    }
-  } );
+  var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+  if( indicator.length ) {
+    indicator.find('.load-more').text(data.numNewPosts);
+    indicator.slideDown();
+  }
 }
 
 function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {

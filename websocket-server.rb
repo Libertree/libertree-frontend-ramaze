@@ -77,19 +77,27 @@ EventMachine.run do
           )
         end
 
-        posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id LIMIT 1", socket_data[:last_post_id])
-        posts.each do |post|
-          rivers = post.rivers_belonged_to(account)
-          if rivers.any?
-            ws.send(
-              {
-                'command'   => 'post',
-                'id'        => post.id,
-                'riverIds' => rivers.map { |r| r.id }
-              }.to_json
-            )
+        # Could this data gathering be done in a cleaner, or more elegant way?
+        posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id", socket_data[:last_post_id])
+        rivers_num_posts = Hash.new { |h,k| h[k] = 0 }
+        posts.each do |p|
+          p.rivers_belonged_to(account).each do |r|
+            rivers_num_posts[r] += 1
           end
-          socket_data[:last_post_id] = post.id
+        end
+
+        rivers_num_posts.each do |river, num_posts|
+          ws.send(
+            {
+              'command'     => 'river-posts',
+              'riverId'     => river.id,
+              # TODO: i18n
+              'numNewPosts' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}"
+            }.to_json
+          )
+        end
+        if posts.any?
+          socket_data[:last_post_id] = posts.map(&:id).max
         end
 
         notifs = Libertree::Model::Notification.s(

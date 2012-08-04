@@ -12,7 +12,7 @@
 
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
   <div class="more-posts">
-    <a href="#" class="load-more"><span class="n">0</span> new post<span class="plurality">s</span></a>
+    <a href="#" class="load-more">0 new posts</a>
   </div>
   <?r @posts.reverse.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
