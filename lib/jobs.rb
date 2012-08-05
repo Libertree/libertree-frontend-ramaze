@@ -37,6 +37,9 @@ module Jobs
 
         Timeout.timeout(15) do
           http = Net::HTTP.new(uri.host, uri.port)
+          if uri.scheme.eql? "https"
+            http.use_ssl = true
+          end
 
           resp = http.start {|h| h.get(uri.path)}
           if follow_redirect && [Net::HTTPRedirection, Net::HTTPMovedPermanently].include?(resp.class)
