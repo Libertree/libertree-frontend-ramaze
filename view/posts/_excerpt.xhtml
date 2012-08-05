@@ -44,8 +44,10 @@
         <a class="mark-read" href="#">#{_('mark read')}</a>
       <?r end ?>
 
-      <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
-      <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
+      <?r if @post.member != account.member ?>
+        <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
+        <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
+      <?r end ?>
 
       <a class="collect" href="#" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
       <?r if @pool ?>
