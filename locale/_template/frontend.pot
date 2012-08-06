@@ -494,6 +494,32 @@ msgstr ""
 msgid "Pool: %s"
 msgstr ""
 
+#: view/profiles/edit.xhtml
+msgid "My Profile"
+msgstr ""
+msgid "Display name:"
+msgstr ""
+msgid "About Me (Markdown allowed):"
+msgstr ""
+msgid "profile|Update"
+msgstr ""
+msgid "Avatar"
+msgstr ""
+msgid "avatar|Upload file:"
+msgstr ""
+msgid "avatar-upload|Submit"
+msgstr ""
+msgid "Reset avatar"
+msgstr ""
+
+#: view/profiles/show.xhtml
+msgid "profile|Edit"
+msgstr ""
+msgid "Posts by %s"
+msgstr ""
+msgid "Add %s to a river"
+msgstr ""
+
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
 msgstr ""

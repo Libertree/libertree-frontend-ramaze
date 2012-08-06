@@ -7,7 +7,7 @@
   <h3>#{@member.handle}</h3>
 
   <?r if @member == account.member ?>
-  <a href="/profiles/edit">Edit</a>
+  <a href="/profiles/edit">#{s_('profile|Edit')}</a>
   <?r end ?>
 
   <div class="description">
@@ -16,9 +16,9 @@
 
   <hr/>
 
-  <h3>Posts by #{@member.name_display}</h3>
+  <h3>#{_('Posts by %s') % @member.name_display}</h3>
   <div>
-    <select id="river-selector" name="river_id" data-member-id="#{@member.id}" data-placeholder="Add #{@member.name_display} to a river">
+    <select id="river-selector" name="river_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a river') % @member.name_display}">
       <option value="0"></option>
       <?r account.rivers.sort_by { |r| r.label.gsub(/^#/,'').downcase }.each do |r| ?>
         <option value="#{r.id}">#{r.label}</option>
