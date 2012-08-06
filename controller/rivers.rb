@@ -33,7 +33,7 @@ module Controller
         )
       rescue PGError => e
         if e.message =~ /rivers_account_id_query_key/
-          flash[:error] = 'You already have a river for that.'
+          flash[:error] = _('You already have a river for that.')
           redirect_referrer
         else
           raise e

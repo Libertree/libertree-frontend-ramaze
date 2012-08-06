@@ -167,6 +167,32 @@ msgstr ""
 msgid "show less"
 msgstr ""
 
+#: controller/posts.rb
+msgid "Post may not be empty."
+msgstr ""
+
+#: controller/pools.rb
+msgid "You already have a pool with that name."
+msgstr ""
+
+#: controller/profiles.rb
+msgid "Special characters are not allowed in display names."
+msgstr ""
+msgid "Avatar deleted."
+msgstr ""
+msgid "Avatar changed."
+msgstr ""
+msgid "Failed to reset avatar."
+msgstr ""
+msgid "Only image files may be used as avatars."
+msgstr ""
+msgid "Only .png, .jpeg and .gif files may be used as avatars."
+msgstr ""
+
+#: controller/rivers.rb
+msgid "You already have a river for that."
+msgstr ""
+
 #: view/comments/_comments.xhtml
 
 msgid "One comment"
@@ -355,3 +381,10 @@ msgstr ""
 msgid "Contact list updated."
 msgstr ""
 
+#: controller/admin/base.rb
+msgid "Administrative privileges required."
+msgstr ""
+
+#: controller/admin/forests.rb
+msgid "The tree is already a member of the forest."
+msgstr ""

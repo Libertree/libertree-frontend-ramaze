@@ -52,7 +52,7 @@ module Controller
       text.encode!('UTF-8', 'UTF-16')
 
       if text.empty?
-        flash[:error] = 'Post may not be empty.'
+        flash[:error] = _('Post may not be empty.')
         redirect_referrer
       end
 

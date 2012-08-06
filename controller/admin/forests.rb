@@ -60,7 +60,7 @@ module Controller
           end
         rescue PGError => e
           if e.message =~ /violates unique constraint/
-            flash[:error] = 'The tree is already a member of the forest.'
+            flash[:error] = _('The tree is already a member of the forest.')
           else
             raise e
           end
