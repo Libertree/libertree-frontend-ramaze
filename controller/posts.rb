@@ -57,9 +57,9 @@ module Controller
       end
 
       post = Libertree::Model::Post.create(
-        'member_id' => account.member.id,
-        'public'    => true,
-        'text'      => text
+        'member_id'  => account.member.id,
+        'visibility' => request['visibility'].to_s,
+        'text'       => text
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -145,7 +145,7 @@ module Controller
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
 
-        post.revise text
+        post.revise text, request['visibility'].to_s
         session[:saved_text]['textarea-post-edit'] = nil
       end
 
