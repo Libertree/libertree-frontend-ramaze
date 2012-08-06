@@ -3,6 +3,7 @@
 module Libertree
   LANG = [
     ['en_GB', 'English'],
+    ['fr_FR', 'Français'],
     ['de_DE', 'Deutsch'],
     ['zh_CN', '中文（简体）'],
     ['hu_HU', 'magyar'],
