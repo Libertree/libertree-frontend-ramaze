@@ -15,9 +15,9 @@
   #{_('Automatic embedding:')} <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
   #{_('Language:')}
     <select name="locale">
-      #{lang_option("en_GB", "English")}
-      #{lang_option("de_DE", "Deutsch")}
-      #{lang_option("zh_CN", "中文（简体）")}
+      <?r Libertree::LANG.each do |locale,name| ?>
+        <option value="#{locale}" #{account.locale.eql?(locale) ? "selected" : ""}>#{name}</option>
+      <?r end ?>
     </select><br/>
   <input type="submit" value="#{_('Save')}"/>
 </form>

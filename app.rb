@@ -35,6 +35,7 @@ $dbh ||= M4DBI.connect(
 require 'libertree/model'
 require 'libertree/client'
 
+require_relative 'lib/libertree/lang'
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/markdown'
 require_relative 'lib/libertree/embedder'
