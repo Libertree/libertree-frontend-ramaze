@@ -49,6 +49,10 @@ msgstr ""
 msgid "not-authenticated|Please log in."
 msgstr ""
 
+#: controller/invitations.rb
+msgid "Failed to create invitation.  You may only have up to 5 unaccepted invitations at once."
+msgstr ""
+
 #: view/home/index.xhtml
 
 msgid "River:"
