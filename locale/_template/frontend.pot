@@ -267,6 +267,16 @@ msgstr ""
 msgid "Download your account settings, profile, posts, comments and direct messages:"
 msgstr ""
 
+#: controller/accounts.rb
+msgid "Settings saved."
+msgstr ""
+msgid "Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum."
+msgstr ""
+msgid "Passwords did not match.  Please reenter."
+msgstr ""
+msgid "Password changed."
+msgstr ""
+
 #: view/accounts/change_password.xhtml
 
 msgid "Change Password"
