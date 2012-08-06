@@ -1,12 +1,12 @@
-<h3>Create a New Account</h3>
+<h3>#{_('Create a New Account')}</h3>
 
 <form action="/signup" method="POST">
   <table>
-    <tr><td>Invitation code:</td><td><input type="text" name="invitation_code" value="#{@invitation_code}"/></td></tr>
-    <tr><td>Username:</td><td><input type="text" name="username"/></td></tr>
-    <tr><td>Password:</td><td><input type="password" name="password"/></td></tr>
-    <tr><td>Confirm password:</td><td><input type="password" name="password-confirm"/></td></tr>
-    <tr><td>Email:</td><td><input type="text" name="email" size="20"/> (optional)</td></tr>
-    <tr><td colspan="2"><input type="submit" name="submit" value="Sign Up"/></td></tr>
+    <tr><td>#{_('Invitation code:')}</td><td><input type="text" name="invitation_code" value="#{@invitation_code}"/></td></tr>
+    <tr><td>#{_('Username:')}</td><td><input type="text" name="username"/></td></tr>
+    <tr><td>#{_('Password:')}</td><td><input type="password" name="password"/></td></tr>
+    <tr><td>#{_('Confirm password:')}</td><td><input type="password" name="password-confirm"/></td></tr>
+    <tr><td>#{_('Email:')}</td><td><input type="text" name="email" size="20"/> #{_('(optional)')}</td></tr>
+    <tr><td colspan="2"><input type="submit" name="submit" value="#{s_('button|Sign Up')}"/></td></tr>
   </table>
 </form>
