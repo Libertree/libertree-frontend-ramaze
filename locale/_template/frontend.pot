@@ -45,6 +45,10 @@ msgstr ""
 msgid "You have been logged out."
 msgstr ""
 
+#: controller/base.rb
+msgid "not-authenticated|Please log in."
+msgstr ""
+
 #: view/home/index.xhtml
 
 msgid "River:"
