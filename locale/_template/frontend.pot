@@ -609,7 +609,7 @@ msgid "All posts transmitted to your tree from every other tree in the forest, p
 msgstr ""
 msgid ":unread #knitting%sPosts tagged with %s#knitting%s which you have not read yet"
 msgstr ""
-msgstr "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts about cats"
+msgid "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts about cats"
 msgstr ""
 msgid "environment%sPosts that mention the environment, whether or not they were hashtagged with #environment"
 msgstr ""
