@@ -1,14 +1,13 @@
-<h2>Libertree Administration</h2>
+<h2>#{_('Libertree Administration')}</h2>
 
-<h3>Forests</h3>
+<h3>#{_('Forests')}</h3>
 
 <p>
-Drag trees in and out of forests.
-The local tree is automatically a part of each forest originating from it.
+#{_('Drag trees in and out of forests.  The local tree is automatically a part of each forest originating from it.')}
 </p>
 
 <form action="/admin/forests/create" method="POST">
-  Name: <input type="text" name="name"/> <input type="submit" value="Add"/>
+  #{s_('create-forest|Name:')} <input type="text" name="name"/> <input type="submit" value="#{s_('create-forest|Add')}"/>
 </form>
 
 <div class="forests">
@@ -16,9 +15,9 @@ The local tree is automatically a part of each forest originating from it.
     <div class="forest" data-forest-id="#{f.id}">
       <span class="name">#{f.name}</span>
       <div class="origin">
-        Origin:
+        #{s_('forest|Origin:')}
         <?r if f.local? ?>
-          this tree
+          #{s_('forest-origin|this tree')}
         <?r else ?>
           #{f.origin.name_display}
         <?r end ?>
@@ -28,10 +27,10 @@ The local tree is automatically a part of each forest originating from it.
   <?r end ?>
 </div>
 
-<h3>Trees</h3>
+<h3>#{_('Trees')}</h3>
 
 <form action="/admin/servers/create" method="POST">
-  Hostname: <input type="text" name="host"/> <input type="submit" value="Add"/>
+  #{s_('new-tree|Hostname:')} <input type="text" name="host"/> <input type="submit" value="#{s_('new-tree|Add')}"/>
 </form>
 
 #{ Controller::Admin::Servers.render_partial '_servers', servers: @servers }

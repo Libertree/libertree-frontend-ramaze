@@ -45,7 +45,7 @@ module Controller
 
       @list.members = request['members']
 
-      flash[:notice] = "Contact list updated."
+      flash[:notice] = _('Contact list updated.')
       redirect r(:/)
     end
   end

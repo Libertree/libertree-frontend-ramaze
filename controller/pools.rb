@@ -40,7 +40,7 @@ module Controller
         )
       rescue PGError => e
         if e.message =~ /pools_account_id_name_key/
-          flash[:error] = 'You already have a pool with that name.'
+          flash[:error] = _('You already have a pool with that name.')
           redirect_referrer
         else
           raise e

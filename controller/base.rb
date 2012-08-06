@@ -24,7 +24,7 @@ module Controller
 
     def require_login
       if ! $skip_authentication && ! logged_in? && action.name != 'login' && action.name != 'logout'
-        flash[:error] = 'Please log in.'
+        flash[:error] = s_('not-authenticated|Please log in.')
         case request.fullpath
         when %r{seen|/_}
           # don't store redirect target in the case of AJAX partials

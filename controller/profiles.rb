@@ -45,7 +45,7 @@ module Controller
         )
       rescue PGError => e
         if e.message =~ /valid_name_display/
-          flash[:error] = 'Special characters are not allowed in display names.'
+          flash[:error] = _('Special characters are not allowed in display names.')
           redirect_referrer
         else
           raise e
@@ -64,9 +64,9 @@ module Controller
       begin
         FileUtils.rm avatar_path
         account.member.avatar_path = nil
-        flash[:notice] = "Avatar deleted."
+        flash[:notice] = _('Avatar deleted.')
       rescue
-        flash[:error] = "Failed to reset avatar."
+        flash[:error] = _('Failed to reset avatar.')
       end
 
       redirect_referrer
@@ -77,12 +77,12 @@ module Controller
 
       tempfile, filename, type = request['file'].values_at(:tempfile, :filename, :type)
       if type.split('/').first != 'image'
-        flash[:error] = 'Only image files may be used as avatars.'
+        flash[:error] = _('Only image files may be used as avatars.')
         redirect_referrer
       end
       extension = File.extname(filename).downcase
       if ! ['.png', '.jpg', '.jpeg', '.gif',].include?(extension)
-        flash[:error] = 'Only .png, .jpeg and .gif files may be used as avatars.'
+        flash[:error] = _('Only .png, .jpeg and .gif files may be used as avatars.')
         redirect_referrer
       end
 
@@ -106,7 +106,7 @@ module Controller
 
       account.member.avatar_path = "/images/avatars/#{basename}"
 
-      flash[:notice] = "Avatar changed."
+      flash[:notice] = _('Avatar changed.')
       redirect_referrer
     end
   end

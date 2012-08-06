@@ -32,17 +32,28 @@ msgstr ""
 msgid "You can %sreset your password%s if your account has an email address on record."
 msgstr ""
 
+#: controller/main.rb
 msgid "Invalid credentials."
 msgstr ""
 msgid "A valid invitation code is required."
 msgstr ""
 msgid "You mistyped your password."
 msgstr ""
+msgid "Username %s is taken.  Please choose another."
+msgstr ""
 msgid "Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes."
 msgstr ""
 msgid "A password reset link has been sent for the account with that email address."
 msgstr ""
 msgid "You have been logged out."
+msgstr ""
+
+#: controller/base.rb
+msgid "not-authenticated|Please log in."
+msgstr ""
+
+#: controller/invitations.rb
+msgid "Failed to create invitation.  You may only have up to 5 unaccepted invitations at once."
 msgstr ""
 
 #: view/home/index.xhtml
@@ -62,23 +73,23 @@ msgid "mark all read"
 msgstr ""
 
 #: view/posts/new.xhtml
-
 msgid "New Post"
 msgstr ""
 msgid "(enter hashtags here)"
 msgstr ""
-msgid "Preview"
+msgid "new-post|Post"
 msgstr ""
-msgid "Post"
+
+#: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
+msgid "post|Preview"
 msgstr ""
 
 #: view/posts/edit.xhtml
-
 msgid "Edit Post"
 msgstr ""
 msgid "Cancel"
 msgstr ""
-msgid "Update"
+msgid "post|Update"
 msgstr ""
 
 #: view/posts/show.xhtml
@@ -109,12 +120,12 @@ msgid "likes"
 msgstr ""
 
 #: view/posts/_excerpts.xhtml
-
 msgid "No more posts."
+msgstr ""
+msgid "The system is still matching posts with this river.  Check in a few minutes for more posts."
 msgstr ""
 
 #: view/posts/_excerpt.xhtml
-
 msgid "back to top"
 msgstr ""
 msgid "Liked by %s"
@@ -154,6 +165,32 @@ msgstr ""
 msgid "show more"
 msgstr ""
 msgid "show less"
+msgstr ""
+
+#: controller/posts.rb
+msgid "Post may not be empty."
+msgstr ""
+
+#: controller/pools.rb
+msgid "You already have a pool with that name."
+msgstr ""
+
+#: controller/profiles.rb
+msgid "Special characters are not allowed in display names."
+msgstr ""
+msgid "Avatar deleted."
+msgstr ""
+msgid "Avatar changed."
+msgstr ""
+msgid "Failed to reset avatar."
+msgstr ""
+msgid "Only image files may be used as avatars."
+msgstr ""
+msgid "Only .png, .jpeg and .gif files may be used as avatars."
+msgstr ""
+
+#: controller/rivers.rb
+msgid "You already have a river for that."
 msgstr ""
 
 #: view/comments/_comments.xhtml
@@ -267,6 +304,16 @@ msgstr ""
 msgid "Download your account settings, profile, posts, comments and direct messages:"
 msgstr ""
 
+#: controller/accounts.rb
+msgid "Settings saved."
+msgstr ""
+msgid "Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum."
+msgstr ""
+msgid "Passwords did not match.  Please reenter."
+msgstr ""
+msgid "Password changed."
+msgstr ""
+
 #: view/accounts/change_password.xhtml
 
 msgid "Change Password"
@@ -312,8 +359,283 @@ msgid "%s sent you a %smessage%s."
 msgstr ""
 
 
-#: helper/wording.rb
+#: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ""
 msgid "list-and| and "
+msgstr ""
+
+#: view/search.xhtml
+msgid "Search Results for \"%s\""
+msgstr ""
+msgid "search-results|Nothing found."
+msgstr ""
+msgid "search-results|Profiles"
+msgstr ""
+msgid "search-results|Posts"
+msgstr ""
+msgid "search-results|Comments"
+msgstr ""
+
+#: controller/contact-lists.rb
+msgid "Contact list updated."
+msgstr ""
+
+#: view/contact-lists/index.xhtml
+msgid "Contact Lists"
+msgstr ""
+msgid "new-contact-list|Name:"
+msgstr ""
+msgid "new-contact-list|Create"
+msgstr ""
+
+#: view/contact-lists/show.xhtml
+msgid "Contact List: %s"
+msgstr ""
+msgid "(choose members)"
+msgstr ""
+msgid "contact-list|Save"
+msgstr ""
+msgid "contact-list|Cancel"
+msgstr ""
+
+
+#: controller/admin/base.rb
+msgid "Administrative privileges required."
+msgstr ""
+
+#: controller/admin/forests.rb
+msgid "The tree is already a member of the forest."
+msgstr ""
+
+#: view/admin/index.xhtml
+msgid "Libertree Administration"
+msgstr ""
+msgid "Forests"
+msgstr ""
+msgid "Drag trees in and out of forests.  The local tree is automatically a part of each forest originating from it."
+msgstr ""
+msgid "create-forest|Name:"
+msgstr ""
+msgid "create-forest|Add"
+msgstr ""
+msgid "forest|Origin:"
+msgstr ""
+msgid "forest-origin|this tree"
+msgstr ""
+msgid "Trees"
+msgstr ""
+msgid "new-tree|Hostname:"
+msgstr ""
+msgid "new-tree|Add"
+msgstr ""
+
+#: view/404.xhtml
+msgid "404|No such page"
+msgstr ""
+msgid "404|Please use your browser's Back button, or %sgo to your home page%s."
+msgstr ""
+
+#: view/error.xhtml
+msgid "Something went wrong..."
+msgstr ""
+msgid "Time of error: %s"
+msgstr ""
+msgid "Referrer: %s"
+msgstr ""
+
+#: view/messages/{index,show}.xhtml
+msgid "Direct Messages"
+msgstr ""
+msgid "direct-message|New Message"
+msgstr ""
+msgid "direct-message|Messages"
+msgstr ""
+msgid "direct-message|From:"
+msgstr ""
+msgid "direct-message|To:"
+msgstr ""
+
+#: view/messages/_new.xhtml
+msgid "direct-message|Send"
+msgstr ""
+msgid "direct-message|Preview"
+msgstr ""
+msgid "direct-message|Recipients"
+msgstr ""
+msgid "direct-message-warning|please note..."
+msgstr ""
+msgid "Please note that direct messages are not fully private, encrypted nor secure.  As with all data on this tree, direct messages are fully accessible to the arborista (administrator)."
+msgstr ""
+
+#: view/messages/show.xhtml
+msgid "direct-message|reply"
+msgstr ""
+msgid "direct-message|reply to all"
+msgstr ""
+
+#: view/pools/_index.xhtml
+msgid "pool-selector|Collect in..."
+msgstr ""
+
+#: view/pools/index.xhtml
+msgid "Pools"
+msgstr ""
+msgid "Use pools to collect posts."
+msgstr ""
+msgid "new-pool|Name:"
+msgstr ""
+msgid "new-pool|Create"
+msgstr ""
+msgid "pool|Delete"
+msgstr ""
+
+#: view/pools/show.xhtml
+msgid "Pool: %s"
+msgstr ""
+
+#: view/profiles/edit.xhtml
+msgid "My Profile"
+msgstr ""
+msgid "Display name:"
+msgstr ""
+msgid "About Me (Markdown allowed):"
+msgstr ""
+msgid "profile|Update"
+msgstr ""
+msgid "Avatar"
+msgstr ""
+msgid "avatar|Upload file:"
+msgstr ""
+msgid "avatar-upload|Submit"
+msgstr ""
+msgid "Reset avatar"
+msgstr ""
+
+#: view/profiles/show.xhtml
+msgid "profile|Edit"
+msgstr ""
+msgid "Posts by %s"
+msgstr ""
+msgid "Add %s to a river"
+msgstr ""
+
+#: view/request_password_reset.xhtml
+msgid "Password Reset"
+msgstr ""
+msgid "To reset your password, enter the email address associated with your account."
+msgstr ""
+msgid "password-reset|Submit"
+msgstr ""
+
+#: view/signup.xhtml
+msgid "Create a New Account"
+msgstr ""
+msgid "Invitation code:"
+msgstr ""
+msgid "Username:"
+msgstr ""
+msgid "Password:"
+msgstr ""
+msgid "Confirm password:"
+msgstr ""
+msgid "(optional)"
+msgstr ""
+msgid "button|Sign up"
+msgstr ""
+
+#: view/rivers/{new,edit}.xhtml
+msgid "Edit River"
+msgstr ""
+msgid "river-query|Search:"
+msgstr ""
+msgid "river|Label:"
+msgstr ""
+msgid "append to all other rivers"
+msgstr ""
+msgid "river|Update"
+msgstr ""
+msgid "river|Create"
+msgstr ""
+
+#: view/rivers/index.xhtml
+msgid "My Rivers"
+msgstr ""
+msgid "new river"
+msgstr ""
+msgid "river|Global Queries"
+msgstr ""
+msgid "The following river queries are being appended to every other river query."
+msgstr ""
+
+#: view/rivers/_list.xhtml
+msgid "(home river)"
+msgstr ""
+msgid "Set as home river"
+msgstr ""
+msgid "river|edit"
+msgstr ""
+msgid "river|delete"
+msgstr ""
+
+#: view/rivers/_tips_and_examples.xhtml
+msgid "river-tips|Tips:"
+msgstr ""
+msgid "For the search, enter one or more words or hashtags."
+msgstr ""
+msgid "Posts having any of the words will be included in the river."
+msgstr ""
+msgid "Use a minus sign in front of a word to exclude posts with that word."
+msgstr ""
+msgid "Example: %s#music -#classical%s will find posts about music, but not classical music."
+msgstr ""
+msgid "Example: %s:river \"Special Interests\"%s"
+msgstr ""
+msgid "Other special terms: %s, %s and %s. These are for narrowing down to posts you have liked, commented on and subscribed to, respectively."
+msgstr ""
+msgid "(advanced) Use the special term %s followed by a river label in quotes to compose rivers using other rivers."
+msgstr ""
+msgid "You can also %shave the beginner rivers recreated for you%s."
+msgstr ""
+msgid "river|Examples"
+msgstr ""
+msgid "river|Query"
+msgstr ""
+msgid "river|Description"
+msgstr ""
+msgid "All posts originating from your tree"
+msgstr ""
+msgid "All posts transmitted to your tree from every other tree in the forest, plus posts from your tree"
+msgstr ""
+msgid ":unread #knitting%sPosts tagged with %s#knitting%s which you have not read yet"
+msgstr ""
+msgid "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts about cats"
+msgstr ""
+msgid "environment%sPosts that mention the environment, whether or not they were hashtagged with #environment"
+msgstr ""
+msgid ":tree #bug #feature%sBug reports and feature requests made by your treemates"
+msgstr ""
+msgid "\"new york\"%sPosts about New York, but not posts only having the word %snew%s"
+msgstr ""
+msgid "brazil -\"world cup\"%sPosts about Brazil, but not those mentioning the World Cup"
+msgstr ""
+msgid ":from \"rekado\"%sPosts written by rekado"
+msgstr ""
+msgid "#photography -:from \"Photophile\"%sPosts tagged with %s#photography%s, but not those by Photophile"
+msgstr ""
+msgid "#restaurants :river \"Important\"%sPosts tagged with %s#restaurants%s, or posts matching the river \"Important\""
+msgstr ""
+msgid "#restaurants +:river \"News Articles\"%sPosts tagged with %s#restaurants%s which also match the river \"News Articles\""
+msgstr ""
+msgid "#restaurants -:river \"International News\"%sPosts tagged with %s#restaurants%s, but not those which match the river \"International News\""
+msgstr ""
+
+#: view/chat/_index.xhtml
+msgid "Chat"
+msgstr ""
+msgid "chat-contacts|Online:"
+msgstr ""
+msgid "chat|(no contacts online)"
+msgstr ""
+msgid "Start new chat with..."
 msgstr ""
