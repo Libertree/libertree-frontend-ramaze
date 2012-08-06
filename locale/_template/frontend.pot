@@ -473,3 +473,23 @@ msgid "direct-message|reply"
 msgstr ""
 msgid "direct-message|reply to all"
 msgstr ""
+
+#: view/pools/_index.xhtml
+msgid "pool-selector|Collect in..."
+msgstr ""
+
+#: view/pools/index.xhtml
+msgid "Pools"
+msgstr ""
+msgid "Use pools to collect posts."
+msgstr ""
+msgid "new-pool|Name:"
+msgstr ""
+msgid "new-pool|Create"
+msgstr ""
+msgid "pool|Delete"
+msgstr ""
+
+#: view/pools/show.xhtml
+msgid "Pool: %s"
+msgstr ""
