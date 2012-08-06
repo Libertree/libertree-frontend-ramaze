@@ -359,7 +359,7 @@ msgid "%s sent you a %smessage%s."
 msgstr ""
 
 
-#: helper/wording.rb
+#: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ""
 msgid "list-and| and "
@@ -442,4 +442,34 @@ msgstr ""
 msgid "Time of error: %s"
 msgstr ""
 msgid "Referrer: %s"
+msgstr ""
+
+#: view/messages/{index,show}.xhtml
+msgid "Direct Messages"
+msgstr ""
+msgid "direct-message|New Message"
+msgstr ""
+msgid "direct-message|Messages"
+msgstr ""
+msgid "direct-message|From:"
+msgstr ""
+msgid "direct-message|To:"
+msgstr ""
+
+#: view/messages/_new.xhtml
+msgid "direct-message|Send"
+msgstr ""
+msgid "direct-message|Preview"
+msgstr ""
+msgid "direct-message|Recipients"
+msgstr ""
+msgid "direct-message-warning|please note..."
+msgstr ""
+msgid "Please note that direct messages are not fully private, encrypted nor secure.  As with all data on this tree, direct messages are fully accessible to the arborista (administrator)."
+msgstr ""
+
+#: view/messages/show.xhtml
+msgid "direct-message|reply"
+msgstr ""
+msgid "direct-message|reply to all"
 msgstr ""
