@@ -629,3 +629,13 @@ msgid "#restaurants +:river \"News Articles\"%sPosts tagged with %s#restaurants%
 msgstr ""
 msgid "#restaurants -:river \"International News\"%sPosts tagged with %s#restaurants%s, but not those which match the river \"International News\""
 msgstr ""
+
+#: view/chat/_index.xhtml
+msgid "Chat"
+msgstr ""
+msgid "chat-contacts|Online:"
+msgstr ""
+msgid "chat|(no contacts online)"
+msgstr ""
+msgid "Start new chat with..."
+msgstr ""
