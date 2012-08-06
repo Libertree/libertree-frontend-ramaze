@@ -1,11 +1,11 @@
-<h2>Search Results for "#{@q}"</h2>
+<h2>#{_('Search Results for "%s"') % @q}</h2>
 
 <?r if (@profiles.length + @posts.length + @comments.length) == 0 ?>
-  <p>Nothing found.</p>
+<p>#{s_('search-results|Nothing found.')}</p>
 <?r end ?>
 
 <?r if @profiles.length > 0 ?>
-  <h3>Profiles</h3>
+  <h3>#{s_('search-results|Profiles')}</h3>
 
   <ul>
   <?r @profiles.each do |p| ?>
@@ -15,7 +15,7 @@
 <?r end ?>
 
 <?r if @posts.length > 0 ?>
-  <h3>Posts</h3>
+  <h3>#{s_('search-results|Posts')}</h3>
 
   <ul>
   <?r @posts.each do |p| ?>
@@ -25,7 +25,7 @@
 <?r end ?>
 
 <?r if @comments.length > 0 ?>
-  <h3>Comments</h3>
+  <h3>#{s_('search-results|Comments')}</h3>
 
   <ul>
   <?r @comments.each do |c| ?>
