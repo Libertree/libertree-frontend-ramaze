@@ -410,3 +410,9 @@ msgid "new-tree|Hostname:"
 msgstr ""
 msgid "new-tree|Add"
 msgstr ""
+
+#: view/404.xhtml
+msgid "404|No such page"
+msgstr ""
+msgid "404|Please use your browser's Back button, or %sgo to your home page%s."
+msgstr ""
