@@ -1,25 +1,35 @@
 <h2>Search Results for "#{@q}"</h2>
 
-<h3>Profiles</h3>
-
-<ul>
-<?r @profiles.each do |p| ?>
-  <li class="profile">#{member_avatar_link(p.member)} #{member_name_link(p.member)}</li>
+<?r if (@profiles.length + @posts.length + @comments.length) == 0 ?>
+  <p>Nothing found.</p>
 <?r end ?>
-</ul>
 
-<h3>Posts</h3>
+<?r if @profiles.length > 0 ?>
+  <h3>Profiles</h3>
 
-<ul>
-<?r @posts.each do |p| ?>
-  <li>#{ago(p.time_created)} #{member_name_link(p.member)} <a href="/posts/show/#{p.id}">#{p.glimpse}</a></li>
+  <ul>
+  <?r @profiles.each do |p| ?>
+    <li class="profile">#{member_avatar_link(p.member)} #{member_name_link(p.member)}</li>
+  <?r end ?>
+  </ul>
 <?r end ?>
-</ul>
 
-<h3>Comments</h3>
+<?r if @posts.length > 0 ?>
+  <h3>Posts</h3>
 
-<ul>
-<?r @comments.each do |c| ?>
-  <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="/posts/show/#{c.post.id}#comment-#{c.id}">#{c.glimpse}</a></li>
+  <ul>
+  <?r @posts.each do |p| ?>
+    <li>#{ago(p.time_created)} #{member_name_link(p.member)} <a href="/posts/show/#{p.id}">#{p.glimpse}</a></li>
+  <?r end ?>
+  </ul>
 <?r end ?>
-</ul>
+
+<?r if @comments.length > 0 ?>
+  <h3>Comments</h3>
+
+  <ul>
+  <?r @comments.each do |c| ?>
+    <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="/posts/show/#{c.post.id}#comment-#{c.id}">#{c.glimpse}</a></li>
+  <?r end ?>
+  </ul>
+<?r end ?>
