@@ -71,6 +71,12 @@ msgid "Preview"
 msgstr ""
 msgid "Post"
 msgstr ""
+msgid "Visibility"
+msgstr ""
+msgid "visibility|Internet"
+msgstr ""
+msgid "visibility|Forest"
+msgstr ""
 
 #: view/posts/edit.xhtml
 
