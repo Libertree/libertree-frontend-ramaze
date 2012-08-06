@@ -73,23 +73,23 @@ msgid "mark all read"
 msgstr ""
 
 #: view/posts/new.xhtml
-
 msgid "New Post"
 msgstr ""
 msgid "(enter hashtags here)"
 msgstr ""
-msgid "Preview"
+msgid "new-post|Post"
 msgstr ""
-msgid "Post"
+
+#: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
+msgid "post|Preview"
 msgstr ""
 
 #: view/posts/edit.xhtml
-
 msgid "Edit Post"
 msgstr ""
 msgid "Cancel"
 msgstr ""
-msgid "Update"
+msgid "post|Update"
 msgstr ""
 
 #: view/posts/show.xhtml
@@ -120,12 +120,12 @@ msgid "likes"
 msgstr ""
 
 #: view/posts/_excerpts.xhtml
-
 msgid "No more posts."
+msgstr ""
+msgid "The system is still matching posts with this river.  Check in a few minutes for more posts."
 msgstr ""
 
 #: view/posts/_excerpt.xhtml
-
 msgid "back to top"
 msgstr ""
 msgid "Liked by %s"
