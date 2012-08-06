@@ -381,6 +381,25 @@ msgstr ""
 msgid "Contact list updated."
 msgstr ""
 
+#: view/contact-lists/index.xhtml
+msgid "Contact Lists"
+msgstr ""
+msgid "new-contact-list|Name:"
+msgstr ""
+msgid "new-contact-list|Create"
+msgstr ""
+
+#: view/contact-lists/show.xhtml
+msgid "Contact List: %s"
+msgstr ""
+msgid "(choose members)"
+msgstr ""
+msgid "contact-list|Save"
+msgstr ""
+msgid "contact-list|Cancel"
+msgstr ""
+
+
 #: controller/admin/base.rb
 msgid "Administrative privileges required."
 msgstr ""
