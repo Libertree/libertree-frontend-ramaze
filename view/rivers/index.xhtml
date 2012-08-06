@@ -1,6 +1,6 @@
-<h2>My Rivers</h2>
+<h2>#{_('My Rivers')}</h2>
 
-<a href="/rivers/new">new river</a>
+<a href="/rivers/new">#{_('new river')}</a>
 
 <?r @rivers.each do |river| ?>
   #{ render_partial '_river', river: river }
@@ -8,9 +8,9 @@
 
 <?r if @rivers_global.any? ?>
 
-  <h3>Global Queries</h3>
+<h3>#{s_('river|Global Queries')}</h3>
 
-  <p>The following river queries are being appended to every other river query.</p>
+<p>#{_('The following river queries are being appended to every other river query.')}</p>
 
   <?r @rivers_global.each do |river| ?>
     #{ render_partial '_river', river: river, not_linked: false }
