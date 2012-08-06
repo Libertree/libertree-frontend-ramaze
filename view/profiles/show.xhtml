@@ -13,10 +13,6 @@
   <div class="description">
     #{ Libertree.render(@profile.description) }
   </div>
-
-  <hr/>
-
-  <h3>Posts by #{@member.name_display}</h3>
   <div>
     <select id="river-selector" name="river_id" data-member-id="#{@member.id}" data-placeholder="Add #{@member.name_display} to a river">
       <option value="0"></option>
@@ -25,10 +21,11 @@
       <?r end ?>
     </select>
   </div>
+</div>
 
-  <div id="post-excerpts">
-    <?r @member.posts(12).each do |post| ?>
-      #{ Controller::Posts.render_partial '_excerpt', post: post }
-    <?r end ?>
-  </div>
+<div id="post-excerpts">
+  <h3>Posts by #{@member.name_display}</h3>
+  <?r @member.posts(12).each do |post| ?>
+    #{ Controller::Posts.render_partial '_excerpt', post: post }
+  <?r end ?>
 </div>
