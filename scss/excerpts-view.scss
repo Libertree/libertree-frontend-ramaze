@@ -12,7 +12,7 @@ body.excerpts-view .main {
     #header {
       padding: 20px;
       background: $dust;
-      border-radius: 20px 20px 0 0;
+      border-radius: 10px 10px 0 0;
       margin-bottom: 0.6em;
       @include shadow;
     }
@@ -20,7 +20,7 @@ body.excerpts-view .main {
     #no-more-posts {
       text-align: center;
       background: $dust;
-      border-radius: 0 0 20px 20px;
+      border-radius: 0 0 10px 10px;
       padding: 0.5em;
       @include shadow;
     }
