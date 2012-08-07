@@ -11,6 +11,9 @@ function checkForSessionDeath(html) {
 function addSpinner(target_selector, size) {
   $(target_selector).append('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
 }
+function prependSpinner(target_selector, size) {
+  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
+}
 function removeSpinner(target_selector) {
   $('.spinner', target_selector).remove();
 }

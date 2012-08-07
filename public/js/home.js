@@ -9,6 +9,47 @@ function showShowMores() {
   } );
 }
 
+function indicateNewPosts(data) {
+  var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+  if( indicator.length ) {
+    indicator.find('.load-more').text(data.numNewPosts);
+    indicator.slideDown();
+  }
+}
+
+function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
+  loadingMorePostExcerpts = true;
+  $.ajax( {
+    type: 'GET',
+    url: '/posts/_excerpts/' + riverId + '/' + older_or_newer + '/' + time,
+    success: function(html) {
+      var o = $(html);
+      o.css('display', 'none');
+
+      /* Remove old copies of incoming excerpts that may already be in the DOM */
+      var container = $('<div/>');
+      container.prepend(o);
+      container.find('.post-excerpt').each( function() {
+        $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
+      } );
+
+      if( older_or_newer == 'newer' ) {
+        $('#post-excerpts').prepend(o);
+      } else {
+        $('#post-excerpts').append(o);
+      }
+      o.slideDown();
+
+      loadingMorePostExcerpts = false;
+      removeSpinner('#post-excerpts');
+      showShowMores();
+      if(onSuccess) {
+        onSuccess();
+      }
+    }
+  } );
+}
+
 /* ---------------------------------------------------- */
 
 $(document).ready( function() {
@@ -103,6 +144,25 @@ $(document).ready( function() {
 
   $('.home #river-selector').change( function() {
     window.location = '/home/' + $(this).val();
+    return false;
+  } );
+
+  $('.load-more').live( 'click', function(event) {
+    event.preventDefault();
+
+    $('.more-posts-divider').remove();
+    $('#no-more-posts').remove();
+    $('#post-excerpts').prepend('<div class="more-posts-divider"></div>');
+    prependSpinner('#post-excerpts');
+    loadPostExcerpts(
+      $('#post-excerpts').data('river-id'),
+      'newer',
+      $('.post-excerpt:first').data('t'),
+      function() {
+        $('.more-posts').hide().detach().prependTo('#post-excerpts');
+        $('.more-posts .n').text('0');
+      }
+    );
     return false;
   } );
 
