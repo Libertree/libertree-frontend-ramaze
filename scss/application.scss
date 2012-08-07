@@ -417,6 +417,7 @@ blockquote {
 }
 
 .preview-box {
+    position: relative;
     background-color: $sand;
     padding: 1em;
     margin-top: 1em;
@@ -427,9 +428,11 @@ blockquote {
         padding-top: 0px;
         margin-top: 0px;
         border-bottom: 1px solid $path;
-        a.close {
-            float: right;
-        }
+    }
+    a.close {
+        position: absolute;
+        right: 1em;
+        top: 1em;
     }
 }
 

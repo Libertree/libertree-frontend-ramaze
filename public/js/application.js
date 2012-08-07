@@ -107,7 +107,7 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          target.append( $('<div class="preview-box" class="'+type+'"><h3 class="preview">Preview<a class="close" href="#">close</a></h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           target.closest('div.comments').scrollTop(99999);
         }
       }
