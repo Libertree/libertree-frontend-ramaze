@@ -75,7 +75,7 @@ body.excerpts-view .main {
             height: $excerpt_height;
             overflow: hidden;
             .overflowed {
-              height: $excerpt_height - 16px;
+              height: $excerpt_height;
             }
             img {
                 max-width: 100%;
