@@ -2,6 +2,10 @@ module Controller
   class Main < Base
     map '/'
 
+    before_all do
+      init_locale
+    end
+
     layout do |path|
       case path
       when 'search'

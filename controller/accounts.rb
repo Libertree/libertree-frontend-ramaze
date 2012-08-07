@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      init_locale
     end
 
     def edit
@@ -43,7 +44,7 @@ module Controller
       account.custom_js = request['custom_js'].to_s
       account.autoembed = !! request['autoembed']
       account.locale = request['locale'].to_s
-      FastGettext.locale = request['locale'].to_s
+      session[:locale] = account.locale
 
       flash[:notice] = _('Settings saved.')
       redirect_referrer

@@ -3,7 +3,10 @@ module Controller
     class Forests < Controller::Admin::Base
       map '/admin/forests'
 
-      before_all { require_admin }
+      before_all do
+        require_admin
+        init_locale
+      end
 
       layout do |path|
         if session[:layout] == 'narrow'
