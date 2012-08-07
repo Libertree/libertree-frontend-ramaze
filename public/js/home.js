@@ -31,7 +31,7 @@ $(document).ready( function() {
     var heightDifference = excerpt.get(0).scrollHeight - excerpt.height();
     var animationSpeed = heightDifference * 2;
 
-    excerpt.animate(
+    overflowed.animate(
       {
         height: excerpt.get(0).scrollHeight + 'px',
         'max-height': excerpt.get(0).scrollHeight + 'px'
@@ -40,8 +40,8 @@ $(document).ready( function() {
       function() {
         markPostRead(postId);
         /* cancel explicit height set by animation */
-        excerpt.height('auto');
-        excerpt.css('max-height', 'none');
+        overflowed.height('auto');
+        overflowed.css('max-height', 'none');
         showMoreLink.hide();
         showMoreLink.siblings('.show-less').show();
       }
@@ -83,7 +83,7 @@ $(document).ready( function() {
     }
 
     var overflowed = excerpt.find('.overflowed');
-    excerpt.animate(
+    overflowed.animate(
       { height: excerpt.data('contracted-height')+'px' },
       animationSpeed,
       function() {
