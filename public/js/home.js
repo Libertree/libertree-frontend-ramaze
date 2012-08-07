@@ -65,11 +65,9 @@ $(document).ready( function() {
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
 
-    excerpt.data( 'contracted-height', excerpt.height() );
     overflowed.data( 'contracted-height', overflowed.height() );
-    overflowed.css('height', 'auto');
 
-    var heightDifference = excerpt.get(0).scrollHeight - excerpt.height();
+    var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
     var animationSpeed = heightDifference * 2;
 
     overflowed.animate(
@@ -125,11 +123,10 @@ $(document).ready( function() {
 
     var overflowed = excerpt.find('.overflowed');
     overflowed.animate(
-      { height: excerpt.data('contracted-height')+'px' },
+      { height: overflowed.data('contracted-height')+'px' },
       animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
-        overflowed.css('height', overflowed.data('contracted-height')+'px');
       }
     );
     return false;
