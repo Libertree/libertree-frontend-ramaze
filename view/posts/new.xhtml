@@ -1,4 +1,4 @@
-<table id="post-new"><tr><td>
+<div id="post-new">
   <h3>#{_('New Post')}</h3>
   <form action="/posts/create" method="POST">
     #{ Controller::Main.render_partial '_markdown_injector' }
@@ -12,4 +12,4 @@
       <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>
     </div>
   </form>
-</td></tr></table>
+</div>
