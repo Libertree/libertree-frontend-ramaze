@@ -122,7 +122,7 @@ msgstr ""
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
 msgstr ""
-msgid "The system is still matching posts with this river.  Check in a few minutes for more posts."
+msgid "The system is still matching posts with this river. Check in a few minutes for more posts."
 msgstr ""
 
 #: view/posts/_excerpt.xhtml

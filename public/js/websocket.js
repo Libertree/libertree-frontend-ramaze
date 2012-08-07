@@ -39,8 +39,8 @@ $(document).ready( function() {
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );
         break;
-      case 'post':
-        /* TODO */
+      case 'river-posts':
+        indicateNewPosts(data);
         break;
       case 'notification':
         updateNumNotificationsUnseen(data.n);

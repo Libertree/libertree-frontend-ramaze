@@ -11,12 +11,14 @@
 <hr/>
 
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
+  <div class="more-posts">
+    <a href="#" class="load-more"></a>
+  </div>
   <?r @posts.reverse.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
   <?r end ?>
 </div>
 
 <?r if @river.being_processed? ?>
-  The system is still matching posts with this river.
-  Check in a few minutes for more posts.
+  #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
 <?r end ?>
