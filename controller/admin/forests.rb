@@ -3,7 +3,10 @@ module Controller
     class Forests < Controller::Admin::Base
       map '/admin/forests'
 
-      before_all { require_admin }
+      before_all do
+        require_admin
+        init_locale
+      end
 
       layout do |path|
         if session[:layout] == 'narrow'
@@ -60,7 +63,7 @@ module Controller
           end
         rescue PGError => e
           if e.message =~ /violates unique constraint/
-            flash[:error] = 'The tree is already a member of the forest.'
+            flash[:error] = _('The tree is already a member of the forest.')
           else
             raise e
           end

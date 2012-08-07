@@ -1,22 +1,22 @@
-<h2>My Profile</h2>
+<h2>#{_('My Profile')}</h2>
 
 <form action="update" method="POST">
-  Display name: <input type="text" name="name_display" value="#{@profile.name_display}"/><br/>
-  About Me (Markdown allowed):
+  #{_('Display name:')} <input type="text" name="name_display" value="#{@profile.name_display}"/><br/>
+  #{_('About Me (Markdown allowed):')}
   #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="description" id="textarea-description" rows="10">#{@profile.description}</textarea><br/>
-  <input type="submit" value="Update"/>
-  <a href="/profiles/show/#{account.member.id}">Cancel</a>
+  <input type="submit" value="#{s_('profile|Update')}"/>
+  <a href="/profiles/show/#{account.member.id}">#{_('Cancel')}</a>
 </form>
 
-<h4>Avatar</h4>
+<h4>#{_('Avatar')}</h4>
 
 <form action="avatar_upload" method="POST" enctype="multipart/form-data">
-  Upload file: <input type="file" name="file" /><br />
-  <input type="submit" name="submit" value="Submit" />
+  #{s_('avatar|Upload file:')} <input type="file" name="file" /><br />
+  <input type="submit" name="submit" value="#{s_('avatar-upload|Submit')}" />
 </form>
 
 <?r unless account.member.avatar_path.nil? ?>
-  <a id="avatar-reset" href="/profiles/avatar_reset">Reset avatar</a>
+  <a id="avatar-reset" href="/profiles/avatar_reset">#{_('Reset avatar')}</a>
 <?r end ?>
 

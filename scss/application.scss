@@ -233,6 +233,7 @@ textarea, input[type="text"], input[type="password"] {
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .typed-text {
@@ -320,6 +321,7 @@ textarea.comment, form.comment .form-buttons {
 #post-new {
     margin: 0px auto;
     text-align: center;
+    width: 500px;
 }
 
 .post-tools {

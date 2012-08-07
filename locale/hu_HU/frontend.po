@@ -1,0 +1,415 @@
+# 
+# Translators:
+#   <danielwine@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2012-08-05 19:18+0000\n"
+"Last-Translator: danielwine <danielwine@gmail.com>\n"
+"Language-Team: UNDEFINED\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: view/login.xhtml
+msgid "Username"
+msgstr "Azonosító"
+
+msgid "Password"
+msgstr "Jelszó"
+
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgid "Not a member yet?"
+msgstr "Még nem vagy tag?"
+
+# "Sign up now" is wrapped in a link
+msgid "Sign up now!"
+msgstr "Iratkozz fel most!"
+
+msgid "Forgot your credentials?"
+msgstr "Elfelejtetted az azonosítóidat?"
+
+msgid ""
+"You can %sreset your password%s if your account has an email address on "
+"record."
+msgstr "%sVisszaállíthatod a jelszavadat%s, ha korábban megadtad az e-mail címedet."
+
+msgid "Invalid credentials."
+msgstr "Érvénytelen azonosítók."
+
+msgid "A valid invitation code is required."
+msgstr "Érvényes meghívó jelsor szükségeltetik!"
+
+msgid "You mistyped your password."
+msgstr "Elgépelted a jelszavadat."
+
+msgid ""
+"Username must be at least 2 characters long and consist only of lowercase "
+"letters, numbers, underscores and dashes."
+msgstr "Az azonosítónak legalább két jel hosszúnak kell lennie és kizárólag kisbetűkből, számokból, aláhúzás- valamint kötőjelből állhat."
+
+msgid ""
+"A password reset link has been sent for the account with that email address."
+msgstr "Elküldtük a jelszó-visszaállító linket az e-mail címedre."
+
+msgid "You have been logged out."
+msgstr "Kijelentkeztél."
+
+#: view/home/index.xhtml
+msgid "River:"
+msgstr "Folyó:"
+
+msgid "manage rivers"
+msgstr "folyamok rendezése"
+
+#: view/home/_menu.xhtml
+msgid "by post time"
+msgstr "közzététel ideje szerint"
+
+msgid "by update time"
+msgstr "frissítés ideje szerint"
+
+msgid "mark all read"
+msgstr "mindent olvasottnak jelöl"
+
+#: view/posts/new.xhtml
+msgid "New Post"
+msgstr "új bejegyzés"
+
+msgid "(enter hashtags here)"
+msgstr "(írj ide címkéket)"
+
+msgid "Preview"
+msgstr "előnézet"
+
+msgid "Post"
+msgstr "küldés"
+
+#: view/posts/edit.xhtml
+msgid "Edit Post"
+msgstr "szerkesztés"
+
+msgid "Cancel"
+msgstr "mégsem"
+
+msgid "Update"
+msgstr "frissítés"
+
+#: view/posts/show.xhtml
+msgid "Start receiving notifications about comments on this post"
+msgstr "szeretnék értesítéseket kapni ezen bejegyzés hozzászólásairól"
+
+msgid "subscribe"
+msgstr "feliratkozás"
+
+msgid "Stop receiving notifications about comments on this post"
+msgstr "nem szeretnék többé értesítéseket kapni ezen bejegyzés hozzászólásairól"
+
+msgid "unsubscribe"
+msgstr "leiratkozás"
+
+msgid "mark post unread"
+msgstr "olvasatlannak jelölés"
+
+msgid "mark post read"
+msgstr "olvasottnak jelölés"
+
+msgid "edit"
+msgstr "szerkesztés"
+
+msgid "delete"
+msgstr "törlés"
+
+msgid "collect"
+msgstr "összegyűjt"
+
+msgid "unlike"
+msgstr "nem tetszik"
+
+msgid "like"
+msgstr "tetszik"
+
+msgid "likes"
+msgstr "ember kedveli"
+
+#: view/posts/_excerpts.xhtml
+msgid "No more posts."
+msgstr "nincs több bejegyzés."
+
+#: view/posts/_excerpt.xhtml
+msgid "back to top"
+msgstr "vissza az elejére"
+
+msgid "Liked by %s"
+msgstr "%s kedveli"
+
+msgid "One comment by %1$s"
+msgstr "egy megjegyzést írt %1$s"
+
+msgid "%2$d comments by %1$s"
+msgstr "%2$d megjegyzést írt %1$s"
+
+msgid "comments"
+msgstr "megjegyzés"
+
+msgid "comment"
+msgstr "megjegyzés"
+
+msgid "mark read"
+msgstr "olvasottnak jelöl"
+
+msgid "mark unread"
+msgstr "olvasatlannak jelöl"
+
+msgid ""
+"Hiding a post prevents it from showing in your rivers or triggering "
+"notifications."
+msgstr "A rejtett bejegyzések nem jelennek meg a folyamjaidban és nem érkezik róluk értesítés sem."
+
+msgid "hide"
+msgstr "rejtés"
+
+msgid "Click to confirm hiding of this post."
+msgstr "Biztosan szeretnéd elrejteni ezt a bejegyzést?"
+
+msgid "confirm"
+msgstr "igen"
+
+msgid "Collect this post in a pool"
+msgstr "bejegyzés felvétele egy gyűjtőmedencébe"
+
+msgid "collected"
+msgstr "összegyűjtve"
+
+msgid "Remove this post from this pool"
+msgstr "bejegyzés eltávolítása ebből a gyűjtőmedencéből"
+
+msgid "remove"
+msgstr "eltávolít"
+
+msgid ""
+"Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
+msgstr "Kattins középső gombbal vagy használj shift-klikket / ctrl-klikket, hogy új fülben / ablakban nyithasd meg"
+
+msgid "view post"
+msgstr "bejegyzés megtekintése"
+
+msgid "show more"
+msgstr "többet mutat"
+
+msgid "show less"
+msgstr "kevesebbet mutat"
+
+#: view/comments/_comments.xhtml
+msgid "One comment"
+msgstr "egy hozzászólás"
+
+msgid "%d comments"
+msgstr "%d hozzászólás"
+
+msgid "show %smore%s / %sall%s comments"
+msgstr "%stöbbi%s / %sösszes%s hozzászólást mutat"
+
+msgid "jump-to-comment|Comment"
+msgstr "hozzászól"
+
+msgid "Comment successfully posted."
+msgstr "hozzászólás közzététele sikerült."
+
+msgid "detach"
+msgstr "leválaszt"
+
+msgid "attach"
+msgstr "összefűz"
+
+msgid "Clear"
+msgstr "törlés"
+
+msgid "Comment"
+msgstr "hozzászól"
+
+#: view/comments/_comment.xhtml
+msgid "One like"
+msgstr "egy kedveli"
+
+msgid "%d likes"
+msgstr "%d ember kedveli"
+
+msgid "back-to-referencing-comment|back"
+msgstr "vissza"
+
+msgid "Unlike this comment"
+msgstr "nem tetszik ez a hozzászólás"
+
+msgid "Like this comment"
+msgstr "tetszik ez a hozzászólás"
+
+msgid "shareable link for this comment"
+msgstr "megosztható link a hozzászóláshoz"
+
+#: view/_markdown_injector.xhtml
+msgid "markdown|title"
+msgstr "felső index"
+
+msgid "markdown|subtitle"
+msgstr "alsó index"
+
+msgid "markdown|link"
+msgstr "hivatkozás"
+
+msgid "markdown|image"
+msgstr "kép"
+
+msgid "markdown|image link"
+msgstr "kép-hivatkozás"
+
+msgid "markdown|quote"
+msgstr "idézet"
+
+msgid "markdown|list"
+msgstr "felsorolás"
+
+msgid "markdown|bold"
+msgstr "kövér"
+
+msgid "markdown|italic"
+msgstr "dőlt"
+
+#: view/accounts/edit.xhtml
+msgid "Account Settings"
+msgstr "Beállítások"
+
+msgid "Edit profile"
+msgstr "Bemutatkozásod"
+
+msgid "Manage rivers"
+msgstr "Folyamok rendezése"
+
+msgid "Change password"
+msgstr "Jelszó megváltoztatása"
+
+msgid "Email:"
+msgstr "E-mail:"
+
+msgid "(for password recovery; never public)"
+msgstr "(jelszó visszaállításhoz; sosem nyilvános)"
+
+msgid "Post excerpt maximum height:"
+msgstr "a bejegyzésminta legnagyobb magassága:"
+
+msgid "pixels"
+msgstr "képpont"
+
+msgid "Custom menu link:"
+msgstr "Saját menü hivatkozás:"
+
+msgid "Custom CSS:"
+msgstr "Saját CSS:"
+
+msgid "Custom JS:"
+msgstr "Saját JS:"
+
+msgid "Automatic embedding:"
+msgstr "Automatikus beágyazás:"
+
+msgid "Language:"
+msgstr "Nyelv:"
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Invite Others"
+msgstr "Mások meghívása"
+
+msgid "Generate a new invitation"
+msgstr "Új meghívás létrehozása"
+
+msgid "My Invitations"
+msgstr "Meghívásaim:"
+
+msgid "Member API"
+msgstr "Tagsági API"
+
+msgid "Current API token:"
+msgstr "Jelenlegi API token:"
+
+msgid "(none)"
+msgstr "(nincsen)"
+
+msgid "API documentation"
+msgstr "API dokumentáció"
+
+msgid "Generate API token"
+msgstr "API token létrehozása"
+
+msgid "Data Export"
+msgstr "Adat kivitel"
+
+msgid ""
+"Download your account settings, profile, posts, comments and direct "
+"messages:"
+msgstr "Töltsd le a beállításaidat, adataidat, bejegyzéseidet, hozzászólásaidat és üzeneteidet:"
+
+#: view/accounts/change_password.xhtml
+msgid "Change Password"
+msgstr "Jelszó megváltoztatása"
+
+msgid "New password:"
+msgstr "Új jelszó:"
+
+msgid "Re-enter new password:"
+msgstr "Ismételd meg az új jelszót:"
+
+msgid "button|Change Password"
+msgstr "megváltoztat"
+
+#: view/notifications/{index,_index}.xhtml
+msgid "Notifications"
+msgstr "Értesítések"
+
+msgid "You have no new notifications."
+msgstr "Nincs új értesítésed."
+
+msgid "mark all seen"
+msgstr "mindet olvasottnak jelöl"
+
+msgid "view all"
+msgstr "mindet megtekint"
+
+msgid "%d more"
+msgstr "%d további értesítés"
+
+#: view/notifications/_comment.xhtml
+msgid "%s commented on your %spost%s."
+msgstr "%s hozzászólt a %sbejegyzésedhez%s."
+
+msgid "%s commented on %s's %spost%s."
+msgstr "%s hozzászólt %s %sbejegyzéséhez%s."
+
+#: view/notifications/_comment_like.xhtml
+msgid "%s liked your %scomment%s on your post."
+msgstr "%s kedveli a bejegyzésedhez fűzött %shozzászólásod%s."
+
+msgid "%s liked your %scomment%s on %s's post."
+msgstr "%s kedveli a %shozzászólásod%s amit %s bejegyzéséhez írtál."
+
+#: view/notifications/_post_like.xhtml
+msgid "%s liked your %spost%s."
+msgstr "%s kedveli a %sbejegyzésedet%s."
+
+#: view/notifications/_message.xhtml
+msgid "%s sent you a %smessage%s."
+msgstr "%s %süzenetet%s küldött neked."
+
+#: helper/wording.rb
+msgid "list-comma|, "
+msgstr ","
+
+msgid "list-and| and "
+msgstr "és"

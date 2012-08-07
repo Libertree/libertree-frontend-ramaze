@@ -6,6 +6,7 @@ module Controller
       if Ramaze::Current.request.path !~ %r{^/posts/show/}
         require_login
       end
+      init_locale
     end
 
     layout do |path|
@@ -54,7 +55,7 @@ module Controller
       text.encode!('UTF-8', 'UTF-16')
 
       if text.empty?
-        flash[:error] = 'Post may not be empty.'
+        flash[:error] = _('Post may not be empty.')
         redirect_referrer
       end
 

@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      init_locale
     end
 
     layout nil

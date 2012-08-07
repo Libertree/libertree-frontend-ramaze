@@ -2,7 +2,10 @@ module Controller
   class Home < Base
     map '/home'
 
-    before_all { require_login }
+    before_all do
+      require_login
+      init_locale
+    end
 
     layout do |path|
       if path =~ /_post_icon/
@@ -16,7 +19,7 @@ module Controller
 
     def index(river_id = nil)
       @view = "excerpts-view home"
-      @load_home_js = true
+      @continuous_scrolling = true
       @rivers = account.rivers_not_appended
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || @rivers[0]
       @river_post_order = session[:river_post_order]

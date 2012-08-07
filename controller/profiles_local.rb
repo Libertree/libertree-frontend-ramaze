@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      init_locale
     end
 
     layout do |path|
@@ -19,6 +20,7 @@ module Controller
     def index( username )
       return  if username.nil?
 
+      @continuous_scrolling = true
       account = Libertree::Model::Account[ username: username ]
       if account.nil?
         redirect_referrer

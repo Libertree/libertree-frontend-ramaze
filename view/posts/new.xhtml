@@ -1,4 +1,4 @@
-<table id="post-new"><tr><td>
+<div id="post-new">
   <h3>#{_('New Post')}</h3>
   <form action="/posts/create" method="POST">
     #{ Controller::Main.render_partial '_markdown_injector' }
@@ -14,8 +14,8 @@
       </select>
     </div>
     <div class="form-buttons">
-      <input class="preview" type="button" value="#{_('Preview')}" tabindex="2" data-type="post"/>
-      <input type="submit" value="#{_('Post')}" tabindex="1"/>
+      <input class="preview" type="button" value="#{s_('new-post|Preview')}" tabindex="2" data-type="post"/>
+      <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>
     </div>
   </form>
-</td></tr></table>
+</div>

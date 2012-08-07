@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      init_locale
     end
 
     def edit
@@ -23,7 +24,7 @@ module Controller
         end
       rescue PGError => e
         if e.message =~ /valid_excerpt_max_height/
-          flash[:error] = 'Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.'
+          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
           redirect_referrer
         end
       end
@@ -43,9 +44,9 @@ module Controller
       account.custom_js = request['custom_js'].to_s
       account.autoembed = !! request['autoembed']
       account.locale = request['locale'].to_s
-      FastGettext.locale = request['locale'].to_s
+      session[:locale] = account.locale
 
-      flash[:notice] = "Settings saved."
+      flash[:notice] = _('Settings saved.')
       redirect_referrer
     end
 
@@ -76,12 +77,12 @@ module Controller
       return  if ! request.post?
 
       if request['password'].to_s != request['password_again'].to_s
-        flash[:error] = "Passwords did not match.  Please reenter."
+        flash[:error] = _('Passwords did not match.  Please reenter.')
       else
         account.password = request['password'].to_s
         account.password_reset_code = nil
         account.password_reset_expiry = nil
-        flash[:notice] = "Password changed."
+        flash[:notice] = _('Password changed.')
         redirect r(:edit)
       end
     end
