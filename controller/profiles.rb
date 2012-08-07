@@ -24,6 +24,7 @@ module Controller
 
       @profile = @member.profile
       @view = 'excerpts-view'
+      @continuous_scrolling = true
     end
 
     def edit
