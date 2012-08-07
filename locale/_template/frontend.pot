@@ -380,6 +380,8 @@ msgstr ""
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr ""
+msgid "Contact list name may not be empty."
+msgstr ""
 
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
