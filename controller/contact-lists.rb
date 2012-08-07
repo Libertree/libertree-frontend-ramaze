@@ -12,6 +12,10 @@ module Controller
 
     def create
       redirect_referrer  if ! request.post?
+      if request['name'].to_s.empty?
+        flash[:error] = _('Contact list name may not be empty.')
+        redirect_referrer
+      end
 
       list = Libertree::Model::ContactList.create(
         name: request['name'].to_s,
