@@ -358,11 +358,26 @@ msgstr ""
 msgid "%s sent you a %smessage%s."
 msgstr ""
 
-
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ""
 msgid "list-and| and "
+msgstr ""
+
+#: helper/age.rb
+msgid "1 day ago"
+msgstr ""
+msgid "%d days ago"
+msgstr ""
+msgid "1 hour ago"
+msgstr ""
+msgid "%d hours ago"
+msgstr ""
+msgid "1 minute ago"
+msgstr ""
+msgid "%d minutes ago"
+msgstr ""
+msgid "seconds ago"
 msgstr ""
 
 #: view/search.xhtml
