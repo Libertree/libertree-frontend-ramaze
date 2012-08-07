@@ -59,6 +59,7 @@ body.excerpts-view .main {
 
         $meta_width: 250px;
         $excerpt_height: 200px;
+        // the max-height of the excerpt is set in layout/_head.xhtml
 
         div.meta {
             width: $meta_width;
@@ -72,10 +73,9 @@ body.excerpts-view .main {
         div.excerpt {
             padding-left: 20px;
             padding-right: 30px;
-            height: $excerpt_height;
             overflow: hidden;
             .overflowed {
-              height: $excerpt_height;
+              min-height: $excerpt_height;
             }
             img {
                 max-width: 100%;
