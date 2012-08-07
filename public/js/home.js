@@ -142,21 +142,6 @@ $(document).ready( function() {
     excerpt.find('.show-more').click();
   } );
 
-  $('#scrollable').scroll( function () {
-    if( $('#scrollable').scrollTop() + $('#scrollable').height() >= $('.main').height() ) {
-      if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
-        return;
-      }
-
-      addSpinner('#post-excerpts');
-      loadPostExcerpts(
-        $('#post-excerpts').data('river-id'),
-        'older',
-        $('.post-excerpt:last').data('t')
-      );
-    }
-  } );
-
   $('.home #river-selector').change( function() {
     window.location = '/home/' + $(this).val();
     return false;

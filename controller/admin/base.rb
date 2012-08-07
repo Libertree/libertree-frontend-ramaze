@@ -6,7 +6,7 @@ module Controller
       def require_admin
         require_login
         if ! account.admin?
-          flash[:error] = 'Administrative privileges required.'
+          flash[:error] = _('Administrative privileges required.')
           redirect Controller::Main.r(:/)
         end
       end

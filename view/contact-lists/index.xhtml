@@ -1,8 +1,8 @@
-<h2>Contact Lists</h2>
+<h2>#{_('Contact Lists')}</h2>
 
 <form action="/contact-lists/create" method="POST">
-  Name: <input type="text" name="name" size="20"/>
-  <input type="submit" value="Create"/>
+  #{s_('new-contact-list|Name:')} <input type="text" name="name" size="20"/>
+  <input type="submit" value="#{s_('new-contact-list|Create')}"/>
 </form>
 
 <ul>

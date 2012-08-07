@@ -12,14 +12,14 @@ module Ramaze
         display_days = total_hours / 24
 
         if display_days > 0
-          "#{display_days} day#{plural_s(display_days)} ago"
+          n_('1 day ago', '%d days ago', display_days) % display_days
         elsif display_hours > 0
-          "#{display_hours} hour#{plural_s(display_hours)} ago"
+          n_('1 hour ago', '%d hours ago', display_hours) % display_hours
         elsif display_minutes > 0
-          "#{display_minutes} minute#{plural_s(display_minutes)} ago"
+          n_('1 minute ago', '%d minutes ago', display_minutes) % display_minutes
         else
-          # "#{display_seconds} second#{plural_s(display_seconds)} ago"
-          "seconds ago"
+          #n_('1 second ago', '%d seconds ago', display_seconds) % display_seconds
+          _('seconds ago')
         end
       end
     end

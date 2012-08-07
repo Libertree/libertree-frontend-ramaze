@@ -4,6 +4,7 @@ module Controller
 
     before_all do
       require_login
+      init_locale
     end
 
     def index
@@ -12,6 +13,10 @@ module Controller
 
     def create
       redirect_referrer  if ! request.post?
+      if request['name'].to_s.empty?
+        flash[:error] = _('Contact list name may not be empty.')
+        redirect_referrer
+      end
 
       list = Libertree::Model::ContactList.create(
         name: request['name'].to_s,
@@ -45,7 +50,7 @@ module Controller
 
       @list.members = request['members']
 
-      flash[:notice] = "Contact list updated."
+      flash[:notice] = _('Contact list updated.')
       redirect r(:/)
     end
   end

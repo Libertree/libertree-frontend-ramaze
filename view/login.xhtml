@@ -21,7 +21,7 @@
 </p>
 
 <p class="language-bar">
-  <a href="/lang/en_GB">English</a>
-  <a href="/lang/de_DE">Deutsch</a>
-  <a href="/lang/zh_CN">中文（简体）</a>
+  <?r Libertree::LANG.each do |locale,name| ?>
+  <a href="/lang/#{locale}">#{name}</a>
+  <?r end ?>
 </p>

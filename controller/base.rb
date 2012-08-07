@@ -14,7 +14,7 @@ module Controller
     end
 
     def lang(locale)
-      FastGettext.locale = locale
+      session[:locale] = locale
       if request.env['HTTP_REFERER'] =~ %r{/lang/}
         redirect Home.r(:/)
       else
@@ -22,9 +22,17 @@ module Controller
       end
     end
 
+    def init_locale
+      FastGettext.locale = (
+        logged_in? && account.locale ||
+        session[:locale] ||
+        'en_GB'
+      )
+    end
+
     def require_login
       if ! $skip_authentication && ! logged_in? && action.name != 'login' && action.name != 'logout'
-        flash[:error] = 'Please log in.'
+        flash[:error] = s_('not-authenticated|Please log in.')
         case request.fullpath
         when %r{seen|/_}
           # don't store redirect target in the case of AJAX partials
@@ -43,9 +51,6 @@ module Controller
           sid: session.sid,
           account_id: account.id
         )
-        if account.locale
-          FastGettext.locale = account.locale
-        end
       end
     end
 

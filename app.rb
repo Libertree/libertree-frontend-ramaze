@@ -10,7 +10,6 @@ require 'fast_gettext'
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
 FastGettext.default_text_domain = 'frontend'
-FastGettext.locale = 'en_GB'
 include FastGettext::Translation
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
@@ -36,6 +35,7 @@ $dbh ||= M4DBI.connect(
 require 'libertree/model'
 require 'libertree/client'
 
+require_relative 'lib/libertree/lang'
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/markdown'
 require_relative 'lib/libertree/embedder'

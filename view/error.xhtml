@@ -1,9 +1,9 @@
-<h2>Something went wrong...</h2>
+<h2>#{_('Something went wrong...')}</h2>
 
 <p>
-Time of error: #{@t}
+#{_('Time of error: %s') % @t}
 </p>
 
 <p>
-Referrer: #{request.referrer}
+#{_('Referrer: %s') % request.referrer}
 </p>

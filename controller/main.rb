@@ -2,6 +2,10 @@ module Controller
   class Main < Base
     map '/'
 
+    before_all do
+      init_locale
+    end
+
     layout do |path|
       case path
       when 'search'
@@ -102,9 +106,9 @@ module Controller
       rescue PGError => e
         case e.message
         when /duplicate key value violates unique constraint "accounts_username_key"/
-          flash[:error] = "Username #{request['username'].inspect} is taken.  Please choose another."
+          flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
         when /constraint "username_valid"/
-          flash[:error] = _("Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.")
+          flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
         else
           raise e
         end
@@ -175,7 +179,7 @@ This link is only valid for 1 hour.
         )
       end
 
-      flash[:notice] = _("A password reset link has been sent for the account with that email address.")
+      flash[:notice] = _('A password reset link has been sent for the account with that email address.')
 
       redirect_referrer
     end

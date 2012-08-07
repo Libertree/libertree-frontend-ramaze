@@ -1,4 +1,4 @@
-<h2>Pool: #{@pool.name}</h2>
+<h2>#{_('Pool: %s') % @pool.name}</h2>
 
 <div id="post-excerpts" data-pool-id="#{@pool.id}">
   <?r @pool.posts.each do |post| ?>

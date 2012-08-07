@@ -3,7 +3,10 @@ module Controller
     class Main < Controller::Admin::Base
       map '/admin'
 
-      before_all { require_admin }
+      before_all do
+        require_admin
+        init_locale
+      end
 
       layout do |path|
         if session[:layout] == 'narrow'
