@@ -14,12 +14,20 @@ module Controller
     end
 
     def lang(locale)
-      FastGettext.locale = locale
+      session[:locale] = locale
       if request.env['HTTP_REFERER'] =~ %r{/lang/}
         redirect Home.r(:/)
       else
         redirect_referrer
       end
+    end
+
+    def init_locale
+      FastGettext.locale = (
+        logged_in? && account.locale ||
+        session[:locale] ||
+        'en_GB'
+      )
     end
 
     def require_login
@@ -43,7 +51,6 @@ module Controller
           sid: session.sid,
           account_id: account.id
         )
-        FastGettext.locale = account.locale || 'en_GB'
       end
     end
 
