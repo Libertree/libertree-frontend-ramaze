@@ -101,6 +101,12 @@ input[type="password"],
     .post-excerpt {
         background-color: $dust; /* fallback for browsers that don't support alpha in colours */
         background-color: $dust_translucent;
+
+        .show-more, .show-less {
+            &:hover {
+                background-color: $dust;
+            }
+        }
     }
 }
 
