@@ -59,6 +59,7 @@ $(document).ready( function() {
   } )
 
   $('#comments-hide').click( function() {
+    $('div.post').addClass('with-comments-sliding');
     $('div.post-pane').css('position','relative');
     $('div.comments, #comments-hide').hide();
     $('#comments-show').show();
@@ -70,6 +71,7 @@ $(document).ready( function() {
       function () {
         $('div.comments, #comments-hide').show();
         $('div.post-pane').css('position','absolute');
+        $('div.post').removeClass('with-comments-sliding');
       }
     );
   } );
