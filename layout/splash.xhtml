@@ -4,7 +4,7 @@
   <title>#{( @num_unseen && ( @num_unseen > 0 ) ) ? "(#{@num_unseen})" : ''} Libertree#{ $conf['title_insert'] ? " - #{::CGI.escape_html($conf['title_insert'])}" : '' }#{ @subtitle ? " - #{::CGI.escape_html(@subtitle)}" : '' }</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
-  <link href="/css/splash.css?t=#{File.mtime('public/css/splash.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+  #{ css_nocache 'splash' }
 
 <body class="#{ @view }">
 
