@@ -19,7 +19,7 @@ function showMoreComments(comments, n) {
   $('div.comments').css('height', $('td.post').css('height') );
 }
 
-function setCommentAreaHeight() {
+function setPostViewColumnHeights() {
   var post_proper = $('.post-proper');
   if( post_proper.length ) {
     var target_height = post_proper.height();
@@ -241,7 +241,7 @@ $(document).ready( function() {
 
   if( layout != 'narrow' ) {
     setTimeout(
-      setCommentAreaHeight,
+      setPostViewColumnHeights,
       500
     );
     /* setCommentAreaHeight(); */
