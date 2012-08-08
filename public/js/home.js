@@ -144,6 +144,10 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('.overflowed img').live( 'mouseover', function() {
+    showShowMores();
+  } );
+
   $('.load-more').live( 'click', function(event) {
     event.preventDefault();
 
