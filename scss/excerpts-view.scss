@@ -6,32 +6,29 @@ body.excerpts-view .main {
     margin: 30px auto 30px auto;
     padding: 0;
     background: transparent;
+    border-radius: 3px;
+    @include shadow;
 }
 
 .excerpts-view {
     #header {
       padding: 20px;
       background: $dust;
-      border-radius: 10px 10px 0 0;
-      margin-bottom: 0.6em;
-      @include shadow;
+      border-radius: 3px 3px 0 0;
     }
 
     #no-more-posts {
       text-align: center;
       background: $dust;
-      border-radius: 0 0 10px 10px;
+      border-radius: 0 0 3px 3px;
       padding: 0.5em;
-      @include shadow;
     }
 
     .post-excerpt {
-        @include shadow;
         background: $dust_translucent;
         width: 100%;
         padding: 1em 0 1em;
-        border-radius: 3px;
-        margin-bottom: 0.6em;
+        border-bottom: 1px dotted $dust;
 
         .avatar {
             float: left;
