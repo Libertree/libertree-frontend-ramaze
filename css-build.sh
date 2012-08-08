@@ -1,1 +1,1 @@
-bundle exec sass --update scss:public/css
+bundle exec sass --update scss:public/themes/default/css
