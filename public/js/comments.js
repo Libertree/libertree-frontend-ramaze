@@ -26,7 +26,12 @@ function setCommentAreaHeight() {
     if( target_height < 500 ) {
       target_height = 500;
     }
-    $('div.comments').css('height', target_height + 'px' );
+    $('div.comments').css('height', (target_height-12) + 'px' );
+
+    min_height = $('.comments-pane').height() + 42;
+    if( $('.post-pane').height() < min_height ) {
+      $('.post-pane').height(min_height);
+    }
   }
 }
 
@@ -235,7 +240,11 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   if( layout != 'narrow' ) {
-    setCommentAreaHeight();
+    setTimeout(
+      setCommentAreaHeight,
+      500
+    );
+    /* setCommentAreaHeight(); */
   }
 
   match = document.URL.match(/#comment-([0-9]+)/);
