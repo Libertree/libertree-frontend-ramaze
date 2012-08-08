@@ -75,7 +75,11 @@ body.excerpts-view .main {
               min-height: $excerpt_height;
             }
             img {
-                max-width: 100%;
+                max-height: 60px;
+            }
+            img:hover {
+                max-height: 100%;
+                max-width: 640px;
             }
             .end-of-text {
                 opacity: 0.2;
