@@ -60,7 +60,6 @@ $(document).ready( function() {
 
   $('#comments-hide').click( function() {
     $('div.post').addClass('with-comments-sliding');
-    $('div.post-pane').css('position','relative');
     $('div.comments, #comments-hide').hide();
     $('#comments-show').show();
     $('div.post-pane, div.comments-pane').toggleClass('expanded-post', 500);
@@ -70,7 +69,6 @@ $(document).ready( function() {
     $('div.comments-pane, div.post-pane').toggleClass('expanded-post', 500).promise().done(
       function () {
         $('div.comments, #comments-hide').show();
-        $('div.post-pane').css('position','absolute');
         $('div.post').removeClass('with-comments-sliding');
       }
     );
