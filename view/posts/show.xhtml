@@ -3,6 +3,15 @@
     <div class="post-pane">
   <?r end ?>
       <div class="post-proper">
+        <div class="member">
+          #{member_avatar_link(@post.member)}
+          <div class="member-name">#{member_name_link(@post.member)}</div>
+          <div class="age">#{ago(@post.time_created)}</div>
+          <?r if @post.time_created != @post.time_updated ?>
+            <span class="age-update">(updated #{ago(@post.time_updated)})</span>
+          <?r end ?>
+        </div>
+
         <div class="post-tools">
           <?r if ! account.subscribed_to?(@post) ?>
             <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
@@ -39,14 +48,6 @@
           <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{@post.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="#{_('likes')}"/> <span class="value">#{@post.likes.size}</a></span>
         </div>
 
-        <div class="member">
-          #{member_avatar_link(@post.member)}
-          <div class="member-name">#{member_name_link(@post.member)}</div>
-          <div class="age">#{ago(@post.time_created)}</div>
-          <?r if @post.time_created != @post.time_updated ?>
-            <span class="age-update">(updated #{ago(@post.time_updated)})</span>
-          <?r end ?>
-        </div>
         <div class="post-text typed-text">
           #{@post.text_rendered(account.autoembed)}
         </div>
