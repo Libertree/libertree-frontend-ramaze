@@ -62,7 +62,13 @@ $(document).ready( function() {
     $('div.post').addClass('with-comments-sliding');
     $('div.comments, #comments-hide').hide();
     $('#comments-show').show();
-    $('div.post-pane, div.comments-pane').toggleClass('expanded-post', 500);
+    $('div.post-pane, div.comments-pane').toggleClass(
+      'expanded-post',
+      500,
+      function() {
+        $('div.post-pane').height('auto');
+      }
+    );
   } );
   $('#comments-show').click( function() {
     $('#comments-show').hide();
@@ -70,6 +76,7 @@ $(document).ready( function() {
       function () {
         $('div.comments, #comments-hide').show();
         $('div.post').removeClass('with-comments-sliding');
+        setPostViewColumnHeights();
       }
     );
   } );
