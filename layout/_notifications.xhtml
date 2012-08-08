@@ -3,10 +3,7 @@
   href="/notifications"
   class="menu-item"
   id="menu-notifications"
-  title="#{account.num_notifications_unseen > 0 ? account.num_notifications_unseen : 'No'} notifications"><img
-
-  src="/images/icon-bell.png"
-  alt="notifications"/><span
+  title="#{account.num_notifications_unseen > 0 ? account.num_notifications_unseen : 'No'} notifications">#{img 'icon-bell.png', {alt:"notifications"}}<span
 
   id="num-notifications-unseen"
   class="#{account.num_notifications_unseen == 0 ? 'hidden' : ''}">#{account.num_notifications_unseen}</span></a>

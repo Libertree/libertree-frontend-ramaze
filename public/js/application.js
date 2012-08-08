@@ -8,11 +8,12 @@ function checkForSessionDeath(html) {
   }
 }
 
+//FIXME: src depends on selected theme
 function addSpinner(target_selector, size) {
-  $(target_selector).append('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
+  $(target_selector).append('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
 }
 function prependSpinner(target_selector, size) {
-  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
+  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
 }
 function removeSpinner(target_selector) {
   $('img.spinner', target_selector).remove();
