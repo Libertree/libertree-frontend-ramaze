@@ -25,7 +25,7 @@ body.single-post-view .main {
       width: 55%;
 
       position: absolute;
-      padding: 1em;
+      padding: 2em;
       background: $dust;
       float: left;
       height: 100%; // make the post pane at least as high as the comments pane
@@ -42,8 +42,8 @@ body.single-post-view .main {
           word-wrap: break-word;
         }
         .member {
-          margin: 0.5em -1em 1em;
-          padding: 0.5em;
+          margin: -2em -2em 0.5em -2em;
+          padding: 2em 0.5em 2em 2em;
           background: $sand;
         }
         .post-tools {
@@ -63,7 +63,7 @@ body.single-post-view .main {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       width: 45%;
-      padding: 0 0 1em 1em;
+      padding: 0px 0px 2em 1em;
       border-radius: 0 3px 3px 0;
       position: relative;
       float: right;
