@@ -240,11 +240,26 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   if( layout != 'narrow' ) {
+    /*
+    Run this multiple times: really soon to give a better visual user experience
+    if possible, then later, in case the first ones did not do their job.  There
+    is some kind of bizarre race condition in the rendering of this page that we
+    can't trace.
+
+    Yes, setPostViewColumnHeights is a major hack.
+    */
+    setTimeout(
+      setPostViewColumnHeights,
+      10
+    );
+    setTimeout(
+      setPostViewColumnHeights,
+      100
+    );
     setTimeout(
       setPostViewColumnHeights,
       500
     );
-    /* setCommentAreaHeight(); */
   }
 
   match = document.URL.match(/#comment-([0-9]+)/);
