@@ -5,15 +5,15 @@
 
   #{ css 'ui-lightness/jquery-ui-1.8.21.custom' }
   #{ css 'chosen' }
-  <link href="/css/application.css?t=#{File.mtime('public/css/application.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/#{account.font_css || 'fonts'}.css?t=#{File.mtime('public/css/' + (account.font_css || 'fonts') + '.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/single-post-view.css?t=#{File.mtime('public/css/single-post-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/excerpts-view.css?t=#{File.mtime('public/css/excerpts-view.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/profiles.css?t=#{File.mtime('public/css/profiles.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/messages.css?t=#{File.mtime('public/css/messages.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="/css/chat.css?t=#{File.mtime('public/css/chat.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+  #{ css_nocache 'application' }
+  #{ css_nocache (account.font_css || 'fonts') }
+  #{ css_nocache 'single-post-view' }
+  #{ css_nocache 'excerpts-view' }
+  #{ css_nocache 'profiles' }
+  #{ css_nocache 'messages' }
+  #{ css_nocache 'chat' }
   <?r if account.admin? ?>
-    <link href="/css/admin.css?t=#{File.mtime('public/css/admin.css').to_i}" media="screen" rel="stylesheet" type="text/css" />
+    #{ css_nocache 'admin' }
   <?r end ?>
 
   #{ @stylesheet_extra }
