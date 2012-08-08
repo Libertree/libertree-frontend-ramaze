@@ -10,7 +10,8 @@ body.single-post-view .main {
 .single-post-view {
   div.post {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    display: inline-block;
     padding: 0;
     border-radius: 3px;
     img {
@@ -29,6 +30,7 @@ body.single-post-view .main {
       float: left;
       height: 100%; // make the post pane at least as high as the comments pane
       border-right: 1px solid $sand;
+      border-radius: 3px 0 0 3px;
 
       overflow: hidden;
       vertical-align: top;
@@ -62,6 +64,7 @@ body.single-post-view .main {
       box-sizing: border-box;
       width: 45%;
       padding: 0 0 1em 1em;
+      border-radius: 0 3px 3px 0;
       position: relative;
       float: right;
       background: $dust_translucent;
@@ -96,6 +99,7 @@ body.single-post-view .main {
           position: fixed;
           z-index: 2;
           border: 1px solid $main_green;
+          border-radius: 3px;
 
           .drag-handle-bar {
             display: block;
