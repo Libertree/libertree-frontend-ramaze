@@ -6,7 +6,8 @@ $(document).ready( function() {
         return;
       }
 
-      addSpinner('#post-excerpts');
+      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
+      addSpinner('#post-excerpts div.spinner');
       loadPostExcerpts(
         $('#post-excerpts').data('river-id'),
         'older',

@@ -536,10 +536,10 @@ textarea#invitations {
 }
 
 #post-excerpts {
-  .spinner {
-    display: block;
-    margin: auto;
-  }
+    div.spinner {
+        text-align: center;
+        line-height: 32px; /* IE */
+    }
 }
 
 .markdown-injector {
