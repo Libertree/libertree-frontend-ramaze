@@ -28,7 +28,7 @@ body.single-post-view .main {
       background: $dust;
       float: left;
       height: 100%; // make the post pane at least as high as the comments pane
-      box-shadow: 0 0 8px $shadow;
+      border-right: 1px solid $sand;
       z-index: 1;
 
       overflow: hidden;
