@@ -13,7 +13,6 @@ body.excerpts-view .main {
 .excerpts-view {
     #header {
       padding: 20px;
-      background: $dust;
       border-radius: 3px 3px 0 0;
     }
 
@@ -25,7 +24,6 @@ body.excerpts-view .main {
     }
 
     .post-excerpt {
-        background: $dust_translucent;
         width: 100%;
         padding: 1em 0 1em;
         border-bottom: 1px dotted $dust;
