@@ -44,10 +44,13 @@ module Libertree
         # than comparing against a list of supported link formats.
         # Note that we cannot fetch the URL after "href=" as it may have
         # been modified by the URL resolver.
-        m = line.strip.match(%r|^<a href=".+">(http(s)?://.+)</a>$|)
+        m = line.strip.match(%r|^<p><a href=".+">(http(s)?://.+)</a></p>$|)
         if m
           url = m[1]
-          cached = Libertree::Model::EmbedCache[ url: url ]
+          cached = (
+            Libertree::Model::EmbedCache[ url: url ] ||
+            Libertree::Model::EmbedCache[ url: url.gsub('&amp;', '&') ]
+          )
           if cached
             res << "<br/>#{cached[:object]}"
           end
