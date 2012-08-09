@@ -9,6 +9,13 @@ function markPostRead(post_id) {
   );
 }
 
+function syncPostPanelHeightWithViewport() {
+  $('.single-post-view .main > .post').css(
+    'height',
+    ($('#scrollable').height() - 28) + 'px'
+  );
+}
+
 $(document).ready( function() {
   $('.post-tools a.like').live( 'click', function(event) {
     event.preventDefault();
@@ -64,10 +71,7 @@ $(document).ready( function() {
     $('#comments-show').show();
     $('div.post-pane, div.comments-pane').toggleClass(
       'expanded-post',
-      500,
-      function() {
-        $('div.post').height('auto');
-      }
+      500
     );
   } );
   $('#comments-show').click( function() {
@@ -77,7 +81,6 @@ $(document).ready( function() {
       function () {
         $('div.comments').show();
         $('div.post').removeClass('with-comments-sliding');
-        setPostViewColumnHeights();
       }
     );
   } );
@@ -144,4 +147,5 @@ $(document).ready( function() {
     return false;
   } );
 
+  syncPostPanelHeightWithViewport();
 } );
