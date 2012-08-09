@@ -8,6 +8,10 @@ body.single-post-view .main {
 }
 
 .single-post-view {
+  #scrollable {
+    overflow: hidden;
+  }
+
   div.post {
     width: 100%;
     height: 200px; /* JS later sets this relative to the browser viewport */
