@@ -20,18 +20,31 @@ function showMoreComments(comments, n) {
 }
 
 function setPostViewColumnHeights() {
-  var post_proper = $('.post-proper');
-  if( post_proper.length ) {
-    var target_height = post_proper.height();
-    if( target_height < 500 ) {
-      target_height = 500;
-    }
-    $('div.comments').css('height', (target_height-12) + 'px' );
+  /* If the post is shorter than the viewport, let it fill the viewport.
+   * If it is higher, set the post height to the height of the contents of the post pane.
+   */
 
-    min_height = $('.comments-pane').height() + 42;
-    if( $('.post-pane').height() < min_height ) {
-      $('.post-pane').height(min_height);
-    }
+  var diff = $('.post-pane').innerHeight() - $('#scrollable').height();
+
+  if( diff > 0 ) {
+    // post should be high enough to show all post contents
+    /*
+      Run this multiple times: really soon to give a better visual user experience
+      if possible, then later, in case the first ones did not do their job.  There
+      is some kind of bizarre race condition in the rendering of this page that we
+      can't trace.
+
+      Yes, setPostViewColumnHeights is a major hack.
+      It seems that only webkit browsers need this delay.
+    */
+    var setPostHeight = function(){$('.post').height($('.post-pane').innerHeight())};
+    setPostHeight();
+    setTimeout(setPostHeight, 10);
+    setTimeout(setPostHeight, 100);
+    setTimeout(setPostHeight, 200);
+  } else {
+    // stretch post to view port
+    $('div.post').height( $('#scrollable').height() * 0.9 + 'px' );
   }
 }
 
@@ -240,26 +253,7 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   if( layout != 'narrow' ) {
-    /*
-    Run this multiple times: really soon to give a better visual user experience
-    if possible, then later, in case the first ones did not do their job.  There
-    is some kind of bizarre race condition in the rendering of this page that we
-    can't trace.
-
-    Yes, setPostViewColumnHeights is a major hack.
-    */
-    setTimeout(
-      setPostViewColumnHeights,
-      10
-    );
-    setTimeout(
-      setPostViewColumnHeights,
-      100
-    );
-    setTimeout(
-      setPostViewColumnHeights,
-      500
-    );
+    setPostViewColumnHeights();
   }
 
   match = document.URL.match(/#comment-([0-9]+)/);

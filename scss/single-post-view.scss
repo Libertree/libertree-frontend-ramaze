@@ -9,7 +9,6 @@ body.single-post-view .main {
 
 .single-post-view {
   div.post {
-    /* position: relative; */
     width: 100%;
     display: inline-block;
     padding: 0;
@@ -23,16 +22,14 @@ body.single-post-view .main {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       width: 55%;
-      min-height: 500px;
+      height: 100%;
 
-      /* position: absolute; */
       padding: 2em;
       background: $dust;
       float: left;
       border-right: 1px solid $sand;
       border-radius: 3px 0 0 3px;
 
-      overflow: hidden;
       vertical-align: top;
 
       .post-proper {
@@ -64,17 +61,18 @@ body.single-post-view .main {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       width: 45%;
+      height: 100%;
       padding: 14px 2em 2em 1em;
       border-radius: 0 3px 3px 0;
       /* position: relative; */
       float: right;
       z-index: 0;
+      overflow-y: auto;
 
       div.comments {
-        overflow-y: auto;
         vertical-align: top;
         padding-right: 1em;
-        min-height: 500px;
+        padding-bottom: 1em;
 
         form.comment {
           margin-left: 45px;

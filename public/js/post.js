@@ -66,7 +66,7 @@ $(document).ready( function() {
       'expanded-post',
       500,
       function() {
-        $('div.post-pane').height('auto');
+        $('div.post').height('auto');
       }
     );
   } );
