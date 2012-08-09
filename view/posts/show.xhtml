@@ -44,6 +44,7 @@
             <a href="#" class="unlike hidden">#{_('unlike')}</a>
           <?r end ?>
           <a href="#" id="comments-show" title="show comments">&lt;&lt;</a>
+          <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
           <br/>
           <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{@post.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')}"><img src="/images/icon-like.png" class="size-16" alt="#{_('likes')}"/> <span class="value">#{@post.likes.size}</span></span>
         </div>
@@ -56,7 +57,6 @@
     </div>
 
     <div class="comments-pane">
-      <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
   <?r end ?>
       #{ render_file 'view/comments/_comments.xhtml', post: @post, hidden: false }
   <?r if session[:layout] != 'narrow' ?>

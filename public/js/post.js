@@ -72,9 +72,10 @@ $(document).ready( function() {
   } );
   $('#comments-show').click( function() {
     $('#comments-show').hide();
+    $('#comments-hide').show();
     $('div.comments-pane, div.post-pane').toggleClass('expanded-post', 500).promise().done(
       function () {
-        $('div.comments, #comments-hide').show();
+        $('div.comments').show();
         $('div.post').removeClass('with-comments-sliding');
         setPostViewColumnHeights();
       }
