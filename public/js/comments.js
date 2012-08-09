@@ -44,7 +44,7 @@ function setPostViewColumnHeights() {
     setTimeout(setPostHeight, 200);
   } else {
     // stretch post to view port
-    $('div.post').height( $('#scrollable').height() * 0.9 + 'px' );
+    $('div.post').height( ( $('#scrollable').height() - 32 ) + 'px' );
   }
 }
 
