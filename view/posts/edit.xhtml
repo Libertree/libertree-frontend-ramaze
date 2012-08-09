@@ -1,6 +1,5 @@
-<h3>#{_('Edit Post')}</h3>
-
 <form id="post-edit" action="/posts/update" method="POST">
+  <h3>#{_('Edit Post')}</h3>
   <input type="hidden" name="post_id" value="#{@post.id}"/>
   #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="text" rows="5" id="textarea-post-edit">#{session[:saved_text]['textarea-post-edit']}</textarea>

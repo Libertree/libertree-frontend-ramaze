@@ -2,10 +2,50 @@ var wantsToComment = false;
 var loadingMorePostExcerpts = false;
 
 function showShowMores() {
-  $('.overflowed').each( function() {
-    var wrapper = $(this).closest('.height-fixed');
-    if( $(this).height() > wrapper.height() ) {
-      wrapper.siblings('.show-more').show();
+  $('.excerpt').each( function() {
+    if( $(this).get(0).scrollHeight > $(this).height() ) {
+      $(this).siblings('.show-more').show();
+    }
+  } );
+}
+
+function indicateNewPosts(data) {
+  var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+  if( indicator.length ) {
+    indicator.find('.load-more').text(data.numNewPosts);
+    indicator.slideDown();
+  }
+}
+
+function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
+  loadingMorePostExcerpts = true;
+  $.ajax( {
+    type: 'GET',
+    url: '/posts/_excerpts/' + riverId + '/' + older_or_newer + '/' + time,
+    success: function(html) {
+      var o = $(html);
+      o.css('display', 'none');
+
+      /* Remove old copies of incoming excerpts that may already be in the DOM */
+      var container = $('<div/>');
+      container.prepend(o);
+      container.find('.post-excerpt').each( function() {
+        $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
+      } );
+
+      if( older_or_newer == 'newer' ) {
+        $('#post-excerpts').prepend(o);
+      } else {
+        $('#post-excerpts').append(o);
+      }
+      o.slideDown();
+
+      loadingMorePostExcerpts = false;
+      removeSpinner('#post-excerpts');
+      showShowMores();
+      if(onSuccess) {
+        onSuccess();
+      }
     }
   } );
 }
@@ -14,36 +54,35 @@ function showShowMores() {
 
 $(document).ready( function() {
 
-  $('.excerpt .show-more').live( 'click', function() {
+  $('.post-excerpt .show-more').live( 'click', function() {
     var showMoreLink = $(this);
-    var excerpt = $(this).closest('.excerpt');
-    var div = excerpt.find('.height-fixed');
+    var excerpt = $(this).siblings('.excerpt');
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
     var postId = excerptParent.data('post-id');
     $.get('/accounts/watch_post/'+postId);
 
-    div.data( 'contracted-height', div.height() );
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
-    var heightDifference = overflowed.height() - excerpt.height();
+
+    overflowed.data( 'contracted-height', overflowed.height() );
+
+    var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
     var animationSpeed = heightDifference * 2;
 
-    div.animate(
+    overflowed.animate(
       {
-        height: overflowed.height() + 'px',
-        'max-height': overflowed.height() + 'px'
+        height: excerpt.get(0).scrollHeight + 'px',
+        'max-height': excerpt.get(0).scrollHeight + 'px'
       },
       animationSpeed,
       function() {
-        div.removeClass('height-fixed').addClass('height-normal');
         markPostRead(postId);
         /* cancel explicit height set by animation */
-        div.height('auto');
-        div.css('max-height', 'none');
+        overflowed.height('auto');
+        overflowed.css('max-height', 'none');
         showMoreLink.hide();
         showMoreLink.siblings('.show-less').show();
-
       }
     );
 
@@ -66,10 +105,10 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.excerpt .show-less').live( 'click', function() {
+  $('.post-excerpt .show-less').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.show-more').show();
-    var excerpt = $(this).closest('.excerpt');
+    var excerpt = $(this).siblings('.excerpt');
 
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
@@ -82,13 +121,12 @@ $(document).ready( function() {
       );
     }
 
-    var div = excerpt.find('.height-normal');
-    div.animate(
-      { height: div.data('contracted-height')+'px' },
+    var overflowed = excerpt.find('.overflowed');
+    overflowed.animate(
+      { height: overflowed.data('contracted-height')+'px' },
       animationSpeed,
       function() {
         $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
-        div.removeClass('height-normal').addClass('height-fixed');
       }
     );
     return false;
@@ -106,8 +144,27 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.height-fixed img').live( 'mouseover', function() {
+  $('.overflowed img').live( 'mouseover', function() {
     showShowMores();
+  } );
+
+  $('.load-more').live( 'click', function(event) {
+    event.preventDefault();
+
+    $('.more-posts-divider').remove();
+    $('#no-more-posts').remove();
+    $('#post-excerpts').prepend('<div class="more-posts-divider"></div>');
+    prependSpinner('#post-excerpts');
+    loadPostExcerpts(
+      $('#post-excerpts').data('river-id'),
+      'newer',
+      $('.post-excerpt:first').data('t'),
+      function() {
+        $('.more-posts').hide().detach().prependTo('#post-excerpts');
+        $('.more-posts .n').text('0');
+      }
+    );
+    return false;
   } );
 
   /* ---------------------------------------------------- */

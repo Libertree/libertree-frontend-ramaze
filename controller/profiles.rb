@@ -18,6 +18,7 @@ module Controller
     end
 
     def show( member_id )
+      @view = "excerpts-view profile"
       @member = Libertree::Model::Member[ member_id.to_i ]
       if @member.nil?
         redirect_referrer

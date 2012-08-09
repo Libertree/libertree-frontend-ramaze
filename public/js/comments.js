@@ -19,17 +19,6 @@ function showMoreComments(comments, n) {
   $('div.comments').css('height', $('td.post').css('height') );
 }
 
-function setCommentAreaHeight() {
-  var post_proper = $('.post-proper');
-  if( post_proper.length ) {
-    var target_height = post_proper.height();
-    if( target_height < 500 ) {
-      target_height = 500;
-    }
-    $('div.comments').css('height', target_height + 'px' );
-  }
-}
-
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
   $.get(
@@ -217,7 +206,6 @@ $(document).ready( function() {
   $('.detachable .attach').live( 'click', function(event) {
     event.preventDefault();
     var detachable = $(this).closest('.detachable');
-    detachable.find('.comment').css('width', '365px');
     detachable.removeClass('detached');
     detachable.removeClass('has-shadow');
     detachable.find('.attach').hide();
@@ -234,10 +222,6 @@ $(document).ready( function() {
   } );
 
   /* ---------------------------------------------------- */
-
-  if( layout != 'narrow' ) {
-    setCommentAreaHeight();
-  }
 
   match = document.URL.match(/#comment-([0-9]+)/);
   if( match ) {

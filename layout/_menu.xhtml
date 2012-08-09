@@ -28,9 +28,9 @@
       <?r end ?>
       <br/>
       <?r if session[:layout] == 'narrow' ?>
-        <a href="/layout/wide" title="Currently in &quot;small display&quot; mode; click to change"><img src="/images/icon-display.png" alt="large display"/> Large display</a></br>
+        <a href="/layout/wide" title="Currently in &quot;small display&quot; mode; click to change"><img src="/images/icon-display.png" alt="large display"/> Large display</a><br/>
       <?r else ?>
-        <a href="/layout/narrow" title="Currently in &quot;large display&quot; mode; click to change"><img src="/images/icon-display.png" alt="small display"/> Small display</a></br>
+        <a href="/layout/narrow" title="Currently in &quot;large display&quot; mode; click to change"><img src="/images/icon-display.png" alt="small display"/> Small display</a><br/>
       <?r end ?>
       <?r if account.admin? ?>
         <a href="/admin"><img src="/images/icon-admin.png" alt="Administrate"/> Administrate</a><br/>

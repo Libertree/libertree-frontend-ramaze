@@ -18,6 +18,7 @@ module Controller
     end
 
     def index( username )
+      @view = "excerpts-view profile"
       return  if username.nil?
 
       @continuous_scrolling = true

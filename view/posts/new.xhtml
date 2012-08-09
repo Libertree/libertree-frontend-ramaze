@@ -1,21 +1,19 @@
-<div id="post-new">
+<form id="post-new" action="/posts/create" method="POST">
   <h3>#{_('New Post')}</h3>
-  <form action="/posts/create" method="POST">
-    #{ Controller::Main.render_partial '_markdown_injector' }
-    <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
-    <div id="hashtags-input" class="input-and-filler">
-      <div class="filler">#{_('(enter hashtags here)')}</div>
-      <input type="text" name="hashtags"></input>
-    </div>
-    <div>
-      #{_('Visibility')}: <select name="visibility">
-        <option value="internet">#{s_('visibility|Internet')}</option>
-        <option value="forest" selected>#{s_('visibility|Forest')}</option>
-      </select>
-    </div>
-    <div class="form-buttons">
-      <input class="preview" type="button" value="#{s_('new-post|Preview')}" tabindex="2" data-type="post"/>
-      <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>
-    </div>
-  </form>
-</div>
+  #{ Controller::Main.render_partial '_markdown_injector' }
+  <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
+  <div id="hashtags-input" class="input-and-filler">
+    <div class="filler">#{_('(enter hashtags here)')}</div>
+    <input type="text" name="hashtags"></input>
+  </div>
+  <div>
+    #{_('Visibility')}: <select name="visibility">
+      <option value="internet">#{s_('visibility|Internet')}</option>
+      <option value="forest" selected>#{s_('visibility|Forest')}</option>
+    </select>
+  </div>
+  <div class="form-buttons">
+    <input class="preview" type="button" value="#{s_('new-post|Preview')}" tabindex="2" data-type="post"/>
+    <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>
+  </div>
+</form>

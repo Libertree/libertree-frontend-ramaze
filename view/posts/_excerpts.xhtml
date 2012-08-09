@@ -1,7 +1,7 @@
 <?r if @posts.empty? ?>
   <p id="no-more-posts">
     <?r if @river && @river.being_processed? ?>
-      #{_('The system is still matching posts with this river.  Check in a few minutes for more posts.')}
+      #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
     <?r else ?>
       #{_('No more posts.')}
     <?r end ?>

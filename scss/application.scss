@@ -8,6 +8,7 @@ Icon set by http://icons8.com/
 */
 
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 html {
     height: 100%;
@@ -28,15 +29,10 @@ div, p, form {
     }
 }
 
-.bg {
-    background: url('/images/bg.jpg') top center repeat;
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-}
 #scrollable {
+    background: url('/images/bg-green.png') bottom center repeat-x $leaf;
     overflow: auto;
-    top: 42px;
+    top: 40px;
     bottom: 0px;
     position: absolute;
     width: 100%;
@@ -68,6 +64,22 @@ pre, code {
     white-space: pre-wrap;
 }
 
+pre {
+    margin-left: 1em;
+}
+
+pre code {
+    border: none;
+    background: transparent;
+}
+
+code {
+    border: 1px solid $sand;
+    background: $dust;
+    border-radius: 3px;
+    padding: 2px;
+}
+
 a {
     border-bottom: 1px dotted;
     text-decoration: none;
@@ -94,16 +106,19 @@ textarea, input[type="text"], input[type="password"] {
     width: 940px;
     padding: 30px;
     margin: 30px auto 30px auto;
+    border-radius: 3px;
 }
 
 .flash {
   padding: 1em 50px;
   margin: 0 0 1em;
   &.error {
-    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em #FFCAAA;
+    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
+    border: 2px solid $red;
   }
   &.notice {
-    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em #FAFAAA;
+    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
+    border: 2px solid $sky;
   }
 }
 
@@ -262,8 +277,6 @@ div.comments {
 }
 
 div.comment {
-    margin-right: 20px;
-
     .avatar {
         height: 30px;
         width: 30px;
@@ -311,14 +324,14 @@ form.comment {
 }
 
 textarea.comment, form.comment .form-buttons {
-    width: 365px;
+    width: 300px;
 }
 
 #recreate-beginner-rivers {
     text-align: center;
 }
 
-#post-new {
+#post-new, #post-edit {
     margin: 0px auto;
     text-align: center;
     width: 500px;
@@ -339,11 +352,11 @@ textarea.comment, form.comment .form-buttons {
     display: none;
     position: absolute;
     z-index: 4;
-    background-color: $faint_green;
+    background-color: $sand;
     border-top: 0px;
-    border-left: 1px solid $dark_green;
-    border-right: 1px solid $dark_green;
-    border-bottom: 1px solid $dark_green;
+    border-left: 1px solid $stone;
+    border-right: 1px solid $stone;
+    border-bottom: 1px solid $stone;
     text-align: left;
 }
 
@@ -376,9 +389,7 @@ textarea.comment, form.comment .form-buttons {
 }
 
 .has-shadow {
-    -moz-box-shadow: 0px 4px 20px $shadow;
-    -webkit-box-shadow: 0px 4px 20px $shadow;
-    box-shadow: 0px 4px 20px $shadow;
+    @include shadow;
 }
 
 .notification {
@@ -404,26 +415,29 @@ textarea.comment, form.comment .form-buttons {
 }
 
 blockquote {
-    border-left: 4px solid $iced_coffee;
+    border-left: 4px solid $path;
     padding: 0.5em 0px 0.1em 1em;
     margin-left: 0px;
     text-align: left;
 }
 
 .preview-box {
-    background-color: $faint_tan;
+    position: relative;
+    background-color: $sand;
     padding: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
-    border: 1px solid $iced_coffee;
+    border: 1px solid $path;
 
     h3.preview {
         padding-top: 0px;
         margin-top: 0px;
-        border-bottom: 1px solid $iced_coffee;
-        a.close {
-            float: right;
-        }
+        border-bottom: 1px solid $path;
+    }
+    a.close {
+        position: absolute;
+        right: 1em;
+        top: 1em;
     }
 }
 
@@ -432,8 +446,10 @@ blockquote {
     text-align: center;
 
     input {
-        margin-left: 10px;
+        margin-left: 5px;
         height: 24px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 }
 
@@ -491,11 +507,6 @@ table.table {
     }
 }
 
-#no-more-posts {
-    margin-top: 2em;
-    text-align: center;
-}
-
 div.river {
     margin-top: 1em;
 
@@ -532,10 +543,9 @@ textarea#invitations {
 }
 
 #post-excerpts {
-  .spinner {
-    display: block;
-    margin: auto;
-  }
+    div.spinner {
+        text-align: center;
+    }
 }
 
 .markdown-injector {
@@ -545,7 +555,7 @@ textarea#invitations {
         background-color: $faint_tan;
         color: black;
         border-bottom: 0px;
-        margin-left: 0.5em;
+        margin-left: 0.1em;
         cursor: pointer;
     }
 }
@@ -603,4 +613,18 @@ div.pools .chzn-container .chzn-results li {
 
 .profile #river-selector {
     width: 400px;
+}
+
+.more-posts {
+    text-align: center;
+    padding: 1em;
+    margin: 0px;
+    display: none;
+}
+
+.more-posts-divider {
+    width: 100%;
+    height: 5px;
+    padding: 0px;
+    margin: 0px;
 }

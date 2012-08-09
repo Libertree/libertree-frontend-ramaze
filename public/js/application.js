@@ -11,8 +11,11 @@ function checkForSessionDeath(html) {
 function addSpinner(target_selector, size) {
   $(target_selector).append('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
 }
+function prependSpinner(target_selector, size) {
+  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/images/spinner.gif"/>');
+}
 function removeSpinner(target_selector) {
-  $('.spinner', target_selector).remove();
+  $('img.spinner', target_selector).remove();
 }
 
 function hideWindows() {
@@ -95,7 +98,7 @@ $(document).ready( function() {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
 
-    var target = $(this).closest('form.comment, #post-new form, form#post-edit, form#new-message');
+    var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
     var type = $(this).data('type');
     var textType = null;
     if( type == 'post' ) { textType = 'post-text'; }
@@ -107,7 +110,7 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          target.append( $('<div class="preview-box" class="'+type+'"><h3 class="preview">Preview<a class="close" href="#">close</a></h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           target.closest('div.comments').scrollTop(99999);
         }
       }
