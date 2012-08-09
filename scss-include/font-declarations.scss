@@ -70,6 +70,9 @@ blockquote {
 .form-buttons input {
     font-size: $font_extra_small;
 }
+input[type="button"], input[type="submit"] {
+    font-family: 'Droid sans', Arial, sans-serif;
+}
 
 .filler {
     font-size: $font_extra_small;

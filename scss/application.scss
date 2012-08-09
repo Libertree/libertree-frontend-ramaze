@@ -319,7 +319,7 @@ form.comment {
 }
 
 textarea.comment, form.comment .form-buttons {
-    width: 317px;
+    width: 300px;
 }
 
 #recreate-beginner-rivers {
@@ -441,8 +441,10 @@ blockquote {
     text-align: center;
 
     input {
-        margin-left: 6px;
+        margin-left: 5px;
         height: 24px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 }
 
