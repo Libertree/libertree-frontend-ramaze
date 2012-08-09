@@ -9,13 +9,6 @@ function markPostRead(post_id) {
   );
 }
 
-function syncPostPanelHeightWithViewport() {
-  $('.single-post-view .main > .post').css(
-    'height',
-    ($('#scrollable').height() - 28) + 'px'
-  );
-}
-
 $(document).ready( function() {
   $('.post-tools a.like').live( 'click', function(event) {
     event.preventDefault();
@@ -146,6 +139,4 @@ $(document).ready( function() {
     );
     return false;
   } );
-
-  syncPostPanelHeightWithViewport();
 } );
