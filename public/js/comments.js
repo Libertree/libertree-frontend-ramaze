@@ -34,9 +34,9 @@ function insertCommentHtmlFor( postId, commentId ) {
       post.find('span.num-comments').text(newNum);
 
       if( $('textarea.comment.focused').length ) {
-        var scrollable = post.find('div.comments');
+        var scrollable = post.find('div.comments-pane');
         if( $('.excerpts-view').length ) {
-          scrollable = $('body.body');
+          scrollable = $('html');
         }
         scrollable.animate(
           { scrollTop: scrollable.scrollTop() + height },
