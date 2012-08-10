@@ -96,9 +96,10 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .main {
-    width: 940px;
-    padding: 30px;
-    margin: 30px auto 30px auto;
+    width: 1000px;
+    margin: 60px auto 30px auto;
+    padding: 0;
+    background: transparent;
     border-radius: 3px;
 }
 
