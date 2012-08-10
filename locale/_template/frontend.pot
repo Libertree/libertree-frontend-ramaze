@@ -702,3 +702,9 @@ msgid "1 notification"
 msgstr ""
 msgid "%d notifications"
 msgstr ""
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr ""
+msgid "%2$d unread chat messages from %1$s"
+msgstr ""
