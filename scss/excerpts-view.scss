@@ -4,6 +4,7 @@
 body.body.excerpts-view .main {
     @include shadow;
     padding: 0;
+    background-color: transparent;
 }
 
 .excerpts-view {
