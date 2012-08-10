@@ -1,17 +1,14 @@
 @import "colours.scss";
 
-body.body.single-post-view {
-  background: url('/images/bg-green.png') bottom center repeat-x $leaf;
-  .main {
-    margin: 0 auto;
-    padding-top: 60px;
-    padding-bottom: 30px;
-    background: transparent;
-    height: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
+body.body.single-post-view .main {
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background: transparent;
+  height: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .single-post-view {

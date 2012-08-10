@@ -33,7 +33,7 @@ $header_gradient_start: top;
 $header_gradient_stop: bottom;
 
 body.body {
-    background-color: $faint_green;
+    background: url('/images/bg-green.png') fixed bottom center repeat-x $leaf;
 }
 
 .menu {

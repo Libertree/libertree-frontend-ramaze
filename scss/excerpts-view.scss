@@ -1,11 +1,8 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
-body.body.excerpts-view {
-    background: url('/images/bg-green.png') bottom center repeat-x $leaf;
-    .main {
-      @include shadow;
-    }
+body.body.excerpts-view .main {
+    @include shadow;
 }
 
 .excerpts-view {
