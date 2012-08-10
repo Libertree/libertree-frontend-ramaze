@@ -3,6 +3,7 @@
 
 body.body.excerpts-view .main {
     @include shadow;
+    padding: 0;
 }
 
 .excerpts-view {
