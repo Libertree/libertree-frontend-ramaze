@@ -1,9 +1,11 @@
+$font_family: 'Droid Sans', Tahoma, Arial, sans-serif;
+
 body.body {
-    font-family: 'Droid sans', Arial, sans-serif;
+    font-family: $font_family;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Droid sans', Arial, sans-serif;
+    font-family: $font_family;
 }
 h1 { font-size: $font_extra_extra_large; }
 h2 { font-size: $font_extra_large; }
@@ -71,7 +73,7 @@ blockquote {
     font-size: $font_extra_small;
 }
 input[type="button"], input[type="submit"] {
-    font-family: 'Droid sans', Arial, sans-serif;
+    font-family: $font_family;
 }
 
 .filler {
