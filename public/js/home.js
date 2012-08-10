@@ -38,9 +38,10 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
       } else {
         $('#post-excerpts').append(o);
       }
-      o.slideDown();
+      o.slideDown( function() {
+        loadingMorePostExcerpts = false;
+      } );
 
-      loadingMorePostExcerpts = false;
       removeSpinner('#post-excerpts');
       showShowMores();
       if(onSuccess) {
