@@ -87,12 +87,12 @@ $(document).ready( function() {
     );
 
     if( wantsToComment ) {
-      var bgTop = $('#scrollable').scrollTop();
-      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('#scrollable').height();
+      var bgTop = $('body.body').scrollTop();
+      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('body.body').height();
       if( excerptTruncation < 0 ) {
         excerptTruncation = 0;
       }
-      $('#scrollable').animate(
+      $('body.body').animate(
         { scrollTop: bgTop + heightDifference + excerptTruncation },
         animationSpeed,
         function() {
@@ -113,9 +113,9 @@ $(document).ready( function() {
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
     var top = excerpt.position().top;
-    var bgTop = $('#scrollable').scrollTop();
+    var bgTop = $('body.body').scrollTop();
     if( top < 100 ){
-      $('#scrollable').animate(
+      $('body.body').animate(
         { scrollTop: bgTop + ( top - 100 ) },
         animationSpeed
       );
