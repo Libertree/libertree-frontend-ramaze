@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-  $(document).scroll( function () {
+  $(window).scroll( function () {
     if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() ) {
       if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
         return;
