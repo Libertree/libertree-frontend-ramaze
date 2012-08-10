@@ -96,7 +96,9 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .main {
-    width: 1000px;
+    max-width: 1000px;
+    min-width: 500px;
+    width: 90%;
     margin: 70px auto 30px auto;
     padding: 30px;
     background: transparent;
