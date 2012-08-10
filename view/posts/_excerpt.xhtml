@@ -9,8 +9,8 @@
       <span class="age">#{ago(@post.time_created)}</span>
     </div>
     <div class="post-stats">
-      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % @post.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span><br/>
-      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [@post.comments.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', '), @post.comments.count]}">#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}} <span class="num-comments">#{@post.comments.size}</span></a><br/>
+      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % like_list(@post)}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span><br/>
+      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}} <span class="num-comments">#{@post.comments.size}</span></a><br/>
     </div>
     <div class="post-tools">
       <?r if @post.like_by(account.member) ?>

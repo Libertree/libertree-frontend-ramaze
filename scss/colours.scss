@@ -32,10 +32,6 @@ $shadow: #1a1f10;
 $header_gradient_start: top;
 $header_gradient_stop: bottom;
 
-body.body {
-    background-color: $faint_green;
-}
-
 .menu {
     background-color: $menu_colour_1;
     background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 70%);
