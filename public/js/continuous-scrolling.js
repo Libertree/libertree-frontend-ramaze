@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
   $(window).scroll( function () {
-    if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() ) {
+    if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
       if( loadingMorePostExcerpts || $('#no-more-posts').length ) {
         return;
       }
