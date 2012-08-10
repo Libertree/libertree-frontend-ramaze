@@ -694,3 +694,11 @@ msgid "menu|New Post"
 msgstr ""
 msgid "menu|Known Issues"
 msgstr ""
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr ""
+msgid "1 notification"
+msgstr ""
+msgid "%d notifications"
+msgstr ""
