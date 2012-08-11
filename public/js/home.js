@@ -38,9 +38,10 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
       } else {
         $('#post-excerpts').append(o);
       }
-      o.slideDown();
+      o.slideDown( function() {
+        loadingMorePostExcerpts = false;
+      } );
 
-      loadingMorePostExcerpts = false;
       removeSpinner('#post-excerpts');
       showShowMores();
       if(onSuccess) {
@@ -62,10 +63,10 @@ $(document).ready( function() {
     var postId = excerptParent.data('post-id');
     $.get('/accounts/watch_post/'+postId);
 
+    overflowed.data( 'contracted-height', overflowed.height() );
+
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
-
-    overflowed.data( 'contracted-height', overflowed.height() );
 
     var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
     var animationSpeed = heightDifference * 2;
@@ -87,12 +88,12 @@ $(document).ready( function() {
     );
 
     if( wantsToComment ) {
-      var bgTop = $('#scrollable').scrollTop();
-      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('#scrollable').height();
+      var bgTop = $('body.body').scrollTop();
+      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('body.body').height();
       if( excerptTruncation < 0 ) {
         excerptTruncation = 0;
       }
-      $('#scrollable').animate(
+      $('body.body').animate(
         { scrollTop: bgTop + heightDifference + excerptTruncation },
         animationSpeed,
         function() {
@@ -113,9 +114,9 @@ $(document).ready( function() {
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
     var top = excerpt.position().top;
-    var bgTop = $('#scrollable').scrollTop();
+    var bgTop = $('body.body').scrollTop();
     if( top < 100 ){
-      $('#scrollable').animate(
+      $('body.body').animate(
         { scrollTop: bgTop + ( top - 100 ) },
         animationSpeed
       );

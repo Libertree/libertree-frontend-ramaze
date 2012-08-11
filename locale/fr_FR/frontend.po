@@ -2,12 +2,14 @@
 # Translators:
 #   <autre7273@laposte.net>, 2012.
 #   <lefmeunier@free.fr>, 2012.
+#   <mlelao@aim.com>, 2012.
+#   <teimahu@live.fr>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-02 07:50+0000\n"
+"PO-Revision-Date: 2012-08-09 20:33+0000\n"
 "Last-Translator: Loelo <autre7273@laposte.net>\n"
 "Language-Team: UNDEFINED\n"
 "MIME-Version: 1.0\n"
@@ -24,23 +26,24 @@ msgid "Password"
 msgstr "Mot de passe"
 
 msgid "Login"
-msgstr "Login"
+msgstr "Identifiant"
 
 msgid "Not a member yet?"
 msgstr "Pas encore membre ?"
 
 # "Sign up now" is wrapped in a link
 msgid "Sign up now!"
-msgstr "Devenez membre maintenant !"
+msgstr "Inscrivez-vous maintenant !"
 
 msgid "Forgot your credentials?"
-msgstr "Avez-vous avez oublié vos identifiants ?"
+msgstr "Avez-vous oublié vos identifiants ?"
 
 msgid ""
 "You can %sreset your password%s if your account has an email address on "
 "record."
-msgstr "Vous pouvez %sréinitialiser votre mot de passe%s si vous avez enregistrer une adresse courrielle à votre compte."
+msgstr "Vous pouvez %sréinitialiser votre mot de passe%s si vous avez enregistré une adresse de courriel à votre compte."
 
+#: controller/main.rb
 msgid "Invalid credentials."
 msgstr "Identifiants invalides."
 
@@ -48,19 +51,32 @@ msgid "A valid invitation code is required."
 msgstr "Un code d’invitation valide est nécessaire."
 
 msgid "You mistyped your password."
-msgstr "Vous avez mal entré votre mot de passe"
+msgstr "Vous avez mal saisi votre mot de passe."
+
+msgid "Username %s is taken.  Please choose another."
+msgstr "Le nom %s est déjà utilisé.  Veuillez en choisir un autre."
 
 msgid ""
 "Username must be at least 2 characters long and consist only of lowercase "
 "letters, numbers, underscores and dashes."
-msgstr "Le nom d’utilisateur doit comporter au moins 2 caractères et uniquement des lettres minuscules, nombres, Tiret bas et tiret."
+msgstr "Le nom d’utilisateur doit comporter au moins 2 caractères et uniquement des lettres minuscules, nombres, tiret bas et tiret."
 
 msgid ""
 "A password reset link has been sent for the account with that email address."
-msgstr "Un lien pour réinitialiser votre mot de passe a été envoyé pour le compte associé à cette adresse courielle (email)."
+msgstr "Un lien de réinitialisation du mot de passe a été envoyé à l'adresse de courriel associée à votre compte."
 
 msgid "You have been logged out."
 msgstr "Vous avez été déconnecté."
+
+#: controller/base.rb
+msgid "not-authenticated|Please log in."
+msgstr "not-authenticated|Veuillez vous identifier."
+
+#: controller/invitations.rb
+msgid ""
+"Failed to create invitation.  You may only have up to 5 unaccepted "
+"invitations at once."
+msgstr "La création de l'invitation a échoué. Vous ne pouvez pas avoir plus de 5 invitations en attente d'acceptation."
 
 #: view/home/index.xhtml
 msgid "River:"
@@ -71,55 +87,56 @@ msgstr "gérer les rivières"
 
 #: view/home/_menu.xhtml
 msgid "by post time"
-msgstr "par date de mise en ligne."
+msgstr "par date de publication"
 
 msgid "by update time"
 msgstr "par date de mise à jour"
 
 msgid "mark all read"
-msgstr "tout marquer comme lu"
+msgstr "marquer tout lu"
 
 #: view/posts/new.xhtml
 msgid "New Post"
-msgstr "Nouveau post"
+msgstr "Nouveau message"
 
 msgid "(enter hashtags here)"
-msgstr "(entrer les \"hashtags\" ici)"
+msgstr "(entrer les hashtags ici)"
 
-msgid "Preview"
-msgstr "Visualisation"
+msgid "new-post|Post"
+msgstr "new-post|Message"
 
-msgid "Post"
-msgstr "Poster"
+#: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
+msgid "post|Preview"
+msgstr "post|Prévisualiser"
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
-msgstr "Éditer le post"
+msgstr "Éditer le message"
 
 msgid "Cancel"
 msgstr "Annuler"
 
-msgid "Update"
-msgstr "Mettre à jour"
+msgid "post|Update"
+msgstr "post|Mise à jour"
 
 #: view/posts/show.xhtml
 msgid "Start receiving notifications about comments on this post"
-msgstr "Commencer à recevoir des notifications à propos des commentaires sur ce post."
+msgstr "Recevoir des notifications pour les commentaires sur ce message."
 
 msgid "subscribe"
 msgstr "s’abonner"
 
 msgid "Stop receiving notifications about comments on this post"
-msgstr "Ne plus recevoir de notifications à propos des commentaires sur ce post"
+msgstr "Ne plus recevoir de notifications pour les commentaires sur ce message"
 
 msgid "unsubscribe"
 msgstr "se désabonner"
 
 msgid "mark post unread"
-msgstr "marquer le post comme non lu"
+msgstr "marquer le message comme non lu"
 
 msgid "mark post read"
-msgstr "marquer le post comme lu"
+msgstr "marquer le message comme lu"
 
 msgid "edit"
 msgstr "éditer"
@@ -128,27 +145,32 @@ msgid "delete"
 msgstr "effacer"
 
 msgid "collect"
-msgstr "mettre de côté"
+msgstr "garder"
 
 msgid "unlike"
-msgstr "ne plus apprécier"
+msgstr "je n’aime plus"
 
 msgid "like"
-msgstr "apprécier"
+msgstr "j’aime"
 
 msgid "likes"
-msgstr "\"j’apprécie\""
+msgstr "\"j’aime\""
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
-msgstr "Plus de posts."
+msgstr "Fin des messages."
+
+msgid ""
+"The system is still matching posts with this river.  Check in a few minutes "
+"for more posts."
+msgstr "Le système recherche en ce moment les messages correspondant à cette rivière. Revenez dans quelques minutes pour afficher plus de messages."
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
 msgstr "retour en haut"
 
 msgid "Liked by %s"
-msgstr "Apprécié par %s"
+msgstr "Aimé par %s"
 
 msgid "One comment by %1$s"
 msgstr "Un commentaire par %1$s"
@@ -171,25 +193,25 @@ msgstr "marquer comme non lu"
 msgid ""
 "Hiding a post prevents it from showing in your rivers or triggering "
 "notifications."
-msgstr "Cacher un post l’empêche d’apparaître dans vos rivières ou de déclencher des notifications."
+msgstr "Cacher un message l’empêche d’apparaître dans vos rivières ou de déclencher des notifications."
 
 msgid "hide"
 msgstr "cacher"
 
 msgid "Click to confirm hiding of this post."
-msgstr "Cliquer pour confirmer vouloir cacher ce post."
+msgstr "Cliquer pour confirmer vouloir cacher ce message."
 
 msgid "confirm"
-msgstr "comfirmer"
+msgstr "confirmer"
 
 msgid "Collect this post in a pool"
-msgstr ""
+msgstr "Garder ce message dans un bassin"
 
 msgid "collected"
-msgstr "mettre de côté"
+msgstr "gardé"
 
 msgid "Remove this post from this pool"
-msgstr ""
+msgstr "Enlever ce message de ce bassin"
 
 msgid "remove"
 msgstr "enlever"
@@ -199,218 +221,688 @@ msgid ""
 msgstr "Clic du milieu, Shift-clic ou Ctrl-Shift-clic pour ouvrir dans un nouvel onglet/fenêtre"
 
 msgid "view post"
-msgstr "voir le post"
+msgstr "voir le message"
 
 msgid "show more"
-msgstr "montrer davantage"
+msgstr "montrer plus"
 
 msgid "show less"
 msgstr "montrer moins"
+
+#: controller/posts.rb
+msgid "Post may not be empty."
+msgstr "Un message ne peut pas être vide."
+
+#: controller/pools.rb
+msgid "You already have a pool with that name."
+msgstr "Vous avez déjà un bassin avec ce nom."
+
+#: controller/profiles.rb
+msgid "Special characters are not allowed in display names."
+msgstr "Les caractères spéciaux ne sont pas acceptés dans les noms d'écran."
+
+msgid "Avatar deleted."
+msgstr "Avatar effacé."
+
+msgid "Avatar changed."
+msgstr "Avatar modifié."
+
+msgid "Failed to reset avatar."
+msgstr "Échec de réinitialisation de l'avatar."
+
+msgid "Only image files may be used as avatars."
+msgstr "Seuls des fichiers image peuvent servir d'avatar."
+
+msgid "Only .png, .jpeg and .gif files may be used as avatars."
+msgstr "Seuls les fichiers .png, .jpeg et .gif peuvent servir d'avatar."
+
+#: controller/rivers.rb
+msgid "You already have a river for that."
+msgstr "Vous avez déjà une rivière pour cela."
 
 #: view/comments/_comments.xhtml
 msgid "One comment"
 msgstr "Un commentaire"
 
 msgid "%d comments"
-msgstr ""
+msgstr "%d commentaires"
 
 msgid "show %smore%s / %sall%s comments"
-msgstr ""
+msgstr "montrer %splus%s / %stous%s les commentaires"
 
 msgid "jump-to-comment|Comment"
-msgstr ""
+msgstr "jump-to-comment|Commenter"
 
 msgid "Comment successfully posted."
-msgstr ""
+msgstr "Commentaire publié avec succès"
 
 msgid "detach"
-msgstr ""
+msgstr "détacher"
 
 msgid "attach"
-msgstr ""
+msgstr "rattacher"
 
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 msgid "Comment"
-msgstr ""
+msgstr "Commenter"
 
 #: view/comments/_comment.xhtml
 msgid "One like"
-msgstr ""
+msgstr "Un \"j’aime\""
 
 msgid "%d likes"
-msgstr ""
+msgstr "%d \"j’aime\""
 
 msgid "back-to-referencing-comment|back"
-msgstr ""
+msgstr "back-to-referencing-comment|retour"
 
 msgid "Unlike this comment"
-msgstr ""
+msgstr "Je n’aime plus ce commentaire"
 
 msgid "Like this comment"
-msgstr ""
+msgstr "J’aime ce commentaire"
 
 msgid "shareable link for this comment"
-msgstr ""
+msgstr "lien pour partager ce commentaire"
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
-msgstr ""
+msgstr "markdown|titre"
 
 msgid "markdown|subtitle"
-msgstr ""
+msgstr "markdown|sous-titre"
 
 msgid "markdown|link"
-msgstr ""
+msgstr "markdown|lien"
 
 msgid "markdown|image"
-msgstr ""
+msgstr "markdown|image"
 
 msgid "markdown|image link"
-msgstr ""
+msgstr "markdown|lien d’image"
 
 msgid "markdown|quote"
-msgstr ""
+msgstr "markdown|citation"
 
 msgid "markdown|list"
-msgstr ""
+msgstr "markdown|liste"
 
 msgid "markdown|bold"
-msgstr ""
+msgstr "markdown|gras"
 
 msgid "markdown|italic"
-msgstr ""
+msgstr "markdown|italique"
 
 #: view/accounts/edit.xhtml
 msgid "Account Settings"
-msgstr ""
+msgstr "Paramètres du compte"
 
 msgid "Edit profile"
-msgstr ""
+msgstr "Éditer le profil"
 
 msgid "Manage rivers"
-msgstr ""
+msgstr "Gérer les rivières"
 
 msgid "Change password"
-msgstr ""
+msgstr "Changer le mot de passe"
 
 msgid "Email:"
-msgstr ""
+msgstr "Courriel :"
 
 msgid "(for password recovery; never public)"
-msgstr ""
+msgstr "(pour retrouver votre mot de passe : jamais public)     "
 
 msgid "Post excerpt maximum height:"
-msgstr ""
+msgstr "Hauteur maximale des extraits de message :"
 
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 msgid "Custom menu link:"
-msgstr ""
+msgstr "Lien de menu personnalisé :"
 
 msgid "Custom CSS:"
-msgstr ""
+msgstr "CSS personnalisé :"
 
 msgid "Custom JS:"
-msgstr ""
+msgstr "JS personnalisé :"
 
 msgid "Automatic embedding:"
-msgstr ""
+msgstr "Intégration automatique :"
 
 msgid "Language:"
-msgstr ""
+msgstr "Langue :"
 
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 msgid "Invite Others"
-msgstr ""
+msgstr "Inviter d’autres personnes"
 
 msgid "Generate a new invitation"
-msgstr ""
+msgstr "Générer une nouvelle invitation"
 
 msgid "My Invitations"
-msgstr ""
+msgstr "Mes invitations"
 
 msgid "Member API"
-msgstr ""
+msgstr "API du membre"
 
 msgid "Current API token:"
-msgstr ""
+msgstr "Jeton actuel de l’API"
 
 msgid "(none)"
-msgstr ""
+msgstr "(aucun)"
 
 msgid "API documentation"
-msgstr ""
+msgstr "Documentation de l’API"
 
 msgid "Generate API token"
-msgstr ""
+msgstr "Générer le jeton de l'API"
 
 msgid "Data Export"
-msgstr ""
+msgstr "Exporter les données"
 
 msgid ""
 "Download your account settings, profile, posts, comments and direct "
 "messages:"
-msgstr ""
+msgstr "Télécharger les données de votre compte (paramètres, profil, messages, commentaires et messages directs) :"
+
+#: controller/accounts.rb
+msgid "Settings saved."
+msgstr "Préférences enregistrées."
+
+msgid ""
+"Post excerpt maximum height: Please enter a number greater than or equal to "
+"200, or no number for no maximum."
+msgstr "Hauteur maximale de l'extrait de message : merci de saisir un nombre supérieur ou égal à 200, ou rien pour ne pas limiter la hauteur."
+
+msgid "Passwords did not match.  Please reenter."
+msgstr "Les mots de passe ne correspondent pas.\nMerci de les saisir de nouveau."
+
+msgid "Password changed."
+msgstr "Mot de passe modifié."
 
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
-msgstr ""
+msgstr "Changer le mot de passe"
 
 msgid "New password:"
-msgstr ""
+msgstr "Nouveau mot de passe :"
 
 msgid "Re-enter new password:"
-msgstr ""
+msgstr "Confirmation du mot de passe :"
 
 msgid "button|Change Password"
-msgstr ""
+msgstr "button|Changer le mot de passe"
 
 #: view/notifications/{index,_index}.xhtml
 msgid "Notifications"
-msgstr ""
+msgstr "Notifications"
 
 msgid "You have no new notifications."
-msgstr ""
+msgstr "Vous n’avez pas de nouvelles notifications."
 
 msgid "mark all seen"
-msgstr ""
+msgstr "marquer tout comme lu"
 
 msgid "view all"
-msgstr ""
+msgstr "voir tout"
 
 msgid "%d more"
-msgstr ""
+msgstr "%d de plus"
 
 #: view/notifications/_comment.xhtml
 msgid "%s commented on your %spost%s."
-msgstr ""
+msgstr "%s ont commenté votre %smessage%s."
 
 msgid "%s commented on %s's %spost%s."
-msgstr ""
+msgstr "%s ont commenté le %smessage%s de %s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "%s liked your %scomment%s on your post."
-msgstr ""
+msgstr "%s a aimé votre %scommentaire%s de votre message."
 
 msgid "%s liked your %scomment%s on %s's post."
-msgstr ""
+msgstr "%s a aimé votre %scommentaire%s sur le message de %s."
 
 #: view/notifications/_post_like.xhtml
 msgid "%s liked your %spost%s."
-msgstr ""
+msgstr "%s a aimé votre %smessage%s."
 
 #: view/notifications/_message.xhtml
 msgid "%s sent you a %smessage%s."
-msgstr ""
+msgstr "%s vous a envoyé un %smessage%s."
 
-#: helper/wording.rb
+#: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
-msgstr ""
+msgstr "list-comma|, "
 
 msgid "list-and| and "
-msgstr ""
+msgstr "list-and| et"
+
+#: helper/age.rb
+msgid "1 day ago"
+msgstr "Il y a 1 jour"
+
+msgid "%d days ago"
+msgstr "Il y a %d jours"
+
+msgid "1 hour ago"
+msgstr "Il y a 1 heure"
+
+msgid "%d hours ago"
+msgstr "Il y a %d heures"
+
+msgid "1 minute ago"
+msgstr "Il y a 1 minute"
+
+msgid "%d minutes ago"
+msgstr "Il y a %d minutes"
+
+msgid "seconds ago"
+msgstr "il y a quelques secondes"
+
+#: view/search.xhtml
+msgid "Search Results for \"%s\""
+msgstr "Résultats de la recherche pour \"%s\""
+
+msgid "search-results|Nothing found."
+msgstr "search-results|Pas de résultats."
+
+msgid "search-results|Profiles"
+msgstr "search-results|Profils"
+
+msgid "search-results|Posts"
+msgstr "search-results|Messages"
+
+msgid "search-results|Comments"
+msgstr "search-results|Commentaires"
+
+#: controller/contact-lists.rb
+msgid "Contact list updated."
+msgstr "Liste de contacts mise à jour."
+
+msgid "Contact list name may not be empty."
+msgstr "Le nom de la liste de contacts ne peut être vide."
+
+#: view/contact-lists/index.xhtml
+msgid "Contact Lists"
+msgstr "Listes de contacts"
+
+msgid "new-contact-list|Name:"
+msgstr "new-contact-list|Nom :"
+
+msgid "new-contact-list|Create"
+msgstr "new-contact-list|Créer"
+
+#: view/contact-lists/show.xhtml
+msgid "Contact List: %s"
+msgstr "Liste de contacts: %s"
+
+msgid "(choose members)"
+msgstr "(choisir des membres)"
+
+msgid "contact-list|Save"
+msgstr "contact-list|Enregistrer"
+
+msgid "contact-list|Cancel"
+msgstr "contact-list|Annuler"
+
+#: controller/admin/base.rb
+msgid "Administrative privileges required."
+msgstr "Privilèges d'administrateur requis."
+
+#: controller/admin/forests.rb
+msgid "The tree is already a member of the forest."
+msgstr "L'arbre est déjà un membre de la forêt."
+
+#: view/admin/index.xhtml
+msgid "Libertree Administration"
+msgstr "Administration Libertree"
+
+msgid "Forests"
+msgstr "Forêts"
+
+msgid ""
+"Drag trees in and out of forests.  The local tree is automatically a part of"
+" each forest originating from it."
+msgstr "Déplacer les arbres dans et hors de la forêt.  L'arbre local appartient automatiquement à chaque forêt dont il est l'origine."
+
+msgid "create-forest|Name:"
+msgstr "create-forest|Nom :"
+
+msgid "create-forest|Add"
+msgstr "create-forest|Ajouter"
+
+msgid "forest|Origin:"
+msgstr "forest|Origine :"
+
+msgid "forest-origin|this tree"
+msgstr "forest-origin|cet arbre"
+
+msgid "Trees"
+msgstr "Arbres"
+
+msgid "new-tree|Hostname:"
+msgstr "new-tree|Nom d'hôte :"
+
+msgid "new-tree|Add"
+msgstr "new-tree|Ajouter"
+
+#: view/404.xhtml
+msgid "404|No such page"
+msgstr "404|Page introuvable"
+
+msgid ""
+"404|Please use your browser's Back button, or %sgo to your home page%s."
+msgstr "404|Veuillez utiliser le bouton Retour de votre navigateur ou %sallez à la page d'accueil%s."
+
+#: view/error.xhtml
+msgid "Something went wrong..."
+msgstr "Quelque chose s'est mal passé..."
+
+msgid "Time of error: %s"
+msgstr "Date de l'erreur : %s"
+
+msgid "Referrer: %s"
+msgstr "Référant : %s"
+
+#: view/messages/{index,show}.xhtml
+msgid "Direct Messages"
+msgstr "Messages directs"
+
+msgid "direct-message|New Message"
+msgstr "direct-message|Nouveau message"
+
+msgid "direct-message|Messages"
+msgstr "direct-message|Messages"
+
+msgid "direct-message|From:"
+msgstr "direct-message|De :"
+
+msgid "direct-message|To:"
+msgstr "direct-message|À :"
+
+#: view/messages/_new.xhtml
+msgid "direct-message|Send"
+msgstr "direct-message|Envoyer"
+
+msgid "direct-message|Preview"
+msgstr "direct-message|Prévisualiser"
+
+msgid "direct-message|Recipients"
+msgstr "direct-message|Destinataires"
+
+msgid "direct-message-warning|please note..."
+msgstr "direct-message-warning|veuillez noter..."
+
+msgid ""
+"Please note that direct messages are not fully private, encrypted nor "
+"secure.  As with all data on this tree, direct messages are fully accessible"
+" to the arborista (administrator)."
+msgstr "Veuillez noter que les messages directs ne sont ni tout à fait privés, ni cryptés, ni sécurisés. Comme toutes les données de cet arbre, les messages directs sont accessibles à l'arboriste (l'administrateur)."
+
+#: view/messages/show.xhtml
+msgid "direct-message|reply"
+msgstr "direct-message|répondre"
+
+msgid "direct-message|reply to all"
+msgstr "direct-message|répondre à tous"
+
+#: view/pools/_index.xhtml
+msgid "pool-selector|Collect in..."
+msgstr "pool-selector|Garder dans..."
+
+#: view/pools/index.xhtml
+msgid "Pools"
+msgstr "Bassins"
+
+msgid "Use pools to collect posts."
+msgstr "Utilisez les bassins pour garder des messages."
+
+msgid "new-pool|Name:"
+msgstr "new-pool|Nom :"
+
+msgid "new-pool|Create"
+msgstr "new-pool|Créer"
+
+msgid "pool|Delete"
+msgstr "pool|Effacer"
+
+#: view/pools/show.xhtml
+msgid "Pool: %s"
+msgstr "Bassin : %s"
+
+#: view/profiles/edit.xhtml
+msgid "My Profile"
+msgstr "Mon profil :"
+
+msgid "Display name:"
+msgstr "Nom d'écran :"
+
+msgid "About Me (Markdown allowed):"
+msgstr "À mon propos (Markdown autorisé) :"
+
+msgid "profile|Update"
+msgstr "profile|Mise à jour"
+
+msgid "Avatar"
+msgstr "Avatar"
+
+msgid "avatar|Upload file:"
+msgstr "avatar|Envoyer le fichier :"
+
+msgid "avatar-upload|Submit"
+msgstr "avatar-upload|Soumettre"
+
+msgid "Reset avatar"
+msgstr "Réinitialiser l'avatar"
+
+#: view/profiles/show.xhtml
+msgid "profile|Edit"
+msgstr "profile|Éditer"
+
+msgid "Posts by %s"
+msgstr "Messages de %s"
+
+msgid "Add %s to a river"
+msgstr "Ajouter %s à une rivière"
+
+#: view/request_password_reset.xhtml
+msgid "Password Reset"
+msgstr "Réinitialiser le mot de passe"
+
+msgid ""
+"To reset your password, enter the email address associated with your "
+"account."
+msgstr "Pour réinitialiser votre mot de passe, entrez l'adresse de courriel associée à votre compte."
+
+msgid "password-reset|Submit"
+msgstr "password-reset|Soumettre"
+
+#: view/signup.xhtml
+msgid "Create a New Account"
+msgstr "Créer un nouveau compte"
+
+msgid "Invitation code:"
+msgstr "Code d'invitation :"
+
+msgid "Username:"
+msgstr "Nom d'utilisateur :"
+
+msgid "Password:"
+msgstr "Mot de passe :"
+
+msgid "Confirm password:"
+msgstr "Confirmer le mot de passe :"
+
+msgid "(optional)"
+msgstr "(facultatif)"
+
+msgid "button|Sign up"
+msgstr "button|S'inscrire"
+
+#: view/rivers/{new,edit}.xhtml
+msgid "Edit River"
+msgstr "Éditer la Rivière"
+
+msgid "river-query|Search:"
+msgstr "river-query|Rechercher :"
+
+msgid "river|Label:"
+msgstr "river|Étiquette :"
+
+msgid "append to all other rivers"
+msgstr "ajouter à toutes les autres rivières"
+
+msgid "river|Update"
+msgstr "river|Mise à jour"
+
+msgid "river|Create"
+msgstr "river|Créer"
+
+#: view/rivers/index.xhtml
+msgid "My Rivers"
+msgstr "Mes rivières"
+
+msgid "new river"
+msgstr "nouvelle rivière"
+
+msgid "river|Global Queries"
+msgstr "river|Requêtes globales"
+
+msgid ""
+"The following river queries are being appended to every other river query."
+msgstr "Les requêtes suivantes sont ajoutées aux requêtes de chacune des rivières."
+
+#: view/rivers/_list.xhtml
+msgid "(home river)"
+msgstr "(rivière d'accueil)"
+
+msgid "Set as home river"
+msgstr "Définir comme rivière d'accueil"
+
+msgid "river|edit"
+msgstr "river|éditer"
+
+msgid "river|delete"
+msgstr "river|effacer"
+
+#: view/rivers/_tips_and_examples.xhtml
+msgid "river-tips|Tips:"
+msgstr "river-tips|Astuces :"
+
+msgid "For the search, enter one or more words or hashtags."
+msgstr "Pour la recherche, saisir un ou plusieurs mots ou hashtags."
+
+msgid "Posts having any of the words will be included in the river."
+msgstr "Les messages contenant l'un de ces mots seront inclus dans la rivière."
+
+msgid "Use a minus sign in front of a word to exclude posts with that word."
+msgstr "Utiliser le signe moins devant un mot pour exclure les messages contenant ce mot."
+
+msgid ""
+"Example: %s#music -#classical%s will find posts about music, but not "
+"classical music."
+msgstr "Exemple: %s#musique -#classique%s trouvera les messages sur la musique, mais pas ceux sur la musique classique."
+
+msgid "Example: %s:river \"Special Interests\"%s"
+msgstr "Exemple: %s:river \"Intérêts particuliers\"%s"
+
+msgid ""
+"Other special terms: %s, %s and %s. These are for narrowing down to posts "
+"you have liked, commented on and subscribed to, respectively."
+msgstr "Autres termes spéciaux : %s, %s and %s. Ils servent respectivement à filtrer les messages que vous avez aimés, commentés ou auxquels vous êtes abonné."
+
+msgid ""
+"(advanced) Use the special term %s followed by a river label in quotes to "
+"compose rivers using other rivers."
+msgstr "(avancé) Utilisez le terme spécial %s suivi d'une étiquette de rivière entre guillemets pour composer des rivières utilisant d'autres rivières."
+
+msgid "You can also %shave the beginner rivers recreated for you%s."
+msgstr "Vous pouvez aussi %savoir les rivières initiales recréées pour vous%s."
+
+msgid "river|Examples"
+msgstr "river|Exemples"
+
+msgid "river|Query"
+msgstr "river|Requête"
+
+msgid "river|Description"
+msgstr "river|Description"
+
+msgid "All posts originating from your tree"
+msgstr "Tous les messages provenant de votre arbre"
+
+msgid ""
+"All posts transmitted to your tree from every other tree in the forest, plus"
+" posts from your tree"
+msgstr "Tous les messages transmis à votre arbre par tous les autres arbres de la forêt, plus les messages de votre arbre"
+
+msgid ""
+":unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
+"yet"
+msgstr ":unread #tricot%sMessages étiquetés avec %s#tricot%s que vous n'avez pas encore lu"
+
+msgid ""
+"#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts "
+"about cats"
+msgstr "#drole -#chats -#lolchats%sMessages étiquetés %s#drole%s sans ceux qui parlent de chats"
+
+msgid ""
+"environment%sPosts that mention the environment, whether or not they were "
+"hashtagged with #environment"
+msgstr "environnement%sMessages qui mentionnent l'environnement, qu'ils aient ou non le hashtag #environnement"
+
+msgid ""
+":tree #bug #feature%sBug reports and feature requests made by your treemates"
+msgstr ":tree #incident #fonctionnalite%sRapports d'incidents et demandes de fonctionnalités effectuées par les membres de votre arbre"
+
+msgid ""
+"\"new york\"%sPosts about New York, but not posts only having the word "
+"%snew%s"
+msgstr "\"new york\"%sMessages à propos de New York sans ceux contenant seulement le mot %snew%s"
+
+msgid ""
+"brazil -\"world cup\"%sPosts about Brazil, but not those mentioning the "
+"World Cup"
+msgstr "brésil -\"coupe du monde\"%sMessages à propos du Brésil sans ceux qui contiennent l'expression Coupe du Monde"
+
+msgid ":from \"rekado\"%sPosts written by rekado"
+msgstr ":from \"rekado\"%sMessages écrits par rekado"
+
+msgid ""
+"#photography -:from \"Photophile\"%sPosts tagged with %s#photography%s, but "
+"not those by Photophile"
+msgstr "#photographie -:from \"Photophile\"%sMessages avec le tag %s#photographie%s sans ceux rédigés par Photophile"
+
+msgid ""
+"#restaurants :river \"Important\"%sPosts tagged with %s#restaurants%s, or "
+"posts matching the river \"Important\""
+msgstr "#restaurants :river \"Important\"%sMessages avec le tag %s#restaurants%s et messages provenant de la rivière \"Important\""
+
+msgid ""
+"#restaurants +:river \"News Articles\"%sPosts tagged with %s#restaurants%s "
+"which also match the river \"News Articles\""
+msgstr "#restaurants +:river \"Nouveautés\"%sMessages avec le tag %s#restaurants%s qui proviennent de la rivière \"Nouveautés\""
+
+msgid ""
+"#restaurants -:river \"International News\"%sPosts tagged with "
+"%s#restaurants%s, but not those which match the river \"International News\""
+msgstr "#restaurants -:river \"Nouvelles Internationales\"%sMessages avec le tag %s#restaurants%s sans ceux qui proviennent de la rivière \"Nouvelles Internationales\""
+
+#: view/chat/_index.xhtml
+msgid "Chat"
+msgstr "Chat"
+
+msgid "chat-contacts|Online:"
+msgstr "chat-contacts|En ligne :"
+
+msgid "chat|(no contacts online)"
+msgstr "chat|(pas de contacts en ligne)"
+
+msgid "Start new chat with..."
+msgstr "Démarrer le chat avec..."
