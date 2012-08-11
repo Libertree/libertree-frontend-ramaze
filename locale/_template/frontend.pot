@@ -339,23 +339,24 @@ msgid "%d more"
 msgstr ""
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
+msgid "%1$s commented on your %2$spost%3$s."
 msgstr ""
-msgid "%s commented on %s's %spost%s."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
 msgstr ""
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
+msgid "%1$s liked your %2$scomment%3$s on your post."
 msgstr ""
-msgid "%s liked your %scomment%s on %s's post."
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
 msgstr ""
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
+msgid "%1$s liked your %2$spost%3$s."
 msgstr ""
 
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
+# TODO: positional placeholders
+msgid "%1$s sent you a %2$smessage%3$s."
 msgstr ""
 
 #: helper/wording.rb, view/messages/show.xhtml

@@ -4,9 +4,9 @@
     <?r link = "<a href=\"/posts/show/#{@like.comment.post.id}#comment-#{@like.comment.id}\" title=\"#{::CGI.escape_html(@like.comment.glimpse)}\">" ?>
     #{member_img(@like.member)}
     <?r if @like.comment.post.member == account.member ?>
-      #{_('%s liked your %scomment%s on your post.') % [who, link, "</a>"]}
+      #{_('%1$s liked your %2$scomment%3$s on your post.') % [who, link, "</a>"]}
     <?r else ?>
-      #{_("%s liked your %scomment%s on %s's post.") % [who, link, "</a>", @like.comment.post.member.name_display]}
+      #{_("%1$s liked your %2$scomment%3$s on %4$s's post.") % [who, link, "</a>", @like.comment.post.member.name_display]}
     <?r end ?>
     <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>
