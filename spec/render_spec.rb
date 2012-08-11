@@ -43,6 +43,12 @@ tail}).should == %{<p>head</p>
 
       # should also work in lists
       subject.render("- #{url}").should =~ %r{<a href="#{url}">#{url}</a>}
+
+      # relative links
+      url = "/posts/show/1234"
+      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
+      url = "/posts/show/987#comment-123"
+      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
     end
 
     it 'should not mangle underscores in URLs' do
