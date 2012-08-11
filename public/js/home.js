@@ -63,10 +63,10 @@ $(document).ready( function() {
     var postId = excerptParent.data('post-id');
     $.get('/accounts/watch_post/'+postId);
 
+    overflowed.data( 'contracted-height', overflowed.height() );
+
     excerptParent.find('div.comments.hidden').removeClass('hidden');
     showMoreComments( excerpt.find('.comments'), 3 );
-
-    overflowed.data( 'contracted-height', overflowed.height() );
 
     var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
     var animationSpeed = heightDifference * 2;
