@@ -1,3 +1,5 @@
+@import "colours.scss";
+
 html {
     height: auto;
 }
@@ -95,6 +97,21 @@ input#search {
             }
         }
     }
+}
+
+.single-post-view {
+  .main {
+    margin: 60px 0px;
+    padding: 0px;
+    max-width: none;
+    min-width: none;
+
+    div.post {
+      background-color: $dust;
+      width: auto;
+      padding: 2em;
+    }
+  }
 }
 
 #chat-window {
