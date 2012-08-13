@@ -48,7 +48,7 @@
           <a href="#" id="comments-show" title="show comments">&lt;&lt;</a>
           <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
           <br/>
-          <a class="visibility" href="#" title="#{visibility_description(@post)}" data-description="#{@post.visibility_description}"><img src="/images/icon-eye.png" class="size-16" alt="#{@post.visibility_description}"/></a>
+          <a class="visibility" href="#" title="#{visibility_description(@post)}" data-description="#{visibility_description(@post)}"><img src="/images/icon-eye.png" class="size-16" alt="#{visibility_description(@post)}"/></a>
           <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{like_list(@post)}"><img src="/images/icon-like.png" class="size-16" alt="#{_('likes')}"/> <span class="value">#{@post.likes.size}</span></span>
         </div>
 
