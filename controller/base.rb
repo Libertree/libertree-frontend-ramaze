@@ -26,6 +26,7 @@ module Controller
       FastGettext.locale = (
         logged_in? && account.locale ||
         session[:locale] ||
+        request.env['HTTP_ACCEPT_LANGUAGE'] ||
         'en_GB'
       )
     end

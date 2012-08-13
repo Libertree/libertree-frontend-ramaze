@@ -25,8 +25,8 @@ $(document).ready( function() {
       return false;
     }
 
-    var x = e.pageX;
-    var y = e.pageY;
+    var x = e.clientX;
+    var y = e.clientY;
     $('div.pools').remove();
     var collect_link = $(this);
     var post = collect_link.closest('div.post, div.post-excerpt');

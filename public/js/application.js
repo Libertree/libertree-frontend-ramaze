@@ -158,7 +158,9 @@ $(document).ready( function() {
 
   setInterval( updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
-  $('textarea').not('.textarea-chat').expandable();
+  if( $.browser.opera ) {
+    $('textarea').not('.textarea-chat').expandable();
+  }
 
   if( layout == 'narrow' ) {
     $('*').mouseover();
