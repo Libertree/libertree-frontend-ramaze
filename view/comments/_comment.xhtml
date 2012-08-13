@@ -2,17 +2,19 @@
   <div class="num-likes #{@comment.likes.empty? ? 'hidden' : ''}" title="#{like_list(@comment)}">#{n_('1 like', '%d likes', @comment.likes.size) % @comment.likes.size}</div>
   <div class="comment-tools">
     <a href="#" class="go-ref-back">#{s_('back-to-referencing-comment|back')}</a>
-    <?r if @comment.like_by(account.member) ?>
-      <a href="#" class="unlike" data-comment-like-id="#{@comment.like_by(account.member).id}"><img src="/images/icon-unlike.png" class="size-16" alt="#{_('unlike')}" title="#{_('Unlike this comment')}"/></a>
-      <a href="#" class="like hidden"><img src="/images/icon-like.png" class="size-16" alt="#{_('like')}" title="#{_('Like this comment')}"/></a>
-    <?r else ?>
-      <a href="#" class="like"><img src="/images/icon-like.png" class="size-16" alt="#{_('like')}" title="#{_('Like this comment')}"/></a>
-      <a href="#" class="unlike hidden"><img src="/images/icon-unlike.png" class="size-16" alt="#{_('unlike')}" title="#{_('Unlike this comment')}"/></a>
+    <?r if logged_in? ?>
+      <?r if @comment.like_by(account.member) ?>
+        <a href="#" class="unlike" data-comment-like-id="#{@comment.like_by(account.member).id}"><img src="/images/icon-unlike.png" class="size-16" alt="#{_('unlike')}" title="#{_('Unlike this comment')}"/></a>
+        <a href="#" class="like hidden"><img src="/images/icon-like.png" class="size-16" alt="#{_('like')}" title="#{_('Like this comment')}"/></a>
+      <?r else ?>
+        <a href="#" class="like"><img src="/images/icon-like.png" class="size-16" alt="#{_('like')}" title="#{_('Like this comment')}"/></a>
+        <a href="#" class="unlike hidden"><img src="/images/icon-unlike.png" class="size-16" alt="#{_('unlike')}" title="#{_('Unlike this comment')}"/></a>
+      <?r end ?>
+      <?r if @comment.member == account.member ?>
+        <a href="#" class="delete"><img src="/images/icon-delete.png" class="size-16" alt="#{_('delete')}" title="#{_('delete')}"/></a>
+      <?r end ?>
     <?r end ?>
-    <?r if @comment.member == account.member ?>
-      <a href="#" class="delete"><img src="/images/icon-delete.png" class="size-16" alt="#{_('delete')}" title="#{_('delete')}"/></a>
-    <?r end ?>
-      <a class="link" href="/posts/show/#{@post.id}#comment-#{@comment.id}"><img src="/images/icon-link.png" class="size-16" alt="#{_('shareable link for this comment')}" title="#{_('shareable link for this comment')}"/></a>
+    <a class="link" href="/posts/show/#{@post.id}#comment-#{@comment.id}"><img src="/images/icon-link.png" class="size-16" alt="#{_('shareable link for this comment')}" title="#{_('shareable link for this comment')}"/></a>
   </div>
   #{member_avatar_link(@comment.member)}
   <div class="member-name">#{member_name_link(@comment.member)}</div>

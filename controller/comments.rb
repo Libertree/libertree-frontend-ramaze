@@ -3,7 +3,9 @@ module Controller
     map '/comments'
 
     before_all do
-      require_login
+      if Ramaze::Current.request.path !~ %r{^/posts/show/}
+        require_login
+      end
       init_locale
     end
 
@@ -47,11 +49,13 @@ module Controller
       # (when we introduce such restrictions in the system)
       @post = Libertree::Model::Post[ post_id.to_i ]
       return ""  if @post.nil?
+      return ""  if ! @post.v_internet? && ! logged_in?
     end
 
     def _comment(comment_id)
       @comment = Libertree::Model::Comment[comment_id.to_i]
       @post = @comment.post
+      return ""  if ! @post.v_internet? && ! logged_in?
     end
 
     def destroy(comment_id)
