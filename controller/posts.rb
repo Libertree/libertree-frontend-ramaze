@@ -3,7 +3,9 @@ module Controller
     map '/posts'
 
     before_all do
-      require_login
+      if Ramaze::Current.request.path !~ %r{^/posts/show/}
+        require_login
+      end
       init_locale
     end
 
@@ -63,9 +65,9 @@ module Controller
       end
 
       post = Libertree::Model::Post.create(
-        'member_id' => account.member.id,
-        'public'    => true,
-        'text'      => text
+        'member_id'  => account.member.id,
+        'visibility' => request['visibility'].to_s,
+        'text'       => text
       )
       session[:saved_text]['textarea-post-new'] = nil
 
@@ -75,17 +77,24 @@ module Controller
     def show(post_id)
       @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
-      if @post
-        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
-        @post.mark_as_read_by account
-        account.watch_post @post
-
-        Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
-          n.seen = true
-        end
-        account.dirty
-      else
+      if @post.nil?
         respond "404: Not Found", 404
+      else
+        if ! @post.v_internet?
+          require_login
+        end
+
+        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
+
+        if logged_in?
+          @post.mark_as_read_by account
+          account.watch_post @post
+
+          Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
+            n.seen = true
+          end
+          account.dirty
+        end
       end
     end
 
@@ -151,7 +160,7 @@ module Controller
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
 
-        post.revise text
+        post.revise text, request['visibility'].to_s
         session[:saved_text]['textarea-post-edit'] = nil
       end
 

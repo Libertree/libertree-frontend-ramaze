@@ -1,6 +1,6 @@
 module Controller
   class Base < Ramaze::Controller
-    helper :user, :xhtml, :age, :comment, :member, :wording, :views
+    helper :user, :xhtml, :age, :comment, :member, :wording, :views, :post
     trait :user_model => ::Libertree::Model::Account
 
     layout do |path|
@@ -26,6 +26,7 @@ module Controller
       FastGettext.locale = (
         logged_in? && account.locale ||
         session[:locale] ||
+        request.env['HTTP_ACCEPT_LANGUAGE'] ||
         'en_GB'
       )
     end

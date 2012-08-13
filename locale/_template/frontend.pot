@@ -83,6 +83,12 @@ msgstr ""
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "post|Preview"
 msgstr ""
+msgid "Visibility"
+msgstr ""
+msgid "visibility|Internet"
+msgstr ""
+msgid "visibility|Forest"
+msgstr ""
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"

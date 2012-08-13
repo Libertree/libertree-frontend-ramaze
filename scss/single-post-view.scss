@@ -54,6 +54,12 @@ body.body.single-post-view .main {
           margin-bottom: 1.5em;
           width: 100%;
           float: none;
+          span.num-likes {
+            margin-left: 1em;
+          }
+          .visibility {
+            border-bottom: 0px;
+          }
         }
       }
       &.expanded-post {

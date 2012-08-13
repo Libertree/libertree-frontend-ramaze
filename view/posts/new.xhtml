@@ -6,6 +6,12 @@
     <div class="filler">#{_('(enter hashtags here)')}</div>
     <input type="text" name="hashtags"></input>
   </div>
+  <div>
+    #{_('Visibility')}: <select name="visibility">
+      <option value="internet">#{s_('visibility|Internet')}</option>
+      <option value="forest" selected>#{s_('visibility|Forest')}</option>
+    </select>
+  </div>
   <div class="form-buttons">
     <input class="preview" type="button" value="#{s_('new-post|Preview')}" tabindex="2" data-type="post"/>
     <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>
