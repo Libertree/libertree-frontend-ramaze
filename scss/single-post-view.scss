@@ -54,6 +54,10 @@ body.body.single-post-view .main {
           margin-bottom: 1.5em;
           width: 100%;
           float: none;
+          .visibility {
+            margin-right: 1em;
+            border-bottom: 0px;
+          }
         }
       }
       &.expanded-post {
