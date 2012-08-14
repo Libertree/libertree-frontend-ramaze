@@ -46,7 +46,7 @@
         href="/home"
         class="menu-item"
         id="menu-home"
-        title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}></a>
+        title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}</a>
       #{ render_file 'layout/_notifications.xhtml' }
       #{ render_file 'layout/_chat.xhtml' }
       <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>
