@@ -1,8 +1,8 @@
 <div class="menu has-shadow"><div id="menu-narrower">
   <?r if @title ?>
   <a href="/home" class="home">
-    <img id="logo" src="/images/small-logo.png" alt="logo"/>
-    <img id="wordmark" src="/images/wordmark.png" alt="Libertree"/>
+    #{ img 'small-logo.png', {alt: 'logo', id: 'logo'} }
+    #{ img 'wordmark.png',   {alt: 'Libertree', id: 'wordmark'} }
   </a>
   <?r end ?>
 
@@ -16,9 +16,9 @@
       #{ member_img(account.member) }
     </a>
     <div id="account-window" class="window has-shadow">
-      <a href="/profiles/show/#{account.member.id}"><img src="/images/icon-account.png" alt="#{s_('menu|Profile')}"/> #{s_('menu|Profile')}</a><br/>
-      <a href="/accounts/edit"><img src="/images/icon-settings.png" alt="#{s_('menu|Settings')}"/> #{s_('menu|Settings')}</a><br/>
-      <a href="/contact-lists"><img src="/images/icon-group.png" alt="#{s_('menu|Contact Lists')}"/> #{s_('menu|Contact Lists')}</a><br/>
+      <a href="/profiles/show/#{account.member.id}">#{img 'icon-account.png', {alt:s_('menu|Profile')}} #{s_('menu|Profile')}</a><br/>
+      <a href="/accounts/edit">#{img 'icon-settings.png', {alt:s_('menu|Settings')}} #{s_('menu|Settings')}</a><br/>
+      <a href="/contact-lists">#{img 'icon-group.png', {alt:s_('menu|Contact Lists')}} #{s_('menu|Contact Lists')}</a><br/>
       <a href="/pools">#{s_('menu|Pools')}</a><br/>
       Text:
       <?r if account.font_css == 'fonts-small' ?>
@@ -28,30 +28,30 @@
       <?r end ?>
       <br/>
       <?r if session[:layout] == 'narrow' ?>
-        <a href="/layout/wide" title="#{s_('menu|Currently in &quot;small display&quot; mode; click to change')}"><img src="/images/icon-display.png" alt="#{s_('menu|Large display')}"/> #{s_('menu|Large display')}</a><br/>
+        <a href="/layout/wide" title="#{s_('menu|Currently in &quot;small display&quot; mode; click to change')}">#{img 'icon-display.png', {alt:s_('menu|Large display')}} #{s_('menu|Large display')}</a><br/>
       <?r else ?>
-        <a href="/layout/narrow" title="#{s_('menu|Currently in &quot;large display&quot; mode; click to change')}"><img src="/images/icon-display.png" alt="#{s_('menu|Small display')}"/> #{s_('menu|Small display')}</a><br/>
+        <a href="/layout/narrow" title="#{s_('menu|Currently in &quot;large display&quot; mode; click to change')}">#{img 'icon-display.png', {alt:s_('menu|Small display')}} #{s_('menu|Small display')}</a><br/>
       <?r end ?>
       <?r if account.admin? ?>
-        <a href="/admin"><img src="/images/icon-admin.png" alt="#{s_('menu|Administrate')}"/> #{s_('menu|Administrate')}</a><br/>
+        <a href="/admin">#{img 'icon-admin.png', {alt:s_('menu|Administrate')}} #{s_('menu|Administrate')}</a><br/>
       <?r end ?>
-      <a href="/logout"><img src="/images/icon-logout.png" alt="#{s_('menu|Log out')}"/> #{s_('menu|Log out')}</a>
+      <a href="/logout">#{img 'icon-logout.png', {alt:s_('menu|Log out')}} #{s_('menu|Log out')}</a>
     </div>
 
     <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
       <?r if account.custom_link ?>
-        <a href="#{account.custom_link}" class="menu-item"><img src="/images/icon-link.png" alt="custom"/></a>
+        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-link.png', {alt:"custom"}}</a>
       <?r end ?>
       <a
         href="/home"
         class="menu-item"
         id="menu-home"
-        title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}"><img src="/images/icon-home.png" alt="#{s_('menu|Home')}"/></a>
+        title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}</a>
       #{ render_file 'layout/_notifications.xhtml' }
       #{ render_file 'layout/_chat.xhtml' }
-      <a href="/messages" class="menu-item" title="#{_('Direct Messages')}"><img src="/images/icon-message.png" alt="#{_('Direct Messages')}"/></a>
-      <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}"><img src="/images/icon-edit.png" alt="#{s_('menu|New Post')}"/></a>
-      <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}"><img src="/images/icon-exclamation.png" alt="#{s_('menu|Known Issues')}"/></a>
+      <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>
+      <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}">#{img 'icon-edit.png', {alt:s_('menu|New Post')}}</a>
+      <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q" tabindex="99"/>
       </form>

@@ -3,11 +3,7 @@
   href="/notifications"
   class="menu-item"
   id="menu-notifications"
-  title="#{ account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen }"><img
-
-  src="/images/icon-bell.png"
-  alt="#{_('Notifications')}"/><span
-
+  title="#{ account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen }">#{img 'icon-bell.png', {alt:_('Notifications')}}<span
   id="num-notifications-unseen"
   class="#{account.num_notifications_unseen == 0 ? 'hidden' : ''}">#{account.num_notifications_unseen}</span></a>
 <div id="notifications-window" class="window has-shadow"></div>

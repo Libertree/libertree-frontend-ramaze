@@ -18,7 +18,7 @@ body.body {
     padding: 0px;
     margin: 0px;
     color: #261818;
-    background: url('/images/bg-green.png') fixed bottom center repeat-x $leaf;
+    background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
     height: 100%;
     width: 100%;
 }
@@ -109,11 +109,11 @@ textarea, input[type="text"], input[type="password"] {
   padding: 1em 50px;
   margin: 0 0 1em;
   &.error {
-    background: url('/images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
+    background: url('../images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
     border: 2px solid $red;
   }
   &.notice {
-    background: url('/images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
+    background: url('../images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
     border: 2px solid $sky;
   }
 }
@@ -474,7 +474,7 @@ form.search {
     input {
         width: 100px;
         height: 20px;
-        background-image: url('/images/icon-search.png');
+        background-image: url('../images/icon-search.png');
         background-position: right;
         background-repeat: no-repeat;
         padding-right: 30px;

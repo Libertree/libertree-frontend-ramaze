@@ -8,7 +8,7 @@
   <textarea name="text" rows="5" id="textarea-message-new" tabindex="1">#{session[:saved_text]['textarea-message-new']}</textarea><br/>
   <input class="preview" type="button" value="#{s_('direct-message|Preview')}" tabindex="3" data-type="post"/>
   <input type="submit" value="#{s_('direct-message|Send')}" tabindex="2"/>
-  <a class="message-note-toggler" href="#"><img src="/images/icon-exclamation.png" title="#{s_('direct-message-warning|please note...')}" class="size-16"/></a>
+  <a class="message-note-toggler" href="#">#{img 'icon-exclamation.png', {title:s_('direct-message-warning|please note...'), class:"size-16"}}</a>
   <p class="message-note">
   #{_('Please note that direct messages are not fully private, encrypted nor secure.  As with all data on this tree, direct messages are fully accessible to the arborista (administrator).')}
   </p>

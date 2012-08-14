@@ -1,7 +1,7 @@
 <div class="post-excerpt" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? DateTime.parse(@post['time_updated_overall']).to_time.to_f : @post.time_created.to_time.to_f }">
   <div class="meta">
     <?r if session[:layout] == 'narrow' ?>
-      <a href="#river-menu" class="back-to-top" title="#{_('back to top')}"><img src="/images/up-arrow.png" alt="back to top" class="size-16"/></a>
+      <a href="#river-menu" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
     <?r end ?>
     <div class="member">
       #{member_avatar_link(@post.member)}
@@ -9,8 +9,8 @@
       <span class="age">#{ago(@post.time_created)}</span>
     </div>
     <div class="post-stats">
-      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % like_list(@post)}"><img src="/images/icon-like.png" class="size-16" alt="#{_('likes')}"/> <span class="value">#{@post.likes.size}</span></span><br/>
-      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"><img src="/images/icon-comment.png" class="size-16" alt="#{_('comments')}"/> <span class="num-comments">#{@post.comments.size}</span></a><br/>
+      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % like_list(@post)}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span><br/>
+      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}} <span class="num-comments">#{@post.comments.size}</span></a><br/>
     </div>
     <div class="post-tools">
       <?r if @post.like_by(account.member) ?>

@@ -8,10 +8,10 @@
     <?r if @river.home? ?>
       #{_('(home river)')}
     <?r else ?>
-    <a href="/rivers/set_home/#{@river.id}"><img src="/images/icon-home.png" alt="#{_('Set as home river')}" title="#{_('Set as home river')}" class="size-16"/></a>
+    <a href="/rivers/set_home/#{@river.id}">#{img 'icon-home.png', {alt:_('Set as home river'), title:_('Set as home river'), class:"size-16"}}</a>
     <?r end ?>
-    <a href="/rivers/edit/#{@river.id}"><img src="/images/icon-edit.png" alt="#{s_('river|edit')}" title="#{s_('river|edit')}" class="size-16"/></a>
-    <a class="delete" href="/rivers/destroy/#{@river.id}"><img src="/images/icon-delete.png" alt="#{s_('river|delete')}" title="#{s_('river|delete')}" class="size-16"/></a>
+    <a href="/rivers/edit/#{@river.id}">#{img 'icon-edit.png', {alt:s_('river|edit'), title:s_('river|edit'), class:"size-16"}}</a>
+    <a class="delete" href="/rivers/destroy/#{@river.id}">#{img 'icon-delete.png', {alt:s_('river|delete'), title:s_('river|delete'), class:"size-16"}}</a>
   </span>
   <br/>
   <span class="query">#{@river.query}</span>
