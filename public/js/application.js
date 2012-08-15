@@ -113,11 +113,16 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          var pane = target.closest('div.comments-pane');
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
-          var delta = $('.preview-box').position().top - 100;
-          pane.animate(
-            { scrollTop: pane.scrollTop() + delta },
+          var scrollable = target.closest('div.comments-pane');
+          if( scrollable.length == 0 ) {
+            scrollable = $('html');
+            var delta = $('.preview-box').position().top - scrollable.scrollTop() - 100;
+          } else {
+            var delta = $('.preview-box').position().top - 100;
+          }
+          scrollable.animate(
+            { scrollTop: scrollable.scrollTop() + delta },
             delta * 2
           );
         }
