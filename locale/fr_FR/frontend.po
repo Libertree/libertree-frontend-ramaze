@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-09 20:33+0000\n"
-"Last-Translator: Loelo <autre7273@laposte.net>\n"
-"Language-Team: UNDEFINED\n"
+"PO-Revision-Date: 2012-08-15 08:51+0000\n"
+"Last-Translator: teimahu <teimahu@live.fr>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +70,7 @@ msgstr "Vous avez été déconnecté."
 
 #: controller/base.rb
 msgid "not-authenticated|Please log in."
-msgstr "not-authenticated|Veuillez vous identifier."
+msgstr "Veuillez vous identifier."
 
 #: controller/invitations.rb
 msgid ""
@@ -93,7 +93,7 @@ msgid "by update time"
 msgstr "par date de mise à jour"
 
 msgid "mark all read"
-msgstr "marquer tout lu"
+msgstr "tout marquer \"lu\""
 
 #: view/posts/new.xhtml
 msgid "New Post"
@@ -103,11 +103,29 @@ msgid "(enter hashtags here)"
 msgstr "(entrer les hashtags ici)"
 
 msgid "new-post|Post"
-msgstr "new-post|Message"
+msgstr "Message"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "post|Preview"
-msgstr "post|Prévisualiser"
+msgstr "Prévisualiser"
+
+msgid "Visibility"
+msgstr "Visibilité"
+
+msgid "visibility|Internet"
+msgstr "visibility|Internet"
+
+msgid "visibility|Forest"
+msgstr "visibility|Forêt"
+
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr ""
+
+msgid ""
+"This post and its comments are only visible to members of this Libertree "
+"forest"
+msgstr ""
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -117,7 +135,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgid "post|Update"
-msgstr "post|Mise à jour"
+msgstr "Mise à jour"
 
 #: view/posts/show.xhtml
 msgid "Start receiving notifications about comments on this post"
@@ -133,10 +151,10 @@ msgid "unsubscribe"
 msgstr "se désabonner"
 
 msgid "mark post unread"
-msgstr "marquer le message comme non lu"
+msgstr "marquer \"non lu\""
 
 msgid "mark post read"
-msgstr "marquer le message comme lu"
+msgstr "marquer \"lu\""
 
 msgid "edit"
 msgstr "éditer"
@@ -154,16 +172,16 @@ msgid "like"
 msgstr "j’aime"
 
 msgid "likes"
-msgstr "\"j’aime\""
+msgstr "\"j'aime\""
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
 msgstr "Fin des messages."
 
 msgid ""
-"The system is still matching posts with this river.  Check in a few minutes "
+"The system is still matching posts with this river. Check in a few minutes "
 "for more posts."
-msgstr "Le système recherche en ce moment les messages correspondant à cette rivière. Revenez dans quelques minutes pour afficher plus de messages."
+msgstr "Le système est en train de rechercher les messages de cette rivière. Merci de revenir dans quelques minutes pour afficher plus de messages."
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
@@ -172,8 +190,8 @@ msgstr "retour en haut"
 msgid "Liked by %s"
 msgstr "Aimé par %s"
 
-msgid "One comment by %1$s"
-msgstr "Un commentaire par %1$s"
+msgid "1 comment by %1$s"
+msgstr "1 commentaire sur %1$s"
 
 msgid "%2$d comments by %1$s"
 msgstr "%2$d commentaires par %1$s"
@@ -182,10 +200,10 @@ msgid "comments"
 msgstr "commentaires"
 
 msgid "comment"
-msgstr "commentaire"
+msgstr "commenter"
 
 msgid "mark read"
-msgstr "marquer comme lu"
+msgstr "marquer \"lu\""
 
 msgid "mark unread"
 msgstr "marquer comme non lu"
@@ -271,7 +289,7 @@ msgid "show %smore%s / %sall%s comments"
 msgstr "montrer %splus%s / %stous%s les commentaires"
 
 msgid "jump-to-comment|Comment"
-msgstr "jump-to-comment|Commenter"
+msgstr "Commenter"
 
 msgid "Comment successfully posted."
 msgstr "Commentaire publié avec succès"
@@ -290,13 +308,13 @@ msgstr "Commenter"
 
 #: view/comments/_comment.xhtml
 msgid "One like"
-msgstr "Un \"j’aime\""
+msgstr "Une personne aime"
 
 msgid "%d likes"
-msgstr "%d \"j’aime\""
+msgstr "%d aiment"
 
 msgid "back-to-referencing-comment|back"
-msgstr "back-to-referencing-comment|retour"
+msgstr "retour"
 
 msgid "Unlike this comment"
 msgstr "Je n’aime plus ce commentaire"
@@ -309,31 +327,31 @@ msgstr "lien pour partager ce commentaire"
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
-msgstr "markdown|titre"
+msgstr "titre"
 
 msgid "markdown|subtitle"
-msgstr "markdown|sous-titre"
+msgstr "sous-titre"
 
 msgid "markdown|link"
-msgstr "markdown|lien"
+msgstr "|lien"
 
 msgid "markdown|image"
-msgstr "markdown|image"
+msgstr "image"
 
 msgid "markdown|image link"
-msgstr "markdown|lien d’image"
+msgstr "lien d’image"
 
 msgid "markdown|quote"
-msgstr "markdown|citation"
+msgstr "citation"
 
 msgid "markdown|list"
-msgstr "markdown|liste"
+msgstr "liste"
 
 msgid "markdown|bold"
-msgstr "markdown|gras"
+msgstr "gras"
 
 msgid "markdown|italic"
-msgstr "markdown|italique"
+msgstr "italique"
 
 #: view/accounts/edit.xhtml
 msgid "Account Settings"
@@ -436,7 +454,7 @@ msgid "Re-enter new password:"
 msgstr "Confirmation du mot de passe :"
 
 msgid "button|Change Password"
-msgstr "button|Changer le mot de passe"
+msgstr "Changer le mot de passe"
 
 #: view/notifications/{index,_index}.xhtml
 msgid "Notifications"
@@ -455,33 +473,34 @@ msgid "%d more"
 msgstr "%d de plus"
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
-msgstr "%s ont commenté votre %smessage%s."
+msgid "%1$s commented on your %2$spost%3$s."
+msgstr ""
 
-msgid "%s commented on %s's %spost%s."
-msgstr "%s ont commenté le %smessage%s de %s."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgstr ""
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
-msgstr "%s a aimé votre %scommentaire%s de votre message."
+msgid "%1$s liked your %2$scomment%3$s on your post."
+msgstr ""
 
-msgid "%s liked your %scomment%s on %s's post."
-msgstr "%s a aimé votre %scommentaire%s sur le message de %s."
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr ""
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
-msgstr "%s a aimé votre %smessage%s."
+msgid "%1$s liked your %2$spost%3$s."
+msgstr ""
 
+# TODO: positional placeholders
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
-msgstr "%s vous a envoyé un %smessage%s."
+msgid "%1$s sent you a %2$smessage%3$s."
+msgstr ""
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr "list-comma|, "
 
 msgid "list-and| and "
-msgstr "list-and| et"
+msgstr " et"
 
 #: helper/age.rb
 msgid "1 day ago"
@@ -510,16 +529,16 @@ msgid "Search Results for \"%s\""
 msgstr "Résultats de la recherche pour \"%s\""
 
 msgid "search-results|Nothing found."
-msgstr "search-results|Pas de résultats."
+msgstr "Pas de résultats."
 
 msgid "search-results|Profiles"
-msgstr "search-results|Profils"
+msgstr "Profils"
 
 msgid "search-results|Posts"
 msgstr "search-results|Messages"
 
 msgid "search-results|Comments"
-msgstr "search-results|Commentaires"
+msgstr "Commentaires"
 
 #: controller/contact-lists.rb
 msgid "Contact list updated."
@@ -533,10 +552,10 @@ msgid "Contact Lists"
 msgstr "Listes de contacts"
 
 msgid "new-contact-list|Name:"
-msgstr "new-contact-list|Nom :"
+msgstr "Nom :"
 
 msgid "new-contact-list|Create"
-msgstr "new-contact-list|Créer"
+msgstr "Créer"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -546,10 +565,10 @@ msgid "(choose members)"
 msgstr "(choisir des membres)"
 
 msgid "contact-list|Save"
-msgstr "contact-list|Enregistrer"
+msgstr "Enregistrer"
 
 msgid "contact-list|Cancel"
-msgstr "contact-list|Annuler"
+msgstr "Annuler"
 
 #: controller/admin/base.rb
 msgid "Administrative privileges required."
@@ -572,33 +591,33 @@ msgid ""
 msgstr "Déplacer les arbres dans et hors de la forêt.  L'arbre local appartient automatiquement à chaque forêt dont il est l'origine."
 
 msgid "create-forest|Name:"
-msgstr "create-forest|Nom :"
+msgstr "Nom :"
 
 msgid "create-forest|Add"
-msgstr "create-forest|Ajouter"
+msgstr "Ajouter"
 
 msgid "forest|Origin:"
-msgstr "forest|Origine :"
+msgstr "Origine :"
 
 msgid "forest-origin|this tree"
-msgstr "forest-origin|cet arbre"
+msgstr "cet arbre"
 
 msgid "Trees"
 msgstr "Arbres"
 
 msgid "new-tree|Hostname:"
-msgstr "new-tree|Nom d'hôte :"
+msgstr "Nom d'hôte :"
 
 msgid "new-tree|Add"
-msgstr "new-tree|Ajouter"
+msgstr "Ajouter"
 
 #: view/404.xhtml
 msgid "404|No such page"
-msgstr "404|Page introuvable"
+msgstr "Page introuvable"
 
 msgid ""
 "404|Please use your browser's Back button, or %sgo to your home page%s."
-msgstr "404|Veuillez utiliser le bouton Retour de votre navigateur ou %sallez à la page d'accueil%s."
+msgstr "Veuillez utiliser le bouton Retour de votre navigateur ou %sallez à la page d'accueil%s."
 
 #: view/error.xhtml
 msgid "Something went wrong..."
@@ -615,29 +634,29 @@ msgid "Direct Messages"
 msgstr "Messages directs"
 
 msgid "direct-message|New Message"
-msgstr "direct-message|Nouveau message"
+msgstr "Nouveau message direct"
 
 msgid "direct-message|Messages"
-msgstr "direct-message|Messages"
+msgstr "Messages direct"
 
 msgid "direct-message|From:"
-msgstr "direct-message|De :"
+msgstr "De :"
 
 msgid "direct-message|To:"
-msgstr "direct-message|À :"
+msgstr "À :"
 
 #: view/messages/_new.xhtml
 msgid "direct-message|Send"
-msgstr "direct-message|Envoyer"
+msgstr "Envoyer"
 
 msgid "direct-message|Preview"
-msgstr "direct-message|Prévisualiser"
+msgstr "Prévisualiser"
 
 msgid "direct-message|Recipients"
-msgstr "direct-message|Destinataires"
+msgstr "Destinataires"
 
 msgid "direct-message-warning|please note..."
-msgstr "direct-message-warning|veuillez noter..."
+msgstr "veuillez noter..."
 
 msgid ""
 "Please note that direct messages are not fully private, encrypted nor "
@@ -647,14 +666,14 @@ msgstr "Veuillez noter que les messages directs ne sont ni tout à fait privés,
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
-msgstr "direct-message|répondre"
+msgstr "répondre"
 
 msgid "direct-message|reply to all"
-msgstr "direct-message|répondre à tous"
+msgstr "répondre à tous"
 
 #: view/pools/_index.xhtml
 msgid "pool-selector|Collect in..."
-msgstr "pool-selector|Garder dans..."
+msgstr "Garder dans..."
 
 #: view/pools/index.xhtml
 msgid "Pools"
@@ -664,13 +683,13 @@ msgid "Use pools to collect posts."
 msgstr "Utilisez les bassins pour garder des messages."
 
 msgid "new-pool|Name:"
-msgstr "new-pool|Nom :"
+msgstr "Nom :"
 
 msgid "new-pool|Create"
-msgstr "new-pool|Créer"
+msgstr "Créer"
 
 msgid "pool|Delete"
-msgstr "pool|Effacer"
+msgstr "Effacer"
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
@@ -687,13 +706,13 @@ msgid "About Me (Markdown allowed):"
 msgstr "À mon propos (Markdown autorisé) :"
 
 msgid "profile|Update"
-msgstr "profile|Mise à jour"
+msgstr "Mise à jour"
 
 msgid "Avatar"
 msgstr "Avatar"
 
 msgid "avatar|Upload file:"
-msgstr "avatar|Envoyer le fichier :"
+msgstr "Envoyer le fichier :"
 
 msgid "avatar-upload|Submit"
 msgstr "avatar-upload|Soumettre"
@@ -906,3 +925,75 @@ msgstr "chat|(pas de contacts en ligne)"
 
 msgid "Start new chat with..."
 msgstr "Démarrer le chat avec..."
+
+#: layout/_menu.xhtml
+msgid "menu|Profile"
+msgstr "menu|Profil"
+
+msgid "menu|Settings"
+msgstr "menu|Paramètres"
+
+msgid "menu|Contact Lists"
+msgstr "menu|Liste des contacts"
+
+msgid "menu|Pools"
+msgstr "menu|Bassins"
+
+msgid "menu|Legible font size"
+msgstr "menu|Taille de la police"
+
+msgid "menu|Small font size"
+msgstr "menu|Petite police"
+
+msgid "menu|legible"
+msgstr "menu|lisible"
+
+msgid "menu|small"
+msgstr "menu|petit"
+
+msgid "menu|Currently in &quot;small display&quot; mode; click to change"
+msgstr ""
+
+msgid "menu|Currently in &quot;large display&quot; mode; click to change"
+msgstr ""
+
+msgid "menu|Large display"
+msgstr "menu|Affichage Large"
+
+msgid "menu|Small display"
+msgstr "menu|Affichage Réduit"
+
+msgid "menu|Administrate"
+msgstr "menu|Gérer"
+
+msgid "menu|Log out"
+msgstr "menu|Déconnexion"
+
+msgid "menu|Go Home"
+msgstr "menu|Accueil"
+
+msgid "menu|You are at Home"
+msgstr "menu|Vous êtes à l'accueil"
+
+msgid "menu|New Post"
+msgstr "menu|Nouveau Message"
+
+msgid "menu|Known Issues"
+msgstr "menu|Problèmes connus"
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr "Pas de notifications"
+
+msgid "1 notification"
+msgstr "1 notification"
+
+msgid "%d notifications"
+msgstr "%d notifications"
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr "1 message chat non lu de %1$s"
+
+msgid "%2$d unread chat messages from %1$s"
+msgstr "%2$d messages chat non lus de %1$s"
