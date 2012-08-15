@@ -88,13 +88,13 @@ $(document).ready( function() {
     );
 
     if( wantsToComment ) {
-      var bgTop = $('body.body').scrollTop();
-      var excerptTruncation = excerpt.offset().top + excerpt.height() - $('body.body').height();
+      var scrollTop = $('html').scrollTop();
+      var excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
       if( excerptTruncation < 0 ) {
         excerptTruncation = 0;
       }
-      $('body.body').animate(
-        { scrollTop: bgTop + heightDifference + excerptTruncation },
+      $('html').animate(
+        { scrollTop: scrollTop + heightDifference + excerptTruncation },
         animationSpeed,
         function() {
           excerpt.find('textarea.comment').focus();
