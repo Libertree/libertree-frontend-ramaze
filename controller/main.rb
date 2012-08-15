@@ -71,7 +71,7 @@ module Controller
       redirect '/'  if logged_in?
       force_mobile_to_narrow
 
-      @invitation_code = request['invitation_code'].to_s
+      @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
 
       return  if ! request.post?
 
