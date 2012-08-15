@@ -90,6 +90,12 @@ msgstr ""
 msgid "visibility|Forest"
 msgstr ""
 
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr ""
+msgid "This post and its comments are only visible to members of this Libertree forest"
+msgstr ""
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr ""
