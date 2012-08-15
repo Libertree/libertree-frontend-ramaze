@@ -102,7 +102,9 @@ $(document).ready( function() {
     var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
     var type = $(this).data('type');
     var textType = null;
-    if( type == 'post' ) { textType = 'post-text'; }
+    if( type == 'post' ) {
+      textType = 'post-text';
+    }
 
     $.post(
       '/_render',
@@ -111,8 +113,13 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
+          var pane = target.closest('div.comments-pane');
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
-          target.closest('div.comments').scrollTop(99999);
+          var delta = $('.preview-box').position().top - 100;
+          pane.animate(
+            { scrollTop: pane.scrollTop() + delta },
+            delta * 2
+          );
         }
       }
     );
