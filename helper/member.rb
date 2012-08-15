@@ -5,7 +5,9 @@ module Ramaze
         if member.avatar_path && File.exists?(File.join(options.roots.first, options.publics.first, member.avatar_path))
           path = member.avatar_path
         else
-          path = '/images/avatar-default.png'
+          # TODO: theme account setting
+          theme = 'default'
+          path = "/themes/#{theme}/images/avatar-default.png"
         end
         %|<img src="#{path}" class="#{styles}" alt="#{member.name_display}" title="#{member.name_display}" data-member-id="#{member.id}"/>|
       end
