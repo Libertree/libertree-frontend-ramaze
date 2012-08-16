@@ -21,6 +21,11 @@ function showMoreComments(comments, n) {
 
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+
+  if( post.find('.comments:visible').length == 0 ) {
+    return;
+  }
+
   $.get(
     '/comments/_comment/' + commentId,
     function(html) {

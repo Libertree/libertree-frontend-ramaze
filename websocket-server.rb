@@ -116,23 +116,7 @@ EventMachine.run do
           socket_data[:last_notification_id] = n.id
         end
 
-        # TODO: This SQL belongs in a class method on a model.
-        comments = Libertree::Model::Comment.s(
-          %{
-            SELECT
-              c.*
-            FROM
-                comments c
-              , accounts a
-            WHERE
-              c.id > COALESCE( a.watched_post_last_comment_id, 0 )
-              AND c.post_id = a.watched_post_id
-              AND a.id = ?
-            ORDER BY
-              c.id
-          },
-          account.id
-        )
+        comments = Libertree::Model::Comment.comments_since_id( socket_data[:last_comment_id] )
         comments.each do |c|
           ws.send(
             {
@@ -141,7 +125,7 @@ EventMachine.run do
               'postId'    => c.post.id,
             }.to_json
           )
-          account.watched_post_last_comment_id = c.id
+          socket_data[:last_comment_id] = c.id
         end
 
         chat_messages = Libertree::Model::ChatMessage.s(
