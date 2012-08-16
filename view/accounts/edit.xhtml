@@ -13,6 +13,7 @@
   #{_('Custom CSS:')} <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
   #{_('Custom JS:')} <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
   #{_('Automatic embedding:')} <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
+  #{_('Make thumbnails for images in post excerpts:')} <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} /><br/>
   #{_('Language:')}
     <select name="locale">
       <?r Libertree::LANG.each do |locale,name| ?>
