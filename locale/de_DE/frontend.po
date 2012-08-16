@@ -879,7 +879,7 @@ msgstr ":from \"rekado\"%sBeiträge, die von rekado geschrieben wurden"
 msgid ""
 "#photography -:from \"Photophile\"%sPosts tagged with %s#photography%s, but "
 "not those by Photophile"
-msgstr "#Fotografie -:from \"Photophile\"%Beiträge, die mit %s#Fotografie%s markiert sind, aber nicht von Photophile verfasst wurden."
+msgstr "#Fotografie -:from \"Photophile\"%sBeiträge, die mit %s#Fotografie%s markiert sind, aber nicht von Photophile verfasst wurden."
 
 msgid ""
 "#restaurants :river \"Important\"%sPosts tagged with %s#restaurants%s, or "
