@@ -61,7 +61,6 @@ $(document).ready( function() {
     var overflowed = excerpt.find('.overflowed');
     var excerptParent = $(this).closest('.post-excerpt');
     var postId = excerptParent.data('post-id');
-    $.get('/accounts/watch_post/'+postId);
 
     overflowed.data( 'contracted-height', overflowed.height() );
 

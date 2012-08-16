@@ -67,13 +67,6 @@ module Controller
       redirect_referrer
     end
 
-    def watch_post(post_id)
-      post = Libertree::Model::Post[post_id.to_i]
-      if post
-        account.watch_post post
-      end
-    end
-
     def change_password
       return  if ! request.post?
 
