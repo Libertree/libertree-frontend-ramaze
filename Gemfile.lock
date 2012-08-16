@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/rekado/redcarpet.git
-  revision: a2cac90990e9322a5347d357a17287d330595469
+  revision: 865d43444b6f724bc558df0ab9451da1bd6e1534
   specs:
     redcarpet (2.1.1)
 
