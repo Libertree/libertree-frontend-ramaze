@@ -153,9 +153,10 @@ $(document).ready( function() {
   $('.load-more').live( 'click', function(event) {
     event.preventDefault();
 
-    $('.more-posts-divider').remove();
     $('#no-more-posts').remove();
-    $('#post-excerpts').prepend('<div class="more-posts-divider"></div>');
+    $('.more-posts-divider').removeClass('more-posts-divider');
+    $('.post-excerpt:first').addClass('more-posts-divider'),
+
     prependSpinner('#post-excerpts');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
@@ -166,7 +167,6 @@ $(document).ready( function() {
         $('.more-posts .n').text('0');
       }
     );
-    return false;
   } );
 
   /* ---------------------------------------------------- */

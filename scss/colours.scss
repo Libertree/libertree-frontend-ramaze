@@ -114,10 +114,6 @@ input[type="password"],
     background-color: $faint_green;
 }
 
-.more-posts-divider {
-    background-color: $rose;
-}
-
 .single-post-view {
     div.post.with-comments-sliding {
         background-color: $dust; /* fallback for browsers that don't support alpha in colours */
