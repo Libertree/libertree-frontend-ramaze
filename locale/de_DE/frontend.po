@@ -2,16 +2,18 @@
 # Translators:
 #   <donnerkarlson@web.de>, 2012.
 #   Jakob Kramer <jakob.kramer@gmx.de>, 2012.
+#   <kudlaty@ymail.com>, 2012.
 #   <moritz.kiefer@gmail.com>, 2012.
 #   <rekado+libertree@elephly.net>, 2012.
 # Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
+#   <sk8erBLN@lavabit.com>, 2012.
 #   <The_Butcher@gmx.at>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-10 06:10+0000\n"
+"PO-Revision-Date: 2012-08-16 23:31+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -111,6 +113,24 @@ msgstr "Post"
 msgid "post|Preview"
 msgstr "Vorschau"
 
+msgid "Visibility"
+msgstr "Sichtbarkeit"
+
+msgid "visibility|Internet"
+msgstr "Sichtbarkeit|Internet"
+
+msgid "visibility|Forest"
+msgstr "Sichtbarkeit|Libertree Wald"
+
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr "Dieser Beitrag und seine Kommentare sind im ganzen Internet sichtbar"
+
+msgid ""
+"This post and its comments are only visible to members of this Libertree "
+"forest"
+msgstr "Dieser Beitrag und seine Kommentare sind sind nur für Mitglieder dieses Libertree Waldes sichtbar"
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr "Beitrag bearbeiten"
@@ -163,9 +183,9 @@ msgid "No more posts."
 msgstr "Keine weiteren Beiträge"
 
 msgid ""
-"The system is still matching posts with this river.  Check in a few minutes "
+"The system is still matching posts with this river. Check in a few minutes "
 "for more posts."
-msgstr "Das System passt noch Posts für diesen Fluss an. Überprüfen sie ihn in ein paar Minuten wieder für weitere Beiträge."
+msgstr "Das System gleicht noch Beiträge mit diesem Fluss ab. Schau bitte in ein paar Minuten noch einmal nach weiteren Beiträgen."
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
@@ -174,7 +194,7 @@ msgstr "Zurück zum Anfang"
 msgid "Liked by %s"
 msgstr "Gefällt %s"
 
-msgid "One comment by %1$s"
+msgid "1 comment by %1$s"
 msgstr "Ein Kommentar von %1$s"
 
 msgid "%2$d comments by %1$s"
@@ -184,7 +204,7 @@ msgid "comments"
 msgstr "Kommentare"
 
 msgid "comment"
-msgstr "Kommentieren"
+msgstr "kommentieren"
 
 msgid "mark read"
 msgstr "Als gelesen markieren"
@@ -201,7 +221,7 @@ msgid "hide"
 msgstr "Verstecken"
 
 msgid "Click to confirm hiding of this post."
-msgstr "Klicke um den Beitrag wirklich zu verstecken"
+msgstr "Klicke Bestätigen um den Beitrag wirklich zu verstecken"
 
 msgid "confirm"
 msgstr "Bestätigen"
@@ -374,6 +394,9 @@ msgstr "Benutzerdefiniertes JS:"
 msgid "Automatic embedding:"
 msgstr "Automatisches Einbinden:"
 
+msgid "Make thumbnails for images in post excerpts:"
+msgstr "Erstelle Vorschaubilder für Fotos in Beitragsauszügen: "
+
 msgid "Language:"
 msgstr "Sprache:"
 
@@ -457,26 +480,27 @@ msgid "%d more"
 msgstr "%d mehr"
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
-msgstr "%s hat deinen %sBeitrag%s kommentiert."
+msgid "%1$s commented on your %2$spost%3$s."
+msgstr "%1$s hat Deinen  %2$sBeitrag%3$s kommentiert."
 
-msgid "%s commented on %s's %spost%s."
-msgstr "%s hat %ss %sBeitrag%s kommentiert."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s hat %2$s's %3$sBeitrag kommentiert%4$s."
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
-msgstr "%s gefällt dein %sKommentar%s zu deinem Beitrag."
+msgid "%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s gefällt Dein %2$sKommentar%3$s zu Deinem Beitrag."
 
-msgid "%s liked your %scomment%s on %s's post."
-msgstr "%s gefällt dein %sKommentar%s zu %ss Beitrag."
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s gefällt Dein %2$sKommentar%3$s zu %4$s's Beitrag."
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
-msgstr "%s gefällt dein %sBeitrag%s."
+msgid "%1$s liked your %2$spost%3$s."
+msgstr "%1$s gefällt Dein %2$sBeitrag%3$s."
 
+# TODO: positional placeholders
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
-msgstr "%s hat dir eine %sNachricht%s geschickt."
+msgid "%1$s sent you a %2$smessage%3$s."
+msgstr "%1$s hat Dir eine %2$s direkte Nachricht gesendet%3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -528,7 +552,7 @@ msgid "Contact list updated."
 msgstr "Kontaktliste aktualisiert"
 
 msgid "Contact list name may not be empty."
-msgstr "Der Kontaktlistnamen darf nicht leer sein"
+msgstr "Der Kontaktlistname darf nicht leer sein"
 
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
@@ -711,7 +735,7 @@ msgid "Posts by %s"
 msgstr "Beiträge von %s"
 
 msgid "Add %s to a river"
-msgstr "Füge %s einen Fluss hinzu"
+msgstr "Füge %s einem Fluss hinzu"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -852,7 +876,7 @@ msgstr ":unread #stricken%sBeiträge, die mit %s#stricken%s markiert sind und di
 msgid ""
 "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts "
 "about cats"
-msgstr "#lustig -#Katzen -#lolKatzen%sBeiträge die mit %s#lustig%s markiert sind, aber nichts mit Katzen zu tun haben."
+msgstr "#lustig -#Katzen -#lolKatzen%sBeiträge, die mit %s#lustig%s markiert sind, aber nichts mit Katzen zu tun haben."
 
 msgid ""
 "environment%sPosts that mention the environment, whether or not they were "
@@ -861,7 +885,7 @@ msgstr "Umwelt%sBeiträge, die die Umwelt erwähnen, egal ob sie mit einem entsp
 
 msgid ""
 ":tree #bug #feature%sBug reports and feature requests made by your treemates"
-msgstr ":tree #bug #feature%sProgrammfehlerberichte und Featureanfragen die von deinen Baumfreunden gestellt worden sind."
+msgstr ":tree #bug #feature%sProgrammfehlerberichte und Featureanfragen, die von deinen Baumfreunden gestellt worden sind."
 
 msgid ""
 "\"new york\"%sPosts about New York, but not posts only having the word "
@@ -908,3 +932,75 @@ msgstr "(Kein Kontakt ist online)"
 
 msgid "Start new chat with..."
 msgstr "Chatte mit..."
+
+#: layout/_menu.xhtml
+msgid "menu|Profile"
+msgstr "Profil"
+
+msgid "menu|Settings"
+msgstr "Einstellungen"
+
+msgid "menu|Contact Lists"
+msgstr "Kontaktlisten"
+
+msgid "menu|Pools"
+msgstr "Pools"
+
+msgid "menu|Legible font size"
+msgstr "Lesbare Schriftgröße"
+
+msgid "menu|Small font size"
+msgstr "Kleine Schriftgröße"
+
+msgid "menu|legible"
+msgstr "lesbar"
+
+msgid "menu|small"
+msgstr "klein"
+
+msgid "menu|Currently in &quot;small display&quot; mode; click to change"
+msgstr "Aktuell im Modus für  &quot;kleine Bildschirme&quot; anklicken zum Ändern"
+
+msgid "menu|Currently in &quot;large display&quot; mode; click to change"
+msgstr "Aktuell im Modus für  &quot;grosse Bildschirme &quot; anklicken zum Ändern"
+
+msgid "menu|Large display"
+msgstr "Großer Bildschirm"
+
+msgid "menu|Small display"
+msgstr "Kleiner Bildschirm"
+
+msgid "menu|Administrate"
+msgstr "verwalten"
+
+msgid "menu|Log out"
+msgstr "abmelden"
+
+msgid "menu|Go Home"
+msgstr "nach Hause"
+
+msgid "menu|You are at Home"
+msgstr "zu Hause"
+
+msgid "menu|New Post"
+msgstr "Neuer Beitrag"
+
+msgid "menu|Known Issues"
+msgstr "Bekannte Probleme"
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr "Keine Benachrichtigungen"
+
+msgid "1 notification"
+msgstr "1 Benachrichtigung"
+
+msgid "%d notifications"
+msgstr "%d Benachrichtigungen"
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr "1 ungelesene Chat-Nachricht von %1$s"
+
+msgid "%2$d unread chat messages from %1$s"
+msgstr "%2$d ungelesene Chat-Nachrichten von %1$s"
