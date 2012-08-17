@@ -19,9 +19,12 @@ module Controller
             respond '', 400
           end
 
+          visibility = request['visibilty'] || 'forest'
+          visibility = visibility.to_s
+
           post = Libertree::Model::Post.create(
             'member_id'  => @account.member.id,
-            'visibility' => request['visibilty'].to_s,
+            'visibility' => visibility,
             'text'       => request['text'].to_s + "\n\n*posted with " + request['source'].to_s + "*"
           )
 
