@@ -8,9 +8,5 @@ module Libertree
     def postprocess(full_document)
       Libertree::post_processing(full_document)
     end
-
-    def normal_text(text)
-      Libertree::hashtaggify(text)
-    end
   end
 end

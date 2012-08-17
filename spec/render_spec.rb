@@ -19,14 +19,10 @@ describe Libertree do
     4 spaces before
        7 spaces before
 
-tail}).should == %{<p>head</p>
-
-<pre><code>  6 spaces before
+tail}).should == %{<p>head</p><pre><code>  6 spaces before
 4 spaces before
    7 spaces before
-</code></pre>
-
-<p>tail</p>}
+</code></pre><p>tail</p>}
     end
 
     it 'should autolink URLs' do
