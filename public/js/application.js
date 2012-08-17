@@ -171,9 +171,24 @@ $(document).ready( function() {
 
   setInterval( updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
-  if( $.browser.opera ) {
-    $('textarea').not('.textarea-chat').expandable();
-  }
+
+  $('textarea').live( 'mousedown', function() {
+    $(this).data('width', $(this).outerWidth());
+    $(this).data('height', $(this).outerHeight());
+    console.log('down');
+  } );
+
+  $('textarea').live( 'mouseup', function() {
+    console.log('up');
+    var th = $(this);
+    if( th.outerWidth() != th.data('width') || th.outerHeight() != th.data('height') ) {
+      th.addClass('no-autoresize');
+    }
+    th.data('width', th.outerWidth());
+    th.data('height', th.outerHeight());
+  } );
+
+  $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
 
   if( layout == 'narrow' ) {
     $('*').mouseover();

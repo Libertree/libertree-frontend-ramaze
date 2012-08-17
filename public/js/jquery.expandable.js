@@ -45,6 +45,9 @@ $.fn.extend({
                 });
 
             function check() {
+                if( $this.hasClass('no-autoresize') ) {
+                  return;
+                }
                 var text = $this.val(), newHeight, height, usedHeight, usedRows, availableRows;
                 // copy textarea value to the $mirror
                 // encode any html passed in and replace new lines with a <br>
