@@ -109,4 +109,8 @@ body.body.excerpts-view .main {
             display: none;
         }
     }
+
+    textarea.comment, form.comment .form-buttons {
+        width: 300px;
+    }
 }

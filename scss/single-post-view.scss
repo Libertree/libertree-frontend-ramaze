@@ -92,6 +92,10 @@ body.body.single-post-view .main {
           }
         }
 
+        textarea.comment, form.comment .form-buttons {
+            width: 100%;
+        }
+
         .detachable {
           .drag-handle-bar {
             display: none;
