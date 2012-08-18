@@ -1,6 +1,8 @@
 @import "colours.scss";
 
-body.body.single-post-view .main {
+body.body.single-post-view {
+  height: 100%;
+  .main {
     margin: 0 auto;
     padding: 70px 0px 30px 0px;
     background: transparent;
@@ -8,6 +10,7 @@ body.body.single-post-view .main {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+  }
 }
 
 .single-post-view {
