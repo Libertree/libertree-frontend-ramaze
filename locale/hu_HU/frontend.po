@@ -6,9 +6,9 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-07 17:15+0000\n"
+"PO-Revision-Date: 2012-08-18 10:16+0000\n"
 "Last-Translator: danielwine <danielwine@gmail.com>\n"
-"Language-Team: UNDEFINED\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,6 +47,9 @@ msgstr "Érvénytelen azonosítók."
 msgid "A valid invitation code is required."
 msgstr "Érvényes meghívó jelsor szükségeltetik!"
 
+msgid "This invitation code has already been used. Try another one!"
+msgstr "Ezt a meghívó jelsort már felhasználták. Próbálj meg egy másikat!"
+
 msgid "You mistyped your password."
 msgstr "Elgépelted a jelszavadat."
 
@@ -56,7 +59,7 @@ msgstr "Ez az azonosító (%s) már foglalt. Kérlek válassz másikat!"
 msgid ""
 "Username must be at least 2 characters long and consist only of lowercase "
 "letters, numbers, underscores and dashes."
-msgstr "Az azonosítónak legalább két jel hosszúnak kell lennie és kizárólag kisbetűkből, számokból, aláhúzás- valamint kötőjelből állhat."
+msgstr "Az azonosítónak legalább 2 jel hosszúságúnak kell lennie és kizárólag kisbetűkből, számokból, aláhúzás- valamint kötőjelből állhat."
 
 msgid ""
 "A password reset link has been sent for the account with that email address."
@@ -106,6 +109,24 @@ msgstr "küldés"
 msgid "post|Preview"
 msgstr "előnézet"
 
+msgid "Visibility"
+msgstr "Láthatóság"
+
+msgid "visibility|Internet"
+msgstr "világháló"
+
+msgid "visibility|Forest"
+msgstr "erdő"
+
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr "A bejegyzés és hozzászólásai az egész világhálón láthatóak"
+
+msgid ""
+"This post and its comments are only visible to members of this Libertree "
+"forest"
+msgstr "A bejegyzést és hozzászólásait csak ennek az erdőnek a tagjai láthatják"
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr "szerkesztés"
@@ -118,13 +139,13 @@ msgstr "frissítés"
 
 #: view/posts/show.xhtml
 msgid "Start receiving notifications about comments on this post"
-msgstr "szeretnék értesítéseket kapni ezen bejegyzés hozzászólásairól"
+msgstr "szeretnék értesítéseket kapni a bejegyzés hozzászólásairól"
 
 msgid "subscribe"
 msgstr "feliratkozás"
 
 msgid "Stop receiving notifications about comments on this post"
-msgstr "nem szeretnék többé értesítéseket kapni ezen bejegyzés hozzászólásairól"
+msgstr "nem szeretnék többé értesítéseket kapni a bejegyzés hozzászólásairól"
 
 msgid "unsubscribe"
 msgstr "leiratkozás"
@@ -158,9 +179,9 @@ msgid "No more posts."
 msgstr "nincs több bejegyzés."
 
 msgid ""
-"The system is still matching posts with this river.  Check in a few minutes "
+"The system is still matching posts with this river. Check in a few minutes "
 "for more posts."
-msgstr "Még rejt magában további bejegyzéseket ez a folyó. Gyere vissza pár perc múlva, s láss csodát."
+msgstr "Még rejtőznek további bejegyzések ebben a folyóban. Nézz rá újra pár perc múlva és láss csodát..."
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
@@ -169,17 +190,17 @@ msgstr "vissza az elejére"
 msgid "Liked by %s"
 msgstr "%s kedveli"
 
-msgid "One comment by %1$s"
-msgstr "egy megjegyzést írt %1$s"
+msgid "1 comment by %1$s"
+msgstr "1 hozzászólást írt %1$s"
 
 msgid "%2$d comments by %1$s"
-msgstr "%2$d megjegyzést írt %1$s"
+msgstr "%2$d hozzászólást írt %1$s"
 
 msgid "comments"
-msgstr "megjegyzés"
+msgstr "hozzászólás"
 
 msgid "comment"
-msgstr "megjegyzés"
+msgstr "hozzászólás"
 
 msgid "mark read"
 msgstr "olvasottnak jelöl"
@@ -215,7 +236,7 @@ msgstr "eltávolít"
 
 msgid ""
 "Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Kattins középső gombbal vagy használj shift-klikket / ctrl-klikket, hogy új fülben / ablakban nyithasd meg"
+msgstr "Kattints középső gombbal vagy használj shift-klikket / ctrl-klikket, hogy új fülben / ablakban nyithasd meg"
 
 msgid "view post"
 msgstr "bejegyzés megtekintése"
@@ -287,7 +308,7 @@ msgstr "hozzászól"
 
 #: view/comments/_comment.xhtml
 msgid "One like"
-msgstr "egy kedveli"
+msgstr "egy ember kedveli"
 
 msgid "%d likes"
 msgstr "%d ember kedveli"
@@ -306,10 +327,10 @@ msgstr "megosztható link a hozzászóláshoz"
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
-msgstr "felső index"
+msgstr "cím"
 
 msgid "markdown|subtitle"
-msgstr "alsó index"
+msgstr "alcím"
 
 msgid "markdown|link"
 msgstr "hivatkozás"
@@ -349,7 +370,7 @@ msgid "Email:"
 msgstr "E-mail:"
 
 msgid "(for password recovery; never public)"
-msgstr "(jelszó-visszaállításhoz; sosem nyilvános)"
+msgstr "(kizárólag jelszó-visszaállításhoz; sosem nyilvános)"
 
 msgid "Post excerpt maximum height:"
 msgstr "a bejegyzésminta legnagyobb magassága:"
@@ -368,6 +389,9 @@ msgstr "Saját JS:"
 
 msgid "Automatic embedding:"
 msgstr "Automatikus beágyazás:"
+
+msgid "Make thumbnails for images in post excerpts:"
+msgstr "A bejegyzésmintákban készüljenek a képekhez miniatűrök:"
 
 msgid "Language:"
 msgstr "Nyelv:"
@@ -452,33 +476,34 @@ msgid "%d more"
 msgstr "%d további értesítés"
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
-msgstr "%s hozzászólt a %sbejegyzésedhez%s."
+msgid "%1$s commented on your %2$spost%3$s."
+msgstr "%1$s hozzászólt a %2$sbejegyzésedhez%3$s."
 
-msgid "%s commented on %s's %spost%s."
-msgstr "%s hozzászólt %s %sbejegyzéséhez%s."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s hozzászólt %2$s %3$sbejegyzéséhez%4$s."
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
-msgstr "%s kedveli a bejegyzésedhez fűzött %shozzászólásod%s."
+msgid "%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s kedveli a saját bejegyzésedhez fűzött %2$shozzászólásodat%3$s."
 
-msgid "%s liked your %scomment%s on %s's post."
-msgstr "%s kedveli a %shozzászólásod%s amit %s bejegyzéséhez írtál."
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s kedveli a %4$s bejegyzéséhez fűzött %2$shozzászólásodat%3$s ."
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
-msgstr "%s kedveli a %sbejegyzésedet%s."
+msgid "%1$s liked your %2$spost%3$s."
+msgstr "%1$s kedveli a %2$sbejegyzésedet%3$s."
 
+# TODO: positional placeholders
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
-msgstr "%s %süzenetet%s küldött neked."
+msgid "%1$s sent you a %2$smessage%3$s."
+msgstr "%1$s küldött neked egy %2$süzenetet%3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ","
 
 msgid "list-and| and "
-msgstr "és"
+msgstr " és"
 
 #: helper/age.rb
 msgid "1 day ago"
@@ -550,7 +575,7 @@ msgstr "mégsem"
 
 #: controller/admin/base.rb
 msgid "Administrative privileges required."
-msgstr "Rendszergazdai jogosultságok szükségeltetnek."
+msgstr "Karbantartói jogosultságok szükségeltetnek."
 
 #: controller/admin/forests.rb
 msgid "The tree is already a member of the forest."
@@ -631,7 +656,7 @@ msgid "direct-message|Preview"
 msgstr "előnézet"
 
 msgid "direct-message|Recipients"
-msgstr "egyéb címzettek"
+msgstr "címzettek"
 
 msgid "direct-message-warning|please note..."
 msgstr "kérlek vedd tekintetbe..."
@@ -640,7 +665,7 @@ msgid ""
 "Please note that direct messages are not fully private, encrypted nor "
 "secure.  As with all data on this tree, direct messages are fully accessible"
 " to the arborista (administrator)."
-msgstr "kérlek vedd tekintetbe, hogy a közvetlen üzenetek nem teljesen egészében magánjellegűek vagy biztonságosak. Miképp minden adat ezen a fán, a közvetlen üzenetek is teljes mértékben hozzáférhetőek a botanikusok (rendszergazdák) számára."
+msgstr "kérlek vedd tekintetbe, hogy a közvetlen üzenetek nem teljesen egészében magánjellegűek vagy biztonságosak. Miképp minden adat ezen a fán, a közvetlen üzenetek is teljes mértékben hozzáférhetőek a botanikusok (karbantartók) számára."
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -826,10 +851,10 @@ msgid "river|Examples"
 msgstr "Példák"
 
 msgid "river|Query"
-msgstr "lekérdezés"
+msgstr "a lekérdezés mintája"
 
 msgid "river|Description"
-msgstr "Leírás"
+msgstr "jelentése"
 
 msgid "All posts originating from your tree"
 msgstr "Minden bejegyzés, ami a te fádtól ered"
@@ -903,3 +928,75 @@ msgstr "(egyetlen társ sincs jelen)"
 
 msgid "Start new chat with..."
 msgstr "Csevegés kezdése vele..."
+
+#: layout/_menu.xhtml
+msgid "menu|Profile"
+msgstr "Megjelenésed"
+
+msgid "menu|Settings"
+msgstr "Beállítások"
+
+msgid "menu|Contact Lists"
+msgstr "Társjegyzék"
+
+msgid "menu|Pools"
+msgstr "Medencék"
+
+msgid "menu|Legible font size"
+msgstr "olvasható betűméret"
+
+msgid "menu|Small font size"
+msgstr "kis betűméret"
+
+msgid "menu|legible"
+msgstr "olvasható"
+
+msgid "menu|small"
+msgstr "kicsi"
+
+msgid "menu|Currently in &quot;small display&quot; mode; click to change"
+msgstr "Jelenleg &quot;kis kijelző&quot; üzemmódban vagy; kattints a változtatáshoz"
+
+msgid "menu|Currently in &quot;large display&quot; mode; click to change"
+msgstr "Jelenleg &quot;nagy kijelző&quot; üzemmódban vagy; kattints a változtatáshoz"
+
+msgid "menu|Large display"
+msgstr "Nagy kijelző"
+
+msgid "menu|Small display"
+msgstr "Kis kijelző"
+
+msgid "menu|Administrate"
+msgstr "Karbantartás"
+
+msgid "menu|Log out"
+msgstr "Kilépés"
+
+msgid "menu|Go Home"
+msgstr "Irány haza"
+
+msgid "menu|You are at Home"
+msgstr "Otthon vagy"
+
+msgid "menu|New Post"
+msgstr "Új bejegyzés"
+
+msgid "menu|Known Issues"
+msgstr "Ismert hibák"
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr "nincs értesítés"
+
+msgid "1 notification"
+msgstr "1 értesítés"
+
+msgid "%d notifications"
+msgstr "%d értesítés"
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr "%1$s csevegőtársad írt egy új üzenetet"
+
+msgid "%2$d unread chat messages from %1$s"
+msgstr "%1$s csevegőtársad %2$d új üzenetet írt"
