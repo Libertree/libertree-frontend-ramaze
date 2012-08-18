@@ -14,6 +14,9 @@ $(document).ready( function() {
       case "italic":
         textarea.surroundSelectedText("*", "*");
         break;
+      case "strike":
+        textarea.surroundSelectedText("~~", "~~");
+        break;
       case "url":
         textarea.surroundSelectedText("[", "](URL)");
         break;
