@@ -1,5 +1,9 @@
 <h2>#{_('Notifications')}</h2>
 
+<div style="margin-bottom: 1.5em;">
+  <a id="mark-all-notifications-seen" href="#">#{_('mark all seen')}</a>
+</div>
+
 <?r if @set_keys.empty? ?>
     #{_('You have no new notifications.')}
 <?r else
