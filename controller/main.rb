@@ -108,6 +108,7 @@ module Controller
         invitation.account_id = a.id
 
         account_login request.subset('username', 'password')
+        flash[:error] = nil
         redirect Home.r(:/)
       rescue PGError => e
         case e.message
