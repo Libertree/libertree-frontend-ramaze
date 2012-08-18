@@ -40,6 +40,11 @@ module Controller
     def update(contact_list_id)
       redirect_referrer  if ! request.post?
 
+      if request['name'].to_s.empty?
+        flash[:error] = _('Contact list name may not be empty.')
+        redirect_referrer
+      end
+
       @list = Libertree::Model::ContactList[
         account_id: account.id,
         id: contact_list_id.to_i
@@ -49,6 +54,7 @@ module Controller
       end
 
       @list.members = request['members']
+      @list.name = request['name'].to_s
 
       flash[:notice] = _('Contact list updated.')
       redirect r(:/)

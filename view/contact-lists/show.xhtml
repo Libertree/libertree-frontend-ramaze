@@ -1,6 +1,7 @@
 <h3>#{_('Contact List: %s') % @list.name}</h3>
 
 <form action="/contact-lists/update/#{@list.id}" method="POST">
+  #{s_('contact-list|Name:')} <input type="text" value="#{@list.name}" name="name"/><br/>
   <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(choose members)')}">
     <?r @all_members.each do |m| ?>
       <option value="#{m.id}" #{@list.members.include?(m) ? 'selected="selected"' : ''}>#{m.name_display} (#{m.handle})</option>

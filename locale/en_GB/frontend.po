@@ -418,7 +418,7 @@ msgstr ""
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
 msgstr ""
-msgid "new-contact-list|Name:"
+msgid "contact-list|Name:"
 msgstr ""
 msgid "new-contact-list|Create"
 msgstr ""
