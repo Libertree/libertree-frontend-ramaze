@@ -42,6 +42,8 @@ module Controller
       if request.post?
         a = account_login( request.subset('username', 'password') )
         if a
+          session[:saved_text] = Hash.new
+          session[:chats_closed] = Set.new
           if $post_login_path
             # Used in spec suite
             redirect $post_login_path
@@ -60,6 +62,8 @@ module Controller
     end
 
     def logout
+      session[:saved_text] = nil
+      session[:chats_closed] = nil
       account_logout
       flash[:notice] = _('You have been logged out.')
       redirect r(:login)
