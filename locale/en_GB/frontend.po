@@ -414,6 +414,8 @@ msgid "Contact list updated."
 msgstr ""
 msgid "Contact list name may not be empty."
 msgstr ""
+msgid "The contact list &ldquo;%s&rdquo; has been deleted."
+msgstr ""
 
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
@@ -421,6 +423,8 @@ msgstr ""
 msgid "contact-list|Name:"
 msgstr ""
 msgid "new-contact-list|Create"
+msgstr ""
+msgid "contact-list|delete"
 msgstr ""
 
 #: view/contact-lists/show.xhtml

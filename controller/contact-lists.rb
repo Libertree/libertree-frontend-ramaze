@@ -59,5 +59,15 @@ module Controller
       flash[:notice] = _('Contact list updated.')
       redirect r(:/)
     end
+
+    def destroy(contact_list_id)
+      contact_list = Libertree::Model::ContactList[contact_list_id.to_i]
+      if contact_list
+        name = contact_list.name
+        contact_list.delete
+        flash[:notice] = _('The contact list &ldquo;%s&rdquo; has been deleted.') % name
+      end
+      redirect_referrer
+    end
   end
 end

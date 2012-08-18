@@ -7,6 +7,9 @@
 
 <ul>
 <?r @lists.each do |l| ?>
-  <li><a href="/contact-lists/show/#{l.id}">#{l.name}</a></li>
+  <li>
+    <a href="/contact-lists/show/#{l.id}">#{l.name}</a>
+    <a class="delete" href="/contact-lists/destroy/#{l.id}">#{img 'icon-delete.png', {alt:s_('contact-list|delete'), title:s_('contact-list|delete'), class:"size-16"}}</a>
+  </li>
 <?r end ?>
 </ul>
