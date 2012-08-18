@@ -75,9 +75,14 @@ module Controller
 
       return  if ! request.post?
 
-      invitation = Libertree::Model::Invitation[ code: @invitation_code, account_id: nil ]
+      invitation = Libertree::Model::Invitation[ code: @invitation_code ]
       if invitation.nil?
         flash[:error] = _('A valid invitation code is required.')
+        return
+      end
+
+      if ! invitation.account_id.nil?
+        flash[:error] = _('This invitation code has already been used. Try another one!')
         return
       end
 
