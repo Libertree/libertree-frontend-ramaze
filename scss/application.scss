@@ -542,11 +542,12 @@ textarea#invitations {
 .markdown-injector {
     margin-bottom: 5px;
     opacity: 0.3;
+    text-align: center;
     a {
         background-color: $faint_tan;
         color: black;
         border-bottom: 0px;
-        margin-left: 0.1em;
+        margin-left: 0.6em;
         cursor: pointer;
     }
 }
