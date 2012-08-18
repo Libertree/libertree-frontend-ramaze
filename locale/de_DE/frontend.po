@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-16 23:31+0000\n"
+"PO-Revision-Date: 2012-08-18 13:07+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -53,6 +53,9 @@ msgstr "Kennwort oder Nutzername ungültig."
 
 msgid "A valid invitation code is required."
 msgstr "Ein gültiger Einladungscode ist erforderlich."
+
+msgid "This invitation code has already been used. Try another one!"
+msgstr "Diese Einladung wurde bereits von jemandem benutzt. Versuche es mit einem anderen Einladungscode!"
 
 msgid "You mistyped your password."
 msgstr "Du hast dich bei der Kennworteingabe vertippt."
@@ -117,10 +120,10 @@ msgid "Visibility"
 msgstr "Sichtbarkeit"
 
 msgid "visibility|Internet"
-msgstr "Sichtbarkeit|Internet"
+msgstr "Internet"
 
 msgid "visibility|Forest"
-msgstr "Sichtbarkeit|Libertree Wald"
+msgstr "Libertree Wald"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -204,7 +207,7 @@ msgid "comments"
 msgstr "Kommentare"
 
 msgid "comment"
-msgstr "kommentieren"
+msgstr "Kommentieren"
 
 msgid "mark read"
 msgstr "Als gelesen markieren"
@@ -511,25 +514,25 @@ msgstr " und "
 
 #: helper/age.rb
 msgid "1 day ago"
-msgstr "1 Tag her"
+msgstr "vor 1 Tag"
 
 msgid "%d days ago"
-msgstr "%d Tage her"
+msgstr "vor %d Tagen"
 
 msgid "1 hour ago"
-msgstr "1 Stunde her"
+msgstr "vor 1 Stunde"
 
 msgid "%d hours ago"
-msgstr "%d Stunden her"
+msgstr "vor %d Stunden"
 
 msgid "1 minute ago"
-msgstr "1 Minute her"
+msgstr "vor 1 Minute"
 
 msgid "%d minutes ago"
-msgstr "%d Minuten her"
+msgstr "vor %d Minuten"
 
 msgid "seconds ago"
-msgstr "Sekunden her"
+msgstr "vor Sekunden"
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -812,10 +815,10 @@ msgid "Set as home river"
 msgstr "Einstellen als Heimatfluss"
 
 msgid "river|edit"
-msgstr "bearbeiten"
+msgstr "Bearbeiten"
 
 msgid "river|delete"
-msgstr "löschen"
+msgstr "Löschen"
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
@@ -944,7 +947,7 @@ msgid "menu|Contact Lists"
 msgstr "Kontaktlisten"
 
 msgid "menu|Pools"
-msgstr "Pools"
+msgstr "Sammelbecken"
 
 msgid "menu|Legible font size"
 msgstr "Lesbare Schriftgröße"
@@ -971,10 +974,10 @@ msgid "menu|Small display"
 msgstr "Kleiner Bildschirm"
 
 msgid "menu|Administrate"
-msgstr "verwalten"
+msgstr "Verwalten"
 
 msgid "menu|Log out"
-msgstr "abmelden"
+msgstr "Abmelden"
 
 msgid "menu|Go Home"
 msgstr "nach Hause"
