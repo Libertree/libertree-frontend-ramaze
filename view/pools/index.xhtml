@@ -13,6 +13,7 @@
   <?r @pools.each do |p| ?>
     <li class="pool">
       <a href="/pools/show/#{p.id}">#{p.name}</a>
+      <a href="/pools/edit/#{p.id}">#{img 'icon-edit.png', {alt:s_('pool|edit'), title:s_('pool|edit'), class:"size-16"}}</a>
       <a href="/pools/destroy/#{p.id}" class="delete">#{img 'icon-delete.png', {alt:s_('pool|Delete'), class:"size-16"}}</a>
     </li>
   <?r end ?>

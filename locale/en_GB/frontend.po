@@ -521,7 +521,7 @@ msgid "Pools"
 msgstr ""
 msgid "Use pools to collect posts."
 msgstr ""
-msgid "new-pool|Name:"
+msgid "pool|Name:"
 msgstr ""
 msgid "new-pool|Create"
 msgstr ""
@@ -530,6 +530,12 @@ msgstr ""
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
+msgstr ""
+
+#: view/pools/edit.xhtml
+msgid "Edit Pool: %s"
+msgstr ""
+msgid "pool|Update"
 msgstr ""
 
 #: view/profiles/edit.xhtml

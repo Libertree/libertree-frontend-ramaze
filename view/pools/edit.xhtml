@@ -1,0 +1,7 @@
+<h2>#{_('Edit Pool: %s') % @pool.name}</h2>
+
+<form id="form-pool-edit" class="form-pool" method="POST" action="/pools/update/#{@pool.id}">
+  #{s_('pool|Name:')} <input type="text" name="name" value="#{@pool.name}"/>
+  <input type="submit" value="#{s_('pool|Update')}"/>
+</form>
+
