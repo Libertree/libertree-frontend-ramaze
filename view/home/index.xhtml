@@ -10,7 +10,7 @@
   <div class="spinner"></div>
 </div>
 
-<?r if @river.being_processed? ?>
+<?r if @river && @river.being_processed? ?>
   <p id="no-more-posts">
   #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
   </p>
