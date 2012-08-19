@@ -1,0 +1,27 @@
+<h2>#{_('Unfinished Jobs')}</h2>
+
+<table class="jobs">
+  <tr>
+    <th>ID</th>
+    <th>Task</th>
+    <th>Params</th>
+    <th>Time created</th>
+    <th>Time started</th>
+    <th>Tries</th>
+  </tr>
+
+  <?r @unfinished.each do |job| ?>
+    <tr>
+      <td>#{job.id}</td>
+      <td>#{job.task}</td>
+      <td>#{job.params}</td>
+      <td>#{job.time_created}</td>
+      <td>#{job.time_started}</td>
+      <td>#{job.tries}</td>
+    </tr>
+  <?r end ?>
+</table>
+
+<p>
+  <a href="/admin">Back to forest administration</a>
+</p>

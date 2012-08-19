@@ -1,25 +1,36 @@
 @import "colours.scss";
 
-.forest {
-    background: $light_green;
-    padding: 1em;
-    margin-bottom: 0.5em;
+body.admin {
+    .forest {
+        background: $light_green;
+        padding: 1em;
+        margin-bottom: 0.5em;
 
-    .name {
-        font-weight: bold;
-    }
-}
-
-.server {
-    background: $light_tan;
-    padding: 0.3em;
-    margin-bottom: 0.3em;
-    cursor: not-allowed;
-    &.draggable {
-        cursor: move;
+        .name {
+            font-weight: bold;
+        }
     }
 
-    .name {
-        font-weight: bold;
+    .server {
+        background: $light_tan;
+        padding: 0.3em;
+        margin-bottom: 0.3em;
+        cursor: not-allowed;
+        &.draggable {
+            cursor: move;
+        }
+
+        .name {
+            font-weight: bold;
+        }
+    }
+
+    table.jobs {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5em;
+      tr {
+        border-bottom: 1px dotted #333;
+      }
     }
 }
