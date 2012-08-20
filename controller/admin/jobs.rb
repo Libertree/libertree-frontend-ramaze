@@ -20,6 +20,14 @@ module Controller
         redirect_referrer
       end
 
+      def destroy(job_id)
+        job = Libertree::Model::Job[ job_id ]
+        if job
+          job.delete
+        end
+        redirect_referrer
+      end
+
     end
   end
 end

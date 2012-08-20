@@ -14,4 +14,10 @@ $(document).ready( function() {
       }
     }
   } );
+  $('table.jobs td a.delete').live( 'click', function(event) {
+    event.preventDefault();
+    if( confirm('Delete this job?') ) {
+      window.location = $(this).attr('href');
+    }
+  } );
 } );

@@ -15,7 +15,7 @@
     <th>Time created</th>
     <th>Time started</th>
     <th>Tries</th>
-    <th>Actions</th>
+    <th colspan="2">Actions</th>
   </tr>
 
   <?r @unfinished.each do |job| ?>
@@ -29,6 +29,11 @@
       <td>
         <a href="/admin/jobs/retry/#{job.id}">
           Retry
+        </a>
+      </td>
+      <td>
+        <a class="delete" href="/admin/jobs/delete/#{job.id}">
+          Delete
         </a>
       </td>
     </tr>
