@@ -23,9 +23,6 @@ module Controller
         @local_host = request.host
       end
 
-      def jobs
-        @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
-      end
     end
   end
 end

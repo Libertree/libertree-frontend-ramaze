@@ -18,6 +18,11 @@
       <td>#{job.time_created}</td>
       <td>#{job.time_started}</td>
       <td>#{job.tries}</td>
+      <td>
+        <a href="/admin/jobs/retry/#{job.id}">
+          Retry
+        </a>
+      </td>
     </tr>
   <?r end ?>
 </table>
