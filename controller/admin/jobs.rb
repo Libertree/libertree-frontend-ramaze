@@ -8,8 +8,13 @@ module Controller
         init_locale
       end
 
-      def index
-        @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
+      def index(task=nil)
+        if task
+          @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE task = ? AND time_finished IS NULL", task)
+          @task = task
+        else
+          @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
+        end
       end
 
       def retry(job_id)
