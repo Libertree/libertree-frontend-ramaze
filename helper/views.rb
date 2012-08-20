@@ -18,6 +18,10 @@ module Ramaze
       def commenter_list(post)
         post.comments.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', ')
       end
+      def timefmt(time)
+        return ""  if time.nil?
+        time.strftime('%F %T')
+      end
     end
   end
 end

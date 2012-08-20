@@ -23,8 +23,8 @@
       <td>#{job.id}</td>
       <td>#{job.task}</td>
       <td>#{job.params}</td>
-      <td>#{job.time_created}</td>
-      <td>#{job.time_started}</td>
+      <td>#{timefmt(job.time_created)}</td>
+      <td>#{timefmt(job.time_started)}</td>
       <td>#{job.tries}</td>
       <td>
         <a href="/admin/jobs/retry/#{job.id}">
