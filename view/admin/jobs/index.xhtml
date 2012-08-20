@@ -1,6 +1,13 @@
 <h2>#{_('Unfinished Jobs')}</h2>
 
 <table class="jobs">
+  <col class="id"/>
+  <col class="task"/>
+  <col class="params"/>
+  <col class="timestamp"/>
+  <col class="timestamp"/>
+  <col class="tries"/>
+  <col class="actions"/>
   <tr>
     <th>ID</th>
     <th>Task</th>
@@ -8,6 +15,7 @@
     <th>Time created</th>
     <th>Time started</th>
     <th>Tries</th>
+    <th>Actions</th>
   </tr>
 
   <?r @unfinished.each do |job| ?>
