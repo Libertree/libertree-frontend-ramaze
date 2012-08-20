@@ -85,16 +85,22 @@ $(document).ready( function() {
 
     var post = $(this).closest('.post, .post-excerpt');
     var postId = post.data('post-id');
-    var toId = $('.comments .comment:first').data('comment-id');
+    var toId = post.find('.comments .comment:first').data('comment-id');
 
     insertSpinnerBefore('.comments .comment:first', 16);
     $.get(
-      '/comments/_comments/'+postId+'/'+toId,
+      '/comments/_comments/'+postId+'/'+toId+'/'+post.find('.num-comments').data('n'),
       function(html) {
         if( $.trim(html).length == 0 ) {
           return;
         }
         var o = $(html);
+        var searchableContainer = $('<div></div>');
+        searchableContainer.append(o);
+        var numCommentsSpan = searchableContainer.find('span.num-comments.hidden').clone();
+        post.find('span.num-comments').replaceWith(numCommentsSpan);
+        numCommentsSpan.removeClass('hidden');
+
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {
           scrollable = $('html');

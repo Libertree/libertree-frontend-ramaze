@@ -1,7 +1,12 @@
 <?r if ! @render_comments_only ?>
 
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  <span class="num-comments">#{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}</span>
+  <?r if @post.comments(@comment_fetch_options).count == @post.comments.count ?>
+    <span class="num-comments" data-n="#{@post.comments.count}">#{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}</span>
+  <?r else ?>
+    <span class="num-comments" data-n="#{@post.comments(@comment_fetch_options).count}">#{n_('showing 1 comment', 'showing %d of %d comments', @post.comments.count) % [@post.comments(@comment_fetch_options).count, @post.comments.count,]}</span>
+  <?r end ?>
+  <br/>
 
   <?r if @hidden ?>
     <span class="more-comments">
@@ -21,6 +26,13 @@
 <?r end ?>
 
 
+  <?r if @render_comments_only ?>
+    <?r if @post.comments(@comment_fetch_options).count + (@old_n || 0) == @post.comments.count ?>
+      <span class="hidden num-comments" data-n="#{@post.comments.count}">#{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}</span>
+    <?r else ?>
+      <span class="hidden num-comments" data-n="#{@post.comments(@comment_fetch_options).count + (@old_n || 0)}">#{n_('showing 1 comment', 'showing %d of %d comments', @post.comments.count) % [@post.comments(@comment_fetch_options).count + (@old_n || 0), @post.comments.count,]}</span>
+    <?r end ?>
+  <?r end ?>
   <?r @post.comments(@comment_fetch_options).each do |c| ?>
     #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, post: @post }
   <?r end ?>
