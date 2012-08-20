@@ -1,4 +1,11 @@
+<?r if @task ?>
+<h2>#{_('Unfinished Jobs: %s') % @task}</h2>
+<p>
+  <a href="/admin/jobs">#{s_('jobs|Show all')}</a>
+</p>
+<?r else ?>
 <h2>#{_('Unfinished Jobs')}</h2>
+<?r end ?>
 
 <table class="jobs">
   <col class="id"/>
@@ -9,31 +16,35 @@
   <col class="tries"/>
   <col class="actions"/>
   <tr>
-    <th>ID</th>
-    <th>Task</th>
-    <th>Params</th>
-    <th>Time created</th>
-    <th>Time started</th>
-    <th>Tries</th>
-    <th colspan="2">Actions</th>
+    <th>#{s_('jobs|ID')}</th>
+    <th>#{s_('jobs|Task')}</th>
+    <th>#{s_('jobs|Params')}</th>
+    <th>#{s_('jobs|Time created')}</th>
+    <th>#{s_('jobs|Time started')}</th>
+    <th>#{s_('jobs|Tries')}</th>
+    <th colspan="2">#{s_('jobs|Actions')}</th>
   </tr>
 
   <?r @unfinished.each do |job| ?>
     <tr>
       <td>#{job.id}</td>
-      <td>#{job.task}</td>
+      <td>
+        <a href="/admin/jobs/#{job.task}">
+          #{job.task}
+        </a>
+      </td>
       <td>#{job.params}</td>
       <td>#{timefmt(job.time_created)}</td>
       <td>#{timefmt(job.time_started)}</td>
       <td>#{job.tries}</td>
       <td>
         <a href="/admin/jobs/retry/#{job.id}">
-          Retry
+          #{s_('jobs|Retry')}
         </a>
       </td>
       <td>
         <a class="delete" href="/admin/jobs/destroy/#{job.id}">
-          Delete
+          #{s_('jobs|Delete')}
         </a>
       </td>
     </tr>
@@ -41,5 +52,5 @@
 </table>
 
 <p>
-  <a href="/admin">Back to forest administration</a>
+  <a href="/admin">#{s_('jobs|Back to forest administration')}</a>
 </p>
