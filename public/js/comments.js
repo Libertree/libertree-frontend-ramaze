@@ -91,10 +91,21 @@ $(document).ready( function() {
     $.get(
       '/comments/_comments/'+postId+'/'+toId,
       function(html) {
-        if( $.trim(html).length > 0 ) {
-          $(html).insertBefore('.comments .comment:first');
-          hideLoadCommentsLinkIfAllShown(post);
+        if( $.trim(html).length == 0 ) {
+          return;
         }
+        var o = $(html);
+        var scrollable = $('div.comments-pane');
+        if( $('.excerpts-view').length ) {
+          scrollable = $('html');
+        }
+        var initialScrollTop = scrollable.scrollTop();
+        var initialHeight = scrollable.find('div.comments:first').height();
+        o.insertBefore('.comments .comment:first');
+        var delta = scrollable.find('div.comments:first').height() - initialHeight;
+
+        scrollable.scrollTop( initialScrollTop + delta );
+        hideLoadCommentsLinkIfAllShown(post);
         removeSpinner('.comments');
       }
     );
