@@ -85,6 +85,9 @@ module Controller
         end
 
         @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
+        @comment_fetch_options = {
+          limit: 8,
+        }
 
         if logged_in?
           @post.mark_as_read_by account

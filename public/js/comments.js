@@ -52,6 +52,13 @@ function insertCommentHtmlFor( postId, commentId ) {
   );
 }
 
+function hideLoadCommentsLinkIfAllShown(element) {
+  var n = parseInt( element.find('.num-comments').text() );
+  if( element.find('div.comment').length == n ) {
+    element.find('a.load-comments').hide();
+  }
+};
+
 /* ---------------------------------------------- */
 
 $(document).ready( function() {
@@ -59,6 +66,7 @@ $(document).ready( function() {
     event.preventDefault();
     showMoreComments( $(this).closest('.comments'), $(this).data('n') );
   } );
+
   $('.jump-to-comment').live( 'click', function(event) {
     event.preventDefault();
     var comments = $(this).closest('div.comments');
@@ -71,6 +79,29 @@ $(document).ready( function() {
       }
     );
   } );
+
+  $('a.load-comments').live( 'click', function(event) {
+    event.preventDefault();
+
+    var post = $(this).closest('.post, .post-excerpt');
+    var postId = post.data('post-id');
+    var toId = $('.comments .comment:first').data('comment-id');
+
+    insertSpinnerBefore('.comments .comment:first', 16);
+    $.get(
+      '/comments/_comments/'+postId+'/'+toId,
+      function(html) {
+        if( $.trim(html).length > 0 ) {
+          $(html).insertBefore('.comments .comment:first');
+          hideLoadCommentsLinkIfAllShown(post);
+        }
+        removeSpinner('.comments');
+      }
+    );
+
+    return false;
+  } );
+
   $('div.comment').live( {
     mouseover: function() {
       $(this).find('.comment-tools').css('visibility', 'visible');
@@ -79,6 +110,7 @@ $(document).ready( function() {
       $(this).find('.comment-tools').css('visibility', 'hidden');
     }
   } );
+
   $('.comment .delete').live( 'click', function(event) {
     event.preventDefault();
     if( confirm('Delete this comment?') ) {
@@ -232,4 +264,6 @@ $(document).ready( function() {
   if( match ) {
     window.location = window.location;  /* Hack for Firefox */
   }
+
+  hideLoadCommentsLinkIfAllShown( $('.post') );
 } );

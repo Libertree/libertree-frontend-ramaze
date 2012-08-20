@@ -8,12 +8,16 @@ function checkForSessionDeath(html) {
   }
 }
 
+/* TODO: DRY up these spinner injection functions somehow */
 //FIXME: src depends on selected theme
 function addSpinner(target_selector, size) {
   $(target_selector).append('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
 }
 function prependSpinner(target_selector, size) {
   $(target_selector).prepend('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
+}
+function insertSpinnerBefore(target_selector, size) {
+  $(target_selector).before('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
 }
 function removeSpinner(target_selector) {
   $('img.spinner', target_selector).remove();
