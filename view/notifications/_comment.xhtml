@@ -1,7 +1,7 @@
 <?r if @comment ?>
   <div class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
     <?r who = anded_list( @actors.map(&:name_display).uniq ) ?>
-    <?r link = "<a href=\"/posts/show/#{@comment.post.id}#comment-#{@comment.id}\" title=\"#{::CGI.escape_html(@comment.post.glimpse)}\">" ?>
+    <?r link = "<a href=\"#{ comment_link(@comment) }\" title=\"#{::CGI.escape_html(@comment.post.glimpse)}\">" ?>
     #{member_avatar_link(@comment.member)}
     <?r if @comment.post.member.account == account ?>
       #{_('%1$s commented on your %2$spost%3$s.') % [who, link, "</a>"]}

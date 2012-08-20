@@ -29,7 +29,7 @@
 
   <ul>
   <?r @comments.each do |c| ?>
-    <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="/posts/show/#{c.post.id}#comment-#{c.id}">#{c.glimpse}</a></li>
+    <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="#{ comment_link(c) }">#{c.glimpse}</a></li>
   <?r end ?>
   </ul>
 <?r end ?>

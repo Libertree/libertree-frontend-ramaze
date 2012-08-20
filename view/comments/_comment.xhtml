@@ -14,7 +14,7 @@
         <a href="#" class="delete">#{img 'icon-delete.png', {class:"size-16", alt:_('delete'), title:_('delete')}}</a>
       <?r end ?>
     <?r end ?>
-    <a class="link" href="/posts/show/#{@post.id}#comment-#{@comment.id}">#{img 'icon-link.png', {class:"size-16", alt:_('shareable link for this comment'), title:_('shareable link for this comment')}}</a>
+    <a class="link" href="#{ comment_link(@comment) }">#{img 'icon-link.png', {class:"size-16", alt:_('shareable link for this comment'), title:_('shareable link for this comment')}}</a>
   </div>
   #{member_avatar_link(@comment.member)}
   <div class="member-name">#{member_name_link(@comment.member)}</div>

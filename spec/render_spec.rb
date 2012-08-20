@@ -43,7 +43,7 @@ tail}).should == %{<p>head</p><pre><code>  6 spaces before
       # relative links
       url = "/posts/show/1234"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
-      url = "/posts/show/987#comment-123"
+      url = "/posts/show/987/123#comment-123"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
     end
 

@@ -274,6 +274,7 @@ $(document).ready( function() {
   match = document.URL.match(/#comment-([0-9]+)/);
   if( match ) {
     window.location = window.location;  /* Hack for Firefox */
+    $('a.load-comments').click();
   }
 
   hideLoadCommentsLinkIfAllShown( $('.post') );

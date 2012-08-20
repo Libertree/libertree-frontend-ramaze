@@ -74,7 +74,7 @@ module Controller
       redirect r(:show, post.id)
     end
 
-    def show(post_id)
+    def show(post_id, from_comment_id = nil)
       @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
       if @post.nil?
@@ -85,9 +85,15 @@ module Controller
         end
 
         @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
-        @comment_fetch_options = {
-          limit: 8,
-        }
+        if from_comment_id
+          @comment_fetch_options = {
+            from_id: from_comment_id.to_i,
+          }
+        else
+          @comment_fetch_options = {
+            limit: 8,
+          }
+        end
 
         if logged_in?
           @post.mark_as_read_by account

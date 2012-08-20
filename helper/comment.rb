@@ -1,6 +1,10 @@
 module Ramaze
   module Helper
     module Comment
+      def comment_link(comment)
+        "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}"
+      end
+
       def comment_text_rendered_and_participants_linked( comment, comments )
         s = comment.text_rendered
         i = comments.index(comment)
@@ -29,7 +33,6 @@ module Ramaze
         s.gsub( /#{dict.keys.map{|k|Regexp.quote(k)}.sort.reverse.join('|')}/i ) do |m|
           dict[m.downcase]
         end
-
       end
     end
   end

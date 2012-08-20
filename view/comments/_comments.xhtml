@@ -8,7 +8,7 @@
       #{_('show %smore%s / %sall%s comments') % ["<a href=\"#\" class=\"more-comments\" data-n=\"3\">", "</a>", "<a href=\"#\" class=\"more-comments\" data-n=\"#{@post.comments.size}\">", "</a>"]}
     </span>
   <?r end ?>
-  <?r if @comment_fetch_options && @comment_fetch_options[:limit] ?>
+  <?r if @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ?>
     <a href="#" class="load-comments">#{_('more comments')}</a>
   <?r end ?>
 

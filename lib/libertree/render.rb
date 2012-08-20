@@ -32,7 +32,7 @@ module Libertree
     # Crude autolinker.
     # We cannot do this with redcarpet, as enabling :autolink breaks the normal_text callback
     # This has to be done after processing with markdown, as the markdown renderer filters all HTML.
-    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(https?://[^\b\s$<]+|www\.[^\b\s$<]+|/posts/show/\d+(#comment-\d+)?)}, "<a href='\\1'>\\1</a>")
+    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(https?://[^\b\s$<]+|www\.[^\b\s$<]+|/posts/show/\d+(/\d+#comment-\d+)?)}, "<a href='\\1'>\\1</a>")
 
     html = Nokogiri::HTML::fragment(s)
     html.css('a').each do |a|
