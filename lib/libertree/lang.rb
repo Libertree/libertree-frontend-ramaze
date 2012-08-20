@@ -9,5 +9,6 @@ module Libertree
     ['hu_HU', 'magyar'],
     ['ru_RU', 'Русский'],
     ['es_ES', 'Español'],
+    ['it_IT', 'Italiano'],
   ]
 end
