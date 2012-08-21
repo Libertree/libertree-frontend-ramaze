@@ -18,7 +18,7 @@
   <?r end ?>
 
   <?r @post.comments(@comment_fetch_options).each do |c| ?>
-    #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, post: @post }
+    #{ render_file 'view/comments/_comment.xhtml', hidden: @hidden, comment: c, post: @post }
   <?r end ?>
 
   <div class="detachable">

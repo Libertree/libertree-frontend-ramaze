@@ -59,9 +59,11 @@ module Controller
       return ""  if ! @post.v_internet? && ! logged_in?
     end
 
-    def _comment(comment_id)
+    def _comment(comment_id, old_n = nil)
       @comment = Libertree::Model::Comment[comment_id.to_i]
       @post = @comment.post
+      @old_n = old_n ? old_n.to_i : nil
+      @n_total = @post.comments.count
       return ""  if ! @post.v_internet? && ! logged_in?
     end
 

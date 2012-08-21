@@ -19,6 +19,13 @@ function showMoreComments(comments, n) {
   $('div.comments').css('height', $('td.post').css('height') );
 }
 
+function replaceNumCommentsFromAJAX(ajax_object, post) {
+  var numCommentsSpan = ajax_object.filter('span.num-comments.hidden').detach();
+  post.find('span.num-comments').replaceWith(numCommentsSpan);
+  numCommentsSpan.removeClass('hidden');
+}
+
+
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
 
@@ -27,16 +34,15 @@ function insertCommentHtmlFor( postId, commentId ) {
   }
 
   $.get(
-    '/comments/_comment/' + commentId,
+    '/comments/_comment/'+commentId+'/' + post.find('.num-comments').data('n'),
     function(html) {
       var o = $(html);
       o.insertBefore( post.find('.comments .detachable') );
+      replaceNumCommentsFromAJAX(o, post);
       var height = o.height();
       var animationDuration = height*5;
       o.hide().slideDown(animationDuration);
       $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
-      var newNum = 1 + parseInt(post.find('span.num-comments:first').text());
-      post.find('span.num-comments').text(newNum);
 
       if( $('textarea.comment.focused').length ) {
         var scrollable = post.find('div.comments-pane');
@@ -95,11 +101,6 @@ $(document).ready( function() {
           return;
         }
         var o = $(html);
-        var searchableContainer = $('<div></div>');
-        searchableContainer.append(o);
-        var numCommentsSpan = searchableContainer.find('span.num-comments.hidden').clone();
-        post.find('span.num-comments').replaceWith(numCommentsSpan);
-        numCommentsSpan.removeClass('hidden');
 
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {
@@ -109,6 +110,7 @@ $(document).ready( function() {
         var initialHeight = scrollable.find('div.comments:first').height();
         o.insertBefore('.comments .comment:first');
         var delta = scrollable.find('div.comments:first').height() - initialHeight;
+        replaceNumCommentsFromAJAX(o, post);
 
         scrollable.scrollTop( initialScrollTop + delta );
         hideLoadCommentsLinkIfAllShown(post);

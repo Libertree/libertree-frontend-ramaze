@@ -1,3 +1,6 @@
+<?r if @old_n && @n_total ?>
+  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @old_n+1, num_total: @n_total, hidden: true }
+<?r end ?>
 <div class="comment #{@hidden ? 'hidden' : ''}" id="comment-#{@comment.id}" data-comment-id="#{@comment.id}" data-commenter-member-id="#{@comment.member.id}">
   <div class="num-likes #{@comment.likes.empty? ? 'hidden' : ''}" title="#{like_list(@comment)}">#{n_('1 like', '%d likes', @comment.likes.size) % @comment.likes.size}</div>
   <div class="comment-tools">
