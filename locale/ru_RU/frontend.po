@@ -6,9 +6,9 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-09 20:28+0000\n"
-"Last-Translator: glesik <>\n"
-"Language-Team: UNDEFINED\n"
+"PO-Revision-Date: 2012-08-21 08:50+0000\n"
+"Last-Translator: glesik <inglessi@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,6 +46,9 @@ msgstr "Неверное имя/пароль."
 
 msgid "A valid invitation code is required."
 msgstr "Требуется действующий код приглашения."
+
+msgid "This invitation code has already been used. Try another one!"
+msgstr "Этот код приглашения уже был использован. Попробуйте другой!"
 
 msgid "You mistyped your password."
 msgstr "Вы ошиблись при вводе пароля."
@@ -106,6 +109,24 @@ msgstr "Отправить"
 msgid "post|Preview"
 msgstr "Предпросмотр"
 
+msgid "Visibility"
+msgstr "Видимость"
+
+msgid "visibility|Internet"
+msgstr "Интернет"
+
+msgid "visibility|Forest"
+msgstr "Лес"
+
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr "Эта запись и комментарии к ней видны всему интернету"
+
+msgid ""
+"This post and its comments are only visible to members of this Libertree "
+"forest"
+msgstr "Эта запись и комментарии к ней видны только участникам этого леса Libertree"
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr "Редактировать запись"
@@ -158,9 +179,9 @@ msgid "No more posts."
 msgstr "Больше записей нет."
 
 msgid ""
-"The system is still matching posts with this river.  Check in a few minutes "
+"The system is still matching posts with this river. Check in a few minutes "
 "for more posts."
-msgstr "Система все еще добавляет записи в эту реку. Подождите через пару минут, чтобы увидеть больше записей."
+msgstr "Система еще заполняет записи в этой реке. Зайдите через пару минут, чтобы увидеть больше записей."
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
@@ -169,8 +190,8 @@ msgstr "наверх"
 msgid "Liked by %s"
 msgstr "Понравилось %s"
 
-msgid "One comment by %1$s"
-msgstr "Один комментарий %1$s"
+msgid "1 comment by %1$s"
+msgstr "1 комментарий %1$s"
 
 msgid "%2$d comments by %1$s"
 msgstr "%2$d комментария %1$s"
@@ -261,11 +282,20 @@ msgstr "У вас уже есть река для этого."
 msgid "One comment"
 msgstr "Один комментарий"
 
+msgid "showing 1 comment"
+msgstr ""
+
 msgid "%d comments"
 msgstr "Комментарии: %d"
 
+msgid "showing %d of %d comments"
+msgstr ""
+
 msgid "show %smore%s / %sall%s comments"
 msgstr "показать %sеще%s / %sвсе%s комментарии"
+
+msgid "more comments"
+msgstr ""
 
 msgid "jump-to-comment|Comment"
 msgstr "Комментарий"
@@ -369,6 +399,9 @@ msgstr "Персональный JS:"
 msgid "Automatic embedding:"
 msgstr "Автоматическое встраивание:"
 
+msgid "Make thumbnails for images in post excerpts:"
+msgstr "Показывать миниатюры изображений в выдержке из записи:"
+
 msgid "Language:"
 msgstr "Язык:"
 
@@ -452,26 +485,27 @@ msgid "%d more"
 msgstr "еще %d"
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
-msgstr "%s прокомментировал(а) вашу %sзапись%s."
+msgid "%1$s commented on your %2$spost%3$s."
+msgstr "%1$s прокомментировал(а) вашу %2$sзапись%3$s."
 
-msgid "%s commented on %s's %spost%s."
-msgstr "%s прокомментировал(а) %s %sзапись%s."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s прокомментировал(а) %3$sзапись%4$s %2$s."
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
-msgstr "%s понравился ваш %sкомментарий%s к вашей записи."
+msgid "%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к вашей записи."
 
-msgid "%s liked your %scomment%s on %s's post."
-msgstr "%s понравился ваш %sкомментарий%s к записи %s."
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к записи %4$s."
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
-msgstr "%s понравилась ваша %sзапись%s."
+msgid "%1$s liked your %2$spost%3$s."
+msgstr "%1$s понравилась ваша %2$sзапись%3$s."
 
+# TODO: positional placeholders
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
-msgstr "%s послал(а) вам %sсообщение%s."
+msgid "%1$s sent you a %2$smessage%3$s."
+msgstr "%1$s отправил(а) вам %2$sсообщение%3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -525,15 +559,21 @@ msgstr "Список контактов обновлен."
 msgid "Contact list name may not be empty."
 msgstr "Имя списка контактов не может быть пустым."
 
+msgid "The contact list &ldquo;%s&rdquo; has been deleted."
+msgstr "Список контактов &ldquo;%s&rdquo; был удален."
+
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
 msgstr "Списки контактов"
 
-msgid "new-contact-list|Name:"
+msgid "contact-list|Name:"
 msgstr "Имя:"
 
 msgid "new-contact-list|Create"
 msgstr "Создать"
+
+msgid "contact-list|delete"
+msgstr "удалить"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -589,6 +629,49 @@ msgstr "Имя хоста:"
 msgid "new-tree|Add"
 msgstr "Добавить"
 
+msgid "Job queue"
+msgstr "Очередь задач"
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr "Незавершенные задачи"
+
+msgid "Unfinished Jobs: %s"
+msgstr "Незавершенные задачи: %s"
+
+msgid "jobs|Show all"
+msgstr "Показать все"
+
+msgid "jobs|ID"
+msgstr "ID"
+
+msgid "jobs|Task"
+msgstr "Задача"
+
+msgid "jobs|Params"
+msgstr "Параметры"
+
+msgid "jobs|Time created"
+msgstr "Время создания"
+
+msgid "jobs|Time started"
+msgstr "Время запуска"
+
+msgid "jobs|Tries"
+msgstr "Попытки"
+
+msgid "jobs|Actions"
+msgstr "Действия"
+
+msgid "jobs|Retry"
+msgstr "Повтор"
+
+msgid "jobs|Delete"
+msgstr "Удалить"
+
+msgid "jobs|Back to forest administration"
+msgstr "Назад к администрированию леса"
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Такой страницы не существует"
@@ -634,13 +717,13 @@ msgid "direct-message|Recipients"
 msgstr "Получатели"
 
 msgid "direct-message-warning|please note..."
-msgstr "пожалуйста, заметьте..."
+msgstr "обратите внимание..."
 
 msgid ""
 "Please note that direct messages are not fully private, encrypted nor "
 "secure.  As with all data on this tree, direct messages are fully accessible"
 " to the arborista (administrator)."
-msgstr "Пожалуйста, заметьте, что прямые сообщения не полностью приватны, зашифрованы и неприкосновенны. Как и все другие данные на этом дереве, прямые сообщения целиком доступны арбористу (администратору)."
+msgstr "Обратите внимание, что прямые сообщения не являются полностью приватными, зашифроваными и неприкосновенными. Как и все другие данные на этом дереве, прямые сообщения целиком доступны арбористу (администратору)."
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -660,7 +743,7 @@ msgstr "Пруды"
 msgid "Use pools to collect posts."
 msgstr "Используйте пруды, чтобы сохранять записи."
 
-msgid "new-pool|Name:"
+msgid "pool|Name:"
 msgstr "Имя:"
 
 msgid "new-pool|Create"
@@ -672,6 +755,13 @@ msgstr "Удалить"
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Пруд: %s"
+
+#: view/pools/edit.xhtml
+msgid "Edit Pool: %s"
+msgstr "Редактировать пруд: %s"
+
+msgid "pool|Update"
+msgstr "Обновить"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -903,3 +993,75 @@ msgstr "(в сети никого нет)"
 
 msgid "Start new chat with..."
 msgstr "Начать новый чат с..."
+
+#: layout/_menu.xhtml
+msgid "menu|Profile"
+msgstr "Профиль"
+
+msgid "menu|Settings"
+msgstr "Настройки"
+
+msgid "menu|Contact Lists"
+msgstr "Списки контактов"
+
+msgid "menu|Pools"
+msgstr "Пруды"
+
+msgid "menu|Legible font size"
+msgstr "Крупный размер шрифта"
+
+msgid "menu|Small font size"
+msgstr "Мелкий размер шрифта"
+
+msgid "menu|legible"
+msgstr "крупный"
+
+msgid "menu|small"
+msgstr "мелкий"
+
+msgid "menu|Currently in &quot;small display&quot; mode; click to change"
+msgstr "Включен режим &quot;маленький экран&quot;; нажмите, чтобы сменить"
+
+msgid "menu|Currently in &quot;large display&quot; mode; click to change"
+msgstr "Включен режим &quot;большой экран&quot;; нажмите, чтобы сменить"
+
+msgid "menu|Large display"
+msgstr "Большой экран"
+
+msgid "menu|Small display"
+msgstr "Маленький экран"
+
+msgid "menu|Administrate"
+msgstr "Администрирование"
+
+msgid "menu|Log out"
+msgstr "Выйти"
+
+msgid "menu|Go Home"
+msgstr "На заглавную"
+
+msgid "menu|You are at Home"
+msgstr "Вы на заглавной"
+
+msgid "menu|New Post"
+msgstr "Новая запись"
+
+msgid "menu|Known Issues"
+msgstr "Известные проблемы"
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr "Уведомлений нет"
+
+msgid "1 notification"
+msgstr "1 уведомление"
+
+msgid "%d notifications"
+msgstr "%d уведомлений"
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr "1 непрочитанное сообщение в чате от %1$s"
+
+msgid "%2$d unread chat messages from %1$s"
+msgstr "%2$d непрочитанных сообщений в чате от %1$s"
