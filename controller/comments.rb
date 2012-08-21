@@ -53,7 +53,6 @@ module Controller
       if to_id
         @comment_fetch_options[:to_id] = to_id.to_i
       end
-      @render_comments_only = true
       @old_n = old_n.to_i
 
       return ""  if @post.nil?

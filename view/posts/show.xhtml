@@ -63,7 +63,7 @@
 
     <div class="comments-pane">
   <?r end ?>
-      #{ render_file 'view/comments/_comments.xhtml', post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
+      #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
   <?r if session[:layout] != 'narrow' ?>
     </div>
   <?r end ?>

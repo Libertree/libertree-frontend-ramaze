@@ -1,0 +1,50 @@
+<div class="comments #{@hidden ? 'hidden' : ''}">
+  <?r if @post.comments(@comment_fetch_options).count == @post.comments.count ?>
+    <span class="num-comments" data-n="#{@post.comments.count}">#{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}</span>
+  <?r else ?>
+    <span class="num-comments" data-n="#{@post.comments(@comment_fetch_options).count}">#{n_('showing 1 comment', 'showing %d of %d comments', @post.comments.count) % [@post.comments(@comment_fetch_options).count, @post.comments.count,]}</span>
+  <?r end ?>
+  <br/>
+
+  <?r if @hidden ?>
+    <span class="more-comments">
+      #{_('show %smore%s / %sall%s comments') % ["<a href=\"#\" class=\"more-comments\" data-n=\"3\">", "</a>", "<a href=\"#\" class=\"more-comments\" data-n=\"#{@post.comments.size}\">", "</a>"]}
+    </span>
+  <?r end ?>
+  <?r if @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ?>
+    <a href="#" class="load-comments">#{_('more comments')}</a>
+  <?r end ?>
+
+  <?r if logged_in? ?>
+    <a href="#" class="jump-to-comment">#{s_('jump-to-comment|Comment')}</a>
+  <?r else ?>
+    | <a href="/login">Log in</a> to comment.
+  <?r end ?>
+
+  <?r @post.comments(@comment_fetch_options).each do |c| ?>
+    #{ Controller::Comments.render_partial '_comment', hidden: @hidden, comment: c, post: @post }
+  <?r end ?>
+
+  <div class="detachable">
+    <div class="drag-handle-bar"></div>
+    <div class="content">
+      <?r if logged_in? ?>
+        #{ member_img(account.member) }
+        <div class="success">
+          #{_('Comment successfully posted.')}
+        </div>
+        <form method="POST" action="/comments/create" class="comment" data-post-id="#{@post.id}">
+          #{ Controller::Main.render_partial '_markdown_injector' }
+          <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
+          <div class="form-buttons">
+            <a class="detach" href="#">#{_('detach')}</a>
+            <a class="attach" href="#">#{_('attach')}</a>
+            <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="#{_('Clear')}" tabindex="4"/>
+            <input class="preview" type="button" value="#{_('Preview')}" tabindex="3" data-type="comment"/>
+            <input class="submit" type="button" value="#{@post.v_internet? ? _('Comment to Internet') : _('Comment')}" tabindex="2"/>
+          </div>
+        </form>
+      <?r end ?>
+    </div>
+  </div>
+</div>
