@@ -2,6 +2,7 @@
 # Translators:
 #   <autre7273@laposte.net>, 2012.
 #   <lefmeunier@free.fr>, 2012.
+#   <lunachik@zoho.com>, 2012.
 #   <mlelao@aim.com>, 2012.
 #   <teimahu@live.fr>, 2012.
 msgid ""
@@ -9,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-15 08:51+0000\n"
+"PO-Revision-Date: 2012-08-21 08:50+0000\n"
 "Last-Translator: teimahu <teimahu@live.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +50,9 @@ msgstr "Identifiants invalides."
 
 msgid "A valid invitation code is required."
 msgstr "Un code d’invitation valide est nécessaire."
+
+msgid "This invitation code has already been used. Try another one!"
+msgstr "Ce code d'invitation a déjà été utilisé. Essayez-en un autre!"
 
 msgid "You mistyped your password."
 msgstr "Vous avez mal saisi votre mot de passe."
@@ -93,7 +97,7 @@ msgid "by update time"
 msgstr "par date de mise à jour"
 
 msgid "mark all read"
-msgstr "tout marquer \"lu\""
+msgstr "tout marquer lu"
 
 #: view/posts/new.xhtml
 msgid "New Post"
@@ -113,19 +117,19 @@ msgid "Visibility"
 msgstr "Visibilité"
 
 msgid "visibility|Internet"
-msgstr "visibility|Internet"
+msgstr "Internet"
 
 msgid "visibility|Forest"
-msgstr "visibility|Forêt"
+msgstr "Forêt"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
-msgstr ""
+msgstr "Ce message et ses commentaires sont visibles de tout l'internet"
 
 msgid ""
 "This post and its comments are only visible to members of this Libertree "
 "forest"
-msgstr ""
+msgstr "Ce message et ses commentaires ne sont visibles qu'aux membres de cette forêt"
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -203,7 +207,7 @@ msgid "comment"
 msgstr "commenter"
 
 msgid "mark read"
-msgstr "marquer \"lu\""
+msgstr "marquer lu"
 
 msgid "mark unread"
 msgstr "marquer comme non lu"
@@ -282,11 +286,20 @@ msgstr "Vous avez déjà une rivière pour cela."
 msgid "One comment"
 msgstr "Un commentaire"
 
+msgid "showing 1 comment"
+msgstr ""
+
 msgid "%d comments"
 msgstr "%d commentaires"
 
+msgid "showing %d of %d comments"
+msgstr ""
+
 msgid "show %smore%s / %sall%s comments"
 msgstr "montrer %splus%s / %stous%s les commentaires"
+
+msgid "more comments"
+msgstr ""
 
 msgid "jump-to-comment|Comment"
 msgstr "Commenter"
@@ -333,7 +346,7 @@ msgid "markdown|subtitle"
 msgstr "sous-titre"
 
 msgid "markdown|link"
-msgstr "|lien"
+msgstr "lien"
 
 msgid "markdown|image"
 msgstr "image"
@@ -389,6 +402,9 @@ msgstr "JS personnalisé :"
 
 msgid "Automatic embedding:"
 msgstr "Intégration automatique :"
+
+msgid "Make thumbnails for images in post excerpts:"
+msgstr "Créer les vignettes dans les extraits de messages:"
 
 msgid "Language:"
 msgstr "Langue :"
@@ -474,30 +490,30 @@ msgstr "%d de plus"
 
 #: view/notifications/_comment.xhtml
 msgid "%1$s commented on your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s a commenté votre %2$smessage%3$s."
 
 msgid "%1$s commented on %2$s's %3$spost%4$s."
-msgstr ""
+msgstr "%1$s a commenté le %3$smessage%4$s de %2$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "%1$s liked your %2$scomment%3$s on your post."
-msgstr ""
+msgstr "%1$s a aimé votre %2$scommentaire%3$s sur votre message."
 
 msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr ""
+msgstr "%1$s a aimé votre %2$scommentaire%3$s sur le message de %4$s."
 
 #: view/notifications/_post_like.xhtml
 msgid "%1$s liked your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s a aimé votre %2$smessage%3$s."
 
 # TODO: positional placeholders
 #: view/notifications/_message.xhtml
 msgid "%1$s sent you a %2$smessage%3$s."
-msgstr ""
+msgstr "%1$s vous a envoyé un %2$smessage direct%3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
-msgstr "list-comma|, "
+msgstr ", "
 
 msgid "list-and| and "
 msgstr " et"
@@ -535,7 +551,7 @@ msgid "search-results|Profiles"
 msgstr "Profils"
 
 msgid "search-results|Posts"
-msgstr "search-results|Messages"
+msgstr "Messages"
 
 msgid "search-results|Comments"
 msgstr "Commentaires"
@@ -547,15 +563,21 @@ msgstr "Liste de contacts mise à jour."
 msgid "Contact list name may not be empty."
 msgstr "Le nom de la liste de contacts ne peut être vide."
 
+msgid "The contact list &ldquo;%s&rdquo; has been deleted."
+msgstr "La liste des contacts &ldquo;%s&rdquo; a été effacée"
+
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
 msgstr "Listes de contacts"
 
-msgid "new-contact-list|Name:"
-msgstr "Nom :"
+msgid "contact-list|Name:"
+msgstr "Nom:"
 
 msgid "new-contact-list|Create"
 msgstr "Créer"
+
+msgid "contact-list|delete"
+msgstr "supprimer"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -610,6 +632,49 @@ msgstr "Nom d'hôte :"
 
 msgid "new-tree|Add"
 msgstr "Ajouter"
+
+msgid "Job queue"
+msgstr "Tâches en cours"
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr "Tâches inachevés"
+
+msgid "Unfinished Jobs: %s"
+msgstr "Tâches inachevés: %s"
+
+msgid "jobs|Show all"
+msgstr "Voir tout"
+
+msgid "jobs|ID"
+msgstr "ID"
+
+msgid "jobs|Task"
+msgstr "Tâches"
+
+msgid "jobs|Params"
+msgstr "Paramètres"
+
+msgid "jobs|Time created"
+msgstr "Créé le"
+
+msgid "jobs|Time started"
+msgstr "Démarré le"
+
+msgid "jobs|Tries"
+msgstr "Essais"
+
+msgid "jobs|Actions"
+msgstr "Actions"
+
+msgid "jobs|Retry"
+msgstr "Re-essayer"
+
+msgid "jobs|Delete"
+msgstr "Supprimer"
+
+msgid "jobs|Back to forest administration"
+msgstr "Retour à l'administration de la forêt"
 
 #: view/404.xhtml
 msgid "404|No such page"
@@ -682,8 +747,8 @@ msgstr "Bassins"
 msgid "Use pools to collect posts."
 msgstr "Utilisez les bassins pour garder des messages."
 
-msgid "new-pool|Name:"
-msgstr "Nom :"
+msgid "pool|Name:"
+msgstr "Nom:"
 
 msgid "new-pool|Create"
 msgstr "Créer"
@@ -694,6 +759,13 @@ msgstr "Effacer"
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Bassin : %s"
+
+#: view/pools/edit.xhtml
+msgid "Edit Pool: %s"
+msgstr "Modifier le Bassin: %s"
+
+msgid "pool|Update"
+msgstr "Mettre à jour"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -715,14 +787,14 @@ msgid "avatar|Upload file:"
 msgstr "Envoyer le fichier :"
 
 msgid "avatar-upload|Submit"
-msgstr "avatar-upload|Soumettre"
+msgstr "Soumettre"
 
 msgid "Reset avatar"
 msgstr "Réinitialiser l'avatar"
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
-msgstr "profile|Éditer"
+msgstr "Éditer"
 
 msgid "Posts by %s"
 msgstr "Messages de %s"
@@ -740,7 +812,7 @@ msgid ""
 msgstr "Pour réinitialiser votre mot de passe, entrez l'adresse de courriel associée à votre compte."
 
 msgid "password-reset|Submit"
-msgstr "password-reset|Soumettre"
+msgstr "Soumettre"
 
 #: view/signup.xhtml
 msgid "Create a New Account"
@@ -762,26 +834,26 @@ msgid "(optional)"
 msgstr "(facultatif)"
 
 msgid "button|Sign up"
-msgstr "button|S'inscrire"
+msgstr "S'inscrire"
 
 #: view/rivers/{new,edit}.xhtml
 msgid "Edit River"
 msgstr "Éditer la Rivière"
 
 msgid "river-query|Search:"
-msgstr "river-query|Rechercher :"
+msgstr "Rechercher :"
 
 msgid "river|Label:"
-msgstr "river|Étiquette :"
+msgstr "Étiquette :"
 
 msgid "append to all other rivers"
 msgstr "ajouter à toutes les autres rivières"
 
 msgid "river|Update"
-msgstr "river|Mise à jour"
+msgstr "Mise à jour"
 
 msgid "river|Create"
-msgstr "river|Créer"
+msgstr "Créer"
 
 #: view/rivers/index.xhtml
 msgid "My Rivers"
@@ -791,7 +863,7 @@ msgid "new river"
 msgstr "nouvelle rivière"
 
 msgid "river|Global Queries"
-msgstr "river|Requêtes globales"
+msgstr "Requêtes globales"
 
 msgid ""
 "The following river queries are being appended to every other river query."
@@ -805,14 +877,14 @@ msgid "Set as home river"
 msgstr "Définir comme rivière d'accueil"
 
 msgid "river|edit"
-msgstr "river|éditer"
+msgstr "éditer"
 
 msgid "river|delete"
-msgstr "river|effacer"
+msgstr "effacer"
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
-msgstr "river-tips|Astuces :"
+msgstr "Astuces :"
 
 msgid "For the search, enter one or more words or hashtags."
 msgstr "Pour la recherche, saisir un ou plusieurs mots ou hashtags."
@@ -845,13 +917,13 @@ msgid "You can also %shave the beginner rivers recreated for you%s."
 msgstr "Vous pouvez aussi %savoir les rivières initiales recréées pour vous%s."
 
 msgid "river|Examples"
-msgstr "river|Exemples"
+msgstr "Exemples"
 
 msgid "river|Query"
-msgstr "river|Requête"
+msgstr "Requête"
 
 msgid "river|Description"
-msgstr "river|Description"
+msgstr "Description"
 
 msgid "All posts originating from your tree"
 msgstr "Tous les messages provenant de votre arbre"
@@ -918,68 +990,68 @@ msgid "Chat"
 msgstr "Chat"
 
 msgid "chat-contacts|Online:"
-msgstr "chat-contacts|En ligne :"
+msgstr "En ligne :"
 
 msgid "chat|(no contacts online)"
-msgstr "chat|(pas de contacts en ligne)"
+msgstr "(pas de contacts en ligne)"
 
 msgid "Start new chat with..."
 msgstr "Démarrer le chat avec..."
 
 #: layout/_menu.xhtml
 msgid "menu|Profile"
-msgstr "menu|Profil"
+msgstr "Profil"
 
 msgid "menu|Settings"
-msgstr "menu|Paramètres"
+msgstr "Paramètres"
 
 msgid "menu|Contact Lists"
-msgstr "menu|Liste des contacts"
+msgstr "Liste des contacts"
 
 msgid "menu|Pools"
-msgstr "menu|Bassins"
+msgstr "Bassins"
 
 msgid "menu|Legible font size"
-msgstr "menu|Taille de la police"
+msgstr "Taille de la police"
 
 msgid "menu|Small font size"
-msgstr "menu|Petite police"
+msgstr "Petite police"
 
 msgid "menu|legible"
-msgstr "menu|lisible"
+msgstr "lisible"
 
 msgid "menu|small"
-msgstr "menu|petit"
+msgstr "petit"
 
 msgid "menu|Currently in &quot;small display&quot; mode; click to change"
-msgstr ""
+msgstr "Actuellement en &quot;affichage réduit&quot; ; cliquer pour changer"
 
 msgid "menu|Currently in &quot;large display&quot; mode; click to change"
-msgstr ""
+msgstr "Actuellement en &quot;affichage large&quot; ; cliquer pour changer"
 
 msgid "menu|Large display"
-msgstr "menu|Affichage Large"
+msgstr "Affichage Large"
 
 msgid "menu|Small display"
-msgstr "menu|Affichage Réduit"
+msgstr "Affichage Réduit"
 
 msgid "menu|Administrate"
-msgstr "menu|Gérer"
+msgstr "Gérer"
 
 msgid "menu|Log out"
-msgstr "menu|Déconnexion"
+msgstr "Déconnexion"
 
 msgid "menu|Go Home"
-msgstr "menu|Accueil"
+msgstr "Accueil"
 
 msgid "menu|You are at Home"
-msgstr "menu|Vous êtes à l'accueil"
+msgstr "Vous êtes à l'accueil"
 
 msgid "menu|New Post"
-msgstr "menu|Nouveau Message"
+msgstr "Nouveau Message"
 
 msgid "menu|Known Issues"
-msgstr "menu|Problèmes connus"
+msgstr "Problèmes connus"
 
 #: layout/_notifications.xhtml
 msgid "No notifications"
