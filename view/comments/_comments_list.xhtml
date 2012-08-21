@@ -1,9 +1,5 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  <?r if @post.comments(@comment_fetch_options).count == @post.comments.count ?>
-    <span class="num-comments" data-n="#{@post.comments.count}">#{n_('1 comment', '%d comments', @post.comments.size) % @post.comments.size}</span>
-  <?r else ?>
-    <span class="num-comments" data-n="#{@post.comments(@comment_fetch_options).count}">#{n_('showing 1 comment', 'showing %d of %d comments', @post.comments.count) % [@post.comments(@comment_fetch_options).count, @post.comments.count,]}</span>
-  <?r end ?>
+  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @post.comments(@comment_fetch_options).count, num_total: @post.comments.count }
   <br/>
 
   <?r if @hidden ?>
