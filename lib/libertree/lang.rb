@@ -10,5 +10,6 @@ module Libertree
     ['ru_RU', 'Русский'],
     ['es_ES', 'Español'],
     ['it_IT', 'Italiano'],
+    ['pl_PL', 'polski'],
   ]
 end
