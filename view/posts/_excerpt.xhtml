@@ -11,9 +11,6 @@
     <div class="post-stats">
       <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % like_list(@post)}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span><br/>
       <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}} <span class="num-comments">#{@post.comments.size}</span></a><br/>
-      <?r if logged_in? ?>
-        <a class="visibility" href="#" title="#{visibility_description(@post)}" data-description="#{visibility_description(@post)}">#{img 'icon-eye.png', {class:"size-16", alt: visibility_description(@post)}}</a>
-      <?r end ?>
     </div>
     <div class="post-tools">
       <?r if @post.like_by(account.member) ?>
