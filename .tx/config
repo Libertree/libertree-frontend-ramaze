@@ -1,0 +1,11 @@
+[main]
+host = https://www.transifex.com
+
+[libertree.email]
+file_filter = locale/<lang>/email.po
+source_lang = en_GB
+
+[libertree.frontend]
+file_filter = locale/<lang>/frontend.po
+source_lang = en_GB
+
