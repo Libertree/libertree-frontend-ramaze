@@ -43,6 +43,15 @@ module Controller
       }.to_json
     end
 
+    def _comments_list
+      @post ||= Libertree::Model::Post[ post_id.to_i ]
+      @comment_fetch_options ||= { limit: 4 }
+      @comments = @post.comments(@comment_fetch_options)
+      @comments.each do |c|
+        Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, c.id )
+      end
+    end
+
     def _comments(post_id, to_id, old_n)
       # TODO: Check that member is allowed to view the post and its comments
       # (when we introduce such restrictions in the system)
@@ -55,6 +64,11 @@ module Controller
         to_id: to_id.to_i,
       } )
       @num_shown = @comments.count + old_n.to_i
+      if logged_in?
+        @comments.each do |c|
+          Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, c.id )
+        end
+      end
     end
 
     def _comment(comment_id, old_n = nil)

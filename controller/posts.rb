@@ -97,11 +97,6 @@ module Controller
 
         if logged_in?
           @post.mark_as_read_by account
-
-          Libertree::Model::Notification.for_account_and_post( account, @post ).each do |n|
-            n.seen = true
-          end
-          account.dirty
         end
       end
     end
