@@ -82,9 +82,9 @@ $(document).ready( function() {
           scrollable = $('html');
         }
         var initialScrollTop = scrollable.scrollTop();
-        var initialHeight = scrollable.find('div.comments:first').height();
+        var initialHeight = comments.height();
         o.insertBefore(comments.find('.comment:first'));
-        var delta = scrollable.find('div.comments:first').height() - initialHeight;
+        var delta = comments.height() - initialHeight;
         replaceNumCommentsFromAJAX(o, post);
 
         scrollable.scrollTop( initialScrollTop + delta );
