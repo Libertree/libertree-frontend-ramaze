@@ -65,7 +65,6 @@ $(document).ready( function() {
     overflowed.data( 'contracted-height', overflowed.height() );
 
     excerptParent.find('div.comments.hidden').removeClass('hidden');
-    showMoreComments( excerpt.find('.comments'), 3 );
 
     var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
     var animationSpeed = heightDifference * 2;

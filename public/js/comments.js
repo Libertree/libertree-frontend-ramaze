@@ -1,24 +1,3 @@
-function showMoreComments(comments, n) {
-  var comment_ids = '';
-
-  for( i = 0; i < n; i++ ) {
-    var comment = comments.find('div.comment.hidden:last');
-    comment_ids = comment_ids + '/' + comment.data('comment-id');
-    comment.removeClass('hidden');
-  }
-  if( comments.find('div.comment.hidden:last').length == 0 ) {
-    comments.find('span.more-comments').hide();
-  }
-  $.get(
-    '/notifications/seen_comments' + comment_ids,
-    function(html) {
-      updateNumNotificationsUnseen(html);
-    }
-  );
-
-  $('div.comments').css('height', $('td.post').css('height') );
-}
-
 function replaceNumCommentsFromAJAX(ajax_object, post) {
   var numCommentsSpan = ajax_object.filter('span.num-comments.hidden').detach();
   post.find('span.num-comments').replaceWith(numCommentsSpan);
@@ -68,11 +47,6 @@ function hideLoadCommentsLinkIfAllShown(element) {
 /* ---------------------------------------------- */
 
 $(document).ready( function() {
-  $('a.more-comments').live( 'click', function(event) {
-    event.preventDefault();
-    showMoreComments( $(this).closest('.comments'), $(this).data('n') );
-  } );
-
   $('.jump-to-comment').live( 'click', function(event) {
     event.preventDefault();
     var comments = $(this).closest('div.comments');
@@ -95,7 +69,7 @@ $(document).ready( function() {
 
     insertSpinnerBefore('.comments .comment:first', 16);
     $.get(
-      '/comments/_comments/'+postId+'/'+toId+'/'+post.find('.num-comments').data('n'),
+      '/comments/_comments/'+postId+'/'+toId+'/'+post.find('.comments span.num-comments').data('n'),
       function(html) {
         if( $.trim(html).length == 0 ) {
           return;
@@ -108,7 +82,7 @@ $(document).ready( function() {
         }
         var initialScrollTop = scrollable.scrollTop();
         var initialHeight = scrollable.find('div.comments:first').height();
-        o.insertBefore('.comments .comment:first');
+        o.insertBefore(post.find('.comments .comment:first'));
         var delta = scrollable.find('div.comments:first').height() - initialHeight;
         replaceNumCommentsFromAJAX(o, post);
 

@@ -1,5 +1,5 @@
 #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @post.comments(@comment_fetch_options).count + (@old_n || 0), num_total: @post.comments.count, hidden: true }
 
 <?r @post.comments(@comment_fetch_options).each do |c| ?>
-  #{ render_file 'view/comments/_comment.xhtml', hidden: @hidden, comment: c, post: @post }
+  #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post }
 <?r end ?>
