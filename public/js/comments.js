@@ -65,11 +65,12 @@ $(document).ready( function() {
 
     var post = $(this).closest('.post, .post-excerpt');
     var postId = post.data('post-id');
-    var toId = post.find('.comments .comment:first').data('comment-id');
+    var comments = post.find('.comments');
+    var toId = comments.find('.comment:first').data('comment-id');
 
-    insertSpinnerBefore('.comments .comment:first', 16);
+    insertSpinnerBefore(comments.find('.comment:first'), 16);
     $.get(
-      '/comments/_comments/'+postId+'/'+toId+'/'+post.find('.comments span.num-comments').data('n'),
+      '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
       function(html) {
         if( $.trim(html).length == 0 ) {
           return;
@@ -82,7 +83,7 @@ $(document).ready( function() {
         }
         var initialScrollTop = scrollable.scrollTop();
         var initialHeight = scrollable.find('div.comments:first').height();
-        o.insertBefore(post.find('.comments .comment:first'));
+        o.insertBefore(comments.find('.comment:first'));
         var delta = scrollable.find('div.comments:first').height() - initialHeight;
         replaceNumCommentsFromAJAX(o, post);
 
