@@ -4,7 +4,6 @@ function replaceNumCommentsFromAJAX(ajax_object, post) {
   numCommentsSpan.removeClass('hidden');
 }
 
-
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
 
@@ -76,6 +75,7 @@ $(document).ready( function() {
           return;
         }
         var o = $(html);
+        updateNumNotificationsUnseen( o.filter('span.num-notifs-unseen').detach().text() );
 
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {

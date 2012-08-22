@@ -69,6 +69,7 @@ module Controller
           Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, c.id )
         end
       end
+      @num_notifs_unseen = account.num_notifications_unseen
     end
 
     def _comment(comment_id, old_n = nil)

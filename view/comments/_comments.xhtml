@@ -3,3 +3,5 @@
 <?r @comments.each do |c| ?>
   #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post }
 <?r end ?>
+
+<span class="hidden num-notifs-unseen">#{@num_notifs_unseen}</span>
