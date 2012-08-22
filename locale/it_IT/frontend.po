@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-19 18:40+0000\n"
+"PO-Revision-Date: 2012-08-21 12:16+0000\n"
 "Last-Translator: Damtux <sun_lion@live.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -200,7 +200,7 @@ msgid "comments"
 msgstr "commenti"
 
 msgid "comment"
-msgstr "commento"
+msgstr "commenta"
 
 msgid "mark read"
 msgstr "segna come già letto"
@@ -282,11 +282,20 @@ msgstr "Hai già un fiume per questo."
 msgid "One comment"
 msgstr "Un commento"
 
+msgid "showing 1 comment"
+msgstr "stai vedendo 1 commento"
+
 msgid "%d comments"
 msgstr "%d commenti"
 
+msgid "showing %d of %d comments"
+msgstr "stai vedendo %d su %d commenti"
+
 msgid "show %smore%s / %sall%s comments"
 msgstr "mostra %spiù%s / %stutti%s i commenti"
+
+msgid "more comments"
+msgstr "più commenti"
 
 msgid "jump-to-comment|Comment"
 msgstr "Commenta"
@@ -619,6 +628,49 @@ msgstr "Hostname:"
 
 msgid "new-tree|Add"
 msgstr "Aggiungi"
+
+msgid "Job queue"
+msgstr "Coda di lavoro"
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr "Lavori non completati"
+
+msgid "Unfinished Jobs: %s"
+msgstr "Lavori non completati: %s"
+
+msgid "jobs|Show all"
+msgstr "Mostra tutti"
+
+msgid "jobs|ID"
+msgstr "ID"
+
+msgid "jobs|Task"
+msgstr "Lavoro"
+
+msgid "jobs|Params"
+msgstr "Parametri"
+
+msgid "jobs|Time created"
+msgstr "Data di creazione"
+
+msgid "jobs|Time started"
+msgstr "Data di inizio"
+
+msgid "jobs|Tries"
+msgstr "Tentativi"
+
+msgid "jobs|Actions"
+msgstr "Azioni"
+
+msgid "jobs|Retry"
+msgstr "Riprova"
+
+msgid "jobs|Delete"
+msgstr "Cancella"
+
+msgid "jobs|Back to forest administration"
+msgstr "Torna agli strumenti di amministrazione della foresta"
 
 #: view/404.xhtml
 msgid "404|No such page"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-19 08:45+0000\n"
+"PO-Revision-Date: 2012-08-21 16:07+0000\n"
 "Last-Translator: LunaChik <lunachik@zoho.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/libertree/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "Publicación"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "post|Preview"
-msgstr "Preensenar"
+msgstr "Vista Previa"
 
 msgid "Visibility"
 msgstr "Visibilidad"
@@ -189,7 +189,7 @@ msgid "back to top"
 msgstr "regresa al cima"
 
 msgid "Liked by %s"
-msgstr "A %s les gusta"
+msgstr "Les gusta a %s "
 
 msgid "1 comment by %1$s"
 msgstr "1 comentario de %1$s"
@@ -283,11 +283,20 @@ msgstr "Ya tienes un río por eso."
 msgid "One comment"
 msgstr "Un comentario"
 
+msgid "showing 1 comment"
+msgstr ""
+
 msgid "%d comments"
 msgstr "%d comentarios"
 
+msgid "showing %d of %d comments"
+msgstr ""
+
 msgid "show %smore%s / %sall%s comments"
 msgstr "mostrar %smás%s / %stodos%s comentarios"
+
+msgid "more comments"
+msgstr ""
 
 msgid "jump-to-comment|Comment"
 msgstr "Comentar"
@@ -478,17 +487,17 @@ msgstr "%d más"
 
 #: view/notifications/_comment.xhtml
 msgid "%1$s commented on your %2$spost%3$s."
-msgstr "%1$s comentó en tu %2$spublicación%3$s."
+msgstr "%1$s comentó en tu %2$spublicación%3$s"
 
 msgid "%1$s commented on %2$s's %3$spost%4$s."
-msgstr "%1$s comentó en %2$s's %3$spublicación%4$s."
+msgstr "%1$s comentó en %3$sla publicación%4$s de %2$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "%1$s liked your %2$scomment%3$s on your post."
 msgstr "A %1$s le gustó %2$scomentario%3$s en tu publicación."
 
 msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "A %1$s le gusta tu %2$scomentario%3$s en %4$s's publicación."
+msgstr "A %1$s le gustó tu %2$scomentario%3$s en la publicación de%4$s."
 
 #: view/notifications/_post_like.xhtml
 msgid "%1$s liked your %2$spost%3$s."
@@ -620,6 +629,49 @@ msgstr "Nombre de Servidor:"
 
 msgid "new-tree|Add"
 msgstr "Adjuntar"
+
+msgid "Job queue"
+msgstr ""
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr ""
+
+msgid "Unfinished Jobs: %s"
+msgstr ""
+
+msgid "jobs|Show all"
+msgstr ""
+
+msgid "jobs|ID"
+msgstr ""
+
+msgid "jobs|Task"
+msgstr ""
+
+msgid "jobs|Params"
+msgstr ""
+
+msgid "jobs|Time created"
+msgstr ""
+
+msgid "jobs|Time started"
+msgstr ""
+
+msgid "jobs|Tries"
+msgstr ""
+
+msgid "jobs|Actions"
+msgstr ""
+
+msgid "jobs|Retry"
+msgstr ""
+
+msgid "jobs|Delete"
+msgstr ""
+
+msgid "jobs|Back to forest administration"
+msgstr ""
 
 #: view/404.xhtml
 msgid "404|No such page"
@@ -757,7 +809,7 @@ msgid ""
 msgstr "Para reinicializar tu constreña, entra la dirección de email que está asociado con tu cuenta."
 
 msgid "password-reset|Submit"
-msgstr "Someter"
+msgstr "Aceptar"
 
 #: view/signup.xhtml
 msgid "Create a New Account"

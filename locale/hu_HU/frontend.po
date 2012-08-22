@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-18 10:16+0000\n"
+"PO-Revision-Date: 2012-08-21 14:16+0000\n"
 "Last-Translator: danielwine <danielwine@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -282,11 +282,20 @@ msgstr "Ehhez már van egy folyód."
 msgid "One comment"
 msgstr "egy hozzászólás"
 
+msgid "showing 1 comment"
+msgstr "1 hozzászólás megjelenítve"
+
 msgid "%d comments"
 msgstr "%d hozzászólás"
 
+msgid "showing %d of %d comments"
+msgstr "megjelenített hozzászólások: %d / %d"
+
 msgid "show %smore%s / %sall%s comments"
 msgstr "%stöbbi%s / %sösszes%s hozzászólást mutat"
+
+msgid "more comments"
+msgstr "többet mutat"
 
 msgid "jump-to-comment|Comment"
 msgstr "hozzászól"
@@ -550,15 +559,21 @@ msgstr "Társjegyzék frissítve"
 msgid "Contact list name may not be empty."
 msgstr "Társjegyzék neve nem lehet üres."
 
+msgid "The contact list &ldquo;%s&rdquo; has been deleted."
+msgstr "A &ldquo;%s&rdquo; nevű társjegyzék törlésre került."
+
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
 msgstr "Társak jegyzékei"
 
-msgid "new-contact-list|Name:"
-msgstr "Név:"
+msgid "contact-list|Name:"
+msgstr "név:"
 
 msgid "new-contact-list|Create"
 msgstr "létrehozás"
+
+msgid "contact-list|delete"
+msgstr "törlés"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -613,6 +628,49 @@ msgstr "Gazdarendszer neve:"
 
 msgid "new-tree|Add"
 msgstr "hozzáadás"
+
+msgid "Job queue"
+msgstr "Feladat várólista"
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr "Befejezetlen feladatok"
+
+msgid "Unfinished Jobs: %s"
+msgstr "Befejezetlen feladatok: %s"
+
+msgid "jobs|Show all"
+msgstr "Mindet mutat"
+
+msgid "jobs|ID"
+msgstr "Azonosító"
+
+msgid "jobs|Task"
+msgstr "Feladat"
+
+msgid "jobs|Params"
+msgstr "Jellemzők"
+
+msgid "jobs|Time created"
+msgstr "Létrehozva"
+
+msgid "jobs|Time started"
+msgstr "Elindítva"
+
+msgid "jobs|Tries"
+msgstr "Próbálkozások"
+
+msgid "jobs|Actions"
+msgstr "Tevékenységek"
+
+msgid "jobs|Retry"
+msgstr "újraindít"
+
+msgid "jobs|Delete"
+msgstr "törlés"
+
+msgid "jobs|Back to forest administration"
+msgstr "vissza az erdei felügyelethez"
 
 #: view/404.xhtml
 msgid "404|No such page"
@@ -685,8 +743,8 @@ msgstr "Medencék"
 msgid "Use pools to collect posts."
 msgstr "Bejegyzések összegyűjtéséhez használj medencéket."
 
-msgid "new-pool|Name:"
-msgstr "Név:"
+msgid "pool|Name:"
+msgstr "név:"
 
 msgid "new-pool|Create"
 msgstr "létrehozás"
@@ -697,6 +755,13 @@ msgstr "törlés"
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "medence: %s"
+
+#: view/pools/edit.xhtml
+msgid "Edit Pool: %s"
+msgstr "medence szerkesztése: %s"
+
+msgid "pool|Update"
+msgstr "frissítés"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"

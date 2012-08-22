@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-07 01:35+0000\n"
+"PO-Revision-Date: 2012-08-21 08:50+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/libertree/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,9 @@ msgstr "密码或用户名错误。"
 
 msgid "A valid invitation code is required."
 msgstr "需要邀请码。"
+
+msgid "This invitation code has already been used. Try another one!"
+msgstr ""
 
 msgid "You mistyped your password."
 msgstr "密码键入错误。"
@@ -108,6 +111,24 @@ msgstr ""
 msgid "post|Preview"
 msgstr ""
 
+msgid "Visibility"
+msgstr ""
+
+msgid "visibility|Internet"
+msgstr ""
+
+msgid "visibility|Forest"
+msgstr ""
+
+#: helper/post.rb
+msgid "This post and its comments are visible to the whole Internet"
+msgstr ""
+
+msgid ""
+"This post and its comments are only visible to members of this Libertree "
+"forest"
+msgstr ""
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr ""
@@ -160,7 +181,7 @@ msgid "No more posts."
 msgstr ""
 
 msgid ""
-"The system is still matching posts with this river.  Check in a few minutes "
+"The system is still matching posts with this river. Check in a few minutes "
 "for more posts."
 msgstr ""
 
@@ -171,7 +192,7 @@ msgstr ""
 msgid "Liked by %s"
 msgstr "%s 喜欢"
 
-msgid "One comment by %1$s"
+msgid "1 comment by %1$s"
 msgstr ""
 
 msgid "%2$d comments by %1$s"
@@ -263,10 +284,19 @@ msgstr ""
 msgid "One comment"
 msgstr "一个评论"
 
+msgid "showing 1 comment"
+msgstr ""
+
 msgid "%d comments"
 msgstr "%d个评论"
 
+msgid "showing %d of %d comments"
+msgstr ""
+
 msgid "show %smore%s / %sall%s comments"
+msgstr ""
+
+msgid "more comments"
 msgstr ""
 
 msgid "jump-to-comment|Comment"
@@ -371,6 +401,9 @@ msgstr "自定义JS："
 msgid "Automatic embedding:"
 msgstr "自动嵌入："
 
+msgid "Make thumbnails for images in post excerpts:"
+msgstr ""
+
 msgid "Language:"
 msgstr "语言："
 
@@ -454,26 +487,27 @@ msgid "%d more"
 msgstr ""
 
 #: view/notifications/_comment.xhtml
-msgid "%s commented on your %spost%s."
+msgid "%1$s commented on your %2$spost%3$s."
 msgstr ""
 
-msgid "%s commented on %s's %spost%s."
+msgid "%1$s commented on %2$s's %3$spost%4$s."
 msgstr ""
 
 #: view/notifications/_comment_like.xhtml
-msgid "%s liked your %scomment%s on your post."
-msgstr "%s喜欢你的%s评论%s。"
+msgid "%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s喜欢你的%2$s评论%3$s。"
 
-msgid "%s liked your %scomment%s on %s's post."
-msgstr "%s喜欢你在%s的post下的%s评论%s。"
+msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s喜欢你在%4$s的post下的%2$s评论%3$s。"
 
 #: view/notifications/_post_like.xhtml
-msgid "%s liked your %spost%s."
-msgstr "%s喜欢你的%spost%s。"
+msgid "%1$s liked your %2$spost%3$s."
+msgstr "%1$s喜欢你的%2$spost%3$s。"
 
+# TODO: positional placeholders
 #: view/notifications/_message.xhtml
-msgid "%s sent you a %smessage%s."
-msgstr "%s发给你%s消息%s。"
+msgid "%1$s sent you a %2$smessage%3$s."
+msgstr "%1$s发给你%2$s消息%3$s。"
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -527,14 +561,20 @@ msgstr ""
 msgid "Contact list name may not be empty."
 msgstr ""
 
+msgid "The contact list &ldquo;%s&rdquo; has been deleted."
+msgstr ""
+
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
 msgstr ""
 
-msgid "new-contact-list|Name:"
+msgid "contact-list|Name:"
 msgstr ""
 
 msgid "new-contact-list|Create"
+msgstr ""
+
+msgid "contact-list|delete"
 msgstr ""
 
 #: view/contact-lists/show.xhtml
@@ -589,6 +629,49 @@ msgid "new-tree|Hostname:"
 msgstr ""
 
 msgid "new-tree|Add"
+msgstr ""
+
+msgid "Job queue"
+msgstr ""
+
+#: view/admin/jobs/index.xhtml
+msgid "Unfinished Jobs"
+msgstr ""
+
+msgid "Unfinished Jobs: %s"
+msgstr ""
+
+msgid "jobs|Show all"
+msgstr ""
+
+msgid "jobs|ID"
+msgstr ""
+
+msgid "jobs|Task"
+msgstr ""
+
+msgid "jobs|Params"
+msgstr ""
+
+msgid "jobs|Time created"
+msgstr ""
+
+msgid "jobs|Time started"
+msgstr ""
+
+msgid "jobs|Tries"
+msgstr ""
+
+msgid "jobs|Actions"
+msgstr ""
+
+msgid "jobs|Retry"
+msgstr ""
+
+msgid "jobs|Delete"
+msgstr ""
+
+msgid "jobs|Back to forest administration"
 msgstr ""
 
 #: view/404.xhtml
@@ -662,7 +745,7 @@ msgstr ""
 msgid "Use pools to collect posts."
 msgstr ""
 
-msgid "new-pool|Name:"
+msgid "pool|Name:"
 msgstr ""
 
 msgid "new-pool|Create"
@@ -673,6 +756,13 @@ msgstr ""
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
+msgstr ""
+
+#: view/pools/edit.xhtml
+msgid "Edit Pool: %s"
+msgstr ""
+
+msgid "pool|Update"
 msgstr ""
 
 #: view/profiles/edit.xhtml
@@ -904,4 +994,76 @@ msgid "chat|(no contacts online)"
 msgstr ""
 
 msgid "Start new chat with..."
+msgstr ""
+
+#: layout/_menu.xhtml
+msgid "menu|Profile"
+msgstr ""
+
+msgid "menu|Settings"
+msgstr ""
+
+msgid "menu|Contact Lists"
+msgstr ""
+
+msgid "menu|Pools"
+msgstr ""
+
+msgid "menu|Legible font size"
+msgstr ""
+
+msgid "menu|Small font size"
+msgstr ""
+
+msgid "menu|legible"
+msgstr ""
+
+msgid "menu|small"
+msgstr ""
+
+msgid "menu|Currently in &quot;small display&quot; mode; click to change"
+msgstr ""
+
+msgid "menu|Currently in &quot;large display&quot; mode; click to change"
+msgstr ""
+
+msgid "menu|Large display"
+msgstr ""
+
+msgid "menu|Small display"
+msgstr ""
+
+msgid "menu|Administrate"
+msgstr ""
+
+msgid "menu|Log out"
+msgstr ""
+
+msgid "menu|Go Home"
+msgstr ""
+
+msgid "menu|You are at Home"
+msgstr ""
+
+msgid "menu|New Post"
+msgstr ""
+
+msgid "menu|Known Issues"
+msgstr ""
+
+#: layout/_notifications.xhtml
+msgid "No notifications"
+msgstr ""
+
+msgid "1 notification"
+msgstr ""
+
+msgid "%d notifications"
+msgstr ""
+
+#: layout/_chat.xhtml
+msgid "1 unread chat message from %1$s"
+msgstr ""
+
+msgid "%2$d unread chat messages from %1$s"
 msgstr ""
