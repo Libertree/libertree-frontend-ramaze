@@ -97,6 +97,7 @@ module Controller
 
         if logged_in?
           @post.mark_as_read_by account
+          Libertree::Model::Notification.mark_seen_for_account_and_post  account, @post
         end
       end
     end
