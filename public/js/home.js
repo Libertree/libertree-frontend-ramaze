@@ -126,7 +126,7 @@ $(document).ready( function() {
       { height: overflowed.data('contracted-height')+'px' },
       animationSpeed,
       function() {
-        $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
+        $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
       }
     );
     return false;
