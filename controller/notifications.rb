@@ -89,11 +89,8 @@ module Controller
 
     def seen_comments(*comment_ids)
       comment_ids.each do |id|
-        Libertree::Model::Notification.for_account_and_comment_id(account, id).each do |notif|
-          notif.seen = true
-        end
+        Libertree::Model::Notification.mark_seen_for_account_and_comment_id(account, id)
       end
-      account.dirty
       account.num_notifications_unseen
     end
 
