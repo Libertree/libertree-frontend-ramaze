@@ -24,6 +24,7 @@ body.body.excerpts-view .main {
         width: 100%;
         padding: 1em 0 1em;
         border-bottom: 1px dotted $leaf;
+        overflow: auto;
 
         .avatar {
             float: left;
