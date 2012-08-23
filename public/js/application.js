@@ -8,16 +8,9 @@ function checkForSessionDeath(html) {
   }
 }
 
-/* TODO: DRY up these spinner injection functions somehow */
 //FIXME: src depends on selected theme
-function addSpinner(target_selector, size) {
-  $(target_selector).append('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
-}
-function prependSpinner(target_selector, size) {
-  $(target_selector).prepend('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
-}
-function insertSpinnerBefore(target_selector, size) {
-  $(target_selector).before('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
+function addSpinner(target_selector, position, size) {
+  $(target_selector)[position]('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
 }
 function removeSpinner(target_selector) {
   $('img.spinner', target_selector).remove();
@@ -29,6 +22,7 @@ function hideWindows() {
   rememberChatDimensions();
 }
 
+//TRANSLATEME
 function updateAges() {
   $('.age').each( function(i) {
     if( $(this).text().match(/^seconds ago$/) ) {
@@ -117,6 +111,7 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
+          //TRANSLATEME
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length == 0 ) {

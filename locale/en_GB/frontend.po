@@ -132,6 +132,9 @@ msgid "like"
 msgstr ""
 msgid "likes"
 msgstr ""
+msgid "Delete this post?"
+msgstr ""
+
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
@@ -187,6 +190,12 @@ msgstr ""
 
 #: controller/pools.rb
 msgid "You already have a pool with that name."
+msgstr ""
+msgid "Failed to create pool or add post."
+msgstr ""
+msgid "Failed to add post to pool."
+msgstr ""
+msgid "Post added to %ldquo;%s&rdquo; pool."
 msgstr ""
 
 #: controller/profiles.rb
@@ -503,6 +512,9 @@ msgid "jobs|Delete"
 msgstr ""
 msgid "jobs|Back to forest administration"
 msgstr ""
+msgid "Delete this job?"
+msgstr ""
+
 
 #: view/404.xhtml
 msgid "404|No such page"
@@ -563,6 +575,8 @@ msgid "new-pool|Create"
 msgstr ""
 msgid "pool|Delete"
 msgstr ""
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr ""
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
@@ -591,6 +605,9 @@ msgid "avatar-upload|Submit"
 msgstr ""
 msgid "Reset avatar"
 msgstr ""
+msgid "Delete your avatar and reset it to the default?"
+msgstr ""
+
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
@@ -656,6 +673,10 @@ msgstr ""
 msgid "river|edit"
 msgstr ""
 msgid "river|delete"
+msgstr ""
+
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
 msgstr ""
 
 #: view/rivers/_tips_and_examples.xhtml
@@ -770,4 +791,8 @@ msgstr ""
 msgid "1 unread chat message from %1$s"
 msgstr ""
 msgid "%2$d unread chat messages from %1$s"
+msgstr ""
+
+#: public/js/comments.js
+msgid "Failed to post comment."
 msgstr ""

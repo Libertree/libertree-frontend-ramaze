@@ -126,7 +126,7 @@ $(document).ready( function() {
       { height: overflowed.data('contracted-height')+'px' },
       animationSpeed,
       function() {
-        $(this).closest('.post-excerpt').find('div.comments, div.comment').addClass('hidden');
+        $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
       }
     );
     return false;
@@ -155,7 +155,7 @@ $(document).ready( function() {
     $('.more-posts-divider').removeClass('more-posts-divider');
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
-    addSpinner($(this).parent());
+    addSpinner($(this).parent(), 'append');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
       'newer',

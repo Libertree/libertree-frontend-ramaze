@@ -1,6 +1,6 @@
 function replaceNumCommentsFromAJAX(ajax_object, post) {
   var numCommentsSpan = ajax_object.filter('span.num-comments.hidden').detach();
-  post.find('span.num-comments').replaceWith(numCommentsSpan);
+  post.find('.comments span.num-comments').replaceWith(numCommentsSpan);
   numCommentsSpan.removeClass('hidden');
 }
 
@@ -12,7 +12,7 @@ function insertCommentHtmlFor( postId, commentId ) {
   }
 
   $.get(
-    '/comments/_comment/'+commentId+'/' + post.find('.num-comments').data('n'),
+    '/comments/_comment/'+commentId+'/' + post.find('.comments .num-comments').data('n'),
     function(html) {
       var o = $(html);
       o.insertBefore( post.find('.comments .detachable') );
@@ -37,7 +37,7 @@ function insertCommentHtmlFor( postId, commentId ) {
 }
 
 function hideLoadCommentsLinkIfAllShown(element) {
-  var n = parseInt( element.find('.num-comments').text() );
+  var n = parseInt( element.find('.comments .num-comments').text() );
   if( element.find('div.comment').length == n ) {
     element.find('a.load-comments').hide();
   }
@@ -67,7 +67,7 @@ $(document).ready( function() {
     var comments = post.find('.comments');
     var toId = comments.find('.comment:first').data('comment-id');
 
-    insertSpinnerBefore(comments.find('.comment:first'), 16);
+    addSpinner(comments.find('.comment:first'), 'before', 16);
     $.get(
       '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
       function(html) {
@@ -184,7 +184,7 @@ $(document).ready( function() {
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
-    addSpinner( submitButton.closest('.form-buttons'), 16 );
+    addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
@@ -212,6 +212,7 @@ $(document).ready( function() {
             ;
           }
         } else {
+          //TRANSLATEME
           alert('Failed to post comment.');
         }
         submitButton.removeAttr('disabled');

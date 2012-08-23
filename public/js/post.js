@@ -111,7 +111,7 @@ $(document).ready( function() {
 
   $('.post-tools .delete').live( 'click', function(event) {
     event.preventDefault();
-    if( confirm('Delete this post?') ) {
+    if( confirm($(this).data('msg')) ) {
       var post = $(this).closest('div[data-post-id]');
       window.location = '/posts/destroy/' + post.data('post-id');
     }

@@ -16,7 +16,7 @@ $(document).ready( function() {
   } );
   $('table.jobs td a.delete').live( 'click', function(event) {
     event.preventDefault();
-    if( confirm('Delete this job?') ) {
+    if( confirm($(this).data('msg')) ) {
       window.location = $(this).attr('href');
     }
   } );

@@ -1,7 +1,7 @@
 $(document).ready( function() {
   $('#avatar-reset').live( 'click', function(event) {
     event.preventDefault();
-    if( confirm('Delete your avatar and reset it to the default?') ) {
+    if( confirm($(this).data('msg')) ) {
       window.location = '/profiles/avatar_reset';
     }
   } );
@@ -10,7 +10,7 @@ $(document).ready( function() {
     var selector = $('#river-selector');
     var riverId = selector.val();
     var memberId = selector.data('member-id');
-    addSpinner( selector.parent() );
+    addSpinner( selector.parent(), 'append' );
     $.get(
       '/rivers/add_from/'+riverId+'/'+memberId,
       function() {

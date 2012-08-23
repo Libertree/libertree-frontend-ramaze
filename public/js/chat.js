@@ -131,7 +131,7 @@ $(document).ready( function() {
 
     hideWindows();
     $('#chat-window').empty();
-    addSpinner('#chat-window');
+    addSpinner('#chat-window', 'append');
     $('#chat-window')
       .show()
       .load(
