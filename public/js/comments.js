@@ -1,6 +1,6 @@
 function replaceNumCommentsFromAJAX(ajax_object, post) {
   var numCommentsSpan = ajax_object.filter('span.num-comments.hidden').detach();
-  post.find('span.num-comments').replaceWith(numCommentsSpan);
+  post.find('.comments span.num-comments').replaceWith(numCommentsSpan);
   numCommentsSpan.removeClass('hidden');
 }
 
@@ -12,7 +12,7 @@ function insertCommentHtmlFor( postId, commentId ) {
   }
 
   $.get(
-    '/comments/_comment/'+commentId+'/' + post.find('.num-comments').data('n'),
+    '/comments/_comment/'+commentId+'/' + post.find('.comments .num-comments').data('n'),
     function(html) {
       var o = $(html);
       o.insertBefore( post.find('.comments .detachable') );
@@ -37,7 +37,7 @@ function insertCommentHtmlFor( postId, commentId ) {
 }
 
 function hideLoadCommentsLinkIfAllShown(element) {
-  var n = parseInt( element.find('.num-comments').text() );
+  var n = parseInt( element.find('.comments .num-comments').text() );
   if( element.find('div.comment').length == n ) {
     element.find('a.load-comments').hide();
   }
