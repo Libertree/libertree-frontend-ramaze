@@ -74,7 +74,7 @@ GEM
     innate (2012.03)
       rack (~> 1.4.1)
     kgio (2.7.3)
-    m4dbi (0.8.5)
+    m4dbi (0.8.6)
       metaid
       rdbi
     mail (2.4.4)
