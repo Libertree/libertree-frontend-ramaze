@@ -33,7 +33,7 @@
 
       <?r if @post.member == account.member ?>
         <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
-        <a href="/posts/destroy/#{@post.id}" class="delete">#{_('delete')}</a>
+        <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
       <?r end ?>
 
       <?r if @post.read_by?(account) ?>

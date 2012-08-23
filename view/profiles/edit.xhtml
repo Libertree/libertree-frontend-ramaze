@@ -17,6 +17,6 @@
 </form>
 
 <?r unless account.member.avatar_path.nil? ?>
-  <a id="avatar-reset" href="/profiles/avatar_reset">#{_('Reset avatar')}</a>
+  <a id="avatar-reset" data-msg="#{_('Delete your avatar and reset it to the default?')}" href="/profiles/avatar_reset">#{_('Reset avatar')}</a>
 <?r end ?>
 

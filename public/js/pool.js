@@ -102,7 +102,7 @@ $(document).ready( function() {
   } );
 
   $('li.pool a.delete').click( function() {
-    if( ! confirm('All record of collected posts will be lost.  Delete this pool?') ) {
+    if( ! confirm($(this).data('msg')) ) {
       return false;
     }
   } );
