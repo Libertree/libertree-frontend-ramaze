@@ -10,10 +10,25 @@ function createPoolAndAddPost(post) {
       if(h.success) {
         $('.pools.window').hide();
       } else {
-        //TRANSLATEME
-        alert('Failed to create pool or add post.');
+        alert(h.msg);
       }
       textField.removeAttr('disabled');
+    }
+  );
+}
+
+function addPost(poolId, postId, collect_link, x, y) {
+  $.get(
+    '/pools/add_post/' + poolId + '/' + postId,
+    function(response) {
+      var h = $.parseJSON(response);
+      $('div.pools').remove();
+      if(h.success) {
+        collect_link.text(collect_link.data('text-success'));
+        fadingAlert(h.msg, x, y);
+      } else {
+        alert(h.msg);
+      }
     }
   );
 }
@@ -39,17 +54,7 @@ $(document).ready( function() {
         o.insertAfter(post.find('.meta, .post-pane'));
         if( o.find('option').length == 2 ) {
           var option = $('select#pool-selector option:last');
-          $.get(
-            '/pools/add_post/' + option.val() + '/' + postId,
-            function() {
-              /* TODO: Check for success */
-              $('div.pools').remove();
-              //TRANSLATEME
-              collect_link.text('collected');
-              //TRANSLATEME
-              fadingAlert('Post added to "'+option.text()+'" pool.', x, y);
-            }
-          );
+          addPost( option.val(), postId, collect_link, x, y );
         } else {
           o.show();
           o.css( { left: (x-o.width()/2)+'px', top: (y+14)+'px' } );
@@ -57,17 +62,7 @@ $(document).ready( function() {
             //TRANSLATEME
             no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
           } ).change( function() {
-            $.get(
-              '/pools/add_post/' + $('select#pool-selector').val() + '/' + postId,
-              function() {
-                /* TODO: Check for success */
-                $('div.pools').remove();
-                //TRANSLATEME
-                collect_link.text('collected');
-                //TRANSLATEME
-                fadingAlert('Post added to pool.', x, y);
-              }
-            );
+            addPost( $('select#pool-selector').val(), postId, collect_link, x, y );
           } );
         }
         $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown()

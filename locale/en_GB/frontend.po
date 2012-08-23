@@ -191,6 +191,12 @@ msgstr ""
 #: controller/pools.rb
 msgid "You already have a pool with that name."
 msgstr ""
+msgid "Failed to create pool or add post."
+msgstr ""
+msgid "Failed to add post to pool."
+msgstr ""
+msgid "Post added to %ldquo;%s&rdquo; pool."
+msgstr ""
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -785,16 +791,6 @@ msgstr ""
 msgid "1 unread chat message from %1$s"
 msgstr ""
 msgid "%2$d unread chat messages from %1$s"
-msgstr ""
-
-#: public/js/pool.js
-msgid "Failed to create pool or add post."
-msgstr ""
-msgid "pool-status|collected"
-msgstr ""
-msgid "Post added to &ldquo;%s&rdquo; pool."
-msgstr ""
-msgid "Post added to pool."
 msgstr ""
 
 #: public/js/comments.js

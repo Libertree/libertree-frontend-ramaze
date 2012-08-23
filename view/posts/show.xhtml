@@ -35,7 +35,7 @@
               <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
             <?r end ?>
 
-            <a class="collect" href="#" title="Collect this post in a pool">#{_('collect')}</a>
+            <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
 
             <?r if @post.like_by(account.member) ?>
               <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>

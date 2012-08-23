@@ -8,7 +8,7 @@ module Controller
     end
 
     layout do |path|
-      if path =~ %r{\b_|create_pool_and_add_post}
+      if path =~ %r{\b_|create_pool_and_add_post|add_post}
         nil
       elsif session[:layout] == 'narrow'
         :narrow
@@ -77,19 +77,31 @@ module Controller
     end
 
     def add_post(pool_id, post_id)
+      error = {
+        'success' => false,
+        'msg' => _('Failed to add post to pool.')
+      }
+
       pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
-      return  if pool.nil?
+      return error.to_json if pool.nil?
       post = Libertree::Model::Post[ id: post_id.to_i ]
-      return  if post.nil?
+      return error.to_json if post.nil?
 
       pool << post
 
-      ""
+      {
+        'success' => true,
+        'msg' => _("Post added to &ldquo;%s&rdquo; pool.") % pool.name
+      }.to_json
     end
 
     def create_pool_and_add_post(pool_name, post_id)
+      error = {
+        'success' => false,
+        'msg' => _('Failed to create pool or add post.')
+      }
       post = Libertree::Model::Post[ id: post_id.to_i ]
-      return ''  if post.nil?
+      return error.to_json if post.nil?
 
       pool = Libertree::Model::Pool.find_or_create(
         account_id: account.id,
