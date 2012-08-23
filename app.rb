@@ -24,6 +24,7 @@ all_confs = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/database.
 env = ENV['LIBERTREE_ENV'] || 'development'
 conf_db = all_confs[env]
 
+$m4dbi_cached_fetches = true
 $dbh ||= M4DBI.connect(
   :PostgreSQL,
   host:     conf_db['host'],
