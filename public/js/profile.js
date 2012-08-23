@@ -10,7 +10,7 @@ $(document).ready( function() {
     var selector = $('#river-selector');
     var riverId = selector.val();
     var memberId = selector.data('member-id');
-    addSpinner( selector.parent() );
+    addSpinner( selector.parent(), 'append' );
     $.get(
       '/rivers/add_from/'+riverId+'/'+memberId,
       function() {

@@ -30,7 +30,7 @@ $(document).ready( function() {
 
     hideWindows();
     $('#notifications-window').empty();
-    addSpinner('#notifications-window');
+    addSpinner('#notifications-window', 'append');
     $('#notifications-window').
       load(
         '/notifications/_index',

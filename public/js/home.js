@@ -155,7 +155,7 @@ $(document).ready( function() {
     $('.more-posts-divider').removeClass('more-posts-divider');
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
-    addSpinner($(this).parent());
+    addSpinner($(this).parent(), 'append');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
       'newer',
