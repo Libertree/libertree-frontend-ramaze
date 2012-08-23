@@ -10,6 +10,7 @@ function createPoolAndAddPost(post) {
       if(h.success) {
         $('.pools.window').hide();
       } else {
+        //TRANSLATEME
         alert('Failed to create pool or add post.');
       }
       textField.removeAttr('disabled');
@@ -43,7 +44,9 @@ $(document).ready( function() {
             function() {
               /* TODO: Check for success */
               $('div.pools').remove();
+              //TRANSLATEME
               collect_link.text('collected');
+              //TRANSLATEME
               fadingAlert('Post added to "'+option.text()+'" pool.', x, y);
             }
           );
@@ -51,6 +54,7 @@ $(document).ready( function() {
           o.show();
           o.css( { left: (x-o.width()/2)+'px', top: (y+14)+'px' } );
           $('select#pool-selector').chosen( {
+            //TRANSLATEME
             no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
           } ).change( function() {
             $.get(
@@ -58,7 +62,9 @@ $(document).ready( function() {
               function() {
                 /* TODO: Check for success */
                 $('div.pools').remove();
+                //TRANSLATEME
                 collect_link.text('collected');
+                //TRANSLATEME
                 fadingAlert('Post added to pool.', x, y);
               }
             );

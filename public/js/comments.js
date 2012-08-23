@@ -212,6 +212,7 @@ $(document).ready( function() {
             ;
           }
         } else {
+          //TRANSLATEME
           alert('Failed to post comment.');
         }
         submitButton.removeAttr('disabled');

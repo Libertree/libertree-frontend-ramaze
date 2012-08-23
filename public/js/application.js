@@ -22,6 +22,7 @@ function hideWindows() {
   rememberChatDimensions();
 }
 
+//TRANSLATEME
 function updateAges() {
   $('.age').each( function(i) {
     if( $(this).text().match(/^seconds ago$/) ) {
@@ -110,6 +111,7 @@ $(document).ready( function() {
         checkForSessionDeath(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
+          //TRANSLATEME
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length == 0 ) {
