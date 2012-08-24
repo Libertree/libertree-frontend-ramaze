@@ -10,7 +10,7 @@ module Libertree
     markdown ||= Redcarpet::Markdown.new(
       Libertree::Markdown.new,
       {
-        autolink: false,
+        autolink: true,
         space_after_headers: true,
         no_intra_emphasis: true,
         strikethrough: true
@@ -29,10 +29,8 @@ module Libertree
   def self.post_processing(s)
     return ''  if s.nil? or s.empty?
 
-    # Crude autolinker.
-    # We cannot do this with redcarpet, as enabling :autolink breaks the normal_text callback
-    # This has to be done after processing with markdown, as the markdown renderer filters all HTML.
-    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(https?://[^\b\s$<]+|www\.[^\b\s$<]+|/posts/show/\d+(/\d+#comment-\d+)?)}, "<a href='\\1'>\\1</a>")
+    # Crude autolinker for relative links to local resources
+    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
 
     html = Nokogiri::HTML::fragment(s)
     html.css('a').each do |a|
