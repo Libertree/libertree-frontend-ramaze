@@ -195,7 +195,7 @@ msgid "Failed to create pool or add post."
 msgstr ""
 msgid "Failed to add post to pool."
 msgstr ""
-msgid "Post added to %ldquo;%s&rdquo; pool."
+msgid "Post added to &ldquo;%s&rdquo; pool."
 msgstr ""
 
 #: controller/profiles.rb
