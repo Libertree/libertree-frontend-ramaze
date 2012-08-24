@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 21:43+0000\n"
+"PO-Revision-Date: 2012-08-23 09:00+0000\n"
 "Last-Translator: Makailija <themanintheshadows@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/libertree/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgid "A valid invitation code is required."
 msgstr "Rekisteröityminen edellyttää voimassa olevan kutsukoodin."
 
 msgid "This invitation code has already been used. Try another one!"
-msgstr "Tämä kutsukoodi on jo käytetty! Koeta toista!"
+msgstr "Tämä kutsukoodi on jo käytetty! Kokeile toista!"
 
 msgid "You mistyped your password."
 msgstr "Kirjoitit salasanasi väärin."
@@ -174,9 +174,12 @@ msgstr "tykkää"
 msgid "likes"
 msgstr "tykkäystä"
 
+msgid "Delete this post?"
+msgstr ""
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
-msgstr "Ei enempää viestejä"
+msgstr "Ei enempää viestejä."
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -217,7 +220,7 @@ msgid "hide"
 msgstr "piilota"
 
 msgid "Click to confirm hiding of this post."
-msgstr "Napsauta varmistaaksesi, että haluat piilottaa tämän viestin."
+msgstr "Paina varmistaaksesi, että haluat piilottaa tämän viestin."
 
 msgid "confirm"
 msgstr "Vahvista"
@@ -236,7 +239,7 @@ msgstr "poista"
 
 msgid ""
 "Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Napsautus keskinapilla, Shift-napsautus tai Ctrl-Shift napsautus avaa linkin uudessa välilehdessä/ikkunassa"
+msgstr "Napsautus keskinapilla, Shift-napsautus tai Ctrl-Shift-napsautus avaa linkin uudessa välilehdessä/ikkunassa"
 
 msgid "view post"
 msgstr "näytä viesti"
@@ -253,7 +256,7 @@ msgstr "Viesti ei voi olla tyhjä."
 
 #: controller/pools.rb
 msgid "You already have a pool with that name."
-msgstr "Sinulla on jo tämän niminen lampi."
+msgstr "Sinulla on jo tämänniminen lampi."
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -298,7 +301,7 @@ msgid "more comments"
 msgstr "lisää kommentteja"
 
 msgid "jump-to-comment|Comment"
-msgstr "Kommentit"
+msgstr "Kommentoi"
 
 msgid "Comment successfully posted."
 msgstr "Kommentin lähetys onnistui."
@@ -307,7 +310,7 @@ msgid "detach"
 msgstr "irrota"
 
 msgid "attach"
-msgstr "liitä"
+msgstr "kiinnitä"
 
 msgid "Clear"
 msgstr "Tyhjennä"
@@ -447,7 +450,7 @@ msgstr "Asetukset tallennettu."
 msgid ""
 "Post excerpt maximum height: Please enter a number greater than or equal to "
 "200, or no number for no maximum."
-msgstr "Viestikatkelman maksimikorkeus: Anna suurempi tai yhtä suuri luku kuin 200 tai älä anna mitään lukua, ellet halua maksimia."
+msgstr "Viestikatkelman maksimikorkeus: Anna suurempi tai yhtä suuri luku kuin 200 tai ellet halua asettaa maksimikorkeutta, älä anna mitään lukua."
 
 msgid "Passwords did not match.  Please reenter."
 msgstr "Salasanat eivät vastaa toisiaan.  Kirjoita ne uudelleen."
@@ -496,7 +499,7 @@ msgid "%1$s liked your %2$scomment%3$s on your post."
 msgstr "%1$s tykkäsi %2$skommentistasi%3$s viestissäsi."
 
 msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "%1$s tykkästi %2$skommentistasi%3$s %4$s käyttäjän viestissä."
+msgstr "%1$s tykkästi %2$skommentistasi%3$s käyttäjän %4$s viestissä."
 
 #: view/notifications/_post_like.xhtml
 msgid "%1$s liked your %2$spost%3$s."
@@ -672,6 +675,9 @@ msgstr "Poista"
 msgid "jobs|Back to forest administration"
 msgstr "Takaisin metsän ylläpitoon"
 
+msgid "Delete this job?"
+msgstr ""
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Sivua ei löydy"
@@ -752,6 +758,9 @@ msgstr "Luo"
 msgid "pool|Delete"
 msgstr "Poista"
 
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr ""
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Lampi: %s"
@@ -788,6 +797,9 @@ msgstr "Lähetä"
 msgid "Reset avatar"
 msgstr "Nollaa avatar"
 
+msgid "Delete your avatar and reset it to the default?"
+msgstr ""
+
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
 msgstr "Muokkaa"
@@ -805,7 +817,7 @@ msgstr "Nollaa salasana"
 msgid ""
 "To reset your password, enter the email address associated with your "
 "account."
-msgstr "Syötä tiliisi liitetty sähköpostiosoite nollataksesi salasanan."
+msgstr "Syötä tiliisi liitetty sähköpostiosoite nollataksesi salasanasi."
 
 msgid "password-reset|Submit"
 msgstr "Lähetä"
@@ -878,6 +890,10 @@ msgstr "muokkaa"
 msgid "river|delete"
 msgstr "poista"
 
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr ""
+
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
 msgstr "Vihjeitä:"
@@ -907,7 +923,7 @@ msgstr "Muita erityistermejä: %s, %s ja %s. Näillä voit rajoittaa haun sellai
 msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
-msgstr "(edistyneille käyttäjille) Käyttämällä erikoistermiä %s yhdessä lainausmerkeissä olevan joen nimen kanssa voi luoda jokia, jotka käyttävät muita jokia."
+msgstr "(edistyneille käyttäjille) Käyttämällä erikoistermiä %s yhdessä lainausmerkeissä olevan joen nimen kanssa voit luoda jokia, jotka käyttävät muita jokia."
 
 msgid "You can also %shave the beginner rivers recreated for you%s."
 msgstr "Voit myös %sluoda alkuperäiset joet uudelleen%s."
@@ -927,26 +943,26 @@ msgstr "Kaikki sinun puustasi lähtöisin olevat viestit"
 msgid ""
 "All posts transmitted to your tree from every other tree in the forest, plus"
 " posts from your tree"
-msgstr "Kaikki sinun puustasi lähtöisin olevat viestit ja lisäksi muista metsän puista sinun puuhusi välitetyt viestit."
+msgstr "Kaikki sinun puustasi lähtöisin olevat viestit ja lisäksi muista metsän puista sinun puuhusi välitetyt viestit"
 
 msgid ""
 ":unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
 "yet"
-msgstr ":unread #neulominen%sSellaiset tagilla %s#neulominen%s merkityt viestit, joita et ole vielä lukenut."
+msgstr ":unread #neulominen%sSellaiset tagilla %s#neulominen%s merkityt viestit, joita et ole vielä lukenut"
 
 msgid ""
 "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts "
 "about cats"
-msgstr "#hassu -#kissat -#lolcats%sViestit, jotka on merkitty tagilla %s#hauska%s, poislukien kissoja koskevat viestit."
+msgstr "#hassu -#kissat -#lolcats%sViestit, jotka on merkitty tagilla %s#hauska%s, pois lukien kissoja koskevat viestit"
 
 msgid ""
 "environment%sPosts that mention the environment, whether or not they were "
 "hashtagged with #environment"
-msgstr "ympäristö%sViestit, joissa on mainittu ympäristö riippumatta siitä, onko ne merkitty hashtagilla #ympäristö"
+msgstr "ympäristö%sViestit, joissa on mainittu ympäristö, riippumatta siitä, onko ne merkitty hashtagilla #ympäristö"
 
 msgid ""
 ":tree #bug #feature%sBug reports and feature requests made by your treemates"
-msgstr ":tree #bug #feature%sSinun puussasi olevien ihmisten tekemät bugiraportit ja ominaisuuspyynnöt."
+msgstr ":tree #bug #feature%sSinun puussasi olevien ihmisten tekemät bugiraportit ja ominaisuuspyynnöt"
 
 msgid ""
 "\"new york\"%sPosts about New York, but not posts only having the word "
@@ -974,7 +990,7 @@ msgstr "#ravintolat :river \"Tärkeää\"%sViestit, jotka on merkitty tagilla %s
 msgid ""
 "#restaurants +:river \"News Articles\"%sPosts tagged with %s#restaurants%s "
 "which also match the river \"News Articles\""
-msgstr "#ravintolat +:river \"Uutisartikkelit\"%sViestit, jotka on merkitty tagilla %s#ravintolat%s ja jotka ovat myös jossa \"Uutisartikkelit\""
+msgstr "#ravintolat +:river \"Uutisartikkelit\"%sViestit, jotka on merkitty tagilla %s#ravintolat%s ja jotka ovat myös joessa \"Uutisartikkelit\""
 
 msgid ""
 "#restaurants -:river \"International News\"%sPosts tagged with "
@@ -1065,3 +1081,20 @@ msgstr "1 lukematon chat-viesti käyttäjältä %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d lukematonta chat-viestiä käyttäjältä %1$s"
+
+#: public/js/pool.js
+msgid "Failed to create pool or add post."
+msgstr ""
+
+msgid "pool-status|collected"
+msgstr ""
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr ""
+
+msgid "Post added to pool."
+msgstr ""
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr ""

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 14:16+0000\n"
+"PO-Revision-Date: 2012-08-23 15:58+0000\n"
 "Last-Translator: danielwine <danielwine@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -173,6 +173,9 @@ msgstr "tetszik"
 
 msgid "likes"
 msgstr "ember kedveli"
+
+msgid "Delete this post?"
+msgstr "Töröljük ezt a bejegyzést?"
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
@@ -672,6 +675,9 @@ msgstr "törlés"
 msgid "jobs|Back to forest administration"
 msgstr "vissza az erdei felügyelethez"
 
+msgid "Delete this job?"
+msgstr "Töröljük a feladatot?"
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Nincs ilyen oldal"
@@ -752,6 +758,9 @@ msgstr "létrehozás"
 msgid "pool|Delete"
 msgstr "törlés"
 
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr "Az összegyűjtött bejegyzések ebben a csoportosításban többé nem lesznek láthatóak. Töröljük a medencét?"
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "medence: %s"
@@ -787,6 +796,9 @@ msgstr "elküldés"
 
 msgid "Reset avatar"
 msgstr "Képmás visszaállítása"
+
+msgid "Delete your avatar and reset it to the default?"
+msgstr "Töröljük a képmásodat és állítsuk vissza az alapértelmezettet?"
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
@@ -877,6 +889,10 @@ msgstr "szerkesztés"
 
 msgid "river|delete"
 msgstr "törlés"
+
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr "Töröljük ezt a folyót?"
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
@@ -1065,3 +1081,20 @@ msgstr "%1$s csevegőtársad írt egy új üzenetet"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%1$s csevegőtársad %2$d új üzenetet írt"
+
+#: public/js/pool.js
+msgid "Failed to create pool or add post."
+msgstr "Nem sikerült létrehozni a medencét vagy hozzáadni a bejegyzést."
+
+msgid "pool-status|collected"
+msgstr "összegyűjtve"
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr "A bejegyzés hozzáadva a &ldquo;%s&rdquo; nevű medencéhez."
+
+msgid "Post added to pool."
+msgstr "A bejegyzés hozzáadva a medencéhez."
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr "Nem sikerült elküldeni a hozzászólást."

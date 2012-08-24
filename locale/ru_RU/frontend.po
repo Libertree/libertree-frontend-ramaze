@@ -1,12 +1,13 @@
 # 
 # Translators:
 # glesik  <>, 2012.
+# glesik  <inglessi@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 08:50+0000\n"
+"PO-Revision-Date: 2012-08-23 19:29+0000\n"
 "Last-Translator: glesik <inglessi@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -174,6 +175,9 @@ msgstr "нравится"
 msgid "likes"
 msgstr "нравится"
 
+msgid "Delete this post?"
+msgstr "Удалить эту запись?"
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
 msgstr "Больше записей нет."
@@ -283,22 +287,22 @@ msgid "One comment"
 msgstr "Один комментарий"
 
 msgid "showing 1 comment"
-msgstr ""
+msgstr "показан 1 комментарий"
 
 msgid "%d comments"
 msgstr "Комментарии: %d"
 
 msgid "showing %d of %d comments"
-msgstr ""
+msgstr "показаны %d из %d комментариев"
 
 msgid "show %smore%s / %sall%s comments"
 msgstr "показать %sеще%s / %sвсе%s комментарии"
 
 msgid "more comments"
-msgstr ""
+msgstr "еще комментарии"
 
 msgid "jump-to-comment|Comment"
-msgstr "Комментарий"
+msgstr "Комментировать"
 
 msgid "Comment successfully posted."
 msgstr "Комментарий успешно отправлен."
@@ -672,6 +676,9 @@ msgstr "Удалить"
 msgid "jobs|Back to forest administration"
 msgstr "Назад к администрированию леса"
 
+msgid "Delete this job?"
+msgstr "Удалить эту задачу?"
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Такой страницы не существует"
@@ -752,6 +759,9 @@ msgstr "Создать"
 msgid "pool|Delete"
 msgstr "Удалить"
 
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr "Все сохраненные записи будут утеряны. Удалить этот пруд?"
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Пруд: %s"
@@ -787,6 +797,9 @@ msgstr "Отправить"
 
 msgid "Reset avatar"
 msgstr "Сбросить аватар"
+
+msgid "Delete your avatar and reset it to the default?"
+msgstr "Удалить аватар и установить изображение по умолчанию?"
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
@@ -877,6 +890,10 @@ msgstr "редактировать"
 
 msgid "river|delete"
 msgstr "удалить"
+
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr "Удалить эту реку?"
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
@@ -1065,3 +1082,20 @@ msgstr "1 непрочитанное сообщение в чате от %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d непрочитанных сообщений в чате от %1$s"
+
+#: public/js/pool.js
+msgid "Failed to create pool or add post."
+msgstr "Не удалось создать пруд или добавить запись."
+
+msgid "pool-status|collected"
+msgstr "сохраненные"
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr "Запись добавлена в пруд &ldquo;%s&rdquo;."
+
+msgid "Post added to pool."
+msgstr "Запись добавлена в пруд."
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr "Не удалось отправить комментарий."

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 12:16+0000\n"
+"PO-Revision-Date: 2012-08-23 10:23+0000\n"
 "Last-Translator: Damtux <sun_lion@live.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -173,6 +173,9 @@ msgstr "mi piace"
 
 msgid "likes"
 msgstr "mi piace"
+
+msgid "Delete this post?"
+msgstr "Vuoi eliminare questo post?"
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
@@ -672,6 +675,9 @@ msgstr "Cancella"
 msgid "jobs|Back to forest administration"
 msgstr "Torna agli strumenti di amministrazione della foresta"
 
+msgid "Delete this job?"
+msgstr "Vuoi cancellare questo lavoro?"
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Questa pagina non esiste"
@@ -752,6 +758,9 @@ msgstr "Crea"
 msgid "pool|Delete"
 msgstr "Elimina"
 
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr "L'archivio dei post memorizzati sarà cancellato. Vuoi proprio eliminare questo stagno?"
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Stagno: %s"
@@ -787,6 +796,9 @@ msgstr "Carica"
 
 msgid "Reset avatar"
 msgstr "Reimposta la foto profilo"
+
+msgid "Delete your avatar and reset it to the default?"
+msgstr "Vuoi cancellare la foto profilo e ritornare a quella iniziale (di default)?"
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
@@ -877,6 +889,10 @@ msgstr "modifica"
 
 msgid "river|delete"
 msgstr "elimina"
+
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr "Vuoi eliminare questo fiume?"
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
@@ -1065,3 +1081,20 @@ msgstr "1 messaggio di chat non letto da %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d messaggi chat non letti da %1$s"
+
+#: public/js/pool.js
+msgid "Failed to create pool or add post."
+msgstr "Creazione stagno o aggiunta del post fallita."
+
+msgid "pool-status|collected"
+msgstr "memorizzato"
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr "Post aggiunto allo stagno &ldquo;%s&rdquo; ."
+
+msgid "Post added to pool."
+msgstr "Post aggiunto allo stagno."
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr "Pubblicazione commento non riuscita."
