@@ -19,7 +19,14 @@
 
   <ul>
   <?r @posts.each do |p| ?>
-    <li>#{ago(p.time_created)} #{member_name_link(p.member)} <a href="/posts/show/#{p.id}">#{p.glimpse}</a></li>
+    <li class="search-result post">
+      <div class="member">
+        #{member_avatar_link(p.member)} #{member_name_link(p.member)}
+        <span class="timestamp">#{ago(p.time_created)}</span>
+      </div>
+      <p>#{highlight_query(p.glimpse(160), @q)}</p>
+      <a href="/posts/show/#{p.id}">#{_('view post')}</a>
+    </li>
   <?r end ?>
   </ul>
 <?r end ?>
@@ -29,7 +36,14 @@
 
   <ul>
   <?r @comments.each do |c| ?>
-    <li>#{ago(c.time_created)} #{member_name_link(c.member)} <a href="#{ comment_link(c) }">#{c.glimpse}</a></li>
+    <li class="search-result comment">
+      <div class="member">
+        #{member_avatar_link(c.member)} #{member_name_link(c.member)}
+        <span class="timestamp">#{ago(c.time_created)}</span>
+      </div>
+      <p>#{highlight_query(c.glimpse(160), @q)}</p>
+      <a href="#{ comment_link(c) }">#{_('view comment')}</a>
+    </li>
   <?r end ?>
   </ul>
 <?r end ?>
