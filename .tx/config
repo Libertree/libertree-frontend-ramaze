@@ -5,8 +5,9 @@ lang_map = de: de_DE, ru: ru_RU, fr: fr_FR, es: es_ES, hu: hu_HU, pl: pl_PL, fi:
 [libertree.email]
 file_filter = locale/<lang>/email.po
 source_lang = en_GB
+minimum_perc = 100
 
 [libertree.frontend]
 file_filter = locale/<lang>/frontend.po
 source_lang = en_GB
-
+minimum_perc = 40
