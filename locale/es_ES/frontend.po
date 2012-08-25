@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-24 00:03+0000\n"
+"PO-Revision-Date: 2012-08-25 08:48+0000\n"
 "Last-Translator: mauriciomejia <hectormejia@riseup.net>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/libertree/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,10 +25,10 @@ msgid "Password"
 msgstr "Contraseña"
 
 msgid "Login"
-msgstr "Abrir Sesión"
+msgstr "Iniciar Sesión"
 
 msgid "Not a member yet?"
-msgstr "¿Aún no es miembro?"
+msgstr "¿Aún no eres miembro?"
 
 # "Sign up now" is wrapped in a link
 msgid "Sign up now!"
@@ -40,17 +40,17 @@ msgstr "¿Has olvidado tus credenciales?"
 msgid ""
 "You can %sreset your password%s if your account has an email address on "
 "record."
-msgstr "Puedes %sreinicializar tu constreña%s si tu cuenta tiene una dirección de email en archivo."
+msgstr "Puedes %sreinicializar tu contraseña%s si registraste tu dirección de correo electrónico."
 
 #: controller/main.rb
 msgid "Invalid credentials."
 msgstr "Credenciales Inválidos"
 
 msgid "A valid invitation code is required."
-msgstr "Un código válido de invitación es obligatorio."
+msgstr "Se necesita código de invitación."
 
 msgid "This invitation code has already been used. Try another one!"
-msgstr "Este código de invitación ya se utilizó. Intenta con otro."
+msgstr "Este código de invitación ya fue utilizado. Prueba con otro."
 
 msgid "You mistyped your password."
 msgstr "No escribies a máquina tu constreña corectamente."
@@ -61,7 +61,7 @@ msgstr "Nombre de usario %s está tomado.  Por favor, escoge un otro."
 msgid ""
 "Username must be at least 2 characters long and consist only of lowercase "
 "letters, numbers, underscores and dashes."
-msgstr "El nombre de usario tiene que estar más que 2 caracteres y consiste solamente de letras minúsculas, números,  guiones bajos  y guiones."
+msgstr "El nombre de usuario debe tener más de 2 caracteres y consiste solamente de letras minúsculas, números,  guiones bajos  y guiones."
 
 msgid ""
 "A password reset link has been sent for the account with that email address."
@@ -89,10 +89,10 @@ msgstr "administrar los ríos"
 
 #: view/home/_menu.xhtml
 msgid "by post time"
-msgstr "por tiempo de publicar"
+msgstr "Recientemente publicado"
 
 msgid "by update time"
-msgstr "por tiempo de actualizar"
+msgstr " Recientemente comentado"
 
 msgid "mark all read"
 msgstr "marcar toda como leída"
@@ -102,14 +102,14 @@ msgid "New Post"
 msgstr "Publicación Nueva"
 
 msgid "(enter hashtags here)"
-msgstr "(entrar hashtags aquí)"
+msgstr "(Ingresa las etiquetas aquí)"
 
 msgid "new-post|Post"
 msgstr "Publicación"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "post|Preview"
-msgstr "Vista Previa"
+msgstr "Vista previa"
 
 msgid "Visibility"
 msgstr "Visibilidad"
@@ -141,47 +141,47 @@ msgstr "Actualizar"
 
 #: view/posts/show.xhtml
 msgid "Start receiving notifications about comments on this post"
-msgstr "Empieza recibir notificaciones de los comentarios de esta publicación"
+msgstr "Comienza recibir notificaciones de los comentarios de esta publicación"
 
 msgid "subscribe"
-msgstr "subscribir"
+msgstr "Subscribir"
 
 msgid "Stop receiving notifications about comments on this post"
-msgstr "Parar recibir notificaciones de los comentarios de esta publicación"
+msgstr "Dejar de recibir notificaciones de los comentarios de esta publicación"
 
 msgid "unsubscribe"
-msgstr "no subscribir"
+msgstr "No subscribir"
 
 msgid "mark post unread"
-msgstr "marcar publicación como no leída"
+msgstr "Marcar publicación como no leída"
 
 msgid "mark post read"
-msgstr "marcar publicación como leída"
+msgstr "Marcar publicación como leída"
 
 msgid "edit"
-msgstr "editar"
+msgstr "Editar"
 
 msgid "delete"
-msgstr "suprimir"
+msgstr "Suprimir"
 
 msgid "collect"
-msgstr "coleccionar"
+msgstr "Coleccionar"
 
 msgid "unlike"
-msgstr "ya no me gusta"
+msgstr "Ya no me gusta"
 
 msgid "like"
-msgstr "me gusta"
+msgstr "Me gusta"
 
 msgid "likes"
-msgstr "les gustas"
+msgstr "Les gusta"
 
 msgid "Delete this post?"
 msgstr "¿Eliminar esta publicación?"
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
-msgstr "No más publicaiones."
+msgstr "No hay más publicaiones."
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -190,10 +190,10 @@ msgstr "El sistema aún está igualando las publicaciones para este río. Ve en 
 
 #: view/posts/_excerpt.xhtml
 msgid "back to top"
-msgstr "regresa al cima"
+msgstr "Volver arriba"
 
 msgid "Liked by %s"
-msgstr "Les gusta a %s "
+msgstr "Le gusta a %s"
 
 msgid "1 comment by %1$s"
 msgstr "1 comentario de %1$s"
@@ -202,42 +202,42 @@ msgid "%2$d comments by %1$s"
 msgstr "%2$d comentarios de %1$s"
 
 msgid "comments"
-msgstr "comentarios"
+msgstr "Comentarios"
 
 msgid "comment"
-msgstr "comentar"
+msgstr "Comentar"
 
 msgid "mark read"
-msgstr "marcar como leído"
+msgstr "Marcar como leído"
 
 msgid "mark unread"
-msgstr "marcar como no leído"
+msgstr "Marcar como no leído"
 
 msgid ""
 "Hiding a post prevents it from showing in your rivers or triggering "
 "notifications."
-msgstr "Si escondes una publicación, no ves en tus ríos y no recibes notificaciones. "
+msgstr "Si escondes una publicación, no ves en tus ríos y no recibes notificaciones. \nOcultar una publicación previene que se muestre en tus ríos o que recibas sus notificaciones"
 
 msgid "hide"
-msgstr "esconder"
+msgstr "Ocultar"
 
 msgid "Click to confirm hiding of this post."
-msgstr "Hacer un clic para confirmar escondiendo de esta publicación."
+msgstr "Hacer un clic para confirmar que desea ocultar esta publicación."
 
 msgid "confirm"
-msgstr "confirmar"
+msgstr "Confirmar"
 
 msgid "Collect this post in a pool"
 msgstr "Colecionar esta publicación en una charca"
 
 msgid "collected"
-msgstr "coleccionado"
+msgstr "Coleccionado"
 
 msgid "Remove this post from this pool"
 msgstr "Eliminar esa publicación de esta charca. "
 
 msgid "remove"
-msgstr "eliminar"
+msgstr "Eliminar"
 
 msgid ""
 "Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
@@ -259,6 +259,15 @@ msgstr "La publicación no puede ser vácio."
 #: controller/pools.rb
 msgid "You already have a pool with that name."
 msgstr "Ya tienes una charca con ese nombre. "
+
+msgid "Failed to create pool or add post."
+msgstr "Fallo al crear charca o al agregar publicación."
+
+msgid "Failed to add post to pool."
+msgstr ""
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr ""
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -300,7 +309,7 @@ msgid "show %smore%s / %sall%s comments"
 msgstr "mostrar %smás%s / %stodos%s comentarios"
 
 msgid "more comments"
-msgstr "Más comentarios"
+msgstr "más comentarios"
 
 msgid "jump-to-comment|Comment"
 msgstr "Comentar"
@@ -491,26 +500,26 @@ msgstr "%d más"
 
 #: view/notifications/_comment.xhtml
 msgid "%1$s commented on your %2$spost%3$s."
-msgstr "%1$s comentó en tu %2$spublicación%3$s"
+msgstr "%1$s comentó en tu %2$spublicación%3$s."
 
 msgid "%1$s commented on %2$s's %3$spost%4$s."
-msgstr "%1$s comentó en %3$sla publicación%4$s de %2$s."
+msgstr "%1$s comentó en %2$s's %3$s publicación %4$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "%1$s liked your %2$scomment%3$s on your post."
-msgstr "A %1$s le gustó %2$scomentario%3$s en tu publicación."
+msgstr "A %1$s le gustó tu %2$s comentario %3$s en tu publicación."
 
 msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "A %1$s le gustó tu %2$scomentario%3$s en la publicación de%4$s."
+msgstr "A %1$s le gusta tu %2$scomentario %3$s en %4$s's publicación."
 
 #: view/notifications/_post_like.xhtml
 msgid "%1$s liked your %2$spost%3$s."
-msgstr "A %1$s le gusta tu %2$spublicación%3$s."
+msgstr "A %1$s le gusta tu %2$s publicación %3$s."
 
 # TODO: positional placeholders
 #: view/notifications/_message.xhtml
 msgid "%1$s sent you a %2$smessage%3$s."
-msgstr "%1$s te envió un %2$smensaje%3$s."
+msgstr "%1$s te envió un %2$s mensaje %3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -546,7 +555,7 @@ msgid "Search Results for \"%s\""
 msgstr "Los Resultados de Buscar \"%s\""
 
 msgid "search-results|Nothing found."
-msgstr "Nada encontré."
+msgstr "No encontrado."
 
 msgid "search-results|Profiles"
 msgstr "Perfiles"
@@ -557,19 +566,22 @@ msgstr "Publicaciones"
 msgid "search-results|Comments"
 msgstr "Comentarios"
 
+msgid "search-results|view comment"
+msgstr ""
+
 #: controller/contact-lists.rb
 msgid "Contact list updated."
-msgstr "El listo de contactos se ha actualizado."
+msgstr "La lista de contactos ha sido actualizada."
 
 msgid "Contact list name may not be empty."
-msgstr "El nombre del listo de contactos no puede ser vácio."
+msgstr "Debe dar un nombre a la lista de contactos."
 
 msgid "The contact list &ldquo;%s&rdquo; has been deleted."
-msgstr ""
+msgstr "La lista de contactos &ldquo;%s&rdquo; ha sido eliminada."
 
 #: view/contact-lists/index.xhtml
 msgid "Contact Lists"
-msgstr "Listos de Contactos"
+msgstr "Listas de contactos"
 
 msgid "contact-list|Name:"
 msgstr "Nombre:"
@@ -582,10 +594,10 @@ msgstr "Eliminar"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
-msgstr "Listo de Contactos: %s"
+msgstr "Lista de contactos: %s"
 
 msgid "(choose members)"
-msgstr "(escoge miembros)"
+msgstr "(Elige miembros)"
 
 msgid "contact-list|Save"
 msgstr "Guardar"
@@ -595,7 +607,7 @@ msgstr "Cancelar"
 
 #: controller/admin/base.rb
 msgid "Administrative privileges required."
-msgstr "Los privilegios de administrativos son obligatorios."
+msgstr "Requiere privilegios administrativos."
 
 #: controller/admin/forests.rb
 msgid "The tree is already a member of the forest."
@@ -611,19 +623,19 @@ msgstr "Bosques"
 msgid ""
 "Drag trees in and out of forests.  The local tree is automatically a part of"
 " each forest originating from it."
-msgstr "Arrastra y coloca los arboles a los bosques y de los bosques. El árbol local es automáticament un parte de cada bosque se origina. "
+msgstr "Arrastra y coloca los árboles dentro y fuera de los bosques. El árbol local es automáticament una parte de cada bosque de donde es originado. "
 
 msgid "create-forest|Name:"
 msgstr "Nombre:"
 
 msgid "create-forest|Add"
-msgstr "Sumar"
+msgstr "Agregar"
 
 msgid "forest|Origin:"
 msgstr "Origen:"
 
 msgid "forest-origin|this tree"
-msgstr "este árbol"
+msgstr "Este árbol"
 
 msgid "Trees"
 msgstr "Árboles"
@@ -632,7 +644,7 @@ msgid "new-tree|Hostname:"
 msgstr "Nombre de Servidor:"
 
 msgid "new-tree|Add"
-msgstr "Adjuntar"
+msgstr "Agregar"
 
 msgid "Job queue"
 msgstr "Trabajo en espera"
@@ -642,7 +654,7 @@ msgid "Unfinished Jobs"
 msgstr "Trabajos sin finalizar"
 
 msgid "Unfinished Jobs: %s"
-msgstr ""
+msgstr "Trabajos sin finalizar:%s"
 
 msgid "jobs|Show all"
 msgstr "Mostrar todos"
@@ -690,13 +702,13 @@ msgstr "Por favor, usa tu botón de átras, o %sgo vaya a tu página inicial%s."
 
 #: view/error.xhtml
 msgid "Something went wrong..."
-msgstr "Algo fue incorecto..."
+msgstr "Algo salió mal..."
 
 msgid "Time of error: %s"
 msgstr "El tiempo del error: %s"
 
 msgid "Referrer: %s"
-msgstr "Persona quien te referido: %s"
+msgstr "Persona quien te refiere: %s"
 
 #: view/messages/{index,show}.xhtml
 msgid "Direct Messages"
@@ -719,13 +731,13 @@ msgid "direct-message|Send"
 msgstr "Enviar"
 
 msgid "direct-message|Preview"
-msgstr "Preensenar"
+msgstr "Vista previa"
 
 msgid "direct-message|Recipients"
 msgstr "Destinatarios"
 
 msgid "direct-message-warning|please note..."
-msgstr "por favor toma nota..."
+msgstr "Por favor toma nota..."
 
 msgid ""
 "Please note that direct messages are not fully private, encrypted nor "
@@ -822,7 +834,7 @@ msgid ""
 msgstr "Para reinicializar tu constreña, entra la dirección de email que está asociado con tu cuenta."
 
 msgid "password-reset|Submit"
-msgstr "Aceptar"
+msgstr "Someter"
 
 #: view/signup.xhtml
 msgid "Create a New Account"
@@ -1084,19 +1096,6 @@ msgstr "1 mensaje de chat que no leído de %1$s"
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d mensajes de chat que no leído de %1$s"
 
-#: public/js/pool.js
-msgid "Failed to create pool or add post."
-msgstr "Fallo al crear charca o al agregar publicación."
-
-msgid "pool-status|collected"
-msgstr ""
-
-msgid "Post added to &ldquo;%s&rdquo; pool."
-msgstr ""
-
-msgid "Post added to pool."
-msgstr "Publicación agregada a la charca."
-
 #: public/js/comments.js
 msgid "Failed to post comment."
-msgstr ""
+msgstr "Fallo al publicar comentario."

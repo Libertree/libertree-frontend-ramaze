@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-24 07:52+0000\n"
+"PO-Revision-Date: 2012-08-25 08:48+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -264,7 +264,7 @@ msgstr "Creazione stagno o aggiunta del post fallita."
 msgid "Failed to add post to pool."
 msgstr ""
 
-msgid "Post added to %ldquo;%s&rdquo; pool."
+msgid "Post added to &ldquo;%s&rdquo; pool."
 msgstr "Post aggiunto allo stagno &ldquo;%s&rdquo; ."
 
 #: controller/profiles.rb
@@ -563,6 +563,9 @@ msgstr "Posts"
 
 msgid "search-results|Comments"
 msgstr "Commenti"
+
+msgid "search-results|view comment"
+msgstr ""
 
 #: controller/contact-lists.rb
 msgid "Contact list updated."

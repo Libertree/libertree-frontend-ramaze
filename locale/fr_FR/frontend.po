@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 15:51+0000\n"
-"Last-Translator: teimahu <teimahu@live.fr>\n"
+"PO-Revision-Date: 2012-08-25 08:48+0000\n"
+"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -178,6 +178,9 @@ msgstr "j’aime"
 msgid "likes"
 msgstr "\"j'aime\""
 
+msgid "Delete this post?"
+msgstr "Effacer ce message ?"
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
 msgstr "Fin des messages."
@@ -258,6 +261,15 @@ msgstr "Un message ne peut pas être vide."
 #: controller/pools.rb
 msgid "You already have a pool with that name."
 msgstr "Vous avez déjà un bassin avec ce nom."
+
+msgid "Failed to create pool or add post."
+msgstr ""
+
+msgid "Failed to add post to pool."
+msgstr ""
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr ""
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -556,6 +568,9 @@ msgstr "Messages"
 msgid "search-results|Comments"
 msgstr "Commentaires"
 
+msgid "search-results|view comment"
+msgstr ""
+
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr "Liste de contacts mise à jour."
@@ -676,6 +691,9 @@ msgstr "Supprimer"
 msgid "jobs|Back to forest administration"
 msgstr "Retour à l'administration de la forêt"
 
+msgid "Delete this job?"
+msgstr ""
+
 #: view/404.xhtml
 msgid "404|No such page"
 msgstr "Page introuvable"
@@ -756,6 +774,9 @@ msgstr "Créer"
 msgid "pool|Delete"
 msgstr "Effacer"
 
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr ""
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Bassin : %s"
@@ -791,6 +812,9 @@ msgstr "Soumettre"
 
 msgid "Reset avatar"
 msgstr "Réinitialiser l'avatar"
+
+msgid "Delete your avatar and reset it to the default?"
+msgstr ""
 
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
@@ -881,6 +905,10 @@ msgstr "éditer"
 
 msgid "river|delete"
 msgstr "effacer"
+
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr ""
 
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
@@ -1069,3 +1097,7 @@ msgstr "1 message chat non lu de %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d messages chat non lus de %1$s"
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr ""

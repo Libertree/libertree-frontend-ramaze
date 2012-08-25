@@ -1,13 +1,14 @@
 # 
 # Translators:
 #   <lunachik@zoho.com>, 2012.
+# Miguel Aguilar <miguel.aguilarmolina@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-16 21:10+0000\n"
-"Last-Translator: LunaChik <lunachik@zoho.com>\n"
+"PO-Revision-Date: 2012-08-24 16:29+0000\n"
+"Last-Translator: Miguel Aguilar <miguel.aguilarmolina@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/libertree/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,4 +18,4 @@ msgstr ""
 
 #: view/login.xhtml
 msgid "[Libertree] Password reset"
-msgstr "[Libertree] Reinicializar constreña"
+msgstr "[Libertree] Restablecer contraseña"
