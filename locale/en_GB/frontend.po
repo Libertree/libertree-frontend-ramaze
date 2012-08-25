@@ -702,8 +702,6 @@ msgid "Use double quotes to match multi-word phrases, or exact matches involving
 msgstr ""
 msgid "Use the special term %s followed by a name in quotes to match all posts by that person."
 msgstr ""
-msgid "Other special terms: %s, %s and %s. These are for matching posts you have liked, commented on and subscribed to, respectively."
-msgstr ""
 msgid "Example: %s:river \"Special Interests\"%s"
 msgstr ""
 msgid "Other special terms: %s, %s and %s. These are for narrowing down to posts you have liked, commented on and subscribed to, respectively."
