@@ -126,5 +126,24 @@ module Controller
       end
       ''
     end
+
+    def preview(query = nil)
+      query ||= request['query']
+      redirect_referrer  if query.nil?
+
+      @view = 'excerpts-view'
+      @query = query.to_s  # request['query'] could be non-String
+      @posts = []
+      Libertree::Model::Post.last(1024).each do |post|
+        if Libertree::Model::River.query_components_match_post?(
+          Libertree::Model::River.query_components(@query),
+          post,
+          account
+        )
+          @posts << post
+          break  if @posts.count == 16
+        end
+      end
+    end
   end
 end

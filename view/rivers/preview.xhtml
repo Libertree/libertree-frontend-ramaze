@@ -1,0 +1,9 @@
+<h3>Preview of river "#{@query}"</h3>
+
+<a href="/rivers/ensure_exists/#{CGI.escape(@query)}">Create this river</a>
+
+<div id="post-excerpts">
+  <?r @posts.each do |post| ?>
+    #{ Controller::Posts.render_partial '_excerpt', post: post }
+  <?r end ?>
+</div>
