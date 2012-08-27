@@ -706,6 +706,8 @@ msgid "Use the special term %s followed by a contact list name in quotes to matc
 msgstr ""
 msgid "Example: %s:river \"Special Interests\"%s"
 msgstr ""
+msgid "Use the special term %s followed by %s or %s to match posts with a given visibility."
+msgstr ""
 msgid "Other special terms: %s, %s and %s. These are for narrowing down to posts you have liked, commented on and subscribed to, respectively."
 msgstr ""
 msgid "(advanced) Use the special term %s followed by a river label in quotes to compose rivers using other rivers."
@@ -743,6 +745,8 @@ msgstr ""
 msgid "#restaurants +:river \"News Articles\"%sPosts tagged with %s#restaurants%s which also match the river \"News Articles\""
 msgstr ""
 msgid "#restaurants -:river \"International News\"%sPosts tagged with %s#restaurants%s, but not those which match the river \"International News\""
+msgstr ""
+msgid "#government -:visibility internet%sPosts about government, but not those which are exposed to the Internet"
 msgstr ""
 
 #: view/chat/_index.xhtml
