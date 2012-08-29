@@ -47,7 +47,10 @@ module Libertree
     # hashtaggify everything that is not inside of code or pre tags
     html.traverse do |node|
       if node.ancestors("code").empty? && node.ancestors("pre") && node.text?
-        node.replace Nokogiri::HTML::fragment(Libertree::hashtaggify(node.text))
+        hashtag = Libertree::hashtaggify(node.text)
+        if ! hashtag.eql? node.text
+          node.replace hashtag
+        end
       end
     end
 
