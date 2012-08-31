@@ -344,6 +344,16 @@ msgid "Passwords did not match.  Please reenter."
 msgstr ""
 msgid "Password changed."
 msgstr ""
+msgid "account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion."
+msgstr ""
+msgid "Account Deletion"
+msgstr ""
+msgid "Delete your account."
+msgstr ""
+msgid "To delete your account and all associated data, input your username below:"
+msgstr ""
+msgid "account-delete|Confirm"
+msgstr ""
 
 #: view/accounts/change_password.xhtml
 
@@ -818,3 +828,4 @@ msgstr ""
 #: public/js/comments.js
 msgid "Failed to post comment."
 msgstr ""
+

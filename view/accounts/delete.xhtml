@@ -1,0 +1,10 @@
+<h3>#{_('Account Deletion')}</h3>
+
+<p>
+#{_('To delete your account and all associated data, input your username below:')}
+</p>
+
+<form action="delete" method="POST">
+  <input type="username" name="username"/><br/>
+  <input type="submit" value="#{s_('account-delete|Confirm')}"/>
+</form>

@@ -93,6 +93,16 @@ module Controller
       account.data_hash
     end
 
+    def delete
+      if request.post?
+        if account.username.eql? request['username'].to_s
+          account.delete_cascade
+        else
+          flash[:error] = s_('account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion.')
+        end
+      end
+    end
+
     def heartbeat
       account.time_heartbeat = Time.now
     end
