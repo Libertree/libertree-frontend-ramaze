@@ -4,3 +4,8 @@
     box-shadow: 0px 4px 10px $shadow;
 }
 
+$border-radius: 3px;
+@mixin rounded {
+    border-radius: $border-radius;
+}
+

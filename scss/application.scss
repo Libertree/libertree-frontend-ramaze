@@ -68,7 +68,7 @@ pre code {
 code {
     border: 1px solid $sand;
     background: $dust;
-    border-radius: 3px;
+    @include rounded;
     padding: 2px;
 }
 
@@ -92,6 +92,7 @@ a.member-name, a.member-name:visited {
 
 textarea, input[type="text"], input[type="password"] {
     border: 1px solid;
+    @include rounded;
 }
 
 .main {
@@ -101,7 +102,7 @@ textarea, input[type="text"], input[type="password"] {
     margin: 70px auto 30px auto;
     padding: 30px;
     background: transparent;
-    border-radius: 3px;
+    @include rounded;
 }
 
 .flash {
