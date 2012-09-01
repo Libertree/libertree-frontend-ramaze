@@ -61,10 +61,13 @@ module Controller
     end
 
     def destroy(contact_list_id)
-      contact_list = Libertree::Model::ContactList[contact_list_id.to_i]
+      contact_list = Libertree::Model::ContactList[
+        account_id: account.id,
+        id: contact_list_id.to_i
+      ]
       if contact_list
         name = contact_list.name
-        contact_list.delete
+        contact_list.delete_cascade
         flash[:notice] = _('The contact list &ldquo;%s&rdquo; has been deleted.') % name
       end
       redirect_referrer
