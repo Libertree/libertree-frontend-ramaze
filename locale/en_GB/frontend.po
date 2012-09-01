@@ -370,23 +370,32 @@ msgid "%d more"
 msgstr ""
 
 #: view/notifications/_comment.xhtml
-msgid "%1$s commented on your %2$spost%3$s."
+msgid "singular|%1$s commented on your %2$spost%3$s."
 msgstr ""
-msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgid "plural|%1$s commented on your %2$spost%3$s."
+msgstr ""
+msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
+msgstr ""
+msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
 msgstr ""
 
 #: view/notifications/_comment_like.xhtml
-msgid "%1$s liked your %2$scomment%3$s on your post."
+msgid "singular|%1$s liked your %2$scomment%3$s on your post."
 msgstr ""
-msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
+msgid "plural|%1$s liked your %2$scomment%3$s on your post."
+msgstr ""
+msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr ""
+msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
 msgstr ""
 
 #: view/notifications/_post_like.xhtml
-msgid "%1$s liked your %2$spost%3$s."
+msgid "singular|%1$s liked your %2$spost%3$s."
+msgstr ""
+msgid "plural|%1$s liked your %2$spost%3$s."
 msgstr ""
 
 #: view/notifications/_message.xhtml
-# TODO: positional placeholders
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr ""
 
