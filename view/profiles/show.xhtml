@@ -14,10 +14,10 @@
     #{ Libertree.render(@profile.description) }
   </div>
   <div>
-    <select id="river-selector" name="river_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a river') % @member.name_display}">
+    <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}">
       <option value="0"></option>
-      <?r account.rivers.sort_by { |r| r.label.gsub(/^#/,'').downcase }.each do |r| ?>
-        <option value="#{r.id}">#{r.label}</option>
+      <?r account.contact_lists.sort_by { |cl| cl.name.downcase }.each do |cl| ?>
+        <option value="#{cl.id}">#{cl.name}</option>
       <?r end ?>
     </select>
   </div>

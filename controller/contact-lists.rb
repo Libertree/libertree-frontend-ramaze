@@ -72,5 +72,17 @@ module Controller
       end
       redirect_referrer
     end
+
+    def add_member(contact_list_id, member_id)
+      contact_list = Libertree::Model::ContactList[
+        account_id: account.id,
+        id: contact_list_id.to_i
+      ]
+      member = Libertree::Model::Member[ member_id.to_i ]
+      if contact_list && member
+        contact_list << member
+      end
+      redirect_referrer
+    end
   end
 end

@@ -625,7 +625,7 @@ msgid "profile|Edit"
 msgstr ""
 msgid "Posts by %s"
 msgstr ""
-msgid "Add %s to a river"
+msgid "Add %s to a contact list"
 msgstr ""
 
 #: view/request_password_reset.xhtml
