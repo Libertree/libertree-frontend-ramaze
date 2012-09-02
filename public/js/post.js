@@ -83,18 +83,18 @@ $(document).ready( function() {
     $(this).siblings('.confirm-hide').show();
     return false;
   } );
-  $('.post-excerpt .confirm-hide').live( 'click', function() {
+  $('.post-excerpt .confirm-hide').live( 'click', function(event) {
+    event.preventDefault();
     var post = $(this).closest('div.post-excerpt');
     $.get(
       '/posts/hidden/create/' + post.data('post-id') + '.json',
       function(response) {
         var h = $.parseJSON(response);
         if( h.success ) {
-          post.slideUp(1000);
+          post.slideUp(1000).promise().done(function() { post.remove(); });
         }
       }
     );
-    return false;
   } );
 
   $('.mark-unread').live( 'click', function() {
