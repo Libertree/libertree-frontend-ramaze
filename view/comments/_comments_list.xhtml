@@ -25,7 +25,7 @@
         </div>
         <form method="POST" action="/comments/create" class="comment" data-post-id="#{@post.id}">
           #{ Controller::Main.render_partial '_markdown_injector' }
-          <textarea name="text" class="comment" rows="2" tabindex="1" class="textarea-comment-new" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
+          <textarea name="text" class="comment textarea-comment-new" rows="2" tabindex="1" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
           <div class="form-buttons">
             <a class="detach" href="#">#{_('detach')}</a>
             <a class="attach" href="#">#{_('attach')}</a>
