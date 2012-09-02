@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-25 08:48+0000\n"
+"PO-Revision-Date: 2012-09-02 08:47+0000\n"
 "Last-Translator: Makailija <themanintheshadows@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/libertree/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgid "A valid invitation code is required."
 msgstr "Rekisteröityminen edellyttää voimassa olevan kutsukoodin."
 
 msgid "This invitation code has already been used. Try another one!"
-msgstr "Tämä kutsukoodi on jo käytetty! Kokeile toista!"
+msgstr "Tämä kutsukoodi on jo käytetty. Kokeile toista!"
 
 msgid "You mistyped your password."
 msgstr "Kirjoitit salasanasi väärin."
@@ -265,7 +265,7 @@ msgid "Failed to add post to pool."
 msgstr "Viestin lisääminen lampeen epäonnistui."
 
 msgid "Post added to &ldquo;%s&rdquo; pool."
-msgstr ""
+msgstr "Viesti lisättiin lampeen &rdquo;%s&rdquo;."
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -497,24 +497,38 @@ msgid "%d more"
 msgstr "%d muuta"
 
 #: view/notifications/_comment.xhtml
-msgid "%1$s commented on your %2$spost%3$s."
+msgid "singular|%1$s commented on your %2$spost%3$s."
 msgstr "%1$s kommentoi %2$sviestiäsi%3$s."
 
-msgid "%1$s commented on %2$s's %3$spost%4$s."
+msgid "plural|%1$s commented on your %2$spost%3$s."
+msgstr "%1$s kommentoivat %2$sviestiäsi%3$s."
+
+msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
 msgstr "%1$s kommentoi käyttäjän %2$s %3$sviestiä%4$s."
 
+msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s kommentoivat käyttäjän %2$s %3$sviestiä%4$s."
+
 #: view/notifications/_comment_like.xhtml
-msgid "%1$s liked your %2$scomment%3$s on your post."
+msgid "singular|%1$s liked your %2$scomment%3$s on your post."
 msgstr "%1$s tykkäsi %2$skommentistasi%3$s viestissäsi."
 
-msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "%1$s tykkästi %2$skommentistasi%3$s käyttäjän %4$s viestissä."
+msgid "plural|%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s tykkäsivät %2$skommentistasi%3$s viestissäsi."
+
+msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s tykkäsi %2$skommentistasi%3$s käyttäjän %4$s viestissä."
+
+msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s tykkäsivät %2$skommentistasi%3$s käyttäjän %4$s viestissä."
 
 #: view/notifications/_post_like.xhtml
-msgid "%1$s liked your %2$spost%3$s."
+msgid "singular|%1$s liked your %2$spost%3$s."
 msgstr "%1$s tykkäsi %2$sviestistäsi%3$s."
 
-# TODO: positional placeholders
+msgid "plural|%1$s liked your %2$spost%3$s."
+msgstr "%1$s tykkäsivät %2$sviestistäsi%3$s."
+
 #: view/notifications/_message.xhtml
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s lähetti sinulle %2$sviestin%3$s."
@@ -546,7 +560,7 @@ msgid "%d minutes ago"
 msgstr "%d minuuttia sitten"
 
 msgid "seconds ago"
-msgstr "joitakin sekunteja sitten"
+msgstr "muutama sekunti sitten"
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -565,7 +579,7 @@ msgid "search-results|Comments"
 msgstr "Kommentit"
 
 msgid "search-results|view comment"
-msgstr ""
+msgstr "näytä kommentti"
 
 #: controller/contact-lists.rb
 msgid "Contact list updated."
@@ -661,7 +675,7 @@ msgid "jobs|ID"
 msgstr "ID"
 
 msgid "jobs|Task"
-msgstr "Tehtävät"
+msgstr "Tehtävä"
 
 msgid "jobs|Params"
 msgstr "Parametrit"
@@ -819,8 +833,8 @@ msgstr "Muokkaa"
 msgid "Posts by %s"
 msgstr "Käyttäjän %s viestit"
 
-msgid "Add %s to a river"
-msgstr "Lisää %s jokeen"
+msgid "Add %s to a contact list"
+msgstr ""
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -910,22 +924,57 @@ msgstr "Poistetaanko tämä joki?"
 msgid "river-tips|Tips:"
 msgstr "Vihjeitä:"
 
-msgid "For the search, enter one or more words or hashtags."
-msgstr "Syötä hakuun yksi tai useampi sana tai hashtag."
+msgid ""
+"For the search, enter one or more words or hashtags, separated by spaces."
+msgstr "Voit hakea yhtä tai useampaa sanaa tai hashtagia. Erota hakutermit välilyönneillä."
 
 msgid "Posts having any of the words will be included in the river."
 msgstr "Viestit, joissa on jokin näistä sanoista, sisällytettään jokeen."
 
-msgid "Use a minus sign in front of a word to exclude posts with that word."
-msgstr "Jos käytät miinusmerkkiä sanan edessä, viestejä, joissa on tämä sana, ei sisällytetä jokeen."
+msgid ""
+"Use a minus sign (-) in front of a word to exclude posts with that word."
+msgstr "Jos käytät miinusmerkkiä (-) sanan edessä, tämän sanan sisältäviä viestejä ei sisällytetä jokeen."
 
 msgid ""
 "Example: %s#music -#classical%s will find posts about music, but not "
 "classical music."
 msgstr "Esimerkki: %s#musiikki -#klassinen%s hakee viestit, joissa puhutaan musiikista, mutta ei klassisesta musiikista."
 
+msgid ""
+"Use a plus sign (+) in front of a word to include only posts with that word."
+msgstr "Jos käytät plusmerkkiä (+) sanan edessä, vain tämän sanan sisältävät viestit sisällytetään jokeen."
+
+msgid ""
+"Use the special term %s to include only posts which you have not read yet."
+msgstr "Jos käytät erikoistermiä %s, vain sellaiset viestit, joita et ole vielä lukenut, sisällytetään jokeen."
+
+msgid ""
+"Use the special term %s to include only posts by members of the same tree as"
+" you."
+msgstr "Jos käytät erikoistermiä %s, vain oman puusi jäsenten lähettämät viestit sisällytetään jokeen."
+
+msgid ""
+"Use double quotes to match multi-word phrases, or exact matches involving "
+"symbols."
+msgstr "Käytä lainausmerkkejä, jos haluat hakea useamman sanan pituisia tai erikoismerkkejä sisältäviä ilmauksia."
+
+msgid ""
+"Use the special term %s followed by a name in quotes to match all posts by "
+"that person."
+msgstr "Jos käytät erikoistermiä %s ja lisäät sen perään käyttäjänimen, kaikki kyseisen henkilön lähettämät viestit sisällytetään jokeen."
+
+msgid ""
+"Use the special term %s followed by a contact list name in quotes to match "
+"all posts by the people in that contact list."
+msgstr "Jos käytät erikoistermiä %s ja lisäät sen perään kontaktiluettelon nimen, kaikki kyseiseen listaan kuuluvien henkilöiden lähettämät viestit sisällytetään jokeen."
+
 msgid "Example: %s:river \"Special Interests\"%s"
 msgstr "Esimerkki: %s:river \"Mielenkiinnon kohteet\"%s"
+
+msgid ""
+"Use the special term %s followed by %s or %s to match posts with a given "
+"visibility."
+msgstr "Käyttämällä erikoistermiä %s ja lisäämällä sen perään %s tai %s voit lisätä jokeen viestejä niiden näkyvyyden mukaan."
 
 msgid ""
 "Other special terms: %s, %s and %s. These are for narrowing down to posts "
@@ -936,6 +985,14 @@ msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
 msgstr "(edistyneille käyttäjille) Käyttämällä erikoistermiä %s yhdessä lainausmerkeissä olevan joen nimen kanssa voit luoda jokia, jotka käyttävät muita jokia."
+
+msgid ""
+"(advanced) Use the special term %s followed by &lt; or &gt; and a number to "
+"match posts by their approximate number of words."
+msgstr "(edistyneille käyttäjille) Käyttämällä erikoistermiä %s sekä lisäämällä sen perään &lt; tai &gt; ja jonkin luvun voit lisätä jokeen viestejä niiden sanamäärän mukaan."
+
+msgid "Example: %s:word-count < 16%s"
+msgstr "Esimerkki %s:word-count < 16%s"
 
 msgid "You can also %shave the beginner rivers recreated for you%s."
 msgstr "Voit myös %sluoda alkuperäiset joet uudelleen%s."
@@ -958,9 +1015,9 @@ msgid ""
 msgstr "Kaikki sinun puustasi lähtöisin olevat viestit ja lisäksi muista metsän puista sinun puuhusi välitetyt viestit"
 
 msgid ""
-":unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
+"+:unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
 "yet"
-msgstr ":unread #neulominen%sSellaiset tagilla %s#neulominen%s merkityt viestit, joita et ole vielä lukenut"
+msgstr "+:unread #neulominen%sSellaiset viestit, jotka on merkitty tagilla %s#neulominen%s ja joita et ole vielä lukenut"
 
 msgid ""
 "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts "
@@ -973,8 +1030,9 @@ msgid ""
 msgstr "ympäristö%sViestit, joissa on mainittu ympäristö, riippumatta siitä, onko ne merkitty hashtagilla #ympäristö"
 
 msgid ""
-":tree #bug #feature%sBug reports and feature requests made by your treemates"
-msgstr ":tree #bug #feature%sSinun puussasi olevien ihmisten tekemät bugiraportit ja ominaisuuspyynnöt"
+"+:tree #bug #feature%sBug reports and feature requests made by your "
+"treemates"
+msgstr "+:tree #bug #feature%sPuusi jäsenten tekemät bugiraportit ja ominaisuuspyynnöt"
 
 msgid ""
 "\"new york\"%sPosts about New York, but not posts only having the word "
@@ -1009,6 +1067,11 @@ msgid ""
 "%s#restaurants%s, but not those which match the river \"International News\""
 msgstr "#ravintolat -:river \"Kansainväliset uutiset\"%sViestit, jotka on merkitty tagilla %s#ravintolat%s, pois lukien ne, jotka ovat joessa \"Kansainväliset uutiset\""
 
+msgid ""
+"#government -:visibility internet%sPosts about government, but not those "
+"which are exposed to the Internet"
+msgstr "#hallitus -:visibility internet%sHallitusta käsittelevät viestit pois lukien ne, jotka näkyvät Internetille"
+
 #: view/chat/_index.xhtml
 msgid "Chat"
 msgstr "Chat"
@@ -1020,7 +1083,7 @@ msgid "chat|(no contacts online)"
 msgstr "(ei kontakteja paikalla)"
 
 msgid "Start new chat with..."
-msgstr "Aloita uusi chat-keskustelu käyttäjän kanssa..."
+msgstr "Aloita uusi chat-keskustelu..."
 
 #: layout/_menu.xhtml
 msgid "menu|Profile"
