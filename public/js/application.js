@@ -93,15 +93,6 @@ $(document).ready( function() {
     $.get( '/textarea_clear/' + id );
   } );
 
-  $('.post-excerpt').live( {
-    mouseover: function() {
-      $(this).find('.post-tools').show();
-    },
-    mouseout: function() {
-      $(this).find('.post-tools').hide();
-    }
-  } );
-
   $('.mark-read').live( 'click', function() {
     Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
     return false;

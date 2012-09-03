@@ -80,16 +80,37 @@ body.body.excerpts-view .main {
         }
 
         .post-stats {
-            clear: left;
-            margin-left: 50px;
+            clear: both;
+            font-size: small;
+            margin-top: 0.8em;
+            margin-bottom: 0.2em;
+            color: $bark;
+            .indicator + .indicator {
+              margin-left: 0.5em;
+              padding-left: 0.5em;
+              border-left: 1px solid $bark;
+            }
         }
 
         .post-tools {
-            display: none;
-            float: left;
+            display: inline-block;
             text-align: left;
-            margin-left: 50px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 1em;
+            margin: auto;
+            margin-right: 30px;
+            height: 35px;
+            line-height: 35px;
+            opacity: 0.3;
 
+            span.icons {
+              display: inline-block;
+              padding-left: 0.5em;
+              margin-left: 0.5em;
+              border-left: 1px solid $bark;
+            }
             a {
                 margin-left: 0px;
                 margin-right: 5px;
@@ -99,25 +120,28 @@ body.body.excerpts-view .main {
             }
         }
 
-        $meta_width: 250px;
-        $excerpt_height: 200px;
         // the max-height of the excerpt is set in layout/_head.xhtml
-
         div.meta {
-            width: $meta_width;
-            min-height: $excerpt_height;
-            vertical-align: top;
-            overflow: hidden;
-            float: left;
-            padding-left: 30px;
-            padding-bottom: 1em;
+            background-color: $sand;
+            position: relative;
+
+            &:hover .post-tools {
+              opacity: 1;
+            }
+
+            .member {
+              padding: 1em;
+              width: 50%;
+              display: inline-block;
+            }
         }
         div.excerpt {
-            padding-left: 20px;
-            padding-right: 30px;
+            padding: 1.8em 1.8em 0;
+            background-color: $dust;
             overflow: hidden;
             .overflowed {
-              min-height: $excerpt_height;
+              min-height: 100px;
+              overflow: hidden;
               .comments {
                 margin-bottom: 1em;
               }
@@ -155,7 +179,18 @@ body.body.excerpts-view .main {
         }
 
         .link-view-post {
-            margin-top: 10px;
+            width: 30px;
+            height: 100%;
+            right: 0;
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            background: transparent;
+            color: $stone;
+            &:hover {
+              color: $dust;
+              background: $stone;
+            }
         }
 
         .jump-to-comment {
