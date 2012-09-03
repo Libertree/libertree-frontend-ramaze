@@ -27,7 +27,16 @@ body.welcome {
     @include shadow;
     @include rounded;
 
-    input {
+    #list-of-rivers {
+      padding-left: 2em;
+      width: 30em;
+      margin: 1.5em auto;
+      input[type="checkbox"] {
+        margin-right: 0.5em;
+      }
+    }
+
+    input[type="text"] {
       width: 30em;
       margin: 0 auto;
       font-size: $font-normal;

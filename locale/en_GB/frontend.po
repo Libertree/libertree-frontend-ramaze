@@ -829,6 +829,9 @@ msgid "Failed to post comment."
 msgstr ""
 
 #: view/welcome/index.xhtml
+msgid "tutorial-river-label|My interests"
+msgstr ""
+
 msgid "tutorial-step-1"
 msgstr ""
 "# Welcome to Libertree!\n"

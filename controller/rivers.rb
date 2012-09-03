@@ -22,6 +22,23 @@ module Controller
       @rivers_global = account.rivers_appended
     end
 
+    def _create_tutorial_river
+      return  if ! request.post?
+      begin
+        Libertree::Model::River.create(
+          account_id: account.id,
+          label: s_('tutorial-river-label|My interests'),
+          query: request['query'].to_s,
+        )
+        { 'status' => 'success' }.to_json
+      rescue
+        {
+          'status' => 'error',
+          'msg'    => s_('tutorial|An error occurred while trying to create a river.')
+        }.to_json
+      end
+    end
+
     def create
       redirect_referrer  if ! request.post?
 
