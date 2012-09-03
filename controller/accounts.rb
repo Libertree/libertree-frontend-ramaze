@@ -96,8 +96,8 @@ module Controller
     def delete
       if request.post?
         if account.username.eql? request['username'].to_s
-          account.delete_cascade
           account_logout
+          account.delete_cascade
           session = nil
           flash[:notice] = s_('account-delete|Your account has been deleted.')
           # TODO: redirect to goodbye page instead
