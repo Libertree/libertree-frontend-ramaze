@@ -1,0 +1,83 @@
+@import "colours.scss";
+@import "scss-include/fonts-default.scss";
+@import "scss-include/mixins.scss";
+
+$font_family: 'Droid Sans', Tahoma, Arial, sans-serif;
+
+html.welcome {
+  // This background image is based on photos copyright by Jim Champion
+  // (http://www.geograph.org.uk/profile/1086), available under a CC licence.
+  background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
+  height: 100%;
+  font-size: $font_normal;
+  font-family: $font_family;
+  color: $text;
+}
+
+body.welcome {
+  .tutorial-step {
+    display: none;
+    min-width: 60%;
+    max-width: 700px;
+    margin: 2em auto;
+    background: $dust;
+    padding: 30px 30px 0;
+    margin-top: 2em;
+    overflow: auto;
+    @include shadow;
+    @include rounded;
+
+    input {
+      width: 30em;
+      margin: 0 auto;
+      font-size: $font-normal;
+      display: block;
+      @include rounded;
+    }
+    h1 {
+      margin: -30px -30px 1em;
+      padding: 1em;
+      padding-left: 160px;
+      @include rounded;
+      background: $sand url(../images/logo-in-heading.png) no-repeat 20px bottom;
+      color: $leaf;
+    }
+
+    p {
+      max-width: 30em;
+      margin: 1em auto;
+    }
+
+    .navigation {
+      clear: both;
+      display: block;
+      float: right;
+
+      li {
+        list-style: none;
+        float: none;
+        display: inline-block;
+
+        a.button {
+          color: $text;
+          text-align: center;
+          cursor: pointer;
+          padding: 5px;
+          display: inline-block;
+          @include rounded;
+          border: 1px solid $stone;
+          background: $sand;
+          margin: 5px;
+          min-width: 5em;
+          &.default {
+            border: 3px solid $stone;
+          }
+          &:hover {
+            background: $bark;
+            color: $dust;
+          }
+        }
+      }
+    }
+  }
+}
