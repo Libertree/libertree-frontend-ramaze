@@ -174,11 +174,9 @@ $(document).ready( function() {
   $('textarea').live( 'mousedown', function() {
     $(this).data('width', $(this).outerWidth());
     $(this).data('height', $(this).outerHeight());
-    console.log('down');
   } );
 
   $('textarea').live( 'mouseup', function() {
-    console.log('up');
     var th = $(this);
     if( th.outerWidth() != th.data('width') || th.outerHeight() != th.data('height') ) {
       th.addClass('no-autoresize');

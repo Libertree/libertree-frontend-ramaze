@@ -10,13 +10,13 @@ body.body.excerpts-view .main {
 .excerpts-view {
     #header {
       padding: 20px;
-      border-radius: 3px 3px 0 0;
+      border-radius: $border-radius $border-radius 0 0;
     }
 
     #no-more-posts {
       text-align: center;
       background: $dust;
-      border-radius: 0 0 3px 3px;
+      border-radius: 0 0 $border-radius $border-radius;
       padding: 0.5em;
     }
 

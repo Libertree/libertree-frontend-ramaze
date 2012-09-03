@@ -1,12 +1,13 @@
 <?r if @like ?>
   <div class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
     <?r who = anded_list( @actors.map(&:name_display).uniq ) ?>
+    <?r prefix = @actors.uniq.length == 1 ? "singular" : "plural" ?>
     <?r link = "<a href=\"#{ comment_link(@like.comment) }\" title=\"#{::CGI.escape_html(@like.comment.glimpse)}\">" ?>
     #{member_avatar_link(@like.member)}
     <?r if @like.comment.post.member == account.member ?>
-      #{_('%1$s liked your %2$scomment%3$s on your post.') % [who, link, "</a>"]}
+      #{s_("#{prefix}|%1$s liked your %2$scomment%3$s on your post.") % [who, link, "</a>"]}
     <?r else ?>
-      #{_("%1$s liked your %2$scomment%3$s on %4$s's post.") % [who, link, "</a>", @like.comment.post.member.name_display]}
+      #{s_("#{prefix}|%1$s liked your %2$scomment%3$s on %4$s's post.") % [who, link, "</a>", @like.comment.post.member.name_display]}
     <?r end ?>
     <div class="age">#{ago(@notifications[0].time_created)}</div>
   </div>

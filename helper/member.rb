@@ -13,12 +13,12 @@ module Ramaze
 
       def member_avatar_link(member)
         return  if member.nil?
-        %|<a href="/profiles/show/#{member.id}">#{member_img(member)}</a>|
+        %|<a href="/profiles/show/#{member.id}" title="#{member.name_display}">#{member_img(member)}</a>|
       end
 
       def member_name_link(member)
         return  if member.nil?
-        %|<a href="/profiles/show/#{member.id}" class="member-name">#{member.name_display}</a>|
+        %|<a href="/profiles/show/#{member.id}" class="member-name" title="#{member.handle}">#{member.name_display}</a>|
       end
     end
   end

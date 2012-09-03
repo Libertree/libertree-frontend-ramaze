@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-08-21 10:32+0000\n"
-"Last-Translator: adrenalin <sk8erBLN@lavabit.com>\n"
+"PO-Revision-Date: 2012-09-02 09:38+0000\n"
+"Last-Translator: shaggy <kudlaty@ymail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgid ""
 msgstr "Ein Link zum Zurücksetzen deines Kennworts wurde an die hinterlegte E-Mail-Adresse geschickt."
 
 msgid "You have been logged out."
-msgstr "Du hast dich erfolgreich abgemeldet."
+msgstr "Du hast dich abgemeldet."
 
 #: controller/base.rb
 msgid "not-authenticated|Please log in."
@@ -124,7 +124,7 @@ msgid "visibility|Internet"
 msgstr "Internet"
 
 msgid "visibility|Forest"
-msgstr "Libertree Wald"
+msgstr "Wald"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -143,7 +143,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgid "post|Update"
-msgstr "Aktualisierung"
+msgstr "Aktualisieren"
 
 #: view/posts/show.xhtml
 msgid "Start receiving notifications about comments on this post"
@@ -180,7 +180,10 @@ msgid "like"
 msgstr "Gefällt mir"
 
 msgid "likes"
-msgstr "Gefällt mir's"
+msgstr "Gefallensbekundungen"
+
+msgid "Delete this post?"
+msgstr "Diesen Beitrag löschen?"
 
 #: view/posts/_excerpts.xhtml
 msgid "No more posts."
@@ -222,10 +225,10 @@ msgid ""
 msgstr "Versteckte Beiträge tauchen nicht in deinen Flüssen auf und lösen keine Benachrichtigungen aus."
 
 msgid "hide"
-msgstr "Verstecken"
+msgstr "Ausblenden"
 
 msgid "Click to confirm hiding of this post."
-msgstr "Klicke Bestätigen um den Beitrag wirklich zu verstecken"
+msgstr "Zur Bestätigung klicken, um den Beitrag wirklich auszublenden."
 
 msgid "confirm"
 msgstr "Bestätigen"
@@ -237,14 +240,14 @@ msgid "collected"
 msgstr "Gesammelt"
 
 msgid "Remove this post from this pool"
-msgstr "Entferne diesen Beitrag von diesem Sammelbecken"
+msgstr "Entferne diesen Beitrag aus diesem Sammelbecken"
 
 msgid "remove"
 msgstr "Entfernen"
 
 msgid ""
 "Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Mittelklick, Shift+Klick oder Strg-Klick um es in einem neuen Tab/Fenster zu öffnen"
+msgstr "Mittelklick, Shift+Klick oder Strg+Shift-Klick, um es in einem neuen Tab/Fenster zu öffnen"
 
 msgid "view post"
 msgstr "Beitrag ansehen"
@@ -257,21 +260,30 @@ msgstr "Weniger anzeigen"
 
 #: controller/posts.rb
 msgid "Post may not be empty."
-msgstr "Ein Post darf nicht leer sein."
+msgstr "Ein Beitrag darf nicht leer sein."
 
 #: controller/pools.rb
 msgid "You already have a pool with that name."
-msgstr "Du besitzt bereits einen Sammelbecken mit diesem Namen."
+msgstr "Du hast bereits ein Sammelbecken dieses Namens."
+
+msgid "Failed to create pool or add post."
+msgstr "Erstellung des Sammelbeckens oder Hinzufügen des Beitrags fehlgeschlagen."
+
+msgid "Failed to add post to pool."
+msgstr "Hinzufügen des Beitrags zum Sammelbecken fehlgeschlagen."
+
+msgid "Post added to &ldquo;%s&rdquo; pool."
+msgstr "Beitrag zum Sammelbecken &ldquo;%s&rdquo; hinzugefügt."
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
-msgstr "Sonderzeichen sind nicht erlaubt in Anzeigenamen."
+msgstr "Sonderzeichen sind in Anzeigenamen nicht erlaubt."
 
 msgid "Avatar deleted."
-msgstr "Avatar gelöscht"
+msgstr "Avatar gelöscht."
 
 msgid "Avatar changed."
-msgstr "Avatar geändert"
+msgstr "Avatar geändert."
 
 msgid "Failed to reset avatar."
 msgstr "Fehler beim Zurücksetzen des Avatars."
@@ -347,7 +359,7 @@ msgid "markdown|title"
 msgstr "Überschrift"
 
 msgid "markdown|subtitle"
-msgstr "Unterüberschrift"
+msgstr "Untergeordnete Überschrift"
 
 msgid "markdown|link"
 msgstr "Link"
@@ -458,7 +470,7 @@ msgid ""
 msgstr "Maximalhöhe des Beitragsauszugs: Bitte gib eine Zahl größer oder gleich 200 an, oder keine Zahl für keine Begrenzung."
 
 msgid "Passwords did not match.  Please reenter."
-msgstr "Passwort stimmte nicht überein. Bitte neu eingeben."
+msgstr "Passwörter stimmten nicht überein. Bitte neu eingeben."
 
 msgid "Password changed."
 msgstr "Passwort geändert."
@@ -493,27 +505,41 @@ msgid "%d more"
 msgstr "%d mehr"
 
 #: view/notifications/_comment.xhtml
-msgid "%1$s commented on your %2$spost%3$s."
-msgstr "%1$s hat Deinen  %2$sBeitrag%3$s kommentiert."
+msgid "singular|%1$s commented on your %2$spost%3$s."
+msgstr "%1$s hat deinen %2$sBeitrag%3$s kommentiert."
 
-msgid "%1$s commented on %2$s's %3$spost%4$s."
-msgstr "%1$s hat %2$s's %3$sBeitrag kommentiert%4$s."
+msgid "plural|%1$s commented on your %2$spost%3$s."
+msgstr "%1$s haben deinen %2$sBeitrag%3$s kommentiert."
+
+msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s hat %2$ss %3$sBeitrag%4$s kommentiert."
+
+msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
+msgstr "%1$s haben %2$ss %3$sBeitrag%4$s kommentiert."
 
 #: view/notifications/_comment_like.xhtml
-msgid "%1$s liked your %2$scomment%3$s on your post."
-msgstr "%1$s gefällt Dein %2$sKommentar%3$s zu Deinem Beitrag."
+msgid "singular|%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s auf deinen Beitrag."
 
-msgid "%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "%1$s gefällt Dein %2$sKommentar%3$s zu %4$s's Beitrag."
+msgid "plural|%1$s liked your %2$scomment%3$s on your post."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s auf deinen Beitrag."
+
+msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s auf %4$ss Beitrag."
+
+msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s auf %4$ss Beitrag."
 
 #: view/notifications/_post_like.xhtml
-msgid "%1$s liked your %2$spost%3$s."
-msgstr "%1$s gefällt Dein %2$sBeitrag%3$s."
+msgid "singular|%1$s liked your %2$spost%3$s."
+msgstr "%1$s gefällt dein %2$sBeitrag%3$s."
 
-# TODO: positional placeholders
+msgid "plural|%1$s liked your %2$spost%3$s."
+msgstr "%1$s gefällt dein %2$sBeitrag%3$s."
+
 #: view/notifications/_message.xhtml
 msgid "%1$s sent you a %2$smessage%3$s."
-msgstr "%1$s hat Dir eine %2$s direkte Nachricht gesendet%3$s."
+msgstr "%1$s hat dir eine %2$s direkte Nachricht geschickt%3$s."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -555,17 +581,20 @@ msgid "search-results|Profiles"
 msgstr "Profile"
 
 msgid "search-results|Posts"
-msgstr "Posts"
+msgstr "Beiträge"
 
 msgid "search-results|Comments"
 msgstr "Kommentare"
+
+msgid "search-results|view comment"
+msgstr "Kommentar anzeigen"
 
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr "Kontaktliste aktualisiert"
 
 msgid "Contact list name may not be empty."
-msgstr "Der Kontaktlistname darf nicht leer sein"
+msgstr "Der Kontaktlistname darf nicht leer sein."
 
 msgid "The contact list &ldquo;%s&rdquo; has been deleted."
 msgstr "Die Kontaktliste  &ldquo;%s&rdquo; wurde gelöscht"
@@ -614,7 +643,7 @@ msgstr "Wälder"
 msgid ""
 "Drag trees in and out of forests.  The local tree is automatically a part of"
 " each forest originating from it."
-msgstr "Zieh Bäume hinein und hinaus aus den Wäldern. Der lokale Baum ist automatisch ein Teil von jedem Wald die von ihm stammen."
+msgstr "Ziehe Bäume in Wälder hinein oder aus Wäldern heraus. Der lokale Baum ist automatisch Teil jedes von ihm abstammenden Waldes."
 
 msgid "create-forest|Name:"
 msgstr "Name:"
@@ -642,10 +671,10 @@ msgstr "Warteschlange"
 
 #: view/admin/jobs/index.xhtml
 msgid "Unfinished Jobs"
-msgstr "Unvollständige Aufgaben"
+msgstr "Unerledigte Aufgaben"
 
 msgid "Unfinished Jobs: %s"
-msgstr "Unvollständige Aufgaben: %s"
+msgstr "Unerledigte Aufgaben: %s"
 
 msgid "jobs|Show all"
 msgstr "Zeige alle"
@@ -660,7 +689,7 @@ msgid "jobs|Params"
 msgstr "Parameter"
 
 msgid "jobs|Time created"
-msgstr "Zeit der Erstellung"
+msgstr "Erstellungszeit"
 
 msgid "jobs|Time started"
 msgstr "Startzeit"
@@ -679,6 +708,9 @@ msgstr "Löschen"
 
 msgid "jobs|Back to forest administration"
 msgstr "Zurück zur Wald-Verwaltung"
+
+msgid "Delete this job?"
+msgstr "Diese Aufgabe löschen?"
 
 #: view/404.xhtml
 msgid "404|No such page"
@@ -700,7 +732,7 @@ msgstr "Referrer: %s"
 
 #: view/messages/{index,show}.xhtml
 msgid "Direct Messages"
-msgstr "direkte Nachrichten"
+msgstr "Direkte Nachrichten"
 
 msgid "direct-message|New Message"
 msgstr "Neue Nachricht"
@@ -712,11 +744,11 @@ msgid "direct-message|From:"
 msgstr "Von:"
 
 msgid "direct-message|To:"
-msgstr "Zu:"
+msgstr "An:"
 
 #: view/messages/_new.xhtml
 msgid "direct-message|Send"
-msgstr "schicken"
+msgstr "Schicken"
 
 msgid "direct-message|Preview"
 msgstr "Vorschau"
@@ -735,10 +767,10 @@ msgstr "Bitte beachte, dass direkte Nachrichten weder vollständig privat noch v
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
-msgstr "antworten"
+msgstr "Antworten"
 
 msgid "direct-message|reply to all"
-msgstr "jede antworten"
+msgstr "Auf alle antworten"
 
 #: view/pools/_index.xhtml
 msgid "pool-selector|Collect in..."
@@ -749,16 +781,19 @@ msgid "Pools"
 msgstr "Sammelbecken"
 
 msgid "Use pools to collect posts."
-msgstr "Benutzer Sammelbecken um Beiträge zu sammeln"
+msgstr "Benutze Sammelbecken, um Beiträge zu sammeln."
 
 msgid "pool|Name:"
 msgstr "Name:"
 
 msgid "new-pool|Create"
-msgstr "Erschaffen"
+msgstr "Erstellen"
 
 msgid "pool|Delete"
 msgstr "Löschen"
+
+msgid "All record of collected posts will be lost. Delete this pool?"
+msgstr "Alle gesammelten Beiträge gehen verloren. Dieses Sammelbecken löschen?"
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
@@ -776,13 +811,13 @@ msgid "My Profile"
 msgstr "Mein Profil"
 
 msgid "Display name:"
-msgstr "Angezeigename"
+msgstr "Angezeigename:"
 
 msgid "About Me (Markdown allowed):"
-msgstr "Über mich (Markdown erlaubt)"
+msgstr "Über mich (Markdown erlaubt):"
 
 msgid "profile|Update"
-msgstr "Aktualisierung"
+msgstr "Aktualisieren"
 
 msgid "Avatar"
 msgstr "Avatar"
@@ -796,6 +831,9 @@ msgstr "Einreichen"
 msgid "Reset avatar"
 msgstr "Avatar zurücksetzen"
 
+msgid "Delete your avatar and reset it to the default?"
+msgstr "Avatar löschen und auf Standardeinstellung zurücksetzen?"
+
 #: view/profiles/show.xhtml
 msgid "profile|Edit"
 msgstr "Bearbeiten"
@@ -803,8 +841,8 @@ msgstr "Bearbeiten"
 msgid "Posts by %s"
 msgstr "Beiträge von %s"
 
-msgid "Add %s to a river"
-msgstr "Füge %s einem Fluss hinzu"
+msgid "Add %s to a contact list"
+msgstr "%s einer Kontaktliste hinzufügen"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -813,7 +851,7 @@ msgstr "Passwort zurücksetzen"
 msgid ""
 "To reset your password, enter the email address associated with your "
 "account."
-msgstr "Um dein Passwort zurückzusetzen, gib die E-Mail Adresse ein, die mit deinem Konto verbunden ist."
+msgstr "Gib die E-Mail Adresse ein, die mit deinem Konto verbunden ist, um dein Passwort zurückzusetzen."
 
 msgid "password-reset|Submit"
 msgstr "Einreichen"
@@ -848,13 +886,13 @@ msgid "river-query|Search:"
 msgstr "Suche:"
 
 msgid "river|Label:"
-msgstr "Label:"
+msgstr "Name:"
 
 msgid "append to all other rivers"
-msgstr "hinzufügen zu allen anderen Flüssen"
+msgstr "Hinzufügen zu allen anderen Flüssen"
 
 msgid "river|Update"
-msgstr "Aktualisierung"
+msgstr "Aktualisieren"
 
 msgid "river|Create"
 msgstr "Erstellen"
@@ -864,14 +902,14 @@ msgid "My Rivers"
 msgstr "Meine Flüsse"
 
 msgid "new river"
-msgstr "neuer Fluss"
+msgstr "Neuer Fluss"
 
 msgid "river|Global Queries"
-msgstr "globale Abfragen"
+msgstr "Globale Abfragen"
 
 msgid ""
 "The following river queries are being appended to every other river query."
-msgstr "Die folgenden Fluss-Abfragen werden an jede andere Flussabfrage angehängt."
+msgstr "Die folgenden Flussabfragen werden an jede andere Flussabfrage angehängt."
 
 #: view/rivers/_list.xhtml
 msgid "(home river)"
@@ -886,26 +924,65 @@ msgstr "Bearbeiten"
 msgid "river|delete"
 msgstr "Löschen"
 
+#: view/rivers/_river.xhtml
+msgid "Delete this river?"
+msgstr "Diesen Fluss löschen?"
+
 #: view/rivers/_tips_and_examples.xhtml
 msgid "river-tips|Tips:"
 msgstr "Tipps:"
 
-msgid "For the search, enter one or more words or hashtags."
-msgstr "Gib ein oder mehrere Wörter bzw. Hashtags zum Suchen ein."
+msgid ""
+"For the search, enter one or more words or hashtags, separated by spaces."
+msgstr "Gib zum Suchen ein oder mehrere Wörter oder Hashtags, jeweils durch Leerzeichen getrennt, ein."
 
 msgid "Posts having any of the words will be included in the river."
 msgstr "Beiträge, die eins der Wörter enthalten, werden dem Fluss hinzugefügt."
 
-msgid "Use a minus sign in front of a word to exclude posts with that word."
-msgstr "Verwende ein Minuszeichen vor einem Wort, um Beiträge mit diesem Wort ausschließen."
+msgid ""
+"Use a minus sign (-) in front of a word to exclude posts with that word."
+msgstr "Setze ein Minuszeichen (-) vor ein Wort, um Beiträge auszuschließen, die dieses Wort beinhalten."
 
 msgid ""
 "Example: %s#music -#classical%s will find posts about music, but not "
 "classical music."
 msgstr "Beispiel: %s#Musik -#Klassisch%s würde Beiträge über Musik, aber nicht über klassische Musik finden."
 
+msgid ""
+"Use a plus sign (+) in front of a word to include only posts with that word."
+msgstr "Setze ein Pluszeichen (+) vor ein Wort, um nur Beiträge mit diesem Wort zu erhalten."
+
+msgid ""
+"Use the special term %s to include only posts which you have not read yet."
+msgstr "Benutze den speziellen Ausdruck %s, um nur ungelesene Beiträge zu erhalten."
+
+msgid ""
+"Use the special term %s to include only posts by members of the same tree as"
+" you."
+msgstr "Benutze den speziellen Ausdruck %s, um nur Beiträge von Nutzern von deinem Baum zu erhalten."
+
+msgid ""
+"Use double quotes to match multi-word phrases, or exact matches involving "
+"symbols."
+msgstr "Benutze Anführungszeichen, um Begriffe mit mehreren Wörtern oder mit Sonderzeichen, die sonst als Operator interpretiert würden, zu erhalten."
+
+msgid ""
+"Use the special term %s followed by a name in quotes to match all posts by "
+"that person."
+msgstr "Benutze den speziellen Ausdruck %s gefolgt von einem Namen in Anführungszeichen, um alle Beiträge dieser Person zu erhalten."
+
+msgid ""
+"Use the special term %s followed by a contact list name in quotes to match "
+"all posts by the people in that contact list."
+msgstr "Benutze den speziellen Ausdruck %s gefolgt von einem Kontaktlistennamen in Anführungszeichen, um die Beiträge aller Personen in dieser Kontaktliste zu erhalten."
+
 msgid "Example: %s:river \"Special Interests\"%s"
 msgstr "Beispiel: %s:river \"besondere Interessen\"%s"
+
+msgid ""
+"Use the special term %s followed by %s or %s to match posts with a given "
+"visibility."
+msgstr "Benutze den speziellen Ausdruck %s gefolgt von %s oder %s, um Beiträge dieser Sichtbarkeitsstufe zu erhalten."
 
 msgid ""
 "Other special terms: %s, %s and %s. These are for narrowing down to posts "
@@ -915,7 +992,15 @@ msgstr "Sonstige besondere Bedingungen: %s, %s und %s. Diese sind für die Eingr
 msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
-msgstr "(für Fortgeschrittene): Benutze den speziellen Ausdruck %s, gefolgt von einer Flussbezeichnung in Anführungszeichen, um Flüsse aus anderen Flüssen zusammenzustellen."
+msgstr "(für Fortgeschrittene) Benutze den speziellen Ausdruck %s, gefolgt von einer Flussbezeichnung in Anführungszeichen, um Flüsse aus anderen Flüssen zusammenzustellen."
+
+msgid ""
+"(advanced) Use the special term %s followed by &lt; or &gt; and a number to "
+"match posts by their approximate number of words."
+msgstr "(fortgeschritten) Benutze den speziellen Ausdruck %s gefolgt von &lt; oder &gt; und einer Zahl, um Beiträge mit dieser Wortzahl zu erhalten."
+
+msgid "Example: %s:word-count < 16%s"
+msgstr "Beispiel: %s:word-count < 16%s"
 
 msgid "You can also %shave the beginner rivers recreated for you%s."
 msgstr "Du kannst dir auch %sdie Ursprungsflüsse wiederherstellen lassen%s."
@@ -930,7 +1015,7 @@ msgid "river|Description"
 msgstr "Beschreibung"
 
 msgid "All posts originating from your tree"
-msgstr "Alle Beiträge von deinem Baum"
+msgstr "Alle Beiträge von deinem Baum."
 
 msgid ""
 "All posts transmitted to your tree from every other tree in the forest, plus"
@@ -938,9 +1023,9 @@ msgid ""
 msgstr "Alle Beiträge werden zu deinem Baum weitergegeben, sowohl von anderen Bäumen im Wald als auch von deinem eigenen Baum."
 
 msgid ""
-":unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
+"+:unread #knitting%sPosts tagged with %s#knitting%s which you have not read "
 "yet"
-msgstr ":unread #stricken%sBeiträge, die mit %s#stricken%s markiert sind und die du noch nicht gelesen hast."
+msgstr "+:unread #stricken%sBeiträge markiert mit %s#stricken%s, die du bisher nicht gelesen hast."
 
 msgid ""
 "#funny -#cats -#lolcats%sPosts tagged %s#funny%s, but not including posts "
@@ -953,8 +1038,9 @@ msgid ""
 msgstr "Umwelt%sBeiträge, die die Umwelt erwähnen, egal ob sie mit einem entsprechenden Hashtag versehen wurden oder nicht."
 
 msgid ""
-":tree #bug #feature%sBug reports and feature requests made by your treemates"
-msgstr ":tree #bug #feature%sProgrammfehlerberichte und Featureanfragen, die von deinen Baumfreunden gestellt worden sind."
+"+:tree #bug #feature%sBug reports and feature requests made by your "
+"treemates"
+msgstr "+:tree #bug #feature%sFehlerberichte und Vorschläge von deinen Baumfreunden"
 
 msgid ""
 "\"new york\"%sPosts about New York, but not posts only having the word "
@@ -967,7 +1053,7 @@ msgid ""
 msgstr "Brasilien -\"World Cup\"%sBeiträge über Brasilien, die aber nicht den World Cup erwähnen."
 
 msgid ":from \"rekado\"%sPosts written by rekado"
-msgstr ":from \"rekado\"%sBeiträge, die von rekado geschrieben wurden"
+msgstr ":from \"rekado\"%sBeiträge, die von rekado geschrieben wurden."
 
 msgid ""
 "#photography -:from \"Photophile\"%sPosts tagged with %s#photography%s, but "
@@ -989,6 +1075,11 @@ msgid ""
 "%s#restaurants%s, but not those which match the river \"International News\""
 msgstr "#Restaurants -:river \"internationale Nachrichten\"%sBeiträge, die mit %s#Restaurants%s markiert wurden, ohne jene, die mit dem Fluss \"internationale Nachrichten\" übereinstimmen."
 
+msgid ""
+"#government -:visibility internet%sPosts about government, but not those "
+"which are exposed to the Internet"
+msgstr "#regierung -:visibility internet%sMit #regierung markierte Beiträge, die nicht allgemein im Internet sichtbar sind "
+
 #: view/chat/_index.xhtml
 msgid "Chat"
 msgstr "Chat"
@@ -997,10 +1088,10 @@ msgid "chat-contacts|Online:"
 msgstr "Online:"
 
 msgid "chat|(no contacts online)"
-msgstr "(Kein Kontakt ist online)"
+msgstr "(kein Kontakt online)"
 
 msgid "Start new chat with..."
-msgstr "Chatte mit..."
+msgstr "Unterhaltung beginnen mit..."
 
 #: layout/_menu.xhtml
 msgid "menu|Profile"
@@ -1031,7 +1122,7 @@ msgid "menu|Currently in &quot;small display&quot; mode; click to change"
 msgstr "Aktuell im Modus für  &quot;kleine Bildschirme&quot; anklicken zum Ändern"
 
 msgid "menu|Currently in &quot;large display&quot; mode; click to change"
-msgstr "Aktuell im Modus für  &quot;grosse Bildschirme &quot; anklicken zum Ändern"
+msgstr "Aktuell im Modus für  &quot;grosse Bildschirme&quot; anklicken zum Ändern"
 
 msgid "menu|Large display"
 msgstr "Großer Bildschirm"
@@ -1069,7 +1160,11 @@ msgstr "%d Benachrichtigungen"
 
 #: layout/_chat.xhtml
 msgid "1 unread chat message from %1$s"
-msgstr "1 ungelesene Chat-Nachricht von %1$s"
+msgstr "Eine ungelesene Chat-Nachricht von %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d ungelesene Chat-Nachrichten von %1$s"
+
+#: public/js/comments.js
+msgid "Failed to post comment."
+msgstr "Erstellen des Kommentars fehlgeschlagen."

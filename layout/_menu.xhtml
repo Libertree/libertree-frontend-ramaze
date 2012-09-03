@@ -22,9 +22,9 @@
       <a href="/pools">#{s_('menu|Pools')}</a><br/>
       Text:
       <?r if account.font_css == 'fonts-small' ?>
-        <a href="/accounts/font" title="#{s_('menu|Legible font size')}"/>#{s_('menu|legible')}</a> | #{s_('menu|small')}
+        <a href="/accounts/font" title="#{s_('menu|Legible font size')}">#{s_('menu|legible')}</a> | #{s_('menu|small')}
       <?r else ?>
-        #{s_('menu|legible')} | <a href="/accounts/font/small" title="#{s_('menu|Small font size')}"/>#{s_('menu|small')}</a>
+        #{s_('menu|legible')} | <a href="/accounts/font/small" title="#{s_('menu|Small font size')}">#{s_('menu|small')}</a>
       <?r end ?>
       <br/>
       <?r if session[:layout] == 'narrow' ?>

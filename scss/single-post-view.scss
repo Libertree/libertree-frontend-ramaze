@@ -1,4 +1,5 @@
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 body.body.single-post-view {
   height: 100%;
@@ -19,7 +20,7 @@ body.body.single-post-view {
     width: 100%;
     display: inline-block;
     padding: 0;
-    border-radius: 3px;
+    @include rounded;
     img {
       max-width: 100%;
     }
@@ -36,7 +37,7 @@ body.body.single-post-view {
       background: $dust;
       float: left;
       border-right: 1px solid $sand;
-      border-radius: 3px 0 0 3px;
+      border-radius: $border-radius 0 0 $border-radius;
 
       vertical-align: top;
 
@@ -50,7 +51,7 @@ body.body.single-post-view {
           margin: -2em -2em 0.5em -2em;
           padding: 2em 0.5em 2em 2em;
           background: $sand;
-          border-radius: 3px 0 0 3px;
+          border-radius: $border-radius 0 0 $border-radius;
         }
         .post-tools {
           display: block;
@@ -77,7 +78,7 @@ body.body.single-post-view {
       width: 45%;
       height: 100%;
       padding: 2em;
-      border-radius: 0 3px 3px 0;
+      border-radius: 0 $border-radius $border-radius 0;
       /* position: relative; */
       float: right;
       z-index: 0;
@@ -115,7 +116,7 @@ body.body.single-post-view {
           position: fixed;
           z-index: 2;
           border: 1px solid $main_green;
-          border-radius: 3px;
+          @include rounded;
 
           .drag-handle-bar {
             display: block;
