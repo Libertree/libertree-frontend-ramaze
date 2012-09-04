@@ -1,17 +1,17 @@
-# TODO: for testing purposes only
-module FastGettext
-  def self.reload!
-    FastGettext.add_text_domain('frontend', :path => 'locale', :type => :po)
-  end
-
-  def cached_find(key)
-    if key == ''
-      false
-    else
-      current_repository[key] || false
-    end
-  end
-end
+## TODO: for testing purposes only
+#module FastGettext
+#  def self.reload!
+#    FastGettext.add_text_domain('frontend', :path => 'locale', :type => :po)
+#  end
+#
+#  def cached_find(key)
+#    if key == ''
+#      false
+#    else
+#      current_repository[key] || false
+#    end
+#  end
+#end
 
 
 module Controller
@@ -22,7 +22,7 @@ module Controller
       require_login
       init_locale
       # TODO: for testing purposes only
-      FastGettext.reload!
+      #FastGettext.reload!
     end
 
     layout do |path|
