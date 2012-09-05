@@ -63,7 +63,7 @@
 
     <div class="comments-pane">
   <?r end ?>
-      #{ Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
+      #{ Controller::Comments.render_partial "_comments_list", post: @post, hidden: false }
   <?r if session[:layout] != 'narrow' ?>
     </div>
   <?r end ?>

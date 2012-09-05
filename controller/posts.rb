@@ -76,7 +76,8 @@ module Controller
 
     def show(post_id, from_comment_id = nil)
       @view = "single-post-view"
-      @post = Libertree::Model::Post[post_id.to_i]
+      # @post = Libertree::Model::Post[post_id.to_i]
+      @post = Libertree::Model::Post.fetch_with_subordinates( post_id.to_i )
       if @post.nil?
         respond "404: Not Found", 404
       else
@@ -85,15 +86,6 @@ module Controller
         end
 
         @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
-        if from_comment_id
-          @comment_fetch_options = {
-            from_id: from_comment_id.to_i,
-          }
-        else
-          @comment_fetch_options = {
-            limit: 8,
-          }
-        end
 
         if logged_in?
           @post.mark_as_read_by account
