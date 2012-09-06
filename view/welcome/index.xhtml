@@ -9,11 +9,12 @@
   #{ render_partial '_navigation', done: nil, prev: 1, next: 3 }
 </div>
 
-<div id="step-3" data-step="3" class="tutorial-step">
+<div id="step-3" data-step="3" data-func="add_rivers" class="tutorial-step">
   #{ Libertree::render(_("tutorial-step-3a")) }
   <div id="list-of-rivers">
     <input type="checkbox" value="1"/>#{s_('tutorial|All unread posts on Libertree')}<br/>
     <input type="checkbox" value="2"/>#{s_('tutorial|Libertree announcements')}<br/>
+    <input type="checkbox" value="3"/>#{s_('tutorial|Posts by the developers')}<br/>
   </div>
   #{ Libertree::render(_("tutorial-step-3b")) }
   #{ render_partial '_navigation', done: true, prev: 2, next: nil }
