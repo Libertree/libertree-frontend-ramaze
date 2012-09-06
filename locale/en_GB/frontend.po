@@ -137,7 +137,7 @@ msgstr ""
 
 
 #: view/posts/_excerpts.xhtml
-msgid "No more posts."
+msgid "No more posts (for now)."
 msgstr ""
 msgid "The system is still matching posts with this river. Check in a few minutes for more posts."
 msgstr ""
