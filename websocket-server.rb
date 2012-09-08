@@ -48,6 +48,7 @@ EventMachine.run do
       :port => 8080,
       :secure => true,
       :tls_options => {
+        :private_key_file => $conf['websocket_ssl_private_key'],
         :cert_chain_file => $conf['websocket_ssl_cert']
       }
     }
