@@ -64,9 +64,23 @@ module Controller
         redirect_referrer
       end
 
+      visibility = request['visibility'].to_s
+
+      if text.length > 32
+        post = Libertree::Model::Post[
+          member_id: account.member.id,
+          visibility: visibility,
+          text: text
+        ]
+        if post
+          flash[:error] = _('You already posted that. (%s)' % ago(post.time_created) )
+          redirect_referrer
+        end
+      end
+
       post = Libertree::Model::Post.create(
         'member_id'  => account.member.id,
-        'visibility' => request['visibility'].to_s,
+        'visibility' => visibility,
         'text'       => text
       )
       session[:saved_text]['textarea-post-new'] = nil

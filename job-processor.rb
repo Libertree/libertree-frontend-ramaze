@@ -2,7 +2,7 @@ require 'libertree/job-processor'
 require_relative 'lib/jobs'
 
 if ARGV[0].nil?
-  $stderr.puts "#{$0} <config.yaml>"
+  $stderr.puts "#{$0} <path to application.yaml>"
   exit 1
 end
 
