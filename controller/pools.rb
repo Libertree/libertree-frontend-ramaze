@@ -18,16 +18,16 @@ module Controller
     end
 
     def index
-      @pools = account.pools
+      @pools = account.member.pools
     end
     def _index(target_post_id)
-      @pools = account.pools
+      @pools = account.member.pools
       @post = Libertree::Model::Post[target_post_id.to_i]
     end
 
     def show(pool_id)
       @view = 'excerpts-view'
-      @pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect r(:/)  if @pool.nil?
     end
 
@@ -36,11 +36,11 @@ module Controller
 
       begin
         pool = Libertree::Model::Pool.create(
-          account_id: account.id,
+          member_id: account.member.id,
           name: request['name'].to_s
         )
       rescue PGError => e
-        if e.message =~ /pools_account_id_name_key/
+        if e.message =~ /pools_member_id_name_key/
           flash[:error] = _('You already have a pool with that name.')
           redirect_referrer
         else
@@ -52,7 +52,7 @@ module Controller
     end
 
     def destroy(pool_id)
-      pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       if pool
         pool.delete_cascade
       end
@@ -61,14 +61,14 @@ module Controller
     end
 
     def edit(pool_id)
-      @pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect_referrer  if @pool.nil?
     end
 
     def update(pool_id)
       redirect r(:/)  if ! request.post?
 
-      @pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect r(:/)  if @pool.nil?
 
       @pool.name = request['name'].to_s
@@ -82,7 +82,7 @@ module Controller
         'msg' => _('Failed to add post to pool.')
       }
 
-      pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       return error.to_json if pool.nil?
       post = Libertree::Model::Post[ id: post_id.to_i ]
       return error.to_json if post.nil?
@@ -104,7 +104,7 @@ module Controller
       return error.to_json if post.nil?
 
       pool = Libertree::Model::Pool.find_or_create(
-        account_id: account.id,
+        member_id: account.member.id,
         name: pool_name.to_s
       )
       pool << post
@@ -113,7 +113,7 @@ module Controller
     end
 
     def remove_post(pool_id, post_id)
-      pool = Libertree::Model::Pool[ account_id: account.id, id: pool_id.to_i ]
+      pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect_referrer  if pool.nil?
       post = Libertree::Model::Post[ id: post_id.to_i ]
       redirect_referrer  if post.nil?
