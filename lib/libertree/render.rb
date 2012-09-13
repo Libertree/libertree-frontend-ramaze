@@ -100,6 +100,14 @@ module Libertree
     resolution
   end
 
+  def self.render_unsafe(s)
+    markdown ||= Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      { :filter_html => false }
+    )
+    markdown.render s
+  end
+
   def self.render(s, autoembed=false)
     if autoembed
       # FIXME: maybe this should only be done for posts
