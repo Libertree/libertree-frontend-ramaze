@@ -80,6 +80,13 @@ $(document).ready( function() {
     $('.tutorial-step').first().show();
   }
 
+  // bootstrap popovers for additional information
+  $("a[rel=popover]")
+    .popover()
+    .click(function(e) {
+      e.preventDefault()
+    })
+
   // unhide the previous and hide the current step
   $('.tutorial-step .button.prev').live( 'click', function() {
     var prev_id = "#step-" + $(this).data('prev');
