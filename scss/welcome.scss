@@ -27,7 +27,7 @@ body.welcome {
     @include shadow;
     @include rounded;
 
-    #list-of-rivers {
+    ul, ol, #list-of-rivers {
       padding-left: 2em;
       width: 30em;
       margin: 1.5em auto;
@@ -61,6 +61,7 @@ body.welcome {
       clear: both;
       display: block;
       float: right;
+      width: auto;
 
       li {
         list-style: none;
