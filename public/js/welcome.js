@@ -130,11 +130,12 @@ $(document).ready( function() {
     var step = Tutorial.currentStep(this);
     var that = this;
 
-    // execute function if provided
-    if (step.data('func')) {
+    // execute function if provided and valid
+    if (step.data('func') && Tutorial[step.data('func')] !== undefined) {
       addSpinner(this, 'after');
       $(step).find('.button').hide();
-      // TODO: first check if the function is defined
+
+      // execute specified function
       var result = Tutorial[step.data('func')](this);
 
       // If the return value is evaluated asynchronously, wait for it
