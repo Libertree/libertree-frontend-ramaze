@@ -34,7 +34,7 @@ var Tutorial = {
     ).get();
 
     // don't make a request if nothing is selected
-    if (rivers === []) {
+    if (rivers == "") {
       return {'status':'success'};
     }
 
