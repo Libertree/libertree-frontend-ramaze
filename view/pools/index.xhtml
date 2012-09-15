@@ -6,6 +6,13 @@
 
 <form action="/pools/create" method="POST">
   #{s_('new-pool|Name:')} <input type="text" name="name"/>
+  <br/>
+
+  #{s_('Spring this pool:')}
+  <a class="help" href="#" data-text="#{_('&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.')}">?</a>
+  <input type="checkbox" name="sprung"/>
+  <br/>
+
   <input type="submit" value="#{s_('new-pool|Create')}"/>
 </form>
 
