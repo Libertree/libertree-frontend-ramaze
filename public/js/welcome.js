@@ -75,8 +75,11 @@ var Tutorial = {
 
     // success?
     if(result.status === 'success') {
-      // TODO: display success message in next step if defined
-      console.log($(step).data('success'));
+      // display success message in next step if defined
+      var message = $(step).data('success');
+      if (message !== undefined && message !== "") {
+        $(step).next().find('h1').after("<p class='message'>"+message+"</p>");
+      }
       this.forward(step, that);
     } else {
       // TODO: display error
