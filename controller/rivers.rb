@@ -39,6 +39,27 @@ module Controller
       end
     end
 
+    def _create_default_rivers
+      return  if ! request.post?
+      failed = []
+
+      request['rivers'].each_pair do |i, river|
+        begin
+          Libertree::Model::River.create(
+            account_id: account.id,
+            label: river['label'].to_s,
+            query: river['query'].to_s,
+          )
+        rescue
+          failed << river['label']
+          next
+        end
+      end
+
+      # TODO: report failures instead of ignoring them
+      { 'status' => 'success' }.to_json
+    end
+
     def create
       redirect_referrer  if ! request.post?
 
