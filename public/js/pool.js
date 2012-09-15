@@ -107,4 +107,10 @@ $(document).ready( function() {
       return false;
     }
   } );
+
+  $('a.help').click( function(e) {
+    e.preventDefault();
+    fadingAlert( $(this).data('text'), e.pageX, e.pageY );
+    return false;
+  } );
 } );

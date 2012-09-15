@@ -37,7 +37,8 @@ module Controller
       begin
         pool = Libertree::Model::Pool.create(
           member_id: account.member.id,
-          name: request['name'].to_s
+          name: request['name'].to_s,
+          sprung: !! request['sprung']
         )
       rescue PGError => e
         if e.message =~ /pools_member_id_name_key/
@@ -72,6 +73,7 @@ module Controller
       redirect r(:/)  if @pool.nil?
 
       @pool.name = request['name'].to_s
+      @pool.sprung = !! request['sprung']
 
       redirect r(:/)
     end
