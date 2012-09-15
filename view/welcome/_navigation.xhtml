@@ -1,7 +1,7 @@
 <ul class="navigation">
   <?r unless @done ?>
   <li>
-    <a href="/home" class="button">
+    <a href="/welcome#step-#{@next}" data-target="#{@next}" class="button skip">
       #{s_('tutorial|Skip')}
     </a>
   </li>
@@ -23,7 +23,7 @@
   </li>
   <?r else ?>
   <li>
-    <a href="/home" class="button default">
+    <a href="/home" class="button next default">
       #{s_('tutorial|Done!')}
     </a>
   </li>

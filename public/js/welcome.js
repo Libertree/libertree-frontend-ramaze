@@ -1,15 +1,18 @@
 var Tutorial = {
+  currentStep: function(that) {
+    return $(that).closest('.tutorial-step');
+  },
+
   /* step 2 --------------------------------------------------*/
-  create_river: function(e) {
+  createRiver: function(that) {
     // get river query from input field
-    var query = $(e.id+' #first-river-query').val();
+    var query = $(that.id+' #first-river-query').val();
 
     // don't create river for empty query
     if (query === "") {
       return {'status': 'error', 'msg': 'text field cannot be empty'};
     }
 
-    // TODO: check for success
     return $.post(
       '/rivers/_create_tutorial_river',
       { query: query }
@@ -17,49 +20,69 @@ var Tutorial = {
   },
 
   /* step 3 --------------------------------------------------*/
-  add_rivers_from_list: function(e) {
-    // TODO: there's probably a better way to get the values of
-    //       selected input fields.
-    var selected = $(e.id + ' input').map(
-        function(i,e) {
-          if ($(e).prop('checked')) { return $(e).val();}
-        }).join();
+  addRiversFromList: function(that) {
+    var step = Tutorial.currentStep(that);
+    var rivers = $(step).find('input').map(
+      function(i,e) {
+        if ($(e).prop('checked')) {
+          return {
+            'query': $(e).data('query'),
+            'label': $(e).data('label')
+          };
+        }
+      }
+    ).get();
 
     // don't make a request if nothing is selected
-    if (selected === "") {
+    if (rivers === []) {
       return {'status':'success'};
     }
 
-    // TODO: check for success
     return $.post(
       '/rivers/_create_default_rivers',
-      { ids: selected }
+      { rivers: rivers }
     );
   },
 
 
   /* all steps -----------------------------------------------*/
-  next_step: function(step) {
+  nextStep: function(step) {
     var next_id = "#step-" + $(step).find('.button.next').data('next');
     step.hide();
     $(next_id).show();
     window.location = next_id;
   },
 
-  restore_step: function(step) {
+  restoreStep: function(step) {
     removeSpinner(step);
     $(step).find('.button').show();
   },
 
+  forward: function(step, element) {
+    if ($(element).data('next') === undefined) {
+      window.location = $(element).prop('href');
+    } else {
+      this.nextStep(step);
+    }
+  },
+
   // observe a function's return value
-  evaluate_response: function(result, step) {
-    if(result['status'] === 'success') {
-      this.next_step(step);
+  evaluateResponse: function(result, step, that) {
+    // interpret result as object
+    if (typeof(result) === 'object' && result.responseText) {
+      var result = JSON.parse(result.responseText);
+    }
+
+    // success?
+    if(result.status === 'success') {
+      // TODO: display success message in next step if defined
+      console.log($(step).data('success'));
+      this.forward(step, that);
     } else {
       // TODO: display error
-      console.log(result['msg']);
+      console.log(result.msg);
     }
-    this.restore_step(step);
+    this.restoreStep(step);
   },
 };
 
@@ -67,8 +90,6 @@ var Tutorial = {
 /*------------------------------------------*/
 
 $(document).ready( function() {
-
-  var max_steps = $('.tutorial-step').length;
 
   // unhide the step that is indicated in the URL, or unhide the first step
   // TODO: show and hide steps when the hash in the location changes
@@ -90,8 +111,15 @@ $(document).ready( function() {
   // unhide the previous and hide the current step
   $('.tutorial-step .button.prev').live( 'click', function() {
     var prev_id = "#step-" + $(this).data('prev');
-    $(this).closest(".tutorial-step").hide();
+    Tutorial.currentStep(this).hide();
     $(prev_id).show();
+  });
+
+  // go to next step without executing functions
+  $('.tutorial-step .button.skip').live( 'click', function(event) {
+    event.preventDefault();
+    var step = Tutorial.currentStep(this);
+    Tutorial.nextStep(step);
   });
 
   // Execute a function (if provided).
@@ -99,7 +127,8 @@ $(document).ready( function() {
   $('.tutorial-step .button.next').live( 'click', function(event) {
     event.preventDefault();
 
-    var step = $(this).closest('.tutorial-step');
+    var step = Tutorial.currentStep(this);
+    var that = this;
 
     // execute function if provided
     if (step.data('func')) {
@@ -114,13 +143,14 @@ $(document).ready( function() {
       if (jQuery.type(result['promise']) === "function") {
         result.promise().done(
           function() {
-            Tutorial.evaluate_response(result, step);
+            Tutorial.evaluateResponse(result, step, that);
           });
       } else {
-        Tutorial.evaluate_response(result, step);
+        Tutorial.evaluateResponse(result, step, that);
       }
     } else {
-      Tutorial.next_step(step);
+      // end tutorial or move on to next step
+      Tutorial.forward(step, that);
     }
   })
 });

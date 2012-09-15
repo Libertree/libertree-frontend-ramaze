@@ -1,21 +1,32 @@
-<div id="step-1" data-step="1" class="tutorial-step">
+<div id="step-1" class="tutorial-step">
   #{ Libertree::render_unsafe(_("tutorial-step-1")) }
   #{ render_partial '_navigation', done: nil, prev: nil, next: 2 }
 </div>
 
-<div id="step-2" data-step="2" data-func="create_river" class="tutorial-step">
+<div id="step-2" data-func="createRiver" data-success="#{_('tutorial-step-2b')}" class="tutorial-step">
   #{ Libertree::render(_("tutorial-step-2a")) }
-  <input id="first-river-query" type="text"/>
+  <input id="first-river-query" type="text" />
+  <div class="errors"></div>
   #{ render_partial '_navigation', done: nil, prev: 1, next: 3 }
 </div>
 
-<div id="step-3" data-step="3" data-func="add_rivers" class="tutorial-step">
+<div id="step-3" data-func="addRiversFromList" class="tutorial-step">
+  #{ Libertree::render(_("tutorial-step-3-heading")) }
   #{ Libertree::render(_("tutorial-step-3a")) }
   <div id="list-of-rivers">
-    <input type="checkbox" value="1"/>#{s_('tutorial|All unread posts on Libertree')}<br/>
-    <input type="checkbox" value="2"/>#{s_('tutorial|Libertree announcements')}<br/>
-    <input type="checkbox" value="3"/>#{s_('tutorial|Posts by the developers')}<br/>
+    <input type="checkbox"
+           data-label="#{s_('tutorial|All unread posts on Libertree')}"
+           data-query=":unread" />
+    #{s_('tutorial|All unread posts on Libertree')}
+    <br/>
+
+    <input type="checkbox"
+           data-label="#{s_('tutorial|Libertree announcements')}"
+           data-query="" />
+    #{s_('tutorial|Libertree announcements')}
+    <br/>
   </div>
+
   #{ Libertree::render(_("tutorial-step-3b")) }
   #{ render_partial '_navigation', done: true, prev: 2, next: nil }
 </div>
