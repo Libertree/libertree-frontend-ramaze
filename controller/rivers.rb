@@ -115,13 +115,13 @@ module Controller
       redirect_referrer
     end
 
-    def add_from(river_id, member_id)
+    def add_spring(river_id, pool_id)
       river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
-      member = Libertree::Model::Member[ member_id.to_i ]
-      if river && member
+      pool = Libertree::Model::Pool[ pool_id.to_i ]
+      if river && pool
         river.revise(
           'label' => river.label,
-          'query' => river.query + %| :from "#{member.name_display}"|
+          'query' => river.query + %| :spring "#{pool.name}" "#{pool.member.handle}"|
         )
       end
       ''

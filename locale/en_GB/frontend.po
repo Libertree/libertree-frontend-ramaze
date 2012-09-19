@@ -592,6 +592,8 @@ msgstr ""
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr ""
+msgid "Add this spring to a river"
+msgstr ""
 
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"

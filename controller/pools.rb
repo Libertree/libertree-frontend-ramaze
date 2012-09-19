@@ -26,8 +26,11 @@ module Controller
     end
 
     def show(pool_id)
-      @view = 'excerpts-view'
-      @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
+      @view = 'excerpts-view pool'
+      @pool = (
+        Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
+        Libertree::Model::Pool[ id: pool_id.to_i, sprung: true, ]
+      )
       redirect r(:/)  if @pool.nil?
     end
 

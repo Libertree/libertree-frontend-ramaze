@@ -23,6 +23,19 @@
   </div>
 </div>
 
+<?r if @member.springs.any? ?>
+  <div id="springs">
+    <h3>Springs of #{@member.name_display}</h3>
+    <ul>
+    <?r @member.springs.each do |spring| ?>
+      <li class="spring">
+        <a href="/pools/show/#{spring.id}">#{spring.name}</a>
+      </li>
+    <?r end ?>
+    </ul>
+  </div>
+<?r end ?>
+
 <div id="post-excerpts">
   <h3>#{_('Posts by %s') % @member.name_display}</h3>
   <?r @member.posts(12).each do |post| ?>
