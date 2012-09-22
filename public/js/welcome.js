@@ -47,6 +47,13 @@ var Tutorial = {
 
   /* all steps -----------------------------------------------*/
   nextStep: function(step) {
+    // clear errors
+    var errorContainer = $(step).find('.error');
+    if (errorContainer) {
+      errorContainer.html("");
+    }
+
+    // show next step
     var next_id = "#step-" + $(step).find('.button.next').data('next');
     step.hide();
     $(next_id).show();
@@ -82,8 +89,13 @@ var Tutorial = {
       }
       this.forward(step, that);
     } else {
-      // TODO: display error
-      console.log(result.msg);
+      // display errors
+      var errorContainer = $(step).find('.errors');
+      if (errorContainer) {
+        errorContainer.html(result['msg']);
+      } else {
+        console.log(result['msg']);
+      }
     }
     this.restoreStep(step);
   },

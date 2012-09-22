@@ -52,9 +52,14 @@ body.welcome {
       color: $leaf;
     }
 
-    p {
+    p, div.errors {
       max-width: 30em;
       margin: 1em auto;
+    }
+
+    div.errors {
+      color: $red;
+      margin-top: 0.5em;
     }
 
     .navigation {
