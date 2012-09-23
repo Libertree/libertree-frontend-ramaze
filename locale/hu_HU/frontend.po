@@ -6,14 +6,14 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-02 08:47+0000\n"
-"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
+"PO-Revision-Date: 2012-09-06 18:07+0000\n"
+"Last-Translator: danielwine <danielwine@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hu\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: view/login.xhtml
 msgid "Username"
@@ -178,8 +178,8 @@ msgid "Delete this post?"
 msgstr "Töröljük ezt a bejegyzést?"
 
 #: view/posts/_excerpts.xhtml
-msgid "No more posts."
-msgstr "nincs több bejegyzés."
+msgid "No more posts (for now)."
+msgstr "Nincs több bejegyzés (egyelőre)."
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -498,36 +498,36 @@ msgstr "%d további értesítés"
 
 #: view/notifications/_comment.xhtml
 msgid "singular|%1$s commented on your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s hozzászólt a %2$sbejegyzésedhez%3$s."
 
 msgid "plural|%1$s commented on your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s hozzászólt a %2$sbejegyzésedhez%3$s."
 
 msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
-msgstr ""
+msgstr "%1$s hozzászólt %2$s %3$sbejegyzéséhez%4$s."
 
 msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
-msgstr ""
+msgstr "%1$s hozzászólt %2$s %3$sbejegyzéséhez%4$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "singular|%1$s liked your %2$scomment%3$s on your post."
-msgstr ""
+msgstr "%1$s kedveli a saját bejegyzésedhez fűzött %2$shozzászólásodat%3$s."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on your post."
-msgstr ""
+msgstr "%1$s kedveli a saját bejegyzésedhez fűzött %2$shozzászólásodat%3$s."
 
 msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr ""
+msgstr "%1$s kedveli a %4$s bejegyzéséhez fűzött %2$shozzászólásodat%3$s."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr ""
+msgstr "%1$s kedveli a %4$s bejegyzéséhez fűzött %2$shozzászólásodat%3$s."
 
 #: view/notifications/_post_like.xhtml
 msgid "singular|%1$s liked your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s kedveli a %2$sbejegyzésedet%3$s."
 
 msgid "plural|%1$s liked your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s kedveli a %2$sbejegyzésedet%3$s."
 
 #: view/notifications/_message.xhtml
 msgid "%1$s sent you a %2$smessage%3$s."
@@ -834,7 +834,7 @@ msgid "Posts by %s"
 msgstr "%s bejegyzései"
 
 msgid "Add %s to a contact list"
-msgstr ""
+msgstr "%s hozzáadása egy társjegyzékhez"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -984,7 +984,7 @@ msgstr "Egyéb különleges kifejezések: %s, %s and %s. Ezek leszűkítik a tal
 msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
-msgstr "(haladóknak) Használd a %s kifejezést valamely folyam címkéje után idézőjelben, hogy létrehozz olyan folyamokat, amelyek más folyamokból tevődnek össze"
+msgstr "(haladóknak) Használd a %s kifejezést kiegészítve valamelyik folyamod idézőjelbe tett nevével, hogy létrehozz olyan folyamokat, amelyek más folyamokból tevődnek össze."
 
 msgid ""
 "(advanced) Use the special term %s followed by &lt; or &gt; and a number to "

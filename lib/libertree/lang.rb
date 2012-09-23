@@ -9,6 +9,7 @@ module Libertree
     ['hu_HU', 'magyar'],
     ['ru_RU', 'Русский'],
     ['es_ES', 'Español'],
+    ['es_SV', 'Español (El Salvador)'],
     ['it_IT', 'Italiano'],
     ['pl_PL', 'polski'],
     ['fi_FI', 'suomi'],
