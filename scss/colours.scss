@@ -50,13 +50,6 @@ $header_gradient_stop: bottom;
         /* double override for when .main is set transparent */
         background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
         background-color: $dust_translucent;
-        padding-left: 30px;
-        padding-right: 30px;
-
-        h1, h2, h3, h4, h5 {
-            margin: 0px;
-            padding: 0px 0px 1em 0px;
-        }
     }
 }
 
