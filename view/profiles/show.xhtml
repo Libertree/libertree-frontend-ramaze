@@ -23,8 +23,11 @@
   </div>
 </div>
 
-<div id="post-excerpts">
+<div class="panel">
   <h3>#{_('Posts by %s') % @member.name_display}</h3>
+</div>
+
+<div id="post-excerpts">
   <?r @member.posts(12).each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post }
   <?r end ?>
