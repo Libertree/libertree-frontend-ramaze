@@ -505,23 +505,23 @@ msgid "plural|%1$s commented on your %2$spost%3$s."
 msgstr "%1$s comentaron en tu %2$spublicación%3$s."
 
 msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
-msgstr "%1$s comentó en la %3$publicación%4$s de %2$s."
+msgstr "%1$s comentó en la %3$spublicación%4$s de %2$s."
 
 msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
-msgstr "%1$s comentaron en la %3$publicación%4$s de %2$s."
+msgstr "%1$s comentaron en la %3$spublicación%4$s de %2$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "singular|%1$s liked your %2$scomment%3$s on your post."
-msgstr "A %1$s le gustó tu %2$comentario%3$s en tu publicación"
+msgstr "A %1$s le gustó tu %2$scomentario%3$s en tu publicación"
 
 msgid "plural|%1$s liked your %2$scomment%3$s on your post."
-msgstr "A %1$s les gustó tu %2$comentario%3$s en tu publicación."
+msgstr "A %1$s les gustó tu %2$scomentario%3$s en tu publicación."
 
 msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "A %1$s le gustó tu %2$comentario%3$s en la publicación de %4$s."
+msgstr "A %1$s le gustó tu %2$scomentario%3$s en la publicación de %4$s."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "A %1$s les gustó tu %2$comentario%3$s en la publicación de %4$s."
+msgstr "A %1$s les gustó tu %2$scomentario%3$s en la publicación de %4$s."
 
 #: view/notifications/_post_like.xhtml
 msgid "singular|%1$s liked your %2$spost%3$s."
