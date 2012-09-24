@@ -12,3 +12,4 @@
   <input type="submit" value="#{s_('pool|Update')}"/>
 </form>
 
+#{s_("(You can remove posts from this pool via %1$sthe pool's page%2$s.)") % [%{<a href="/pools/show/#{@pool.id}">}, '</a>']}

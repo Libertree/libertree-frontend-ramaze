@@ -602,6 +602,8 @@ msgid "Edit Pool: %s"
 msgstr ""
 msgid "pool|Update"
 msgstr ""
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
