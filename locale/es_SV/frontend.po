@@ -1153,7 +1153,7 @@ msgstr "%d notificaciones"
 
 #: layout/_chat.xhtml
 msgid "1 unread chat message from %1$s"
-msgstr "1 mensaje sin leer de %1&s"
+msgstr "1 mensaje sin leer de %1$s"
 
 msgid "%2$d unread chat messages from %1$s"
 msgstr "%2$d sin leer de %1$s"
