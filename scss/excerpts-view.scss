@@ -38,6 +38,16 @@ body.body.excerpts-view .main {
       padding: 0.5em;
     }
 
+    &.profile {
+        #no-more-posts {
+            display: none;
+        }
+
+        #see-more {
+            padding: 1em;
+        }
+    }
+
     .post-excerpt {
         width: 100%;
         padding: 1em 0 1em;

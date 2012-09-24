@@ -45,3 +45,7 @@
     #{ Controller::Posts.render_partial '_excerpt', post: post }
   <?r end ?>
 </div>
+
+<div class="panel" id="see-more">
+  #{ s_("%1$ssee more posts by %2$s%3$s") % [%|<a href="/rivers/ensure_exists/%3Afrom+%22#{@member.handle}%22">|, @member.name_display, '</a>', ] }
+</div>
