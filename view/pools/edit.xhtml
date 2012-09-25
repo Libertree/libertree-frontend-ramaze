@@ -2,6 +2,14 @@
 
 <form id="form-pool-edit" class="form-pool" method="POST" action="/pools/update/#{@pool.id}">
   #{s_('pool|Name:')} <input type="text" name="name" value="#{@pool.name}"/>
+  <br/>
+
+  #{s_('pool|Sprung:')}
+  <a class="help" href="#" data-text="#{_("&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members' springs to rivers.")}">?</a>
+  <input type="checkbox" name="sprung" value="true" #{@pool.sprung? ? 'checked' : '' }/>
+  <br/>
+
   <input type="submit" value="#{s_('pool|Update')}"/>
 </form>
 
+#{s_("(You can remove posts from this pool via %1$sthe pool's page%2$s.)") % [%{<a href="/pools/show/#{@pool.id}">}, '</a>']}

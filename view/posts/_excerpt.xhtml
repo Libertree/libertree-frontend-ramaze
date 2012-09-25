@@ -1,4 +1,4 @@
-<div class="post-excerpt" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? DateTime.parse(@post['time_updated_overall']).to_time.to_f : @post.time_created.to_time.to_f }">
+<div class="post-excerpt" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
   <div class="meta">
     <?r if session[:layout] == 'narrow' ?>
       <a href="#river-menu" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
@@ -50,7 +50,7 @@
       <?r end ?>
 
       <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
-      <?r if @pool ?>
+      <?r if @pool && @pool.member == account.member ?>
       <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
       <?r end ?>
 
