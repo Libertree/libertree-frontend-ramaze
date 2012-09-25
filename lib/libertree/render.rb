@@ -101,12 +101,12 @@ module Libertree
   end
 
   def self.render(s, autoembed=false)
+    html = markdownify(s)
     if autoembed
       # FIXME: maybe this should only be done for posts
-      Libertree::Embedder.replace_urls_with_objects(markdownify(s))
-    else
-      markdownify(s)
+      html = Libertree::Embedder.inject_objects(html)
     end
+    html
   end
 
   module HasRenderableText
