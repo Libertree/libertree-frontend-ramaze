@@ -107,4 +107,27 @@ $(document).ready( function() {
       return false;
     }
   } );
+
+  $('a.help').click( function(e) {
+    e.preventDefault();
+    fadingAlert( $(this).data('text'), e.pageX, e.pageY );
+    return false;
+  } );
+
+  $('.excerpts-view.pool #river-selector').chosen().change( function() {
+    var selector = $('.excerpts-view.pool #river-selector');
+    var riverId = selector.val();
+    var poolId = selector.data('pool-id');
+    addSpinner( selector.parent(), 'append' );
+    $.get(
+      '/rivers/add_spring/'+riverId+'/'+poolId,
+      function() {
+        removeSpinner( selector.parent() );
+        fadingAlert('Added to river.');
+        selector.val('0');
+        selector.trigger("liszt:updated");
+      }
+    );
+    return false;
+  } );
 } );

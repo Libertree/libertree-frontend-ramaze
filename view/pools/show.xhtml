@@ -1,5 +1,24 @@
-<h2>#{_('Pool: %s') % @pool.name}</h2>
+<div class="panel top">
+  <h2>
+  <?r if @pool.member != account.member ?>
+    #{_('Spring: %s') % @pool.name}
+  <?r else ?>
+    #{_('Pool: %s') % @pool.name}
+  <?r end ?>
+  </h2>
 
+  <?r if @pool.member != account.member ?>
+    <div class="spinner-container">
+      <select id="river-selector" name="river_id" data-pool-id="#{@pool.id}" data-placeholder="#{_('Add this spring to a river')}">
+        <option value="0"></option>
+        <?r account.rivers.sort_by { |r| r.label.gsub(/^#/,'').downcase }.each do |r| ?>
+          <option value="#{r.id}">#{r.label}</option>
+        <?r end ?>
+      </select>
+    </div>
+  <?r end ?>
+
+</div>
 <div id="post-excerpts" data-pool-id="#{@pool.id}">
   <?r @pool.posts.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, pool: @pool }
