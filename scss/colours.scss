@@ -45,6 +45,12 @@ $header_gradient_stop: bottom;
 .main {
     background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
     background-color: $dust_translucent;
+
+    div.panel {
+        /* double override for when .main is set transparent */
+        background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
+        background-color: $dust_translucent;
+    }
 }
 
 a {

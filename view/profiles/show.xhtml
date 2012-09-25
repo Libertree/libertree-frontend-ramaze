@@ -23,9 +23,29 @@
   </div>
 </div>
 
-<div id="post-excerpts">
+<?r if @member.springs.any? ?>
+  <div id="springs" class="panel">
+    <h3>Springs of #{@member.name_display}</h3>
+    <ul>
+    <?r @member.springs.each do |spring| ?>
+      <li class="spring">
+        <a href="/pools/show/#{spring.id}">#{spring.name}</a>
+      </li>
+    <?r end ?>
+    </ul>
+  </div>
+<?r end ?>
+
+<div class="panel">
   <h3>#{_('Posts by %s') % @member.name_display}</h3>
+</div>
+
+<div id="post-excerpts">
   <?r @member.posts(12).each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post }
   <?r end ?>
+</div>
+
+<div class="panel" id="see-more">
+  #{ s_("%1$ssee more posts by %2$s%3$s") % [%|<a href="/rivers/ensure_exists/%3Afrom+%22#{@member.handle}%22">|, @member.name_display, '</a>', ] }
 </div>

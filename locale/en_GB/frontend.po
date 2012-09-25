@@ -582,6 +582,8 @@ msgid "Use pools to collect posts."
 msgstr ""
 msgid "pool|Name:"
 msgstr ""
+msgid "&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members' springs to rivers."
+msgstr ""
 msgid "new-pool|Create"
 msgstr ""
 msgid "pool|Delete"
@@ -592,11 +594,15 @@ msgstr ""
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr ""
+msgid "Add this spring to a river"
+msgstr ""
 
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr ""
 msgid "pool|Update"
+msgstr ""
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
 msgstr ""
 
 #: view/profiles/edit.xhtml
@@ -626,6 +632,8 @@ msgstr ""
 msgid "Posts by %s"
 msgstr ""
 msgid "Add %s to a contact list"
+msgstr ""
+msgid "%1$ssee more posts by %2$s%3$s"
 msgstr ""
 
 #: view/request_password_reset.xhtml
