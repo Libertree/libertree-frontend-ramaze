@@ -606,6 +606,10 @@ msgid "Pool: %s"
 msgstr ""
 msgid "Add this spring to a river"
 msgstr ""
+msgid "Spring this pool:"
+msgstr ""
+msgid "pool|Sprung:"
+msgstr ""
 
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"

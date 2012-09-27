@@ -19,10 +19,14 @@ describe Libertree do
     4 spaces before
        7 spaces before
 
-tail}).should == %{<p>head</p><pre><code>  6 spaces before
+tail}).should == %{<p>head</p>
+
+<pre><code>  6 spaces before
 4 spaces before
    7 spaces before
-</code></pre><p>tail</p>}
+</code></pre>
+
+<p>tail</p>}
     end
 
     it 'should autolink relative URLs' do
@@ -38,6 +42,10 @@ tail}).should == %{<p>head</p><pre><code>  6 spaces before
 
     it 'should not mangle underscores in URLs' do
       subject.render('http://this_is_too_cool.com').should =~ %r{this_is_too_cool}
+    end
+
+    it 'should ignore hashtags in links' do
+      subject.render('[this is not a #valid hashtag](http://elephly.net)').should == '<p><a href="http://elephly.net">this is not a #valid hashtag</a></p>'
     end
 
   end
