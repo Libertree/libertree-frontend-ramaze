@@ -40,5 +40,9 @@ tail}).should == %{<p>head</p><pre><code>  6 spaces before
       subject.render('http://this_is_too_cool.com').should =~ %r{this_is_too_cool}
     end
 
+    it 'should ignore hashtags in links' do
+      subject.render('[this is not a #valid hashtag](http://elephly.net)').should == '<p><a href="http://elephly.net">this is not a #valid hashtag</a></p>'
+    end
+
   end
 end
