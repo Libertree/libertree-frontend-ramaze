@@ -33,37 +33,36 @@ module Libertree
       end
     end
 
-    # replaces a url with an object iff
-    # - it is on its own line
-    # - there are no leading spaces
-    # - a cached embed object exists
-    def self.replace_urls_with_objects(text)
-      text.lines.reduce("") do |res,line|
-        res << line
-        # Matching against any link is two orders of magnitude faster
-        # than comparing against a list of supported link formats.
-        # Note that we cannot fetch the URL after "href=" as it may have
-        # been modified by the URL resolver.
-        m = line.strip.match(%r|^<p><a href=".+">(http(s)?://.+)</a></p>$|)
-        if m
-          url = m[1]
+    def self.inject_objects(rendered)
+      html = Nokogiri::HTML::fragment(rendered)
+
+      # extract every URL from a paragraph and append embed object if supported
+      html.css('p').each do |p|
+        urls = p.xpath(".//a/@href").map(&:value).reverse
+        urls.each do |url|
           cached = (
             Libertree::Model::EmbedCache[ url: url ] ||
             Libertree::Model::EmbedCache[ url: url.gsub('&amp;', '&') ]
           )
           if cached
-            res << "<br/>#{cached[:object]}"
+            p.add_next_sibling("<div class='embed'>#{cached[:object]}</div>")
           end
         end
-        res
       end
+      html.to_s
+    end
+
+    def self.supported
+      @supported ||= Regexp.union(
+        OEmbed::Providers.urls.keys.concat Libertree::Embedding::CustomProviders.urls.keys
+      )
     end
 
     def self.extract_urls(text)
-      all_keys = Regexp.union(
-        OEmbed::Providers.urls.keys.concat Libertree::Embedding::CustomProviders.urls.keys
-      )
-      text.lines.find_all {|line| line =~ all_keys}.map(&:strip)
+      html = Nokogiri::HTML.fragment(Libertree.render(text))
+      urls = html.xpath(".//a/@href").map(&:value)
+
+      urls.find_all {|u| u =~ self.supported}.map(&:strip)
     end
 
   end
