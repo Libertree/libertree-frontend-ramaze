@@ -139,47 +139,15 @@ $(document).ready( function() {
     window.location = '#' + $(this).data('id-back');
   } );
 
-  $('div.comment a.like').live( 'click', function(event) {
-    event.preventDefault();
-    var link = $(this);
-    var comment = link.closest('div.comment');
-    if( comment.length ) {
-      $.get(
-        '/likes/comments/create/' + comment.data('comment-id'),
-        function(response) {
-          var h = $.parseJSON(response);
-          link.addClass('hidden');
-          link.siblings('a.unlike').removeClass('hidden').data('comment-like-id', h['comment_like_id']);
-          comment.find('.num-likes').text( h['num_likes'] ).show();
-          comment.find('.num-likes').attr('title', h['liked_by']);
-        }
-      );
-    }
-  } )
+  $('div.comment a.like').live(
+    'click',
+    Libertree.mkLike( 'comment', 'div.comment' )
+  );
 
-  $('div.comment a.unlike').live( 'click', function(event) {
-    event.preventDefault();
-    var link = $(this);
-    var comment = link.closest('div.comment');
-    if( comment.length ) {
-      $.get(
-        '/likes/comments/destroy/' + link.data('comment-like-id'),
-        function(response) {
-          var h = $.parseJSON(response);
-          link.addClass('hidden');
-          link.siblings('a.like').removeClass('hidden');
-          var num_likes = comment.find('.num-likes');
-          num_likes.text( h['num_likes'] );
-          if( h['num_likes'] == '0 likes' ) {
-            num_likes.hide();
-          }
-          else {
-            comment.find('.num-likes').attr('title', h['liked_by']);
-          }
-        }
-      );
-    }
-  } )
+  $('div.comment a.unlike').live(
+    'click',
+    Libertree.mkUnlike( 'comment', 'div.comment' )
+  );
 
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);
