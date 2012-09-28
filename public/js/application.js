@@ -1,3 +1,5 @@
+var Libertree = {};
+
 var timerSaveTextAreas;
 var lastTextAreaText = '';
 
