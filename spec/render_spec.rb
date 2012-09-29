@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Libertree do
   describe '#render' do
     it 'should escape XHTML tags' do
-      subject.render('<script>alert("hello world")</script>').should =~ /<p>alert\(.hello world.\)<\/p>/
+      subject.render('<script>alert("hello world")</script>').should =~ /<p>alert\(.+hello world.+\)<\/p>/
     end
 
     it 'should not strip tags in code blocks' do
