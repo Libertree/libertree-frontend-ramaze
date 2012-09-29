@@ -33,9 +33,8 @@ module Libertree
       end
     end
 
-    def self.inject_objects(rendered)
-      html = Nokogiri::HTML::fragment(rendered)
-
+    # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
+    def self.inject_objects(html)
       # extract every URL from a paragraph and append embed object if supported
       html.css('p').each do |p|
         urls = p.xpath(".//a/@href").map(&:value).reverse
@@ -49,7 +48,7 @@ module Libertree
           end
         end
       end
-      html.to_s
+      html
     end
 
     def self.supported
