@@ -1,3 +1,8 @@
+# NOTE: be sure to paste the English tutorial to all languages that have no
+# translation yet. Otherwise, meaningless keys like 'tutorial-step-1' are
+# shown.
+
+
 ## TODO: for testing purposes only
 #module FastGettext
 #  def self.reload!
