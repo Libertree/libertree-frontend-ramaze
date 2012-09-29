@@ -26,13 +26,16 @@ module Libertree
     }
   end
 
-  def self.post_processing(s)
+  # @param [String] rendered markdown as HTML string
+  def self.autolinker(s)
     return ''  if s.nil? or s.empty?
 
     # Crude autolinker for relative links to local resources
-    s.gsub!(%r{(?<=^|\s|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
+    s.gsub(%r{(?<=^|\s|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
+  end
 
-    html = Nokogiri::HTML::fragment(s)
+  # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
+  def self.process_links(html)
     html.css('a').each do |a|
       # strip javascript
       if a['href']
@@ -43,18 +46,21 @@ module Libertree
         a['href'] = resolve_redirection(a['href'])
       end
     end
+    html
+  end
 
+  # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
+  def self.apply_hashtags(html)
     # hashtaggify everything that is not inside of code or pre tags
     html.traverse do |node|
-      if node.ancestors("code").empty? && node.ancestors("pre") && node.text?
+      if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
         if ! hashtag.eql? node.text
           node.replace hashtag
         end
       end
     end
-
-    html.to_s
+    html
   end
 
   def self.resolve_redirection( url_s )
@@ -101,12 +107,17 @@ module Libertree
   end
 
   def self.render(s, autoembed=false)
-    if autoembed
-      # FIXME: maybe this should only be done for posts
-      Libertree::Embedder.replace_urls_with_objects(markdownify(s))
-    else
-      markdownify(s)
-    end
+    pipeline = [
+      method(:markdownify),
+      method(:autolinker),
+      Nokogiri::HTML.method(:fragment),
+      method(:process_links),
+      method(:apply_hashtags),
+      (Embedder.method(:inject_objects) if autoembed)
+    ].compact
+
+    # apply methods sequentially to string
+    pipeline.reduce(s) {|acc,f| f.call(acc)}.to_s
   end
 
   module HasRenderableText
