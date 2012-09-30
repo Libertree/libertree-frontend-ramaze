@@ -93,7 +93,7 @@ $(document).ready( function() {
     var postId = post.data('post-id');
     var poolId = $(this).data('pool-id');
     $.get(
-      '/pools/remove_post/' + poolId + '/' + postId,
+      '/pools/_remove_post/' + poolId + '/' + postId,
       function() {
         /* TODO: Check for success */
         post.slideUp(1000);
