@@ -111,9 +111,9 @@ $(document).ready( function() {
 
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
-    var top = excerpt.position().top;
+    var excerptTop = excerpt.position().top;
     var windowTop = $('html').scrollTop();
-    var scrollTop = top - windowTop
+    var scrollTop = excerptTop - windowTop;
     if( scrollTop < 100 ){
       $('html').animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
