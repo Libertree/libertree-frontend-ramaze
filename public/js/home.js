@@ -107,7 +107,7 @@ $(document).ready( function() {
   $('.post-excerpt .show-less').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.show-more').show();
-    var excerpt = $(this).siblings('.excerpt');
+    var excerpt = $(this).closest('.post-excerpt');
 
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
