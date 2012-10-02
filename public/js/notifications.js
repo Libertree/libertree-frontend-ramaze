@@ -73,7 +73,8 @@ $(document).ready( function() {
     } );
   } );
 
-  $('#mark-all-notifications-seen').live( 'click', function() {
+  $('#mark-all-notifications-seen').live( 'click', function(event) {
+    event.preventDefault();
     $.get('/notifications/seen/all', function () {
       $('.notification')
         .removeClass('unseen')
