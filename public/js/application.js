@@ -168,6 +168,10 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('.pseudolink').live( 'click', function(e) {
+    window.location = $(this).data('href');
+  } );
+
   /* ---------------------------------------------------- */
 
   setInterval( updateAges, 60 * 1000 );

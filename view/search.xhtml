@@ -19,13 +19,12 @@
 
   <ul>
   <?r @posts.each do |p| ?>
-    <li class="search-result post">
+    <li class="search-result post pseudolink" data-href="/posts/show/#{p.id}">
       <div class="member">
-        #{member_avatar_link(p.member)} #{member_name_link(p.member)}
+        #{member_img(p.member)} <span class="member-name">#{p.member.name_display}</span>
         <span class="timestamp">#{ago(p.time_created)}</span>
       </div>
       <p>#{highlight_query(p.glimpse(160), @q)}</p>
-      <a href="/posts/show/#{p.id}">#{_('view post')}</a>
     </li>
   <?r end ?>
   </ul>
@@ -36,13 +35,12 @@
 
   <ul>
   <?r @comments.each do |c| ?>
-    <li class="search-result comment">
+    <li class="search-result comment pseudolink" data-href="#{ comment_link(c) }">
       <div class="member">
-        #{member_avatar_link(c.member)} #{member_name_link(c.member)}
+        #{member_img(c.member)} <span class="member-name">#{c.member.name_display}</span>
         <span class="timestamp">#{ago(c.time_created)}</span>
       </div>
       <p>#{highlight_query(c.glimpse(160), @q)}</p>
-      <a href="#{ comment_link(c) }">#{_('view comment')}</a>
     </li>
   <?r end ?>
   </ul>

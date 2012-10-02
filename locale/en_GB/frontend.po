@@ -432,8 +432,6 @@ msgid "search-results|Posts"
 msgstr ""
 msgid "search-results|Comments"
 msgstr ""
-msgid "search-results|view comment"
-msgstr ""
 
 #: controller/contact-lists.rb
 msgid "Contact list updated."
