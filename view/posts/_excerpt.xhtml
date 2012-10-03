@@ -32,33 +32,41 @@
 
       <span class="mutation">
         <?r if @post.like_by(account.member) ?>
-          <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
-          <a href="#" class="like hidden">#{_('like')}</a>
+          <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{ img 'icon-unlike.png', {alt:_('unlike'), class:'size-16'}}</a>
+          <a href="#" class="like hidden">#{ img 'icon-like.png', {alt:_('like'), class:'size-16'}}</a>
         <?r else ?>
-          <a href="#" class="like">#{_('like')}</a>
-          <a href="#" class="unlike hidden">#{_('unlike')}</a>
+          <a href="#" class="like">#{ img 'icon-like.png', {alt:_('like'), class:'size-16'}}</a>
+          <a href="#" class="unlike hidden">#{ img 'icon-unlike.png', {alt:_('unlike'), class:'size-16'}}</a>
         <?r end ?>
 
-        <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
-        <?r if @pool && @pool.member == account.member ?>
+        <?r if @post.collected_by?(account) ?>
+          <?r if @pool && @pool.member == account.member ?>
           <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
+          <?r else ?>
+          <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collected.png', {alt:_('collected'), class:'size-16'}}</a>
+          <a class="collect hidden" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collect.png', {alt:_('collect'), class:'size-16'}}</a>
+          <?r end ?>
+        <?r else ?>
+          <a class="collect" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collect.png', {alt:_('collect'), class:'size-16'}}</a>
+          <a class="collect collected hidden" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collected.png', {alt:_('collected'), class:'size-16'}}</a>
         <?r end ?>
 
         <?r if ! account.subscribed_to?(@post) ?>
-          <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-          <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+          <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{ img 'icon-subscribe.png', {alt:_('subscribe'), class: "size-16"}}</a>
+          <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{ img 'icon-unsubscribe.png', {alt:_('unsubscribe'), class: "size-16"}}</a>
         <?r else ?>
-          <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-          <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+          <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{ img 'icon-subscribe.png', {alt:_('subscribe'), class: "size-16"}}</a>
+          <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{ img 'icon-unsubscribe.png', {alt:_('unsubscribe'), class: "size-16"}}</a>
         <?r end ?>
 
         <?r if @post.read_by?(account) ?>
-          <a class="mark-unread" href="#">#{_('mark unread')}</a>
-          <a class="mark-read hidden" href="#">#{_('mark read')}</a>
+          <a class="mark-unread" href="#">#{ img 'icon-read.png', {alt:_('mark unread'), class:'size-16'}}</a>
+          <a class="mark-read hidden" href="#">#{ img 'icon-unread.png', {alt:_('mark read'), class:'size-16'}}</a>
         <?r else ?>
-          <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
-          <a class="mark-read" href="#">#{_('mark read')}</a>
+          <a class="mark-unread hidden" href="#">#{ img 'icon-read.png', {alt:_('mark unread'), class:'size-16'}}</a>
+          <a class="mark-read" href="#">#{ img 'icon-unread.png', {alt:_('mark unread'), class:'size-16'}}</a>
         <?r end ?>
+
       </span>
 
       <br />
