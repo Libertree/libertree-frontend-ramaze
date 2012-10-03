@@ -1,124 +1,128 @@
-function fetchChatMessage(chatMessage) {
-  var messages = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"] .messages');
-  $.get(
-    '/chat/_message/' + chatMessage.id,
-    function(html) {
-      var o = $(html);
-      o.appendTo(messages);
-      var height = o.height();
-      var animationDuration = height*5;
-      o.hide().slideDown(animationDuration);
+Libertree.Chat = {
+  var that = this;
 
-      messages.animate(
-        { scrollTop: messages.scrollTop() + height + 30 },
-        animationDuration
-      );
-    }
-  );
-}
+  fetchMessage: function(chatMessage) {
+    var messages = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"] .messages');
+    $.get(
+      '/chat/_message/' + chatMessage.id,
+      function(html) {
+        var o = $(html);
+        o.appendTo(messages);
+        var height = o.height();
+        var animationDuration = height*5;
+        o.hide().slideDown(animationDuration);
 
-function updateNumChatUnseen(n) {
-  if( n == 0 ) {
-    $('#num-chat-unseen').hide();
-  } else {
-    $('#num-chat-unseen').show();
-  }
-  $('#num-chat-unseen').html(n);
-}
-
-function updateNumChatUnseenForPartner(memberId, n) {
-  var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
-  var indicator = tab.find('.num-chat-unseen');
-  if( n == 0 ) {
-    indicator.hide();
-  } else {
-    indicator.show();
-  }
-  indicator.html(n);
-}
-
-function markChatConversationSeen(memberId) {
-  $.get(
-    '/chat/seen/'+memberId,
-    function(html) {
-      updateNumChatUnseen(html);
-      updateNumChatUnseenForPartner(memberId, 0);
-    }
-  );
-}
-
-function fetchChatConversationWith(memberId, andActivate) {
-  if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
-    activateChatConversation(memberId);
-    return false;
-  }
-
-  $.get(
-    '/chat/_tab/'+memberId,
-    function(html) {
-      $(html).appendTo('#chat-window .tabs');
-    }
-  );
-  $.get(
-    '/chat/_log/'+memberId,
-    function(html) {
-      var o = $(html);
-      o.appendTo('#chat-window .logs');
-      o.find('.messages').scrollTop(999999);
-      o.find('.textarea-chat').focus();
-      if( andActivate ) {
-        activateChatConversation(memberId);
+        messages.animate(
+          { scrollTop: messages.scrollTop() + height + 30 },
+          animationDuration
+        );
       }
+    );
+  },
+
+  updateNumUnseen: function(n) {
+    if( n == 0 ) {
+      $('#num-chat-unseen').hide();
+    } else {
+      $('#num-chat-unseen').show();
     }
-  );
-}
+    $('#num-chat-unseen').html(n);
+  },
 
-function activateChatConversation(memberId) {
-  $('#chat-window .tab, #chat-window .log').removeClass('active');
-  $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
-  $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
-  $('#chat-window .log.active .textarea-chat').focus();
-  syncChatUIDimensions()
-  $('#chat-window .log.active .messages').scrollTop(999999);
-}
+  updateNumUnseenForPartner: (memberId, n) {
+    var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
+    var indicator = tab.find('.num-chat-unseen');
+    if( n == 0 ) {
+      indicator.hide();
+    } else {
+      indicator.show();
+    }
+    indicator.html(n);
+  },
 
-function receiveChatMessage(data) {
-  var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
+  markConversationSeen: function(memberId) {
+    $.get(
+      '/chat/seen/'+memberId,
+      function(html) {
+        that.updateNumUnseen(html);
+        that.updateNumUnseenForPartner(memberId, 0);
+      }
+    );
+  },
 
-  if( tab.length == 0 ) {
-    fetchChatConversationWith(data.partnerMemberId, false);
-  }
+  fetchConversationWith: function(memberId, andActivate) {
+    if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
+      that.activateConversation(memberId);
+      return false;
+    }
 
-  if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
-    markChatConversationSeen(data.partnerMemberId);
-  } else {
-    updateNumChatUnseen(data.numUnseen);
-    updateNumChatUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
-  }
+    $.get(
+      '/chat/_tab/'+memberId,
+      function(html) {
+        $(html).appendTo('#chat-window .tabs');
+      }
+    );
+    $.get(
+      '/chat/_log/'+memberId,
+      function(html) {
+        var o = $(html);
+        o.appendTo('#chat-window .logs');
+        o.find('.messages').scrollTop(999999);
+        o.find('.textarea-chat').focus();
+        if( andActivate ) {
+          that.activateConversation(memberId);
+        }
+      }
+    );
+  },
 
-  fetchChatMessage(data);
-}
+  activateConversation: function(memberId) {
+    $('#chat-window .tab, #chat-window .log').removeClass('active');
+    $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
+    $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+    $('#chat-window .log.active .textarea-chat').focus();
+    that.syncUIDimensions()
+    $('#chat-window .log.active .messages').scrollTop(999999);
+  },
 
-function syncChatUIDimensions() {
-  $('#chat-window .log.active .messages').height(
-    $('#chat-window').height() - 200
-  );
-  $('#chat_new_partner_chzn').width(
-    $('#chat-window').width() - 10
-  );
-}
+  receiveMessage: (data) {
+    var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
 
-function rememberChatDimensions() {
-  $.cookie( 'chat-top', $('#chat-window').css('top') );
-  $.cookie( 'chat-left', $('#chat-window').css('left') );
-  $.cookie( 'chat-width', $('#chat-window').css('width') );
-  $.cookie( 'chat-height', $('#chat-window').css('height') );
-  $.cookie( 'chat-open', $('#chat-window').is(':visible') );
-}
+    if( tab.length == 0 ) {
+      that.fetchConversationWith(data.partnerMemberId, false);
+    }
 
-function heartbeat() {
-  $.get('/accounts/heartbeat');
-}
+    if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
+      that.markConversationSeen(data.partnerMemberId);
+    } else {
+      that.updateNumUnseen(data.numUnseen);
+      that.updateNumUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
+    }
+
+    that.fetchMessage(data);
+  },
+
+  syncUIDimensions: function() {
+    $('#chat-window .log.active .messages').height(
+      $('#chat-window').height() - 200
+    );
+    $('#chat_new_partner_chzn').width(
+      $('#chat-window').width() - 10
+    );
+  },
+
+  rememberDimensions: function() {
+    $.cookie( 'chat-top', $('#chat-window').css('top') );
+    $.cookie( 'chat-left', $('#chat-window').css('left') );
+    $.cookie( 'chat-width', $('#chat-window').css('width') );
+    $.cookie( 'chat-height', $('#chat-window').css('height') );
+    $.cookie( 'chat-open', $('#chat-window').is(':visible') );
+  },
+
+  heartbeat: function() {
+    $.get('/accounts/heartbeat');
+  },
+};
 
 /* ---------------------------------------------------------------------------- */
 
@@ -141,44 +145,44 @@ $(document).ready( function() {
           Libertree.UI.removeSpinner('#chat-window');
           $('#chat-window').hide();
           var o = $(html);
-          markChatConversationSeen( o.find('.log.active').data('member-id') );
+          Libertree.Chat.markConversationSeen( o.find('.log.active').data('member-id') );
 
           $('#chat-window')
             .resizable( {
               minHeight: 170,
               resize: function(event, ui) {
-                syncChatUIDimensions();
+                Libertree.Chat.syncUIDimensions();
               },
               stop: function(event, ui) {
-                rememberChatDimensions();
+                Libertree.Chat.rememberDimensions();
               }
             } )
           ;
 
           $('select#chat-new-partner').chosen().change( function() {
             var memberId = $('select#chat-new-partner').val();
-            fetchChatConversationWith(memberId, true);
+            Libertree.Chat.fetchConversationWith(memberId, true);
             $('select#chat-new-partner').val('0');
             $('select#chat-new-partner').trigger("liszt:updated");
             return false;
           } );
 
-          syncChatUIDimensions();
+          Libertree.Chat.syncUIDimensions();
           $('#chat-window').show();
           $('#chat-window .log .messages').scrollTop(999999);
           $('#chat-window .log.active .textarea-chat').focus();
         }
       )
     ;
-    rememberChatDimensions();
+    Libertree.Chat.rememberDimensions();
 
     return false;
   } );
 
   $('#chat-window .tab').live( 'click', function() {
     var memberId = $(this).data('member-id');
-    activateChatConversation(memberId);
-    markChatConversationSeen(memberId);
+    Libertree.Chat.activateConversation(memberId);
+    Libertree.Chat.markConversationSeen(memberId);
   } );
 
   $('#chat-window .textarea-chat').live( 'keydown', function(event) {
@@ -221,7 +225,7 @@ $(document).ready( function() {
     $('#chat-window .log[data-member-id="'+memberId+'"]').remove();
     $.get('/chat/closed/'+memberId);
     if( $('#chat-window .tab.active').length == 0 && tabToActivate.length ) {
-      activateChatConversation( tabToActivate.data('member-id') );
+      Libertree.Chat.activateConversation( tabToActivate.data('member-id') );
     }
     return false;
   } );
@@ -229,12 +233,12 @@ $(document).ready( function() {
   $('#chat-window').draggable( {
     handle: '.header',
     stop: function(event, ui) {
-      rememberChatDimensions();
+      Libertree.Chat.rememberDimensions();
     }
   } );
 
   $('#online-contacts .avatar').live( 'click', function() {
-    fetchChatConversationWith( $(this).data('member-id'), true);
+    Libertree.Chat.fetchConversationWith( $(this).data('member-id'), true);
     return false;
   } );
 
@@ -252,5 +256,5 @@ $(document).ready( function() {
     $('#menu-chat').click();
   }
 
-  setInterval( heartbeat, 3 * 60 * 1000 );
+  setInterval( Libertree.Chat.heartbeat, 3 * 60 * 1000 );
 } );
