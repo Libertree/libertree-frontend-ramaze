@@ -98,6 +98,12 @@ msgstr ""
 msgid "This post and its comments are only visible to members of this Libertree forest"
 msgstr ""
 
+#: helper/views.rb
+msgid "Click here for help"
+msgstr ""
+msgid "help|What does this mean?"
+msgstr ""
+
 #: view/posts/edit.xhtml
 msgid "Edit Post"
 msgstr ""
@@ -878,6 +884,21 @@ msgstr ""
 "from the flood of posts on Libertree. Here is a list of "
 "rivers that we find very useful. Select those you like "
 "to add them to your account."
+
+msgid "tutorial-river-label|Unread posts"
+msgstr ""
+msgid "tutorial|Unread posts%sAll unread posts on Libertree"
+msgstr ""
+
+msgid "tutorial-river-label|Posts from the forest"
+msgstr ""
+msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgstr ""
+
+msgid "tutorial-river-label|My activity"
+msgstr ""
+msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to."
+msgstr ""
 
 msgid "tutorial-step-3b"
 msgstr ""

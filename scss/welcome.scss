@@ -27,13 +27,14 @@ body.welcome {
     @include shadow;
     @include rounded;
 
-    ul, ol, #list-of-rivers {
+    ul, ol, ul#list-of-rivers {
       padding-left: 2em;
       width: 30em;
       margin: 1.5em auto;
       input[type="checkbox"] {
         margin-right: 0.5em;
       }
+      list-style: none;
     }
 
     input[type="text"] {
@@ -94,5 +95,14 @@ body.welcome {
         }
       }
     }
+  }
+
+  a.help {
+    vertical-align: super;
+    padding: 2px;
+    border-radius: 1em;
+    background: $dust;
+    border: 1px solid $leaf;
+    font-size: 12px;
   }
 }
