@@ -67,7 +67,7 @@ $(document).ready( function() {
     var comments = post.find('.comments');
     var toId = comments.find('.comment:first').data('comment-id');
 
-    addSpinner(comments.find('.comment:first'), 'before', 16);
+    Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
     $.get(
       '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
       function(html) {
@@ -89,7 +89,7 @@ $(document).ready( function() {
 
         scrollable.scrollTop( initialScrollTop + delta );
         hideLoadCommentsLinkIfAllShown(post);
-        removeSpinner('.comments');
+        Libertree.UI.removeSpinner('.comments');
       }
     );
 
@@ -152,7 +152,7 @@ $(document).ready( function() {
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
-    addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
+    Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
@@ -184,7 +184,7 @@ $(document).ready( function() {
           alert('Failed to post comment.');
         }
         submitButton.removeAttr('disabled');
-        removeSpinner( submitButton.closest('.form-buttons') );
+        Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
       }
     );
   } );

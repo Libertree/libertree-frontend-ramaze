@@ -2,6 +2,10 @@
 environment: live
 
 websocket_listen_host: 0.0.0.0
+secure_websocket: false
+#websocket_ssl_cert: /path/to/cert
+#websocket_ssl_private_key: /path/to/private/key
+
 # These accounts (by username) will have websockets disabled
 # websocket_blacklist:
   # - 'ruskie'

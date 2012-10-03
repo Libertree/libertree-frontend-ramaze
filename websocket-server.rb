@@ -42,7 +42,24 @@ def onmessage(ws, data)
 end
 
 EventMachine.run do
-  EventMachine::WebSocket.start(:host => $conf['websocket_listen_host'], :port => 8080) do |ws|
+  if $conf['secure_websocket']
+    options = {
+      :host => $conf['websocket_listen_host'],
+      :port => 8080,
+      :secure => true,
+      :tls_options => {
+        :private_key_file => $conf['websocket_ssl_private_key'],
+        :cert_chain_file => $conf['websocket_ssl_cert']
+      }
+    }
+  else
+    options = {
+      :host => $conf['websocket_listen_host'],
+      :port => 8080,
+    }
+  end
+
+  EventMachine::WebSocket.start(options) do |ws|
     ws.onopen do
     end
 

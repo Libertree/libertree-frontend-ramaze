@@ -1,11 +1,16 @@
 var host = null;
 var ws = null;
+var secure = false;
 
 $(document).ready( function() {
+  var protocol = "ws://";
+  if (secure) {
+    protocol = "wss://";
+  }
   if( 'MozWebSocket' in window ) {
-    ws = new MozWebSocket("ws://" + host + ":8080");
+    ws = new MozWebSocket(protocol + host + ":8080");
   } else if( 'WebSocket' in window ) {
-    ws = new WebSocket("ws://" + host + ":8080");
+    ws = new WebSocket(protocol + host + ":8080");
   } else {
     return;
   }
@@ -23,7 +28,7 @@ $(document).ready( function() {
         /* $('html').append('<!-- heartbeat: '+data.timestamp+' -->'); */
         break;
       case 'chat-message':
-        receiveChatMessage(data);
+        Libertree.Chat.receiveMessage(data);
         break;
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );

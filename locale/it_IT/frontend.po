@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-08 09:40+0000\n"
+"PO-Revision-Date: 2012-09-26 08:55+0000\n"
 "Last-Translator: Damtux <sun_lion@live.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -778,6 +778,11 @@ msgstr "Usa gli stagni per memorizzare i post."
 msgid "pool|Name:"
 msgstr "Nome:"
 
+msgid ""
+"&quot;Springing&quot; a pool causes the pool and which posts it contains to "
+"become publicly visible.  Members can add other members' springs to rivers."
+msgstr ""
+
 msgid "new-pool|Create"
 msgstr "Crea"
 
@@ -791,12 +796,24 @@ msgstr "L'archivio dei post memorizzati sarà cancellato. Vuoi proprio eliminare
 msgid "Pool: %s"
 msgstr "Stagno: %s"
 
+msgid "Add this spring to a river"
+msgstr ""
+
+msgid "Spring this pool:"
+msgstr ""
+
+msgid "pool|Sprung:"
+msgstr ""
+
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr "Modifica Stagno: %s"
 
 msgid "pool|Update"
 msgstr "Aggiorna"
+
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -835,6 +852,9 @@ msgstr "I post di %s"
 
 msgid "Add %s to a contact list"
 msgstr "Aggiungi %s a una lista contatti"
+
+msgid "%1$ssee more posts by %2$s%3$s"
+msgstr ""
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
