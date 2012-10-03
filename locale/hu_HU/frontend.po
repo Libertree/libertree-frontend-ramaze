@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-06 18:07+0000\n"
+"PO-Revision-Date: 2012-09-26 19:43+0000\n"
 "Last-Translator: danielwine <danielwine@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -778,6 +778,11 @@ msgstr "Bejegyzések összegyűjtéséhez használj medencéket."
 msgid "pool|Name:"
 msgstr "név:"
 
+msgid ""
+"&quot;Springing&quot; a pool causes the pool and which posts it contains to "
+"become publicly visible.  Members can add other members' springs to rivers."
+msgstr "Egy gyűjtőmedence &quot;forrássá alakítása&quot; azt jelenti, hogy a szóban forgó medence és annak tartalma nyilvánosan láthatóvá válik. A tagok hozzáadhatják más tagok forrásait saját folyamjaikhoz."
+
 msgid "new-pool|Create"
 msgstr "létrehozás"
 
@@ -791,12 +796,24 @@ msgstr "Az összegyűjtött bejegyzések ebben a csoportosításban többé nem 
 msgid "Pool: %s"
 msgstr "medence: %s"
 
+msgid "Add this spring to a river"
+msgstr "Forrás hozzáadása folyamhoz"
+
+msgid "Spring this pool:"
+msgstr "A gyűjtőmedence (nyilvános) forrássá tétele:"
+
+msgid "pool|Sprung:"
+msgstr "Forrásként beállítva:"
+
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr "medence szerkesztése: %s"
 
 msgid "pool|Update"
 msgstr "frissítés"
+
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr "(eltávolíthatsz bejegyzéseket ebből a medencéből a %1$sgyűjtőmedencék oldalon%2$s.)"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -835,6 +852,9 @@ msgstr "%s bejegyzései"
 
 msgid "Add %s to a contact list"
 msgstr "%s hozzáadása egy társjegyzékhez"
+
+msgid "%1$ssee more posts by %2$s%3$s"
+msgstr "%1$s%2$s többi bejegyzése%3$s"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
