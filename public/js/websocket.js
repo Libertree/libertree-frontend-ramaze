@@ -28,7 +28,7 @@ $(document).ready( function() {
         /* $('html').append('<!-- heartbeat: '+data.timestamp+' -->'); */
         break;
       case 'chat-message':
-        receiveChatMessage(data);
+        Libertree.Chat.receiveMessage(data);
         break;
       case 'comment':
         insertCommentHtmlFor( data.postId, data.commentId );
