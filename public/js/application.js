@@ -4,7 +4,7 @@ Libertree.UI = {
   hideWindows: function() {
     $('#chat-window').resizable('destroy');
     $('.window').hide();
-    rememberChatDimensions();
+    Libertree.Chat.rememberDimensions();
   },
 
   //FIXME: src depends on selected theme

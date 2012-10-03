@@ -1,5 +1,4 @@
 Libertree.Chat = {
-  var that = this;
 
   fetchMessage: function(chatMessage) {
     var messages = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"] .messages');
@@ -29,7 +28,7 @@ Libertree.Chat = {
     $('#num-chat-unseen').html(n);
   },
 
-  updateNumUnseenForPartner: (memberId, n) {
+  updateNumUnseenForPartner: function(memberId, n) {
     var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
     var indicator = tab.find('.num-chat-unseen');
     if( n == 0 ) {
@@ -44,15 +43,15 @@ Libertree.Chat = {
     $.get(
       '/chat/seen/'+memberId,
       function(html) {
-        that.updateNumUnseen(html);
-        that.updateNumUnseenForPartner(memberId, 0);
+        Libertree.Chat.updateNumUnseen(html);
+        Libertree.Chat.updateNumUnseenForPartner(memberId, 0);
       }
     );
   },
 
   fetchConversationWith: function(memberId, andActivate) {
     if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
-      that.activateConversation(memberId);
+      Libertree.Chat.activateConversation(memberId);
       return false;
     }
 
@@ -70,7 +69,7 @@ Libertree.Chat = {
         o.find('.messages').scrollTop(999999);
         o.find('.textarea-chat').focus();
         if( andActivate ) {
-          that.activateConversation(memberId);
+          Libertree.Chat.activateConversation(memberId);
         }
       }
     );
@@ -81,25 +80,25 @@ Libertree.Chat = {
     $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log.active .textarea-chat').focus();
-    that.syncUIDimensions()
+    Libertree.Chat.syncUIDimensions()
     $('#chat-window .log.active .messages').scrollTop(999999);
   },
 
-  receiveMessage: (data) {
+  receiveMessage: function(data) {
     var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
 
     if( tab.length == 0 ) {
-      that.fetchConversationWith(data.partnerMemberId, false);
+      Libertree.Chat.fetchConversationWith(data.partnerMemberId, false);
     }
 
     if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
-      that.markConversationSeen(data.partnerMemberId);
+      Libertree.Chat.markConversationSeen(data.partnerMemberId);
     } else {
-      that.updateNumUnseen(data.numUnseen);
-      that.updateNumUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
+      Libertree.Chat.updateNumUnseen(data.numUnseen);
+      Libertree.Chat.updateNumUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
     }
 
-    that.fetchMessage(data);
+    Libertree.Chat.fetchMessage(data);
   },
 
   syncUIDimensions: function() {
