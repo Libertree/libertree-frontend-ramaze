@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 
-#{ render_file 'layout/_head.xhtml', stylesheet_extra: %|<link href="/css/narrow.css?t=#{File.mtime('public/css/narrow.css').to_i}" media="screen" rel="stylesheet" type="text/css" />| }
+#{ render_file 'layout/_head.xhtml', stylesheet_extra: css_nocache('narrow') }
 
 <body id="scrollable" class="body #{ @view }">
   #{ render_file 'layout/_menu.xhtml', title: false, account_name: false }
