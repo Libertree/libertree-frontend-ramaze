@@ -106,6 +106,11 @@ module Libertree
     resolution
   end
 
+  def self.plain(s)
+    renderer ||= Redcarpet::Markdown.new(Libertree::StripDown)
+    renderer.render s
+  end
+
   def self.render(s, autoembed=false)
     pipeline = [
       method(:markdownify),

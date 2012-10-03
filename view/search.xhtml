@@ -29,7 +29,7 @@
         #{member_img(p.member)} <span class="member-name">#{p.member.name_display}</span>
         <span class="timestamp">#{ago(p.time_created)}</span>
       </div>
-      <p>#{highlight_query(p.glimpse(160), @q)}</p>
+      <p>#{Libertree::plain(highlight_query(p.glimpse(160), @q))}</p>
     </li>
   <?r end ?>
   </ul>
@@ -45,7 +45,7 @@
         #{member_img(c.member)} <span class="member-name">#{c.member.name_display}</span>
         <span class="timestamp">#{ago(c.time_created)}</span>
       </div>
-      <p>#{highlight_query(c.glimpse(160), @q)}</p>
+      <p>#{Libertree::plain(highlight_query(c.glimpse(160), @q))}</p>
     </li>
   <?r end ?>
   </ul>
