@@ -9,7 +9,7 @@ $(window).scroll( function () {
     }
 
     $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
-    addSpinner('#post-excerpts div.spinner', 'append');
+    Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
       'older',

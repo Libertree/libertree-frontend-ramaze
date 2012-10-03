@@ -19,7 +19,7 @@ function updateNumNotificationsUnseen(n) {
 $(document).ready( function() {
   $('#menu-notifications').click( function() {
     if( $('#notifications-window').is(':visible') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
       return false;
     }
 
@@ -28,15 +28,15 @@ $(document).ready( function() {
       return false;
     }
 
-    hideWindows();
+    Libertree.UI.hideWindows();
     $('#notifications-window').empty();
-    addSpinner('#notifications-window', 'append');
+    Libertree.UI.addSpinner('#notifications-window', 'append');
     $('#notifications-window').
       load(
         '/notifications/_index',
         function(html) {
           checkForSessionDeath(html);
-          removeSpinner('#notifications-window');
+          Libertree.UI.removeSpinner('#notifications-window');
           updateNumNotificationsUnseen( $(html).find('.n').text() );
         }
       ).

@@ -1,5 +1,37 @@
 var Libertree = {};
 
+Libertree.UI = {
+  hideWindows: function() {
+    $('#chat-window').resizable('destroy');
+    $('.window').hide();
+    rememberChatDimensions();
+  },
+
+  //FIXME: src depends on selected theme
+  addSpinner: function(target_selector, position, size) {
+    $(target_selector)[position]('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
+  },
+
+  removeSpinner: function(target_selector) {
+    $('img.spinner', target_selector).remove();
+  },
+
+  //TRANSLATEME
+  updateAges: function() {
+    $('.age').each( function(i) {
+      if( $(this).text().match(/^seconds ago$/) ) {
+        $(this).text('1 minute ago');
+      } else {
+        var m = $(this).text().match(/^(\d+) minutes? ago$/);
+        if( m ) {
+          $(this).text( (parseInt(m[1]) + 1) + ' minutes ago');
+        }
+      }
+    } );
+  }
+
+};
+
 var timerSaveTextAreas;
 var lastTextAreaText = '';
 
@@ -10,33 +42,6 @@ function checkForSessionDeath(html) {
   }
 }
 
-//FIXME: src depends on selected theme
-function addSpinner(target_selector, position, size) {
-  $(target_selector)[position]('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
-}
-function removeSpinner(target_selector) {
-  $('img.spinner', target_selector).remove();
-}
-
-function hideWindows() {
-  $('#chat-window').resizable('destroy');
-  $('.window').hide();
-  rememberChatDimensions();
-}
-
-//TRANSLATEME
-function updateAges() {
-  $('.age').each( function(i) {
-    if( $(this).text().match(/^seconds ago$/) ) {
-      $(this).text('1 minute ago');
-    } else {
-      var m = $(this).text().match(/^(\d+) minutes? ago$/);
-      if( m ) {
-        $(this).text( (parseInt(m[1]) + 1) + ' minutes ago');
-      }
-    }
-  } );
-}
 
 function saveTextAreaText() {
   $('textarea').each( function(i) {
@@ -77,11 +82,11 @@ $(document).ready( function() {
   /* TODO: This looks refactorable */
   $('#menu-account').click( function() {
     if( $('#account-window').is(':visible') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
       return false;
     }
 
-    hideWindows();
+    Libertree.UI.hideWindows();
     $('#account-window').toggle();
     return false;
   } );
@@ -89,7 +94,7 @@ $(document).ready( function() {
   $(document).click( function(event) {
     var t = $(event.target);
     if( t.closest('.window').length == 0 && ! t.hasClass('result-selected') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
     }
   } );
 
@@ -174,7 +179,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  setInterval( updateAges, 60 * 1000 );
+  setInterval( Libertree.UI.updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
 
   $('textarea').live( 'mousedown', function() {

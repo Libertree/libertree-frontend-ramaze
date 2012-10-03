@@ -125,20 +125,20 @@ function heartbeat() {
 $(document).ready( function() {
   $('#menu-chat').click( function() {
     if( $('#chat-window').is(':visible') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
       return false;
     }
 
-    hideWindows();
+    Libertree.UI.hideWindows();
     $('#chat-window').empty();
-    addSpinner('#chat-window', 'append');
+    Libertree.UI.addSpinner('#chat-window', 'append');
     $('#chat-window')
       .show()
       .load(
         '/chat/_index',
         function(html) {
           checkForSessionDeath(html);
-          removeSpinner('#chat-window');
+          Libertree.UI.removeSpinner('#chat-window');
           $('#chat-window').hide();
           var o = $(html);
           markChatConversationSeen( o.find('.log.active').data('member-id') );

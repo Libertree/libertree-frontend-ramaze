@@ -42,7 +42,7 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
         loadingMorePostExcerpts = false;
       } );
 
-      removeSpinner('#post-excerpts');
+      Libertree.UI.removeSpinner('#post-excerpts');
       showShowMores();
       if(onSuccess) {
         onSuccess();
@@ -155,7 +155,7 @@ $(document).ready( function() {
     $('.more-posts-divider').removeClass('more-posts-divider');
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
-    addSpinner($(this).parent(), 'append');
+    Libertree.UI.addSpinner($(this).parent(), 'append');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
       'newer',
