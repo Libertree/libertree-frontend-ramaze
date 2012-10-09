@@ -100,6 +100,12 @@ $(document).ready( function() {
 
   $('input.preview').live( 'click', function() {
     var unrendered = $(this).closest('form').find('textarea[name="text"]').val();
+
+    // abort unless there is text to be rendered
+    if (unrendered.length === 0) {
+      return false;
+    }
+
     if( $('input[name="hashtags"]').length > 0 ) {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
