@@ -32,6 +32,7 @@ module Controller
             account_id: account.id,
             label: s_('tutorial-river-label|My interests'),
             query: query,
+            home: true,
           )
         end
         { 'status' => 'success' }.to_json
