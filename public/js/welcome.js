@@ -8,11 +8,6 @@ var Tutorial = {
     // get river query from input field
     var query = $(that.id+' #first-river-query').val();
 
-    // don't create river for empty query
-    if (query === "") {
-      return {'status': 'error', 'msg': 'text field cannot be empty'};
-    }
-
     return $.post(
       '/rivers/_create_tutorial_river',
       { query: query }
