@@ -72,7 +72,7 @@ module Controller
     # TODO: Move to Accounts controller?
     def signup
       @view = 'splash'
-      redirect '/welcome'  if logged_in?
+      redirect '/intro'  if logged_in?
       force_mobile_to_narrow
 
       @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
@@ -113,7 +113,7 @@ module Controller
 
         account_login request.subset('username', 'password')
         flash[:error] = nil
-        redirect Welcome.r(:/)
+        redirect Intro.r(:/)
       rescue PGError => e
         case e.message
         when /duplicate key value violates unique constraint "accounts_username_key"/
