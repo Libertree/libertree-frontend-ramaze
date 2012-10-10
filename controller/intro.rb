@@ -20,8 +20,8 @@
 
 
 module Controller
-  class Welcome < Base
-    map '/welcome'
+  class Intro < Base
+    map '/intro'
 
     before_all do
       require_login
@@ -41,7 +41,7 @@ module Controller
     end
 
     def index
-      @view = "welcome"
+      @view = "intro"
     end
 
   end

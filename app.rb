@@ -59,7 +59,7 @@ require_relative 'controller/post-likes'
 require_relative 'controller/pools'
 require_relative 'controller/posts'
 require_relative 'controller/rivers'
-require_relative 'controller/welcome'
+require_relative 'controller/intro'
 
 require_relative 'controller/api/v1/base'
 require_relative 'controller/api/v1/invitations'

@@ -24,12 +24,18 @@ module Controller
 
     def _create_tutorial_river
       return  if ! request.post?
+
       begin
-        Libertree::Model::River.create(
-          account_id: account.id,
-          label: s_('tutorial-river-label|My interests'),
-          query: request['query'].to_s,
-        )
+        query = request['query'].to_s.strip
+        if ! query.empty?
+          query.gsub!( /[,;']/, '' )
+          Libertree::Model::River.create(
+            account_id: account.id,
+            label: s_('tutorial-river-label|My interests'),
+            query: query,
+            home: true,
+          )
+        end
         { 'status' => 'success' }.to_json
       rescue
         {
