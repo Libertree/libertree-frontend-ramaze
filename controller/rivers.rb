@@ -28,6 +28,7 @@ module Controller
       begin
         query = request['query'].to_s.strip
         if ! query.empty?
+          query.gsub!( /[,;']/, '' )
           Libertree::Model::River.create(
             account_id: account.id,
             label: s_('tutorial-river-label|My interests'),
