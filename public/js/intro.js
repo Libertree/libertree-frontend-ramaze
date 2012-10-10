@@ -61,7 +61,7 @@ var Tutorial = {
   },
 
   restoreStep: function(step) {
-    removeSpinner(step);
+    Libertree.UI.removeSpinner(step);
     $(step).find('.button').show();
   },
 
@@ -149,7 +149,7 @@ $(document).ready( function() {
 
     // execute function if provided and valid
     if (step.data('func') && Tutorial[step.data('func')] !== undefined) {
-      addSpinner(this, 'after');
+      Libertree.UI.addSpinner(this, 'after');
       $(step).find('.button').hide();
 
       // execute specified function
