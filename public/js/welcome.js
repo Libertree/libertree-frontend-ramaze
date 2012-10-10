@@ -10,7 +10,7 @@ var Tutorial = {
 
     // don't create river for empty query
     if (query === "") {
-      return {'status': 'error', 'msg': 'text field cannot be empty'};
+      return {'status': 'skip'};
     }
 
     return $.post(
@@ -87,6 +87,8 @@ var Tutorial = {
       if (message !== undefined && message !== "") {
         $(step).next().find('h1').after("<p class='message'>"+message+"</p>");
       }
+      this.forward(step, that);
+    } else if (result.status === 'skip') {
       this.forward(step, that);
     } else {
       // display errors
