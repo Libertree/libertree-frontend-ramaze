@@ -127,11 +127,6 @@ module Controller
       redirect "/home/#{river.id}"
     end
 
-    def ensure_beginner_rivers_exist
-      Libertree::Model::River.ensure_beginner_rivers_for account
-      redirect Home.r(:/)
-    end
-
     def position(from_river_id, before_river_id = nil)
       rivers = account.rivers
       from_river = Libertree::Model::River[ from_river_id.to_i ]
