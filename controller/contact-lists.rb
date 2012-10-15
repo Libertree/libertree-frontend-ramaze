@@ -55,6 +55,11 @@ module Controller
       end
 
       @list.members = request['members']
+      if @list.members.delete(account.member)
+	flash[:error] = _('Contact list may not contain yourself.')
+	redirect_referrer
+      end
+
       @list.name = request['name'].to_s
 
       flash[:notice] = _('Contact list updated.')
