@@ -34,7 +34,8 @@ module Controller
       if @list.nil?
         respond "404: Not Found", 404
       end
-      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }.select { |m| m != account.member }
+      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
+      @all_members.delete(account.member)
     end
 
     def update(contact_list_id)
