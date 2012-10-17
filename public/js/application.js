@@ -93,7 +93,7 @@ $(document).ready( function() {
 
   $(document).click( function(event) {
     var t = $(event.target);
-    if( t.closest('.window').length === 0 && ! t.hasClass('result-selected') ) {
+    if( t.closest('.window').length == 0 && ! t.hasClass('result-selected') ) {
       Libertree.UI.hideWindows();
     }
   } );
@@ -113,7 +113,7 @@ $(document).ready( function() {
     var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
     var type = $(this).data('type');
     var textType = null;
-    if( type === 'post' ) {
+    if( type == 'post' ) {
       textType = 'post-text';
     }
 
@@ -127,7 +127,7 @@ $(document).ready( function() {
           //TRANSLATEME
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
-          if( scrollable.length === 0 ) {
+          if( scrollable.length == 0 ) {
             scrollable = $('html');
             var delta = $('.preview-box').position().top - scrollable.scrollTop() - 100;
           } else {
@@ -151,7 +151,7 @@ $(document).ready( function() {
     $(this).closest('.input-and-filler').find('.filler').hide();
   } );
   $('.input-and-filler input').live( 'blur', function() {
-    if( $(this).val() === '' ) {
+    if( $(this).val() == '' ) {
       $(this).closest('.input-and-filler').find('.filler').show();
     }
   } );
@@ -204,7 +204,7 @@ $(document).ready( function() {
 
   $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
 
-  if( layout === 'narrow' ) {
+  if( layout == 'narrow' ) {
     $('*').mouseover();
   }
 } );

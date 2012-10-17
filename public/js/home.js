@@ -33,7 +33,7 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
         $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
       } );
 
-      if( older_or_newer === 'newer' ) {
+      if( older_or_newer == 'newer' ) {
         $('#post-excerpts').prepend(o);
       } else {
         $('#post-excerpts').append(o);

@@ -56,7 +56,7 @@ $(document).ready( function() {
       function(html) {
         var o = $(html);
         o.insertAfter(post.find('.meta, .post-pane'));
-        if( o.find('option').length === 2 ) {
+        if( o.find('option').length == 2 ) {
           var option = $('select#pool-selector option:last');
           Libertree.Pools.addPost( option.val(), postId, collect_link, x, y );
         } else {
