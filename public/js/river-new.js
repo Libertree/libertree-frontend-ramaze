@@ -8,7 +8,7 @@ function copyQueryToLabel() {
 
 $(document).ready( function() {
   $('.form-river textarea[name="query"]').focus();
-  if( $('.form-river textarea[name="query"]').val() == $('.form-river input[name="label"]').val() ) {
+  if( $('.form-river textarea[name="query"]').val() === $('.form-river input[name="label"]').val() ) {
     $('.form-river textarea[name="query"]').change( copyQueryToLabel );
     $('.form-river textarea[name="query"]').keyup( copyQueryToLabel );
   }

@@ -7,7 +7,7 @@ function replaceNumCommentsFromAJAX(ajax_object, post) {
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
 
-  if( post.find('.comments:visible').length == 0 ) {
+  if( post.find('.comments:visible').length === 0 ) {
     return;
   }
 
@@ -38,7 +38,7 @@ function insertCommentHtmlFor( postId, commentId ) {
 
 function hideLoadCommentsLinkIfAllShown(element) {
   var n = parseInt( element.find('.comments .num-comments').text() );
-  if( element.find('div.comment').length == n ) {
+  if( element.find('div.comment').length === n ) {
     element.find('a.load-comments').hide();
   }
 };
@@ -71,7 +71,7 @@ $(document).ready( function() {
     $.get(
       '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
       function(html) {
-        if( $.trim(html).length == 0 ) {
+        if( $.trim(html).length === 0 ) {
           return;
         }
         var o = $(html);
@@ -173,7 +173,7 @@ $(document).ready( function() {
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
-          if( $('#comment-'+h.commentId).length == 0 ) {
+          if( $('#comment-'+h.commentId).length === 0 ) {
             form.closest('.comments').find('.success')
               .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
               .fadeIn()

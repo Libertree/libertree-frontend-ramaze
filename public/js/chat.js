@@ -20,7 +20,7 @@ Libertree.Chat = {
   },
 
   updateNumUnseen: function(n) {
-    if( n == 0 ) {
+    if( n === 0 ) {
       $('#num-chat-unseen').hide();
     } else {
       $('#num-chat-unseen').show();
@@ -31,7 +31,7 @@ Libertree.Chat = {
   updateNumUnseenForPartner: function(memberId, n) {
     var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
     var indicator = tab.find('.num-chat-unseen');
-    if( n == 0 ) {
+    if( n === 0 ) {
       indicator.hide();
     } else {
       indicator.show();
@@ -87,7 +87,7 @@ Libertree.Chat = {
   receiveMessage: function(data) {
     var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
 
-    if( tab.length == 0 ) {
+    if( tab.length === 0 ) {
       Libertree.Chat.fetchConversationWith(data.partnerMemberId, false);
     }
 
@@ -217,13 +217,13 @@ $(document).ready( function() {
     var tab = $(this).closest('.tab');
     var memberId = tab.data('member-id');
     var tabToActivate = tab.next();
-    if( tabToActivate.length == 0 ) {
+    if( tabToActivate.length === 0 ) {
       tabToActivate = tab.prev();
     }
     $('#chat-window .tab[data-member-id="'+memberId+'"]').remove();
     $('#chat-window .log[data-member-id="'+memberId+'"]').remove();
     $.get('/chat/closed/'+memberId);
-    if( $('#chat-window .tab.active').length == 0 && tabToActivate.length ) {
+    if( $('#chat-window .tab.active').length === 0 && tabToActivate.length ) {
       Libertree.Chat.activateConversation( tabToActivate.data('member-id') );
     }
     return false;
@@ -251,7 +251,7 @@ $(document).ready( function() {
     width: $.cookie('chat-width'),
     height: $.cookie('chat-height'),
   } );
-  if( $.cookie('chat-open') == 'true' ) {
+  if( $.cookie('chat-open') === 'true' ) {
     $('#menu-chat').click();
   }
 
