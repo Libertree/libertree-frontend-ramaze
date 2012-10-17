@@ -19,8 +19,9 @@ Libertree.Chat = {
     );
   },
 
+  // n is of type string
   updateNumUnseen: function(n) {
-    if( n === 0 ) {
+    if( n === '0' ) {
       $('#num-chat-unseen').hide();
     } else {
       $('#num-chat-unseen').show();
@@ -28,10 +29,11 @@ Libertree.Chat = {
     $('#num-chat-unseen').html(n);
   },
 
+  // n is of type string
   updateNumUnseenForPartner: function(memberId, n) {
     var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
     var indicator = tab.find('.num-chat-unseen');
-    if( n === 0 ) {
+    if( n === '0' ) {
       indicator.hide();
     } else {
       indicator.show();
@@ -44,7 +46,7 @@ Libertree.Chat = {
       '/chat/seen/'+memberId,
       function(html) {
         Libertree.Chat.updateNumUnseen(html);
-        Libertree.Chat.updateNumUnseenForPartner(memberId, 0);
+        Libertree.Chat.updateNumUnseenForPartner(memberId, '0');
       }
     );
   },
