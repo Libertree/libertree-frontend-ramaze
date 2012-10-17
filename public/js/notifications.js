@@ -1,6 +1,7 @@
+// n is of type string
 function updateNumNotificationsUnseen(n) {
   var title = document.title;
-  if( n === 0 ) {
+  if( n === '0' ) {
     $('#num-notifications-unseen').hide();
     $('#menu-notifications').addClass('none'); /* this may no longer be used, and could be removed */
     title = title.replace( /^\([0-9]+\) /, '' );
@@ -80,7 +81,7 @@ $(document).ready( function() {
         .removeClass('unseen')
         .addClass('seen')
       ;
-      updateNumNotificationsUnseen(0);
+      updateNumNotificationsUnseen('0');
     } );
   } );
 
