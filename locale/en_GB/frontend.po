@@ -64,6 +64,10 @@ msgid "River:"
 msgstr ""
 msgid "manage rivers"
 msgstr ""
+msgid "There are no posts, because you have not yet created any rivers."
+msgstr ""
+msgid "Create a river %shere%s"
+msgstr ""
 
 #: view/home/_menu.xhtml
 

@@ -38,6 +38,14 @@ body.body.excerpts-view .main {
       padding: 0.5em;
     }
 
+    #no-rivers {
+      text-align: center;
+      background: $dust;
+      border-radius: $border-radius;
+      padding: 2em;
+      margin-top: 1em;
+    }
+
     &.profile {
         #no-more-posts {
             display: none;
