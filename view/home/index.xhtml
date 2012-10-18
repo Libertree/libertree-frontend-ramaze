@@ -1,10 +1,10 @@
 <?r if @no_rivers ?>
   <div id="no-rivers">
     <p>
-      #{_('There are no posts, because you have not yet created any rivers.')}
+      #{_('In order to see posts here, you need to have at least one river.')}
     </p>
     <p>
-      #{_('Create a river %shere%s') % ["<a href='/rivers/new'>", "</a>"]}
+      #{_('%sCreate one now%s') % ["<a href='/rivers/new'>", "</a>"]}
     </p>
   </div>
 <?r else ?>
