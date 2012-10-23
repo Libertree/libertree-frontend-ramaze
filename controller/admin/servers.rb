@@ -20,15 +20,6 @@ module Controller
       def _index
         @servers = Libertree::Model::Server.all
       end
-
-      def create
-        redirect_referrer  if ! request.post?
-
-        ip = IPSocket::getaddress(request['host'].to_s)
-        Libertree::Model::Server.create(ip: ip)
-
-        redirect_referrer
-      end
     end
   end
 end
