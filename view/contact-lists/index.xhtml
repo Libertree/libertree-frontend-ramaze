@@ -3,12 +3,22 @@
 <h3>#{_('Create Contact List')}</h3>
 
 <form action="/contact-lists/create" method="POST">
-  #{s_('contact-list|Name:')} <input type="text" name="name" size="20"/><br/>
-  #{s_('contact-list|Members:')} <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(type to search)')}">
-    <?r @all_members.each do |m| ?>
-      <option value="#{m.id}">#{m.name_display} (#{m.handle})</option>
-    <?r end ?>
-  </select><br/>
+  <table class="contact-list-form">
+    <tr>
+      <td>#{s_('contact-list|Name:')}</td>
+      <td><input type="text" name="name" size="20"/></td>
+    </tr>
+    <tr>
+      <td>#{s_('contact-list|Members:')}</td>
+      <td>
+        <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(type to search)')}">
+          <?r @all_members.each do |m| ?>
+            <option value="#{m.id}">#{m.name_display} (#{m.handle})</option>
+          <?r end ?>
+        </select>
+      </td>
+    </tr>
+  </table>
 
   <input type="submit" value="#{s_('new-contact-list|Create')}"/>
 </form>
