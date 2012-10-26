@@ -34,6 +34,10 @@ tail}).should == %{<p>head</p>
 <p>tail</p>}
     end
 
+    it 'should not be confused when a URL contains parens' do
+      subject.render("[Selig](http://en.wikipedia.org/wiki/Selig_(band)) wrote most of the stuff for [Echt](http://en.wikipedia.org/wiki/Echt_(band))").should =~ %r{<a href="http://en.wikipedia.org/wiki/Selig_(band)">Selig</a> wrote most of the stuff for <a href="http://en.wikipedia.org/wiki/Echt_(band)">Echt</a>}
+    end
+
     it 'should autolink relative URLs' do
       url = "/posts/show/1234"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
