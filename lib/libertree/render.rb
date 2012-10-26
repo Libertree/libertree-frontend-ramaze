@@ -43,7 +43,7 @@ module Libertree
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
   def self.apply_hashtags(html)
-    # hashtaggify everything that is not inside of code or pre tags
+    # hashtaggify everything that is not inside of code, link or pre tags
     html.traverse do |node|
       if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
