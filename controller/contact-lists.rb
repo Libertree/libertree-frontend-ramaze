@@ -9,6 +9,8 @@ module Controller
 
     def index
       @lists = account.contact_lists
+      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
+      @all_members.delete(account.member)
     end
 
     def create
@@ -22,6 +24,7 @@ module Controller
         name: request['name'].to_s,
         account_id: account.id
       )
+      list.members = request['members']  # TODO: Can this be hacked?
 
       redirect r(:show, list.id)
     end
@@ -54,7 +57,7 @@ module Controller
         respond "404: Not Found", 404
       end
 
-      @list.members = request['members']
+      @list.members = request['members']  # TODO: Can this be hacked?
       @list.name = request['name'].to_s
 
       flash[:notice] = _('Contact list updated.')

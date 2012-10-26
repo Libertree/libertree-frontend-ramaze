@@ -33,8 +33,9 @@
 
 <h3>#{_('Trees')}</h3>
 
-<form action="/admin/servers/create" method="POST">
-  #{s_('new-tree|Hostname:')} <input type="text" name="host"/> <input type="submit" value="#{s_('new-tree|Add')}"/>
+<form action="/admin/jobs/introduce" method="POST">
+  <p>Introduce this (local) tree to another (remote) tree:</p>
+  #{s_('introduce-tree|Hostname or IP address:')} <input type="text" name="host"/> <input type="submit" value="#{s_('introduce-tree|Introduce')}"/>
 </form>
 
 #{ Controller::Admin::Servers.render_partial '_servers', servers: @servers }

@@ -33,6 +33,22 @@ module Controller
         redirect_referrer
       end
 
+      def introduce
+        if request.post?
+          host = request['host'].to_s
+          Libertree::Model::Job.create(
+            {
+              task: 'request:INTRODUCE',
+              params: {
+                'host' => host,
+              }.to_json,
+            }
+          )
+          flash[:notice] = _("INTRODUCE request pending for remote tree @ %s") % host
+        end
+        redirect_referrer
+      end
+
     end
   end
 end
