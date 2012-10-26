@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Libertree do
   describe '#render' do
     it 'should escape XHTML tags' do
-      subject.render('<script>alert("hello world")</script>').should =~ /<p>alert\(.+hello world.+\)<\/p>/
+      subject.render('<script>alert("hello world")</script>').should == ""
     end
 
     it 'should not strip tags in code blocks' do
@@ -35,7 +35,7 @@ tail}).should == %{<p>head</p>
     end
 
     it 'should not be confused when a URL contains parens' do
-      subject.render("[Selig](http://en.wikipedia.org/wiki/Selig_(band)) wrote most of the stuff for [Echt](http://en.wikipedia.org/wiki/Echt_(band))").should =~ %r{<a href="http://en.wikipedia.org/wiki/Selig_(band)">Selig</a> wrote most of the stuff for <a href="http://en.wikipedia.org/wiki/Echt_(band)">Echt</a>}
+      subject.render("[Selig](http://en.wikipedia.org/wiki/Selig_(band)) wrote most of the stuff for [Echt](http://en.wikipedia.org/wiki/Echt_(band))").should == "<p><a href=\"http://en.wikipedia.org/wiki/Selig_(band)\">Selig</a> wrote most of the stuff for <a href=\"http://en.wikipedia.org/wiki/Echt_(band)\">Echt</a></p>"
     end
 
     it 'should autolink relative URLs' do
