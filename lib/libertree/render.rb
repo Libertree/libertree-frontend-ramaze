@@ -8,7 +8,7 @@ module Libertree
     return ''  if s.nil? or s.empty?
 
     # don't use ":smart" extension, because this breaks dashes in links
-    Markdown.new(s, :filter_html).to_html.force_encoding('utf-8')
+    Markdown.new(s, :filter_html, :strike).to_html.force_encoding('utf-8')
   end
 
   def self.hashtaggify(s)
