@@ -100,7 +100,7 @@ module Libertree
 
   # filter HTML but ignore markdown
   def self.plain(s)
-    Markdown.new(s, :filter_html).text.force_encoding('utf-8')
+    Nokogiri::HTML.fragment(self.markdownify(s)).inner_text
   end
 
   def self.render(s, autoembed=false)
