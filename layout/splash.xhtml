@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class='splash #{ @view }'>
 
+<head>
   <title>#{( @num_unseen && ( @num_unseen > 0 ) ) ? "(#{@num_unseen})" : ''} Libertree#{ $conf['title_insert'] ? " - #{::CGI.escape_html($conf['title_insert'])}" : '' }#{ @subtitle ? " - #{::CGI.escape_html(@subtitle)}" : '' }</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
@@ -14,6 +15,7 @@
   #{ js_nocache 'libertree' }
   #{ js_nocache 'libertree/ui' }
   #{ js_nocache 'intro' }
+</head>
 
 <body class="#{ @view }">
 
