@@ -44,6 +44,26 @@ var Tutorial = {
     );
   },
 
+  /* step 4 --------------------------------------------------*/
+  createContactList: function(that) {
+    var members = $(that.id+' #contact-list-members').val();
+
+    // don't create contact list if no members specified
+    if( members === null ) {
+      return {'status': 'skip'};
+    }
+
+    console.log(members);
+
+    return $.post(
+      '/contact-lists/create.json',
+      {
+        name: 'Friends',
+        members: members
+      }
+    );
+  },
+
 
   /* all steps -----------------------------------------------*/
   nextStep: function(step) {

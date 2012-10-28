@@ -27,7 +27,7 @@ body.intro {
     @include shadow;
     @include rounded;
 
-    ul, ol, ul#list-of-rivers {
+    ul#list-of-rivers {
       padding-left: 2em;
       width: 30em;
       margin: 1.5em auto;
@@ -36,7 +36,7 @@ body.intro {
       }
     }
 
-    ol, ul#list-of-rivers {
+    ul#list-of-rivers {
       list-style: none;
     }
 
@@ -96,6 +96,25 @@ body.intro {
             color: $dust;
           }
         }
+      }
+    }
+
+    .contact-list-form {
+      min-height: 300px;
+      table {
+        width: 100%;
+        .label {
+          display: none;
+        }
+        #contact-list-name {
+          display: none;
+        }
+        #contact-list-members {
+          width: 400px;
+        }
+      }
+      input.submit {
+        display: none;
       }
     }
   }

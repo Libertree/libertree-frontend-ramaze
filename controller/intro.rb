@@ -42,6 +42,9 @@ module Controller
 
     def index
       @view = "intro"
+      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
+      @all_members.delete(account.member)
+      @list_name = s_('intro-contact-list-name|Friends')
     end
 
   end

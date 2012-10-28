@@ -7,6 +7,8 @@ module Controller
       init_locale
     end
 
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
+
     def index
       @lists = account.contact_lists
       @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
@@ -15,9 +17,18 @@ module Controller
 
     def create
       redirect_referrer  if ! request.post?
+
       if request['name'].to_s.empty?
-        flash[:error] = _('Contact list name may not be empty.')
-        redirect_referrer
+        error = _('Contact list name may not be empty.')
+        if Ramaze::Current.action.wish == 'json'
+          {
+            'status' => 'error',
+            'msg'    => error,
+          }
+        else
+          flash[:error] = error
+          redirect_referrer
+        end
       end
 
       list = Libertree::Model::ContactList.create(
@@ -26,7 +37,11 @@ module Controller
       )
       list.members = request['members']  # TODO: Can this be hacked?
 
-      redirect r(:show, list.id)
+      if Ramaze::Current.action.wish == 'json'
+        { 'status' => 'success' }
+      else
+        redirect r(:show, list.id)
+      end
     end
 
     def show(contact_list_id)
