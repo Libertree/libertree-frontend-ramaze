@@ -59,7 +59,8 @@ var Tutorial = {
       '/contact-lists/create.json',
       {
         name: 'Friends',
-        members: members
+        members: members,
+        intro: true
       }
     );
   },

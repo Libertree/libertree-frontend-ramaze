@@ -36,6 +36,14 @@ module Controller
         account_id: account.id
       )
       list.members = request['members']  # TODO: Can this be hacked?
+      if request['intro']
+        Libertree::Model::River.create(
+          account_id: account.id,
+          label: s_('intro-contact-list-name|Friends'),
+          query: ':contact-list "Friends"',
+          home: false,
+        )
+      end
 
       if Ramaze::Current.action.wish == 'json'
         { 'status' => 'success' }
