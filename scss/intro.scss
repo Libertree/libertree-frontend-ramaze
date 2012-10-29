@@ -99,22 +99,10 @@ body.intro {
       }
     }
 
-    .contact-list-form {
+    .contact-list-container {
       min-height: 300px;
-      table {
-        width: 100%;
-        .label {
-          display: none;
-        }
-        #contact-list-name {
-          display: none;
-        }
-        #contact-list-members {
-          width: 400px;
-        }
-      }
-      input.submit {
-        display: none;
+      #contact-list-members {
+        width: 400px;
       }
     }
   }
