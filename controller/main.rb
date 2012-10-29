@@ -116,9 +116,13 @@ module Controller
         redirect Home.r(:/)
       rescue PGError => e
         case e.message
-        when /duplicate key value violates unique constraint "accounts_username_key"/
+        # TODO: we need to find a better solution than matching on error strings,
+        #       because PostgreSQL translates them under non-English locales.
+        # duplicate key value violates unique constraint "accounts_username_key"
+        when /accounts_username_key/
           flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
-        when /constraint "username_valid"/
+        # constraint "username_valid"
+        when /username_valid/
           flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
         else
           raise e
