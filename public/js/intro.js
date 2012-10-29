@@ -46,6 +46,7 @@ var Tutorial = {
 
   /* step 4 --------------------------------------------------*/
   createContactList: function(that) {
+    var step = Tutorial.currentStep(that);
     var members = $(that.id+' #contact-list-members').val();
 
     // don't create contact list if no members specified
@@ -58,7 +59,7 @@ var Tutorial = {
     return $.post(
       '/contact-lists/create.json',
       {
-        name: 'Friends',
+        name: $(step).data('name'),
         members: members,
         intro: true
       }

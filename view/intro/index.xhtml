@@ -44,7 +44,7 @@
   #{ render_partial '_navigation', done: nil, prev: 2, next: 4 }
 </div>
 
-<div id="step-4" data-func="createContactList" class="tutorial-step">
+<div id="step-4" data-func="createContactList" data-name="#{s_('intro-contact-list-name|Friends')}" class="tutorial-step">
   #{ Libertree::render(_("tutorial-step-4-heading")) }
   #{ Libertree::render(_("tutorial-step-4")) }
   #{ Controller::ContactLists.render_partial '_new' }

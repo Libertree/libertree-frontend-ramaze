@@ -40,7 +40,7 @@ module Controller
         Libertree::Model::River.create(
           account_id: account.id,
           label: s_('intro-contact-list-name|Friends'),
-          query: ':contact-list "Friends"',
+          query: ":contact-list \"#{list.name}\"",
           home: false,
         )
       end
