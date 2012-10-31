@@ -27,6 +27,11 @@ body.intro {
     @include shadow;
     @include rounded;
 
+    ul, div.contact-list-container {
+      margin: 1em auto;
+      max-width: 30em;
+    }
+
     ul#list-of-rivers {
       padding-left: 2em;
       width: 30em;
