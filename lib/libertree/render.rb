@@ -104,6 +104,15 @@ module Libertree
     resolution
   end
 
+  def self.render_unsafe(s)
+    Markdown.new(
+      s,
+      :strike,
+      :autolink,
+      :hard_wrap
+    ).to_html.force_encoding('utf-8')
+  end
+
   # filter HTML but ignore markdown
   def self.plain(s)
     Nokogiri::HTML.fragment(self.markdownify(s)).inner_text

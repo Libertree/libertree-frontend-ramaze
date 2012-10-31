@@ -33,9 +33,15 @@ body.body.excerpts-view .main {
 
     #no-more-posts {
       text-align: center;
-      background: $dust;
       border-radius: 0 0 $border-radius $border-radius;
-      padding: 0.5em;
+    }
+
+    #no-rivers {
+      text-align: center;
+      background: $dust;
+      border-radius: $border-radius;
+      padding: 2em;
+      margin-top: 1em;
     }
 
     &.profile {

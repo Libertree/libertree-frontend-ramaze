@@ -1,3 +1,14 @@
+<?r if @no_rivers ?>
+  <div id="no-rivers" class="panel">
+    <p>
+      #{_('In order to see posts here, you need to have at least one river.')}
+    </p>
+    <p>
+      #{_('%sCreate one now%s') % ["<a href='/rivers/new'>", "</a>"]}
+    </p>
+  </div>
+<?r else ?>
+
 #{ render_partial '_menu', river_post_order: @river_post_order }
 
 <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
@@ -14,4 +25,5 @@
   <p id="no-more-posts">
   #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
   </p>
+<?r end ?>
 <?r end ?>

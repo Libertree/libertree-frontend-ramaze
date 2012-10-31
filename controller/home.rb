@@ -27,6 +27,7 @@ module Controller
         @posts = @river.posts( order_by: @river_post_order, limit: 16 )
       else
         @posts = []
+        @no_rivers = true
       end
     end
 
