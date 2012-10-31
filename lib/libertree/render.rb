@@ -7,16 +7,14 @@ module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
-    markdown ||= Redcarpet::Markdown.new(
-      Libertree::Markdown.new,
-      {
-        autolink: true,
-        space_after_headers: true,
-        no_intra_emphasis: true,
-        strikethrough: true
-      }
-    )
-    markdown.render s
+    # don't use ":smart" extension, because this breaks dashes in links
+    Markdown.new(
+      s,
+      :filter_html,
+      :strike,
+      :autolink,
+      :hard_wrap
+    ).to_html.force_encoding('utf-8')
   end
 
   def self.hashtaggify(s)
@@ -51,7 +49,7 @@ module Libertree
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
   def self.apply_hashtags(html)
-    # hashtaggify everything that is not inside of code or pre tags
+    # hashtaggify everything that is not inside of code, link or pre tags
     html.traverse do |node|
       if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
@@ -106,9 +104,9 @@ module Libertree
     resolution
   end
 
+  # filter HTML but ignore markdown
   def self.plain(s)
-    renderer ||= Redcarpet::Markdown.new(Libertree::StripDown)
-    renderer.render s
+    Nokogiri::HTML.fragment(self.markdownify(s)).inner_text
   end
 
   def self.render(s, autoembed=false)

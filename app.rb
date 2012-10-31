@@ -3,8 +3,8 @@ require 'm4dbi'
 require 'rdbi-driver-postgresql'
 require 'syck'
 require 'mini_magick'
-require 'redcarpet'
 require 'fast_gettext'
+require 'markdown'
 
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
@@ -38,7 +38,6 @@ require 'libertree/client'
 
 require_relative 'lib/libertree/lang'
 require_relative 'lib/libertree/render'
-require_relative 'lib/libertree/markdown'
 require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
