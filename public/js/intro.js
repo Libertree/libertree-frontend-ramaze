@@ -143,9 +143,13 @@ $(document).ready( function() {
   // bootstrap popovers for additional information
   $("a[rel=popover]")
     .popover()
-    .click(function(e) {
-      e.preventDefault()
+    .click(function() {
+      return false;
     })
+  $(document).click( function() {
+    // hide all popovers
+    $("a[rel=popover]").popover('hide');
+  })
 
   // unhide the previous and hide the current step
   $('.tutorial-step .button.prev').live( 'click', function() {
@@ -194,4 +198,3 @@ $(document).ready( function() {
     }
   })
 });
-
