@@ -1,7 +1,9 @@
 module Controller
   class Pools < Base
     map '/pools'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
 
     layout do |path|
       if path =~ %r{\b_|create_pool_and_add_post|add_post}

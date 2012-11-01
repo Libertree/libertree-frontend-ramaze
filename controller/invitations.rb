@@ -1,7 +1,9 @@
 module Controller
   class Invitations < Base
     map '/invitations'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
 
     def create
       if account.new_invitation.nil?

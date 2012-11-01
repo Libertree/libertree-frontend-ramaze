@@ -1,7 +1,9 @@
 module Controller
   class Home < Base
     map '/home'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
 
     layout do |path|
       if path =~ /_post_icon/

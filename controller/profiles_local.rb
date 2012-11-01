@@ -1,7 +1,9 @@
 module Controller
   class ProfilesLocal < Base
     map '/p'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
 
     layout do |path|
       if path =~ %r{^_}

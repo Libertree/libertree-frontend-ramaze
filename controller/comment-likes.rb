@@ -1,7 +1,9 @@
 module Controller
   class CommentLikes < Base
     map '/likes/comments'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
     layout nil
 
     def create(comment_id)

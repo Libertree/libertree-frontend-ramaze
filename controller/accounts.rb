@@ -1,7 +1,9 @@
 module Controller
   class Accounts < Base
     map '/accounts'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
 
     def edit
       @invitations = account.invitations_not_accepted

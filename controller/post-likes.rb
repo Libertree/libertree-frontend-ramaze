@@ -1,7 +1,9 @@
 module Controller
   class PostLikes < Base
     map '/likes/posts'
-    before_all { default_before_filter }
+    before_all do
+      default_before_filter
+    end
     layout nil
 
     def create(post_id)
