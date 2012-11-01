@@ -95,9 +95,9 @@ $(document).ready( function() {
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length === 0 ) {
             scrollable = $('html');
-            var delta = $('.preview-box').position().top - scrollable.scrollTop() - 100;
+            var delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
           } else {
-            var delta = $('.preview-box').position().top - 100;
+            var delta = $('.preview-box').offset().top - 100;
           }
           scrollable.animate(
             { scrollTop: scrollable.scrollTop() + delta },
