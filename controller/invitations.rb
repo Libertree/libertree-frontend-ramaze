@@ -1,11 +1,7 @@
 module Controller
   class Invitations < Base
     map '/invitations'
-
-    before_all do
-      require_login
-      init_locale
-    end
+    before_all { default_before_filter }
 
     def create
       if account.new_invitation.nil?

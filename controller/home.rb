@@ -1,11 +1,7 @@
 module Controller
   class Home < Base
     map '/home'
-
-    before_all do
-      require_login
-      init_locale
-    end
+    before_all { default_before_filter }
 
     layout do |path|
       if path =~ /_post_icon/

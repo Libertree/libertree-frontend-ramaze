@@ -4,8 +4,10 @@ module Controller
       map '/admin'
 
       before_all do
-        require_admin
-        init_locale
+        unless action.view_value
+          require_admin
+          init_locale
+        end
         @view = 'admin'
       end
 

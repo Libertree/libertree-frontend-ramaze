@@ -1,11 +1,7 @@
 module Controller
   class Profiles < Base
     map '/profiles'
-
-    before_all do
-      require_login
-      init_locale
-    end
+    before_all { default_before_filter }
 
     layout do |path|
       if path =~ %r{^_}

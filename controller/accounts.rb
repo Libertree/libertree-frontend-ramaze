@@ -1,11 +1,7 @@
 module Controller
   class Accounts < Base
     map '/accounts'
-
-    before_all do
-      require_login
-      init_locale
-    end
+    before_all { default_before_filter }
 
     def edit
       @invitations = account.invitations_not_accepted

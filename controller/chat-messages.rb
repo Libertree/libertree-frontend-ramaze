@@ -1,12 +1,7 @@
 module Controller
   class ChatMessages < Base
     map '/chat'
-
-    before_all do
-      require_login
-      init_locale
-    end
-
+    before_all { default_before_filter }
     layout nil
 
     def _index

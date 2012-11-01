@@ -1,12 +1,7 @@
 module Controller
   class CommentLikes < Base
     map '/likes/comments'
-
-    before_all do
-      require_login
-      init_locale
-    end
-
+    before_all { default_before_filter }
     layout nil
 
     def create(comment_id)

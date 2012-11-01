@@ -1,11 +1,7 @@
 module Controller
   class Pools < Base
     map '/pools'
-
-    before_all do
-      require_login
-      init_locale
-    end
+    before_all { default_before_filter }
 
     layout do |path|
       if path =~ %r{\b_|create_pool_and_add_post|add_post}
