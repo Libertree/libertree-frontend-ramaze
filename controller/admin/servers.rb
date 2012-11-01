@@ -4,7 +4,7 @@ module Controller
       map '/admin/servers'
 
       before_all do
-        unless action.view_value
+        if action.view_value.nil?
           require_admin
           init_locale
         end

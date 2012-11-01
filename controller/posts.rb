@@ -3,7 +3,7 @@ module Controller
     map '/posts'
 
     before_all do
-      unless action.view_value
+      if action.view_value.nil?
         if Ramaze::Current.request.path !~ %r{^/posts/show/}
           require_login
         end

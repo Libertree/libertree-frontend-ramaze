@@ -3,7 +3,7 @@ module Controller
     map '/'
 
     before_all do
-      unless action.view_value
+      if action.view_value.nil?
         init_locale
       end
     end

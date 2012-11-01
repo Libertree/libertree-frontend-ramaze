@@ -14,7 +14,7 @@ module Controller
     end
 
     def default_before_filter
-      unless action.view_value
+      if action.view_value.nil?
         require_login
         init_locale
       end
