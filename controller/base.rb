@@ -13,6 +13,13 @@ module Controller
       end
     end
 
+    def default_before_filter
+      if action.view_value.nil?
+        require_login
+        init_locale
+      end
+    end
+
     def lang(locale)
       session[:locale] = locale
       if request.env['HTTP_REFERER'] =~ %r{/lang/}

@@ -1,10 +1,8 @@
 module Controller
   class Pools < Base
     map '/pools'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|

@@ -1,10 +1,8 @@
 module Controller
   class ContactLists < Base
     map '/contact-lists'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     provide(:json, type: 'application/json') { |action,value| value.to_json }

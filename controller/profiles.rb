@@ -1,10 +1,8 @@
 module Controller
   class Profiles < Base
     map '/profiles'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|

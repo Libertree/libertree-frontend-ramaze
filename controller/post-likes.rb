@@ -1,12 +1,9 @@
 module Controller
   class PostLikes < Base
     map '/likes/posts'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
-
     layout nil
 
     def create(post_id)

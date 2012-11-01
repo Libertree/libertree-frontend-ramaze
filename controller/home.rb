@@ -1,10 +1,8 @@
 module Controller
   class Home < Base
     map '/home'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|

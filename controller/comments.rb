@@ -3,10 +3,12 @@ module Controller
     map '/comments'
 
     before_all do
-      if Ramaze::Current.request.path !~ %r{^/posts/show/}
-        require_login
+      if action.view_value.nil?
+        if Ramaze::Current.request.path !~ %r{^/posts/show/}
+          require_login
+        end
+        init_locale
       end
-      init_locale
     end
 
     layout do |path|

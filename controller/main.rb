@@ -3,7 +3,9 @@ module Controller
     map '/'
 
     before_all do
-      init_locale
+      if action.view_value.nil?
+        init_locale
+      end
     end
 
     layout do |path|

@@ -1,10 +1,8 @@
 module Controller
   class Accounts < Base
     map '/accounts'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     def edit
