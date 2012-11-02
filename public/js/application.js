@@ -1,10 +1,3 @@
-function checkForSessionDeath(html) {
-  if( $(html).find('#login').length > 0 ) {
-    window.location = '/login';
-    return false;
-  }
-}
-
 // TODO: replace with bootstrap popover
 function fadingAlert(message, x, y) {
   var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
@@ -67,7 +60,7 @@ $(document).ready( function() {
       '/_render',
       { s: unrendered },
       function(html) {
-        checkForSessionDeath(html);
+        Libertree.Session.ensureAlive(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
           //TRANSLATEME
