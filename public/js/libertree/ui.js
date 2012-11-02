@@ -26,6 +26,36 @@ Libertree.UI = {
         }
       }
     } );
+  },
+
+  TextAreaBackup: {
+    timer: undefined,
+    stored: '',
+    enable: function() {
+      Libertree.UI.TextAreaBackup.timer = setInterval(
+        Libertree.UI.TextAreaBackup.save,
+        15 * 1000
+      );
+    },
+    disable: function() {
+      clearInterval(Libertree.UI.TextAreaBackup.timer);
+    },
+    save: function() {
+      $('textarea').each( function(i) {
+        var text = $(this).val()
+        if( text != '' && text != Libertree.UI.TextAreaBackup.stored ) {
+          Libertree.UI.TextAreaBackup.stored = text;
+          $.post(
+            '/textarea_save',
+            {
+              text: text,
+              id: $(this).attr('id')
+            }
+          );
+          return false;
+        }
+      } );
+    }
   }
 };
 

@@ -159,6 +159,7 @@ module Controller
       @view = 'search'
     end
 
+    # TODO: don't render page
     def textarea_save
       # Check valid session first.
       if session[:saved_text]
@@ -166,6 +167,7 @@ module Controller
       end
     end
 
+    # TODO: don't render page
     def textarea_clear(id)
       # Check valid session first.
       if session[:saved_text]

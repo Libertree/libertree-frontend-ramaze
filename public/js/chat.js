@@ -194,7 +194,7 @@ $(document).ready( function() {
     var textarea = $(this);
 
     textarea.attr('disabled', 'disabled');
-    clearInterval(timerSaveTextAreas);
+    Libertree.UI.TextAreaBackup.disable();
     var memberId = $(this).closest('.log').data('member-id');
 
     $.post(

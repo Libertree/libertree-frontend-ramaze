@@ -1,6 +1,3 @@
-var timerSaveTextAreas;
-var lastTextAreaText = '';
-
 function checkForSessionDeath(html) {
   if( $(html).find('#login').length > 0 ) {
     window.location = '/login';
@@ -8,24 +5,7 @@ function checkForSessionDeath(html) {
   }
 }
 
-
-function saveTextAreaText() {
-  $('textarea').each( function(i) {
-    var text = $(this).val()
-    if( text != '' && text != lastTextAreaText ) {
-      lastTextAreaText = text;
-      $.post(
-        '/textarea_save',
-        {
-          text: text,
-          id: $(this).attr('id')
-        }
-      );
-      return false;
-    }
-  } );
-}
-
+// TODO: replace with bootstrap popover
 function fadingAlert(message, x, y) {
   var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
   div.appendTo('html');
@@ -152,7 +132,7 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   setInterval( Libertree.UI.updateAges, 60 * 1000 );
-  timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
+  Libertree.UI.TextAreaBackup.enable();
 
   $('textarea').live( 'mousedown', function() {
     $(this).data('width', $(this).outerWidth());
