@@ -52,7 +52,9 @@
     #{ js_nocache 'admin' }
   <?r end ?>
   <?r if @continuous_scrolling ?>
-    #{ js_nocache 'continuous-scrolling' }
+  <script type="text/javascript">
+    $(window).scroll( Libertree.Home.continuousScrollHandler );
+  </script>
   <?r end ?>
 
   <style type="text/css">
