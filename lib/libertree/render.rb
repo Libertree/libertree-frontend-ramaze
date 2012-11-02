@@ -20,7 +20,7 @@ module Libertree
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
     s.gsub(/(?<=^|\p{Space}|\()#([\p{Word}\p{Pd}]+)(?=\p{Space}|\b|\)|$)/i) {
-      %|<a href="/rivers/ensure_exists/%23#{$1.downcase}" class="hashtag">##{$1}</a>|
+      %|<a href="/tags/#{$1.downcase}" class="hashtag">##{$1}</a>|
     }
   end
 
