@@ -19,7 +19,7 @@ module Libertree
 
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
-    s.force_encoding('utf-8').gsub(/(?<=^|\s|\()#([\p{Word}\p{Pd}]+)(?=\s|\b|\)|$)/i) {
+    s.force_encoding('utf-8').gsub(/(?<=^|\p{Space}|\()#([\p{Word}\p{Pd}]+)(?=\p{Space}|\b|\)|$)/i) {
       %|<a href="/rivers/ensure_exists/%23#{$1.downcase}" class="hashtag">##{$1}</a>|
     }
   end
@@ -29,7 +29,7 @@ module Libertree
     return ''  if s.nil? or s.empty?
 
     # Crude autolinker for relative links to local resources
-    s.gsub(%r{(?<=^|\s|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
+    s.gsub(%r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
   end
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
