@@ -1,12 +1,5 @@
 Libertree.Home = {
   wantsToComment: false,
-  showShowMores: function() {
-    $('.excerpt').each( function() {
-      if( $(this).get(0).scrollHeight > $(this).height() ) {
-        $(this).siblings('.show-more').show();
-      }
-    } );
-  },
 
   indicateNewPosts: function(data) {
     var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
@@ -125,7 +118,7 @@ $(document).ready( function() {
   } );
 
   $('.overflowed img').live( 'mouseover', function() {
-    Libertree.Home.showShowMores();
+    Libertree.UI.showShowMores();
   } );
 
   $('.load-more').live( 'click', function(event) {
@@ -149,5 +142,5 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  Libertree.Home.showShowMores();
+  Libertree.UI.showShowMores();
 } );
