@@ -1,4 +1,17 @@
 Libertree.UI = {
+  continuousScrollHandler: function (loader) {
+    if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
+      // TODO
+      if( Libertree.PostLoader.loading || $('#no-more-posts').length ) {
+        return;
+      }
+
+      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
+      Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
+      loader();
+    }
+  },
+
   hideWindows: function() {
     $('#chat-window').resizable('destroy');
     $('.window').hide();

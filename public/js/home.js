@@ -1,28 +1,5 @@
 Libertree.Home = {
   wantsToComment: false,
-  loadingMorePostExcerpts: false,
-
-  continuousScrollHandler: function () {
-    // TODO: don't load on profile view
-    if( $('body').hasClass('profile') ) {
-      return;
-    }
-
-    if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-      if( Libertree.Home.loadingMorePostExcerpts || $('#no-more-posts').length ) {
-        return;
-      }
-
-      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
-      Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
-      Libertree.Home.loadPostExcerpts(
-        $('#post-excerpts').data('river-id'),
-        'older',
-        $('.post-excerpt:last').data('t')
-      );
-    }
-  },
-
   showShowMores: function() {
     $('.excerpt').each( function() {
       if( $(this).get(0).scrollHeight > $(this).height() ) {
@@ -39,42 +16,22 @@ Libertree.Home = {
     }
   },
 
-  loadPostExcerpts: function( riverId, older_or_newer, time, onSuccess ) {
-    Libertree.Home.loadingMorePostExcerpts = true;
-    $.ajax( {
-      type: 'GET',
-      url: '/posts/_excerpts/' + riverId + '/' + older_or_newer + '/' + time,
-      success: function(html) {
-        var o = $(html);
-        o.css('display', 'none');
-
-        /* Remove old copies of incoming excerpts that may already be in the DOM */
-        var container = $('<div/>');
-        container.prepend(o);
-        container.find('.post-excerpt').each( function() {
-          $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
-        } );
-
-        if( older_or_newer === 'newer' ) {
-          $('#post-excerpts').prepend(o);
-        } else {
-          $('#post-excerpts').append(o);
-        }
-        o.slideDown( function() {
-          Libertree.Home.loadingMorePostExcerpts = false;
-        } );
-
-        Libertree.UI.removeSpinner('#post-excerpts');
-        Libertree.Home.showShowMores();
-        if(onSuccess) {
-          onSuccess();
-        }
-      }
-    } );
-  },
 };
 
 /* ---------------------------------------------------- */
+
+// register river loader function as continuous scroll handler
+$(window).scroll( function() {
+  Libertree.UI.continuousScrollHandler(
+    function() {
+      Libertree.PostLoader.loadFromRiver(
+        $('#post-excerpts').data('river-id'),
+        'older',
+        $('.post-excerpt:last').data('t')
+      );
+    }
+  );
+} );
 
 $(document).ready( function() {
 
@@ -179,7 +136,7 @@ $(document).ready( function() {
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
     Libertree.UI.addSpinner($(this).parent(), 'append');
-    Libertree.Home.loadPostExcerpts(
+    Libertree.PostLoader.loadFromRiver(
       $('#post-excerpts').data('river-id'),
       'newer',
       $('.post-excerpt:first').data('t'),

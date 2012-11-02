@@ -30,6 +30,7 @@
   #{ js_nocache 'libertree' }
   #{ js_nocache 'libertree/ui' }
   #{ js_nocache 'libertree/session' }
+  #{ js_nocache 'libertree/post_loader' }
   #{ js_nocache 'application' }
   #{ js_nocache 'likes' }
   #{ js_nocache 'comments' }
@@ -50,11 +51,6 @@
   <?r end ?>
   <?r if account.admin? ?>
     #{ js_nocache 'admin' }
-  <?r end ?>
-  <?r if @continuous_scrolling ?>
-  <script type="text/javascript">
-    $(window).scroll( Libertree.Home.continuousScrollHandler );
-  </script>
   <?r end ?>
 
   <style type="text/css">

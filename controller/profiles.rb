@@ -23,7 +23,6 @@ module Controller
       end
 
       @profile = @member.profile
-      @continuous_scrolling = true
     end
 
     def edit
