@@ -7,7 +7,7 @@ function replaceNumCommentsFromAJAX(ajax_object, post) {
 function insertCommentHtmlFor( postId, commentId ) {
   var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
 
-  if( post.find('.comments:visible').length == 0 ) {
+  if( post.find('.comments:visible').length === 0 ) {
     return;
   }
 
@@ -38,7 +38,7 @@ function insertCommentHtmlFor( postId, commentId ) {
 
 function hideLoadCommentsLinkIfAllShown(element) {
   var n = parseInt( element.find('.comments .num-comments').text() );
-  if( element.find('div.comment').length == n ) {
+  if( element.find('div.comment').length === n ) {
     element.find('a.load-comments').hide();
   }
 };
@@ -67,11 +67,11 @@ $(document).ready( function() {
     var comments = post.find('.comments');
     var toId = comments.find('.comment:first').data('comment-id');
 
-    addSpinner(comments.find('.comment:first'), 'before', 16);
+    Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
     $.get(
       '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
       function(html) {
-        if( $.trim(html).length == 0 ) {
+        if( $.trim(html).length === 0 ) {
           return;
         }
         var o = $(html);
@@ -89,7 +89,7 @@ $(document).ready( function() {
 
         scrollable.scrollTop( initialScrollTop + delta );
         hideLoadCommentsLinkIfAllShown(post);
-        removeSpinner('.comments');
+        Libertree.UI.removeSpinner('.comments');
       }
     );
 
@@ -152,7 +152,7 @@ $(document).ready( function() {
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
-    addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
+    Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
     clearInterval(timerSaveTextAreas);
@@ -173,7 +173,7 @@ $(document).ready( function() {
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
-          if( $('#comment-'+h.commentId).length == 0 ) {
+          if( $('#comment-'+h.commentId).length === 0 ) {
             form.closest('.comments').find('.success')
               .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
               .fadeIn()
@@ -184,7 +184,7 @@ $(document).ready( function() {
           alert('Failed to post comment.');
         }
         submitButton.removeAttr('disabled');
-        removeSpinner( submitButton.closest('.form-buttons') );
+        Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
       }
     );
   } );

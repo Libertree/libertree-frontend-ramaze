@@ -1,10 +1,8 @@
 module Controller
   class Pools < Base
     map '/pools'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|
@@ -117,15 +115,15 @@ module Controller
       { 'success' => true }.to_json
     end
 
-    def remove_post(pool_id, post_id)
+    def _remove_post(pool_id, post_id)
       pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
-      redirect_referrer  if pool.nil?
+      # TODO: indicate failure
+      return  if pool.nil?
       post = Libertree::Model::Post[ id: post_id.to_i ]
-      redirect_referrer  if post.nil?
+      # TODO: indicate failure
+      return  if post.nil?
 
       pool.remove_post post
-
-      redirect_referrer
     end
   end
 end

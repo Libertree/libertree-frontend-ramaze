@@ -13,6 +13,7 @@
   <div class="description">
     #{ Libertree.render(@profile.description) }
   </div>
+  <?r if @member != account.member ?>
   <div>
     <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}">
       <option value="0"></option>
@@ -21,6 +22,7 @@
       <?r end ?>
     </select>
   </div>
+  <?r end ?>
 </div>
 
 <?r if @member.springs.any? ?>

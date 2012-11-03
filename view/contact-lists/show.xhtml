@@ -1,12 +1,22 @@
 <h3>#{_('Contact List: %s') % @list.name}</h3>
 
-<form action="/contact-lists/update/#{@list.id}" method="POST">
-  #{s_('contact-list|Name:')} <input type="text" value="#{@list.name}" name="name"/><br/>
-  <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(choose members)')}">
-    <?r @all_members.each do |m| ?>
-      <option value="#{m.id}" #{@list.members.include?(m) ? 'selected="selected"' : ''}>#{m.name_display} (#{m.handle})</option>
-    <?r end ?>
-  </select><br/>
+<form action="/contact-lists/update/#{@list.id}" method="POST" class="contact-list-form">
+  <table>
+    <tr>
+      <td>#{s_('contact-list|Name:')}</td>
+      <td><input type="text" value="#{@list.name}" name="name"/></td>
+    </tr>
+    <tr>
+      <td>#{s_('contact-list|Members:')}</td>
+      <td>
+        <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(type here to search)')}">
+          <?r @all_members.each do |m| ?>
+            <option value="#{m.id}" #{@list.members.include?(m) ? 'selected="selected"' : ''}>#{m.name_display} (#{m.handle})</option>
+          <?r end ?>
+        </select>
+      </td>
+    </tr>
+  </table>
   <input type="submit" value="#{s_('contact-list|Save')}"/>
   <a href="/contact-lists">#{s_('contact-list|Cancel')}</a>
 </form>

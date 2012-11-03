@@ -3,7 +3,9 @@ module Controller
     map '/'
 
     before_all do
-      init_locale
+      if action.view_value.nil?
+        init_locale
+      end
     end
 
     layout do |path|
@@ -72,7 +74,7 @@ module Controller
     # TODO: Move to Accounts controller?
     def signup
       @view = 'splash'
-      redirect '/'  if logged_in?
+      redirect '/intro'  if logged_in?
       force_mobile_to_narrow
 
       @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
@@ -113,12 +115,16 @@ module Controller
 
         account_login request.subset('username', 'password')
         flash[:error] = nil
-        redirect Home.r(:/)
+        redirect Intro.r(:/)
       rescue PGError => e
         case e.message
-        when /duplicate key value violates unique constraint "accounts_username_key"/
+        # TODO: we need to find a better solution than matching on error strings,
+        #       because PostgreSQL translates them under non-English locales.
+        # duplicate key value violates unique constraint "accounts_username_key"
+        when /accounts_username_key/
           flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
-        when /constraint "username_valid"/
+        # constraint "username_valid"
+        when /username_valid/
           flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
         else
           raise e
@@ -144,6 +150,8 @@ module Controller
     # This is not in the Posts controller because we will handle many other search
     # types from the one searh box in the near future.
     def search
+      redirect_referrer  if ! request.post?
+
       @q = request['q'].to_s
       @posts = Libertree::Model::Post.search(@q)
       @comments = Libertree::Model::Comment.search(@q)

@@ -25,10 +25,10 @@ GIT
       ruby_core_source (>= 0.1.4)
 
 GIT
-  remote: git://github.com/rekado/redcarpet.git
-  revision: 865d43444b6f724bc558df0ab9451da1bd6e1534
+  remote: git://github.com/rekado/rpeg-markdown.git
+  revision: 5f24d1cae2aeead6f83ff5e3718d5ffa56a07dc1
   specs:
-    redcarpet (2.1.1)
+    rpeg-markdown (1.4.6)
 
 PATH
   remote: ../libertree-client-rb
@@ -169,7 +169,7 @@ DEPENDENCIES
   rcrypt
   rdbi!
   rdbi-driver-postgresql!
-  redcarpet!
+  rpeg-markdown (= 1.4.6)!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
   ruby-debug19

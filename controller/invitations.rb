@@ -1,10 +1,8 @@
 module Controller
   class Invitations < Base
     map '/invitations'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     def create

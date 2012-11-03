@@ -1,5 +1,10 @@
 <h2>#{_('Search Results for "%s"') % @q}</h2>
 
+<p>
+  <a href="#search-results-posts">#{s_('search-results|Posts')}</a>
+  | <a href="#search-results-comments">#{s_('search-results|Comments')}</a>
+</p>
+
 <?r if (@profiles.length + @posts.length + @comments.length) == 0 ?>
 <p>#{s_('search-results|Nothing found.')}</p>
 <?r end ?>
@@ -15,34 +20,32 @@
 <?r end ?>
 
 <?r if @posts.length > 0 ?>
-  <h3>#{s_('search-results|Posts')}</h3>
+  <h3 id="search-results-posts">#{s_('search-results|Posts')}</h3>
 
   <ul>
   <?r @posts.each do |p| ?>
-    <li class="search-result post">
+    <li class="search-result post pseudolink" data-href="/posts/show/#{p.id}">
       <div class="member">
-        #{member_avatar_link(p.member)} #{member_name_link(p.member)}
+        #{member_img(p.member)} <span class="member-name">#{p.member.name_display}</span>
         <span class="timestamp">#{ago(p.time_created)}</span>
       </div>
-      <p>#{highlight_query(p.glimpse(160), @q)}</p>
-      <a href="/posts/show/#{p.id}">#{_('view post')}</a>
+      <p>#{highlight_query(Libertree::plain(p.glimpse(160)), @q)}</p>
     </li>
   <?r end ?>
   </ul>
 <?r end ?>
 
 <?r if @comments.length > 0 ?>
-  <h3>#{s_('search-results|Comments')}</h3>
+  <h3 id="search-results-comments">#{s_('search-results|Comments')}</h3>
 
   <ul>
   <?r @comments.each do |c| ?>
-    <li class="search-result comment">
+    <li class="search-result comment pseudolink" data-href="#{ comment_link(c) }">
       <div class="member">
-        #{member_avatar_link(c.member)} #{member_name_link(c.member)}
+        #{member_img(c.member)} <span class="member-name">#{c.member.name_display}</span>
         <span class="timestamp">#{ago(c.time_created)}</span>
       </div>
-      <p>#{highlight_query(c.glimpse(160), @q)}</p>
-      <a href="#{ comment_link(c) }">#{_('view comment')}</a>
+      <p>#{highlight_query(Libertree::plain(c.glimpse(160)), @q)}</p>
     </li>
   <?r end ?>
   </ul>

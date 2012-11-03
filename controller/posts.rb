@@ -3,10 +3,12 @@ module Controller
     map '/posts'
 
     before_all do
-      if Ramaze::Current.request.path !~ %r{^/posts/show/}
-        require_login
+      if action.view_value.nil?
+        if Ramaze::Current.request.path !~ %r{^/posts/show/}
+          require_login
+        end
+        init_locale
       end
-      init_locale
     end
 
     layout do |path|
@@ -116,7 +118,7 @@ module Controller
       end
     end
 
-    def read(post_id)
+    def _read(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post
         post.mark_as_read_by account
@@ -124,7 +126,7 @@ module Controller
       ""
     end
 
-    def unread(post_id)
+    def _unread(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post
         post.mark_as_unread_by account
@@ -132,7 +134,7 @@ module Controller
       ""
     end
 
-    def subscribe(post_id)
+    def _subscribe(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post
         account.subscribe_to post
@@ -140,7 +142,7 @@ module Controller
       ""
     end
 
-    def unsubscribe(post_id)
+    def _unsubscribe(post_id)
       post = Libertree::Model::Post[post_id.to_i]
       if post
         account.unsubscribe_from post

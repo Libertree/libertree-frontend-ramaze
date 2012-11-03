@@ -4,8 +4,10 @@ module Controller
       map '/admin/jobs'
 
       before_all do
-        require_admin
-        init_locale
+        if action.view_value.nil?
+          require_admin
+          init_locale
+        end
       end
 
       def index(task=nil)
@@ -29,6 +31,22 @@ module Controller
         job = Libertree::Model::Job[ job_id ]
         if job
           job.delete
+        end
+        redirect_referrer
+      end
+
+      def introduce
+        if request.post?
+          host = request['host'].to_s
+          Libertree::Model::Job.create(
+            {
+              task: 'request:INTRODUCE',
+              params: {
+                'host' => host,
+              }.to_json,
+            }
+          )
+          flash[:notice] = _("INTRODUCE request pending for remote tree @ %s") % host
         end
         redirect_referrer
       end

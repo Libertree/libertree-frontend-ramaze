@@ -1,10 +1,8 @@
 module Controller
   class Rivers < Base
     map '/rivers'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|
@@ -20,6 +18,50 @@ module Controller
     def index
       @rivers = account.rivers_not_appended
       @rivers_global = account.rivers_appended
+    end
+
+    def _create_tutorial_river
+      return  if ! request.post?
+
+      begin
+        query = request['query'].to_s.strip
+        if ! query.empty?
+          query.gsub!( /[,;']/, '' )
+          Libertree::Model::River.create(
+            account_id: account.id,
+            label: s_('tutorial-river-label|My interests'),
+            query: query,
+            home: true,
+          )
+        end
+        { 'status' => 'success' }.to_json
+      rescue
+        {
+          'status' => 'error',
+          'msg'    => s_('tutorial|An error occurred while trying to create a river.')
+        }.to_json
+      end
+    end
+
+    def _create_default_rivers
+      return  if ! request.post?
+      failed = []
+
+      request['rivers'].each_pair do |i, river|
+        begin
+          Libertree::Model::River.create(
+            account_id: account.id,
+            label: river['label'].to_s,
+            query: river['query'].to_s,
+          )
+        rescue
+          failed << river['label']
+          next
+        end
+      end
+
+      # TODO: report failures instead of ignoring them
+      { 'status' => 'success' }.to_json
     end
 
     def create
@@ -81,11 +123,6 @@ module Controller
       )
 
       redirect "/home/#{river.id}"
-    end
-
-    def ensure_beginner_rivers_exist
-      Libertree::Model::River.ensure_beginner_rivers_for account
-      redirect Home.r(:/)
     end
 
     def position(from_river_id, before_river_id = nil)

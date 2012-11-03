@@ -1,9 +1,10 @@
 <h2>#{_('Contact Lists')}</h2>
 
-<form action="/contact-lists/create" method="POST">
-  #{s_('contact-list|Name:')} <input type="text" name="name" size="20"/>
-  <input type="submit" value="#{s_('new-contact-list|Create')}"/>
-</form>
+<h3>#{_('Create Contact List')}</h3>
+
+#{ render_partial '_new' }
+
+<h3>#{_('Contact Lists')}</h3>
 
 <ul>
 <?r @lists.each do |l| ?>

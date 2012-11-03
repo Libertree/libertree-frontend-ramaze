@@ -1,5 +1,3 @@
-var Libertree = {};
-
 var timerSaveTextAreas;
 var lastTextAreaText = '';
 
@@ -10,33 +8,6 @@ function checkForSessionDeath(html) {
   }
 }
 
-//FIXME: src depends on selected theme
-function addSpinner(target_selector, position, size) {
-  $(target_selector)[position]('<img class="spinner size-'+size+'" src="/themes/default/images/spinner.gif"/>');
-}
-function removeSpinner(target_selector) {
-  $('img.spinner', target_selector).remove();
-}
-
-function hideWindows() {
-  $('#chat-window').resizable('destroy');
-  $('.window').hide();
-  rememberChatDimensions();
-}
-
-//TRANSLATEME
-function updateAges() {
-  $('.age').each( function(i) {
-    if( $(this).text().match(/^seconds ago$/) ) {
-      $(this).text('1 minute ago');
-    } else {
-      var m = $(this).text().match(/^(\d+) minutes? ago$/);
-      if( m ) {
-        $(this).text( (parseInt(m[1]) + 1) + ' minutes ago');
-      }
-    }
-  } );
-}
 
 function saveTextAreaText() {
   $('textarea').each( function(i) {
@@ -77,24 +48,30 @@ $(document).ready( function() {
   /* TODO: This looks refactorable */
   $('#menu-account').click( function() {
     if( $('#account-window').is(':visible') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
       return false;
     }
 
-    hideWindows();
+    Libertree.UI.hideWindows();
     $('#account-window').toggle();
     return false;
   } );
 
   $(document).click( function(event) {
     var t = $(event.target);
-    if( t.closest('.window').length == 0 && ! t.hasClass('result-selected') ) {
-      hideWindows();
+    if( t.closest('.window').length === 0 && ! t.hasClass('result-selected') ) {
+      Libertree.UI.hideWindows();
     }
   } );
 
   $('input.preview').live( 'click', function() {
     var unrendered = $(this).closest('form').find('textarea[name="text"]').val();
+
+    // abort unless there is text to be rendered
+    if (unrendered.length === 0) {
+      return false;
+    }
+
     if( $('input[name="hashtags"]').length > 0 ) {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
@@ -102,7 +79,7 @@ $(document).ready( function() {
     var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
     var type = $(this).data('type');
     var textType = null;
-    if( type == 'post' ) {
+    if( type === 'post' ) {
       textType = 'post-text';
     }
 
@@ -116,11 +93,11 @@ $(document).ready( function() {
           //TRANSLATEME
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
-          if( scrollable.length == 0 ) {
+          if( scrollable.length === 0 ) {
             scrollable = $('html');
-            var delta = $('.preview-box').position().top - scrollable.scrollTop() - 100;
+            var delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
           } else {
-            var delta = $('.preview-box').position().top - 100;
+            var delta = $('.preview-box').offset().top - 100;
           }
           scrollable.animate(
             { scrollTop: scrollable.scrollTop() + delta },
@@ -140,7 +117,7 @@ $(document).ready( function() {
     $(this).closest('.input-and-filler').find('.filler').hide();
   } );
   $('.input-and-filler input').live( 'blur', function() {
-    if( $(this).val() == '' ) {
+    if( $(this).val() === '' ) {
       $(this).closest('.input-and-filler').find('.filler').show();
     }
   } );
@@ -168,9 +145,13 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('.pseudolink').live( 'click', function(e) {
+    window.location = $(this).data('href');
+  } );
+
   /* ---------------------------------------------------- */
 
-  setInterval( updateAges, 60 * 1000 );
+  setInterval( Libertree.UI.updateAges, 60 * 1000 );
   timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
 
   $('textarea').live( 'mousedown', function() {
@@ -189,7 +170,7 @@ $(document).ready( function() {
 
   $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
 
-  if( layout == 'narrow' ) {
+  if( layout === 'narrow' ) {
     $('*').mouseover();
   }
 } );

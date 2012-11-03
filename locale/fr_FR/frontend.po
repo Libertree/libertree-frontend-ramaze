@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-02 11:04+0000\n"
+"PO-Revision-Date: 2012-10-21 06:58+0000\n"
 "Last-Translator: Loelo <autre7273@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: view/login.xhtml
 msgid "Username"
@@ -182,8 +182,8 @@ msgid "Delete this post?"
 msgstr "Effacer ce message ?"
 
 #: view/posts/_excerpts.xhtml
-msgid "No more posts."
-msgstr "Fin des messages."
+msgid "No more posts (for now)."
+msgstr "Plus de messages (pour l’instant)."
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -305,7 +305,7 @@ msgid "%d comments"
 msgstr "%d commentaires"
 
 msgid "showing %d of %d comments"
-msgstr "%d de %d commentaires"
+msgstr "%d commentaires sur %d affichés"
 
 msgid "show %smore%s / %sall%s comments"
 msgstr "montrer %splus%s / %stous%s les commentaires"
@@ -582,9 +582,6 @@ msgstr "Messages"
 msgid "search-results|Comments"
 msgstr "Commentaires"
 
-msgid "search-results|view comment"
-msgstr "voir les commentaires"
-
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr "Liste de contacts mise à jour."
@@ -782,6 +779,11 @@ msgstr "Utilisez les bassins pour collecter des messages."
 msgid "pool|Name:"
 msgstr "Nom:"
 
+msgid ""
+"&quot;Springing&quot; a pool causes the pool and which posts it contains to "
+"become publicly visible.  Members can add other members' springs to rivers."
+msgstr "&quot;Transformer un bassin en source fait que le bassin et tous les messages qu’il contient deviennent publiquement visibles. Les membres peuvent ajouter les sources d’autres membres à leurs rivières."
+
 msgid "new-pool|Create"
 msgstr "Créer"
 
@@ -795,12 +797,24 @@ msgstr "Tous les enregistrements des messages collectés seront perdus. Supprime
 msgid "Pool: %s"
 msgstr "Bassin : %s"
 
+msgid "Add this spring to a river"
+msgstr "Ajouter cette source à une rivière"
+
+msgid "Spring this pool:"
+msgstr "Transformer ce bassin en source:"
+
+msgid "pool|Sprung:"
+msgstr "Bassins|Transformés en source:"
+
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr "Modifier le Bassin: %s"
 
 msgid "pool|Update"
 msgstr "Mettre à jour"
+
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr "(Vous pouvez supprimer les messages de ce bassin via %1$sla page des bassins%2$s.)"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -839,6 +853,9 @@ msgstr "Messages de %s"
 
 msgid "Add %s to a contact list"
 msgstr "Ajouter %s à une liste de contacts"
+
+msgid "%1$ssee more posts by %2$s%3$s"
+msgstr "%1$svoir davantage de messages de %2$s%3$s"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -993,7 +1010,7 @@ msgstr "(avancé) Utilisez le terme spécial %s suivi d'une étiquette de riviè
 msgid ""
 "(advanced) Use the special term %s followed by &lt; or &gt; and a number to "
 "match posts by their approximate number of words."
-msgstr "(avancé) Utiliserz le caractère spécial %s suivi par &lt; ou &gt; et un chiffre pour n’afficher que les messages qui ont un certain nombre de mots."
+msgstr "(avancé) Utilisez le caractère spécial %s suivi par &lt; ou &gt; et un chiffre pour n’afficher que les messages qui ont un certain nombre de mots."
 
 msgid "Example: %s:word-count < 16%s"
 msgstr "Exemple : %s:word-count < 16%s"
@@ -1164,3 +1181,85 @@ msgstr "%2$d messages chat non lus de %1$s"
 #: public/js/comments.js
 msgid "Failed to post comment."
 msgstr "L'envoi du commentaire a échoué."
+
+#: view/intro/index.xhtml
+msgid "tutorial-river-label|My interests"
+msgstr ""
+
+msgid "tutorial|Back"
+msgstr ""
+msgid "tutorial|Next"
+msgstr ""
+msgid "tutorial|Skip"
+msgstr ""
+msgid "tutorial|Done!"
+msgstr ""
+
+msgid "tutorial|An error occurred while trying to create a river."
+msgstr ""
+
+msgid "tutorial-step-1"
+msgstr ""
+"# Welcome to Libertree!\n"
+"Hello, and welcome to Libertree! We'd like to take a minute to "
+"explain the most important concepts in Libertree, as this will help you get the "
+"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
+"Libertree is a place where people write things in public, or share interesting "
+"stuff with others.\n\n"
+" - Someone who is a part of Libertree is called a *member*.\n"
+" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
+" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+
+msgid "tutorial-step-2a"
+msgstr ""
+"# Your interests\n"
+"There are a lot of posts made to Libertree every day. If you like, "
+"you can take a minute right now to let us know what your interests are. "
+"We'll use this information to narrow down what posts you see at first, "
+"so you don't get overwhelmed. You can always change things later, or "
+"explore ways to read more posts.  Enter a list of interests (one word "
+"each):"
+
+msgid "tutorial-step-2b"
+msgstr "Congratulations! You have just created your first river."
+
+msgid "tutorial-step-3-heading"
+msgstr "# Rivers"
+
+msgid "tutorial-step-3a"
+msgstr ""
+"Rivers are a powerful feature that lets you pick or filter posts "
+"from the torrent of posts on Libertree. Here is a list of "
+"rivers that you may find useful. Select those that you would "
+"like added to your account."
+
+msgid "tutorial-step-3b"
+msgstr ""
+"Be sure to check out the river management page after "
+"this tutorial to see interesting examples of what you "
+"can do with rivers."
+
+msgid "tutorial-step-4-heading"
+msgstr "# Friends"
+msgid "intro-contact-list-name|Friends"
+msgstr ""
+
+msgid "tutorial-step-4"
+msgstr ""
+"If you think some of your friends are already Libertree members, "
+"you can try to find them and add them as contacts now."
+
+msgid "tutorial-river-label|Unread posts"
+msgstr ""
+msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgstr ""
+
+msgid "tutorial-river-label|Posts from the forest"
+msgstr ""
+msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgstr ""
+
+msgid "tutorial-river-label|My activity"
+msgstr ""
+msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
+msgstr ""

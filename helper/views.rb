@@ -1,6 +1,9 @@
 module Ramaze
   module Helper
     module Views
+      def help_bubble(s, title="help|What does this mean?")
+        "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content='#{s}'>?</a>"
+      end
       def img(src,options={})
         theme = account.theme || 'default'
         "<img src='/themes/#{theme}/images/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"

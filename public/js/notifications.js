@@ -1,6 +1,7 @@
+// n is of type string
 function updateNumNotificationsUnseen(n) {
   var title = document.title;
-  if( n == 0 ) {
+  if( n === '0' ) {
     $('#num-notifications-unseen').hide();
     $('#menu-notifications').addClass('none'); /* this may no longer be used, and could be removed */
     title = title.replace( /^\([0-9]+\) /, '' );
@@ -19,24 +20,24 @@ function updateNumNotificationsUnseen(n) {
 $(document).ready( function() {
   $('#menu-notifications').click( function() {
     if( $('#notifications-window').is(':visible') ) {
-      hideWindows();
+      Libertree.UI.hideWindows();
       return false;
     }
 
-    if( $('#num-notifications-unseen').text() == '0' ) {
+    if( $('#num-notifications-unseen').text() === '0' ) {
       window.location = '/notifications'
       return false;
     }
 
-    hideWindows();
+    Libertree.UI.hideWindows();
     $('#notifications-window').empty();
-    addSpinner('#notifications-window', 'append');
+    Libertree.UI.addSpinner('#notifications-window', 'append');
     $('#notifications-window').
       load(
         '/notifications/_index',
         function(html) {
           checkForSessionDeath(html);
-          removeSpinner('#notifications-window');
+          Libertree.UI.removeSpinner('#notifications-window');
           updateNumNotificationsUnseen( $(html).find('.n').text() );
         }
       ).
@@ -73,13 +74,14 @@ $(document).ready( function() {
     } );
   } );
 
-  $('#mark-all-notifications-seen').live( 'click', function() {
+  $('#mark-all-notifications-seen').live( 'click', function(event) {
+    event.preventDefault();
     $.get('/notifications/seen/all', function () {
       $('.notification')
         .removeClass('unseen')
         .addClass('seen')
       ;
-      updateNumNotificationsUnseen(0);
+      updateNumNotificationsUnseen('0');
     } );
   } );
 

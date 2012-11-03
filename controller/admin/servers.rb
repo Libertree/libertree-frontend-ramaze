@@ -4,8 +4,10 @@ module Controller
       map '/admin/servers'
 
       before_all do
-        require_admin
-        init_locale
+        if action.view_value.nil?
+          require_admin
+          init_locale
+        end
       end
 
       layout do |path|
@@ -19,15 +21,6 @@ module Controller
       # TODO:
       def _index
         @servers = Libertree::Model::Server.all
-      end
-
-      def create
-        redirect_referrer  if ! request.post?
-
-        ip = IPSocket::getaddress(request['host'].to_s)
-        Libertree::Model::Server.create(ip: ip)
-
-        redirect_referrer
       end
     end
   end

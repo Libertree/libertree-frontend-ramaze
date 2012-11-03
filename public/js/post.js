@@ -1,6 +1,6 @@
 function markPostRead(post_id) {
   $.get(
-    '/posts/read/' + post_id,
+    '/posts/_read/' + post_id,
     function() {
       var post = $('*[data-post-id="'+post_id+'"]');
       post.find('.mark-read').addClass('hidden');
@@ -63,7 +63,7 @@ $(document).ready( function() {
   $('.mark-unread').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     $.get(
-      '/posts/unread/' + post.data('post-id'),
+      '/posts/_unread/' + post.data('post-id'),
       function() {
         post.find('.mark-unread').addClass('hidden');
         post.find('.mark-read').removeClass('hidden');
@@ -83,7 +83,7 @@ $(document).ready( function() {
   $('.post-tools .subscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     $.get(
-      '/posts/subscribe/' + post.data('post-id'),
+      '/posts/_subscribe/' + post.data('post-id'),
       function() {
         post.find('.subscribe').addClass('hidden');
         post.find('.unsubscribe').removeClass('hidden');
@@ -94,7 +94,7 @@ $(document).ready( function() {
   $('.post-tools .unsubscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     $.get(
-      '/posts/unsubscribe/' + post.data('post-id'),
+      '/posts/_unsubscribe/' + post.data('post-id'),
       function() {
         post.find('.unsubscribe').addClass('hidden');
         post.find('.subscribe').removeClass('hidden');

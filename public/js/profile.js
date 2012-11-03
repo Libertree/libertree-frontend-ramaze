@@ -10,11 +10,11 @@ $(document).ready( function() {
     var selector = $('#contact-list-selector');
     var contactListId = selector.val();
     var memberId = selector.data('member-id');
-    addSpinner( selector.parent(), 'append' );
+    Libertree.UI.addSpinner( selector.parent(), 'append' );
     $.get(
       '/contact-lists/add_member/'+contactListId+'/'+memberId,
       function() {
-        removeSpinner( selector.parent() );
+        Libertree.UI.removeSpinner( selector.parent() );
         fadingAlert('Added to contact list.');
         selector.val('0');
         selector.trigger("liszt:updated");

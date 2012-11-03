@@ -17,6 +17,10 @@ describe Libertree do
       subject.hashtaggify('#multiple #hashtags').should == '<a href="/rivers/ensure_exists/%23multiple" class="hashtag">#multiple</a> <a href="/rivers/ensure_exists/%23hashtags" class="hashtag">#hashtags</a>'
     end
 
+    it 'should linkify hashtags in parentheses' do
+      subject.hashtaggify('(#simple)').should == '(<a href="/rivers/ensure_exists/%23simple" class="hashtag">#simple</a>)'
+    end
+
     it 'should linkify unicode hashtags' do
       subject.hashtaggify('#中国').should == '<a href="/rivers/ensure_exists/%23中国" class="hashtag">#中国</a>'
     end

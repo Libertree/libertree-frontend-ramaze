@@ -1,10 +1,8 @@
 module Controller
   class Home < Base
     map '/home'
-
     before_all do
-      require_login
-      init_locale
+      default_before_filter
     end
 
     layout do |path|
@@ -27,6 +25,7 @@ module Controller
         @posts = @river.posts( order_by: @river_post_order, limit: 16 )
       else
         @posts = []
+        @no_rivers = true
       end
     end
 

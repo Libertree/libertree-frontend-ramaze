@@ -4,8 +4,10 @@ module Controller
       map '/admin/forests'
 
       before_all do
-        require_admin
-        init_locale
+        if action.view_value.nil?
+          require_admin
+          init_locale
+        end
       end
 
       layout do |path|

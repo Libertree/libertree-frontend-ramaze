@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-07 01:20+0000\n"
+"PO-Revision-Date: 2012-10-11 01:11+0000\n"
 "Last-Translator: Mauricio Mejía <hectormejia@riseup.net>\n"
 "Language-Team: Spanish (El Salvador) (http://www.transifex.com/projects/p/libertree/language/es_SV/)\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgid "unsubscribe"
 msgstr "Eliminar suscripción"
 
 msgid "mark post unread"
-msgstr "Marcar publicación como No leída"
+msgstr "Marcar publicación como no leída"
 
 msgid "mark post read"
 msgstr "Marcar publicación como Leída"
@@ -210,7 +210,7 @@ msgid "mark read"
 msgstr "Marcar como Leída"
 
 msgid "mark unread"
-msgstr "Marcar como No Leída."
+msgstr "Marcar como no Leída."
 
 msgid ""
 "Hiding a post prevents it from showing in your rivers or triggering "
@@ -289,7 +289,7 @@ msgstr "Sólo se puede usar como avatar archivos .png, .jpeg, y .gif "
 
 #: controller/rivers.rb
 msgid "You already have a river for that."
-msgstr "Ya tienes un Río para eso."
+msgstr "Ya tienes un Río para ello."
 
 #: view/comments/_comments.xhtml
 msgid "One comment"
@@ -323,7 +323,7 @@ msgid "attach"
 msgstr "Colocar"
 
 msgid "Clear"
-msgstr "Despejar"
+msgstr "Limpiar"
 
 msgid "Comment"
 msgstr "Comentario"
@@ -579,9 +579,6 @@ msgstr "Publicaciones"
 msgid "search-results|Comments"
 msgstr "Comentarios"
 
-msgid "search-results|view comment"
-msgstr "Ver comentario"
-
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr "La lista de contactos ha sido actualizada"
@@ -779,6 +776,11 @@ msgstr "Use los estanques para coleccionar publicaciones."
 msgid "pool|Name:"
 msgstr "Nombre:"
 
+msgid ""
+"&quot;Springing&quot; a pool causes the pool and which posts it contains to "
+"become publicly visible.  Members can add other members' springs to rivers."
+msgstr "&quot;Brotar&quot; un estanque causa que el el estanque y las publicaciones que contiene pasen a ser públicamente visibles. Los miembros pueden agregar los brotes de otros miembros a los ríos."
+
 msgid "new-pool|Create"
 msgstr "Crear"
 
@@ -792,12 +794,24 @@ msgstr "Se perderán todas las publicaciones coleccionadas. ¿Eliminar este esta
 msgid "Pool: %s"
 msgstr "Estanque: %s"
 
+msgid "Add this spring to a river"
+msgstr "Agregar este brote a un río"
+
+msgid "Spring this pool:"
+msgstr "Brotar éste estanque"
+
+msgid "pool|Sprung:"
+msgstr "Brotado"
+
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr "Editar Estanque: %s"
 
 msgid "pool|Update"
 msgstr "Actualizar"
+
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr "(Puedes remover las publicaciones de este estanque a través de %1$sla página de los estanques%2$s.)"
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -836,6 +850,9 @@ msgstr "Publicaciones por %s"
 
 msgid "Add %s to a contact list"
 msgstr "Agregar %s a una Lista de contactos"
+
+msgid "%1$ssee more posts by %2$s%3$s"
+msgstr "%1$sVer más publicaciones por %2$s%3$s"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -1139,7 +1156,7 @@ msgid "menu|New Post"
 msgstr "Nueva publicación "
 
 msgid "menu|Known Issues"
-msgstr "Temas conocidos"
+msgstr "Problemas conocidos"
 
 #: layout/_notifications.xhtml
 msgid "No notifications"
@@ -1161,3 +1178,85 @@ msgstr "%2$d sin leer de %1$s"
 #: public/js/comments.js
 msgid "Failed to post comment."
 msgstr "Error al publicar comentario."
+
+#: view/intro/index.xhtml
+msgid "tutorial-river-label|My interests"
+msgstr ""
+
+msgid "tutorial|Back"
+msgstr ""
+msgid "tutorial|Next"
+msgstr ""
+msgid "tutorial|Skip"
+msgstr ""
+msgid "tutorial|Done!"
+msgstr ""
+
+msgid "tutorial|An error occurred while trying to create a river."
+msgstr ""
+
+msgid "tutorial-step-1"
+msgstr ""
+"# Welcome to Libertree!\n"
+"Hello, and welcome to Libertree! We'd like to take a minute to "
+"explain the most important concepts in Libertree, as this will help you get the "
+"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
+"Libertree is a place where people write things in public, or share interesting "
+"stuff with others.\n\n"
+" - Someone who is a part of Libertree is called a *member*.\n"
+" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
+" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+
+msgid "tutorial-step-2a"
+msgstr ""
+"# Your interests\n"
+"There are a lot of posts made to Libertree every day. If you like, "
+"you can take a minute right now to let us know what your interests are. "
+"We'll use this information to narrow down what posts you see at first, "
+"so you don't get overwhelmed. You can always change things later, or "
+"explore ways to read more posts.  Enter a list of interests (one word "
+"each):"
+
+msgid "tutorial-step-2b"
+msgstr "Congratulations! You have just created your first river."
+
+msgid "tutorial-step-3-heading"
+msgstr "# Rivers"
+
+msgid "tutorial-step-3a"
+msgstr ""
+"Rivers are a powerful feature that lets you pick or filter posts "
+"from the torrent of posts on Libertree. Here is a list of "
+"rivers that you may find useful. Select those that you would "
+"like added to your account."
+
+msgid "tutorial-step-3b"
+msgstr ""
+"Be sure to check out the river management page after "
+"this tutorial to see interesting examples of what you "
+"can do with rivers."
+
+msgid "tutorial-step-4-heading"
+msgstr "# Friends"
+msgid "intro-contact-list-name|Friends"
+msgstr ""
+
+msgid "tutorial-step-4"
+msgstr ""
+"If you think some of your friends are already Libertree members, "
+"you can try to find them and add them as contacts now."
+
+msgid "tutorial-river-label|Unread posts"
+msgstr ""
+msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgstr ""
+
+msgid "tutorial-river-label|Posts from the forest"
+msgstr ""
+msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgstr ""
+
+msgid "tutorial-river-label|My activity"
+msgstr ""
+msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
+msgstr ""

@@ -3,13 +3,15 @@ require 'm4dbi'
 require 'rdbi-driver-postgresql'
 require 'syck'
 require 'mini_magick'
-require 'redcarpet'
 require 'fast_gettext'
+require 'markdown'
+require_relative 'lib/libertree/lang'
 
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
 FastGettext.default_text_domain = 'frontend'
+FastGettext.default_available_locales = Libertree::LANG.map(&:first)
 include FastGettext::Translation
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
@@ -36,9 +38,7 @@ $dbh ||= M4DBI.connect(
 require 'libertree/model'
 require 'libertree/client'
 
-require_relative 'lib/libertree/lang'
 require_relative 'lib/libertree/render'
-require_relative 'lib/libertree/markdown'
 require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
@@ -59,6 +59,7 @@ require_relative 'controller/post-likes'
 require_relative 'controller/pools'
 require_relative 'controller/posts'
 require_relative 'controller/rivers'
+require_relative 'controller/intro'
 
 require_relative 'controller/api/v1/base'
 require_relative 'controller/api/v1/invitations'

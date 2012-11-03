@@ -33,7 +33,7 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
         $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
       } );
 
-      if( older_or_newer == 'newer' ) {
+      if( older_or_newer === 'newer' ) {
         $('#post-excerpts').prepend(o);
       } else {
         $('#post-excerpts').append(o);
@@ -42,7 +42,7 @@ function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
         loadingMorePostExcerpts = false;
       } );
 
-      removeSpinner('#post-excerpts');
+      Libertree.UI.removeSpinner('#post-excerpts');
       showShowMores();
       if(onSuccess) {
         onSuccess();
@@ -107,13 +107,13 @@ $(document).ready( function() {
   $('.post-excerpt .show-less').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.show-more').show();
-    var excerpt = $(this).siblings('.excerpt');
+    var excerpt = $(this).closest('.post-excerpt');
 
     var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
 
-    var top = excerpt.position().top;
+    var excerptTop = excerpt.position().top;
     var windowTop = $('html').scrollTop();
-    var scrollTop = top - windowTop
+    var scrollTop = excerptTop - windowTop;
     if( scrollTop < 100 ){
       $('html').animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
@@ -155,7 +155,7 @@ $(document).ready( function() {
     $('.more-posts-divider').removeClass('more-posts-divider');
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
-    addSpinner($(this).parent(), 'append');
+    Libertree.UI.addSpinner($(this).parent(), 'append');
     loadPostExcerpts(
       $('#post-excerpts').data('river-id'),
       'newer',
