@@ -28,9 +28,9 @@
   #{ js 'textinputs_jquery' }
 
   #{ js_nocache 'libertree' }
+  #{ js_nocache 'libertree/post_loader' }
   #{ js_nocache 'libertree/ui' }
   #{ js_nocache 'libertree/session' }
-  #{ js_nocache 'libertree/post_loader' }
   #{ js_nocache 'application' }
   #{ js_nocache 'likes' }
   #{ js_nocache 'comments' }
@@ -52,6 +52,7 @@
   <?r if account.admin? ?>
     #{ js_nocache 'admin' }
   <?r end ?>
+  #{ controller_js }
 
   <style type="text/css">
     .excerpts-view .post-excerpt div.excerpt .overflowed {
