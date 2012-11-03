@@ -1,9 +1,9 @@
-<div id="post-excerpts">
+<div id="post-excerpts" data-tag="#{@tag}">
   <div class="more-posts">
     <a href="#" class="load-more"></a>
   </div>
   <?r @posts.reverse.each do |post| ?>
-    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
+    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @post_order }
   <?r end ?>
   <div class="spinner"></div>
 </div>

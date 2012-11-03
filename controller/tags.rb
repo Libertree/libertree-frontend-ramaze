@@ -16,6 +16,7 @@ module Controller
     def index(tag)
       redirect_referrer  if tag.nil?
       @view = "excerpts-view tags"
+      @tag = tag
 
       # TODO: directly call _more?
       @post_order = session[:river_post_order]
