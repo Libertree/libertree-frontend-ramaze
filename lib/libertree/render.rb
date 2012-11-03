@@ -7,10 +7,10 @@ module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
-    # don't use ":smart" extension, because this breaks dashes in links
     Markdown.new(
       s,
       :filter_html,
+      :smart,
       :strike,
       :autolink,
       :hard_wrap
