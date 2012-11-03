@@ -6,7 +6,9 @@ module Controller
     end
 
     layout do |path|
-      if session[:layout] == 'narrow'
+      if path =~ /^_more/
+        nil
+      elsif session[:layout] == 'narrow'
         :narrow
       else
         :default
@@ -16,9 +18,9 @@ module Controller
     def index(tag)
       redirect_referrer  if tag.nil?
       @view = "excerpts-view tags"
-      @tag = tag
+      @tag = tag.downcase
 
-      # TODO: directly call _more?
+      # TODO: better name for river_post_order?
       @post_order = session[:river_post_order]
       @posts = Libertree::Model::Post.with_tag(
         tag: tag,
@@ -28,10 +30,9 @@ module Controller
     end
 
     def _more( tag, older_or_newer = 'older', time = Time.now.to_i )
-      @post_order = session[:river_post_order]
       @posts = Libertree::Model::Post.with_tag(
         tag: tag,
-        order_by: @post_order,
+        order_by: session[:river_post_order],
         limit: 8,
         time: time.to_f,
         newer: ( older_or_newer == 'newer' ),

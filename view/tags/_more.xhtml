@@ -1,0 +1,9 @@
+<?r if @posts.empty? ?>
+  <p id="no-more-posts">
+    #{_('No more posts (for now).')}
+  </p>
+<?r else ?>
+  <?r @posts.each do |post| ?>
+    #{ Controller::Posts.render_partial '_excerpt', post: post }
+  <?r end ?>
+<?r end ?>

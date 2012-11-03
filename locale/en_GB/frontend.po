@@ -852,6 +852,10 @@ msgstr ""
 msgid "Failed to post comment."
 msgstr ""
 
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr ""
+
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
 msgstr ""
