@@ -7,10 +7,10 @@ module Libertree
   def self.markdownify(s)
     return ''  if s.nil? or s.empty?
 
-    # don't use ":smart" extension, because this breaks dashes in links
     Markdown.new(
       s,
       :filter_html,
+      :smart,
       :strike,
       :autolink,
       :hard_wrap
@@ -54,7 +54,7 @@ module Libertree
       if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
         if ! hashtag.eql? node.text
-          node.replace hashtag
+          node.replace( Nokogiri::HTML.fragment(hashtag) )
         end
       end
     end
