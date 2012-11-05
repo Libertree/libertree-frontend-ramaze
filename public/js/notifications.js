@@ -36,7 +36,7 @@ $(document).ready( function() {
       load(
         '/notifications/_index',
         function(html) {
-          checkForSessionDeath(html);
+          Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#notifications-window');
           updateNumNotificationsUnseen( $(html).find('.n').text() );
         }

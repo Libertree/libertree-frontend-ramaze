@@ -142,7 +142,7 @@ $(document).ready( function() {
       .load(
         '/chat/_index',
         function(html) {
-          checkForSessionDeath(html);
+          Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#chat-window');
           $('#chat-window').hide();
           var o = $(html);
