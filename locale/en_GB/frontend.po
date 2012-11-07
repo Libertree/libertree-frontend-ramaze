@@ -468,6 +468,8 @@ msgid "new-contact-list|Create"
 msgstr ""
 msgid "contact-list|delete"
 msgstr ""
+msgid "Delete this contact list?"
+msgstr ""
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"

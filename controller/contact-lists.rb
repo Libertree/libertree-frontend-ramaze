@@ -8,6 +8,7 @@ module Controller
     provide(:json, type: 'application/json') { |action,value| value.to_json }
 
     def index
+      @view = "contact-lists"
       @lists = account.contact_lists
       @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
       @all_members.delete(account.member)
