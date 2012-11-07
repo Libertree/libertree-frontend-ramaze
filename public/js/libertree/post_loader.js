@@ -3,9 +3,9 @@ Libertree.PostLoader = {
 
   loader: function( type ) {
     if ( type === 'river' ) {
-      endpoint = '/posts/_excerpts/';
+      endpoint = '/posts/_excerpts';
     } else if ( type === 'tags' ) {
-      endpoint = '/tags/_more/';
+      endpoint = '/tags/_more';
     } else {
       // not supported
       return function(){};
@@ -15,7 +15,7 @@ Libertree.PostLoader = {
       Libertree.PostLoader.loading = true;
       $.ajax( {
         type: 'GET',
-        url: endpoint + value + '/' + older_or_newer + '/' + time,
+        url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function(html) {
           var o = $(html);
           o.css('display', 'none');
