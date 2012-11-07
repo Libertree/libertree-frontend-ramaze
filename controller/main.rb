@@ -144,7 +144,7 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s, account.autoembed )
+      respond Libertree.render( request['s'].to_s, account.autoembed, account.filter_images )
     end
 
     # This is not in the Posts controller because we will handle many other search

@@ -4,17 +4,9 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s)
+  def self.markdownify(s, opts = [ :filter_html, :smart, :strike, :autolink, :hard_wrap ])
     return ''  if s.nil? or s.empty?
-
-    Markdown.new(
-      s,
-      :filter_html,
-      :smart,
-      :strike,
-      :autolink,
-      :hard_wrap
-    ).to_html.force_encoding('utf-8')
+    Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
 
   def self.hashtaggify(s)
@@ -118,9 +110,17 @@ module Libertree
     Nokogiri::HTML.fragment(self.markdownify(s)).inner_text
   end
 
-  def self.render(s, autoembed=false)
+  def self.render(s, autoembed=false, filter_images=false)
+    opts = [
+      :filter_html,
+      :smart,
+      :strike,
+      :autolink,
+      :hard_wrap
+    ]
+    opts.push :no_images if filter_images
+
     pipeline = [
-      method(:markdownify),
       method(:autolinker),
       Nokogiri::HTML.method(:fragment),
       method(:process_links),
@@ -129,12 +129,20 @@ module Libertree
     ].compact
 
     # apply methods sequentially to string
-    pipeline.reduce(s) {|acc,f| f.call(acc)}.to_s
+    pipeline.reduce(markdownify(s, opts)) {|acc,f| f.call(acc)}.to_s
   end
 
   module HasRenderableText
-    def text_rendered(autoembed=false)
-      Libertree.render self.text, autoembed
+    def text_rendered(account=nil)
+      if account
+        autoembed = account.autoembed
+        filter_images = account.filter_images
+      else
+        autoembed = false
+        filter_images = false
+      end
+
+      Libertree.render self.text, autoembed, filter_images
     end
   end
 

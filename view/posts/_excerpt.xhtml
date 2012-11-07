@@ -62,7 +62,7 @@
   <div class="excerpt #{account.thumbnail ? 'images-thumbnailed' : ''}">
     <div class="overflowed">
       <div class="post-text typed-text">
-        #{Libertree.render(@post.text, account.autoembed)}
+        #{@post.text_rendered(account)}
       </div>
       #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 }, hidden: true }
     </div>
