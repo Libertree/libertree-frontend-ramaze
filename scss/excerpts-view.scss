@@ -6,6 +6,10 @@ body.body.excerpts-view .main {
     padding: 0;
     background-color: transparent;
 
+    select {
+      width: 400px;
+    }
+
     div.panel {
         padding-left: 30px;
         padding-right: 30px;

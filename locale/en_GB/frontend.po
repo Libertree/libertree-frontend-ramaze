@@ -855,6 +855,8 @@ msgstr ""
 #: view/tags/index.xhtml
 msgid "Save this hashtag listing as a river."
 msgstr ""
+msgid "Add this hashtag to an existing river."
+msgstr ""
 msgid "There are no posts matching this hashtag."
 msgstr ""
 

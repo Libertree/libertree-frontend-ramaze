@@ -19,6 +19,7 @@ module Controller
       redirect_referrer  if tag.nil?
       @view = "excerpts-view tags"
       @tag = tag.downcase
+      @rivers = account.rivers_not_appended
 
       # TODO: better name for river_post_order?
       @post_order = session[:river_post_order]

@@ -1,6 +1,16 @@
 <div id="header">
   <h1>##{@tag}</h1>
   <a href="/rivers/ensure_exists/%23#{@tag}">#{_('Save this hashtag listing as a river.')}</a>
+  <?r if @rivers ?>
+  <div>
+    <select id="river-selector" name="river_id" data-tag="#{@tag}" data-placeholder="#{_('Add this hashtag to an existing river.')}">
+      <option value="0"></option>
+      <?r @rivers.each do |r| ?>
+        <option value="#{r.id}">#{r.label}</option>
+      <?r end ?>
+    </select>
+  </div>
+  <?r end ?>
 </div>
 
 <?r if @posts.empty? ?>
