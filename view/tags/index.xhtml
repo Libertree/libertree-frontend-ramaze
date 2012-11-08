@@ -3,6 +3,11 @@
   <a href="/rivers/ensure_exists/%23#{@tag}">#{_('Save this hashtag listing as a river.')}</a>
 </div>
 
+<?r if @posts.empty? ?>
+  <p id="no-more-posts" class="panel">
+    #{_('There are no posts matching this hashtag.')}
+  </p>
+<?r else ?>
 <div id="post-excerpts" data-tag="#{@tag}">
   <div class="more-posts">
     <a href="#" class="load-more"></a>
@@ -12,3 +17,4 @@
   <?r end ?>
   <div class="spinner"></div>
 </div>
+<?r end ?>
