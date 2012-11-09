@@ -1198,7 +1198,7 @@ msgstr ""
 msgid "tutorial|An error occurred while trying to create a river."
 msgstr ""
 
-msgid "tutorial-step-1"
+msgid "tutorial-step-1\n"
 msgstr ""
 "# Welcome to Libertree!\n"
 "Hello, and welcome to Libertree! We'd like to take a minute to "

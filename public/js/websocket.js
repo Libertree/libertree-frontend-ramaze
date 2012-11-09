@@ -34,7 +34,7 @@ $(document).ready( function() {
         insertCommentHtmlFor( data.postId, data.commentId );
         break;
       case 'river-posts':
-        indicateNewPosts(data);
+        Libertree.Home.indicateNewPosts(data);
         break;
       case 'notification':
         updateNumNotificationsUnseen(data.n);
