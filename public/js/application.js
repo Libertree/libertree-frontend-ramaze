@@ -30,12 +30,22 @@ $(document).ready( function() {
     return false;
   } );
 
+  // bootstrap popovers for additional information
+  $("a[rel=popover]")
+    .popover()
+    .click(function() {
+      return false;
+    });
+
   $(document).click( function(event) {
     var t = $(event.target);
     if( t.closest('.window').length === 0 && ! t.hasClass('result-selected') ) {
       Libertree.UI.hideWindows();
     }
+    // hide all popovers
+    $("a[rel=popover]").popover('hide');
   } );
+
 
   $('input.preview').live( 'click', function() {
     var unrendered = $(this).closest('form').find('textarea[name="text"]').val();

@@ -112,12 +112,6 @@ $(document).ready( function() {
     }
   } );
 
-  $('a.help').click( function(e) {
-    e.preventDefault();
-    fadingAlert( $(this).data('text'), e.pageX, e.pageY );
-    return false;
-  } );
-
   $('.excerpts-view.pool #river-selector').chosen().change( function() {
     var selector = $('.excerpts-view.pool #river-selector');
     var riverId = selector.val();

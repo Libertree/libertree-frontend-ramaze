@@ -94,6 +94,15 @@ a.member-name, a.member-name:visited {
     color: #261818;
 }
 
+a.help {
+  vertical-align: super;
+  padding: 2px;
+  border-radius: 1em;
+  background: $dust;
+  border: 1px solid $leaf;
+  font-size: 12px;
+}
+
 textarea,
 input[type="text"],
 input[type="password"],
