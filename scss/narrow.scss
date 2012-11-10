@@ -18,12 +18,14 @@ body.body {
     text-align: left;
     #menu-narrower {
         width: 100%;
+        min-width: auto;
         #main-menu-container {
             margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
         }
         .menu-item {
-            margin-left: 5px;
-            float: right;
+            margin-left: 2px;
         }
     }
     #menu-account {
