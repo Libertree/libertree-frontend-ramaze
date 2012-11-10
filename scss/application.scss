@@ -73,27 +73,42 @@ code {
 }
 
 a {
-    border-bottom: 1px dotted;
+    color: $dark_green;
+    border-bottom: 1px dotted $dark_green;
     text-decoration: none;
 }
 a:visited {
     border-bottom: 1px dotted;
 }
 a:hover {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a:active {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a.icon:hover { background: none };
 a.member-name, a.member-name:visited {
     border: 0px;
+    color: #261818;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+.chzn-container-multi .chzn-choices,
+.chzn-container-active .chzn-choices {
+    background-color: $faint_tan;
+    background-image: none;
+    border: 1px solid $path;
+    color: $cocoa_bean;
 }
 
 textarea, input[type="text"], input[type="password"] {
-    border: 1px solid;
     @include rounded;
 }
+
 
 .main {
     max-width: 1000px;
@@ -103,6 +118,15 @@ textarea, input[type="text"], input[type="password"] {
     padding: 30px;
     background: transparent;
     @include rounded;
+
+    background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
+    background-color: $dust_translucent;
+
+    div.panel {
+        /* double override for when .main is set transparent */
+        background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
+        background-color: $dust_translucent;
+    }
 }
 
 
@@ -134,6 +158,14 @@ textarea, input[type="text"], input[type="password"] {
     margin-left: -50%;
     padding: 0px;
     z-index: 3;
+
+    background-color: $menu_colour_1;
+    background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 70%);
+    background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$menu_colour_1), color-stop(70%,$menu_colour_2));
+    background: -webkit-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -o-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -ms-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
 
     #menu-narrower {
         min-width: 700px;
@@ -383,6 +415,8 @@ form.comment {
     top: 8px;
     left: -2px;
     position: absolute;
+    background-color: $autumn_red;
+    color: white;
 }
 
 .has-shadow {
@@ -468,6 +502,7 @@ a.hashtag, a.commenter-ref {
     cursor: text;
     vertical-align: middle;
     padding-top: 2px;
+    color: $cocoa_bean;
 }
 
 form.search {
@@ -606,6 +641,7 @@ div.pools .chzn-container .chzn-results li {
     padding: 1em;
     margin: 0px;
     display: none;
+    background-color: $faint_green;
 }
 
 .more-posts-divider {

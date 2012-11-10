@@ -26,7 +26,13 @@ body.body.excerpts-view .main {
 }
 
 .excerpts-view {
+    div.spinner {
+      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+      background-color: $dust_translucent;
+    }
+
     #header {
+      background-color: $dust;
       padding: 20px;
       border-radius: $border-radius $border-radius 0 0;
     }
@@ -59,6 +65,8 @@ body.body.excerpts-view .main {
         padding: 1em 0 1em;
         border-bottom: 1px dotted $leaf;
         overflow: auto;
+        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+        background-color: $dust_translucent;
 
         .avatar {
             float: left;
@@ -128,6 +136,9 @@ body.body.excerpts-view .main {
             text-align: center;
             position: relative;
             margin-bottom: -1em;
+            &:hover {
+                background-color: $dust;
+            }
             a {
                 width: 100%;
                 display: block;

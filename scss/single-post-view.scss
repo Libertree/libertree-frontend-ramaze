@@ -21,6 +21,12 @@ body.body.single-post-view {
     display: inline-block;
     padding: 0;
     @include rounded;
+
+    &.with-comments-sliding {
+      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+      background-color: $dust_translucent;
+    }
+
     img {
       max-width: 100%;
     }
@@ -83,6 +89,9 @@ body.body.single-post-view {
       float: right;
       z-index: 0;
       overflow-y: auto;
+
+      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+      background-color: $dust_translucent;
 
       div.comments {
         vertical-align: top;
