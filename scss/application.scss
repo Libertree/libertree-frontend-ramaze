@@ -150,7 +150,6 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .menu {
-    text-align: right;
     height: 40px;
     position: fixed;
     top: 0px;
@@ -169,11 +168,13 @@ textarea, input[type="text"], input[type="password"] {
     background: linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
 
     #menu-narrower {
-        width: 1000px;
+        min-width: 700px;
+        max-width: 1000px;
         margin: 0px auto;
+        position: relative;
 
         a {
-            margin-left: 10px;
+            margin-left: 5px;
             border-bottom: 0px;
         }
         a.home {
@@ -196,18 +197,20 @@ textarea, input[type="text"], input[type="password"] {
         .menu-item {
             width: 26px;
             height: 26px;
-            margin-left: 10px;
-            float: right;
             cursor: pointer;
+            position: relative;
         }
 
         #main-menu-container {
-            margin-right: 345px;
+            margin: 0 auto;
+            padding-left: 190px;
+            padding-right: 190px;
+            width: 360px;
             padding-top: 6px;
             height: 26px;
         }
         #main-menu-container.with-custom {
-            margin-right: 360px;
+            width: 386px;
         }
 
         #menu-notifications {
@@ -217,6 +220,7 @@ textarea, input[type="text"], input[type="password"] {
         #menu-account {
             width: auto;
             padding-top: 4px;
+            float: right;
 
             img {
                 height: 32px;
@@ -231,7 +235,7 @@ textarea, input[type="text"], input[type="password"] {
 
         #account-window {
             top: 46px;
-            right: 18px;
+            right: 0px;
             width: 180px;
             padding: 5px;
 
@@ -387,7 +391,7 @@ form.comment {
 
 #notifications-window {
     top: 46px;
-    left: 570px;
+    margin-left: 250px;
     width: 300px;
     min-height: 100px;
     padding: 10px;
@@ -409,8 +413,8 @@ form.comment {
 #num-notifications-unseen {
     padding: 1px 2px 2px 2px;
     top: 8px;
-    left: -28px;
-    position: relative;
+    left: -2px;
+    position: absolute;
     background-color: $autumn_red;
     color: white;
 }
@@ -503,6 +507,8 @@ a.hashtag, a.commenter-ref {
 
 form.search {
     margin-top: 2px;
+    margin-right: 7px;
+    float: left;
     input {
         width: 100px;
         height: 20px;
