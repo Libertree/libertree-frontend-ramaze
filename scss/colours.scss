@@ -95,17 +95,6 @@ input[type="password"],
     background-color: $faint_green;
 }
 
-.single-post-view {
-    div.post.with-comments-sliding {
-        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-        background-color: $dust_translucent;
-    }
-    div.comments-pane {
-        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-        background-color: $dust_translucent;
-    }
-}
-
 div.profile {
     background-color: $dust; /* fallback for browsers that don't support alpha in colours */
     background-color: $dust_translucent;
