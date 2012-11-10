@@ -94,8 +94,3 @@ input[type="password"],
 .more-posts {
     background-color: $faint_green;
 }
-
-div.profile {
-    background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-    background-color: $dust_translucent;
-}
