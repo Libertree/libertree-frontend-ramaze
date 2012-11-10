@@ -39,9 +39,6 @@
     </div>
 
     <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
-      <?r if account.custom_link ?>
-        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-link.png', {alt:"custom"}}</a>
-      <?r end ?>
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q" tabindex="99"/>
       </form>
@@ -55,6 +52,9 @@
         class="menu-item"
         id="menu-home"
         title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}</a>
+      <?r if account.custom_link ?>
+        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-link.png', {alt:"custom"}}</a>
+      <?r end ?>
     </div>
   <?r end ?>
 </div></div>
