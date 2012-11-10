@@ -17,6 +17,10 @@
    sodipodi:docname="menu-bar-icons.svg">
   <defs
      id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4089"
+       is_visible="true" />
     <marker
        inkscape:stockid="Arrow1Lstart"
        orient="auto"
@@ -38,15 +42,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="435.19079"
-     inkscape:cy="915.2428"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-43.177165"
+     inkscape:cy="878.53514"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
-     inkscape:window-width="860"
-     inkscape:window-height="1056"
-     inkscape:window-x="1056"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1060"
+     inkscape:window-x="0"
      inkscape:window-y="20"
      inkscape:window-maximized="0"
      showguides="true"
@@ -69,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -77,6 +81,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="fill:#4d4d4d;fill-opacity:0;fill-rule:nonzero;stroke:none"
+       id="rect4232-0-91"
+       width="109.28572"
+       height="109.28572"
+       x="17.5"
+       y="142.36218"
+       inkscape:export-filename="/home/jackie/libertree-project/libertree-frontend-ramaze/public/images/icon-exclamation.png"
+       inkscape:export-xdpi="21.243006"
+       inkscape:export-ydpi="21.243006" />
     <rect
        style="fill:#4d4d4d;fill-opacity:0;fill-rule:nonzero;stroke:none"
        id="rect4232-0-2"
@@ -200,5 +214,11 @@
          d="m 420.49656,107.88323 c -2.01951,3.47748 -1.00674,7.94973 2.3906,10.19678 3.39733,2.24705 7.92567,1.43978 10.33551,-1.77953 l -12.72611,-8.41725 z"
          style="fill:#505534;fill-opacity:1;stroke:none" />
     </g>
+    <path
+       style="fill:#505534;fill-opacity:1"
+       d="m 56.56932,207.40846 c -7.25137,-5.05292 -0.93814,-6.83211 3.38289,-11.91799 8.52591,4.5109 13.8896,6.566 20.96067,6.566 7.07107,0 29.94213,-23.24417 30.05204,-30.05204 0.11413,-7.07014 -5.30331,-12.37437 -12.37437,-12.37437 -7.9057,0 -15.90991,8.83883 -24.74874,17.67767 l -15.9099,-1.76777 c 12.37437,-12.37437 22.94443,-24.0267 35.7251,-27.82309 9.76062,-2.89931 15.54014,-2.22895 22.61121,4.84212 7.07106,7.07107 8.39295,16.9802 6.31345,23.73859 -2.0203,6.56599 -30.30458,38.63833 -37.37565,38.63833 -7.07107,0 -16.21986,0.94567 -28.6367,-7.52745 z M 27.87987,240.94734 C 20.8088,233.87627 20.8088,226.8052 20.8088,219.73413 c 0,-7.07106 12.37437,-19.44543 22.98097,-30.05203 5.31004,-4.08277 9.21764,-10.73287 16.28871,-10.73287 7.07107,0 17.29886,1.89403 24.36993,8.9651 0.96003,3.71335 0.3273,9.50504 -3.53553,10.6066 -4.68229,-2.72435 -12.37437,-5.3033 -19.44544,-5.3033 -7.07107,0 -28.28427,21.2132 -28.28427,28.28427 0,7.07107 7.07107,14.14214 14.14214,14.14214 7.07106,0 17.9302,-13.38452 23.2335,-18.68782 l 13.8896,2.02031 c -8.41605,8.57713 -28.2843,28.74247 -35.38479,28.8928 -7.04162,0.14908 -14.11268,0.14908 -21.18375,-6.92199 z"
+       id="use3197"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccsssccsssscsscsccsssccss" />
   </g>
 </svg>
