@@ -139,6 +139,7 @@ textarea, input[type="text"], input[type="password"] {
         min-width: 650px;
         max-width: 1000px;
         margin: 0px auto;
+        position: relative;
 
         a {
             margin-left: 5px;
@@ -202,7 +203,7 @@ textarea, input[type="text"], input[type="password"] {
 
         #account-window {
             top: 46px;
-            right: 18px;
+            right: 0px;
             width: 180px;
             padding: 5px;
 
