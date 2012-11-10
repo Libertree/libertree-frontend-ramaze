@@ -73,27 +73,42 @@ code {
 }
 
 a {
-    border-bottom: 1px dotted;
+    color: $dark_green;
+    border-bottom: 1px dotted $dark_green;
     text-decoration: none;
 }
 a:visited {
     border-bottom: 1px dotted;
 }
 a:hover {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a:active {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a.icon:hover { background: none };
 a.member-name, a.member-name:visited {
     border: 0px;
+    color: #261818;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+.chzn-container-multi .chzn-choices,
+.chzn-container-active .chzn-choices {
+    background-color: $faint_tan;
+    background-image: none;
+    border: 1px solid $path;
+    color: $cocoa_bean;
 }
 
 textarea, input[type="text"], input[type="password"] {
-    border: 1px solid;
     @include rounded;
 }
+
 
 .main {
     max-width: 1000px;

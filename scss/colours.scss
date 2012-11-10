@@ -27,36 +27,5 @@ $menu_colour_2: $stone;
 
 $shadow: #1a1f10;
 
-/* -------------- */
-
 $header_gradient_start: top;
 $header_gradient_stop: bottom;
-
-a {
-    color: $dark_green;
-    border-bottom: 1px dotted $dark_green;
-    text-decoration: none;
-}
-a:hover {
-    color: $autumn_red;
-    border-bottom: 1px dotted $autumn_red;
-}
-a:active {
-    color: $autumn_red;
-    border-bottom: 1px dotted $autumn_red;
-}
-
-a.member-name, a.member-name:visited {
-    color: #261818;
-}
-
-textarea,
-input[type="text"],
-input[type="password"],
-.chzn-container-multi .chzn-choices,
-.chzn-container-active .chzn-choices {
-    background-color: $faint_tan;
-    background-image: none;
-    border: 1px solid $path;
-    color: $cocoa_bean;
-}
