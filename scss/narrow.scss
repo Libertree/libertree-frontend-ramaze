@@ -18,7 +18,7 @@ body.body {
     text-align: left;
     #menu-narrower {
         width: 100%;
-        min-width: auto;
+        min-width: 0px;
         #main-menu-container {
             margin-left: 0px;
             margin-right: 0px;
@@ -28,9 +28,9 @@ body.body {
         .menu-item {
             margin-left: 2px;
         }
-    }
-    #menu-account {
-        margin-left: 60px;
+        #menu-account {
+            margin-right: 5px;
+        }
     }
     form.search {
         margin-left: 5px;
