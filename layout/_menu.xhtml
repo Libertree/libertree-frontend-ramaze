@@ -42,7 +42,9 @@
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q" tabindex="99"/>
       </form>
+      <?r if session[:layout] != 'narrow' ?>
       <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
+      <?r end ?>
       <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}">#{img 'icon-edit.png', {alt:s_('menu|New Post')}}</a>
       <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>
       #{ render_file 'layout/_chat.xhtml' }
