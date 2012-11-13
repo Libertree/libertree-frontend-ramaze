@@ -78,6 +78,9 @@ module Controller
         if e.message =~ /rivers_account_id_query_key/
           flash[:error] = _('You already have a river for that.')
           redirect_referrer
+        elsif e.message =~ /rivers_label_check/
+          flash[:error] = _('Please input a valid label for this river.')
+          redirect_referrer
         else
           raise e
         end
