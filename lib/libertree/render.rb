@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s, opts = [ :filter_html, :smart, :strike, :autolink, :hard_wrap ])
+  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap ])
     return ''  if s.nil? or s.empty?
     Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
@@ -118,9 +118,18 @@ module Libertree
   end
 
   def self.render(s, autoembed=false, filter_images=false)
+
+    # FIXME: when :smart is enabled, "/posts/show/987/123/#comment-123" is
+    # turned into "<p>/posts/show/987/123/#comment&ndash;123</p>".
+    #
+    # This only affects relative URLs that should be caught by the autolinker.
+    # The problem could be fixed by moving the autolinker for relative URLs
+    # into the markdown parser. A solution that matches against
+    # "#comment&ndash;" would be quite ugly.
+
     opts = [
       :filter_html,
-      :smart,
+      #:smart,
       :strike,
       :autolink,
       :hard_wrap
