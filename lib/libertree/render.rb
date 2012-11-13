@@ -45,7 +45,14 @@ module Libertree
     html.traverse do |node|
       if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
+
         if ! hashtag.eql? node.text
+          # nokogiri strips trailing whitespace, so
+          # we need to replace it with &#32; to preserve it
+          if hashtag[-1] =~ /\s/
+            hashtag = hashtag[0..-2] + "&#32;"
+          end
+
           node.replace( Nokogiri::HTML.fragment(hashtag) )
         end
       end
