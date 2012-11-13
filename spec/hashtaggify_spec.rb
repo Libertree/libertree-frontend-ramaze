@@ -69,6 +69,7 @@ describe Libertree do
     it 'should leave a space between two nodes' do
       subject.render('[separate](URL) [this](URL)').should == %{<p><a href="URL">separate</a> <a href="URL">this</a></p>}
       subject.render('#hash [tag](http://libertreeproject.org)').should == %{<p><a href="/rivers/ensure_exists/%23hash" class="hashtag">#hash</a> <a href="http://libertreeproject.org">tag</a></p>}
+      subject.render("#hash   \t[tag](http://libertreeproject.org)").should == %{<p><a href="/rivers/ensure_exists/%23hash" class="hashtag">#hash</a> <a href="http://libertreeproject.org">tag</a></p>}
     end
 
   end
