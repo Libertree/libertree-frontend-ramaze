@@ -47,7 +47,6 @@
   #{ js_nocache 'home' }
   #{ js_nocache 'messages' }
   #{ js_nocache 'profile' }
-  #{ js_nocache 'contact-lists' }
   <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
     #{ js_nocache 'websocket' }
   <?r end ?>

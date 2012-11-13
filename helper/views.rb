@@ -21,7 +21,7 @@ module Ramaze
 
       # loads a script for the current controller
       def controller_js
-        filename = self.route.path.gsub(/[^a-z]/,'')
+        filename = self.route.path.gsub(/[^a-z_-]/,'')
         if File.exist?("public/js/controller/#{filename}.js")
           js_nocache "controller/#{filename}"
         else
