@@ -21,7 +21,10 @@ module Libertree
     return ''  if s.nil? or s.empty?
 
     # Crude autolinker for relative links to local resources
-    s.gsub(%r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
+    s.gsub(
+      %r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+/?(#comment-\d+)?|/(\d+/?)?)?)},
+      "<a href='\\1'>\\1</a>"
+    )
   end
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
