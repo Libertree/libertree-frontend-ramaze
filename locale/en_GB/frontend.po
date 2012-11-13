@@ -927,15 +927,15 @@ msgstr ""
 
 msgid "tutorial-river-label|Unread posts"
 msgstr ""
-msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgid "tutorial|All posts on Libertree which you haven't read yet"
 msgstr ""
 
 msgid "tutorial-river-label|Posts from the forest"
 msgstr ""
-msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgid "tutorial|All posts on Libertree"
 msgstr ""
 
 msgid "tutorial-river-label|My activity"
 msgstr ""
-msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
+msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
 msgstr ""
