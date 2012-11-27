@@ -5,6 +5,12 @@ GIT
     libertree-client (0.0.1)
 
 GIT
+  remote: git://github.com/Libertree/libertree-model-rb.git
+  revision: ef985cc5f8533d6b06bffa28c45416fe205b8888
+  specs:
+    libertree-model (0.0.1)
+
+GIT
   remote: git://github.com/RDBI/rdbi-driver-postgresql.git
   revision: 4c19912b5649bbefad20b48a378a5bf0dad60c15
   specs:
@@ -35,11 +41,6 @@ GIT
   revision: 43424ff6145969e7b1b8a6f25675dc7996913f60
   specs:
     rpeg-markdown (1.4.6)
-
-PATH
-  remote: ../libertree-db/rb
-  specs:
-    libertree-db (0.0.1)
 
 GEM
   remote: http://rubygems.org/
@@ -158,7 +159,7 @@ DEPENDENCIES
   factory_girl
   fast_gettext
   libertree-client!
-  libertree-db!
+  libertree-model!
   linecache19!
   m4dbi
   mini_magick
