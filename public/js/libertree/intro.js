@@ -146,6 +146,9 @@ Libertree.Intro = {
       $("a[rel=popover]").popover('hide');
     })
 
+    // enable fancy contact list member selector
+    $('select#contact-list-members').chosen();
+
     // unhide the previous and hide the current step
     $('.tutorial-step .button.prev').live( 'click', function() {
       var prev_id = "#step-" + $(this).data('prev');

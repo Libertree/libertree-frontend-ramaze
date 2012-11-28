@@ -42,12 +42,14 @@ tail}).should == %{<p>head</p>
       subject.render("[Selig](http://en.wikipedia.org/wiki/Selig_(band)) wrote most of the stuff for [Echt](http://en.wikipedia.org/wiki/Echt_(band))").should == "<p><a href=\"http://en.wikipedia.org/wiki/Selig_(band)\">Selig</a> wrote most of the stuff for <a href=\"http://en.wikipedia.org/wiki/Echt_(band)\">Echt</a></p>"
     end
 
-    it 'should autolink relative URLs' do
-      url = "/posts/show/1234"
-      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
-
-      # should also work in lists
+    it 'should autolink relative URLs in lists' do
+      url = "http://libertreeproject.org"
       subject.render("- #{url}").should =~ %r{<a href="#{url}">#{url}</a>}
+    end
+
+    it 'should not hashtaggify parts of relative URLs' do
+      url = "/posts/show/987/123/#comment-123"
+      subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
 
       url = "/posts/show/987/123#comment-123"
       subject.render(url).should =~ %r{<a href="#{url}">#{url}</a>}
@@ -69,5 +71,27 @@ tail}).should == %{<p>head</p>
       subject.render('[this is not a #valid hashtag](http://elephly.net)').should == '<p><a href="http://elephly.net">this is not a #valid hashtag</a></p>'
     end
 
+  end
+
+  describe '#autolinker' do
+    it 'should autolink relative URLs' do
+      url = "/posts/show/1234"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+
+      url = "/posts/show/1234/"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+
+      url = "/posts/show/1234/123"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+
+      url = "/posts/show/1234/123/"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+
+      url = "/posts/show/987/123#comment-123"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+
+      url = "/posts/show/987/123/#comment-123"
+      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+    end
   end
 end

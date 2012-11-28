@@ -37,7 +37,8 @@ function insertCommentHtmlFor( postId, commentId ) {
 }
 
 function hideLoadCommentsLinkIfAllShown(element) {
-  var n = parseInt( element.find('.comments .num-comments').text() );
+  var n = parseInt( element.find('.comments .num-comments').data('total') );
+
   if( element.find('div.comment').length === n ) {
     element.find('a.load-comments').hide();
   }

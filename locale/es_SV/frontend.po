@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-10-11 01:11+0000\n"
+"PO-Revision-Date: 2012-11-09 02:35+0000\n"
 "Last-Translator: Mauricio Mejía <hectormejia@riseup.net>\n"
 "Language-Team: Spanish (El Salvador) (http://www.transifex.com/projects/p/libertree/language/es_SV/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: view/login.xhtml
 msgid "Username"
-msgstr "Nombre de usuario."
+msgstr "Nombre de usuario"
 
 msgid "Password"
 msgstr "Contraseña"
@@ -34,16 +34,16 @@ msgid "Sign up now!"
 msgstr "¡Regístrate ahora!"
 
 msgid "Forgot your credentials?"
-msgstr "¿Olvidaste tus credenciales?"
+msgstr "¿Olvidaste tus datos?"
 
 msgid ""
 "You can %sreset your password%s if your account has an email address on "
 "record."
-msgstr "Puedes %srestaurar tu contraseña%s si proporcionaste una dirección de correo electrónico en la información de tu cuenta."
+msgstr "Puedes %srestaurar tu contraseña%s si proporcionaste una dirección de correo electrónico en la información de registro de tu cuenta."
 
 #: controller/main.rb
 msgid "Invalid credentials."
-msgstr "Credenciales no válidos"
+msgstr "Datos no válidos"
 
 msgid "A valid invitation code is required."
 msgstr "Necesitas un código de invitación válido."
@@ -52,7 +52,7 @@ msgid "This invitation code has already been used. Try another one!"
 msgstr "Éste código de invitación ya fue utilizado. Intenta con otro"
 
 msgid "You mistyped your password."
-msgstr "Has escrito incorrectamente tu contraseña."
+msgstr "Has escrito tu contraseña incorrectamente."
 
 msgid "Username %s is taken.  Please choose another."
 msgstr "El nombre de usuario %s está en uso. Por favor, elige otro."
@@ -64,7 +64,7 @@ msgstr "El nombre de usuario debe tener al menos 2 caracteres y éstos deben con
 
 msgid ""
 "A password reset link has been sent for the account with that email address."
-msgstr "Se ha enviado al correo electrónico asociado a esta cuenta un hipervínculo para restaurar tu contraseña. "
+msgstr "Se ha enviado al correo electrónico asociado a ésta cuenta un hipervínculo para restaurar la contraseña. "
 
 msgid "You have been logged out."
 msgstr "Te has desconectado"
@@ -77,7 +77,7 @@ msgstr "Por favor, inicia sesión"
 msgid ""
 "Failed to create invitation.  You may only have up to 5 unaccepted "
 "invitations at once."
-msgstr "Error al crear invitación. No puedes tener sin aceptar más de 5 invitaciones a la vez."
+msgstr "Error al crear invitación. No puedes tener más de 5 invitaciones sin aceptar a la vez."
 
 #: view/home/index.xhtml
 msgid "River:"
@@ -85,6 +85,12 @@ msgstr "Río:"
 
 msgid "manage rivers"
 msgstr "Manejar ríos"
+
+msgid "In order to see posts here, you need to have at least one river."
+msgstr "Para ver los mensajes aquí, tiene que tener al menos un río."
+
+msgid "%sCreate one now%s"
+msgstr "%sCrear uno ahora%s"
 
 #: view/home/_menu.xhtml
 msgid "by post time"
@@ -101,7 +107,7 @@ msgid "New Post"
 msgstr "Nueva publicación"
 
 msgid "(enter hashtags here)"
-msgstr "(Ingresa las etiquetas aquí)"
+msgstr "(Ingresa aquí las etiquetas)"
 
 msgid "new-post|Post"
 msgstr "Publicar"
@@ -127,6 +133,13 @@ msgid ""
 "This post and its comments are only visible to members of this Libertree "
 "forest"
 msgstr "Esta publicación y sus comentarios sólo son visibles para los miembros de este Bosque de Libertree."
+
+#: helper/views.rb
+msgid "Click here for help"
+msgstr "Clic aquí para ayuda"
+
+msgid "help|What does this mean?"
+msgstr "¿Qué quiere decir esto?"
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -155,7 +168,7 @@ msgid "mark post unread"
 msgstr "Marcar publicación como no leída"
 
 msgid "mark post read"
-msgstr "Marcar publicación como Leída"
+msgstr "Marcar publicación como leída"
 
 msgid "edit"
 msgstr "Editar"
@@ -207,10 +220,10 @@ msgid "comment"
 msgstr "Comentar"
 
 msgid "mark read"
-msgstr "Marcar como Leída"
+msgstr "Marcar como leída"
 
 msgid "mark unread"
-msgstr "Marcar como no Leída."
+msgstr "Marcar como no leída."
 
 msgid ""
 "Hiding a post prevents it from showing in your rivers or triggering "
@@ -253,7 +266,7 @@ msgstr "Mostrar menos"
 
 #: controller/posts.rb
 msgid "Post may not be empty."
-msgstr "Las publicaciones no pueden ser vacías"
+msgstr "La publicación no puede ser vacía"
 
 #: controller/pools.rb
 msgid "You already have a pool with that name."
@@ -270,7 +283,7 @@ msgstr "Publicación agregada al estanque &ldquo;%srdquo;"
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
-msgstr "No se permiten caracteres especiales en el nombre para mostrar."
+msgstr "En el nombre para mostrar no se permiten caracteres especiales."
 
 msgid "Avatar deleted."
 msgstr "Avatar eliminado."
@@ -282,7 +295,7 @@ msgid "Failed to reset avatar."
 msgstr "Error al restaurar avatar"
 
 msgid "Only image files may be used as avatars."
-msgstr "Sólo pueden usarse archivos de imágenes como avatar"
+msgstr "Como avatar sólo pueden usarse archivos de imágenes."
 
 msgid "Only .png, .jpeg and .gif files may be used as avatars."
 msgstr "Sólo se puede usar como avatar archivos .png, .jpeg, y .gif "
@@ -317,7 +330,7 @@ msgid "Comment successfully posted."
 msgstr "Comentario publicado exitosamente."
 
 msgid "detach"
-msgstr "Despegar"
+msgstr "Desprender"
 
 msgid "attach"
 msgstr "Colocar"
@@ -345,7 +358,7 @@ msgid "Like this comment"
 msgstr "Me gusta este comentario"
 
 msgid "shareable link for this comment"
-msgstr "Enlace para poder compartir este comentario"
+msgstr "Enlace para compartir este comentario"
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
@@ -407,7 +420,7 @@ msgid "Custom CSS:"
 msgstr "Personalizar CSS:"
 
 msgid "Custom JS:"
-msgstr "Personalizar JS:"
+msgstr "Personalizar Java Script:"
 
 msgid "Automatic embedding:"
 msgstr "Incrustación automática:"
@@ -593,8 +606,17 @@ msgstr "La lista de contactos &ldquo;%s&rdquo; ha sido eliminada."
 msgid "Contact Lists"
 msgstr "Lista de contactos."
 
+msgid "Create Contact List"
+msgstr "Crear lista de contactos"
+
 msgid "contact-list|Name:"
 msgstr "Nombre:"
+
+msgid "contact-list|Members:"
+msgstr "Miembros:"
+
+msgid "(type here to search)"
+msgstr "(Escribe aquí para buscar)"
 
 msgid "new-contact-list|Create"
 msgstr "Crear"
@@ -605,9 +627,6 @@ msgstr "Eliminar"
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
 msgstr "Lista de contactos: %s"
-
-msgid "(choose members)"
-msgstr "(Elegir miembros)"
 
 msgid "contact-list|Save"
 msgstr "Guardar"
@@ -650,11 +669,14 @@ msgstr "Este árbol"
 msgid "Trees"
 msgstr "Arboles"
 
-msgid "new-tree|Hostname:"
-msgstr "Nombre de host:"
+msgid "introduce-tree|Hostname or IP address:"
+msgstr "Nombre de Host o dirección IP:"
 
-msgid "new-tree|Add"
-msgstr "Agregar"
+msgid "introduce-tree|Introduce"
+msgstr "Introducir"
+
+msgid "INTRODUCE request pending for remote tree @ %s"
+msgstr "INTRODUCIR solicitud pendiente para árbol remoto @ %s"
 
 msgid "Job queue"
 msgstr "Trabajo en cola"
@@ -1012,9 +1034,6 @@ msgstr "(Avanazado) Usa el término especial %s segido por &lt; o &gt; y un núm
 msgid "Example: %s:word-count < 16%s"
 msgstr "Ejemplo: %s:cuenta-palabras<16%s"
 
-msgid "You can also %shave the beginner rivers recreated for you%s."
-msgstr "También puedes %stener el río de principiantes recreado para ti%s."
-
 msgid "river|Examples"
 msgstr "Ejemplos"
 
@@ -1181,82 +1200,76 @@ msgstr "Error al publicar comentario."
 
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
-msgstr ""
+msgstr "Mis intereses"
 
 msgid "tutorial|Back"
-msgstr ""
+msgstr "Regreso"
+
 msgid "tutorial|Next"
-msgstr ""
+msgstr "Siguiente"
+
 msgid "tutorial|Skip"
-msgstr ""
+msgstr "Saltar"
+
 msgid "tutorial|Done!"
-msgstr ""
+msgstr "¡Hecho!"
 
 msgid "tutorial|An error occurred while trying to create a river."
-msgstr ""
+msgstr "Ha ocurrido un error mientras intentabas crear un río"
 
 msgid "tutorial-step-1\n"
 msgstr ""
-"# Welcome to Libertree!\n"
-"Hello, and welcome to Libertree! We'd like to take a minute to "
-"explain the most important concepts in Libertree, as this will help you get the "
-"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
-"Libertree is a place where people write things in public, or share interesting "
-"stuff with others.\n\n"
-" - Someone who is a part of Libertree is called a *member*.\n"
-" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
-" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+"# ¡Bienvenido a Libertree!\n"
+"¡Hola, y bienvenido a Libertree! Nos gustaría tomarnos un minuto "
+"para explicar los conceptos más importantes en Libertree, ya que "
+"esto te ayudará a sacarle el máximo provecho. Puedes [saltar este tutorial](/home) "
+"y reanudarlo en otro momento.\n\n"
+"Libertree es un lugar donde las personas escriben cosas en público "
+"o comparten unas con otra cosas interesantes.\n\n"
+" - Cualquiera que sea parte de Libertree es llamado *miembro*.\n"
+" - Los miembros escriben publicaciones <a href='#' class='help' rel='popover' title='¿Qué es una publicación?' data-content='Una publicación es un mensaje. Exactamente qué hay en esas publicaciones es ampliamente variado: personas diferentes están interesadas en cosas diferentes y dicen muchas cosas diferentes. Las publicaciones pueden ser tan cortas como una oración o tan largas como un artículo de periódico.'>?</a> para que otros miembros lo vean.\n"
+" - Los miembros pueden comentar <a href='#' class='help' rel='popover' title='¿Qué es un comentario?' data-content='Los comentarios son respuestas escritas a otras publicaciones u otros comentarios.'>?</a> en una publicación.\n\n"
 
 msgid "tutorial-step-2a"
 msgstr ""
-"# Your interests\n"
-"There are a lot of posts made to Libertree every day. If you like, "
-"you can take a minute right now to let us know what your interests are. "
-"We'll use this information to narrow down what posts you see at first, "
-"so you don't get overwhelmed. You can always change things later, or "
-"explore ways to read more posts.  Enter a list of interests (one word "
-"each):"
+"# Sus intereses\n"
+"Hay una gran cantidad de mensajes publicados en Libertree todos los días. Si lo deseas, puede tomarte un minuto en este momento para hacernos saber cuáles son tus intereses. Usaremos esta información para reducir los mensajes verás en primer lugar, para que no sea abrumador para ti. Siempre puedes cambiar las cosas después, o explorar formas de leer más artículos. Escribe una lista de intereses (una palabra para cada uno):"
 
 msgid "tutorial-step-2b"
-msgstr "Congratulations! You have just created your first river."
+msgstr "¡Felicidades! Acabas de crear tu primer río"
 
 msgid "tutorial-step-3-heading"
-msgstr "# Rivers"
+msgstr "# Ríos"
 
 msgid "tutorial-step-3a"
-msgstr ""
-"Rivers are a powerful feature that lets you pick or filter posts "
-"from the torrent of posts on Libertree. Here is a list of "
-"rivers that you may find useful. Select those that you would "
-"like added to your account."
+msgstr "Los ríos son un poderoso elemento que te permite obtener o filtrar publicaciones desde el flujo de publicaciones en Libertree. Aquí hay una lista de ríos que te podrían resultar útiles. Selecciona aquellos que te gustaría agregar a tu cuenta."
 
 msgid "tutorial-step-3b"
-msgstr ""
-"Be sure to check out the river management page after "
-"this tutorial to see interesting examples of what you "
-"can do with rivers."
+msgstr "Asegúrate de revisar la página de gestión de ríos después de este tutorial para ver interesantes ejemplos de lo que puedes hacer con los ríos."
 
 msgid "tutorial-step-4-heading"
-msgstr "# Friends"
+msgstr "# Amigos"
+
 msgid "intro-contact-list-name|Friends"
-msgstr ""
+msgstr "Amigos"
 
 msgid "tutorial-step-4"
-msgstr ""
-"If you think some of your friends are already Libertree members, "
-"you can try to find them and add them as contacts now."
+msgstr "Si piensas que algunos de tus amigos ya son miembros Libertree,  puedes tratar de encontrar y agregarlos como contactos ahora."
 
 msgid "tutorial-river-label|Unread posts"
-msgstr ""
-msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
-msgstr ""
+msgstr "Publicaciones no leídas"
+
+msgid "tutorial|All posts on Libertree which you haven't read yet"
+msgstr "Todas las publicaciones que aún no has leído."
 
 msgid "tutorial-river-label|Posts from the forest"
-msgstr ""
-msgid "tutorial|Posts from the forest%sAll posts on Libertree"
-msgstr ""
+msgstr "Publicaciones desde el bosque"
+
+msgid "tutorial|All posts on Libertree"
+msgstr "Todas las publicaciones de Libertree"
 
 msgid "tutorial-river-label|My activity"
-msgstr ""
-msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
-msgstr ""
+msgstr "Mi actividad"
+
+msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
+msgstr "Publicaciones que te han gustado, has comentado o las que te has suscrito"
