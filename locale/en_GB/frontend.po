@@ -435,6 +435,10 @@ msgstr ""
 msgid "seconds ago"
 msgstr ""
 
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr ""
+
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
 msgstr ""
