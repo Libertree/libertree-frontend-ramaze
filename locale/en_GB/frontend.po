@@ -435,6 +435,10 @@ msgstr ""
 msgid "seconds ago"
 msgstr ""
 
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr ""
+
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
 msgstr ""
@@ -856,6 +860,14 @@ msgstr ""
 
 #: public/js/comments.js
 msgid "Failed to post comment."
+msgstr ""
+
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr ""
+msgid "Add this hashtag to an existing river."
+msgstr ""
+msgid "There are no posts matching this hashtag."
 msgstr ""
 
 #: view/intro/index.xhtml

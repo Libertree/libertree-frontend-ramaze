@@ -1,0 +1,30 @@
+<div id="header">
+  <h1>##{@tag}</h1>
+  <a href="/rivers/ensure_exists/%23#{@tag}">#{_('Save this hashtag listing as a river.')}</a>
+  <?r if @rivers ?>
+  <div>
+    <select id="river-selector" name="river_id" data-tag="#{@tag}" data-placeholder="#{_('Add this hashtag to an existing river.')}">
+      <option value="0"></option>
+      <?r @rivers.each do |r| ?>
+        <option value="#{r.id}">#{r.label}</option>
+      <?r end ?>
+    </select>
+  </div>
+  <?r end ?>
+</div>
+
+<?r if @posts.empty? ?>
+  <p id="no-more-posts" class="panel">
+    #{_('There are no posts matching this hashtag.')}
+  </p>
+<?r else ?>
+<div id="post-excerpts" data-tag="#{@tag}">
+  <div class="more-posts">
+    <a href="#" class="load-more"></a>
+  </div>
+  <?r @posts.reverse.each do |post| ?>
+    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @post_order }
+  <?r end ?>
+  <div class="spinner"></div>
+</div>
+<?r end ?>

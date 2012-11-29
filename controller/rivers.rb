@@ -166,5 +166,15 @@ module Controller
       end
       ''
     end
+
+    def _add_term(river_id, term)
+      river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
+      if river
+        river.revise(
+          'label' => river.label,
+          'query' => river.query + %| +#{term}|
+        )
+      end
+    end
   end
 end

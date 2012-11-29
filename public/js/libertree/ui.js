@@ -9,7 +9,6 @@ Libertree.UI = {
 
   continuousScrollHandler: function (loader) {
     if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-      // TODO
       if( Libertree.PostLoader.loading || $('#no-more-posts').length ) {
         return;
       }
