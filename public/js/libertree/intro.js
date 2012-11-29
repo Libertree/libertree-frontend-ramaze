@@ -1,4 +1,4 @@
-var Tutorial = {
+Libertree.Intro = {
   currentStep: function(that) {
     return $(that).closest('.tutorial-step');
   },
@@ -21,7 +21,7 @@ var Tutorial = {
 
   /* step 3 --------------------------------------------------*/
   addRiversFromList: function(that) {
-    var step = Tutorial.currentStep(that);
+    var step = Libertree.Intro.currentStep(that);
     var rivers = $(step).find('input').map(
       function(i,e) {
         if ($(e).prop('checked')) {
@@ -46,7 +46,7 @@ var Tutorial = {
 
   /* step 4 --------------------------------------------------*/
   createContactList: function(that) {
-    var step = Tutorial.currentStep(that);
+    var step = Libertree.Intro.currentStep(that);
     var members = $(that.id+' #contact-list-members').val();
 
     // don't create contact list if no members specified
@@ -123,78 +123,77 @@ var Tutorial = {
     }
     this.restoreStep(step);
   },
-};
 
+  init: function() {
+    // unhide the step that is indicated in the URL, or unhide the first step
+    // TODO: show and hide steps when the hash in the location changes
 
-/*------------------------------------------*/
-
-$(document).ready( function() {
-
-  // unhide the step that is indicated in the URL, or unhide the first step
-  // TODO: show and hide steps when the hash in the location changes
-
-  var step = window.location.hash;
-  if (step) {
-    $(step).show();
-  } else {
-    $('.tutorial-step').first().show();
-  }
-
-  // bootstrap popovers for additional information
-  $("a[rel=popover]")
-    .popover()
-    .click(function() {
-      return false;
-    })
-  $(document).click( function() {
-    // hide all popovers
-    $("a[rel=popover]").popover('hide');
-  })
-
-  // unhide the previous and hide the current step
-  $('.tutorial-step .button.prev').live( 'click', function() {
-    var prev_id = "#step-" + $(this).data('prev');
-    Tutorial.currentStep(this).hide();
-    $(prev_id).show();
-  });
-
-  // go to next step without executing functions
-  $('.tutorial-step .button.skip').live( 'click', function(event) {
-    event.preventDefault();
-    var step = Tutorial.currentStep(this);
-    Tutorial.nextStep(step);
-  });
-
-  // Execute a function (if provided).
-  // Then, unhide the next and hide the current step.
-  $('.tutorial-step .button.next').live( 'click', function(event) {
-    event.preventDefault();
-
-    var step = Tutorial.currentStep(this);
-    var that = this;
-
-    // execute function if provided and valid
-    if (step.data('func') && Tutorial[step.data('func')] !== undefined) {
-      Libertree.UI.addSpinner(this, 'after');
-      $(step).find('.button').hide();
-
-      // execute specified function
-      var result = Tutorial[step.data('func')](this);
-
-      // If the return value is evaluated asynchronously, wait for it
-      // TODO: is there a better way to find out if this object supports ".promise()"?
-      // TODO: I don't like this. Pass the function to a handler that does all of this instead?
-      if (jQuery.type(result['promise']) === "function") {
-        result.promise().done(
-          function() {
-            Tutorial.evaluateResponse(result, step, that);
-          });
-      } else {
-        Tutorial.evaluateResponse(result, step, that);
-      }
+    var step = window.location.hash;
+    if (step) {
+      $(step).show();
     } else {
-      // end tutorial or move on to next step
-      Tutorial.forward(step, that);
+      $('.tutorial-step').first().show();
     }
-  })
-});
+
+    // bootstrap popovers for additional information
+    $("a[rel=popover]")
+      .popover()
+      .click(function() {
+        return false;
+      })
+    $(document).click( function() {
+      // hide all popovers
+      $("a[rel=popover]").popover('hide');
+    })
+
+    // enable fancy contact list member selector
+    $('select#contact-list-members').chosen();
+
+    // unhide the previous and hide the current step
+    $('.tutorial-step .button.prev').live( 'click', function() {
+      var prev_id = "#step-" + $(this).data('prev');
+      Libertree.Intro.currentStep(this).hide();
+      $(prev_id).show();
+    });
+
+    // go to next step without executing functions
+    $('.tutorial-step .button.skip').live( 'click', function(event) {
+      event.preventDefault();
+      var step = Libertree.Intro.currentStep(this);
+      Libertree.Intro.nextStep(step);
+    });
+
+    // Execute a function (if provided).
+    // Then, unhide the next and hide the current step.
+    $('.tutorial-step .button.next').live( 'click', function(event) {
+      event.preventDefault();
+
+      var step = Libertree.Intro.currentStep(this);
+      var that = this;
+
+      // execute function if provided and valid
+      if (step.data('func') && Libertree.Intro[step.data('func')] !== undefined) {
+        Libertree.UI.addSpinner(this, 'after');
+        $(step).find('.button').hide();
+
+        // execute specified function
+        var result = Libertree.Intro[step.data('func')](this);
+
+        // If the return value is evaluated asynchronously, wait for it
+        // TODO: is there a better way to find out if this object supports ".promise()"?
+        // TODO: I don't like this. Pass the function to a handler that does all of this instead?
+        if (jQuery.type(result['promise']) === "function") {
+          result.promise().done(
+            function() {
+              Libertree.Intro.evaluateResponse(result, step, that);
+            });
+        } else {
+          Libertree.Intro.evaluateResponse(result, step, that);
+        }
+      } else {
+        // end tutorial or move on to next step
+        Libertree.Intro.forward(step, that);
+      }
+    })
+  }
+};

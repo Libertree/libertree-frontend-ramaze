@@ -24,7 +24,7 @@ $(document).ready( function() {
   } );
 
   $('#post-new input[type="submit"]').live( 'click', function() {
-    clearInterval(timerSaveTextAreas);
+    Libertree.UI.TextAreaBackup.disable();
   } );
 
   if( document.URL.match(/#post-new/) ) {

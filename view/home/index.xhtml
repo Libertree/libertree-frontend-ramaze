@@ -22,8 +22,8 @@
 </div>
 
 <?r if @river && @river.being_processed? ?>
-  <p id="no-more-posts">
+  <div id="no-more-posts" class="panel">
   #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
-  </p>
+  </div>
 <?r end ?>
 <?r end ?>

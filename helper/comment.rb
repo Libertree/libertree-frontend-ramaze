@@ -6,14 +6,14 @@ module Ramaze
       end
 
       def comment_text_rendered_and_participants_linked( comment, comments )
-        s = comment.text_rendered
+        s = comment.text_rendered(account)
         i = comments.index(comment)
         dict = {}
 
         commenters = comments[0...i].map(&:member) - [comment.member]
         commenters.each do |commenter|
           name = commenter.name_display
-          template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="Click to see previous comment by #{::CGI.escape_html(name)}">@%s</a>|
+          template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(name)}">@%s</a>|
 
           # Mapping between possible name shortenings and the replacement strings (hyperlinks)
           [

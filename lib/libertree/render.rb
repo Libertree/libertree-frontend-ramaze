@@ -4,23 +4,15 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s)
+  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap ])
     return ''  if s.nil? or s.empty?
-
-    Markdown.new(
-      s,
-      :filter_html,
-      :smart,
-      :strike,
-      :autolink,
-      :hard_wrap
-    ).to_html.force_encoding('utf-8')
+    Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
 
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
     s.gsub(/(?<=^|\p{Space}|\()#([\p{Word}\p{Pd}]+)(?=\p{Space}|\b|\)|$)/i) {
-      %|<a href="/rivers/ensure_exists/%23#{$1.downcase}" class="hashtag">##{$1}</a>|
+      %|<a href="/tags/#{$1.downcase}" class="hashtag">##{$1}</a>|
     }
   end
 
@@ -29,7 +21,10 @@ module Libertree
     return ''  if s.nil? or s.empty?
 
     # Crude autolinker for relative links to local resources
-    s.gsub(%r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+(#comment-\d+)?)?)}, "<a href='\\1'>\\1</a>")
+    s.gsub(
+      %r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+/?(#comment-\d+)?|/(\d+/?)?)?)},
+      "<a href='\\1'>\\1</a>"
+    )
   end
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
@@ -53,7 +48,14 @@ module Libertree
     html.traverse do |node|
       if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
         hashtag = Libertree::hashtaggify(node.text)
+
         if ! hashtag.eql? node.text
+          # nokogiri strips trailing whitespace, so
+          # we need to replace it with &#32; to preserve it
+          if hashtag[-1] =~ /\s/
+            hashtag = hashtag[0..-2] + "&#32;"
+          end
+
           node.replace( Nokogiri::HTML.fragment(hashtag) )
         end
       end
@@ -118,9 +120,26 @@ module Libertree
     Nokogiri::HTML.fragment(self.markdownify(s)).inner_text
   end
 
-  def self.render(s, autoembed=false)
+  def self.render(s, autoembed=false, filter_images=false)
+
+    # FIXME: when :smart is enabled, "/posts/show/987/123/#comment-123" is
+    # turned into "<p>/posts/show/987/123/#comment&ndash;123</p>".
+    #
+    # This only affects relative URLs that should be caught by the autolinker.
+    # The problem could be fixed by moving the autolinker for relative URLs
+    # into the markdown parser. A solution that matches against
+    # "#comment&ndash;" would be quite ugly.
+
+    opts = [
+      :filter_html,
+      #:smart,
+      :strike,
+      :autolink,
+      :hard_wrap
+    ]
+    opts.push :no_images if filter_images
+
     pipeline = [
-      method(:markdownify),
       method(:autolinker),
       Nokogiri::HTML.method(:fragment),
       method(:process_links),
@@ -129,12 +148,20 @@ module Libertree
     ].compact
 
     # apply methods sequentially to string
-    pipeline.reduce(s) {|acc,f| f.call(acc)}.to_s
+    pipeline.reduce(markdownify(s, opts)) {|acc,f| f.call(acc)}.to_s
   end
 
   module HasRenderableText
-    def text_rendered(autoembed=false)
-      Libertree.render self.text, autoembed
+    def text_rendered(account=nil)
+      if account
+        autoembed = account.autoembed
+        filter_images = account.filter_images
+      else
+        autoembed = false
+        filter_images = false
+      end
+
+      Libertree.render self.text, autoembed, filter_images
     end
   end
 

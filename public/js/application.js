@@ -1,31 +1,4 @@
-var timerSaveTextAreas;
-var lastTextAreaText = '';
-
-function checkForSessionDeath(html) {
-  if( $(html).find('#login').length > 0 ) {
-    window.location = '/login';
-    return false;
-  }
-}
-
-
-function saveTextAreaText() {
-  $('textarea').each( function(i) {
-    var text = $(this).val()
-    if( text != '' && text != lastTextAreaText ) {
-      lastTextAreaText = text;
-      $.post(
-        '/textarea_save',
-        {
-          text: text,
-          id: $(this).attr('id')
-        }
-      );
-      return false;
-    }
-  } );
-}
-
+// TODO: replace with bootstrap popover
 function fadingAlert(message, x, y) {
   var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
   div.appendTo('html');
@@ -57,12 +30,22 @@ $(document).ready( function() {
     return false;
   } );
 
+  // bootstrap popovers for additional information
+  $("a[rel=popover]")
+    .popover()
+    .click(function() {
+      return false;
+    });
+
   $(document).click( function(event) {
     var t = $(event.target);
     if( t.closest('.window').length === 0 && ! t.hasClass('result-selected') ) {
       Libertree.UI.hideWindows();
     }
+    // hide all popovers
+    $("a[rel=popover]").popover('hide');
   } );
+
 
   $('input.preview').live( 'click', function() {
     var unrendered = $(this).closest('form').find('textarea[name="text"]').val();
@@ -87,7 +70,7 @@ $(document).ready( function() {
       '/_render',
       { s: unrendered },
       function(html) {
-        checkForSessionDeath(html);
+        Libertree.Session.ensureAlive(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
           //TRANSLATEME
@@ -152,7 +135,7 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   setInterval( Libertree.UI.updateAges, 60 * 1000 );
-  timerSaveTextAreas = setInterval( saveTextAreaText, 15 * 1000 );
+  Libertree.UI.TextAreaBackup.enable();
 
   $('textarea').live( 'mousedown', function() {
     $(this).data('width', $(this).outerWidth());

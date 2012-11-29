@@ -19,7 +19,6 @@ module Controller
       @view = "excerpts-view profile"
       return  if username.nil?
 
-      @continuous_scrolling = true
       account = Libertree::Model::Account[ username: username ]
       if account.nil?
         redirect_referrer

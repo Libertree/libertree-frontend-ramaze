@@ -225,6 +225,8 @@ msgstr ""
 #: controller/rivers.rb
 msgid "You already have a river for that."
 msgstr ""
+msgid "Please input a valid label for this river."
+msgstr ""
 
 #: view/comments/_comments.xhtml
 
@@ -315,6 +317,8 @@ msgstr ""
 msgid "Custom JS:"
 msgstr ""
 msgid "Automatic embedding:"
+msgstr ""
+msgid "Filter images:"
 msgstr ""
 msgid "Make thumbnails for images in post excerpts:"
 msgstr ""
@@ -441,6 +445,10 @@ msgstr ""
 msgid "seconds ago"
 msgstr ""
 
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr ""
+
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
 msgstr ""
@@ -475,6 +483,8 @@ msgstr ""
 msgid "new-contact-list|Create"
 msgstr ""
 msgid "contact-list|delete"
+msgstr ""
+msgid "Delete this contact list?"
 msgstr ""
 
 #: view/contact-lists/show.xhtml
@@ -606,7 +616,7 @@ msgid "Use pools to collect posts."
 msgstr ""
 msgid "pool|Name:"
 msgstr ""
-msgid "&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members' springs to rivers."
+msgid "&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members&#39; springs to rivers."
 msgstr ""
 msgid "new-pool|Create"
 msgstr ""
@@ -862,6 +872,14 @@ msgstr ""
 msgid "Failed to post comment."
 msgstr ""
 
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr ""
+msgid "Add this hashtag to an existing river."
+msgstr ""
+msgid "There are no posts matching this hashtag."
+msgstr ""
+
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
 msgstr ""
@@ -878,7 +896,7 @@ msgstr ""
 msgid "tutorial|An error occurred while trying to create a river."
 msgstr ""
 
-msgid "tutorial-step-1"
+msgid "tutorial-step-1\n"
 msgstr ""
 "# Welcome to Libertree!\n"
 "Hello, and welcome to Libertree! We'd like to take a minute to "
@@ -931,15 +949,15 @@ msgstr ""
 
 msgid "tutorial-river-label|Unread posts"
 msgstr ""
-msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgid "tutorial|All posts on Libertree which you haven't read yet"
 msgstr ""
 
 msgid "tutorial-river-label|Posts from the forest"
 msgstr ""
-msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgid "tutorial|All posts on Libertree"
 msgstr ""
 
 msgid "tutorial-river-label|My activity"
 msgstr ""
-msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
+msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
 msgstr ""

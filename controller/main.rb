@@ -144,7 +144,7 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s, account.autoembed )
+      respond Libertree.render( request['s'].to_s, account.autoembed, account.filter_images )
     end
 
     # This is not in the Posts controller because we will handle many other search
@@ -159,6 +159,7 @@ module Controller
       @view = 'search'
     end
 
+    # TODO: don't render page
     def textarea_save
       # Check valid session first.
       if session[:saved_text]
@@ -166,6 +167,7 @@ module Controller
       end
     end
 
+    # TODO: don't render page
     def textarea_clear(id)
       # Check valid session first.
       if session[:saved_text]

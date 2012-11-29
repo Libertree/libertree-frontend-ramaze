@@ -36,6 +36,8 @@ $dbh ||= M4DBI.connect(
 )
 
 require 'libertree/model'
+Libertree::DB.config = conf_db
+
 require 'libertree/client'
 
 require_relative 'lib/libertree/render'
@@ -59,6 +61,7 @@ require_relative 'controller/post-likes'
 require_relative 'controller/pools'
 require_relative 'controller/posts'
 require_relative 'controller/rivers'
+require_relative 'controller/tags'
 require_relative 'controller/intro'
 
 require_relative 'controller/api/v1/base'

@@ -142,7 +142,7 @@ $(document).ready( function() {
       .load(
         '/chat/_index',
         function(html) {
-          checkForSessionDeath(html);
+          Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#chat-window');
           $('#chat-window').hide();
           var o = $(html);
@@ -194,7 +194,7 @@ $(document).ready( function() {
     var textarea = $(this);
 
     textarea.attr('disabled', 'disabled');
-    clearInterval(timerSaveTextAreas);
+    Libertree.UI.TextAreaBackup.disable();
     var memberId = $(this).closest('.log').data('member-id');
 
     $.post(

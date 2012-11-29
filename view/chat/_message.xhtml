@@ -3,7 +3,7 @@
     <span class="sender">#{@message.sender.name_display}</span>
     <span class="age">#{ago(@message.time_created)}</span>
     <div class="text">
-      #{Libertree.render(@message.text)}
+      #{Libertree.render(@message.text, account.autoembed, account.filter_images)}
     </div>
   </div>
 <?r end ?>

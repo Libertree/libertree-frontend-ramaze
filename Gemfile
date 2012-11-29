@@ -6,7 +6,6 @@ gem 'rdbi', :git => 'git://github.com/RDBI/rdbi.git'
 gem 'rdbi-driver-postgresql', :git => 'git://github.com/RDBI/rdbi-driver-postgresql.git'
 gem 'bcrypt-ruby'
 gem 'dalli'  # memcached client
-gem 'rspec'
 gem 'unicorn'
 gem 'pony'   # email lib
 gem 'em-websocket'
@@ -18,10 +17,11 @@ gem 'sass'
 gem 'ruby-oembed'
 gem 'fast_gettext'
 
-gem 'libertree-db', path: '../libertree-db/rb'
-gem 'libertree-client', path: '../libertree-client-rb'
+gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
+gem 'libertree-client', :git => 'git://github.com/Libertree/libertree-client-rb.git'
 
 group 'development' do
+  gem 'rspec'
   gem 'capybara'
   gem 'factory_girl'
   gem 'racksh'

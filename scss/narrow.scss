@@ -18,16 +18,19 @@ body.body {
     text-align: left;
     #menu-narrower {
         width: 100%;
+        min-width: 0px;
         #main-menu-container {
+            margin-left: 0px;
             margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
         }
         .menu-item {
-            margin-left: 5px;
-            float: right;
+            margin-left: 2px;
         }
-    }
-    #menu-account {
-        margin-left: 60px;
+        #menu-account {
+            margin-right: 5px;
+        }
     }
     form.search {
         margin-left: 5px;
@@ -58,8 +61,8 @@ textarea {
 }
 
 #notifications-window {
-    top: 71px;
     left: 0.5em;
+    margin: 0 auto;
     width: 280px;
     min-height: 100px;
     padding: 0.5em;

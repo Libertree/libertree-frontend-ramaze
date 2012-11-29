@@ -5,13 +5,15 @@
 </p>
 
 <form action="/pools/create" method="POST">
+  <p>
   #{s_('new-pool|Name:')} <input type="text" name="name"/>
-  <br/>
+  </p>
 
-  #{s_('Spring this pool:')}
-  <a class="help" href="#" data-text="#{_("&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members' springs to rivers.")}">?</a>
-  <input type="checkbox" name="sprung"/>
-  <br/>
+  <p>
+    #{s_('Spring this pool:')}
+    #{help_bubble s_("&quot;Springing&quot; a pool causes the pool and which posts it contains to become publicly visible.  Members can add other members&#39; springs to rivers.")}
+    <input type="checkbox" name="sprung"/>
+  </p>
 
   <input type="submit" value="#{s_('new-pool|Create')}"/>
 </form>

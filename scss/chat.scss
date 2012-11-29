@@ -116,14 +116,18 @@
 
 #num-chat-unseen {
     padding: 1px 2px 2px 2px;
-    top: -14px;
-    left: -5px;
-    position: relative;
+    top: 9px;
+    left: 8px;
+    position: absolute;
     float: right;
+    background-color: $autumn_red;
+    color: white;
 }
 .num-chat-unseen {
     padding: 1px 2px 2px 2px;
     position: relative;
     margin-left: 2px;
     float: right;
+    background-color: $autumn_red;
+    color: white;
 }

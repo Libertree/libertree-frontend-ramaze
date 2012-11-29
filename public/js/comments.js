@@ -37,7 +37,8 @@ function insertCommentHtmlFor( postId, commentId ) {
 }
 
 function hideLoadCommentsLinkIfAllShown(element) {
-  var n = parseInt( element.find('.comments .num-comments').text() );
+  var n = parseInt( element.find('.comments .num-comments').data('total') );
+
   if( element.find('div.comment').length === n ) {
     element.find('a.load-comments').hide();
   }
@@ -155,7 +156,7 @@ $(document).ready( function() {
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
     var form = $(this).closest('form.comment');
     var textarea = form.find('textarea.comment');
-    clearInterval(timerSaveTextAreas);
+    Libertree.UI.TextAreaBackup.disable();
     var postId = form.data('post-id');
 
     $.post(

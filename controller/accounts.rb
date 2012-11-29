@@ -41,6 +41,7 @@ module Controller
       account.custom_css = request['custom_css'].to_s
       account.custom_js = request['custom_js'].to_s
       account.autoembed = !! request['autoembed']
+      account.filter_images = !! request['filter_images']
       account.thumbnail = !! request['thumbnail']
       account.locale = request['locale'].to_s
       session[:locale] = account.locale

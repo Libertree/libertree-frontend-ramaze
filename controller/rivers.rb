@@ -78,6 +78,9 @@ module Controller
         if e.message =~ /rivers_account_id_query_key/
           flash[:error] = _('You already have a river for that.')
           redirect_referrer
+        elsif e.message =~ /rivers_label_check/
+          flash[:error] = _('Please input a valid label for this river.')
+          redirect_referrer
         else
           raise e
         end
@@ -162,6 +165,16 @@ module Controller
         )
       end
       ''
+    end
+
+    def _add_term(river_id, term)
+      river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
+      if river
+        river.revise(
+          'label' => river.label,
+          'query' => river.query + %| +#{term}|
+        )
+      end
     end
   end
 end

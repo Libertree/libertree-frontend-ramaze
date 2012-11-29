@@ -39,22 +39,24 @@
     </div>
 
     <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
-      <?r if account.custom_link ?>
-        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-link.png', {alt:"custom"}}</a>
+      <form action="/search" method="POST" class="search">
+        <input id="search" type="text" name="q" tabindex="99"/>
+      </form>
+      <?r if session[:layout] != 'narrow' ?>
+      <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
       <?r end ?>
+      <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}">#{img 'icon-edit.png', {alt:s_('menu|New Post')}}</a>
+      <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>
+      #{ render_file 'layout/_chat.xhtml' }
+      #{ render_file 'layout/_notifications.xhtml' }
       <a
         href="/home"
         class="menu-item"
         id="menu-home"
         title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}</a>
-      #{ render_file 'layout/_notifications.xhtml' }
-      #{ render_file 'layout/_chat.xhtml' }
-      <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>
-      <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}">#{img 'icon-edit.png', {alt:s_('menu|New Post')}}</a>
-      <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
-      <form action="/search" method="POST" class="search">
-        <input id="search" type="text" name="q" tabindex="99"/>
-      </form>
+      <?r if account.custom_link ?>
+        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-custom-link.png', {alt:"custom"}}</a>
+      <?r end ?>
     </div>
   <?r end ?>
 </div></div>

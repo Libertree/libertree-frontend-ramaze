@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
 
+  #{ css_nocache 'application' }
   #{ css_nocache 'splash' }
   #{ css_nocache 'intro' }
   #{ css 'bootstrap' }
@@ -15,11 +16,10 @@
   #{ js 'chosen.jquery.min' }
   #{ js_nocache 'bootstrap.tooltip.popover' }
 
-  #{ js_nocache 'helpers' }
   #{ js_nocache 'libertree' }
   #{ js_nocache 'libertree/ui' }
-  #{ js_nocache 'contact-lists' }
-  #{ js_nocache 'intro' }
+  #{ js_nocache 'libertree/intro' }
+  #{ controller_js }
 </head>
 
 <body class="#{ @view }">

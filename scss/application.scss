@@ -73,27 +73,51 @@ code {
 }
 
 a {
-    border-bottom: 1px dotted;
+    color: $dark_green;
+    border-bottom: 1px dotted $dark_green;
     text-decoration: none;
 }
 a:visited {
     border-bottom: 1px dotted;
 }
 a:hover {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a:active {
-    border-bottom: 1px dotted;
+    color: $autumn_red;
+    border-bottom: 1px dotted $autumn_red;
 }
 a.icon:hover { background: none };
 a.member-name, a.member-name:visited {
     border: 0px;
+    color: #261818;
+}
+
+a.help {
+  vertical-align: super;
+  padding: 2px;
+  border-radius: 1em;
+  background: $dust;
+  border: 1px solid $leaf;
+  font-size: 12px;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+.chzn-container-multi .chzn-choices,
+.chzn-container-active .chzn-choices {
+    background-color: $faint_tan;
+    background-image: none;
+    border: 1px solid $path;
+    color: $cocoa_bean;
 }
 
 textarea, input[type="text"], input[type="password"] {
-    border: 1px solid;
     @include rounded;
 }
+
 
 .main {
     max-width: 1000px;
@@ -103,6 +127,15 @@ textarea, input[type="text"], input[type="password"] {
     padding: 30px;
     background: transparent;
     @include rounded;
+
+    background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
+    background-color: $dust_translucent;
+
+    div.panel {
+        /* double override for when .main is set transparent */
+        background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
+        background-color: $dust_translucent;
+    }
 }
 
 
@@ -126,7 +159,6 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .menu {
-    text-align: right;
     height: 40px;
     position: fixed;
     top: 0px;
@@ -136,12 +168,22 @@ textarea, input[type="text"], input[type="password"] {
     padding: 0px;
     z-index: 3;
 
+    background-color: $menu_colour_1;
+    background: -moz-linear-gradient($header_gradient_start,  $menu_colour_1 0%, $menu_colour_2 70%);
+    background: -webkit-gradient(linear, left $header_gradient_start, left $header_gradient_stop, color-stop(0%,$menu_colour_1), color-stop(70%,$menu_colour_2));
+    background: -webkit-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -o-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: -ms-linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+    background: linear-gradient($header_gradient_start,  $menu_colour_1 0%,$menu_colour_2 70%);
+
     #menu-narrower {
-        width: 1000px;
+        min-width: 700px;
+        max-width: 1000px;
         margin: 0px auto;
+        position: relative;
 
         a {
-            margin-left: 10px;
+            margin-left: 5px;
             border-bottom: 0px;
         }
         a.home {
@@ -164,18 +206,20 @@ textarea, input[type="text"], input[type="password"] {
         .menu-item {
             width: 26px;
             height: 26px;
-            margin-left: 10px;
-            float: right;
             cursor: pointer;
+            position: relative;
         }
 
         #main-menu-container {
-            margin-right: 345px;
+            margin: 0 auto;
+            padding-left: 190px;
+            padding-right: 190px;
+            width: 360px;
             padding-top: 6px;
             height: 26px;
         }
         #main-menu-container.with-custom {
-            margin-right: 360px;
+            width: 386px;
         }
 
         #menu-notifications {
@@ -185,6 +229,7 @@ textarea, input[type="text"], input[type="password"] {
         #menu-account {
             width: auto;
             padding-top: 4px;
+            float: right;
 
             img {
                 height: 32px;
@@ -199,7 +244,7 @@ textarea, input[type="text"], input[type="password"] {
 
         #account-window {
             top: 46px;
-            right: 18px;
+            right: 0px;
             width: 180px;
             padding: 5px;
 
@@ -355,7 +400,7 @@ form.comment {
 
 #notifications-window {
     top: 46px;
-    left: 570px;
+    margin-left: 250px;
     width: 300px;
     min-height: 100px;
     padding: 10px;
@@ -377,8 +422,10 @@ form.comment {
 #num-notifications-unseen {
     padding: 1px 2px 2px 2px;
     top: 8px;
-    left: -28px;
-    position: relative;
+    left: -2px;
+    position: absolute;
+    background-color: $autumn_red;
+    color: white;
 }
 
 .has-shadow {
@@ -464,10 +511,13 @@ a.hashtag, a.commenter-ref {
     cursor: text;
     vertical-align: middle;
     padding-top: 2px;
+    color: $cocoa_bean;
 }
 
 form.search {
     margin-top: 2px;
+    margin-right: 7px;
+    float: left;
     input {
         width: 100px;
         height: 20px;
@@ -600,6 +650,7 @@ div.pools .chzn-container .chzn-results li {
     padding: 1em;
     margin: 0px;
     display: none;
+    background-color: $faint_green;
 }
 
 .more-posts-divider {

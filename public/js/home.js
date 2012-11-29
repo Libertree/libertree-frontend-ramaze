@@ -1,55 +1,15 @@
-var wantsToComment = false;
-var loadingMorePostExcerpts = false;
+Libertree.Home = {
+  wantsToComment: false,
 
-function showShowMores() {
-  $('.excerpt').each( function() {
-    if( $(this).get(0).scrollHeight > $(this).height() ) {
-      $(this).siblings('.show-more').show();
+  indicateNewPosts: function(data) {
+    var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+    if( indicator.length ) {
+      indicator.find('.load-more').text(data.numNewPosts);
+      indicator.slideDown();
     }
-  } );
-}
+  },
 
-function indicateNewPosts(data) {
-  var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
-  if( indicator.length ) {
-    indicator.find('.load-more').text(data.numNewPosts);
-    indicator.slideDown();
-  }
-}
-
-function loadPostExcerpts( riverId, older_or_newer, time, onSuccess ) {
-  loadingMorePostExcerpts = true;
-  $.ajax( {
-    type: 'GET',
-    url: '/posts/_excerpts/' + riverId + '/' + older_or_newer + '/' + time,
-    success: function(html) {
-      var o = $(html);
-      o.css('display', 'none');
-
-      /* Remove old copies of incoming excerpts that may already be in the DOM */
-      var container = $('<div/>');
-      container.prepend(o);
-      container.find('.post-excerpt').each( function() {
-        $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
-      } );
-
-      if( older_or_newer === 'newer' ) {
-        $('#post-excerpts').prepend(o);
-      } else {
-        $('#post-excerpts').append(o);
-      }
-      o.slideDown( function() {
-        loadingMorePostExcerpts = false;
-      } );
-
-      Libertree.UI.removeSpinner('#post-excerpts');
-      showShowMores();
-      if(onSuccess) {
-        onSuccess();
-      }
-    }
-  } );
-}
+};
 
 /* ---------------------------------------------------- */
 
@@ -85,7 +45,7 @@ $(document).ready( function() {
       }
     );
 
-    if( wantsToComment ) {
+    if( Libertree.Home.wantsToComment ) {
       var scrollTop = $('html').scrollTop();
       var excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
       if( excerptTruncation < 0 ) {
@@ -96,7 +56,7 @@ $(document).ready( function() {
         animationSpeed,
         function() {
           excerpt.find('textarea.comment').focus();
-          wantsToComment = false;
+          Libertree.Home.wantsToComment = false;
         }
       );
     }
@@ -135,7 +95,7 @@ $(document).ready( function() {
   $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
-    wantsToComment = true;
+    Libertree.Home.wantsToComment = true;
     excerpt.find('.show-more').click();
   } );
 
@@ -145,7 +105,7 @@ $(document).ready( function() {
   } );
 
   $('.overflowed img').live( 'mouseover', function() {
-    showShowMores();
+    Libertree.UI.showShowMores();
   } );
 
   $('.load-more').live( 'click', function(event) {
@@ -156,7 +116,7 @@ $(document).ready( function() {
     $('.post-excerpt:first').addClass('more-posts-divider'),
 
     Libertree.UI.addSpinner($(this).parent(), 'append');
-    loadPostExcerpts(
+    Libertree.PostLoader.loadFromRiver(
       $('#post-excerpts').data('river-id'),
       'newer',
       $('.post-excerpt:first').data('t'),
@@ -169,5 +129,5 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  showShowMores();
+  Libertree.UI.showShowMores();
 } );
