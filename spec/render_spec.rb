@@ -17,8 +17,8 @@ describe Libertree do
     end
 
     it 'should not break hashtags in parentheses' do
-      subject.render('(#simple)').should =~ %r{(<a href="/rivers/ensure_exists/%23simple" class="hashtag">#simple</a>)}
-      subject.render('Hashtag (#simple).').should == '<p>Hashtag (<a href="/rivers/ensure_exists/%23simple" class="hashtag">#simple</a>).</p>'
+      subject.render('(#simple)').should =~ %r{(<a href="/tags/simple" class="hashtag">#simple</a>)}
+      subject.render('Hashtag (#simple).').should == '<p>Hashtag (<a href="/tags/simple" class="hashtag">#simple</a>).</p>'
     end
 
     it 'should not introduce extra space at the beginning of code blocks' do
