@@ -93,17 +93,17 @@ module Controller
     end
 
     def delete
-      if request.post?
-        if ! account.username.eql?( request['username'].to_s )
-          flash[:error] = s_('account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion.')
-        else
-          account_logout
-          account.delete_cascade
-          session = nil
-          flash[:notice] = s_('account-delete|Your account has been deleted.')
-          # TODO: redirect to goodbye page instead
-          redirect Main.r(:login)
-        end
+      return  if ! request.post?
+
+      if ! account.username.eql?( request['username'].to_s )
+        flash[:error] = s_('account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion.')
+      else
+        account_logout
+        account.delete_cascade
+        session = nil
+        flash[:notice] = s_('account-delete|Your account has been deleted.')
+        # TODO: redirect to goodbye page instead
+        redirect Main.r(:login)
       end
     end
 
