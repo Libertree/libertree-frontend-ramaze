@@ -95,7 +95,7 @@ module Controller
     def delete
       return  if ! request.post?
 
-      if ! account.username.eql?( request['username'].to_s )
+      if account.username != request['username'].to_s
         flash[:error] = s_('account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion.')
       else
         account_logout
