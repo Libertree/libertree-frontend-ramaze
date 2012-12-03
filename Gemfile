@@ -16,7 +16,7 @@ gem 'sass'
 gem 'ruby-oembed'
 gem 'fast_gettext'
 
-gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
+gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git', :branch => 'account-deletion'
 gem 'libertree-client', :git => 'git://github.com/Libertree/libertree-client-rb.git'
 
 group 'development' do
