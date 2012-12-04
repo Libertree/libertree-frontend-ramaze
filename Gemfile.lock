@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: eb90bf29a178a3c3db5924d942539777d1ba4421
+  revision: 41aba077c1b3e0e6ae9e336f785f48679c560512
   branch: account-deletion
   specs:
     libertree-model (0.0.1)
