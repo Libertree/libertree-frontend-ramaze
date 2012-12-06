@@ -23,6 +23,6 @@
   <div class="member-name">#{member_name_link(@comment.member)}</div>
   <div class="age">#{ago(@comment.time_created)}</div>
   <div class="text typed-text">
-    #{comment_text_rendered_and_participants_linked(@comment, @post.comments)}
+    #{comment_text_rendered_and_participants_linked(@comment, @post.comments, account)}
   </div>
 </div>

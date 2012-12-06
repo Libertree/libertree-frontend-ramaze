@@ -5,7 +5,7 @@ module Ramaze
         "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}"
       end
 
-      def comment_text_rendered_and_participants_linked( comment, comments )
+      def comment_text_rendered_and_participants_linked( comment, comments, account = nil )
         s = comment.text_rendered(account)
         i = comments.index(comment)
         dict = {}
