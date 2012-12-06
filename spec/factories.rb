@@ -27,4 +27,8 @@ FactoryGirl.define do
   factory :comment, :class => Libertree::Model::Comment do
     sequence(:remote_id, 1000)
   end
+
+  factory :river, :class => Libertree::Model::River do
+    sequence(:label) { |n| "River #{n}" }
+  end
 end

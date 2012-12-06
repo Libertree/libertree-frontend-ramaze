@@ -23,14 +23,11 @@ $dbh.execute "TRUNCATE accounts CASCADE"
 $post_login_path = '/test_user_logged_in'
 
 shared_context 'logged in' do
-  let(:account) {
-    a = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
-    a.password = 'testpass'
-    a
-  }
   before do
+    @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
+    @account.password = 'testpass'
     visit '/login'
-    fill_in 'username', :with => account.username
+    fill_in 'username', :with => @account.username
     fill_in 'password', :with => 'testpass'
     click_on 'Login'
   end

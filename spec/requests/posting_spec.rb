@@ -6,7 +6,7 @@ describe 'a local member', :type => :request, :js => true do
   context 'given an existing post' do
     before :each do
       @post = Libertree::Model::Post.create(
-        FactoryGirl.attributes_for( :post, member_id: account.member.id, text: 'A test post.' )
+        FactoryGirl.attributes_for( :post, member_id: @account.member.id, text: 'A test post.' )
       )
     end
 
@@ -39,7 +39,7 @@ describe 'a local member', :type => :request, :js => true do
 
     page.should have_content('Test post.')
     page.should have_content('seconds ago')
-    page.should have_content(account.username)
+    page.should have_content(@account.username)
     page.should have_content('0 comments')
 
     page.should have_no_content('New Post')
