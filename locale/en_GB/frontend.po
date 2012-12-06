@@ -364,7 +364,7 @@ msgid "account-delete|The username you provided does not match your username. Pl
 msgstr ""
 msgid "Account Deletion"
 msgstr ""
-msgid "Delete your account."
+msgid "Delete your account"
 msgstr ""
 msgid "To delete your account and all associated data, input your username below:"
 msgstr ""
