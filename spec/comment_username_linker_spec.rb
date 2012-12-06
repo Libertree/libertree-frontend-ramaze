@@ -153,7 +153,7 @@ describe Ramaze::Helper::Comment do
       end
     end
 
-    context 'with less than two comments' do
+    context 'with fewer than two comments' do
       it 'should not do anything on the first comment' do
         comment = Libertree::Model::Comment.create(
           FactoryGirl.attributes_for(:comment,
