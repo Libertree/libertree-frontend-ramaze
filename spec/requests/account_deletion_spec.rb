@@ -5,6 +5,7 @@ describe Controller::Accounts, :type => :request, :js => true do
 
   before :each do
     @account_id = @account.id
+    @account_username = @account.username
   end
 
   context '#delete' do
@@ -55,6 +56,7 @@ describe Controller::Accounts, :type => :request, :js => true do
       page.should have_button('Login')
 
       Libertree::Model::Account[@account_id].should be_nil
+      Libertree::Model::Account[username: @account_username].should be_nil
     end
   end
 end
