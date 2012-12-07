@@ -98,9 +98,10 @@ module Controller
       if account.username != request['username'].to_s
         flash[:error] = s_('account-delete|The username you provided does not match your username. Please input your own username to confirm account deletion.')
       else
+        account_id_to_delete = account.id
         account_logout
-        account.delete_cascade
-        session = nil
+        Libertree::Model::Account[account_id_to_delete].delete_cascade
+
         flash[:notice] = s_('account-delete|Your account has been deleted.')
         # TODO: redirect to goodbye page instead
         redirect Main.r(:login)
