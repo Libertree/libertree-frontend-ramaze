@@ -17,7 +17,6 @@ gem 'ruby-oembed'
 gem 'fast_gettext'
 
 gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
-gem 'libertree-client', :git => 'git://github.com/Libertree/libertree-client-rb.git'
 
 group 'development' do
   gem 'rspec'
