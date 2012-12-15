@@ -23,6 +23,16 @@ module Controller
       end
 
       @profile = @member.profile
+      @posts = @member.posts
+    end
+
+    def _more( member_id, older_or_newer = 'older', time = Time.now.to_i )
+      member = Libertree::Model::Member[ member_id.to_i ]
+      @posts = member.posts(
+        limit: 8,
+        time: time.to_f,
+        newer: ( older_or_newer == 'newer' ),
+      )
     end
 
     def edit
