@@ -76,7 +76,7 @@ $(document).ready( function() {
           return;
         }
         var o = $(html);
-        updateNumNotificationsUnseen( o.filter('span.num-notifs-unseen').detach().text() );
+        Libertree.Notifications.updateNumUnseen( o.filter('span.num-notifs-unseen').detach().text() );
 
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {
