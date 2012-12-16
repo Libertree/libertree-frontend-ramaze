@@ -36,7 +36,7 @@ $(document).ready( function() {
       },
       animationSpeed,
       function() {
-        markPostRead(postId);
+        Libertree.Posts.markRead(postId);
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');

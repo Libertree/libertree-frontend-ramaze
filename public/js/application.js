@@ -124,7 +124,7 @@ $(document).ready( function() {
   } );
 
   $('.mark-read').live( 'click', function() {
-    markPostRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
+    Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
     return false;
   } );
 
