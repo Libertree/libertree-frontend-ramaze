@@ -21,7 +21,8 @@ $(document).ready( function() {
       '/rivers/_add_term/'+riverId+'/'+'%23'+tag,
       function() {
         Libertree.UI.removeSpinner( selector.parent() );
-        fadingAlert('Added to river.');
+        // TRANSLATEME
+        Libertree.UI.fadingAlert('Added to river.');
         selector.val('0');
         selector.trigger("liszt:updated");
       }

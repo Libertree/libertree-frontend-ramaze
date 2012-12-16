@@ -26,7 +26,7 @@ Libertree.Pools = {
         $('div.pools').remove();
         if(h.success) {
           collect_link.text(collect_link.data('text-success'));
-          fadingAlert(h.msg, x, y);
+          Libertree.UI.fadingAlert(h.msg, x, y);
         } else {
           alert(h.msg);
         }

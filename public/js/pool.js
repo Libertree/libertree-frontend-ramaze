@@ -82,7 +82,8 @@ $(document).ready( function() {
       '/rivers/add_spring/'+riverId+'/'+poolId,
       function() {
         Libertree.UI.removeSpinner( selector.parent() );
-        fadingAlert('Added to river.');
+        // TRANSLATEME
+        Libertree.UI.fadingAlert('Added to river.');
         selector.val('0');
         selector.trigger("liszt:updated");
       }

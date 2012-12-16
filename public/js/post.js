@@ -94,7 +94,7 @@ $(document).ready( function() {
 
   $('.post-tools .visibility').live( 'click', function(event) {
     event.preventDefault();
-    fadingAlert(
+    Libertree.UI.fadingAlert(
       $(this).data('description'),
       event.clientX - 200,
       event.clientY + 10
