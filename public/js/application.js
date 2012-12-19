@@ -1,14 +1,11 @@
 $(document).ready( function() {
 
-  /* TODO: This looks refactorable */
   $('#menu-account').click( function() {
-    if( $('#account-window').is(':visible') ) {
-      Libertree.UI.hideWindows();
-      return false;
-    }
-
+    var show_window = ! $('#account-window').is(':visible');
     Libertree.UI.hideWindows();
-    $('#account-window').toggle();
+    if (show_window) {
+      $('#account-window').show();
+    }
     return false;
   } );
 
