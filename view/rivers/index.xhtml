@@ -1,6 +1,7 @@
 <h2>#{_('My Rivers')}</h2>
 
-<a href="/rivers/new">#{_('new river')}</a>
+<a href="/rivers/new">#{_('new river')}</a><br/>
+<a href="/home/mark_all_read">#{_('mark all read')}</a>
 
 <?r @rivers.each do |river| ?>
   #{ render_partial '_river', river: river }
