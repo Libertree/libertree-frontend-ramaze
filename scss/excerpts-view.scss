@@ -142,9 +142,11 @@ body.body.excerpts-view .main {
             .overflowed {
               min-height: 100px;
               overflow: hidden;
-              .comments {
-                margin-bottom: 1em;
-              }
+            }
+            .comments {
+              margin-bottom: 1em;
+              overflow: hidden;
+              height: 0;
             }
             img {
                 max-width: 100%;
