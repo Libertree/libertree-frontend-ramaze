@@ -60,10 +60,6 @@ msgstr ""
 
 #: view/home/index.xhtml
 
-msgid "River:"
-msgstr ""
-msgid "manage rivers"
-msgstr ""
 msgid "In order to see posts here, you need to have at least one river."
 msgstr ""
 msgid "%sCreate one now%s"
@@ -802,6 +798,12 @@ msgstr ""
 msgid "chat|(no contacts online)"
 msgstr ""
 msgid "Start new chat with..."
+msgstr ""
+
+#: layout/_sidebar.xhtml
+msgid "Rivers"
+msgstr ""
+msgid "manage rivers"
 msgstr ""
 
 #: layout/_menu.xhtml

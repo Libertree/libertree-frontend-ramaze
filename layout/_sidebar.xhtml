@@ -1,0 +1,38 @@
+<div id="sidebar">
+  <?r if @river_post_order == :comment ?>
+    <span class="menu-item"><a href="/home/sort_by_time_created">#{_('by post time')}</a></span>
+  <span class="menu-item inactive">#{_('by update time')}</span>
+  <?r else ?>
+  <span class="menu-item inactive">#{_('by post time')}</span>
+  <span class="menu-item"><a href="/home/sort_by_time_updated_overall">#{_('by update time')}</a></span>
+  <?r end ?>
+  <h3>#{_('Rivers')} <a href="/rivers">#{img 'icon-edit.png', {alt:s_('manage rivers'), title:s_('manage rivers'), class:"size-16"}}</a></h3>
+  <ul>
+    <?r if account.home_river ?>
+    <?r if account.home_river == @river ?>
+    <li class="selected">#{account.home_river.label}</li>
+    <?r else ?>
+    <li><a href="/home">#{account.home_river.label}</a></li>
+    <?r end ?>
+    <?r end ?>
+
+    <?r @rivers.reject(&:home).sort_by(&:label).each do |r| ?>
+    <?r if r == @river ?>
+    <li class="selected">#{r.label}</li>
+    <?r else ?>
+    <li><a href="/home/#{r.id}">#{r.label}</a></li>
+    <?r end ?>
+    <?r end ?>
+  </ul>
+
+  <?r unless account.member.pools.empty? ?>
+  <hr/>
+
+  <h3>#{_('Pools')} <a href="/pools">#{img 'icon-edit.png', {alt:s_('Pools'), title:s_('Pools'), class:"size-16"}}</a></h3>
+  <ul>
+  <?r account.member.pools.each do |p| ?>
+  <li><a href="/pools/show/#{p.id}">#{p.name}</a></li>
+  <?r end ?>
+  </ul>
+  <?r end ?>
+</div>

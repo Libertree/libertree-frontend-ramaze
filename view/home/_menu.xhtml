@@ -1,19 +1,5 @@
 <div id="header">
   <div id="river-menu">
-    <?r if @river_post_order == :comment ?>
-      <span class="menu-item"><a href="/home/sort_by_time_created">#{_('by post time')}</a></span>
-    <span class="menu-item inactive">#{_('by update time')}</span>
-    <?r else ?>
-    <span class="menu-item inactive">#{_('by post time')}</span>
-    <span class="menu-item"><a href="/home/sort_by_time_updated_overall">#{_('by update time')}</a></span>
-    <?r end ?>
     <span class="menu-item"><a href="/home/mark_all_read">#{_('mark all read')}</a></span>
   </div>
-  #{_('River:')} <select id="river-selector">
-    <?r @rivers.each do |r| ?>
-      <option value="#{r.id}" #{r == @river ? 'selected' : ''}>#{r.label}</option>
-    <?r end ?>
-  </select>
-
-  <a href="/rivers">#{_('manage rivers')}</a>
 </div>

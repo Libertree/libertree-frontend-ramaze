@@ -99,11 +99,6 @@ $(document).ready( function() {
     excerpt.find('.show-more').click();
   } );
 
-  $('.home #river-selector').change( function() {
-    window.location = '/home/' + $(this).val();
-    return false;
-  } );
-
   $('.overflowed img').live( 'mouseover', function() {
     Libertree.UI.showShowMores();
   } );
