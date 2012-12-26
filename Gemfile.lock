@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: b692a21af376e189014a36d29f2e5a2d1c1921fb
+  revision: e917c5130f1f4c1631d80f418b0fb2c952e591b3
   specs:
     libertree-model (0.0.1)
 
