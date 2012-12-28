@@ -9,7 +9,7 @@
 
   <?r if @pool.member != account.member ?>
     <div class="spinner-container">
-      <select id="river-selector" name="river_id" data-pool-id="#{@pool.id}" data-placeholder="#{_('Add this spring to a river')}">
+      <select id="river-selector" name="river_id" data-pool-id="#{@pool.id}" data-placeholder="#{_('Add this spring to a river')}" data-msg="#{_('Added to river.')}">
         <option value="0"></option>
         <?r account.rivers.sort_by { |r| r.label.gsub(/^#/,'').downcase }.each do |r| ?>
           <option value="#{r.id}">#{r.label}</option>
