@@ -87,13 +87,15 @@ msgid "new-post|Post"
 msgstr ""
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
-msgid "post|Preview"
+msgid "Preview"
 msgstr ""
 msgid "Visibility"
 msgstr ""
 msgid "visibility|Internet"
 msgstr ""
 msgid "visibility|Forest"
+msgstr ""
+msgid "preview|close"
 msgstr ""
 
 #: helper/post.rb
@@ -579,8 +581,6 @@ msgstr ""
 
 #: view/messages/_new.xhtml
 msgid "direct-message|Send"
-msgstr ""
-msgid "direct-message|Preview"
 msgstr ""
 msgid "direct-message|Recipients"
 msgstr ""
