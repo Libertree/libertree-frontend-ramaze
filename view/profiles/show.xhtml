@@ -15,7 +15,7 @@
   </div>
   <?r if @member != account.member ?>
   <div>
-    <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}">
+    <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}" data-msg="#{_('Added %s to contact list.') % @member.name_display}">
       <option value="0"></option>
       <?r account.contact_lists.sort_by { |cl| cl.name.downcase }.each do |cl| ?>
         <option value="#{cl.id}">#{cl.name}</option>

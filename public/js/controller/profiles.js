@@ -28,8 +28,7 @@ $(document).ready( function() {
       '/contact-lists/add_member/'+contactListId+'/'+memberId,
       function() {
         Libertree.UI.removeSpinner( selector.parent() );
-        // TRANSLATEME
-        Libertree.UI.fadingAlert('Added to contact list.');
+        Libertree.UI.fadingAlert( selector.data('msg') );
         selector.val('0');
         selector.trigger("liszt:updated");
       }

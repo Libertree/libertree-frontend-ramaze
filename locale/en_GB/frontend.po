@@ -661,6 +661,8 @@ msgid "Posts by %s"
 msgstr ""
 msgid "Add %s to a contact list"
 msgstr ""
+msgid "Added %s to contact list."
+msgstr ""
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
