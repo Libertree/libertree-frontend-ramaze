@@ -79,14 +79,4 @@ $(document).ready( function() {
     Libertree.Posts.unsubscribe( post );
     return false;
   } );
-
-  $('.post-tools .visibility').live( 'click', function(event) {
-    event.preventDefault();
-    Libertree.UI.fadingAlert(
-      $(this).data('description'),
-      event.clientX - 200,
-      event.clientY + 10
-    );
-    return false;
-  } );
 } );
