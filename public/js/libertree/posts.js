@@ -1,4 +1,22 @@
 Libertree.Posts = {
+  setSubscription: function(type) {
+    var endpoint = '/posts/_' + type + '/';
+    var update = (type === 'subscribe') ?
+      function(post) {
+        post.find('.subscribe').addClass('hidden');
+        post.find('.unsubscribe').removeClass('hidden');
+      }
+    :
+      function(post) {
+        post.find('.unsubscribe').addClass('hidden');
+        post.find('.subscribe').removeClass('hidden');
+      }
+    ;
+    return function(post) {
+      $.get( endpoint + post.data('post-id'), update(post) );
+    };
+  },
+
   markRead: function(post_id) {
     $.get(
       '/posts/_read/' + post_id,
@@ -29,3 +47,6 @@ Libertree.Posts = {
     }
   }
 };
+
+Libertree.Posts.subscribe   = Libertree.Posts.setSubscription('subscribe');
+Libertree.Posts.unsubscribe = Libertree.Posts.setSubscription('unsubscribe');

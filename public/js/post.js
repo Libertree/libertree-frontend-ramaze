@@ -71,24 +71,12 @@ $(document).ready( function() {
 
   $('.post-tools .subscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
-    $.get(
-      '/posts/_subscribe/' + post.data('post-id'),
-      function() {
-        post.find('.subscribe').addClass('hidden');
-        post.find('.unsubscribe').removeClass('hidden');
-      }
-    );
+    Libertree.Posts.subscribe( post );
     return false;
   } );
   $('.post-tools .unsubscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
-    $.get(
-      '/posts/_unsubscribe/' + post.data('post-id'),
-      function() {
-        post.find('.unsubscribe').addClass('hidden');
-        post.find('.subscribe').removeClass('hidden');
-      }
-    );
+    Libertree.Posts.unsubscribe( post );
     return false;
   } );
 
