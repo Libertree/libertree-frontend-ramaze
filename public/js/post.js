@@ -1,14 +1,13 @@
 $(document).ready( function() {
 
-  $('.post-tools a.like').live(
-    'click',
-    Libertree.mkLike( 'post', 'div.post, .post-excerpt' )
-  );
+  $('.post-tools a.like').live( 'click', function(event) {
+    Libertree.Posts.like( $(this), event, 'div.post, .post-excerpt' );
+  } );
 
-  $('.post-tools a.unlike').live(
-    'click',
-    Libertree.mkUnlike( 'post', 'div.post, .post-excerpt' )
-  );
+  $('.post-tools a.unlike').live( 'click', function(event) {
+    Libertree.Posts.unlike( $(this), event, 'div.post, .post-excerpt' );
+  } );
+
   $('.mark-read').live( 'click', function() {
     Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
     return false;

@@ -50,3 +50,5 @@ Libertree.Posts = {
 
 Libertree.Posts.subscribe   = Libertree.Posts.setSubscription('subscribe');
 Libertree.Posts.unsubscribe = Libertree.Posts.setSubscription('unsubscribe');
+Libertree.Posts.like        = Libertree.mkLike('post');
+Libertree.Posts.unlike      = Libertree.mkUnlike('post');
