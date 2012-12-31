@@ -103,11 +103,6 @@ $(document).ready( function() {
     }
   } );
 
-  $('.mark-read').live( 'click', function() {
-    Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
-    return false;
-  } );
-
   $('.pseudolink').live( 'click', function(e) {
     window.location = $(this).data('href');
   } );

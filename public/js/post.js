@@ -9,6 +9,10 @@ $(document).ready( function() {
     'click',
     Libertree.mkUnlike( 'post', 'div.post, .post-excerpt' )
   );
+  $('.mark-read').live( 'click', function() {
+    Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
+    return false;
+  } );
 
   $('#comments-hide').click( function() {
     $('div.post').addClass('with-comments-sliding');
