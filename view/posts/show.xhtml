@@ -14,6 +14,21 @@
 
         <div class="post-tools">
           <?r if logged_in? ?>
+            <?r if @post.member == account.member ?>
+              <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
+              <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
+            <?r end ?>
+
+            <?r if @post.like_by(account.member) ?>
+              <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
+              <a href="#" class="like hidden">#{_('like')}</a>
+            <?r else ?>
+              <a href="#" class="like">#{_('like')}</a>
+              <a href="#" class="unlike hidden">#{_('unlike')}</a>
+            <?r end ?>
+
+            <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
+
             <?r if ! account.subscribed_to?(@post) ?>
               <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
               <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
@@ -28,21 +43,6 @@
             <?r else ?>
               <a href="#" class="mark-unread hidden">#{_('mark post unread')}</a>
               <a href="#" class="mark-read">#{_('mark post read')}</a>
-            <?r end ?>
-
-            <?r if @post.member == account.member ?>
-              <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
-              <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
-            <?r end ?>
-
-            <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
-
-            <?r if @post.like_by(account.member) ?>
-              <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
-              <a href="#" class="like hidden">#{_('like')}</a>
-            <?r else ?>
-              <a href="#" class="like">#{_('like')}</a>
-              <a href="#" class="unlike hidden">#{_('unlike')}</a>
             <?r end ?>
           <?r end ?>
           <a href="#" id="comments-show" title="show comments">&lt;&lt;</a>
