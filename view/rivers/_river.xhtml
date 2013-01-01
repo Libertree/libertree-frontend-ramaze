@@ -1,9 +1,4 @@
 <div class="river" data-river-id="#{@river.id}">
-  <?r if ! @not_linked ?>
-    <a href="/home/#{@river.id}">#{@river.label}</a>
-  <?r else ?>
-    #{@river.label}
-  <?r end ?>
   <span class="river-tools">
     <?r if @river.home? ?>
       #{_('(home river)')}
@@ -13,6 +8,11 @@
     <a href="/rivers/edit/#{@river.id}">#{img 'icon-edit.png', {alt:s_('river|edit'), title:s_('river|edit'), class:"size-16"}}</a>
     <a class="delete" data-msg="#{_('Delete this river?')}" href="/rivers/destroy/#{@river.id}">#{img 'icon-delete.png', {alt:s_('river|delete'), title:s_('river|delete'), class:"size-16"}}</a>
   </span>
+  <?r if ! @not_linked ?>
+    <a href="/home/#{@river.id}">#{@river.label}</a>
+  <?r else ?>
+    #{@river.label}
+  <?r end ?>
   <br/>
   <span class="query">#{@river.query}</span>
 </div>

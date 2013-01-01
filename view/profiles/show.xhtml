@@ -15,7 +15,7 @@
   </div>
   <?r if @member != account.member ?>
   <div>
-    <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}">
+    <select id="contact-list-selector" name="contact_list_id" data-member-id="#{@member.id}" data-placeholder="#{_('Add %s to a contact list') % @member.name_display}" data-msg="#{_('Added %s to contact list.') % @member.name_display}">
       <option value="0"></option>
       <?r account.contact_lists.sort_by { |cl| cl.name.downcase }.each do |cl| ?>
         <option value="#{cl.id}">#{cl.name}</option>
@@ -42,12 +42,18 @@
   <h3>#{_('Posts by %s') % @member.name_display}</h3>
 </div>
 
-<div id="post-excerpts">
-  <?r @member.posts(12).each do |post| ?>
+<?r if @posts.empty? ?>
+  <p id="no-more-posts" class="panel">
+    #{_('No more posts (for now).')}
+  </p>
+<?r else ?>
+<div id="post-excerpts" data-member-id="#{@member.id}">
+  <div class="more-posts">
+    <a href="#" class="load-more"></a>
+  </div>
+  <?r @posts.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post }
   <?r end ?>
+  <div class="spinner"></div>
 </div>
-
-<div class="panel" id="see-more">
-  #{ s_("%1$ssee more posts by %2$s%3$s") % [%|<a href="/rivers/ensure_exists/%3Afrom+%22#{@member.handle}%22">|, @member.name_display, '</a>', ] }
-</div>
+<?r end ?>

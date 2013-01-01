@@ -23,10 +23,9 @@ module Controller
       if account.nil?
         redirect_referrer
       end
-
-      render_file("#{Ramaze.options.views[0]}/profiles/show.xhtml",
-                  { :profile => account.member.profile,
-                    :member => account.member })
+      @member = account.member
+      @profile = @member.profile
+      @posts = @member.posts
     end
   end
 end

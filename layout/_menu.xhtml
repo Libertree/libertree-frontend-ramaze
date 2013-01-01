@@ -16,7 +16,7 @@
       #{ member_img(account.member) }
     </a>
     <div id="account-window" class="window has-shadow">
-      <a href="/profiles/show/#{account.member.id}">#{img 'icon-account.png', {alt:s_('menu|Profile')}} #{s_('menu|Profile')}</a><br/>
+      <a href="/p/#{account.member.username}">#{img 'icon-account.png', {alt:s_('menu|Profile')}} #{s_('menu|Profile')}</a><br/>
       <a href="/accounts/edit">#{img 'icon-settings.png', {alt:s_('menu|Settings')}} #{s_('menu|Settings')}</a><br/>
       <a href="/contact-lists">#{img 'icon-group.png', {alt:s_('menu|Contact Lists')}} #{s_('menu|Contact Lists')}</a><br/>
       <a href="/pools">#{s_('menu|Pools')}</a><br/>

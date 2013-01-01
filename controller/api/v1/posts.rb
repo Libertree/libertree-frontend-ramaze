@@ -28,7 +28,7 @@ module Controller
             'text'       => request['text'].to_s + "\n\n*posted with " + request['source'].to_s + "*"
           )
 
-          { 'success' => true }.to_json
+          { 'success' => true, 'id' => post.id }.to_json
         end
       end
     end

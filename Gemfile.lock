@@ -1,12 +1,6 @@
 GIT
-  remote: git://github.com/Libertree/libertree-client-rb.git
-  revision: b69ae5163ec8879479813e603d99dc5232f817fc
-  specs:
-    libertree-client (0.0.1)
-
-GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 41aba077c1b3e0e6ae9e336f785f48679c560512
+  revision: 38c0c8d2a077dfac18e02926514c75f29e0758fc
   branch: account-deletion
   specs:
     libertree-model (0.0.1)
@@ -158,7 +152,6 @@ DEPENDENCIES
   em-websocket
   factory_girl
   fast_gettext
-  libertree-client!
   libertree-model!
   linecache19!
   m4dbi

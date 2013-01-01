@@ -16,15 +16,11 @@ module Ramaze
           template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(name)}">@%s</a>|
 
           # Mapping between possible name shortenings and the replacement strings (hyperlinks)
-          [
-            "@#{name}",
-            '@' + name.split(/[ :,-]/, 2)[0],
-          ].each do |n|
-            dict[n.downcase] = template % n
-          end
-          (2..20).each do |len|
-            partial_name = name[0...len]
-            dict["@#{partial_name.downcase}"] = ( template % partial_name )
+          partial_names =
+            [ name, name.split(/[ :,-]/, 2)[0] ] +
+            (2..[20,name.length].min).map { |len| name[0...len] }
+          partial_names.each do |part|
+            dict["@#{part.downcase}"] = template % part
           end
         end
 

@@ -2,13 +2,19 @@ Libertree.PostLoader = {
   loading: false,
 
   loader: function( type ) {
-    if ( type === 'river' ) {
-      endpoint = '/posts/_excerpts';
-    } else if ( type === 'tags' ) {
-      endpoint = '/tags/_more';
-    } else {
-      // not supported
-      return function(){};
+    switch( type ) {
+      case 'river':
+        endpoint = '/posts/_excerpts';
+        break;
+      case 'profile':
+        endpoint = '/profiles/_more';
+        break;
+      case 'tags':
+        endpoint = '/tags/_more';
+        break;
+      default:
+        // not supported
+        return function(){};
     }
 
     return function( value, older_or_newer, time, onSuccess ) {
@@ -47,6 +53,7 @@ Libertree.PostLoader = {
   },
 
   // TODO: simplifying this to Libertree.PostLoader.loader('river') throws an error; why?
-  loadFromRiver: function() { this.loader( 'river' ).apply( this, arguments ) },
-  loadFromTags:  function() { this.loader( 'tags'  ).apply( this, arguments ) },
+  loadFromRiver:   function() { this.loader( 'river'   ).apply( this, arguments ) },
+  loadFromTags:    function() { this.loader( 'tags'    ).apply( this, arguments ) },
+  loadFromProfile: function() { this.loader( 'profile' ).apply( this, arguments ) },
 };

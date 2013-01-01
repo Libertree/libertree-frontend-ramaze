@@ -48,6 +48,22 @@ Libertree.UI = {
     } );
   },
 
+  // TODO: replace with bootstrap popover
+  fadingAlert: function(message, x, y) {
+    var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
+    div.appendTo('html');
+
+    if( ! ( typeof x === 'undefined' || typeof y === 'undefined' ) ) {
+      div.css( { left: x+'px', top: y+'px' } );
+    }
+    setTimeout(
+      function() {
+        $('.fading-alert').fadeOut(2000);
+      },
+      1000 + message.length * 50
+    );
+  },
+
   TextAreaBackup: {
     timer: undefined,
     stored: '',

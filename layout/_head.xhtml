@@ -34,19 +34,21 @@
   #{ js_nocache 'libertree/ui' }
   #{ js_nocache 'libertree/session' }
   #{ js_nocache 'libertree/pools' }
-  #{ js_nocache 'application' }
+  #{ js_nocache 'libertree/notifications' }
+  #{ js_nocache 'libertree/chat' }
   #{ js_nocache 'libertree/likes' }
+  #{ js_nocache 'libertree/posts' }
+  #{ js_nocache 'libertree/comments' }
+  #{ js_nocache 'application' }
   #{ js_nocache 'comments' }
   #{ js_nocache 'markdown-injector' }
   #{ js_nocache 'notifications' }
   #{ js_nocache 'chat' }
   #{ js_nocache 'post' }
   #{ js_nocache 'post-new' }
-  #{ js_nocache 'river' }
   #{ js_nocache 'river-new' }
   #{ js_nocache 'pool' }
   #{ js_nocache 'home' }
-  #{ js_nocache 'profile' }
   <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
     #{ js_nocache 'websocket' }
   <?r end ?>

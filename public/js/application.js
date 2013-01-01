@@ -1,32 +1,11 @@
-// TODO: replace with bootstrap popover
-function fadingAlert(message, x, y) {
-  var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
-  div.appendTo('html');
-
-  if( ! ( typeof x === 'undefined' || typeof y === 'undefined' ) ) {
-    div.css( { left: x+'px', top: y+'px' } );
-  }
-  setTimeout(
-    function() {
-      $('.fading-alert').fadeOut(2000);
-    },
-    1000 + message.length * 50
-  );
-}
-
-/* ---------------------------------------------------- */
-
 $(document).ready( function() {
 
-  /* TODO: This looks refactorable */
   $('#menu-account').click( function() {
-    if( $('#account-window').is(':visible') ) {
-      Libertree.UI.hideWindows();
-      return false;
-    }
-
+    var show_window = ! $('#account-window').is(':visible');
     Libertree.UI.hideWindows();
-    $('#account-window').toggle();
+    if (show_window) {
+      $('#account-window').show();
+    }
     return false;
   } );
 
@@ -60,6 +39,8 @@ $(document).ready( function() {
     }
 
     var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
+    var preview_heading = $(this).data('preview-heading');
+    var close_label = $(this).data('preview-close-label');
     var type = $(this).data('type');
     var textType = null;
     if( type === 'post' ) {
@@ -73,8 +54,7 @@ $(document).ready( function() {
         Libertree.Session.ensureAlive(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          //TRANSLATEME
-          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length === 0 ) {
             scrollable = $('html');
@@ -121,11 +101,6 @@ $(document).ready( function() {
     mouseout: function() {
       $(this).find('.post-tools').hide();
     }
-  } );
-
-  $('.mark-read').live( 'click', function() {
-    markPostRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
-    return false;
   } );
 
   $('.pseudolink').live( 'click', function(e) {

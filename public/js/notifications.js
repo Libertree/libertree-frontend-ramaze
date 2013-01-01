@@ -1,22 +1,3 @@
-// n is of type string
-function updateNumNotificationsUnseen(n) {
-  var title = document.title;
-  if( n === '0' ) {
-    $('#num-notifications-unseen').hide();
-    $('#menu-notifications').addClass('none'); /* this may no longer be used, and could be removed */
-    title = title.replace( /^\([0-9]+\) /, '' );
-  } else {
-    $('#num-notifications-unseen').show();
-    $('#menu-notifications').removeClass('none'); /* this may no longer be used, and could be removed */
-    title = title.replace( /^\([0-9]+\)/, '('+n+')' );
-    if( ! title.match(/^\([0-9]+\)/) ) {
-      title = '('+n+') ' + title;
-    }
-  }
-  document.title = title;
-  $('#num-notifications-unseen').html(n);
-}
-
 $(document).ready( function() {
   $('#menu-notifications').click( function() {
     if( $('#notifications-window').is(':visible') ) {
@@ -38,7 +19,7 @@ $(document).ready( function() {
         function(html) {
           Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#notifications-window');
-          updateNumNotificationsUnseen( $(html).find('.n').text() );
+          Libertree.Notifications.updateNumUnseen( $(html).find('.n').text() );
         }
       ).
       toggle()
@@ -58,7 +39,7 @@ $(document).ready( function() {
       $('.notification[data-notification-ids="['+id+']"]').removeClass('unseen').addClass('seen');
     } );
     $.get('/notifications/seen/' + ids.join('/'), function(data) {
-      updateNumNotificationsUnseen(data);
+      Libertree.Notifications.updateNumUnseen(data);
     } );
   } );
 
@@ -70,7 +51,7 @@ $(document).ready( function() {
       $('.notification[data-notification-ids="['+id+']"]').removeClass('seen').addClass('unseen');
     } );
     $.get('/notifications/unseen/' + ids.join('/'), function(data) {
-      updateNumNotificationsUnseen(data);
+      Libertree.Notifications.updateNumUnseen(data);
     } );
   } );
 
@@ -81,10 +62,10 @@ $(document).ready( function() {
         .removeClass('unseen')
         .addClass('seen')
       ;
-      updateNumNotificationsUnseen('0');
+      Libertree.Notifications.updateNumUnseen('0');
     } );
   } );
 
   /* Cover up occasional inconsistency in backend code */
-  updateNumNotificationsUnseen( $('#num-notifications-unseen').text() );
+  Libertree.Notifications.updateNumUnseen( $('#num-notifications-unseen').text() );
 } );

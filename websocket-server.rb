@@ -1,6 +1,15 @@
 require 'syck'
 require 'json'
 require 'em-websocket'
+require 'libertree/db'
+
+########################
+# FIXME: M4DBI wants us to connect to the db before defining models.  As model
+# definitions are loaded when 'libertree/model' is required, we have to do this first.
+Libertree::DB.load_config "#{File.dirname( __FILE__ ) }/config/database.yaml"
+Libertree::DB.dbh
+#########################
+#
 require 'libertree/model'
 
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )

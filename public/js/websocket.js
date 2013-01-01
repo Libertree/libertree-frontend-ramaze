@@ -31,13 +31,13 @@ $(document).ready( function() {
         Libertree.Chat.receiveMessage(data);
         break;
       case 'comment':
-        insertCommentHtmlFor( data.postId, data.commentId );
+        Libertree.Comments.insertHtmlFor( data.postId, data.commentId );
         break;
       case 'river-posts':
         Libertree.Home.indicateNewPosts(data);
         break;
       case 'notification':
-        updateNumNotificationsUnseen(data.n);
+        Libertree.Notifications.updateNumUnseen(data.n);
         break;
     }
   }

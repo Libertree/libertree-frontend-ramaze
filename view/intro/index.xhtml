@@ -17,7 +17,7 @@
     <li>
       <input type="checkbox"
              data-label="#{s_('tutorial-river-label|Unread posts')}"
-             data-query=":unread" />
+             data-query="+:unread" />
       #{s_('tutorial-river-label|Unread posts')}
       #{help_bubble s_("tutorial|All posts on Libertree which you haven't read yet")}
     </li>
@@ -33,7 +33,7 @@
     <li>
       <input type="checkbox"
              data-label="#{s_('tutorial-river-label|My activity')}"
-             data-query="+:liked +:commented +:subscribed" />
+             data-query=":liked :commented :subscribed" />
       #{s_('tutorial-river-label|My activity')}
       #{help_bubble s_('tutorial|Posts that you have liked, commented on, or are subscribed to')}
     </li>

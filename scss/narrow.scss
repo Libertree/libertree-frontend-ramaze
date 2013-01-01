@@ -112,8 +112,10 @@ input#search {
 
     div.post {
       background-color: $dust;
-      width: auto;
       padding: 2em;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
     }
   }
 }
