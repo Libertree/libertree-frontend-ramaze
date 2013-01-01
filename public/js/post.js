@@ -1,14 +1,17 @@
 $(document).ready( function() {
 
-  $('.post-tools a.like').live(
-    'click',
-    Libertree.mkLike( 'post', 'div.post, .post-excerpt' )
-  );
+  $('.post-tools a.like').live( 'click', function(event) {
+    Libertree.Posts.like( $(this), event, 'div.post, .post-excerpt' );
+  } );
 
-  $('.post-tools a.unlike').live(
-    'click',
-    Libertree.mkUnlike( 'post', 'div.post, .post-excerpt' )
-  );
+  $('.post-tools a.unlike').live( 'click', function(event) {
+    Libertree.Posts.unlike( $(this), event, 'div.post, .post-excerpt' );
+  } );
+
+  $('.mark-read').live( 'click', function() {
+    Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
+    return false;
+  } );
 
   $('#comments-hide').click( function() {
     $('div.post').addClass('with-comments-sliding');
@@ -71,34 +74,12 @@ $(document).ready( function() {
 
   $('.post-tools .subscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
-    $.get(
-      '/posts/_subscribe/' + post.data('post-id'),
-      function() {
-        post.find('.subscribe').addClass('hidden');
-        post.find('.unsubscribe').removeClass('hidden');
-      }
-    );
+    Libertree.Posts.subscribe( post );
     return false;
   } );
   $('.post-tools .unsubscribe').live( 'click', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
-    $.get(
-      '/posts/_unsubscribe/' + post.data('post-id'),
-      function() {
-        post.find('.unsubscribe').addClass('hidden');
-        post.find('.subscribe').removeClass('hidden');
-      }
-    );
-    return false;
-  } );
-
-  $('.post-tools .visibility').live( 'click', function(event) {
-    event.preventDefault();
-    Libertree.UI.fadingAlert(
-      $(this).data('description'),
-      event.clientX - 200,
-      event.clientY + 10
-    );
+    Libertree.Posts.unsubscribe( post );
     return false;
   } );
 } );

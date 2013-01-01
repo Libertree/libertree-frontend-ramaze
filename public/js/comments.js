@@ -93,15 +93,13 @@ $(document).ready( function() {
     window.location = '#' + $(this).data('id-back');
   } );
 
-  $('div.comment a.like').live(
-    'click',
-    Libertree.mkLike( 'comment', 'div.comment' )
-  );
+  $('div.comment a.like').live( 'click', function(event) {
+    Libertree.Comments.like( $(this), event, 'div.comment' );
+  } );
 
-  $('div.comment a.unlike').live(
-    'click',
-    Libertree.mkUnlike( 'comment', 'div.comment' )
-  );
+  $('div.comment a.unlike').live( 'click', function(event) {
+    Libertree.Comments.unlike( $(this), event, 'div.comment' );
+  } );
 
   $('form.comment input.submit').live( 'click', function() {
     var submitButton = $(this);

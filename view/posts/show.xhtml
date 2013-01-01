@@ -49,7 +49,7 @@
           <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
           <br/>
           <?r if logged_in? ?>
-            <a class="visibility" href="#" title="#{visibility_description(@post)}" data-description="#{visibility_description(@post)}">#{img 'icon-eye.png', {class:"size-16", alt: visibility_description(@post)}}</a>
+            <a class="visibility" href="#" rel="popover" title="#{_('Visibility')}" data-content="#{visibility_description(@post)}">#{img 'icon-eye.png', {class:"size-16", alt: visibility_description(@post)}}</a>
           <?r end ?>
           <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{like_list(@post)}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span>
         </div>

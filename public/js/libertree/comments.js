@@ -45,3 +45,6 @@ Libertree.Comments = {
     );
   }
 };
+
+Libertree.Comments.like   = Libertree.mkLike('comment');
+Libertree.Comments.unlike = Libertree.mkUnlike('comment');
