@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 75e129c714f98ebfb9e0535862363565674263a9
+  revision: 38c0c8d2a077dfac18e02926514c75f29e0758fc
+  branch: account-deletion
   specs:
     libertree-model (0.0.1)
 
