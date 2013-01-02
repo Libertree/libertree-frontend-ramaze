@@ -4,13 +4,14 @@
 #   <lefmeunier@free.fr>, 2012.
 #   <lunachik@zoho.com>, 2012.
 #   <mlelao@aim.com>, 2012.
+# Rudy DELANSAY <delansay.rudy@gmail.com>, 2012.
 #   <teimahu@live.fr>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-10-21 06:58+0000\n"
+"PO-Revision-Date: 2012-11-28 20:42+0000\n"
 "Last-Translator: Loelo <autre7273@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -89,6 +90,12 @@ msgstr "Rivière :"
 msgid "manage rivers"
 msgstr "gérer les rivières"
 
+msgid "In order to see posts here, you need to have at least one river."
+msgstr "Afin de voir des messages ici, vous devez avoir au moins une rivière."
+
+msgid "%sCreate one now%s"
+msgstr "%sEn créer une maintenant%s"
+
 #: view/home/_menu.xhtml
 msgid "by post time"
 msgstr "par date de publication"
@@ -130,6 +137,13 @@ msgid ""
 "This post and its comments are only visible to members of this Libertree "
 "forest"
 msgstr "Ce message et ses commentaires ne sont visibles qu'aux membres de cette forêt Libertree"
+
+#: helper/views.rb
+msgid "Click here for help"
+msgstr "Cliquer ici pour avoir de l’aide"
+
+msgid "help|What does this mean?"
+msgstr "Qu’est-ce que cela veut dire ?"
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -498,7 +512,7 @@ msgid "view all"
 msgstr "voir tout"
 
 msgid "%d more"
-msgstr "%d plus"
+msgstr "%d de plus"
 
 #: view/notifications/_comment.xhtml
 msgid "singular|%1$s commented on your %2$spost%3$s."
@@ -596,8 +610,17 @@ msgstr "La liste des contacts &ldquo;%s&rdquo; a été effacée"
 msgid "Contact Lists"
 msgstr "Listes de contacts"
 
+msgid "Create Contact List"
+msgstr "Créer une liste de contacts"
+
 msgid "contact-list|Name:"
 msgstr "Nom:"
+
+msgid "contact-list|Members:"
+msgstr "Membres :"
+
+msgid "(type here to search)"
+msgstr "(entrez votre recherche ici)"
 
 msgid "new-contact-list|Create"
 msgstr "Créer"
@@ -608,9 +631,6 @@ msgstr "supprimer"
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
 msgstr "Liste de contacts: %s"
-
-msgid "(choose members)"
-msgstr "(choisir des membres)"
 
 msgid "contact-list|Save"
 msgstr "Enregistrer"
@@ -653,11 +673,14 @@ msgstr "cet arbre"
 msgid "Trees"
 msgstr "Arbres"
 
-msgid "new-tree|Hostname:"
-msgstr "Nom d'hôte :"
+msgid "introduce-tree|Hostname or IP address:"
+msgstr "Nom de domaine ou adresse IP"
 
-msgid "new-tree|Add"
-msgstr "Ajouter"
+msgid "introduce-tree|Introduce"
+msgstr "Introduire"
+
+msgid "INTRODUCE request pending for remote tree @ %s"
+msgstr "Une requête INTRODUIRE est en cours pour l’arbre distant @ %s"
 
 msgid "Job queue"
 msgstr "Tâches en cours"
@@ -801,10 +824,10 @@ msgid "Add this spring to a river"
 msgstr "Ajouter cette source à une rivière"
 
 msgid "Spring this pool:"
-msgstr "Transformer ce bassin en source:"
+msgstr "Transformer ce bassin en source :"
 
 msgid "pool|Sprung:"
-msgstr "Bassins|Transformés en source:"
+msgstr "Bassins|Transformés en source :"
 
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
@@ -1015,9 +1038,6 @@ msgstr "(avancé) Utilisez le caractère spécial %s suivi par &lt; ou &gt; et u
 msgid "Example: %s:word-count < 16%s"
 msgstr "Exemple : %s:word-count < 16%s"
 
-msgid "You can also %shave the beginner rivers recreated for you%s."
-msgstr "Vous pouvez aussi %savoir les rivières initiales recréées pour vous%s."
-
 msgid "river|Examples"
 msgstr "Exemples"
 
@@ -1184,82 +1204,67 @@ msgstr "L'envoi du commentaire a échoué."
 
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
-msgstr ""
+msgstr "Mes intérêts"
 
 msgid "tutorial|Back"
-msgstr ""
+msgstr "Noir"
+
 msgid "tutorial|Next"
-msgstr ""
+msgstr "Suivant"
+
 msgid "tutorial|Skip"
-msgstr ""
+msgstr "Passer"
+
 msgid "tutorial|Done!"
-msgstr ""
+msgstr "Fait !"
 
 msgid "tutorial|An error occurred while trying to create a river."
-msgstr ""
+msgstr "Une erreur est survenue lors de la création d’une rivière."
 
 msgid "tutorial-step-1\n"
-msgstr ""
-"# Welcome to Libertree!\n"
-"Hello, and welcome to Libertree! We'd like to take a minute to "
-"explain the most important concepts in Libertree, as this will help you get the "
-"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
-"Libertree is a place where people write things in public, or share interesting "
-"stuff with others.\n\n"
-" - Someone who is a part of Libertree is called a *member*.\n"
-" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
-" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+msgstr "# Bienvenue sur Libertree !\n Bonjour, et bienvenue sur Libertree ! \nNous aimerions prendre une minute pour vous expliquer les concepts les plus importants de Libertree, car cela vous aidera à en tirer le meilleur. Vous pouvez [passer ce tutorial](/home) et le reprendre plus tard.\n\n Libertree est un endroit où des gens écrivent des messages publics, ou partagent avec les autres des choses qu’ils estiment intéressantes.\n\n - Quelqu’un qui est inscrit sur Libertree est appelé *membre*.\n - Les membres écrivent des messages <a href='#' class='help' rel='popover' title='Qu’est-ce qu’un message ?' data-content='Les messages contiennent des informations très diverses compte-tenu de la diversité des intérêts des membres et de ce qu’ils souhaitent partager. Un message peut contenir une seule phrase ou bien être aussi long qu’un article de journal.'>?</a> destinés aux autres membres.\n - Les membres peuvent ajouter des commentaires <a href='#' class='help' rel='popover' title='Qu’est-ce qu’un commentaire ?' data-content='Un commentaire est une réponse ou un ajout à un message ou à l’un de ses commentaires.'>?</a> aux messages.\n\n"
 
 msgid "tutorial-step-2a"
-msgstr ""
-"# Your interests\n"
-"There are a lot of posts made to Libertree every day. If you like, "
-"you can take a minute right now to let us know what your interests are. "
-"We'll use this information to narrow down what posts you see at first, "
-"so you don't get overwhelmed. You can always change things later, or "
-"explore ways to read more posts.  Enter a list of interests (one word "
-"each):"
+msgstr "# Vos intérêts\n Il y a beaucoup de messages postés sur Libertree chaque jour. Si vous le souhaitez, vous pouvez prendre maintenant une minute pour nous faire savoir quels sont vos intérêts. Nous utiliserons ces informations pour filtrer et organiser les messages que vous verrez en premier de manière à ce que vous ne soyez pas submergé(e). Vous pourrez toujours les modifier par la suite ou explorer des moyens de lire davantage de messages. Entrer une liste de vos intérêts (un mot chacun) :"
 
 msgid "tutorial-step-2b"
-msgstr "Congratulations! You have just created your first river."
+msgstr "Bravo ! Vous venez de créer votre première rivière."
 
 msgid "tutorial-step-3-heading"
-msgstr "# Rivers"
+msgstr "# Rivières"
 
 msgid "tutorial-step-3a"
-msgstr ""
-"Rivers are a powerful feature that lets you pick or filter posts "
-"from the torrent of posts on Libertree. Here is a list of "
-"rivers that you may find useful. Select those that you would "
-"like added to your account."
+msgstr "Les rivières sont une fonctionnalités puissantes qui vous permet de choisir ou filtrer les messages sur Libertree. Voici une liste des rivières que vous pourriez trouver utiles. Choisissez celles que vous voulez ajouter à votre compte."
 
 msgid "tutorial-step-3b"
-msgstr ""
-"Be sure to check out the river management page after "
-"this tutorial to see interesting examples of what you "
-"can do with rivers."
+msgstr "Pensez à vérifier la page de gestion des rivières après ce tutoriel pour voir des exemples intéressants de ce que vous pouvez faire avec les rivières."
 
 msgid "tutorial-step-4-heading"
-msgstr "# Friends"
+msgstr "# Amis"
+
 msgid "intro-contact-list-name|Friends"
-msgstr ""
+msgstr "Amis"
 
 msgid "tutorial-step-4"
-msgstr ""
-"If you think some of your friends are already Libertree members, "
-"you can try to find them and add them as contacts now."
+msgstr "Si vous pensez que certains de vos amis sont déjà sur Libertree, vous pouvez essayer de les trouver et de les ajouter comme contact dès maintenant."
 
 msgid "tutorial-river-label|Unread posts"
-msgstr ""
-msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
-msgstr ""
+msgstr "Messages non-lus"
+
+msgid ""
+"tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgstr "Messages non-lus%sTout les messages sur Libertree que vous n'avez pas encore lus"
 
 msgid "tutorial-river-label|Posts from the forest"
-msgstr ""
+msgstr "Messages depuis la forêt"
+
 msgid "tutorial|Posts from the forest%sAll posts on Libertree"
-msgstr ""
+msgstr "Messages depuis la foret%sTout les messages sur Libertree"
 
 msgid "tutorial-river-label|My activity"
-msgstr ""
-msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
-msgstr ""
+msgstr "Mon activité"
+
+msgid ""
+"tutorial|My activity%sPosts that you have liked, commented on, or are "
+"subscribed to"
+msgstr "mon activité%sLes messages que vous avez aimés, commentés ou auxquels vous êtes abonnés"
