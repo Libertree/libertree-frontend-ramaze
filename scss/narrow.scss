@@ -85,7 +85,18 @@ input#search {
         float: right;
     }
 
+    #post-excerpts {
+        float: none;
+    }
+
+    #no-more-posts {
+        float: none;
+        width: auto;
+        padding: 1em 1em;
+    }
+
     .post-excerpt {
+        width: auto;
         div.meta {
             float: none;
             margin-bottom: 1em;
