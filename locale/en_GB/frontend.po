@@ -843,6 +843,8 @@ msgid "menu|New Post"
 msgstr ""
 msgid "menu|Known Issues"
 msgstr ""
+msgid "menu|Toggle sidebar"
+msgstr ""
 
 #: layout/_notifications.xhtml
 msgid "No notifications"

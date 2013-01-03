@@ -210,6 +210,10 @@ textarea, input[type="text"], input[type="password"] {
             position: relative;
         }
 
+        #toggle-sidebar {
+            display: none;
+        }
+
         #main-menu-container {
             margin: 0 auto;
             padding-left: 190px;

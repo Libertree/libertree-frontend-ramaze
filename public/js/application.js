@@ -9,6 +9,10 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('#toggle-sidebar').live('click', function() {
+    $('#sidebar').toggle();
+  } );
+
   // bootstrap popovers for additional information
   $("a[rel=popover]")
     .popover()

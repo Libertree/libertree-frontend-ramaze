@@ -14,11 +14,18 @@ body.body {
     min-width: 0;
 }
 
+#sidebar {
+  display: none;
+}
+
 .menu {
     text-align: left;
     #menu-narrower {
         width: 100%;
         min-width: 0px;
+        #toggle-sidebar {
+          display: inline;
+        }
         #main-menu-container {
             margin-left: 0px;
             margin-right: 0px;
