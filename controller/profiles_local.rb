@@ -23,6 +23,7 @@ module Controller
       if account.nil?
         redirect_referrer
       end
+      @rivers = account.rivers_not_appended
       @member = account.member
       @profile = @member.profile
       @posts = @member.posts
