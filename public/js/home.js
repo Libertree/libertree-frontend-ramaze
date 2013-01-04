@@ -47,6 +47,7 @@ $(document).ready( function() {
           { height: commentHeight + 'px' },
           Libertree.UI.duration(commentHeight), 'linear',
           function() {
+            comments.height('auto');
             showMoreLink.siblings('.show-less').show();
           });
       });
