@@ -11,6 +11,11 @@ body.body.excerpts-view .main {
     }
 
     div.panel {
+        width: 40em;
+        float: right;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
         padding-left: 30px;
         padding-right: 30px;
 
