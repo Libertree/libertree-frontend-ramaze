@@ -117,10 +117,6 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.overflowed img').live( 'mouseover', function() {
-    Libertree.UI.showShowMores();
-  } );
-
   $('.load-more').live( 'click', function(event) {
     event.preventDefault();
 
@@ -140,7 +136,4 @@ $(document).ready( function() {
     );
   } );
 
-  /* ---------------------------------------------------- */
-
-  Libertree.UI.showShowMores();
 } );

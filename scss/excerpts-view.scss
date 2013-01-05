@@ -164,8 +164,10 @@ body.body.excerpts-view .main {
             }
         }
 
-        .show-more, .show-less {
+        .show-less {
             display: none;
+        }
+        .show-more, .show-less {
             text-align: center;
             position: relative;
             margin-bottom: -1em;
