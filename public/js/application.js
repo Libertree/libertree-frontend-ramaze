@@ -27,7 +27,8 @@ $(document).ready( function() {
 
 
   $('input.preview').live( 'click', function() {
-    var unrendered = $(this).closest('form').find('textarea[name="text"]').val();
+    var $this = $(this);
+    var unrendered = $this.closest('form').find('textarea[name="text"]').val();
 
     // abort unless there is text to be rendered
     if (unrendered.length === 0) {
@@ -38,10 +39,10 @@ $(document).ready( function() {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
 
-    var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
-    var preview_heading = $(this).data('preview-heading');
-    var close_label = $(this).data('preview-close-label');
-    var type = $(this).data('type');
+    var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message');
+    var preview_heading = $this.data('preview-heading');
+    var close_label = $this.data('preview-close-label');
+    var type = $this.data('type');
     var textType = null;
     if( type === 'post' ) {
       textType = 'post-text';

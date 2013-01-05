@@ -105,7 +105,7 @@ $(document).ready( function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
-    var form = $(this).closest('form.comment');
+    var form = submitButton.closest('form.comment');
     var textarea = form.find('textarea.comment');
     Libertree.UI.TextAreaBackup.disable();
     var postId = form.data('post-id');
