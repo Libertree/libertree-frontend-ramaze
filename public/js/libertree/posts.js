@@ -3,17 +3,20 @@ Libertree.Posts = {
     var endpoint = '/posts/_' + type + '/';
     var update = (type === 'subscribe') ?
       function(post) {
+        Libertree.UI.disableIconSpinner(post.find('.subscribe img'));
         post.find('.subscribe').addClass('hidden');
         post.find('.unsubscribe').removeClass('hidden');
       }
     :
       function(post) {
+        Libertree.UI.disableIconSpinner(post.find('.unsubscribe img'));
         post.find('.unsubscribe').addClass('hidden');
         post.find('.subscribe').removeClass('hidden');
       }
     ;
     return function(post) {
-      $.get( endpoint + post.data('post-id'), update(post) );
+      Libertree.UI.enableIconSpinner(post.find('.'+type+' img'));
+      $.get( endpoint + post.data('post-id'), function() { update(post) } );
     };
   },
 
@@ -22,6 +25,7 @@ Libertree.Posts = {
       '/posts/_read/' + post_id,
       function() {
         var post = $('*[data-post-id="'+post_id+'"]');
+        Libertree.UI.disableIconSpinner(post.find('.mark-read img'));
         post.find('.mark-read').addClass('hidden');
         post.find('.mark-unread').removeClass('hidden');
       }
