@@ -259,7 +259,7 @@ msgstr ""
 
 #: view/comments/_comment.xhtml
 
-msgid "One like"
+msgid "1 like"
 msgstr ""
 msgid "%d likes"
 msgstr ""
