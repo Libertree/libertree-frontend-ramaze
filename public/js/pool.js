@@ -19,7 +19,7 @@ $(document).ready( function() {
         o.insertAfter(post.find('.meta, .post-pane'));
         if( o.find('option').length === 2 ) {
           var option = $('select#pool-selector option:last');
-          Libertree.Pools.addPost( option.val(), postId, collect_link, x, y );
+          Libertree.Pools.addPost( option.val(), postId, post, x, y );
         } else {
           o.show();
           o.css( { left: (x-o.width()/2)+'px', top: (y+14)+'px' } );
@@ -27,7 +27,7 @@ $(document).ready( function() {
             //TRANSLATEME
             no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
           } ).change( function() {
-            Libertree.Pools.addPost( $('select#pool-selector').val(), postId, collect_link, x, y );
+            Libertree.Pools.addPost( $('select#pool-selector').val(), postId, post, x, y );
           } );
         }
         $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown()
