@@ -12,9 +12,11 @@ $(document).ready( function() {
     var collect_link = $(this);
     var post = collect_link.closest('div.post, div.post-excerpt');
     var postId = post.data('post-id');
+    Libertree.UI.enableIconSpinner(collect_link.find('img'));
     $.get(
       '/pools/_index/' + postId,
       function(html) {
+        Libertree.UI.disableIconSpinner(collect_link.find('img'));
         var o = $(html);
         o.insertAfter(post.find('.meta, .post-pane'));
         if( o.find('option').length === 2 ) {
