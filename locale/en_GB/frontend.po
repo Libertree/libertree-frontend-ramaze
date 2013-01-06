@@ -232,7 +232,7 @@ msgstr ""
 
 #: view/comments/_comments.xhtml
 
-msgid "One comment"
+msgid "1 comment"
 msgstr ""
 msgid "showing 1 comment"
 msgstr ""
