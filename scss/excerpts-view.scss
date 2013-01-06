@@ -82,18 +82,22 @@ body.body.excerpts-view .main {
 
     #sidebar {
       @include shadow;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      padding: (40px + 10px) 10px 10px; // 40px = height of the menu bar
       position: fixed;
+      overflow-y: auto;
       z-index: 2; // one less than the menu bar
-      top: 40px; // height of the menu bar
+      top: 0;
       left: auto;
       @media screen and (max-width: 1100px) {
         left: 0;
       }
 
-      width: 16em;
+      width: 18em;
       height: 100%;
       background-color: $dust_translucent;
-      padding: 1em;
 
       .menu-item {
           padding-left: 4px;
