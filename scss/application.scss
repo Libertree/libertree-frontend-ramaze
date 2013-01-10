@@ -73,8 +73,8 @@ code {
 }
 
 a {
-    color: $dark_green;
-    border-bottom: 1px dotted $dark_green;
+    color: $leaf;
+    border-bottom: 1px dotted $leaf;
     text-decoration: none;
 }
 a:visited {
@@ -108,10 +108,10 @@ input[type="text"],
 input[type="password"],
 .chzn-container-multi .chzn-choices,
 .chzn-container-active .chzn-choices {
-    background-color: $faint_tan;
+    background-color: $sand;
     background-image: none;
     border: 1px solid $path;
-    color: $cocoa_bean;
+    color: $text;
 }
 
 textarea, input[type="text"], input[type="password"] {
@@ -282,7 +282,7 @@ textarea, input[type="text"], input[type="password"] {
     line-height: 1.4em;
     text-align: left;
     word-wrap: break-word;
-    a img { border-bottom: 2px dotted $dark_green; }
+    a img { border-bottom: 2px dotted $leaf; }
     a:visited img { border-bottom: 2px dotted $light_green; }
     a:hover img { border-bottom: 2px dotted $autumn_red; }
     a:active img { border-bottom: 2px dotted $autumn_red; }
@@ -499,7 +499,7 @@ a.hashtag, a.commenter-ref {
     cursor: text;
     vertical-align: middle;
     padding-top: 2px;
-    color: $cocoa_bean;
+    color: $text;
 }
 
 form.search {

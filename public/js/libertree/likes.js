@@ -1,4 +1,4 @@
-Libertree.mkLike = function(type, entityPath) {
+Libertree.mkLike = function(type) {
   // TODO: merge the two update functions
   var update = (type === 'comment') ?
     function( entity, response ) {
@@ -23,28 +23,23 @@ Libertree.mkLike = function(type, entityPath) {
     }
   ;
 
-  return function(event) {
+  return function(link, event, path) {
     event.preventDefault();
-
-    var link = $(this);
-    var entity = link.closest(entityPath);
-
-    if( entity.length ) {
-      $.get(
-        '/likes/'+type+'s/create/' + entity.data(type+'-id'),
-        function(response) {
-          var h = $.parseJSON(response);
-          link.addClass('hidden');
-          link.siblings('a.unlike').removeClass('hidden').data(type+'-like-id', h[type+'_like_id']);
-          update( entity, h );
-        }
-      );
-    }
+    var entity = link.closest(path);
+    $.get(
+      '/likes/'+type+'s/create/' + entity.data(type+'-id'),
+      function(response) {
+        var h = $.parseJSON(response);
+        link.addClass('hidden');
+        link.siblings('a.unlike').removeClass('hidden').data(type+'-like-id', h[type+'_like_id']);
+        update( entity, h );
+      }
+    );
   };
 }
 
 
-Libertree.mkUnlike = function(type, entityPath) {
+Libertree.mkUnlike = function(type) {
   // TODO: merge these update functions
   var update = (type === 'comment') ?
     function( entity, response ) {
@@ -69,22 +64,17 @@ Libertree.mkUnlike = function(type, entityPath) {
     }
   ;
 
-  return function(event) {
+  return function(link, event, path) {
     event.preventDefault();
-
-    var link = $(this);
-    var entity = link.closest(entityPath);
-
-    if( entity.length ) {
-      $.get(
-        '/likes/'+type+'s/destroy/' + link.data(type + '-like-id'),
-        function(response) {
-          var h = $.parseJSON(response);
-          link.addClass('hidden');
-          link.siblings('a.like').removeClass('hidden');
-          update( entity, h );
-        }
-      );
-    }
+    var entity = link.closest(path);
+    $.get(
+      '/likes/'+type+'s/destroy/' + link.data(type + '-like-id'),
+      function(response) {
+        var h = $.parseJSON(response);
+        link.addClass('hidden');
+        link.siblings('a.like').removeClass('hidden');
+        update( entity, h );
+      }
+    );
   };
 };

@@ -10,6 +10,10 @@ module Controller
 
     layout do |path|
       case path
+      when 'textarea_save'
+        nil
+      when 'textarea_clear'
+        nil
       when 'search'
         if session[:layout] == 'narrow'
           :narrow
@@ -159,20 +163,20 @@ module Controller
       @view = 'search'
     end
 
-    # TODO: don't render page
     def textarea_save
       # Check valid session first.
       if session[:saved_text]
         session[:saved_text][ request['id'].to_s ] = request['text'].to_s
       end
+      nil
     end
 
-    # TODO: don't render page
     def textarea_clear(id)
       # Check valid session first.
       if session[:saved_text]
         session[:saved_text][id] = nil
       end
+      nil
     end
 
     def request_password_reset

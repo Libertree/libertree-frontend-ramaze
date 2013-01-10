@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-09-02 08:47+0000\n"
-"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
+"PO-Revision-Date: 2012-11-11 18:49+0000\n"
+"Last-Translator: glesik <inglessi@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: view/login.xhtml
 msgid "Username"
@@ -86,6 +86,12 @@ msgstr "Река:"
 msgid "manage rivers"
 msgstr "управление реками"
 
+msgid "In order to see posts here, you need to have at least one river."
+msgstr ""
+
+msgid "%sCreate one now%s"
+msgstr ""
+
 #: view/home/_menu.xhtml
 msgid "by post time"
 msgstr "по времени записи"
@@ -127,6 +133,13 @@ msgid ""
 "This post and its comments are only visible to members of this Libertree "
 "forest"
 msgstr "Эта запись и комментарии к ней видны только участникам этого леса Libertree"
+
+#: helper/views.rb
+msgid "Click here for help"
+msgstr ""
+
+msgid "help|What does this mean?"
+msgstr ""
 
 #: view/posts/edit.xhtml
 msgid "Edit Post"
@@ -179,8 +192,8 @@ msgid "Delete this post?"
 msgstr "Удалить эту запись?"
 
 #: view/posts/_excerpts.xhtml
-msgid "No more posts."
-msgstr "Больше записей нет."
+msgid "No more posts (for now)."
+msgstr ""
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -499,33 +512,33 @@ msgstr "еще %d"
 
 #: view/notifications/_comment.xhtml
 msgid "singular|%1$s commented on your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s прокомментировал(а) вашу %2$sзапись%3$s."
 
 msgid "plural|%1$s commented on your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s прокомментировали вашу %2$sзапись%3$s."
 
 msgid "singular|%1$s commented on %2$s's %3$spost%4$s."
-msgstr ""
+msgstr "%1$s прокомментировал(а) %2$s's %3$sзапись%4$s."
 
 msgid "plural|%1$s commented on %2$s's %3$spost%4$s."
-msgstr ""
+msgstr "%1$s прокомментировали %2$s's %3$sзапись%4$s."
 
 #: view/notifications/_comment_like.xhtml
 msgid "singular|%1$s liked your %2$scomment%3$s on your post."
-msgstr ""
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к вашей записи."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on your post."
-msgstr ""
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к вашей записи."
 
 msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr ""
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к записи %4$s."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr ""
+msgstr "%1$s понравился ваш %2$sкомментарий%3$s к записи %4$s."
 
 #: view/notifications/_post_like.xhtml
 msgid "singular|%1$s liked your %2$spost%3$s."
-msgstr ""
+msgstr "%1$s понравилась ваша %2$sзапись%3$s."
 
 msgid "plural|%1$s liked your %2$spost%3$s."
 msgstr ""
@@ -579,9 +592,6 @@ msgstr "Записи"
 msgid "search-results|Comments"
 msgstr "Комментарии"
 
-msgid "search-results|view comment"
-msgstr "посмотреть комментарий"
-
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr "Список контактов обновлен."
@@ -596,8 +606,17 @@ msgstr "Список контактов &ldquo;%s&rdquo; был удален."
 msgid "Contact Lists"
 msgstr "Списки контактов"
 
+msgid "Create Contact List"
+msgstr ""
+
 msgid "contact-list|Name:"
 msgstr "Имя:"
+
+msgid "contact-list|Members:"
+msgstr ""
+
+msgid "(type here to search)"
+msgstr ""
 
 msgid "new-contact-list|Create"
 msgstr "Создать"
@@ -608,9 +627,6 @@ msgstr "удалить"
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
 msgstr "Список контактов: %s"
-
-msgid "(choose members)"
-msgstr "(выберите участников)"
 
 msgid "contact-list|Save"
 msgstr "Сохранить"
@@ -653,11 +669,14 @@ msgstr "это дерево"
 msgid "Trees"
 msgstr "Деревья"
 
-msgid "new-tree|Hostname:"
-msgstr "Имя хоста:"
+msgid "introduce-tree|Hostname or IP address:"
+msgstr ""
 
-msgid "new-tree|Add"
-msgstr "Добавить"
+msgid "introduce-tree|Introduce"
+msgstr ""
+
+msgid "INTRODUCE request pending for remote tree @ %s"
+msgstr ""
 
 msgid "Job queue"
 msgstr "Очередь задач"
@@ -779,6 +798,11 @@ msgstr "Используйте пруды, чтобы сохранять зап�
 msgid "pool|Name:"
 msgstr "Имя:"
 
+msgid ""
+"&quot;Springing&quot; a pool causes the pool and which posts it contains to "
+"become publicly visible.  Members can add other members' springs to rivers."
+msgstr ""
+
 msgid "new-pool|Create"
 msgstr "Создать"
 
@@ -792,12 +816,24 @@ msgstr "Все сохраненные записи будут утеряны. У
 msgid "Pool: %s"
 msgstr "Пруд: %s"
 
+msgid "Add this spring to a river"
+msgstr ""
+
+msgid "Spring this pool:"
+msgstr ""
+
+msgid "pool|Sprung:"
+msgstr ""
+
 #: view/pools/edit.xhtml
 msgid "Edit Pool: %s"
 msgstr "Редактировать пруд: %s"
 
 msgid "pool|Update"
 msgstr "Обновить"
+
+msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
@@ -835,6 +871,9 @@ msgid "Posts by %s"
 msgstr "Записи %s"
 
 msgid "Add %s to a contact list"
+msgstr ""
+
+msgid "%1$ssee more posts by %2$s%3$s"
 msgstr ""
 
 #: view/request_password_reset.xhtml
@@ -967,7 +1006,7 @@ msgstr "Используйте выражение %s с последующим �
 msgid ""
 "Use the special term %s followed by a contact list name in quotes to match "
 "all posts by the people in that contact list."
-msgstr ""
+msgstr "Используйте выражение %s с последующим именем списка контактов в кавычках, чтобы отобрать записи людей из этого списка."
 
 msgid "Example: %s:river \"Special Interests\"%s"
 msgstr "Пример: %s:река \"Особые интересы\"%s"
@@ -975,7 +1014,7 @@ msgstr "Пример: %s:река \"Особые интересы\"%s"
 msgid ""
 "Use the special term %s followed by %s or %s to match posts with a given "
 "visibility."
-msgstr ""
+msgstr "Используйте выражение %s с последующими %s или %s, чтобы отобрать записи с указанной видимостью."
 
 msgid ""
 "Other special terms: %s, %s and %s. These are for narrowing down to posts "
@@ -990,13 +1029,10 @@ msgstr "(дополнительно) Используйте выражение %
 msgid ""
 "(advanced) Use the special term %s followed by &lt; or &gt; and a number to "
 "match posts by their approximate number of words."
-msgstr ""
+msgstr "(дополнительно) Используйте выражение %s с последующими &lt; или &gt; и числом, чтобы отобрать записи по примерному количеству слов."
 
 msgid "Example: %s:word-count < 16%s"
-msgstr ""
-
-msgid "You can also %shave the beginner rivers recreated for you%s."
-msgstr "Вы можете также %sвосстановить реки по умолчанию для новичков%s."
+msgstr "Например: %s:word-count < 16%s"
 
 msgid "river|Examples"
 msgstr "Примеры"
@@ -1071,7 +1107,7 @@ msgstr "#restaurants -:river \"International News\"%sЗаписи с метко�
 msgid ""
 "#government -:visibility internet%sPosts about government, but not those "
 "which are exposed to the Internet"
-msgstr ""
+msgstr "#government -:visibility internet%sЗаписи с меткой #government, кроме тех, что видны всему Интернету."
 
 #: view/chat/_index.xhtml
 msgid "Chat"
@@ -1168,10 +1204,13 @@ msgstr ""
 
 msgid "tutorial|Back"
 msgstr ""
+
 msgid "tutorial|Next"
 msgstr ""
+
 msgid "tutorial|Skip"
 msgstr ""
+
 msgid "tutorial|Done!"
 msgstr ""
 
@@ -1221,6 +1260,7 @@ msgstr ""
 
 msgid "tutorial-step-4-heading"
 msgstr "# Friends"
+
 msgid "intro-contact-list-name|Friends"
 msgstr ""
 
@@ -1231,15 +1271,21 @@ msgstr ""
 
 msgid "tutorial-river-label|Unread posts"
 msgstr ""
-msgid "tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+
+msgid ""
+"tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
 msgstr ""
 
 msgid "tutorial-river-label|Posts from the forest"
 msgstr ""
+
 msgid "tutorial|Posts from the forest%sAll posts on Libertree"
 msgstr ""
 
 msgid "tutorial-river-label|My activity"
 msgstr ""
-msgid "tutorial|My activity%sPosts that you have liked, commented on, or are subscribed to"
+
+msgid ""
+"tutorial|My activity%sPosts that you have liked, commented on, or are "
+"subscribed to"
 msgstr ""

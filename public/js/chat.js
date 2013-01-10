@@ -66,7 +66,7 @@ $(document).ready( function() {
 
     textarea.attr('disabled', 'disabled');
     Libertree.UI.TextAreaBackup.disable();
-    var memberId = $(this).closest('.log').data('member-id');
+    var memberId = textarea.closest('.log').data('member-id');
 
     $.post(
       '/chat/create',

@@ -31,7 +31,8 @@ $(document).ready( function() {
 
 
   $('input.preview').live( 'click', function() {
-    var unrendered = $(this).closest('form').find('textarea[name="text"]').val();
+    var $this = $(this);
+    var unrendered = $this.closest('form').find('textarea[name="text"]').val();
 
     // abort unless there is text to be rendered
     if (unrendered.length === 0) {
@@ -42,8 +43,10 @@ $(document).ready( function() {
       unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
     }
 
-    var target = $(this).closest('form.comment, form#post-new, form#post-edit, form#new-message');
-    var type = $(this).data('type');
+    var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message');
+    var preview_heading = $this.data('preview-heading');
+    var close_label = $this.data('preview-close-label');
+    var type = $this.data('type');
     var textType = null;
     if( type === 'post' ) {
       textType = 'post-text';
@@ -56,8 +59,7 @@ $(document).ready( function() {
         Libertree.Session.ensureAlive(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          //TRANSLATEME
-          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">close</a><h3 class="preview">Preview</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length === 0 ) {
             scrollable = $('html');
@@ -104,11 +106,6 @@ $(document).ready( function() {
     mouseout: function() {
       $(this).find('.post-tools').hide();
     }
-  } );
-
-  $('.mark-read').live( 'click', function() {
-    Libertree.Posts.markRead( $(this).closest('div.post, div.post-excerpt').data('post-id') );
-    return false;
   } );
 
   $('.pseudolink').live( 'click', function(e) {

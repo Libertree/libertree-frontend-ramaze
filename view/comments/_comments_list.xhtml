@@ -30,7 +30,7 @@
             <a class="detach" href="#">#{_('detach')}</a>
             <a class="attach" href="#">#{_('attach')}</a>
             <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="#{_('Clear')}" tabindex="4"/>
-            <input class="preview" type="button" value="#{_('Preview')}" tabindex="3" data-type="comment"/>
+            <input class="preview" type="button" value="#{_('Preview')}" tabindex="3" data-type="comment" data-preview-heading="#{_('Preview')}" data-preview-close-label="#{s_('preview|close')}" />
             <input class="submit" type="button" value="#{@post.v_internet? ? _('Comment to Internet') : _('Comment')}" tabindex="2"/>
           </div>
         </form>

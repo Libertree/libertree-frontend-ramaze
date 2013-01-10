@@ -1,23 +1,22 @@
 # 
 # Translators:
-#   <rekado+libertree@elephly.net>, 2012.
 #   <jieqichen25+libertree@gmail.com>, 2012.
+#   <rekado+libertree@elephly.net>, 2012.
 # Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-07-28 13:13+0000\n"
+"PO-Revision-Date: 2012-07-30 12:24+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/libertree/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: view/login.xhtml
-
 msgid "[Libertree] Password reset"
 msgstr "[Libertree] 重置密码"

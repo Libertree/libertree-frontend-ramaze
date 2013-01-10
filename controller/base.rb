@@ -84,6 +84,7 @@ module Controller
     end
 
     def error
+      @view = "splash"
       @e = request.env[Rack::RouteExceptions::EXCEPTION]
       Ramaze::Log.error @e.message
       Ramaze::Log.error @e.backtrace.join("\n\t")
