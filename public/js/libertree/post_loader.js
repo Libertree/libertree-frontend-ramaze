@@ -43,7 +43,6 @@ Libertree.PostLoader = {
           } );
 
           Libertree.UI.removeSpinner('#post-excerpts');
-          Libertree.UI.showShowMores();
           if(onSuccess) {
             onSuccess();
           }

@@ -1,10 +1,9 @@
 Libertree.UI = {
-  showShowMores: function() {
-    $('.excerpt').each( function() {
-      if( $(this).get(0).scrollHeight > $(this).height() ) {
-        $(this).siblings('.show-more').show();
-      }
-    } );
+  setSpeed: function(speed) {
+    return function(pixels) {
+      // calculate the duration to move an amount of pixels at a given speed
+      return pixels * 1000 / speed;
+    };
   },
 
   continuousScrollHandler: function (loader) {
@@ -95,3 +94,5 @@ Libertree.UI = {
   }
 };
 
+// speed = pixels per second
+Libertree.UI.duration = Libertree.UI.setSpeed(600);

@@ -99,15 +99,6 @@ $(document).ready( function() {
     $.get( '/textarea_clear/' + id );
   } );
 
-  $('.post-excerpt').live( {
-    mouseover: function() {
-      $(this).find('.post-tools').show();
-    },
-    mouseout: function() {
-      $(this).find('.post-tools').hide();
-    }
-  } );
-
   $('.pseudolink').live( 'click', function(e) {
     window.location = $(this).data('href');
   } );

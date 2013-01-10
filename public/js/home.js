@@ -13,37 +13,44 @@ Libertree.Home = {
 
 /* ---------------------------------------------------- */
 
+
 $(document).ready( function() {
 
   $('.post-excerpt .show-more').live( 'click', function() {
     var showMoreLink = $(this);
-    var excerpt = $(this).siblings('.excerpt');
+    var excerpt = showMoreLink.siblings('.excerpt');
     var overflowed = excerpt.find('.overflowed');
-    var excerptParent = $(this).closest('.post-excerpt');
+
+    var excerptParent = showMoreLink.closest('.post-excerpt');
     var postId = excerptParent.data('post-id');
+    var comments = excerptParent.find('div.comments');
+    var commentHeight = comments.get(0).scrollHeight;
+    var heightDifference = overflowed.get(0).scrollHeight - overflowed.height();
 
+    Libertree.Posts.markRead(postId);
+    showMoreLink.hide();
+
+    //TODO: don't do this. Record the excerpt height somewhere and operate on that.
     overflowed.data( 'contracted-height', overflowed.height() );
-
-    excerptParent.find('div.comments.hidden').removeClass('hidden');
-
-    var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
-    var animationSpeed = heightDifference * 2;
 
     overflowed.animate(
       {
-        height: excerpt.get(0).scrollHeight + 'px',
-        'max-height': excerpt.get(0).scrollHeight + 'px'
+        height: overflowed.get(0).scrollHeight + 'px',
+        'max-height': overflowed.get(0).scrollHeight + 'px'
       },
-      animationSpeed,
+      Libertree.UI.duration(heightDifference), 'linear',
       function() {
-        Libertree.Posts.markRead(postId);
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');
-        showMoreLink.hide();
-        showMoreLink.siblings('.show-less').show();
-      }
-    );
+        comments.animate(
+          { height: commentHeight + 'px' },
+          Libertree.UI.duration(commentHeight), 'linear',
+          function() {
+            comments.height('auto');
+            showMoreLink.siblings('.show-less').show();
+          });
+      });
 
     if( Libertree.Home.wantsToComment ) {
       var scrollTop = $('html').scrollTop();
@@ -65,11 +72,12 @@ $(document).ready( function() {
   } );
 
   $('.post-excerpt .show-less').live( 'click', function() {
-    $(this).hide();
-    $(this).siblings('.show-more').show();
-    var excerpt = $(this).closest('.post-excerpt');
-
-    var animationSpeed = ( excerpt.find('.overflowed').height() - 200 ) * 2;
+    var link = $(this);
+    link.hide();
+    var excerpt = link.closest('.post-excerpt');
+    var overflowed = excerpt.find('.overflowed');
+    var comments = excerpt.find('div.comments');
+    var distance = overflowed.height() - overflowed.data('contracted-height');
 
     var excerptTop = excerpt.position().top;
     var windowTop = $('html').scrollTop();
@@ -77,21 +85,26 @@ $(document).ready( function() {
     if( scrollTop < 100 ){
       $('html').animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
-        animationSpeed
+        Libertree.UI.duration(distance)
       );
     }
 
-    var overflowed = excerpt.find('.overflowed');
-    overflowed.animate(
-      { height: overflowed.data('contracted-height')+'px' },
-      animationSpeed,
+    comments.animate(
+      { height: '0px' },
+      Libertree.UI.duration(comments.height()), 'linear',
       function() {
-        $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
-      }
-    );
+        overflowed.animate(
+          { height: overflowed.data('contracted-height')+'px' },
+          Libertree.UI.duration(distance), 'linear',
+          function() {
+            link.siblings('.show-more').show();
+          });
+      });
+
     return false;
   } );
 
+  // TODO: there is no comment link anymore. Always assume "wantsToComment"?
   $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
@@ -101,6 +114,11 @@ $(document).ready( function() {
 
   $('.overflowed img').live( 'mouseover', function() {
     Libertree.UI.showShowMores();
+  } );
+
+  $('.home #river-selector').change( function() {
+    window.location = '/home/' + $(this).val();
+    return false;
   } );
 
   $('.load-more').live( 'click', function(event) {
@@ -122,7 +140,4 @@ $(document).ready( function() {
     );
   } );
 
-  /* ---------------------------------------------------- */
-
-  Libertree.UI.showShowMores();
 } );
