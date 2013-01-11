@@ -38,14 +38,14 @@ $(document).ready( function() {
         height: overflowed.get(0).scrollHeight + 'px',
         'max-height': overflowed.get(0).scrollHeight + 'px'
       },
-      Libertree.UI.duration(heightDifference), 'linear',
+      Libertree.UI.duration(heightDifference),
       function() {
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');
         comments.animate(
           { height: commentHeight + 'px' },
-          Libertree.UI.duration(commentHeight), 'linear',
+          Libertree.UI.duration(commentHeight),
           function() {
             comments.height('auto');
             showMoreLink.siblings('.show-less').show();
@@ -91,11 +91,11 @@ $(document).ready( function() {
 
     comments.animate(
       { height: '0px' },
-      Libertree.UI.duration(comments.height()), 'linear',
+      Libertree.UI.duration(comments.height()),
       function() {
         overflowed.animate(
           { height: overflowed.data('contracted-height')+'px' },
-          Libertree.UI.duration(distance), 'linear',
+          Libertree.UI.duration(distance),
           function() {
             link.siblings('.show-more').show();
           });
