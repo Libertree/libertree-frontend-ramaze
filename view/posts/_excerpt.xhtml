@@ -12,16 +12,6 @@
 
     <div class="post-tools">
 
-      <?r if @post.member == account.member ?>
-        <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
-        <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
-      <?r else ?>
-        <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
-        <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
-      <?r end ?>
-
-      <br />
-
       <span class="mutation">
         <?r if @post.like_by(account.member) ?>
           <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
@@ -52,6 +42,17 @@
           <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
         <?r end ?>
       </span>
+
+      <br />
+
+      <?r if @post.member == account.member ?>
+        <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
+        <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
+      <?r else ?>
+        <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
+        <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
+      <?r end ?>
+
     </div>
 
     <a href="/posts/show/#{@post.id}" title="#{_('View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">
