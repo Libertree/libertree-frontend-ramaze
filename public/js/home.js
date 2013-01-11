@@ -26,6 +26,7 @@ $(document).ready( function() {
     var comments = excerptParent.find('div.comments');
     var commentHeight = comments.get(0).scrollHeight;
     var heightDifference = overflowed.get(0).scrollHeight - overflowed.height();
+    var animationDuration = Libertree.UI.duration(heightDifference);
 
     Libertree.Posts.markRead(postId);
     showMoreLink.hide();
@@ -38,7 +39,7 @@ $(document).ready( function() {
         height: overflowed.get(0).scrollHeight + 'px',
         'max-height': overflowed.get(0).scrollHeight + 'px'
       },
-      Libertree.UI.duration(heightDifference),
+      animationDuration,
       function() {
         /* cancel explicit height set by animation */
         overflowed.height('auto');
@@ -48,7 +49,7 @@ $(document).ready( function() {
 
     comments.animate(
       { height: commentHeight + 'px' },
-      Libertree.UI.duration(commentHeight),
+      animationDuration,
       function() {
         comments.height('auto');
         showMoreLink.siblings('.show-less').show();
@@ -63,7 +64,7 @@ $(document).ready( function() {
       }
       $('html').animate(
         { scrollTop: scrollTop + heightDifference + excerptTruncation },
-        animationSpeed,
+        animationDuration,
         function() {
           excerpt.find('textarea.comment').focus();
           Libertree.Home.wantsToComment = false;
@@ -81,6 +82,7 @@ $(document).ready( function() {
     var overflowed = excerpt.find('.overflowed');
     var comments = excerpt.find('div.comments');
     var distance = overflowed.height() - overflowed.data('contracted-height');
+    var animationDuration = Libertree.UI.duration(distance)
 
     var excerptTop = excerpt.position().top;
     var windowTop = $('html').scrollTop();
@@ -88,18 +90,18 @@ $(document).ready( function() {
     if( scrollTop < 100 ){
       $('html').animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
-        Libertree.UI.duration(distance)
+        animationDuration
       );
     }
 
     comments.animate(
       { height: '0px' },
-      Libertree.UI.duration(comments.height())
+      animationDuration
     );
 
     overflowed.animate(
       { height: overflowed.data('contracted-height')+'px' },
-      Libertree.UI.duration(distance),
+      animationDuration,
       function() {
         link.siblings('.show-more').show();
       }
