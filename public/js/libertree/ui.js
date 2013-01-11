@@ -6,6 +6,14 @@ Libertree.UI = {
     };
   },
 
+  showShowMores: function() {
+    $('.excerpt').each( function() {
+      if( $(this).get(0).scrollHeight > $(this).height() ) {
+        $(this).siblings('.show-more').show();
+      }
+    } );
+  },
+
   continuousScrollHandler: function (loader) {
     if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
       if( Libertree.PostLoader.loading || $('#no-more-posts').length ) {
