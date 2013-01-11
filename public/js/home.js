@@ -43,7 +43,8 @@ $(document).ready( function() {
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');
-      });
+      }
+    );
 
     comments.animate(
       { height: commentHeight + 'px' },
@@ -51,7 +52,8 @@ $(document).ready( function() {
       function() {
         comments.height('auto');
         showMoreLink.siblings('.show-less').show();
-      });
+      }
+    );
 
     if( Libertree.Home.wantsToComment ) {
       var scrollTop = $('html').scrollTop();
