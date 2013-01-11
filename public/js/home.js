@@ -43,13 +43,14 @@ $(document).ready( function() {
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');
-        comments.animate(
-          { height: commentHeight + 'px' },
-          Libertree.UI.duration(commentHeight),
-          function() {
-            comments.height('auto');
-            showMoreLink.siblings('.show-less').show();
-          });
+      });
+
+    comments.animate(
+      { height: commentHeight + 'px' },
+      Libertree.UI.duration(commentHeight),
+      function() {
+        comments.height('auto');
+        showMoreLink.siblings('.show-less').show();
       });
 
     if( Libertree.Home.wantsToComment ) {
@@ -91,15 +92,16 @@ $(document).ready( function() {
 
     comments.animate(
       { height: '0px' },
-      Libertree.UI.duration(comments.height()),
+      Libertree.UI.duration(comments.height())
+    );
+
+    overflowed.animate(
+      { height: overflowed.data('contracted-height')+'px' },
+      Libertree.UI.duration(distance),
       function() {
-        overflowed.animate(
-          { height: overflowed.data('contracted-height')+'px' },
-          Libertree.UI.duration(distance),
-          function() {
-            link.siblings('.show-more').show();
-          });
-      });
+        link.siblings('.show-more').show();
+      }
+    );
 
     return false;
   } );
