@@ -172,14 +172,11 @@ body.body.excerpts-view .main {
             margin: auto;
             margin-right: 30px;
             height: 35px;
-            line-height: 35px;
+            line-height: 1.5em;
             opacity: 0.3;
 
             span.mutation {
               display: inline-block;
-              padding-left: 0.5em;
-              margin-left: 0.5em;
-              border-left: 1px solid $bark;
             }
             a {
                 margin-left: 0px;

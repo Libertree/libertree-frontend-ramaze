@@ -20,6 +20,8 @@
         <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
       <?r end ?>
 
+      <br />
+
       <span class="mutation">
         <?r if @post.like_by(account.member) ?>
           <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
