@@ -8,4 +8,7 @@ $border-radius: 3px;
 @mixin rounded {
     border-radius: $border-radius;
 }
+@mixin rounded-top {
+    border-radius: $border-radius $border-radius 0px 0px;
+}
 

@@ -140,7 +140,7 @@ body.body.excerpts-view .main {
 
     .post-excerpt {
         width: 720px;
-        padding: 2em 0px;
+        padding: 0px 0px 2em 0px;
         border-bottom: 1px dotted $leaf;
         overflow: auto;
         background-color: $dust; /* fallback for browsers that don't support alpha in colours */
@@ -273,7 +273,10 @@ body.body.excerpts-view .main {
         }
     }
     .post-excerpt.first {
-        border-radius: $border-radius $border-radius 0px 0px;
+        @include rounded-top;
+        .meta {
+            @include rounded-top;
+        }
     }
 
     textarea.comment, form.comment .form-buttons {
