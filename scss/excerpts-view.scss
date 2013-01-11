@@ -272,6 +272,9 @@ body.body.excerpts-view .main {
             display: none;
         }
     }
+    .post-excerpt.first {
+        border-radius: $border-radius $border-radius 0px 0px;
+    }
 
     textarea.comment, form.comment .form-buttons {
         width: 300px;

@@ -15,8 +15,8 @@
   <div class="more-posts">
     <a href="#" class="load-more"></a>
   </div>
-  <?r @posts.reverse.each do |post| ?>
-    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order }
+  <?r @posts.reverse.each_with_index do |post, index| ?>
+    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order, is_first: index == 0 }
   <?r end ?>
   <div class="spinner"></div>
 </div>
