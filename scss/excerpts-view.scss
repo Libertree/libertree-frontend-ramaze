@@ -134,7 +134,8 @@ body.body.excerpts-view .main {
     }
 
     #post-excerpts {
-      float: right;
+        @include shadow;
+        float: right;
     }
 
     .post-excerpt {
