@@ -36,8 +36,7 @@ body.body.excerpts-view .main {
 
 .excerpts-view {
     div.spinner {
-      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-      background-color: $dust_translucent;
+      background-color: $dust;
     }
 
     #header {
@@ -135,7 +134,9 @@ body.body.excerpts-view .main {
 
     #post-excerpts {
         @include shadow;
+        @include rounded;
         float: right;
+        background-color: $dust;
     }
 
     .post-excerpt {
@@ -143,8 +144,6 @@ body.body.excerpts-view .main {
         padding: 0px 0px 2em 0px;
         border-bottom: 1px dotted $leaf;
         overflow: auto;
-        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-        background-color: $dust_translucent;
 
         .avatar {
             float: left;
@@ -208,7 +207,6 @@ body.body.excerpts-view .main {
         }
         div.excerpt {
             padding: 1.8em 1.8em 0;
-            background-color: $dust;
             overflow: hidden;
             .overflowed {
               min-height: 100px;
@@ -243,7 +241,7 @@ body.body.excerpts-view .main {
             position: relative;
             margin-bottom: -1em;
             &:hover {
-                background-color: $dust;
+                background-color: $sand;
             }
             a {
                 width: 100%;
