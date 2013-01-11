@@ -1,4 +1,5 @@
 <div class="post-excerpt #{@is_first ? 'first' : ''}" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
+
   <div class="meta">
     <?r if session[:layout] == 'narrow' ?>
       <a href="#river-menu" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
@@ -51,10 +52,12 @@
 
       </span>
     </div>
+
     <a href="/posts/show/#{@post.id}" title="#{_('View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">
       <div class="link-view-post">▸<br/>▸<br/>▸</div>
     </a>
   </div>
+
   <div class="excerpt #{account.thumbnail ? 'images-thumbnailed' : ''}">
     <div class="overflowed">
       <div class="post-text typed-text">
