@@ -13,43 +13,42 @@
     <div class="post-tools">
 
       <?r if @post.member == account.member ?>
-      <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
-      <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
+        <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
+        <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
       <?r else ?>
-      <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
-      <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
+        <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
+        <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
       <?r end ?>
 
       <span class="icons">
-      <?r if @post.like_by(account.member) ?>
-        <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
-        <a href="#" class="like hidden">#{_('like')}</a>
-      <?r else ?>
-        <a href="#" class="like">#{_('like')}</a>
-        <a href="#" class="unlike hidden">#{_('unlike')}</a>
-      <?r end ?>
+        <?r if @post.like_by(account.member) ?>
+          <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
+          <a href="#" class="like hidden">#{_('like')}</a>
+        <?r else ?>
+          <a href="#" class="like">#{_('like')}</a>
+          <a href="#" class="unlike hidden">#{_('unlike')}</a>
+        <?r end ?>
 
-      <?r if ! account.subscribed_to?(@post) ?>
-        <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-        <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
-      <?r else ?>
-        <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-        <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
-      <?r end ?>
+        <?r if ! account.subscribed_to?(@post) ?>
+          <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+          <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+        <?r else ?>
+          <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+          <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+        <?r end ?>
 
-      <?r if @post.read_by?(account) ?>
-        <a class="mark-unread" href="#">#{_('mark unread')}</a>
-        <a class="mark-read hidden" href="#">#{_('mark read')}</a>
-      <?r else ?>
-        <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
-        <a class="mark-read" href="#">#{_('mark read')}</a>
-      <?r end ?>
+        <?r if @post.read_by?(account) ?>
+          <a class="mark-unread" href="#">#{_('mark unread')}</a>
+          <a class="mark-read hidden" href="#">#{_('mark read')}</a>
+        <?r else ?>
+          <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
+          <a class="mark-read" href="#">#{_('mark read')}</a>
+        <?r end ?>
 
-      <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
-      <?r if @pool && @pool.member == account.member ?>
-      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
-      <?r end ?>
-
+        <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
+        <?r if @pool && @pool.member == account.member ?>
+          <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
+        <?r end ?>
       </span>
     </div>
 
@@ -68,7 +67,7 @@
       <span class="indicator num-likes" title="#{_('Liked by %s') % like_list(@post)}">#{_('Likes:')} <span class="value">#{@post.likes.size}</span></span>
       <span class="indicator num-comments" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">#{_('Comments:')} <span class="num-comments">#{@post.comments.size}</span></span>
       <?r if logged_in? ?>
-      <span class="indicator visibility" title="#{_(visibility_description(@post))}">Visibility: #{_(@post.visibility)}</span>
+        <span class="indicator visibility" title="#{_(visibility_description(@post))}">Visibility: #{_(@post.visibility)}</span>
       <?r end ?>
     </div>
 
