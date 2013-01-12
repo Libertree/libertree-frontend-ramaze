@@ -65,6 +65,7 @@
       <div class="post-text typed-text">
         #{@post.text_rendered(account)}
       </div>
+      #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 }, hidden: true }
     </div>
     <div class="post-stats">
       <span class="indicator num-likes" title="#{_('Liked by %s') % like_list(@post)}">#{_('Likes:')} <span class="value">#{@post.likes.size}</span></span>
@@ -73,8 +74,6 @@
         <span class="indicator visibility" title="#{_(visibility_description(@post))}">Visibility: #{_(@post.visibility)}</span>
       <?r end ?>
     </div>
-
-    #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 } }
   </div>
 
   <div class="show-more"><a href="#">#{_('show more')}</a></div>

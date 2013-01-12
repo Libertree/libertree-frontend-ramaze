@@ -25,8 +25,6 @@ $(document).ready( function() {
     var postId = excerptParent.data('post-id');
     var comments = excerptParent.find('div.comments');
     var commentHeight = comments.get(0).scrollHeight;
-    var heightDifference = overflowed.get(0).scrollHeight - overflowed.height();
-    var animationDuration = Libertree.UI.duration(heightDifference);
 
     Libertree.Posts.markRead(postId);
     showMoreLink.hide();
@@ -34,24 +32,21 @@ $(document).ready( function() {
     //TODO: don't do this. Record the excerpt height somewhere and operate on that.
     overflowed.data( 'contracted-height', overflowed.height() );
 
+    excerptParent.find('div.comments.hidden').removeClass('hidden');
+
+    var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
+    var animationDuration = Libertree.UI.duration(heightDifference);
+
     overflowed.animate(
       {
-        height: overflowed.get(0).scrollHeight + 'px',
-        'max-height': overflowed.get(0).scrollHeight + 'px'
+        height: excerpt.get(0).scrollHeight + 'px',
+        'max-height': excerpt.get(0).scrollHeight + 'px'
       },
       animationDuration,
       function() {
         /* cancel explicit height set by animation */
         overflowed.height('auto');
         overflowed.css('max-height', 'none');
-      }
-    );
-
-    comments.animate(
-      { height: commentHeight + 'px' },
-      animationDuration,
-      function() {
-        comments.height('auto');
         showMoreLink.siblings('.show-less').show();
       }
     );
@@ -81,7 +76,7 @@ $(document).ready( function() {
     var excerpt = link.closest('.post-excerpt');
     var overflowed = excerpt.find('.overflowed');
     var comments = excerpt.find('div.comments');
-    var distance = overflowed.height() - overflowed.data('contracted-height');
+    var distance = excerpt.height() - overflowed.data('contracted-height');
     var animationDuration = Libertree.UI.duration(distance)
 
     var excerptTop = excerpt.position().top;
@@ -94,15 +89,11 @@ $(document).ready( function() {
       );
     }
 
-    comments.animate(
-      { height: '0px' },
-      animationDuration
-    );
-
     overflowed.animate(
       { height: overflowed.data('contracted-height')+'px' },
       animationDuration,
       function() {
+        $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
         link.siblings('.show-more').show();
       }
     );

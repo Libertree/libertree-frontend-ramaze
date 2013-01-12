@@ -207,12 +207,11 @@ body.body.excerpts-view .main {
             overflow: hidden;
             .overflowed {
               min-height: 100px;
-              overflow: hidden;
-            }
-            .comments {
-              margin-bottom: 1em;
-              overflow: hidden;
-              height: 0;
+              /* TODO: reinstate this next line... somehow... (it breaks "show more" animation speed) */
+              /* overflow: hidden; */
+              .comments {
+                margin-bottom: 1em;
+              }
             }
             img {
                 max-width: 100%;
