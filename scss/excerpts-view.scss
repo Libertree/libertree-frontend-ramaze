@@ -191,12 +191,15 @@ body.body.excerpts-view .main {
             }
 
             .member {
-              padding: 1em;
-              max-width: 35%;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              display: inline-block;
+                padding: 1em;
+                white-space: nowrap;
+                display: inline-block;
+                .member-text {
+                    max-width: 15em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    float: left;
+                }
             }
         }
         div.excerpt {
