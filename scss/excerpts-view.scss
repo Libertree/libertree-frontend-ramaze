@@ -147,6 +147,7 @@ body.body.excerpts-view .main {
 
         .avatar {
             float: left;
+            margin-bottom: 0px; /* override application.scss */
         }
 
         .post-stats {
@@ -174,7 +175,7 @@ body.body.excerpts-view .main {
 
         .post-stats, .post-tools {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 15px;
             height: 35px;
             line-height: 1.5em;
             float: right;
