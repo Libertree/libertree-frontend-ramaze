@@ -150,29 +150,13 @@ body.body.excerpts-view .main {
         }
 
         .post-stats {
-            clear: both;
-            font-size: small;
-            margin-top: 0.8em;
-            margin-bottom: 0.2em;
             color: $bark;
-            .indicator + .indicator {
-              margin-left: 0.5em;
-              padding-left: 0.5em;
-              border-left: 1px solid $bark;
-            }
         }
 
         .post-tools {
-            display: inline-block;
             text-align: left;
-            position: absolute;
-            top: 0;
-            bottom: 0;
             right: 1em;
-            margin: auto;
             margin-right: 30px;
-            height: 35px;
-            line-height: 1.5em;
             opacity: 0.3;
 
             span.mutation {
@@ -185,6 +169,16 @@ body.body.excerpts-view .main {
             a.confirm-hide {
                 display: none;
             }
+        }
+
+        .post-stats, .post-tools {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 35px;
+            line-height: 1.5em;
         }
 
         // the max-height of the excerpt is set in layout/_head.xhtml
