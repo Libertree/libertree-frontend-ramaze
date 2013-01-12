@@ -62,6 +62,8 @@
 
       <br />
 
+      <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
+
       <?r if @post.member == account.member ?>
         <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
         <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
@@ -71,10 +73,6 @@
       <?r end ?>
 
     </div>
-
-    <a href="/posts/show/#{@post.id}" title="#{_('View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">
-      <div class="link-view-post">▸<br/>▸<br/>▸</div>
-    </a>
   </div>
 
   <div class="excerpt #{account.thumbnail ? 'images-thumbnailed' : ''}">
