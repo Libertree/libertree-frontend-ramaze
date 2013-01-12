@@ -151,12 +151,13 @@ body.body.excerpts-view .main {
 
         .post-stats {
             color: $bark;
+            margin-right: 16px;
         }
 
         .post-tools {
             text-align: left;
             right: 1em;
-            margin-right: 30px;
+            margin-right: 16px;
             opacity: 0.3;
 
             span.mutation {
@@ -173,12 +174,10 @@ body.body.excerpts-view .main {
 
         .post-stats, .post-tools {
             display: inline-block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin: auto;
+            margin-top: 20px;
             height: 35px;
             line-height: 1.5em;
+            float: right;
         }
 
         // the max-height of the excerpt is set in layout/_head.xhtml
