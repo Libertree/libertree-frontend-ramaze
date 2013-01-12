@@ -38,6 +38,8 @@
           <a href="#" class="unlike hidden">#{_('unlike')}</a>
         <?r end ?>
 
+        <a href="#" class="comment">#{_('comment')}</a>
+
         <?r if ! account.subscribed_to?(@post) ?>
           <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
           <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
