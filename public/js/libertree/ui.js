@@ -8,8 +8,8 @@ Libertree.UI = {
 
   showShowMores: function() {
     $('.excerpt').each( function() {
-      if( $(this).get(0).scrollHeight > $(this).height() ) {
-        $(this).siblings('.show-more').show();
+      if( $(this).find('.post-text').height() > $(this).find('.overflowed').height() ) {
+        $(this).closest('.excerpt').siblings('.show-more').show();
       }
     } );
   },
