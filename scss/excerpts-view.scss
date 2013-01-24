@@ -1,6 +1,14 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
+@mixin dynamic-excerpt-width {
+    width: 720px;
+    @media screen and (max-width: 1060px) {
+        width: auto;
+        margin-left: 240px;
+    }
+}
+
 body.body.excerpts-view .main {
     @include shadow;
     padding: 0;
@@ -11,7 +19,7 @@ body.body.excerpts-view .main {
     }
 
     div.panel {
-        width: 720px;
+        @include dynamic-excerpt-width;
         float: right;
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
@@ -43,7 +51,7 @@ body.body.excerpts-view .main {
       background-color: $dust;
       padding: 20px;
       border-radius: $border-radius $border-radius 0 0;
-      width: 720px;
+      @include dynamic-excerpt-width;
       float: right;
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -54,7 +62,6 @@ body.body.excerpts-view .main {
       text-align: center;
       border-radius: 0 0 $border-radius $border-radius;
       float: right;
-      width: 720px;
       padding: 1em 4em;
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -137,10 +144,10 @@ body.body.excerpts-view .main {
         @include rounded;
         float: right;
         background-color: $dust;
+        @include dynamic-excerpt-width;
     }
 
     .post-excerpt {
-        width: 720px;
         padding: 0px 0px 2em 0px;
         border-bottom: 1px dotted $leaf;
         overflow: auto;
