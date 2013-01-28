@@ -11,7 +11,6 @@ $dynamic-excerpt-width-threshold: 1060px;
 }
 
 body.body.excerpts-view .main {
-    @include shadow;
     padding: 0;
     background-color: transparent;
 
