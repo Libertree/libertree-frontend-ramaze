@@ -21,3 +21,7 @@ required.  memcached is recommended, but not required.
     ./css-build.sh
     bundle exec unicorn -p <port number>
     bundle exec ruby websocket-server.rb
+
+### Developing
+
+A good place to start is app.rb since that is the base of the frontend.
