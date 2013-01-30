@@ -217,8 +217,6 @@ body.body.excerpts-view .main {
             overflow: hidden;
             .overflowed {
               min-height: 100px;
-              /* TODO: reinstate this next line... somehow... (it breaks "show more" animation speed) */
-              /* overflow: hidden; */
               .comments {
                 margin-bottom: 1em;
               }
