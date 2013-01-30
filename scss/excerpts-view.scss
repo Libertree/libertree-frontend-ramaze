@@ -1,19 +1,29 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
+$dynamic-excerpt-width-threshold: 1060px;
+@mixin dynamic-excerpt-width {
+    width: 720px;
+    @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+        width: auto;
+        margin-left: 240px;
+    }
+}
+
 body.body.excerpts-view .main {
-    @include shadow;
     padding: 0;
     background-color: transparent;
 
     select {
       width: 400px;
     }
-    select#river-selector {
-      width: auto;
-    }
 
     div.panel {
+        @include dynamic-excerpt-width;
+        float: right;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
         padding-left: 30px;
         padding-right: 30px;
 
@@ -34,19 +44,28 @@ body.body.excerpts-view .main {
 
 .excerpts-view {
     div.spinner {
-      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-      background-color: $dust_translucent;
+      background-color: $dust;
     }
 
     #header {
       background-color: $dust;
       padding: 20px;
       border-radius: $border-radius $border-radius 0 0;
+      @include dynamic-excerpt-width;
+      float: right;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
     }
 
     #no-more-posts {
       text-align: center;
       border-radius: 0 0 $border-radius $border-radius;
+      float: right;
+      padding: 1em 4em;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
     }
 
     #no-rivers {
@@ -67,29 +86,94 @@ body.body.excerpts-view .main {
         }
     }
 
+    #sidebar {
+      @include shadow;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      padding: (40px + 10px) 10px 10px; // 40px = height of the menu bar
+      position: fixed;
+      overflow-y: auto;
+      z-index: 2; // one less than the menu bar
+      top: 0;
+      left: auto;
+      @media screen and (max-width: 1100px) {
+        left: 0;
+      }
+
+      width: 250px;
+      height: 100%;
+      background-color: $dust_translucent;
+
+      .menu-item {
+          padding-left: 4px;
+          padding-right: 4px;
+      }
+      .menu-item + .menu-item {
+          border-left: 1px solid $main_green;
+      }
+
+      h3 {
+        margin-top: 1em;
+        margin-bottom: 0;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0.5em 0;
+        li {
+          padding: 5px;
+          margin-left: 1em;
+          cursor: pointer;
+          &.selected {
+            cursor: default;
+          }
+          a {
+            display: block;
+            border: none;
+          }
+          &:hover {
+            background: $sand;
+          }
+        }
+      }
+    }
+
+    #post-excerpts {
+        @include shadow;
+        @include rounded;
+        float: right;
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+            float: none;
+        }
+        background-color: $dust;
+        @include dynamic-excerpt-width;
+    }
+
     .post-excerpt {
-        width: 100%;
-        padding: 2em 0px;
+        padding: 0px 0px 2em 0px;
         border-bottom: 1px dotted $leaf;
         overflow: auto;
-        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-        background-color: $dust_translucent;
 
         .avatar {
             float: left;
+            margin-bottom: 0px; /* override application.scss */
         }
 
         .post-stats {
-            clear: left;
-            margin-left: 50px;
+            color: $bark;
+            margin-right: 16px;
         }
 
         .post-tools {
-            display: none;
-            float: left;
             text-align: left;
-            margin-left: 50px;
+            right: 1em;
+            margin-right: 16px;
+            opacity: 0.3;
 
+            span.mutation {
+              display: inline-block;
+            }
             a {
                 margin-left: 0px;
                 margin-right: 5px;
@@ -99,25 +183,40 @@ body.body.excerpts-view .main {
             }
         }
 
-        $meta_width: 250px;
-        $excerpt_height: 200px;
-        // the max-height of the excerpt is set in layout/_head.xhtml
+        .post-stats, .post-tools {
+            display: inline-block;
+            margin-top: 15px;
+            height: 35px;
+            line-height: 1.5em;
+            float: right;
+        }
 
+        // the max-height of the excerpt is set in layout/_head.xhtml
         div.meta {
-            width: $meta_width;
-            min-height: $excerpt_height;
-            vertical-align: top;
-            overflow: hidden;
-            float: left;
-            padding-left: 30px;
-            padding-bottom: 1em;
+            background-color: $sand;
+            position: relative;
+
+            &:hover .post-tools {
+              opacity: 1;
+            }
+
+            .member {
+                padding: 1em;
+                white-space: nowrap;
+                display: inline-block;
+                .member-text {
+                    max-width: 15em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    float: left;
+                }
+            }
         }
         div.excerpt {
-            padding-left: 20px;
-            padding-right: 30px;
+            padding: 1.8em 1.8em 0;
             overflow: hidden;
             .overflowed {
-              min-height: $excerpt_height;
+              min-height: 200px;
               .comments {
                 margin-bottom: 1em;
               }
@@ -144,7 +243,7 @@ body.body.excerpts-view .main {
             position: relative;
             margin-bottom: -1em;
             &:hover {
-                background-color: $dust;
+                background-color: $sand;
             }
             a {
                 width: 100%;
@@ -154,12 +253,14 @@ body.body.excerpts-view .main {
             }
         }
 
-        .link-view-post {
-            margin-top: 10px;
-        }
-
         .jump-to-comment {
             display: none;
+        }
+    }
+    .post-excerpt.first {
+        @include rounded-top;
+        .meta {
+            @include rounded-top;
         }
     }
 

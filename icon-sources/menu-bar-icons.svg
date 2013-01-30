@@ -13,7 +13,7 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="menu-bar-icons.svg">
   <defs
      id="defs4">
@@ -42,16 +42,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-43.177165"
-     inkscape:cy="878.53514"
+     inkscape:zoom="1.4"
+     inkscape:cx="145.66115"
+     inkscape:cy="918.33487"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1060"
+     inkscape:window-width="1022"
+     inkscape:window-height="540"
      inkscape:window-x="0"
-     inkscape:window-y="20"
+     inkscape:window-y="27"
      inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -73,7 +73,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -220,5 +220,51 @@
        id="use3197"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccsssccsssscsscsccsssccss" />
+    <rect
+       style="fill:#4d4d4d;fill-opacity:0;fill-rule:nonzero;stroke:none"
+       id="rect4232-0-4"
+       width="109.28572"
+       height="109.28572"
+       x="138"
+       y="143.07648"
+       inkscape:export-filename="/home/jackie/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-sidebar.png"
+       inkscape:export-xdpi="21.243006"
+       inkscape:export-ydpi="21.243006" />
+    <rect
+       style="fill:#505534;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3904"
+       width="94.520142"
+       height="20.255102"
+       x="145.38278"
+       y="153.61934"
+       ry="10.127551"
+       rx="6.7514386"
+       inkscape:export-filename="/home/jackie/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-sidebar.png"
+       inkscape:export-xdpi="21.243006"
+       inkscape:export-ydpi="21.243006" />
+    <rect
+       style="fill:#505534;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3904-5"
+       width="94.520142"
+       height="20.255102"
+       x="145.38278"
+       y="189.55606"
+       ry="10.127551"
+       rx="6.7514386"
+       inkscape:export-filename="/home/jackie/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-sidebar.png"
+       inkscape:export-xdpi="21.243006"
+       inkscape:export-ydpi="21.243006" />
+    <rect
+       style="fill:#505534;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3904-5-0"
+       width="94.520142"
+       height="20.255102"
+       x="145.38278"
+       y="225.4928"
+       ry="10.127551"
+       rx="6.7514386"
+       inkscape:export-filename="/home/jackie/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-sidebar.png"
+       inkscape:export-xdpi="21.243006"
+       inkscape:export-ydpi="21.243006" />
   </g>
 </svg>

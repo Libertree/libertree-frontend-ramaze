@@ -1,27 +1,59 @@
-<div class="post-excerpt" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
+<div class="post-excerpt #{@is_first ? 'first' : ''}" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
+
   <div class="meta">
     <?r if session[:layout] == 'narrow' ?>
       <a href="#river-menu" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
     <?r end ?>
     <div class="member">
       #{member_avatar_link(@post.member)}
-      <span class="member-name">#{member_name_link(@post.member)}</span><br/>
-      <span class="age">#{ago(@post.time_created)}</span>
+      <div class="member-text">
+        <span class="member-name">#{member_name_link(@post.member)}</span><br/>
+        <span class="age">#{ago(@post.time_created)}</span>
+      </div>
     </div>
-    <div class="post-stats">
-      <span class="num-likes #{@post.likes.empty? ? 'hidden' : ''}" title="#{_('Liked by %s') % like_list(@post)}">#{img 'icon-like.png', {class:"size-16", alt:_('likes')}} <span class="value">#{@post.likes.size}</span></span><br/>
-      <a href="/posts/show/#{@post.id}" class="num-comments #{@post.comments.empty? ? 'hidden' : ''}" title="#{n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}} <span class="num-comments">#{@post.comments.size}</span></a><br/>
-    </div>
-    <div class="post-tools">
-      <?r if @post.like_by(account.member) ?>
-        <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
-        <a href="#" class="like hidden">#{_('like')}</a>
-      <?r else ?>
-        <a href="#" class="like">#{_('like')}</a>
-        <a href="#" class="unlike hidden">#{_('unlike')}</a>
-      <?r end ?>
 
-      <a href="#" class="comment">#{_('comment')}</a>
+    <div class="post-stats">
+      <span
+        class="num-likes #{@post.likes.empty? ? 'hidden' : ''}"
+        title="#{_('Liked by %s') % like_list(@post)}"
+      >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
+        <span class="value">#{@post.likes.size}</span>
+      </span><br/>
+
+      <a
+        href="/posts/show/#{@post.id}"
+        class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
+        title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
+      >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
+        <span class="num-comments">#{@post.comments.size}</span>
+      </a>
+    </div>
+
+    <div class="post-tools">
+
+      <span class="mutation">
+        <?r if @post.like_by(account.member) ?>
+          <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
+          <a href="#" class="like hidden">#{_('like')}</a>
+        <?r else ?>
+          <a href="#" class="like">#{_('like')}</a>
+          <a href="#" class="unlike hidden">#{_('unlike')}</a>
+        <?r end ?>
+
+        <a href="#" class="comment">#{_('comment')}</a>
+
+        <?r if @post.read_by?(account) ?>
+          <a class="mark-unread" href="#">#{_('mark unread')}</a>
+          <a class="mark-read hidden" href="#">#{_('mark read')}</a>
+        <?r else ?>
+          <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
+          <a class="mark-read" href="#">#{_('mark read')}</a>
+        <?r end ?>
+      </span>
+
+      <br />
+
+      <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
 
       <?r if ! account.subscribed_to?(@post) ?>
         <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
@@ -31,34 +63,22 @@
         <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
       <?r end ?>
 
+      <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
+      <?r if @pool && @pool.member == account.member ?>
+        <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
+      <?r end ?>
+
       <?r if @post.member == account.member ?>
         <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
         <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
-      <?r end ?>
-
-      <?r if @post.read_by?(account) ?>
-        <a class="mark-unread" href="#">#{_('mark unread')}</a>
-        <a class="mark-read hidden" href="#">#{_('mark read')}</a>
       <?r else ?>
-        <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
-        <a class="mark-read" href="#">#{_('mark read')}</a>
-      <?r end ?>
-
-      <?r if @post.member != account.member ?>
         <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
         <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
       <?r end ?>
 
-      <a class="collect" href="#" data-text-success="#{_('collected')}" title="#{_('Collect this post in a pool')}">#{ @post.collected_by?(account) ? _('collected') : _('collect') }</a>
-      <?r if @pool && @pool.member == account.member ?>
-      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
-      <?r end ?>
-
-      <div class="link-view-post">
-        <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
-      </div>
     </div>
   </div>
+
   <div class="excerpt #{account.thumbnail ? 'images-thumbnailed' : ''}">
     <div class="overflowed">
       <div class="post-text typed-text">
@@ -67,6 +87,7 @@
       #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 }, hidden: true }
     </div>
   </div>
+
   <div class="show-more"><a href="#">#{_('show more')}</a></div>
   <div class="show-less"><a href="#">#{_('show less')}</a></div>
 </div>

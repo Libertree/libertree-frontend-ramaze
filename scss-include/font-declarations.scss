@@ -104,13 +104,13 @@ div.river .query {
                 font-weight: bold;
             }
         }
+        .post-stats {
+            font-size: $font_extra_small;
+        }
         div.excerpt {
             .end-of-text {
                 font-size: $font_extra_extra_small;
             }
-        }
-        .link-view-post {
-            font-size: $font_large;
         }
     }
 }

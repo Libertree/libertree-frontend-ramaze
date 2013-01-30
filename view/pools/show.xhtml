@@ -1,4 +1,6 @@
-<div class="panel top">
+#{ render_file 'layout/_sidebar.xhtml' }
+
+<div id="header">
   <h2>
   <?r if @pool.member != account.member ?>
     #{_('Spring: %s') % @pool.name}

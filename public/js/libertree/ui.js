@@ -1,8 +1,15 @@
 Libertree.UI = {
+  setSpeed: function(speed) {
+    return function(pixels) {
+      // calculate the duration to move an amount of pixels at a given speed
+      return pixels * 1000 / speed;
+    };
+  },
+
   showShowMores: function() {
     $('.excerpt').each( function() {
-      if( $(this).get(0).scrollHeight > $(this).height() ) {
-        $(this).siblings('.show-more').show();
+      if( $(this).find('.post-text').height() > $(this).find('.overflowed').height() ) {
+        $(this).closest('.excerpt').siblings('.show-more').show();
       }
     } );
   },
@@ -95,3 +102,5 @@ Libertree.UI = {
   }
 };
 
+// speed = pixels per second
+Libertree.UI.duration = Libertree.UI.setSpeed(600);

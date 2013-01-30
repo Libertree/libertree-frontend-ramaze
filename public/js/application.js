@@ -9,6 +9,10 @@ $(document).ready( function() {
     return false;
   } );
 
+  $('#toggle-sidebar').live('click', function() {
+    $('#sidebar').toggle();
+  } );
+
   // bootstrap popovers for additional information
   $("a[rel=popover]")
     .popover()
@@ -93,15 +97,6 @@ $(document).ready( function() {
     var id = $(this).data('textarea-id');
     $('#'+id).val('');
     $.get( '/textarea_clear/' + id );
-  } );
-
-  $('.post-excerpt').live( {
-    mouseover: function() {
-      $(this).find('.post-tools').show();
-    },
-    mouseout: function() {
-      $(this).find('.post-tools').hide();
-    }
   } );
 
   $('.pseudolink').live( 'click', function(e) {

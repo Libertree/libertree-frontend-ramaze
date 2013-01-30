@@ -14,11 +14,18 @@ body.body {
     min-width: 0;
 }
 
+#sidebar {
+  display: none;
+}
+
 .menu {
     text-align: left;
     #menu-narrower {
         width: 100%;
         min-width: 0px;
+        #toggle-sidebar {
+          display: inline;
+        }
         #main-menu-container {
             margin-left: 0px;
             margin-right: 0px;
@@ -85,7 +92,18 @@ input#search {
         float: right;
     }
 
+    #post-excerpts {
+        float: none;
+    }
+
+    #no-more-posts {
+        float: none;
+        width: auto;
+        padding: 1em 1em;
+    }
+
     .post-excerpt {
+        width: auto;
         div.meta {
             float: none;
             margin-bottom: 1em;

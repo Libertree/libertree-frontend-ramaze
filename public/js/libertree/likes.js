@@ -58,9 +58,6 @@ Libertree.mkUnlike = function(type) {
       var num_likes = entity.find('.post-tools .num-likes, .post-stats .num-likes');
       num_likes.find('.value').text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
-      if( response['num_likes'] === 0 ) {
-        num_likes.hide();
-      }
     }
   ;
 
