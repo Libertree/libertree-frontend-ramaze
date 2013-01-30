@@ -157,7 +157,6 @@ body.body.excerpts-view .main {
 
         .avatar {
             float: left;
-            margin-bottom: 0px; /* override application.scss */
         }
 
         .post-stats {
@@ -209,6 +208,9 @@ body.body.excerpts-view .main {
                     overflow: hidden;
                     text-overflow: ellipsis;
                     float: left;
+                }
+                .avatar {
+                   margin-bottom: 0px; /* override application.scss */
                 }
             }
         }
