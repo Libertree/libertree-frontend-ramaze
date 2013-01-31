@@ -20,13 +20,12 @@
         <span class="value">#{@post.likes.size}</span>
       </span><br/>
 
-      <a
-        href="/posts/show/#{@post.id}"
+      <span
         class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
         title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
       >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
         <span class="num-comments">#{@post.comments.size}</span>
-      </a>
+      </span>
     </div>
 
     <div class="post-tools">
