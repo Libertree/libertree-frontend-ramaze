@@ -21,6 +21,9 @@ body.body.excerpts-view .main {
     div.panel {
         @include dynamic-excerpt-width;
         float: right;
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+            float: none;
+        }
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -53,6 +56,9 @@ body.body.excerpts-view .main {
       border-radius: $border-radius $border-radius 0 0;
       @include dynamic-excerpt-width;
       float: right;
+      @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+        float: none;
+      }
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
