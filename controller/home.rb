@@ -28,8 +28,17 @@ module Controller
       end
     end
 
-    def mark_all_read
-      Libertree::Model::Post.mark_all_as_read_by account
+    def mark_all_read(river_id=nil)
+      if river_id
+        river = Libertree::Model::River[ account_id: account.id, id: river_id ]
+        if river
+          river.mark_all_posts_as_read
+        else
+          flash[:error] = _('River not found.')
+        end
+      else
+        Libertree::Model::Post.mark_all_as_read_by account
+      end
       redirect_referrer
     end
 

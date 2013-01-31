@@ -7,7 +7,7 @@
     <span class="menu-item"><a href="/home/sort_by_time_updated_overall">#{_('by update time')}</a></span>
   <?r end ?>
   <br/>
-  <a href="/home/mark_all_read">#{_('mark all read')}</a>
+  <a href="/home/mark_all_read/#{@river.id}">#{_('mark all read')}</a>
   <h3>#{_('Rivers')} <a href="/rivers">#{img 'icon-edit.png', {alt:s_('manage rivers'), title:s_('manage rivers'), class:"size-16"}}</a></h3>
   <ul>
     <?r if account.home_river ?>
