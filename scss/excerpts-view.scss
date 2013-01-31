@@ -137,6 +137,20 @@ body.body.excerpts-view .main {
           }
         }
       }
+      #sidebar-shrink {
+        width: 100%;
+        background: $sand;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+      }
+      &.shrunk {
+        #sidebar-shrink {
+          display: none;
+        }
+      }
     }
 
     #post-excerpts {

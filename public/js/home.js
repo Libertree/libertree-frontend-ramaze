@@ -141,6 +141,33 @@ $(document).ready( function() {
     );
   } );
 
+  $('#sidebar-shrink').live( 'click', function(event) {
+    var sidebar = $('#sidebar');
+    sidebar.css('overflow-y', 'hidden');
+    sidebar.animate(
+      {
+        height: '54px',
+        'padding-bottom': '0px'
+      },
+      700,
+      function() {
+        sidebar.addClass('shrunk');
+      }
+    );
+  } );
+  $('#sidebar.shrunk').live( 'click', function(event) {
+    var sidebar = $('#sidebar');
+    sidebar.removeClass('shrunk');
+    sidebar.css('overflow-y', 'auto');
+    sidebar.animate(
+      {
+        height: '100%',
+        'padding-bottom': '10px'
+      },
+      700
+    );
+  } );
+
   /* ---------------------------------------------------- */
 
   Libertree.UI.showShowMores();
