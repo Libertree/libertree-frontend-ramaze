@@ -30,7 +30,7 @@ module Controller
 
     def mark_all_read(river_id=nil)
       if river_id
-        river = Libertree::Model::River[ account_id: account.id, id: river_id ]
+        river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
         if river
           river.mark_all_posts_as_read
         else
