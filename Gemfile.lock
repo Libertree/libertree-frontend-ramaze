@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: db5e5e4b0eca1112271f871f9b252cb5ecbee2db
+  revision: bf120370b279ef402cec19390b19141207bedd35
   specs:
     libertree-model (0.0.1)
 
@@ -70,7 +70,7 @@ GEM
     innate (2012.03)
       rack (~> 1.4.1)
     kgio (2.7.3)
-    m4dbi (0.8.6)
+    m4dbi (0.8.7)
       metaid
       rdbi
     metaid (1.0)
