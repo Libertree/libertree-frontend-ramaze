@@ -13,7 +13,7 @@ module Libertree
     Libertree::Model::Post.after_create do |post|
       self.autoembed(post.text)
     end
-    Libertree::Model::Post.after_update do |post|
+    Libertree::Model::Post.after_update do |post_before, post|
       self.autoembed(post.text)
     end
 
