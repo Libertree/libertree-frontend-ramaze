@@ -35,7 +35,7 @@ describe 'a local member', :type => :feature, :js => true do
     page.should have_content('New Post')
 
     fill_in 'text', with: 'Test post.'
-    click_on 'Post'
+    click_button 'Post'
 
     page.should have_content('Test post.')
     page.should have_content('seconds ago')
