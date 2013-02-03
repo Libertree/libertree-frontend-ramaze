@@ -5,16 +5,17 @@
       margin: 0;
       padding: 0;
     }
-    .search-result {
-      display: list-item;
+    li.search-result {
       padding: 1em;
       margin-bottom: .5em;
-      color: $bark;
       background: $dust;
       border-radius: 3px;
 
-      p {
-        color: $bark;
+      span {
+        display: block;
+      }
+
+      span.glimpse {
         margin-bottom: 0.5em;
       }
       em.highlight {
@@ -27,6 +28,8 @@
 
       a {
         color: inherit;
+        display: block;
+        border-bottom: none;
       }
       &.post, &.comment {
         list-style-type: none;
