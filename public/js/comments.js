@@ -43,6 +43,12 @@ $(document).ready( function() {
         scrollable.scrollTop( initialScrollTop + delta );
         Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
         Libertree.UI.removeSpinner('.comments');
+
+        scrollable.animate(
+          { scrollTop: initialScrollTop },
+          comments.height() * 0.75,
+          'easeInOutQuint'
+        );
       }
     );
 

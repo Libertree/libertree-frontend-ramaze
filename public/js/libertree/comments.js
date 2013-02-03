@@ -9,7 +9,7 @@ Libertree.Comments = {
     var n = parseInt( element.find('.comments .num-comments').data('total') );
 
     if( element.find('div.comment').length === n ) {
-      element.find('a.load-comments').hide();
+      element.find('a.load-comments').css('visibility', 'hidden');
     }
   },
 
