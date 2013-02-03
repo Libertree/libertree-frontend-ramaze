@@ -99,10 +99,6 @@ $(document).ready( function() {
     $.get( '/textarea_clear/' + id );
   } );
 
-  $('.pseudolink').live( 'click', function(e) {
-    window.location = $(this).data('href');
-  } );
-
   /* ---------------------------------------------------- */
 
   setInterval( Libertree.UI.updateAges, 60 * 1000 );

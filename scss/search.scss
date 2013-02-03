@@ -5,9 +5,11 @@
       margin: 0;
       padding: 0;
     }
-    li.search-result {
+    .search-result {
+      display: list-item;
       padding: 1em;
       margin-bottom: .5em;
+      color: $bark;
       background: $dust;
       border-radius: 3px;
 

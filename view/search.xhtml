@@ -24,13 +24,13 @@
 
   <ul>
   <?r @posts.each do |p| ?>
-    <li class="search-result post pseudolink" data-href="/posts/show/#{p.id}">
+    <a class="search-result post" href="/posts/show/#{p.id}">
       <div class="member">
         #{member_img(p.member)} <span class="member-name">#{p.member.name_display}</span>
         <span class="timestamp">#{ago(p.time_created)}</span>
       </div>
       <p>#{highlight_query(Libertree::plain(p.glimpse(160)), @q)}</p>
-    </li>
+    </a>
   <?r end ?>
   </ul>
 <?r end ?>
@@ -40,13 +40,13 @@
 
   <ul>
   <?r @comments.each do |c| ?>
-    <li class="search-result comment pseudolink" data-href="#{ comment_link(c) }">
+    <a class="search-result comment" href="#{ comment_link(c) }">
       <div class="member">
         #{member_img(c.member)} <span class="member-name">#{c.member.name_display}</span>
         <span class="timestamp">#{ago(c.time_created)}</span>
       </div>
       <p>#{highlight_query(Libertree::plain(c.glimpse(160)), @q)}</p>
-    </li>
+    </a>
   <?r end ?>
   </ul>
 <?r end ?>
