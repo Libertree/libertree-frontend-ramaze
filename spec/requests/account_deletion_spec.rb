@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Controller::Accounts, :type => :request, :js => true do
+describe Controller::Accounts, :type => :feature, :js => true do
   include_context 'logged in'
 
   before :each do

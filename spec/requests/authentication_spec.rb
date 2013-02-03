@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'main', :type => :request, :js => true do
+describe 'main', :type => :feature, :js => true do
   before :all do
     $skip_authentication = false
   end

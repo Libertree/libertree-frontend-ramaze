@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'a local member', :type => :request, :js => true do
+describe 'a local member', :type => :feature, :js => true do
   include_context 'logged in'
 
   context 'given an existing post' do
