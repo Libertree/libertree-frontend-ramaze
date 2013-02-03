@@ -46,7 +46,7 @@ $(document).ready( function() {
 
         scrollable.animate(
           { scrollTop: initialScrollTop },
-          comments.height() * 0.75,
+          comments.height() * 0.5,
           'easeInOutQuint'
         );
       }
