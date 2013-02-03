@@ -43,7 +43,48 @@ Libertree.Comments = {
         }
       }
     );
-  }
+  },
+
+  loadMore: function( linkClicked, dontSlide ) {
+    var post = linkClicked.closest('.post, .post-excerpt');
+    var postId = post.data('post-id');
+    var comments = post.find('.comments');
+    var toId = comments.find('.comment:first').data('comment-id');
+
+    Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
+    $.get(
+      '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
+      function(html) {
+        if( $.trim(html).length === 0 ) {
+          return;
+        }
+        var o = $(html);
+        Libertree.Notifications.updateNumUnseen( o.filter('span.num-notifs-unseen').detach().text() );
+
+        var scrollable = $('div.comments-pane');
+        if( $('.excerpts-view').length ) {
+          scrollable = $('html');
+        }
+        var initialScrollTop = scrollable.scrollTop();
+        var initialHeight = comments.height();
+        o.insertBefore(comments.find('.comment:first'));
+        var delta = comments.height() - initialHeight;
+        Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
+
+        scrollable.scrollTop( initialScrollTop + delta );
+        Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
+        Libertree.UI.removeSpinner('.comments');
+
+        if( typeof dontSlide == 'undefined' || ! dontSlide ) {
+          scrollable.animate(
+            { scrollTop: initialScrollTop },
+            comments.height() * 0.5,
+            'easeInOutQuint'
+          );
+        }
+      }
+    );
+  },
 };
 
 Libertree.Comments.like   = Libertree.mkLike('comment');
