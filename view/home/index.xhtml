@@ -10,20 +10,19 @@
     </p>
   </div>
 <?r else ?>
-
-<div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
-  <div class="more-posts">
-    <a href="#" class="load-more"></a>
+  <div id="post-excerpts" data-river-id="#{@river ? @river.id : ''}">
+    <div class="more-posts">
+      <a href="#" class="load-more"></a>
+    </div>
+    <?r @posts.reverse.each_with_index do |post, index| ?>
+      #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order, is_first: index == 0 }
+    <?r end ?>
+    <div class="spinner"></div>
   </div>
-  <?r @posts.reverse.each_with_index do |post, index| ?>
-    #{ Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @river_post_order, is_first: index == 0 }
+
+  <?r if @river && @river.being_processed? ?>
+    <div id="no-more-posts" class="panel">
+    #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
+    </div>
   <?r end ?>
-  <div class="spinner"></div>
-</div>
-
-<?r if @river && @river.being_processed? ?>
-  <div id="no-more-posts" class="panel">
-  #{_('The system is still matching posts with this river. Check in a few minutes for more posts.')}
-  </div>
-<?r end ?>
 <?r end ?>
