@@ -34,6 +34,8 @@ module Controller
     end
 
     def login
+      init_locale
+
       @view = 'splash'
       if logged_in?
         redirect Home.r(:/)
