@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
-gem 'ramaze'
+gem 'ramaze', :git => 'git://github.com/Ramaze/ramaze.git'
+gem 'innate', :git => 'git://github.com/Ramaze/innate.git'
 gem 'm4dbi'
 gem 'pg'
 gem 'rdbi', :git => 'git://github.com/RDBI/rdbi.git'
