@@ -104,6 +104,10 @@ $(document).ready( function() {
 
   $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
 
+  if( Libertree.UI.isTouchInterface() ) {
+    $('body').addClass('touch-interface');
+  }
+
   if( layout === 'narrow' ) {
     $('*').mouseover();
   }
