@@ -154,11 +154,13 @@ module Controller
     end
 
     # This is not in the Posts controller because we will handle many other search
-    # types from the one searh box in the near future.
+    # types from the one search box in the near future.
     def search
       redirect_referrer  if ! request.post?
 
       @q = request['q'].to_s
+      redirect_referrer  if @q.empty?
+
       @posts = Libertree::Model::Post.search(@q)
       @comments = Libertree::Model::Comment.search(@q)
       @profiles = Libertree::Model::Profile.search(@q)
