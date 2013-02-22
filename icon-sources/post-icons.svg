@@ -44,9 +44,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98038625"
-     inkscape:cx="428.18212"
-     inkscape:cy="774.50787"
+     inkscape:zoom="1.1046421"
+     inkscape:cx="516.49392"
+     inkscape:cy="644.19731"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -104,22 +104,6 @@
        height="100.043"
        x="520"
        y="232.36218"
-       inkscape:export-filename="/home/rekado/dev/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-hide.png"
-       inkscape:export-xdpi="23.38995"
-       inkscape:export-ydpi="23.38995" />
-    <path
-       style="fill:none;stroke:#333333;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="m 537.40118,249.77084 65.19763,65.22569"
-       id="path5914"
-       inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/rekado/dev/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-hide.png"
-       inkscape:export-xdpi="23.38995"
-       inkscape:export-ydpi="23.38995" />
-    <path
-       style="fill:none;stroke:#333333;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-       d="m 537.40118,314.99653 65.19763,-65.22569"
-       id="path5922"
-       inkscape:connector-curvature="0"
        inkscape:export-filename="/home/rekado/dev/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-hide.png"
        inkscape:export-xdpi="23.38995"
        inkscape:export-ydpi="23.38995" />
@@ -332,5 +316,10 @@
        inkscape:export-filename="/home/rekado/libertree-project/libertree-frontend-ramaze/public/themes/default/images/icon-comment.png"
        inkscape:export-xdpi="23.4"
        inkscape:export-ydpi="23.4" />
+    <path
+       id="path4326"
+       style="fill:none;stroke:#333333;stroke-width:8.83003712;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 607.15523,282.38367 c 0,20.52028 -16.63495,37.15524 -37.15524,37.15524 -20.52027,0 -37.15522,-16.63496 -37.15522,-37.15524 0,-20.52026 16.63495,-37.15522 37.15522,-37.15522 20.52028,0 37.15524,16.63496 37.15524,37.15522 z m -65.38054,27.99057 56.74399,-56.77152"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
