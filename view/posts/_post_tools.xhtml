@@ -46,12 +46,10 @@
       <a class="mark-unread hidden" title="#{_('mark unread')}" href="#">#{ img 'icon-read.png', {alt:_('mark unread'), class:'size-16'}}</a>
       <a class="mark-read" title="#{_('mark read')}" href="#">#{ img 'icon-unread.png', {alt:_('mark unread'), class:'size-16'}}</a>
     <?r end ?>
+  </span>
 
-  <br />
-
-  <a href="#" class="comment">#{_('comment')}</a>
-
-  <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
-
+  <span class="links">
+    <a href="#" class="comment">#{ img 'icon-comment.png', {alt:_('comment'), class: 'size-16'}}</a>
+    <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
   </span>
 </div>

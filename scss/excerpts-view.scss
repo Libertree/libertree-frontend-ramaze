@@ -187,6 +187,13 @@ body.body.excerpts-view .main {
                 display: inline-block;
                 vertical-align: middle;
             }
+            span.links {
+                display: inline-block;
+                line-height: 3em;
+                border-left: 1px solid $bark;
+                margin-left: 0.25em;
+                padding-left: 0.75em;
+            }
             a {
                 margin-left: 0px;
                 margin-right: 5px;
