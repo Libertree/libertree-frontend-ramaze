@@ -176,8 +176,16 @@ body.body.excerpts-view .main {
             margin-right: 16px;
             opacity: 0.3;
 
+            span.admin {
+                display: inline-block;
+                border-right: 1px solid $bark;
+                line-height: 3em;
+                margin-right: 0.25em;
+                padding-right: 0.25em;
+            }
             span.mutation {
-              display: inline-block;
+                display: inline-block;
+                vertical-align: middle;
             }
             a {
                 margin-left: 0px;
