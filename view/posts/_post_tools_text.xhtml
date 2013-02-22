@@ -47,11 +47,13 @@
       <a class="mark-read" href="#">#{_('mark unread')}</a>
     <?r end ?>
 
-  <br />
+  <?r if @links ?>
+    <br />
 
-  <a href="#" class="comment">#{_('comment')}</a>
+    <a href="#" class="comment">#{_('comment')}</a>
 
-  <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
+    <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
+  <?r end ?>
 
   </span>
 </div>
