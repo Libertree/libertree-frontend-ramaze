@@ -6,11 +6,13 @@
         <div class="meta">
           <div class="member">
             #{member_avatar_link(@post.member)}
-            <div class="member-name">#{member_name_link(@post.member)}</div>
-            <div class="age">#{ago(@post.time_created)}</div>
-            <?r if @post.time_created != @post.time_updated ?>
-              <span class="age-update">(updated #{ago(@post.time_updated)})</span>
-            <?r end ?>
+            <div class="member-text">
+              <div class="member-name">#{member_name_link(@post.member)}</div>
+              <div class="age">#{ago(@post.time_created)}</div>
+              <?r if @post.time_created != @post.time_updated ?>
+                <span class="age-update">(updated #{ago(@post.time_updated)})</span>
+              <?r end ?>
+            </div>
           </div>
 
           <?r if logged_in? ?>
