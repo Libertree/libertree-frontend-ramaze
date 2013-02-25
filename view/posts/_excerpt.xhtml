@@ -28,10 +28,10 @@
       </span>
     </div>
 
-    <?r if @text ?>
-      #{ render_partial '_post_tools_text', post: @post, links: true }
-    <?r else ?>
+    <?r if account.icons ?>
       #{ render_partial '_post_tools', post: @post, links: true }
+    <?r else ?>
+      #{ render_partial '_post_tools_text', post: @post, links: true }
     <?r end ?>
   </div>
 
