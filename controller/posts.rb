@@ -168,6 +168,7 @@ module Controller
     end
 
     def edit(post_id)
+      @view = "post-edit"
       @post = Libertree::Model::Post[post_id.to_i]
       redirect_referrer  if @post.nil?
       session[:saved_text]['textarea-post-edit'] = @post.text
