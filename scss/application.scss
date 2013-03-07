@@ -367,9 +367,23 @@ form.comment {
 }
 
 #post-new, #post-edit {
+    @include shadow;
+    @include rounded;
     margin: 0px auto;
     text-align: center;
-    width: 500px;
+    /* TODO: make the width somewhat flexible */
+    width: 530px;
+    background: $dust;
+    padding: 30px;
+    h3 {
+        @include rounded-top;
+        background: $sand;
+        padding: 1em;
+        margin: -30px -30px 1em;
+    }
+    #settings {
+        margin-top: 1em;
+    }
 }
 
 .post-tools {
@@ -565,6 +579,7 @@ textarea#invitations {
 #textarea-post-edit,
 #textarea-message-new {
     width: 500px;
+    padding: 1em;
 }
 
 #textarea-description {
