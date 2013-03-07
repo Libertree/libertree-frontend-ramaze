@@ -20,13 +20,11 @@ body.body.excerpts-view .main {
 
     div.panel {
         @include dynamic-excerpt-width;
+        @include border-box;
         float: right;
         @media screen and (max-width: $dynamic-excerpt-width-threshold) {
             float: none;
         }
-        box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         padding-left: 30px;
         padding-right: 30px;
 
@@ -51,6 +49,7 @@ body.body.excerpts-view .main {
     }
 
     #header {
+      @include border-box;
       background-color: $dust;
       padding: 20px;
       border-radius: $border-radius $border-radius 0 0;
@@ -59,19 +58,14 @@ body.body.excerpts-view .main {
       @media screen and (max-width: $dynamic-excerpt-width-threshold) {
         float: none;
       }
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
     }
 
     #no-more-posts {
+      @include border-box;
       text-align: center;
       border-radius: 0 0 $border-radius $border-radius;
       float: right;
       padding: 1em 4em;
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
     }
 
     #no-rivers {
@@ -94,9 +88,7 @@ body.body.excerpts-view .main {
 
     #sidebar {
       @include shadow;
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
+      @include border-box;
       padding: (40px + 10px) 10px 10px; // 40px = height of the menu bar
       position: fixed;
       overflow-y: auto;
