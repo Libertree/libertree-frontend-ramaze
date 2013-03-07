@@ -142,6 +142,8 @@ msgid "likes"
 msgstr ""
 msgid "Delete this post?"
 msgstr ""
+msgid "posted with: %s"
+msgstr ""
 
 
 #: view/posts/_excerpts.xhtml
