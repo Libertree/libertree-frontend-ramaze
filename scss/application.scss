@@ -138,6 +138,11 @@ textarea, input[type="text"], input[type="password"] {
     }
 }
 
+.post-new .main, .post-edit .main {
+    padding: 0;
+    background-color: transparent;
+}
+
 
 .flash {
   padding: 1em 50px;
@@ -150,6 +155,13 @@ textarea, input[type="text"], input[type="password"] {
     background: url('../images/flash-notice.png') no-repeat scroll 10px 0.5em $water;
     border: 2px solid $sky;
   }
+}
+
+.hint {
+    padding: 0.5em;
+    font-size: 0.9em;
+    background-color: $water;
+    border: 2px solid $sky;
 }
 
 #logo {
@@ -355,9 +367,23 @@ form.comment {
 }
 
 #post-new, #post-edit {
+    @include shadow;
+    @include rounded;
     margin: 0px auto;
     text-align: center;
-    width: 500px;
+    /* TODO: make the width somewhat flexible */
+    width: 530px;
+    background: $dust;
+    padding: 30px;
+    & > h3, .preview-box > h3 {
+        @include rounded-top;
+        background: $sand;
+        padding: 1em;
+        margin: -30px -30px 1em;
+    }
+    #settings {
+        margin-top: 1em;
+    }
 }
 
 .post-tools {
@@ -466,6 +492,16 @@ blockquote {
     }
 }
 
+#post-new .preview-box, #post-edit .preview-box {
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    margin-top: 60px;
+    h3.preview {
+        border: none;
+    }
+}
+
 .form-buttons {
     margin-top: 10px;
     text-align: center;
@@ -553,11 +589,7 @@ textarea#invitations {
 #textarea-post-edit,
 #textarea-message-new {
     width: 500px;
-}
-#hashtags-input {
-    input {
-        width: 500px;
-    }
+    padding: 1em;
 }
 
 #textarea-description {

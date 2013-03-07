@@ -39,10 +39,6 @@ $(document).ready( function() {
       return false;
     }
 
-    if( $('input[name="hashtags"]').length > 0 ) {
-      unrendered = unrendered + "\n\n" + $('input[name="hashtags"]').val();
-    }
-
     var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message');
     var preview_heading = $this.data('preview-heading');
     var close_label = $this.data('preview-close-label');
@@ -79,18 +75,6 @@ $(document).ready( function() {
   $('.preview-box a.close').live( 'click', function() {
     $(this).closest('.preview-box').remove();
     return false;
-  } );
-
-  $('.input-and-filler input').live( 'focus', function() {
-    $(this).closest('.input-and-filler').find('.filler').hide();
-  } );
-  $('.input-and-filler input').live( 'blur', function() {
-    if( $(this).val() === '' ) {
-      $(this).closest('.input-and-filler').find('.filler').show();
-    }
-  } );
-  $('.input-and-filler .filler').live( 'click', function() {
-    $(this).closest('.input-and-filler').find('input').focus();
   } );
 
   $('.textarea-clear').live( 'click', function() {

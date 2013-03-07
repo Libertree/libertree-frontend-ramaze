@@ -4,7 +4,7 @@
   #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="text" rows="5" id="textarea-post-edit">#{session[:saved_text]['textarea-post-edit']}</textarea>
 
-  <div>
+  <div id="settings">
     #{_('Visibility')}: <select name="visibility">
       <option value="internet" #{@post.visibility == 'internet' ? 'selected' : ''}>#{s_('visibility|Internet')}</option>
       <option value="forest" #{@post.visibility == 'forest' ? 'selected' : ''}>#{s_('visibility|Forest')}</option>
