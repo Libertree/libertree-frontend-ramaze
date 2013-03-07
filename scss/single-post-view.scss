@@ -1,7 +1,7 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
-body.body.single-post-view {
+body.single-post-view {
   height: 100%;
   .main {
     @include border-box;
