@@ -375,7 +375,7 @@ form.comment {
     width: 530px;
     background: $dust;
     padding: 30px;
-    h3 {
+    & > h3, .preview-box > h3 {
         @include rounded-top;
         background: $sand;
         padding: 1em;
@@ -489,6 +489,16 @@ blockquote {
     }
     img {
       max-width: 100%;
+    }
+}
+
+#post-new .preview-box, #post-edit .preview-box {
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    margin-top: 60px;
+    h3.preview {
+        border: none;
     }
 }
 
