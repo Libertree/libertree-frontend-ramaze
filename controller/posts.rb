@@ -40,6 +40,10 @@ module Controller
       end
     end
 
+    def new
+      @view = "post-new"
+    end
+
     def create
       redirect_referrer  if ! request.post?
 
