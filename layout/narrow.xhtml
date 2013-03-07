@@ -3,7 +3,7 @@
 
 #{ render_file 'layout/_head.xhtml', stylesheet_extra: css_nocache('narrow') }
 
-<body id="scrollable" class="#{ @view }">
+<body class="#{ @view }">
   #{ render_file 'layout/_menu.xhtml', title: false, account_name: false }
   <div class="main">
     <?r if flash[:error] ?>
