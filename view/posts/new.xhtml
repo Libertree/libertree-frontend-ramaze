@@ -2,9 +2,8 @@
   <h3>#{_('New Post')}</h3>
   #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
-  <div id="hashtags-input" class="input-and-filler">
-    <div class="filler">#{_('(enter hashtags here)')}</div>
-    <input type="text" name="hashtags"></input>
+  <div id="hashtags-hint" class="hint">
+    #{_('You have not tagged your post yet. Consider adding #hashtags to make it easier for other people to find or filter your post.')}
   </div>
   <div>
     #{_('Visibility')}: <select name="visibility">

@@ -152,6 +152,13 @@ textarea, input[type="text"], input[type="password"] {
   }
 }
 
+.hint {
+    padding: 0.5em;
+    font-size: 0.9em;
+    background-color: $water;
+    border: 2px solid $sky;
+}
+
 #logo {
     float: left;
     margin-right: 2px;
@@ -553,11 +560,6 @@ textarea#invitations {
 #textarea-post-edit,
 #textarea-message-new {
     width: 500px;
-}
-#hashtags-input {
-    input {
-        width: 500px;
-    }
 }
 
 #textarea-description {
