@@ -9,6 +9,7 @@ module Libertree
         {
           Youku.format => Youku,
           FreeMusicArchive.format => FreeMusicArchive,
+          Jamendo.format => Jamendo,
           TED.format => TED,
         }
       end
@@ -55,6 +56,30 @@ OBJECT
               e = html.css('.inp-embed-code input')[0]
               if e
                 return e.attr('value')
+              else
+                raise Libertree::Embedding::Error, "failed to find embedding code"
+              end
+            end
+          end
+        end
+      end
+
+      class Jamendo
+        def self.format
+          %r{http://www.jamendo\.com/.+/track/.+}
+        end
+
+        def self.get(url)
+          return unless url =~ self.format
+
+          uri = URI.parse(url)
+          Timeout.timeout(10) do
+            Net::HTTP.start(uri.host) do |http|
+              resp = http.get(uri.path)
+              html = Nokogiri::HTML(resp.body)
+              e = html.css('.preview object')[0]
+              if e
+                return e.to_html
               else
                 raise Libertree::Embedding::Error, "failed to find embedding code"
               end
