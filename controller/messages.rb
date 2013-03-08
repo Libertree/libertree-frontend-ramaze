@@ -24,26 +24,36 @@ module Controller
       redirect_referrer  if ! request.post?
       redirect_referrer  if request['text'].to_s.empty?
 
-      message = Libertree::Model::Message.create_with_recipients(
-        sender_member_id: account.member.id,
-        text: request['text'].to_s,
-        recipient_member_ids: request['recipients']
-      )
-
-      message.recipients.group_by { |r|
-        r.tree
-      }.each do |tree, recipients|
-        next  if tree.nil?
-        Libertree::Model::Job.create(
-          {
-            task: 'request:MESSAGE',
-            params: {
-              'message_id'          => message.id,
-              'server_id'           => tree.id,
-              'recipient_usernames' => recipients.map(&:username)
-            }.to_json,
-          }
+      begin
+        message = Libertree::Model::Message.create_with_recipients(
+          sender_member_id: account.member.id,
+          text: request['text'].to_s,
+          recipient_member_ids: request['recipients']
         )
+
+        message.recipients.group_by { |r|
+          r.tree
+        }.each do |tree, recipients|
+          next  if tree.nil?
+          Libertree::Model::Job.create(
+            {
+              task: 'request:MESSAGE',
+              params: {
+                'message_id'          => message.id,
+                'server_id'           => tree.id,
+                'recipient_usernames' => recipients.map(&:username)
+              }.to_json,
+            }
+          )
+        end
+      rescue PGError => e
+        # TODO: this may fail when postgresql is running in a non-English locale
+        if e.message =~ /value too long/
+          flash[:error] = _('Your message is longer than 4096 characters. Please shorten it and try again.')
+          redirect_referrer
+        else
+          raise e
+        end
       end
 
       session[:saved_text]["textarea-message-new"] = nil

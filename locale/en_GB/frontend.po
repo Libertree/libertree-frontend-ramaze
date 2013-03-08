@@ -608,6 +608,8 @@ msgid "direct-message-warning|please note..."
 msgstr ""
 msgid "Please note that direct messages are not fully private, encrypted nor secure.  As with all data on this tree, direct messages are fully accessible to the arborista (administrator)."
 msgstr ""
+msgid "Your message is longer than 4096 characters. Please shorten it and try again."
+msgstr ""
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
