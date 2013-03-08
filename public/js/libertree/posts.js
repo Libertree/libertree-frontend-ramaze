@@ -41,9 +41,9 @@ Libertree.Posts = {
 
   checkForHashtagsCallback: function() {
     if( $('#post-new textarea').val().match(/#[a-zA-Z0-9_-]/) ) {
-      $('#hashtags-input').hide();
+      $('#hashtags-hint').hide();
     } else {
-      $('#hashtags-input').show();
+      $('#hashtags-hint').show();
     }
   }
 };

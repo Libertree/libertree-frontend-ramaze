@@ -1,12 +1,11 @@
 <form id="post-new" action="/posts/create" method="POST">
   <h3>#{_('New Post')}</h3>
   #{ Controller::Main.render_partial '_markdown_injector' }
-  <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea><br/>
-  <div id="hashtags-input" class="input-and-filler">
-    <div class="filler">#{_('(enter hashtags here)')}</div>
-    <input type="text" name="hashtags"></input>
+  <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea>
+  <div id="hashtags-hint" class="hint">
+    #{_('You have not tagged your post yet. Consider adding #hashtags to make it easier for other people to find or filter your post.')}
   </div>
-  <div>
+  <div id="settings">
     #{_('Visibility')}: <select name="visibility">
       <option value="internet">#{s_('visibility|Internet')}</option>
       <option value="forest" selected>#{s_('visibility|Forest')}</option>
