@@ -77,8 +77,6 @@ msgstr ""
 #: view/posts/new.xhtml
 msgid "New Post"
 msgstr ""
-msgid "You have not tagged your post yet. Consider adding #hashtags to make it easier for other people to find or filter your post."
-msgstr ""
 msgid "new-post|Post"
 msgstr ""
 
