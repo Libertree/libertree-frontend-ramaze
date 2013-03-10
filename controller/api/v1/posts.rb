@@ -25,7 +25,8 @@ module Controller
           post = Libertree::Model::Post.create(
             'member_id'  => @account.member.id,
             'visibility' => visibility,
-            'text'       => request['text'].to_s + "\n\n*posted with " + request['source'].to_s + "*"
+            'text'       => request['text'].to_s,
+            'via'        => request['source'].to_s
           )
 
           { 'success' => true, 'id' => post.id }.to_json

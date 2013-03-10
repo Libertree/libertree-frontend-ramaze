@@ -1,10 +1,11 @@
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 html {
     height: auto;
 }
 
-body.body {
+body {
     height: auto;
 }
 
@@ -130,11 +131,9 @@ input#search {
     min-width: none;
 
     div.post {
+      @include border-box;
       background-color: $dust;
       padding: 2em;
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
     }
   }
 }

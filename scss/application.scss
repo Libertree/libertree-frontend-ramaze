@@ -14,7 +14,7 @@ html {
     height: 100%;
 }
 
-body.body {
+body {
     padding: 0px;
     margin: 0px;
     color: #261818;
@@ -136,6 +136,11 @@ textarea, input[type="text"], input[type="password"] {
         background-color: $dust; /* fallback for browsers that don't support opacity in colour definitions */
         background-color: $dust_translucent;
     }
+}
+
+.post-new .main, .post-edit .main {
+    padding: 0;
+    background-color: transparent;
 }
 
 
@@ -355,9 +360,23 @@ form.comment {
 }
 
 #post-new, #post-edit {
+    @include shadow;
+    @include rounded;
     margin: 0px auto;
     text-align: center;
-    width: 500px;
+    /* TODO: make the width somewhat flexible */
+    width: 530px;
+    background: $dust;
+    padding: 30px;
+    & > h3, .preview-box > h3 {
+        @include rounded-top;
+        background: $sand;
+        padding: 1em;
+        margin: -30px -30px 1em;
+    }
+    #settings {
+        margin-top: 1em;
+    }
 }
 
 .post-tools {
@@ -466,6 +485,16 @@ blockquote {
     }
 }
 
+#post-new .preview-box, #post-edit .preview-box {
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    margin-top: 60px;
+    h3.preview {
+        border: none;
+    }
+}
+
 .form-buttons {
     margin-top: 10px;
     text-align: center;
@@ -553,11 +582,7 @@ textarea#invitations {
 #textarea-post-edit,
 #textarea-message-new {
     width: 500px;
-}
-#hashtags-input {
-    input {
-        width: 500px;
-    }
+    padding: 1em;
 }
 
 #textarea-description {
@@ -644,4 +669,10 @@ div.pools .chzn-container .chzn-results li {
 
 .contact-list-form td {
     vertical-align: top;
+}
+
+.via {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #778877;
 }

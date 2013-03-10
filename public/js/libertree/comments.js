@@ -78,7 +78,7 @@ Libertree.Comments = {
         if( typeof dontSlide == 'undefined' || ! dontSlide ) {
           scrollable.animate(
             { scrollTop: initialScrollTop },
-            comments.height() * 0.5,
+            delta * 1.5,
             'easeInOutQuint'
           );
         }
