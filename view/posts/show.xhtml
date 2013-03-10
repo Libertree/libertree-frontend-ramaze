@@ -14,10 +14,10 @@
                 <?r if @post.time_created != @post.time_updated ?>
                   <span class="age-update">(updated #{ago(@post.time_updated)})</span>
                 <?r end ?>
-                <?r if logged_in? ?>
-                  | #{_('Visibility: %s') % @post.visibility}
-                <?r end ?>
                 <br/>
+                <?r if logged_in? ?>
+                  #{_('Visibility: %s') % @post.visibility} |
+                <?r end ?>
                 <span
                    class="num-likes"
                    title="#{@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post)}">
