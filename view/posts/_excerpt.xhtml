@@ -8,24 +8,22 @@
       #{member_avatar_link(@post.member)}
       <div class="member-text">
         <span class="member-name">#{member_name_link(@post.member)}</span><br/>
-        <span class="age">#{ago(@post.time_created)}</span>
+        <div class="post-stats">
+          <span class="age">#{ago(@post.time_created)}</span> |
+          #{_('Visibility: %s') % @post.visibility}
+          <br/>
+          <span
+             class="num-likes"
+             title="#{@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post)}">
+            #{_('Likes: %s') % "<span class='value'>#{@post.likes.size}</span>" }
+          </span> |
+          <span
+             class="num-comments"
+             title="#{@post.comments.empty? ? '' : n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">
+            #{_('Comments: %s') % "<span class='value'>#{@post.comments.size}</span>" }
+          </span>
+        </div>
       </div>
-    </div>
-
-    <div class="post-stats">
-      <span
-        class="num-likes #{@post.likes.empty? ? 'hidden' : ''}"
-        title="#{_('Liked by %s') % like_list(@post)}"
-      >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
-        <span class="value">#{@post.likes.size}</span>
-      </span><br/>
-
-      <span
-        class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
-        title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
-      >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
-        <span class="num-comments">#{@post.comments.size}</span>
-      </span>
     </div>
 
     <?r if account.icons ?>
