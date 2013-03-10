@@ -108,7 +108,25 @@ body.excerpts-view .main {
 
         .post-stats {
             color: $bark;
+            margin-top: 15px;
             margin-right: 16px;
+            float: right;
+            &.text {
+              color: #888;
+              font-size: 11px;
+              margin: inherit;
+              float: none;
+            }
+        }
+
+        .post-tools {
+            margin-top: 15px;
+            &.iconic {
+              margin-top: inherit;
+              right: 1em;
+              position: absolute;
+              top: 25%;
+            }
         }
 
         // the max-height of the excerpt is set in layout/_head.xhtml
