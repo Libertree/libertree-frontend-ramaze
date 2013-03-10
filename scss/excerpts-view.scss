@@ -165,12 +165,11 @@ body.excerpts-view .main {
         .post-tools {
             text-align: left;
             right: 1em;
-            margin-top: 15px;
-            margin-right: 16px;
             opacity: 0.3;
             display: inline-block;
-            height: 35px;
+            position: absolute;
             line-height: 1.5em;
+            top: 25%;
             float: right;
 
             span.admin {
