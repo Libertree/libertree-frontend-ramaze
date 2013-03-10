@@ -57,6 +57,7 @@ body.single-post-view {
           @include rounded-top;
           background: $sand;
           margin: -2em -2em 1em;
+          position: relative;
 
           &:hover .post-tools {
             opacity: 1;
@@ -72,13 +73,28 @@ body.single-post-view {
                 text-overflow: ellipsis;
                 float: left;
             }
+            .avatar {
+                margin-bottom: 0px;
+                position: relative;
+                top: 4px;
+            }
           }
+
+          .post-stats {
+              color: #888;
+              font-size: 11px;
+          }
+
           // TODO: merge with excerpt view
           .post-tools {
               text-align: left;
               right: 1em;
-              margin-right: 16px;
               opacity: 0.3;
+              display: inline-block;
+              position: absolute;
+              line-height: 1.5em;
+              top: 20%;
+              float: right;
 
               span.admin {
                   display: inline-block;
@@ -108,13 +124,6 @@ body.single-post-view {
               }
           }
 
-          .post-stats, .post-tools {
-              display: inline-block;
-              margin-top: 15px;
-              height: 35px;
-              line-height: 1.5em;
-              float: right;
-          }
           .post-tools {
             span.num-likes {
               margin-left: 1em;
