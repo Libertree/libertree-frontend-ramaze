@@ -2,8 +2,8 @@
 
   <span class="admin">
     <?r if @post.member == account.member ?>
-      <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
-      <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
+      <a href="/posts/edit/#{@post.id}" title="#{_('edit')}" class="edit">#{ img 'icon-post-tools-edit.png', {alt:_('edit'), class:'size-16'}}</a>
+      <a href="/posts/destroy/#{@post.id}" title="#{_('delete')}" data-msg="#{_('Delete this post?')}" class="delete">#{ img 'icon-post-tools-delete.png', {alt:_('delete'), class:'size-16'}}</a>
     <?r else ?>
       <a class="hide" href="#" title="#{_('Hiding a post prevents it from showing in your rivers or triggering notifications.')}">#{_('hide')}</a>
       <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
