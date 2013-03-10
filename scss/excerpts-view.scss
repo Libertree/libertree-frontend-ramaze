@@ -221,6 +221,8 @@ body.excerpts-view .main {
                 }
                 .avatar {
                    margin-bottom: 0px; /* override application.scss */
+                   position: relative;
+                   top: 4px;
                 }
             }
         }
