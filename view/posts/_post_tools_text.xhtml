@@ -8,24 +8,8 @@
       <a href="#" class="unlike hidden">#{_('unlike')}</a>
     <?r end ?>
 
-    <?r if @post.collected_by?(account) ?>
-      <?r if @pool && @pool.member == account.member ?>
-      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
-      <?r else ?>
-      <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{_('collected')}</a>
-      <a class="collect hidden" href="#" title="#{_('Collect this post in a pool')}">#{_('collect')}</a>
-      <?r end ?>
-    <?r else ?>
-      <a class="collect" href="#" title="#{_('Collect this post in a pool')}">#{_('collect')}</a>
-      <a class="collect collected hidden" href="#" title="#{_('Collect this post in a pool')}">#{_('collected')}</a>
-    <?r end ?>
-
-    <?r if ! account.subscribed_to?(@post) ?>
-      <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-      <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
-    <?r else ?>
-      <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
-      <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+    <?r if @excerpt_links ?>
+      <a href="#" class="comment">#{_('comment')}</a>
     <?r end ?>
 
     <?r if @post.read_by?(account) ?>
@@ -40,8 +24,27 @@
   <br />
 
   <?r if @excerpt_links ?>
-    <a href="#" class="comment">#{_('comment')}</a>
     <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
+  <?r end ?>
+
+  <?r if ! account.subscribed_to?(@post) ?>
+    <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+    <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+  <?r else ?>
+    <a href="#" class="subscribe hidden" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
+    <a href="#" class="unsubscribe" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
+  <?r end ?>
+
+  <?r if @post.collected_by?(account) ?>
+    <?r if @pool && @pool.member == account.member ?>
+    <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
+    <?r else ?>
+    <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{_('collected')}</a>
+    <a class="collect hidden" href="#" title="#{_('Collect this post in a pool')}">#{_('collect')}</a>
+    <?r end ?>
+  <?r else ?>
+    <a class="collect" href="#" title="#{_('Collect this post in a pool')}">#{_('collect')}</a>
+    <a class="collect collected hidden" href="#" title="#{_('Collect this post in a pool')}">#{_('collected')}</a>
   <?r end ?>
 
   <span class="admin">
