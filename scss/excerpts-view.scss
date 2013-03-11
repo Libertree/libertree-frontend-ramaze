@@ -167,7 +167,17 @@ body.excerpts-view .main {
             right: 1em;
             margin-right: 16px;
             opacity: 0.3;
+            a {
+                margin-left: 0px;
+                margin-right: 5px;
+                border: none;
+            }
+            a.confirm-hide {
+                display: none;
+            }
+        }
 
+        .post-tools.iconic {
             span.admin {
                 display: inline-block;
                 border-right: 1px solid $bark;
@@ -185,14 +195,6 @@ body.excerpts-view .main {
                 border-left: 1px solid $bark;
                 margin-left: 0.25em;
                 padding-left: 0.75em;
-            }
-            a {
-                margin-left: 0px;
-                margin-right: 5px;
-                border: none;
-            }
-            a.confirm-hide {
-                display: none;
             }
         }
 
