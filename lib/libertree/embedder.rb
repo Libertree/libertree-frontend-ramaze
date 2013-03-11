@@ -18,7 +18,7 @@ module Libertree
     end
 
     def self.get(url)
-      Libertree::Embedding::CustomProviders.get(url) || OEmbed::Providers.get(url).html
+      Libertree::Embedding::CustomProviders.get(url) || OEmbed::Providers.get(url, {width: 500}).html
     end
 
     def self.autoembed(text)
