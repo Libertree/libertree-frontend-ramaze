@@ -1,17 +1,12 @@
 @import "colours.scss";
+@import "scss-include/mixins.scss";
 
 html.splash {
   // This background image is based on photos copyright by Jim Champion
   // (http://www.geograph.org.uk/profile/1086), available under a CC licence.
   background: url('../images/silhouette-dust.png') bottom center repeat-x $dust;
   height: 100%;
-}
-
-body.splash {
-  margin: 0 auto;
-  width: 400px;
-  background: transparent;
-  color: $text;
+  font-family: 'Droid Sans', Tahoma, Arial, sans-serif;
 
   .flash {
     padding: 0.5em;
@@ -24,6 +19,13 @@ body.splash {
       background: $water;
     }
   }
+}
+
+body.splash {
+  margin: 0 auto;
+  width: 400px;
+  background: transparent;
+  color: $text;
 
   div.image-wrapper {
     margin-bottom: 1em;
@@ -51,5 +53,32 @@ body.splash {
   .language-bar {
     font-size: 0.7em;
     text-align: center;
+  }
+}
+
+html.signup {
+  background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
+  height: 100%;
+}
+body.signup {
+  background: transparent;
+  form {
+    @include shadow;
+    @include rounded;
+    min-width: 60%;
+    max-width: 700px;
+    margin: 2em auto;
+    background: $dust;
+    padding: 30px;
+    margin-top: 2em;
+    overflow: auto;
+  }
+  h1 {
+    @include rounded;
+    margin: -30px -30px 1em;
+    padding: 1em;
+    padding-left: 160px;
+    background: $sand url(../images/logo-in-heading.png) no-repeat 20px bottom;
+    color: $leaf;
   }
 }

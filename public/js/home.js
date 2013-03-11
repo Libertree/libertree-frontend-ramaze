@@ -101,21 +101,11 @@ $(document).ready( function() {
     return false;
   } );
 
-  // TODO: there is no comment link anymore. Always assume "wantsToComment"?
   $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
     Libertree.Home.wantsToComment = true;
     excerpt.find('.show-more').click();
-  } );
-
-  $('.overflowed img').live( 'mouseover', function() {
-    Libertree.UI.showShowMores();
-  } );
-
-  $('.home #river-selector').change( function() {
-    window.location = '/home/' + $(this).val();
-    return false;
   } );
 
   $('.overflowed img').live( 'mouseover', function() {

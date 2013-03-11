@@ -29,9 +29,8 @@ $(document).ready( function() {
 
   $('.comment .delete').live( 'click', function(event) {
     event.preventDefault();
-    // TODO: gettextify
-    if( confirm('Delete this comment?') ) {
-      var comment = $(this).closest('.comment');
+    var comment = $(this).closest('.comment');
+    if( confirm(comment.find('.delete').data('msg')) ) {
       $.get( '/comments/destroy/' + comment.data('comment-id') );
       comment.fadeOut( function() { comment.remove } );
     }
@@ -101,8 +100,7 @@ $(document).ready( function() {
             ;
           }
         } else {
-          //TRANSLATEME
-          alert('Failed to post comment.');
+          alert(submitButton.data('msg-failure'));
         }
         submitButton.removeAttr('disabled');
         Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );

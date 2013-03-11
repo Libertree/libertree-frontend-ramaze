@@ -70,7 +70,7 @@ Libertree.UI = {
   // TODO: replace with bootstrap popover
   fadingAlert: function(message, x, y) {
     var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
-    div.appendTo('html');
+    div.appendTo('body');
 
     if( ! ( typeof x === 'undefined' || typeof y === 'undefined' ) ) {
       div.css( { left: x+'px', top: y+'px' } );

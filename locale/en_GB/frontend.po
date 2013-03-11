@@ -273,6 +273,8 @@ msgid "Like this comment"
 msgstr ""
 msgid "shareable link for this comment"
 msgstr ""
+msgid "Delete this comment?"
+msgstr ""
 
 #: view/_markdown_injector.xhtml
 
