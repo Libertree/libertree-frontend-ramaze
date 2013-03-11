@@ -79,7 +79,7 @@ module Controller
 
     # TODO: Move to Accounts controller?
     def signup
-      @view = 'splash'
+      @view = 'signup'
       redirect '/intro'  if logged_in?
       force_mobile_to_narrow
 
