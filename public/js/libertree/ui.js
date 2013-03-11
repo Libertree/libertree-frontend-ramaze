@@ -85,8 +85,8 @@ Libertree.UI = {
     },
     save: function() {
       $('textarea').each( function(i) {
-        var text = $(this).val()
-        if( text != '' && text != Libertree.UI.TextAreaBackup.stored ) {
+        var text = $(this).val();
+        if( text !== '' && text !== Libertree.UI.TextAreaBackup.stored ) {
           Libertree.UI.TextAreaBackup.stored = text;
           $.post(
             '/textarea_save',

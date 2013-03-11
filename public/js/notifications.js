@@ -6,7 +6,7 @@ $(document).ready( function() {
     }
 
     if( $('#num-notifications-unseen').text() === '0' ) {
-      window.location = '/notifications'
+      window.location = '/notifications';
       return false;
     }
 

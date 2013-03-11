@@ -34,7 +34,7 @@ Libertree.Intro = {
     ).get();
 
     // don't make a request if nothing is selected
-    if (rivers == "") {
+    if (rivers === "") {
       return {'status':'success'};
     }
 
@@ -140,11 +140,11 @@ Libertree.Intro = {
       .popover()
       .click(function() {
         return false;
-      })
+      });
     $(document).click( function() {
       // hide all popovers
       $("a[rel=popover]").popover('hide');
-    })
+    });
 
     // enable fancy contact list member selector
     $('select#contact-list-members').chosen();
@@ -194,6 +194,6 @@ Libertree.Intro = {
         // end tutorial or move on to next step
         Libertree.Intro.forward(step, that);
       }
-    })
+    });
   }
 };

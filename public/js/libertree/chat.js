@@ -82,7 +82,7 @@ Libertree.Chat = {
     $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
     $('#chat-window .log.active .textarea-chat').focus();
-    Libertree.Chat.syncUIDimensions()
+    Libertree.Chat.syncUIDimensions();
     $('#chat-window .log.active .messages').scrollTop(999999);
   },
 
@@ -122,5 +122,5 @@ Libertree.Chat = {
 
   heartbeat: function() {
     $.get('/accounts/heartbeat');
-  },
+  }
 };

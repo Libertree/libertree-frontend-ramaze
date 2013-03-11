@@ -30,7 +30,7 @@ $(document).ready( function() {
             Libertree.Pools.addPost( $('select#pool-selector').val(), postId, collect_link, e.pageX, e.pageY );
           } );
         }
-        $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown()
+        $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown();
       }
     );
     return false;

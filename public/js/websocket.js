@@ -17,7 +17,7 @@ $(document).ready( function() {
 
   ws.onopen = function(e) {
     this.send('{ "sid": "' + $.cookie('innate.sid') + '" }');
-  }
+  };
 
   ws.onmessage = function(e) {
     var data = $.parseJSON(e.data);

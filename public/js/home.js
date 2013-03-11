@@ -77,7 +77,7 @@ $(document).ready( function() {
     var overflowed = excerpt.find('.overflowed');
     var comments = excerpt.find('div.comments');
     var distance = excerpt.height() - overflowed.data('contracted-height');
-    var animationDuration = Libertree.UI.duration(distance)
+    var animationDuration = Libertree.UI.duration(distance);
 
     var excerptTop = excerpt.position().top;
     var windowTop = $('html').scrollTop();
@@ -117,7 +117,7 @@ $(document).ready( function() {
 
     $('#no-more-posts').remove();
     $('.more-posts-divider').removeClass('more-posts-divider');
-    $('.post-excerpt:first').addClass('more-posts-divider'),
+    $('.post-excerpt:first').addClass('more-posts-divider');
 
     Libertree.UI.addSpinner($(this).parent(), 'append');
     Libertree.PostLoader.loadFromRiver(

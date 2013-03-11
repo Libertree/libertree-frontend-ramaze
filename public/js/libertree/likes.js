@@ -35,7 +35,7 @@ Libertree.mkLike = function(type) {
       }
     );
   };
-}
+};
 
 
 Libertree.mkUnlike = function(type) {
