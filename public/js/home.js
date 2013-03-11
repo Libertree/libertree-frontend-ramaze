@@ -112,10 +112,6 @@ $(document).ready( function() {
     Libertree.UI.showShowMores();
   } );
 
-  $('.overflowed img').live( 'mouseover', function() {
-    Libertree.UI.showShowMores();
-  } );
-
   $('.load-more').live( 'click', function(event) {
     event.preventDefault();
 
