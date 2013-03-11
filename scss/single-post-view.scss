@@ -49,23 +49,76 @@ body.single-post-view {
           width: 100%;
           word-wrap: break-word;
         }
-        .member {
-          margin: -2em -2em 0.5em -2em;
-          padding: 2em 0.5em 2em 2em;
-          background: $sand;
-          border-radius: $border-radius 0 0 $border-radius;
+        .visibility, #comments-hide, #comments-show {
+          border-bottom: 0px;
+          float: right;
         }
-        .post-tools {
-          display: block;
-          margin-bottom: 1.5em;
-          width: 100%;
-          float: none;
-          text-align: right;
-          span.num-likes {
-            margin-left: 1em;
+        .meta {
+          @include rounded-top;
+          background: $sand;
+          margin: -2em -2em 1em;
+
+          &:hover .post-tools {
+            opacity: 1;
           }
-          .visibility {
-            border-bottom: 0px;
+
+          .member {
+            display: inline-block;
+            padding: 1em;
+            border-radius: $border-radius 0 0 $border-radius;
+            .member-text {
+                max-width: 15em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                float: left;
+            }
+          }
+          // TODO: merge with excerpt view
+          .post-tools {
+              text-align: left;
+              right: 1em;
+              margin-right: 16px;
+              opacity: 0.3;
+
+              span.admin {
+                  display: inline-block;
+                  border-right: 1px solid $bark;
+                  line-height: 3em;
+                  margin-right: 0.25em;
+                  padding-right: 0.25em;
+              }
+              span.mutation {
+                  display: inline-block;
+                  vertical-align: middle;
+              }
+              span.links {
+                  display: inline-block;
+                  line-height: 3em;
+                  border-left: 1px solid $bark;
+                  margin-left: 0.25em;
+                  padding-left: 0.75em;
+              }
+              a {
+                  margin-left: 0px;
+                  margin-right: 5px;
+                  border: none;
+              }
+              a.confirm-hide {
+                  display: none;
+              }
+          }
+
+          .post-stats, .post-tools {
+              display: inline-block;
+              margin-top: 15px;
+              height: 35px;
+              line-height: 1.5em;
+              float: right;
+          }
+          .post-tools {
+            span.num-likes {
+              margin-left: 1em;
+            }
           }
         }
       }

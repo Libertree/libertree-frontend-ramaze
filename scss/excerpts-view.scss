@@ -168,12 +168,28 @@ body.excerpts-view .main {
             margin-right: 16px;
             opacity: 0.3;
 
+            span.admin {
+                display: inline-block;
+                border-right: 1px solid $bark;
+                line-height: 3em;
+                margin-right: 0.25em;
+                padding-right: 0.25em;
+            }
             span.mutation {
-              display: inline-block;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            span.links {
+                display: inline-block;
+                line-height: 3em;
+                border-left: 1px solid $bark;
+                margin-left: 0.25em;
+                padding-left: 0.75em;
             }
             a {
                 margin-left: 0px;
                 margin-right: 5px;
+                border: none;
             }
             a.confirm-hide {
                 display: none;

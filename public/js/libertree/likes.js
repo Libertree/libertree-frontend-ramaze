@@ -25,10 +25,12 @@ Libertree.mkLike = function(type) {
   return function(link, event, path) {
     event.preventDefault();
     var entity = link.closest(path);
+    Libertree.UI.enableIconSpinner(link.find('img'));
     $.get(
       '/likes/'+type+'s/create/' + entity.data(type+'-id'),
       function(response) {
         var h = $.parseJSON(response);
+        Libertree.UI.disableIconSpinner(link.find('img'));
         link.addClass('hidden');
         link.siblings('a.unlike').removeClass('hidden').data(type+'-like-id', h[type+'_like_id']);
         update( entity, h );
@@ -62,10 +64,12 @@ Libertree.mkUnlike = function(type) {
   return function(link, event, path) {
     event.preventDefault();
     var entity = link.closest(path);
+    Libertree.UI.enableIconSpinner(link.find('img'));
     $.get(
       '/likes/'+type+'s/destroy/' + link.data(type + '-like-id'),
       function(response) {
         var h = $.parseJSON(response);
+        Libertree.UI.disableIconSpinner(link.find('img'));
         link.addClass('hidden');
         link.siblings('a.like').removeClass('hidden');
         update( entity, h );

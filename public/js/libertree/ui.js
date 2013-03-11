@@ -41,6 +41,18 @@ Libertree.UI = {
     $('img.spinner', target_selector).remove();
   },
 
+  //FIXME: src depends on selected theme
+  enableIconSpinner: function(target) {
+    target.data('src', $(target).attr('src'));
+    target.attr('src', "/themes/default/images/icon-spinner.gif");
+  },
+  disableIconSpinner: function(target) {
+    if ($(target).data('src') != undefined) {
+      target.attr('src', $(target).data('src'));
+      target.removeAttr('data-src');
+    }
+  },
+
   //TRANSLATEME
   updateAges: function() {
     $('.age').each( function(i) {

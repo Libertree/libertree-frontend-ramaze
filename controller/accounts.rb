@@ -43,6 +43,7 @@ module Controller
       account.autoembed = !! request['autoembed']
       account.filter_images = !! request['filter_images']
       account.thumbnail = !! request['thumbnail']
+      account.icons = !! request['post_tools_icons']
       account.locale = request['locale'].to_s
       session[:locale] = account.locale
 
