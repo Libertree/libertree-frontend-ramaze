@@ -122,7 +122,7 @@ $(document).ready( function() {
     top: $.cookie('chat-top'),
     left: $.cookie('chat-left'),
     width: $.cookie('chat-width'),
-    height: $.cookie('chat-height'),
+    height: $.cookie('chat-height')
   } );
   if( $.cookie('chat-open') === 'true' ) {
     $('#menu-chat').click();

@@ -7,7 +7,7 @@ Libertree.Home = {
       indicator.find('.load-more').text(data.numNewPosts);
       indicator.slideDown();
     }
-  },
+  }
 
 };
 

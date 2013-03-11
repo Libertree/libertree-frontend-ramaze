@@ -84,7 +84,7 @@ Libertree.Comments = {
         }
       }
     );
-  },
+  }
 };
 
 Libertree.Comments.like   = Libertree.mkLike('comment');
