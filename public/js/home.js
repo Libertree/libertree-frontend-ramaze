@@ -112,11 +112,6 @@ $(document).ready( function() {
     Libertree.UI.showShowMores();
   } );
 
-  $('.home #river-selector').change( function() {
-    window.location = '/home/' + $(this).val();
-    return false;
-  } );
-
   $('.overflowed img').live( 'mouseover', function() {
     Libertree.UI.showShowMores();
   } );
