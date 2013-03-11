@@ -109,7 +109,11 @@ $(document).ready( function() {
   } );
 
   $('.overflowed img').live( 'mouseover', function() {
-    Libertree.UI.showShowMores();
+    var excerpt = $(this).closest('.post-excerpt');
+    // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
+    if( excerpt.find('.post-text').height() > excerpt.find('.overflowed').height() ) {
+      excerpt.siblings('.show-more').show();
+    }
   } );
 
   $('.load-more').live( 'click', function(event) {
