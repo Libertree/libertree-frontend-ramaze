@@ -18,7 +18,7 @@ $(document).ready( function() {
       function(html) {
         Libertree.UI.disableIconSpinner(collect_link.find('img'));
         var o = $(html);
-        o.insertAfter(post.find('.meta, .post-pane'));
+        o.insertAfter(post.find('.meta'));
         if( o.find('option').length === 2 ) {
           var option = $('select#pool-selector option:last');
           Libertree.Pools.addPost( option.val(), postId, post, x, y );
