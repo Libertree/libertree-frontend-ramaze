@@ -27,7 +27,7 @@ $(document).ready( function() {
             //TRANSLATEME
             no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
           } ).change( function() {
-            Libertree.Pools.addPost( $('select#pool-selector').val(), postId, collect_link, x, y );
+            Libertree.Pools.addPost( $('select#pool-selector').val(), postId, collect_link, e.pageX, e.pageY );
           } );
         }
         $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown()
