@@ -158,34 +158,46 @@ body.excerpts-view .main {
         }
 
         .post-stats {
-            color: $bark;
-            margin-right: 16px;
+            color: #888;
+            font-size: 11px;
         }
 
         .post-tools {
             text-align: left;
             right: 1em;
-            margin-right: 16px;
             opacity: 0.3;
+            display: inline-block;
+            position: absolute;
+            line-height: 1.5em;
+            top: 25%;
+            float: right;
 
+            span.admin {
+                display: inline-block;
+                border-right: 1px solid $bark;
+                line-height: 3em;
+                margin-right: 0.25em;
+                padding-right: 0.25em;
+            }
             span.mutation {
-              display: inline-block;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            span.links {
+                display: inline-block;
+                line-height: 3em;
+                border-left: 1px solid $bark;
+                margin-left: 0.25em;
+                padding-left: 0.75em;
             }
             a {
                 margin-left: 0px;
                 margin-right: 5px;
+                border: none;
             }
             a.confirm-hide {
                 display: none;
             }
-        }
-
-        .post-stats, .post-tools {
-            display: inline-block;
-            margin-top: 15px;
-            height: 35px;
-            line-height: 1.5em;
-            float: right;
         }
 
         // the max-height of the excerpt is set in layout/_head.xhtml
@@ -209,6 +221,8 @@ body.excerpts-view .main {
                 }
                 .avatar {
                    margin-bottom: 0px; /* override application.scss */
+                   position: relative;
+                   top: 4px;
                 }
             }
         }
