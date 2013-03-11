@@ -17,9 +17,9 @@
 
           <?r if logged_in? ?>
             <?r if account.icons ?>
-              #{ render_partial '_post_tools', post: @post, links: false }
+              #{ render_partial '_post_tools', post: @post, excerpt_links: false }
             <?r else ?>
-              #{ render_partial '_post_tools_text', post: @post, links: false }
+              #{ render_partial '_post_tools_text', post: @post, excerpt_links: false }
             <?r end ?>
           <?r end ?>
         </div>
