@@ -101,8 +101,7 @@ $(document).ready( function() {
             ;
           }
         } else {
-          //TRANSLATEME
-          alert('Failed to post comment.');
+          alert(submitButton.data('msg-failure'));
         }
         submitButton.removeAttr('disabled');
         Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
