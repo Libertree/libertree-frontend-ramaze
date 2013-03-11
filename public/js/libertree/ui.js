@@ -49,7 +49,7 @@ Libertree.UI = {
       } else {
         var m = $(this).text().match(/^(\d+) minutes? ago$/);
         if( m ) {
-          $(this).text( (parseInt(m[1]) + 1) + ' minutes ago');
+          $(this).text( (parseInt(m[1], 10) + 1) + ' minutes ago');
         }
       }
     } );

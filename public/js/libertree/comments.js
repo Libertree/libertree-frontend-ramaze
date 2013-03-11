@@ -6,7 +6,7 @@ Libertree.Comments = {
   },
 
   hideLoadCommentsLinkIfAllShown: function(element) {
-    var n = parseInt( element.find('.comments .num-comments').data('total') );
+    var n = parseInt( element.find('.comments .num-comments').data('total'), 10 );
 
     if( element.find('div.comment').length === n ) {
       element.find('a.load-comments').css('visibility', 'hidden');
