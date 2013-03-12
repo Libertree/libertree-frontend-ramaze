@@ -49,9 +49,14 @@ body.single-post-view {
           width: 100%;
           word-wrap: break-word;
         }
-        .visibility, #comments-hide, #comments-show {
-          border-bottom: 0px;
-          float: right;
+        .post-extras {
+            float: right;
+            width: 100%;
+            text-align: right;
+            margin-bottom: 1em;
+            > a, > span {
+                margin-left: 1em;
+            }
         }
         .meta {
           @include rounded-top;
