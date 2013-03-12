@@ -64,7 +64,7 @@ body.single-post-view {
 
           .member {
             display: inline-block;
-            padding: 1em;
+            padding: 2em;
             border-radius: $border-radius 0 0 $border-radius;
             .member-text {
                 max-width: 15em;
@@ -72,9 +72,13 @@ body.single-post-view {
                 text-overflow: ellipsis;
                 float: left;
             }
+            img.avatar {
+                margin-bottom: 0px; /* override application.scss */
+            }
           }
 
           .post-tools {
+            margin-top: 30px; /* override application.scss */
             span.num-likes {
               margin-left: 1em;
             }
