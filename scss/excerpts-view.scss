@@ -167,6 +167,10 @@ body.excerpts-view .main {
             background-color: $sand;
             position: relative;
 
+            .post-tools {
+                max-width: 372px;
+            }
+
             &:hover .post-tools {
               opacity: 1;
             }
