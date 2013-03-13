@@ -48,6 +48,7 @@ module Controller
         name_display = nil
       end
       begin
+        account.member.dirty
         account.member.profile.set(
           name_display: name_display,
           description: request['description'].to_s
