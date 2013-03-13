@@ -69,11 +69,11 @@ body.single-post-view {
 
           .member {
             display: inline-block;
-            padding: 2em;
+            padding: 28px 10px 28px 28px;
             border-radius: $border-radius 0 0 $border-radius;
-            width: 275px;  /* complements max-width of .post-tools */
+            width: 290px;  /* complements max-width of .post-tools */
             .member-text {
-                max-width: 225px;
+                max-width: 240px;  /* should be changed with .member width */
                 overflow: hidden;
                 text-overflow: ellipsis;
                 float: left;
@@ -101,7 +101,7 @@ body.single-post-view {
       @include border-box;
       width: 45%;
       height: 100%;
-      padding: 2em;
+      padding: 28px;
       border-radius: 0 $border-radius $border-radius 0;
       /* position: relative; */
       float: right;
