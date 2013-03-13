@@ -71,8 +71,9 @@ body.single-post-view {
             display: inline-block;
             padding: 2em;
             border-radius: $border-radius 0 0 $border-radius;
+            width: 275px;  /* complements max-width of .post-tools */
             .member-text {
-                max-width: 15em;
+                max-width: 225px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 float: left;
@@ -84,6 +85,7 @@ body.single-post-view {
 
           .post-tools {
             margin-top: 30px; /* override application.scss */
+            max-width: 200px;  /* complements width of .member */
             span.num-likes {
               margin-left: 1em;
             }
