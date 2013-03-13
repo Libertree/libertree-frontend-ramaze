@@ -45,9 +45,8 @@ Libertree.mkUnlike = function(type) {
   var update = (type === 'comment') ?
     function( entity, response ) {
       var num_likes = entity.find('.num-likes');
-      num_likes.text( response['num_likes'] );
-      // FIXME: gettextify
-      if( response['num_likes'] === '0 likes' ) {
+      num_likes.text( response['text'] );
+      if( response['num_likes'] === 0 ) {
         num_likes.hide();
       } else {
         num_likes.attr('title', response['liked_by']);

@@ -32,8 +32,9 @@ module Controller
       end
 
       return {
-        'num_likes'       => n_('1 like', '%d likes', like.comment.likes.count) % like.comment.likes.count,
-        'liked_by'        => like.comment.likes.map { |l| l.member.name_display }.join(', ')
+        'num_likes' => like.comment.likes.count,
+        'text'      => n_('1 like', '%d likes', like.comment.likes.count) % like.comment.likes.count,
+        'liked_by'  => like.comment.likes.map { |l| l.member.name_display }.join(', ')
       }.to_json
     end
   end
