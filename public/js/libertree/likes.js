@@ -9,7 +9,7 @@ Libertree.mkLike = function(type) {
     }
   :
     function( entity, response ) {
-      var num_likes = entity.find('.num-likes');
+      var num_likes = entity.find('.num-likes').first();
       num_likes.find('.value').text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
       num_likes.show();
@@ -53,7 +53,7 @@ Libertree.mkUnlike = function(type) {
     }
   :
     function( entity, response ) {
-      var num_likes = entity.find('.num-likes');
+      var num_likes = entity.find('.num-likes').first();
       num_likes.find('.value').text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
     }
