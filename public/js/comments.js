@@ -12,8 +12,9 @@ $(document).ready( function() {
     );
   } );
 
-  $('a.load-comments').live( 'click', function(event) {
+  $('a.load-comments:not(.disabled)').live( 'click', function(event) {
     event.preventDefault();
+    $(this).addClass('disabled');
     Libertree.Comments.loadMore($(this));
     return false;
   } );

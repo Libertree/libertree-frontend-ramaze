@@ -553,6 +553,12 @@ a.hashtag, a.commenter-ref {
     cursor: pointer;
 }
 
+.load-comments.disabled {
+    opacity: 0.5;
+    border-bottom: 0px;
+    cursor: default;
+}
+
 .input-and-filler {
     position: relative;
 }

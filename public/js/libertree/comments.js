@@ -74,6 +74,7 @@ Libertree.Comments = {
         scrollable.scrollTop( initialScrollTop + delta );
         Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
         Libertree.UI.removeSpinner('.comments');
+        linkClicked.removeClass('disabled');
 
         if( typeof dontSlide == 'undefined' || ! dontSlide ) {
           scrollable.animate(
