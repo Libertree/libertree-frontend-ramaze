@@ -14,6 +14,10 @@
   #{_('Custom JS:')} <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
   #{_('Automatic embedding:')} <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
   #{_('Filter images:')} <input type="checkbox" name="filter_images" #{account.filter_images ? "checked" : ""} /><br/>
+  #{_('Display post tools as:')}
+    <input type="radio" name="post_tools_icons" value="text" #{account.icons ? "" : "checked"} />text
+    <input type="radio" name="post_tools_icons" value="icons" #{account.icons ? "checked" : ""} />icons
+    <br/>
   #{_('Make thumbnails for images in post excerpts:')} <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} /><br/>
   #{_('Language:')}
     <select name="locale">

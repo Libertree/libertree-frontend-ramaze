@@ -49,23 +49,46 @@ body.single-post-view {
           width: 100%;
           word-wrap: break-word;
         }
-        .member {
-          margin: -2em -2em 0.5em -2em;
-          padding: 2em 0.5em 2em 2em;
-          background: $sand;
-          border-radius: $border-radius 0 0 $border-radius;
+        .post-extras {
+            float: right;
+            width: 100%;
+            text-align: right;
+            margin-bottom: 1em;
+            > a, > span {
+                margin-left: 1em;
+            }
         }
-        .post-tools {
-          display: block;
-          margin-bottom: 1.5em;
-          width: 100%;
-          float: none;
-          text-align: right;
-          span.num-likes {
-            margin-left: 1em;
+        .meta {
+          @include rounded-top;
+          background: $sand;
+          margin: -2em -2em 1em;
+
+          &:hover .post-tools {
+            opacity: 1;
           }
-          .visibility {
-            border-bottom: 0px;
+
+          .member {
+            display: inline-block;
+            padding: 2em;
+            border-radius: $border-radius 0 0 $border-radius;
+            width: 275px;  /* complements max-width of .post-tools */
+            .member-text {
+                max-width: 225px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                float: left;
+            }
+            img.avatar {
+                margin-bottom: 0px; /* override application.scss */
+            }
+          }
+
+          .post-tools {
+            margin-top: 30px; /* override application.scss */
+            max-width: 200px;  /* complements width of .member */
+            span.num-likes {
+              margin-left: 1em;
+            }
           }
         }
       }

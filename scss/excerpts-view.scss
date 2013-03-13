@@ -162,32 +162,6 @@ body.excerpts-view .main {
             margin-right: 16px;
         }
 
-        .post-tools {
-            text-align: left;
-            right: 1em;
-            margin-right: 16px;
-            opacity: 0.3;
-
-            span.mutation {
-              display: inline-block;
-            }
-            a {
-                margin-left: 0px;
-                margin-right: 5px;
-            }
-            a.confirm-hide {
-                display: none;
-            }
-        }
-
-        .post-stats, .post-tools {
-            display: inline-block;
-            margin-top: 15px;
-            height: 35px;
-            line-height: 1.5em;
-            float: right;
-        }
-
         // the max-height of the excerpt is set in layout/_head.xhtml
         div.meta {
             background-color: $sand;
