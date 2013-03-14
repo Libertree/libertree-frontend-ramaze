@@ -104,17 +104,22 @@ EventMachine.run do
         end
 
         # Could this data gathering be done in a cleaner, or more elegant way?
-        posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id", socket_data[:last_post_id])
-        # FIXME: this is a very ugly hack.
-        # The query above gets a list of new posts, even if these posts
-        # are still in the process of being added to rivers. Adding a post
-        # to multiple rivers is not an atomic operation, so p.rivers_belonged_to(account)
-        # may only be able to return one river that this post has been added to.
-        # Waiting for a second should be enough to match a post against rivers,
-        # but it may well be that matching a new post against rivers takes even longer.
-        # Hence, a better solution would be to fix the above query such that it only
-        # includes posts that already have been matched against all rivers.
-        sleep 1
+
+        # In the WHERE clause, we have a waiting period to allow time for a
+        # freshly created post to get added to rivers.  Depending on the load
+        # and data size on a server, this interval may need to be adjusted.
+        # TODO: Make it a config variable.
+        posts = Libertree::Model::Post.s(
+          %{
+            SELECT *
+            FROM posts
+            WHERE
+              id > ?
+              AND NOW() - time_created > '15 seconds'::INTERVAL
+            ORDER BY id
+          },
+          socket_data[:last_post_id]
+        )
 
         rivers_num_posts = Hash.new { |h,k| h[k] = 0 }
         posts.each do |p|
