@@ -115,7 +115,7 @@ EventMachine.run do
             FROM posts
             WHERE
               id > ?
-              AND NOW() - time_created > '#{$conf['websocket_post_match_wait_time'] || '15 seconds'}'::INTERVAL
+              AND NOW() - time_created > '15 seconds'::INTERVAL
             ORDER BY id
           },
           socket_data[:last_post_id]

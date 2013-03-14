@@ -6,12 +6,6 @@ secure_websocket: false
 #websocket_ssl_cert: /path/to/cert
 #websocket_ssl_private_key: /path/to/private/key
 
-# This affects the success rate of the new posts detection feature.  Larger
-# time values mean greater success rate.  A lower value means posts are detected
-# and shown closer to in real time, but there is an increased chance that some
-# posts are missed by this feature.  Value can be expressed in seconds or minutes.
-websocket_post_match_wait_time: "60 seconds"
-
 # These accounts (by username) will have websockets disabled
 # websocket_blacklist:
   # - 'ruskie'
