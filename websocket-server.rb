@@ -103,27 +103,36 @@ EventMachine.run do
           )
         end
 
-        # Could this data gathering be done in a cleaner, or more elegant way?
-        posts = Libertree::Model::Post.s("SELECT * FROM posts WHERE id > ? ORDER BY id", socket_data[:last_post_id])
-        rivers_num_posts = Hash.new { |h,k| h[k] = 0 }
-        posts.each do |p|
-          p.rivers_belonged_to(account).each do |r|
-            rivers_num_posts[r] += 1
+
+        # TODO: The first new post since websocket server start is missed
+        # TODO: The new post text is never updated when it is once set.
+        #       When at first only one new post is detected, but on the
+        #       next iteration 100 new posts are discovered, the hint will
+        #       still say "1 new post".
+        post_ids = []
+
+        rivers = account.rivers_not_appended
+        rivers.each do |river|
+          posts = Libertree::Model::Post.
+            s("SELECT p.* FROM posts p, river_posts rp WHERE rp.river_id = ? AND p.id = rp.post_id AND p.id > ?",
+               river.id,
+               socket_data[:last_post_id])
+          num_posts = posts.count
+          if num_posts > 0
+            ws.send(
+              {
+                'command'     => 'river-posts',
+                'riverId'     => river.id,
+                # TODO: i18n
+                'numNewPosts' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}"
+              }.to_json
+            )
+            post_ids += posts.map(&:id)
           end
         end
 
-        rivers_num_posts.each do |river, num_posts|
-          ws.send(
-            {
-              'command'     => 'river-posts',
-              'riverId'     => river.id,
-              # TODO: i18n
-              'numNewPosts' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}"
-            }.to_json
-          )
-        end
-        if posts.any?
-          socket_data[:last_post_id] = posts.map(&:id).max
+        if post_ids.any?
+          socket_data[:last_post_id] = post_ids.max
         end
 
         notifs = Libertree::Model::Notification.s(
