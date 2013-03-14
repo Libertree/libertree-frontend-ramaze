@@ -1,6 +1,8 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
+$threshold-stacked-meta: 1110px;
+
 body.single-post-view {
   height: 100%;
   .main {
@@ -62,6 +64,7 @@ body.single-post-view {
           @include rounded-top;
           background: $sand;
           margin: -2em -2em 1em;
+          padding-bottom: 28px;
 
           &:hover .post-tools {
             opacity: 1;
@@ -69,14 +72,20 @@ body.single-post-view {
 
           .member {
             display: inline-block;
-            padding: 28px 10px 28px 28px;
+            padding: 28px 10px 0px 28px;
             border-radius: $border-radius 0 0 $border-radius;
             width: 290px;  /* complements max-width of .post-tools */
+            @media screen and (max-width: $threshold-stacked-meta) {
+                width: inherit;
+            }
             .member-text {
                 max-width: 240px;  /* should be changed with .member width */
                 overflow: hidden;
                 text-overflow: ellipsis;
                 float: left;
+                @media screen and (max-width: $threshold-stacked-meta) {
+                    max-width: 100%;
+                }
             }
             img.avatar {
                 margin-bottom: 0px; /* override application.scss */
@@ -88,6 +97,12 @@ body.single-post-view {
             max-width: 200px;  /* complements width of .member */
             span.num-likes {
               margin-left: 1em;
+            }
+            @media screen and (max-width: $threshold-stacked-meta) {
+                float: none;
+                margin-top: 0.5em;
+                margin-left: 78px;
+                max-width: 100%;
             }
           }
         }
