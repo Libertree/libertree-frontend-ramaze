@@ -781,6 +781,8 @@ msgid "Use the special term %s followed by %s or %s to match posts with a given 
 msgstr ""
 msgid "Other special terms: %s, %s and %s. These are for narrowing down to posts you have liked, commented on and subscribed to, respectively."
 msgstr ""
+msgid "(advanced) Use the special term %s followed by a source name in quotes to match posts posted with a given source or tool."
+msgstr ""
 msgid "(advanced) Use the special term %s followed by a river label in quotes to compose rivers using other rivers."
 msgstr ""
 msgid "(advanced) Use the special term %s followed by &lt; or &gt; and a number to match posts by their approximate number of words."
