@@ -1,2 +1,4 @@
-<div class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
-  #{ member_avatar_link(@avatar_member) }
+<table class="notification #{@notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'}" data-notification-ids="#{@notifications.map(&:id).to_json}">
+  <tr>
+    <td class="avatar">#{ member_avatar_link(@avatar_member) }</td>
+    <td>
