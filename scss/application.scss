@@ -276,7 +276,7 @@ textarea, input[type="text"], input[type="password"] {
     color: #778877;
 }
 
-.avatar {
+img.avatar {
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -476,10 +476,18 @@ form.comment {
     cursor: pointer;
     min-height: 40px;
 
-    .avatar {
+    img.avatar {
         height: 30px;
         width: 30px;
-        margin: 4px 6px 0px 0px;
+        margin: 0px;
+    }
+
+    td {
+        padding: 0px;
+        vertical-align: top;
+    }
+    td.avatar {
+        padding-right: 5px;
     }
 }
 .notification.unseen {
