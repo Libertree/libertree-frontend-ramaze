@@ -475,6 +475,7 @@ form.comment {
     border-bottom: 1px dotted #666666;
     cursor: pointer;
     min-height: 40px;
+    width: 100%;
 
     img.avatar {
         height: 30px;
@@ -492,6 +493,7 @@ form.comment {
     }
     td.avatar {
         padding-right: 5px;
+        width: 35px;
     }
 }
 .notification.unseen {
