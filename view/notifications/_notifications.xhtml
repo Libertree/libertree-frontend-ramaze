@@ -1,17 +1,20 @@
 <?r
 @set_keys.each do |key|
   notifications = @sets[key]
-  actors = notifications.map { |n| n.subject.member }
   notif = notifications[0]
+  actor_array = notifications.map { |n| n.subject.member }
+  actors = anded_list( actor_array.map(&:name_display).uniq )
+  sg_or_pl = actor_array.uniq.length == 1 ? "singular" : "plural"
+
   case notif.subject
   when Libertree::Model::Comment
-    ?>#{ render_partial '_comment', notifications: notifications, comment: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_comment', notifications: notifications, comment: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   when Libertree::Model::CommentLike
-    ?>#{ render_partial '_comment_like', notifications: notifications, like: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_comment_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   when Libertree::Model::Message
-    ?>#{ render_partial '_message', notifications: notifications, message: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_message', notifications: notifications, message: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   when Libertree::Model::PostLike
-    ?>#{ render_partial '_post_like', notifications: notifications, like: notif.subject, actors: actors }<?r
+    ?>#{ render_partial '_post_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   end
 end
 ?>

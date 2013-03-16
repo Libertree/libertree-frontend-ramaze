@@ -1,7 +1,5 @@
 <?r if @like ?>
   #{ render_file 'view/notifications/_notification_head.xhtml', notifications: @notifications, avatar_member: @like.member }
-    <?r who = anded_list( @actors.map(&:name_display).uniq ) ?>
-    <?r prefix = @actors.uniq.length == 1 ? "singular" : "plural" ?>
-    #{s_("#{prefix}|%1$s liked your %2$spost%3$s.") % [who, "<a href=\"/posts/show/#{@like.post.id}\" title=\"#{::CGI.escape_html(@like.post.glimpse)}\">", "</a>"]}
+    #{s_("#{@sg_or_pl}|%1$s liked your %2$spost%3$s.") % [@actors, "<a href=\"/posts/show/#{@like.post.id}\" title=\"#{::CGI.escape_html(@like.post.glimpse)}\">", "</a>"]}
   #{ render_file 'view/notifications/_notification_foot.xhtml', notifications: @notifications }
 <?r end ?>
