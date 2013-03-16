@@ -485,6 +485,10 @@ form.comment {
     td {
         padding: 0px;
         vertical-align: top;
+        .glimpse {
+            font-style: italic;
+            opacity: 0.8;
+        }
     }
     td.avatar {
         padding-right: 5px;

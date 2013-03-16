@@ -6,5 +6,5 @@
     <?r else ?>
       #{s_("#{@sg_or_pl}|%1$s liked your %2$scomment%3$s on %4$s's post.") % [@actors, link, "</a>", @like.comment.post.member.name_display]}
     <?r end ?>
-  #{ render_file 'view/notifications/_notification_foot.xhtml', notifications: @notifications }
+  #{ render_file 'view/notifications/_notification_foot.xhtml', notifications: @notifications, glimpse: @like.comment.glimpse }
 <?r end ?>
