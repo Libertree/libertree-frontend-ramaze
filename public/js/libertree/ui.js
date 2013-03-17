@@ -111,6 +111,10 @@ Libertree.UI = {
         }
       } );
     }
+  },
+
+  isTouchInterface: function() {
+    return ("ontouchstart" in document.documentElement);
   }
 };
 

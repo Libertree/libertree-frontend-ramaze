@@ -276,7 +276,7 @@ textarea, input[type="text"], input[type="password"] {
     color: #778877;
 }
 
-.avatar {
+img.avatar {
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -475,11 +475,25 @@ form.comment {
     border-bottom: 1px dotted #666666;
     cursor: pointer;
     min-height: 40px;
+    width: 100%;
 
-    .avatar {
+    img.avatar {
         height: 30px;
         width: 30px;
-        margin: 4px 6px 0px 0px;
+        margin: 0px;
+    }
+
+    td {
+        padding: 0px;
+        vertical-align: top;
+        .glimpse {
+            font-style: italic;
+            opacity: 0.8;
+        }
+    }
+    td.avatar {
+        padding-right: 5px;
+        width: 35px;
     }
 }
 .notification.unseen {
@@ -719,4 +733,14 @@ div.pools .chzn-container .chzn-results li {
     font-style: italic;
     font-size: 0.8em;
     color: #778877;
+}
+
+.touch-only {
+    display: none;
+}
+
+.touch-interface {
+    div.touch-only {
+        display: block;
+    }
 }
