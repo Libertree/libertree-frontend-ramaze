@@ -720,3 +720,13 @@ div.pools .chzn-container .chzn-results li {
     font-size: 0.8em;
     color: #778877;
 }
+
+.touch-only {
+    display: none;
+}
+
+.touch-interface {
+    div.touch-only {
+        display: block;
+    }
+}
