@@ -157,6 +157,7 @@ module Controller
     # types from the one search box in the near future.
     def search
       redirect_referrer  if ! request.post?
+      require_login
 
       @q = request['q'].to_s
       redirect_referrer  if @q.empty?
