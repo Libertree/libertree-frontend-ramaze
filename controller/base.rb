@@ -98,6 +98,7 @@ module Controller
     end
 
     def error_404
+      @view = "splash"
       render_file "#{Ramaze.options.views[0]}/404.xhtml"
     end
 
