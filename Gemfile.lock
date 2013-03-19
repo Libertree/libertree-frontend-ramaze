@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 1e2dbdac4ce93b288f7d1b3785febbbcd9de6af4
-  specs:
-    libertree-model (0.0.1)
-
-GIT
   remote: git://github.com/RDBI/rdbi-driver-postgresql.git
   revision: be571a9909f74160be8b0c638275e33fe62c75cf
   branch: fix-execute-memory-leak
@@ -52,6 +46,11 @@ GIT
   revision: 43424ff6145969e7b1b8a6f25675dc7996913f60
   specs:
     rpeg-markdown (1.4.6)
+
+PATH
+  remote: ../libertree-model-rb
+  specs:
+    libertree-model (0.0.1)
 
 GEM
   remote: http://rubygems.org/

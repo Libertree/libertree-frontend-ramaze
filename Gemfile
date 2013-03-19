@@ -16,7 +16,8 @@ gem 'sass'
 gem 'ruby-oembed'
 gem 'fast_gettext'
 
-gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
+# gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git', branch: 'spring-addition-notif'
+gem 'libertree-model', path: '../libertree-model-rb'
 
 group 'development' do
   gem 'rspec'
