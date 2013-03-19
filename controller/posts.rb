@@ -98,7 +98,7 @@ module Controller
       @view = "single-post-view"
       @post = Libertree::Model::Post[post_id.to_i]
       if @post.nil?
-        respond "404: Not Found", 404
+        respond (render_full "/error_404"), 404
       else
         if ! @post.v_internet?
           require_login
