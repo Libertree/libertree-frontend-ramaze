@@ -106,9 +106,6 @@ div.river .query {
     .post-excerpt {
         .post-tools {
             font-size: $font_extra_small;
-            a.confirm-hide {
-                font-weight: bold;
-            }
         }
         .post-stats {
             font-size: $font_extra_small;
@@ -118,6 +115,12 @@ div.river .query {
                 font-size: $font_extra_extra_small;
             }
         }
+    }
+}
+
+.post-tools {
+    a.confirm-hide {
+        font-weight: bold;
     }
 }
 

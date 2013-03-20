@@ -30,6 +30,18 @@ Libertree.Posts = {
         post.find('.mark-unread').removeClass('hidden');
       }
     );
+  },
+
+  hide: function(post_id, onSuccess) {
+    $.get(
+      '/posts/hidden/create/' + post_id + '.json',
+      function(response) {
+        var h = $.parseJSON(response);
+        if( h.success ) {
+          onSuccess();
+        }
+      }
+    );
   }
 
 };
