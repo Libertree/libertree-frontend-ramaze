@@ -35,21 +35,34 @@ $(document).ready( function() {
     );
   } );
 
-  $('.post-excerpt .hide').live( 'click', function() {
+  $('.post-tools a.hide').live( 'click', function() {
     $(this).hide();
     $(this).siblings('.confirm-hide').show();
     return false;
   } );
-  $('.post-excerpt .confirm-hide').live( 'click', function(event) {
+  $('.excerpts-view .confirm-hide').live( 'click', function(event) {
     event.preventDefault();
     var post = $(this).closest('div.post-excerpt');
-    $.get(
-      '/posts/hidden/create/' + post.data('post-id') + '.json',
-      function(response) {
-        var h = $.parseJSON(response);
-        if( h.success ) {
-          post.slideUp(1000).promise().done(function() { post.remove(); });
-        }
+    Libertree.Posts.hide(
+      post.data('post-id'),
+      function() {
+        post.
+          slideUp(1000).
+          promise().
+          done(
+            function() { post.remove(); }
+          )
+        ;
+      }
+    );
+  } );
+  $('.single-post-view .confirm-hide').live( 'click', function(event) {
+    event.preventDefault();
+    var post = $(this).closest('div.post');
+    Libertree.Posts.hide(
+      post.data('post-id'),
+      function() {
+        window.location = '/home';
       }
     );
   } );
