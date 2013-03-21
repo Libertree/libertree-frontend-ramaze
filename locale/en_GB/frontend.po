@@ -437,6 +437,9 @@ msgstr ""
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr ""
 
+msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
+msgstr ""
+
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ""

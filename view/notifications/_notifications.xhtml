@@ -13,6 +13,8 @@
     ?>#{ render_partial '_comment_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   when Libertree::Model::Message
     ?>#{ render_partial '_message', notifications: notifications, message: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
+  when Libertree::Model::PoolPost
+    ?>#{ render_partial '_pool_post', notifications: notifications, pool_post: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   when Libertree::Model::PostLike
     ?>#{ render_partial '_post_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl }<?r
   end
