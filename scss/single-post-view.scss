@@ -1,7 +1,8 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
-$threshold-stacked-meta: 1110px;
+$threshold-stacked-meta-textual: 1110px;
+$threshold-stacked-meta-iconic: 1030px;
 
 body.single-post-view {
   height: 100%;
@@ -74,18 +75,10 @@ body.single-post-view {
             display: inline-block;
             padding: 28px 10px 0px 28px;
             border-radius: $border-radius 0 0 $border-radius;
-            width: 290px;  /* complements max-width of .post-tools */
-            @media screen and (max-width: $threshold-stacked-meta) {
-                width: inherit;
-            }
             .member-text {
-                max-width: 240px;  /* should be changed with .member width */
                 overflow: hidden;
                 text-overflow: ellipsis;
                 float: left;
-                @media screen and (max-width: $threshold-stacked-meta) {
-                    max-width: 100%;
-                }
             }
             img.avatar {
                 margin-bottom: 0px; /* override application.scss */
@@ -94,15 +87,58 @@ body.single-post-view {
 
           .post-tools {
             margin-top: 30px; /* override application.scss */
-            max-width: 200px;  /* complements width of .member */
             span.num-likes {
               margin-left: 1em;
             }
-            @media screen and (max-width: $threshold-stacked-meta) {
+          }
+        }
+        .meta.textual {
+          .member {
+            width: 290px;  /* complements max-width of .post-tools */
+            @media screen and (max-width: $threshold-stacked-meta-textual) {
+                width: inherit;
+            }
+            .member-text {
+                max-width: 240px;  /* should be changed with .member width */
+                @media screen and (max-width: $threshold-stacked-meta-textual) {
+                    max-width: none;
+                }
+            }
+          }
+
+          .post-tools {
+            max-width: 200px;  /* complements width of .member */
+            @media screen and (max-width: $threshold-stacked-meta-textual) {
+                max-width: none;
+                width: 100%;
                 float: none;
                 margin-top: 0.5em;
                 margin-left: 78px;
-                max-width: 100%;
+            }
+          }
+        }
+        .meta.iconic {
+          .member {
+            width: 290px;  /* complements max-width of .post-tools */
+            @media screen and (max-width: $threshold-stacked-meta-iconic) {
+                width: inherit;
+            }
+            .member-text {
+                max-width: 240px;  /* should be changed with .member width */
+                @media screen and (max-width: $threshold-stacked-meta-iconic) {
+                    max-width: none;
+                }
+            }
+          }
+
+          .post-tools {
+            max-width: 200px;  /* complements width of .member */
+            @media screen and (max-width: $threshold-stacked-meta-iconic) {
+                max-width: none;
+                width: 100%;
+                float: none;
+                margin-top: 0.5em;
+                margin-left: 78px;
             }
           }
         }
