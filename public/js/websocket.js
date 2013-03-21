@@ -1,4 +1,5 @@
-var host = null;
+var _host = null;
+var port = "8080";
 var ws = null;
 var secure = false;
 
@@ -8,9 +9,9 @@ $(document).ready( function() {
     protocol = "wss://";
   }
   if( 'MozWebSocket' in window ) {
-    ws = new MozWebSocket(protocol + host + ":8080");
+    ws = new MozWebSocket(protocol + _host + ":" + port);
   } else if( 'WebSocket' in window ) {
-    ws = new WebSocket(protocol + host + ":8080");
+    ws = new WebSocket(protocol + _host + ":" + port);
   } else {
     return;
   }
