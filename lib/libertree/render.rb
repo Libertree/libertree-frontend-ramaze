@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap ])
+  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap, :notes ])
     return ''  if s.nil? or s.empty?
     Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
@@ -135,7 +135,8 @@ module Libertree
       #:smart,
       :strike,
       :autolink,
-      :hard_wrap
+      :hard_wrap,
+      :notes
     ]
     opts.push :no_images if filter_images
 
