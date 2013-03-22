@@ -5,21 +5,30 @@ describe 'Controller::API::V1::Posts', :type => :feature do
 
   before :each do
     @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
-    @account.api_token = 'secrettoken'
+    @account.api_token = "secrettoken#{@account.id}"
   end
 
-  it '#create' do
-    Libertree::DB.dbh.execute 'TRUNCATE posts CASCADE'
-    expect(Libertree::Model::Post.all.count).to eq 0
+  describe '#create' do
+    before :each do
+      Libertree::DB.dbh.execute 'TRUNCATE posts CASCADE'
+    end
 
-    post '/api/v1/posts/create', 'token' => 'secrettoken', 'text' => 'A new post.', 'source' => 'foobar'
+    it 'lets members create new posts' do
+      expect(Libertree::Model::Post.all.count).to eq 0
 
-    expect(last_response.status).to eq 200
-    expect(Libertree::Model::Post.all.count).to eq 1
+      post '/api/v1/posts/create', 'token' => @account.api_token, 'text' => 'A new post.', 'source' => 'foobar'
 
-    response = last_response.body
-    json = JSON.parse(response)
-    expect(json['success']).to eq true
-    expect(json['id']).to be_kind_of Fixnum
+      expect(last_response.status).to eq 200
+      expect(Libertree::Model::Post.all.count).to eq 1
+
+      response = last_response.body
+      json = JSON.parse(response)
+      expect(json['success']).to eq true
+      expect(json['id']).to be_kind_of Fixnum
+
+      posted = Libertree::Model::Post[ json['id'].to_i ]
+      expect(posted).not_to be_nil
+      expect(posted.text).to eq 'A new post.'
+    end
   end
 end
