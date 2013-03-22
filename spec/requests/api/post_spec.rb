@@ -30,5 +30,16 @@ describe 'Controller::API::V1::Posts', :type => :feature do
       expect(posted).not_to be_nil
       expect(posted.text).to eq 'A new post.'
     end
+
+    it 'removes markup from the source' do
+      post '/api/v1/posts/create', 'token' => @account.api_token, 'text' => 'A new post.', 'source' => '[foobar](someurl)'
+
+      expect(last_response.status).to eq 200
+
+      response = last_response.body
+      json = JSON.parse(response)
+      posted = Libertree::Model::Post[ json['id'].to_i ]
+      expect(posted.via).to eq 'foobar'
+    end
   end
 end
