@@ -38,7 +38,7 @@
           #{@post.text_rendered(account)}
           <?r if @post.via ?>
             <div class="via">
-              #{_('posted with: %s') % Libertree.plain(@post.via)}
+              #{_('posted with: %s') % @post.via}
             </div>
           <?r end ?>
         </div>
