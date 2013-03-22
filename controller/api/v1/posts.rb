@@ -26,7 +26,7 @@ module Controller
             'member_id'  => @account.member.id,
             'visibility' => visibility,
             'text'       => request['text'].to_s,
-            'via'        => request['source'].to_s
+            'via'        => Libertree.plain( request['source'].to_s )
           )
 
           { 'success' => true, 'id' => post.id }.to_json
