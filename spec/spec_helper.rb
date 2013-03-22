@@ -8,6 +8,7 @@ end
 require_relative '../app'
 require_relative 'factories'
 require 'capybara/rspec'
+require 'rack/test'
 
 Capybara.configure do |config|
   config.default_driver = :rack_test
@@ -30,5 +31,12 @@ shared_context 'logged in' do
     fill_in 'username', :with => @account.username
     fill_in 'password', :with => 'testpass'
     click_on 'Login'
+  end
+end
+
+shared_context 'rack-test' do
+  include Rack::Test::Methods
+  def app
+    Ramaze
   end
 end
