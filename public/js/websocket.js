@@ -1,4 +1,3 @@
-var host = null;
 var port = "8080";
 var ws = null;
 var secure = false;
