@@ -65,7 +65,7 @@
   </style>
 
   <script type="text/javascript">
-    var host = #{ request.host.inspect };
+    var host = #{ $conf['websocket_js_host'] || request.host.inspect };
     var layout = #{ session[:layout].to_s.inspect };
 
     #{account.custom_js}
