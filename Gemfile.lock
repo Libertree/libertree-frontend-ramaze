@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: git://github.com/rekado/rpeg-markdown.git
-  revision: 43424ff6145969e7b1b8a6f25675dc7996913f60
+  revision: 2f469b6151240b5851a48badde718b20892bd2c0
   specs:
     rpeg-markdown (1.4.6)
 

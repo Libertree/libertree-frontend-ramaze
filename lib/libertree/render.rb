@@ -139,6 +139,7 @@ module Libertree
       :notes
     ]
     opts.push :no_images if filter_images
+    opts.push :media if autoembed
 
     pipeline = [
       method(:autolinker),
