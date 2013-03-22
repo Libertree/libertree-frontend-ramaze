@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 5a9e3a33055ace3cf5f5546d90d938e4f9858511
-  branch: spring-addition-notif
+  revision: 60d461461b3221544f32fdd767a78791453932c8
   specs:
     libertree-model (0.0.1)
 
