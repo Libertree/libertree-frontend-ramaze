@@ -47,9 +47,14 @@
   #{ js_nocache 'post-new' }
   #{ js_nocache 'pool' }
   #{ js_nocache 'home' }
+
+  <script type="text/javascript">
+    var host = #{ $conf['websocket_js_host'].to_s.inspect || request.host.inspect };
+  </script>
   <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
     #{ js_nocache 'websocket' }
   <?r end ?>
+
   <?r if account.admin? ?>
     #{ js_nocache 'admin' }
   <?r end ?>
@@ -65,7 +70,6 @@
   </style>
 
   <script type="text/javascript">
-    var host = #{ $conf['websocket_js_host'].to_s.inspect || request.host.inspect };
     var layout = #{ session[:layout].to_s.inspect };
 
     #{account.custom_js}
