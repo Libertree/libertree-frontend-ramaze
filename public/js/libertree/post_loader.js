@@ -12,6 +12,9 @@ Libertree.PostLoader = {
       case 'tags':
         endpoint = '/tags/_more';
         break;
+      case 'pool':
+        endpoint = '/pools/_more';
+        break;
       default:
         // not supported
         return function(){};
@@ -56,4 +59,5 @@ Libertree.PostLoader = {
   loadFromRiver:   function() { this.loader( 'river'   ).apply( this, arguments ) },
   loadFromTags:    function() { this.loader( 'tags'    ).apply( this, arguments ) },
   loadFromProfile: function() { this.loader( 'profile' ).apply( this, arguments ) },
+  loadFromPool:    function() { this.loader( 'pool'    ).apply( this, arguments ) },
 };

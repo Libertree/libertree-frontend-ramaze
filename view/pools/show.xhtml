@@ -25,4 +25,5 @@
   <?r @pool.posts.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, pool: @pool }
   <?r end ?>
+  <div class="spinner"></div>
 </div>

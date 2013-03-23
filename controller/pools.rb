@@ -30,7 +30,25 @@ module Controller
         Libertree::Model::Pool[ id: pool_id.to_i, sprung: true, ]
       )
       @rivers = account.rivers_not_appended
+      if @pool
+        @posts = @pool.posts( limit: 16 )
+      else
+        @posts = []
+      end
       redirect r(:/)  if @pool.nil?
+    end
+
+    # careful: filter posts according to view permissions of the requester
+    def _more( pool_id, older_or_newer = 'older', time = Time.now.to_i )
+      pool = (
+        Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
+        Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
+      )
+      @posts = pool.posts(
+        limit: 8,
+        time: time.to_f,
+        newer: false,
+      )
     end
 
     def create
