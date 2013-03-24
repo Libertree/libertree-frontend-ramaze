@@ -25,13 +25,13 @@
         </div>
         <form method="POST" action="/comments/create" class="comment" data-post-id="#{@post.id}">
           #{ Controller::Main.render_partial '_markdown_injector' }
-          <textarea name="text" class="comment textarea-comment-new" rows="2" tabindex="1" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
+          <textarea name="text" class="comment textarea-comment-new" rows="2" id="textarea-comment-on-post-#{@post.id}">#{session[:saved_text]["textarea-comment-on-post-#{@post.id}"]}</textarea>
           <div class="form-buttons">
             <a class="detach" href="#">#{_('detach')}</a>
             <a class="attach" href="#">#{_('attach')}</a>
-            <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="#{_('Clear')}" tabindex="4"/>
-            <input class="preview" type="button" value="#{_('Preview')}" tabindex="3" data-type="comment" data-preview-heading="#{_('Preview')}" data-preview-close-label="#{s_('preview|close')}" />
-            <input class="submit" data-msg-failure="#{_('Failed to post comment.')}" type="button" value="#{@post.v_internet? ? _('Comment to Internet') : _('Comment')}" tabindex="2"/>
+            <input class="submit" data-msg-failure="#{_('Failed to post comment.')}" type="button" value="#{@post.v_internet? ? _('Comment to Internet') : _('Comment')}"/>
+            <input class="preview" type="button" value="#{_('Preview')}" data-type="comment" data-preview-heading="#{_('Preview')}" data-preview-close-label="#{s_('preview|close')}"/>
+            <input class="textarea-clear" data-textarea-id="textarea-comment-on-post-#{@post.id}" type="button" value="#{_('Clear')}"/>
           </div>
         </form>
       <?r end ?>

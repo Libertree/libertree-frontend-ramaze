@@ -39,7 +39,7 @@
 
     <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
       <form action="/search" method="POST" class="search">
-        <input id="search" type="text" name="q" tabindex="99"/>
+        <input id="search" type="text" name="q"/>
       </form>
       <?r if session[:layout] != 'narrow' ?>
       <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
