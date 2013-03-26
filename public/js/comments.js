@@ -70,7 +70,7 @@ $(document).ready( function() {
 
   $(document).on('click', 'form.comment input.submit', function() {
     var submitButton = $(this);
-    submitButton.attr('disabled', 'disabled');
+    submitButton.prop('disabled', true);
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
     var form = submitButton.closest('form.comment');
     var textarea = form.find('textarea.comment');
@@ -101,7 +101,7 @@ $(document).ready( function() {
         } else {
           alert(submitButton.data('msg-failure'));
         }
-        submitButton.removeAttr('disabled');
+        submitButton.prop('disabled', false);
         Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
       }
     );

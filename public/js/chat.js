@@ -64,7 +64,7 @@ $(document).ready( function() {
 
     var textarea = $(this);
 
-    textarea.attr('disabled', 'disabled');
+    textarea.prop('disabled', true);
     Libertree.UI.TextAreaBackup.disable();
     var memberId = textarea.closest('.log').data('member-id');
 
@@ -81,7 +81,7 @@ $(document).ready( function() {
         } else {
           alert('Failed to send chat message.');
         }
-        textarea.removeAttr('disabled');
+        textarea.prop('disabled', false);
       }
     );
   } );
