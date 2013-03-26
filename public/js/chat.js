@@ -30,6 +30,7 @@ $(document).ready( function() {
               }
             } )
           ;
+          $('#chat-window').addClass('resizable');
 
           $('select#chat-new-partner').chosen().change( function() {
             var memberId = $('select#chat-new-partner').val();

@@ -27,7 +27,8 @@ Libertree.UI = {
   },
 
   hideWindows: function() {
-    $('#chat-window').resizable('destroy');
+    $('#chat-window.resizable').resizable('destroy');
+    $('#chat-window').removeClass('resizable');
     $('.window').hide();
     Libertree.Chat.rememberDimensions();
   },
