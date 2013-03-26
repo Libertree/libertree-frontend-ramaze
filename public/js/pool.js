@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  $('.post-tools .collect').live( 'click', function(e) {
+  $(document).on('click', '.post-tools .collect', function(e) {
     e.preventDefault();
     if( $('.pools.window:visible').length ) {
       $('.pools.window').hide();
@@ -38,14 +38,14 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.create-pool-and-add-post').live( 'click', function(e) {
+  $(document).on('click', '.create-pool-and-add-post', function(e) {
     e.preventDefault();
     var post = $(this).closest('.post, .post-excerpt');
     Libertree.Pools.createPoolAndAddPost(post);
     return false;
   } );
 
-  $('.pools .chzn-search input').live( 'keydown', function(event) {
+  $(document).on('keydown', '.pools .chzn-search input', function(event) {
     if( event.keyCode != 13 ) {
       return;
     }
@@ -54,7 +54,7 @@ $(document).ready( function() {
     Libertree.Pools.createPoolAndAddPost(post);
   } );
 
-  $('.post-tools .remove').live( 'click', function(e) {
+  $(document).on('click', '.post-tools .remove', function(e) {
     e.preventDefault();
     var post = $(this).closest('div.post, div.post-excerpt');
     var postId = post.data('post-id');

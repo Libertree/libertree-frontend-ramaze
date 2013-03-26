@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  $('.markdown-injector a').live( 'click', function() {
+  $(document).on('click', '.markdown-injector a', function() {
     var $this = $(this);
     var textarea = $this.closest('.markdown-injector').siblings('textarea');
     switch ($this.data('markdown')) {

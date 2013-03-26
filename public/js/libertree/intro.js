@@ -150,14 +150,14 @@ Libertree.Intro = {
     $('select#contact-list-members').chosen();
 
     // unhide the previous and hide the current step
-    $('.tutorial-step .button.prev').live( 'click', function() {
+    $(document).on('click', '.tutorial-step .button.prev', function() {
       var prev_id = "#step-" + $(this).data('prev');
       Libertree.Intro.currentStep(this).hide();
       $(prev_id).show();
     });
 
     // go to next step without executing functions
-    $('.tutorial-step .button.skip').live( 'click', function(event) {
+    $(document).on('click', '.tutorial-step .button.skip', function(event) {
       event.preventDefault();
       var step = Libertree.Intro.currentStep(this);
       Libertree.Intro.nextStep(step);
@@ -165,7 +165,7 @@ Libertree.Intro = {
 
     // Execute a function (if provided).
     // Then, unhide the next and hide the current step.
-    $('.tutorial-step .button.next').live( 'click', function(event) {
+    $(document).on('click', '.tutorial-step .button.next', function(event) {
       event.preventDefault();
 
       var step = Libertree.Intro.currentStep(this);

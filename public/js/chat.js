@@ -51,13 +51,13 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('#chat-window .tab').live( 'click', function() {
+  $(document).on('click', '#chat-window .tab', function() {
     var memberId = $(this).data('member-id');
     Libertree.Chat.activateConversation(memberId);
     Libertree.Chat.markConversationSeen(memberId);
   } );
 
-  $('#chat-window .textarea-chat').live( 'keydown', function(event) {
+  $(document).on('keydown', '#chat-window .textarea-chat', function(event) {
     if( event.keyCode != 13 ) {
       return;
     }
@@ -86,7 +86,7 @@ $(document).ready( function() {
     );
   } );
 
-  $('#chat-window .tab .close').live( 'click', function() {
+  $(document).on('click', '#chat-window .tab .close', function() {
     var tab = $(this).closest('.tab');
     var memberId = tab.data('member-id');
     var tabToActivate = tab.next();
@@ -109,7 +109,7 @@ $(document).ready( function() {
     }
   } );
 
-  $('#online-contacts .avatar').live( 'click', function() {
+  $(document).on('click', '#online-contacts .avatar', function() {
     Libertree.Chat.fetchConversationWith( $(this).data('member-id'), true);
     return false;
   } );

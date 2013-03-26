@@ -17,7 +17,7 @@ $(document).ready( function() {
     independentLabel = true;
   } );
 
-  $('.river-tools .delete').live( 'click', function(event) {
+  $(document).on('click', '.river-tools .delete', function(event) {
     event.preventDefault();
     if( confirm($(this).data('msg')) ) {
       var river = $(this).closest('div[data-river-id]');

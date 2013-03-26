@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  $('.jump-to-comment').live( 'click', function(event) {
+  $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
     var comments = $(this).closest('div.comments');
     comments.animate(
@@ -12,23 +12,21 @@ $(document).ready( function() {
     );
   } );
 
-  $('a.load-comments:not(.disabled)').live( 'click', function(event) {
+  $(document).on('click', 'a.load-comments:not(.disabled)', function(event) {
     event.preventDefault();
     $(this).addClass('disabled');
     Libertree.Comments.loadMore($(this));
     return false;
   } );
 
-  $('div.comment').live( {
-    mouseover: function() {
-      $(this).find('.comment-tools').css('visibility', 'visible');
-    },
-    mouseout: function() {
-      $(this).find('.comment-tools').css('visibility', 'hidden');
-    }
+  $(document).on('mouseover', 'div.comment', function() {
+    $(this).find('.comment-tools').css('visibility', 'visible');
+  } );
+  $(document).on('mouseout', 'div.comment', function() {
+    $(this).find('.comment-tools').css('visibility', 'hidden');
   } );
 
-  $('.comment .delete').live( 'click', function(event) {
+  $(document).on('click', '.comment .delete', function(event) {
     event.preventDefault();
     var comment = $(this).closest('.comment');
     if( confirm(comment.find('.delete').data('msg')) ) {
@@ -38,7 +36,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.commenter-ref').live( 'click', function(event) {
+  $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
     var source = $(this);
     var member_id = source.data('member-id');
@@ -57,20 +55,20 @@ $(document).ready( function() {
       window.location = '#' + target_comment.attr('id');
     }
   } );
-  $('.go-ref-back').live( 'click', function() {
+  $(document).on('click', '.go-ref-back', function() {
     $(this).hide();
     window.location = '#' + $(this).data('id-back');
   } );
 
-  $('div.comment a.like').live( 'click', function(event) {
+  $(document).on('click', 'div.comment a.like', function(event) {
     Libertree.Comments.like( $(this), event, 'div.comment' );
   } );
 
-  $('div.comment a.unlike').live( 'click', function(event) {
+  $(document).on('click', 'div.comment a.unlike', function(event) {
     Libertree.Comments.unlike( $(this), event, 'div.comment' );
   } );
 
-  $('form.comment input.submit').live( 'click', function() {
+  $(document).on('click', 'form.comment input.submit', function() {
     var submitButton = $(this);
     submitButton.attr('disabled', 'disabled');
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
@@ -109,7 +107,7 @@ $(document).ready( function() {
     );
   } );
 
-  $('.detachable .detach').live( 'click', function(event) {
+  $(document).on('click', '.detachable .detach', function(event) {
     event.preventDefault();
     var detachable = $(this).closest('.detachable');
     var offset = detachable.offset();
@@ -123,7 +121,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.detachable .attach').live( 'click', function(event) {
+  $(document).on('click', '.detachable .attach', function(event) {
     event.preventDefault();
     var detachable = $(this).closest('.detachable');
     detachable.removeClass('detached');
@@ -134,10 +132,10 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('textarea.comment').live( 'focus', function() {
+  $(document).on('focus', 'textarea.comment', function() {
     $(this).addClass('focused');
   } );
-  $('textarea.comment').live( 'blur', function() {
+  $(document).on('blur', 'textarea.comment', function() {
     $(this).removeClass('focused');
   } );
 

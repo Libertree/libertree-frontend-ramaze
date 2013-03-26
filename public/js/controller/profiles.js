@@ -12,7 +12,7 @@ $(window).scroll( function() {
 } );
 
 $(document).ready( function() {
-  $('#avatar-reset').live( 'click', function(event) {
+  $(document).on('click', '#avatar-reset', function(event) {
     event.preventDefault();
     if( confirm($(this).data('msg')) ) {
       window.location = '/profiles/avatar_reset';
