@@ -3,7 +3,7 @@
     <div class="post-pane">
   <?r end ?>
       <div class="post-proper">
-        <div class="meta">
+        <div class="meta #{ logged_in? && account.icons ? 'iconic' : 'textual' }">
           <div class="member">
             #{member_avatar_link(@post.member)}
             <div class="member-text">
