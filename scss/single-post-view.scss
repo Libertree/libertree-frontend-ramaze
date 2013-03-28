@@ -118,12 +118,14 @@ body.single-post-view {
 
         form.comment {
           margin-left: 50px;
-          a.detach {
-            display: inline;
+          .form-buttons {
+            a.detach {
+              display: inline;
+            }
           }
         }
 
-        textarea.comment, form.comment .form-buttons {
+        textarea.comment {
             width: 100%;
         }
 
