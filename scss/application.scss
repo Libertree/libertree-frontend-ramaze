@@ -118,10 +118,6 @@ textarea, input[type="text"], input[type="password"] {
     @include rounded;
 }
 
-.centered-contents {
-    text-align: center;
-}
-
 .main {
     max-width: 1000px;
     min-width: 500px;
@@ -348,6 +344,8 @@ div.comment, .detachable .content {
 }
 
 form.comment {
+    text-align: center;
+
     .avatar {
         height: 40px;
         width: 40px;

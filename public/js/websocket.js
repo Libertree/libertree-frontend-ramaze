@@ -1,4 +1,4 @@
-var _host = null;
+var _host = 'olive.libertreeproject.org';
 var port = "8080";
 var ws = null;
 var secure = false;
