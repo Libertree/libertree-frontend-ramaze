@@ -17,7 +17,7 @@ html {
 body {
     padding: 0px;
     margin: 0px;
-    color: #261818;
+    color: $text;
     background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
     width: 100%;
 }
@@ -91,7 +91,7 @@ a:active {
 a.icon:hover { background: none };
 a.member-name, a.member-name:visited {
     border: 0px;
-    color: #261818;
+    color: $text;
 }
 
 a.help {
