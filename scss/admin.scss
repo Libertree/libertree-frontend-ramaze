@@ -30,7 +30,7 @@ body.admin {
       border-collapse: collapse;
       margin-bottom: 1.5em;
       tr {
-        border-bottom: 1px dotted #333;
+        border-bottom: 1px dotted $separator;
       }
     }
 }
