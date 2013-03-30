@@ -705,8 +705,6 @@ div.pools {
     position: fixed;
     z-index: 2;
     width: 250px;
-    border: 1px solid $main_green;
-    background-color: $faint_green;
     padding: 1em;
     display: none;
 
@@ -733,8 +731,8 @@ div.pools .chzn-container .chzn-results li {
     left: 50%;
     z-index: 3;
     padding: 1em;
-    border: 1px solid $main_green;
-    background-color: $faint_green;
+    border: 1px solid $stone;
+    background-color: $sand;
 }
 
 .profile #contact-list-selector, .excerpts-view.pool #river-selector {
