@@ -272,7 +272,7 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .age, .age-update {
-    color: #778877;
+    color: $faint_text;
 }
 
 img.avatar {
@@ -758,7 +758,7 @@ div.pools .chzn-container .chzn-results li {
 .via {
     font-style: italic;
     font-size: 0.8em;
-    color: #778877;
+    color: $faint_text;
 }
 
 .touch-only {
