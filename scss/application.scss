@@ -118,7 +118,6 @@ textarea, input[type="text"], input[type="password"] {
     @include rounded;
 }
 
-
 .main {
     max-width: 1000px;
     min-width: 500px;
@@ -345,6 +344,8 @@ div.comment, .detachable .content {
 }
 
 form.comment {
+    text-align: center;
+
     .avatar {
         height: 40px;
         width: 40px;
@@ -548,8 +549,8 @@ blockquote {
 }
 
 .form-buttons {
-    margin-top: 10px;
-    text-align: center;
+    margin: 10px auto 0px auto;
+    display: inline-block;
 
     input {
         margin-left: 5px;
@@ -557,6 +558,11 @@ blockquote {
         padding-left: 4px;
         padding-right: 4px;
         float: right;
+    }
+
+    a.attach, a.detach {
+        float: right;
+        margin-right: 4px;
     }
 }
 
