@@ -4,15 +4,17 @@ $path:   #c1ac63;
 $sand:   #efead7;
 $sky:    #6a8ba6;
 $water:  #d9e1e8;
-$red:    #d64e4e; /* a bit dark */
-$rose:   #f5d3d3; /* ugly */
+$red:    #d64e4e; // a bit dark
+$rose:   #f5d3d3; // ugly
 $leaf:   #699040;
 $algae:  #d9e3c4;
 $bark:   #505534;
 $text:   #35211b;
+$faint_text: #778877;
+$separator: $faint_text;
 
-$main_green: #639463;
-$light_green: #a3d4a3;
+$main_green: $leaf;
+$light_green: $algae;
 $faint_green: #EDFAED;
 $dust_translucent: rgba(242,241,233,0.80);
 $autumn_red: #c2503e;

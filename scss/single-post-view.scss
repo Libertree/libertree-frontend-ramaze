@@ -118,12 +118,14 @@ body.single-post-view {
 
         form.comment {
           margin-left: 50px;
-          a.detach {
-            display: inline;
+          .form-buttons {
+            a.detach {
+              display: inline;
+            }
           }
         }
 
-        textarea.comment, form.comment .form-buttons {
+        textarea.comment {
             width: 100%;
         }
 
@@ -150,7 +152,7 @@ body.single-post-view {
           }
 
           .content {
-            background: $faint_green;
+            background: $dust;
             padding: 1.5em;
             margin: 0px;
             border-top: 0px;
