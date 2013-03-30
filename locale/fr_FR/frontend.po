@@ -1,6 +1,8 @@
 # 
 # Translators:
-#   <autre7273@laposte.net>, 2012.
+#  <autre7273@laposte.net>, 2013.
+#   <autre7273@laposte.net>, 2012-2013.
+#  <dannickp@hotmail.com>, 2013.
 #   <lefmeunier@free.fr>, 2012.
 #   <lunachik@zoho.com>, 2012.
 #   <mlelao@aim.com>, 2012.
@@ -11,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-11-28 20:42+0000\n"
-"Last-Translator: Loelo <autre7273@laposte.net>\n"
+"PO-Revision-Date: 2013-03-22 09:13+0000\n"
+"Last-Translator: shammancer <dannickp@hotmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,12 +86,6 @@ msgid ""
 msgstr "La création de l'invitation a échoué. Vous ne pouvez pas avoir plus de 5 invitations en attente d'acceptation."
 
 #: view/home/index.xhtml
-msgid "River:"
-msgstr "Rivière :"
-
-msgid "manage rivers"
-msgstr "gérer les rivières"
-
 msgid "In order to see posts here, you need to have at least one river."
 msgstr "Afin de voir des messages ici, vous devez avoir au moins une rivière."
 
@@ -110,14 +106,11 @@ msgstr "tout marquer comme \"lu\""
 msgid "New Post"
 msgstr "Nouveau message"
 
-msgid "(enter hashtags here)"
-msgstr "(entrer les hashtags ici)"
-
 msgid "new-post|Post"
 msgstr "Message"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
-msgid "post|Preview"
+msgid "Preview"
 msgstr "Prévisualiser"
 
 msgid "Visibility"
@@ -128,6 +121,9 @@ msgstr "Internet"
 
 msgid "visibility|Forest"
 msgstr "Forêt"
+
+msgid "preview|close"
+msgstr "fermer"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -195,9 +191,12 @@ msgstr "\"j'aime\""
 msgid "Delete this post?"
 msgstr "Effacer ce message ?"
 
+msgid "posted with: %s"
+msgstr ""
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts (for now)."
-msgstr "Plus de messages (pour l’instant)."
+msgstr "Fin des messages (pour l’instant)."
 
 msgid ""
 "The system is still matching posts with this river. Check in a few minutes "
@@ -221,7 +220,16 @@ msgid "comments"
 msgstr "commentaires"
 
 msgid "comment"
-msgstr "commenter"
+msgstr "commentaire"
+
+msgid "Likes:"
+msgstr ""
+
+msgid "Comments:"
+msgstr "Commentaires:"
+
+msgid "Visibility:"
+msgstr "Visibilité:"
 
 msgid "mark read"
 msgstr "marquer \"lu\""
@@ -256,8 +264,9 @@ msgid "remove"
 msgstr "enlever"
 
 msgid ""
-"Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Clic du milieu, Shift-clic ou Ctrl-Shift-clic pour ouvrir dans un nouvel onglet/fenêtre"
+"View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new "
+"tab/window"
+msgstr "Utilise un Clic central, Shift-clic ou Ctrl-clic pour ouvrir le message dans une nouvel onglette/fenêtre."
 
 msgid "view post"
 msgstr "voir le message"
@@ -308,9 +317,12 @@ msgstr "Seuls les fichiers .png, .jpeg et .gif peuvent servir d'avatar."
 msgid "You already have a river for that."
 msgstr "Vous avez déjà une rivière pour cela."
 
+msgid "Please input a valid label for this river."
+msgstr "Veuillez entrer un label valide pour cette rivière."
+
 #: view/comments/_comments.xhtml
-msgid "One comment"
-msgstr "Un commentaire"
+msgid "1 comment"
+msgstr "1 commentaire"
 
 msgid "showing 1 comment"
 msgstr "1 commentaire affiché"
@@ -346,7 +358,7 @@ msgid "Comment"
 msgstr "Commenter"
 
 #: view/comments/_comment.xhtml
-msgid "One like"
+msgid "1 like"
 msgstr "Une personne aime"
 
 msgid "%d likes"
@@ -363,6 +375,9 @@ msgstr "J’aime ce commentaire"
 
 msgid "shareable link for this comment"
 msgstr "lien pour partager ce commentaire"
+
+msgid "Delete this comment?"
+msgstr ""
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
@@ -429,6 +444,12 @@ msgstr "JS personnalisé :"
 msgid "Automatic embedding:"
 msgstr "Intégration automatique :"
 
+msgid "Filter images:"
+msgstr "Filtre d’images:"
+
+msgid "Display post tools as:"
+msgstr ""
+
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "Créer des vignettes dans les extraits de messages:"
 
@@ -484,6 +505,35 @@ msgstr "Les mots de passe ne correspondent pas.\nMerci de les saisir de nouveau.
 
 msgid "Password changed."
 msgstr "Mot de passe modifié."
+
+msgid ""
+"account-delete|The username you provided does not match your username. "
+"Please input your own username to confirm account deletion."
+msgstr "Le nom d’utilisateur que vous avez entré ne correspond pas à votre nom d’utilisateur. Merci d’entrer votre propre nom d’utilisateur pour confirmer la suppression de votre compte."
+
+msgid "Account Deletion"
+msgstr "Suppression de compte"
+
+msgid "Delete your account"
+msgstr "Supprimer votre compte"
+
+msgid "Account deletion is permanent!"
+msgstr "La suppression d’un compte est définitive !"
+
+msgid ""
+"Also note that after your account is deleted, anyone is free to claim the "
+"username that you have abandoned, and impersonation becomes a possibility."
+msgstr "Notez aussi qu’après avoir supprimé votre compte, tout le monde est libre de demander le nom d’utilisateur que vous avez abandonné et une usurpation l’identité est toujours possible."
+
+msgid "(read warnings above)"
+msgstr "(Veuillez lire l’avertissement ci-dessus)"
+
+msgid ""
+"To delete your account and all associated data, input your username below:"
+msgstr "Pour supprimer votre compte et toutes les informations associées, veuillez entrer votre nom d’utilisateur ci-dessous :"
+
+msgid "account-delete|Confirm"
+msgstr "Confirmation"
 
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
@@ -551,12 +601,15 @@ msgstr "%1$s ont aimé votre %2$smessage%3$s."
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s vous a envoyé un %2$smessage direct%3$s."
 
+msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
+msgstr ""
+
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ", "
 
 msgid "list-and| and "
-msgstr " et"
+msgstr " et "
 
 #: helper/age.rb
 msgid "1 day ago"
@@ -579,6 +632,10 @@ msgstr "Il y a %d minutes"
 
 msgid "seconds ago"
 msgstr "il y a quelques secondes"
+
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr "Cliquer pour voir le commentaire de %s"
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -627,6 +684,9 @@ msgstr "Créer"
 
 msgid "contact-list|delete"
 msgstr "supprimer"
+
+msgid "Delete this contact list?"
+msgstr "Effacer cette liste de contact ?"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -766,9 +826,6 @@ msgstr "À :"
 msgid "direct-message|Send"
 msgstr "Envoyer"
 
-msgid "direct-message|Preview"
-msgstr "Prévisualiser"
-
 msgid "direct-message|Recipients"
 msgstr "Destinataires"
 
@@ -780,6 +837,11 @@ msgid ""
 "secure.  As with all data on this tree, direct messages are fully accessible"
 " to the arborista (administrator)."
 msgstr "Veuillez noter que les messages directs ne sont ni tout à fait privés, ni cryptés, ni sécurisés. Comme toutes les données de cet arbre, les messages directs sont accessibles à l'arboriste (l'administrateur)."
+
+msgid ""
+"Your message is longer than 4096 characters. Please shorten it and try "
+"again."
+msgstr ""
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -804,8 +866,9 @@ msgstr "Nom:"
 
 msgid ""
 "&quot;Springing&quot; a pool causes the pool and which posts it contains to "
-"become publicly visible.  Members can add other members' springs to rivers."
-msgstr "&quot;Transformer un bassin en source fait que le bassin et tous les messages qu’il contient deviennent publiquement visibles. Les membres peuvent ajouter les sources d’autres membres à leurs rivières."
+"become publicly visible.  Members can add other members&#39; springs to "
+"rivers."
+msgstr "&quot;Sourcer&quot; un bassin rend le bassin et les messages qu’il contient visibles publiquement. Les membres peuvent ajouter des sources d’autres membres à des rivières."
 
 msgid "new-pool|Create"
 msgstr "Créer"
@@ -822,6 +885,9 @@ msgstr "Bassin : %s"
 
 msgid "Add this spring to a river"
 msgstr "Ajouter cette source à une rivière"
+
+msgid "Added to river."
+msgstr "Ajouté à une rivière. "
 
 msgid "Spring this pool:"
 msgstr "Transformer ce bassin en source :"
@@ -877,8 +943,8 @@ msgstr "Messages de %s"
 msgid "Add %s to a contact list"
 msgstr "Ajouter %s à une liste de contacts"
 
-msgid "%1$ssee more posts by %2$s%3$s"
-msgstr "%1$svoir davantage de messages de %2$s%3$s"
+msgid "Added %s to contact list."
+msgstr "%s a été ajouté à la liste de contact."
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -1026,6 +1092,11 @@ msgid ""
 msgstr "Autres termes spéciaux : %s, %s and %s. Ils servent respectivement à filtrer les messages que vous avez aimés, commentés ou auxquels vous êtes abonné."
 
 msgid ""
+"(advanced) Use the special term %s followed by a source name in quotes to "
+"match posts posted with a given source or tool."
+msgstr ""
+
+msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
 msgstr "(avancé) Utilisez le terme spécial %s suivi d'une étiquette de rivière entre guillemets pour composer des rivières utilisant d'autres rivières."
@@ -1126,6 +1197,13 @@ msgstr "(pas de contacts en ligne)"
 msgid "Start new chat with..."
 msgstr "Démarrer le chat avec..."
 
+#: layout/_sidebar.xhtml
+msgid "Rivers"
+msgstr "Rivières"
+
+msgid "manage rivers"
+msgstr "gérer les rivières"
+
 #: layout/_menu.xhtml
 msgid "menu|Profile"
 msgstr "Profil"
@@ -1135,9 +1213,6 @@ msgstr "Paramètres"
 
 msgid "menu|Contact Lists"
 msgstr "Liste des contacts"
-
-msgid "menu|Pools"
-msgstr "Bassins"
 
 msgid "menu|Legible font size"
 msgstr "Taille de la police"
@@ -1181,6 +1256,9 @@ msgstr "Nouveau Message"
 msgid "menu|Known Issues"
 msgstr "Problèmes connus"
 
+msgid "menu|Toggle sidebar"
+msgstr ""
+
 #: layout/_notifications.xhtml
 msgid "No notifications"
 msgstr "Pas de notifications"
@@ -1201,6 +1279,19 @@ msgstr "%2$d messages chat non lus de %1$s"
 #: public/js/comments.js
 msgid "Failed to post comment."
 msgstr "L'envoi du commentaire a échoué."
+
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr "Enregistrer cette liste de hashtag comme une rivière."
+
+msgid "Add this hashtag to an existing river."
+msgstr "Ajouter ce hashtag à une rivière existante."
+
+msgid "Added hashtag #%s to river."
+msgstr "Le hashtag#%s a été ajouté a une rivière."
+
+msgid "There are no posts matching this hashtag."
+msgstr "Il n’y pas de messages contenant ce hastag."
 
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
@@ -1251,20 +1342,17 @@ msgstr "Si vous pensez que certains de vos amis sont déjà sur Libertree, vous 
 msgid "tutorial-river-label|Unread posts"
 msgstr "Messages non-lus"
 
-msgid ""
-"tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
-msgstr "Messages non-lus%sTout les messages sur Libertree que vous n'avez pas encore lus"
+msgid "tutorial|All posts on Libertree which you haven't read yet"
+msgstr "Tous les messages dans Libertree que vous n’avez pas encore lus."
 
 msgid "tutorial-river-label|Posts from the forest"
 msgstr "Messages depuis la forêt"
 
-msgid "tutorial|Posts from the forest%sAll posts on Libertree"
-msgstr "Messages depuis la foret%sTout les messages sur Libertree"
+msgid "tutorial|All posts on Libertree"
+msgstr "Tous les messages dans Libertree."
 
 msgid "tutorial-river-label|My activity"
 msgstr "Mon activité"
 
-msgid ""
-"tutorial|My activity%sPosts that you have liked, commented on, or are "
-"subscribed to"
-msgstr "mon activité%sLes messages que vous avez aimés, commentés ou auxquels vous êtes abonnés"
+msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
+msgstr "Messages que vous avez aimés, commentés ou auxquels vous vous êtes abonnés."
