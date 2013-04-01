@@ -39,9 +39,9 @@ module Controller
             {
               task: 'request:MESSAGE',
               params: {
-                'message_id'          => message.id,
-                'server_id'           => tree.id,
-                'recipient_usernames' => recipients.map(&:username)
+                'message_id'           => message.id,
+                'server_id'            => tree.id,
+                'recipient_member_ids' => recipients.map(&:id)
               }.to_json,
             }
           )
