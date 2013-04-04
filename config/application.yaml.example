@@ -27,3 +27,6 @@ api_min_time_between: 5
 
 # The URL base of the frontend web interface
 frontend_url_base: 'http://domain-or-ip-without-trailing-slash'
+
+themes:
+  - default

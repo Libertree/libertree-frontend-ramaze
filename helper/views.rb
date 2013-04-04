@@ -1,13 +1,16 @@
 module Ramaze
   module Helper
     module Views
+      def current_theme
+        $conf['themes'].find {|t| t == account.theme } || 'default'
+      end
+
       def help_bubble(s, title="help|What does this mean?")
         "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content='#{s}'>?</a>"
       end
 
       def img(src,options={})
-        theme = account.theme || 'default'
-        "<img src='/themes/#{theme}/images/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
+        "<img src='/themes/#{current_theme}/images/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
       end
 
       def js_nocache(file)
@@ -15,7 +18,7 @@ module Ramaze
       end
 
       def css_nocache(file, media="screen")
-        theme = account.theme || 'default'
+        theme = current_theme
         "<link href=\"/themes/#{theme}/css/#{file}.css?t=#{File.mtime("public/themes/#{theme}/css/#{file}.css").to_i}\" media=\"#{media}\" rel=\"stylesheet\" type=\"text/css\" />"
       end
 
