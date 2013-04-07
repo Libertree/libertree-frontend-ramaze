@@ -1,10 +1,9 @@
 var port = "8080";
 var ws = null;
-var secure = false;
 
 $(document).ready( function() {
   var protocol = "ws://";
-  if (secure) {
+  if (secure_websocket) {
     protocol = "wss://";
   }
   if( 'MozWebSocket' in window ) {
