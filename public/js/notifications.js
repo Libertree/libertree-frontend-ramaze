@@ -27,7 +27,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.notification a').live( 'click', function(e) {
+  $('.notification.seen a').live( 'click', function(e) {
     e.stopPropagation();
   } );
 
