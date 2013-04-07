@@ -2,6 +2,7 @@
 environment: live
 
 websocket_listen_host: 0.0.0.0
+websocket_js_host: domain.of.your.tree.com
 secure_websocket: false
 #websocket_ssl_cert: /path/to/cert
 #websocket_ssl_private_key: /path/to/private/key
@@ -27,3 +28,6 @@ api_min_time_between: 5
 
 # The URL base of the frontend web interface
 frontend_url_base: 'http://domain-or-ip-without-trailing-slash'
+
+themes:
+  - default

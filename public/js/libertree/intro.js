@@ -34,7 +34,7 @@ Libertree.Intro = {
     ).get();
 
     // don't make a request if nothing is selected
-    if (rivers === "") {
+    if (rivers.length === 0) {
       return {'status':'success'};
     }
 

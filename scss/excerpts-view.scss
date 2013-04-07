@@ -197,6 +197,9 @@ body.excerpts-view .main {
               min-height: 200px;
               .comments {
                 margin-bottom: 1em;
+                form.comment {
+                  display: inline-block;
+                }
               }
             }
             img {
@@ -242,7 +245,7 @@ body.excerpts-view .main {
         }
     }
 
-    textarea.comment, form.comment .form-buttons {
+    textarea.comment {
         width: 300px;
     }
 }

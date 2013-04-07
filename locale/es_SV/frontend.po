@@ -1,13 +1,13 @@
 # 
 # Translators:
-# Mauricio Mejía <hectormejia@riseup.net>, 2012.
+# Mauricio Mejía <hectormejia@riseup.net>, 2012-2013.
 # minta, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-11-09 02:35+0000\n"
+"PO-Revision-Date: 2013-03-22 09:13+0000\n"
 "Last-Translator: Mauricio Mejía <hectormejia@riseup.net>\n"
 "Language-Team: Spanish (El Salvador) (http://www.transifex.com/projects/p/libertree/language/es_SV/)\n"
 "MIME-Version: 1.0\n"
@@ -80,12 +80,6 @@ msgid ""
 msgstr "Error al crear invitación. No puedes tener más de 5 invitaciones sin aceptar a la vez."
 
 #: view/home/index.xhtml
-msgid "River:"
-msgstr "Río:"
-
-msgid "manage rivers"
-msgstr "Manejar ríos"
-
 msgid "In order to see posts here, you need to have at least one river."
 msgstr "Para ver los mensajes aquí, tiene que tener al menos un río."
 
@@ -106,14 +100,11 @@ msgstr "Marcar todo como leído"
 msgid "New Post"
 msgstr "Nueva publicación"
 
-msgid "(enter hashtags here)"
-msgstr "(Ingresa aquí las etiquetas)"
-
 msgid "new-post|Post"
 msgstr "Publicar"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
-msgid "post|Preview"
+msgid "Preview"
 msgstr "Vista previa"
 
 msgid "Visibility"
@@ -124,6 +115,9 @@ msgstr "Internet"
 
 msgid "visibility|Forest"
 msgstr "Bosque"
+
+msgid "preview|close"
+msgstr "Cerrar"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -191,6 +185,9 @@ msgstr "Le gusta"
 msgid "Delete this post?"
 msgstr "¿Eliminar esta publicación?"
 
+msgid "posted with: %s"
+msgstr ""
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts (for now)."
 msgstr "No hay más publicaciones (por ahora)."
@@ -218,6 +215,15 @@ msgstr "Comentarios"
 
 msgid "comment"
 msgstr "Comentar"
+
+msgid "Likes:"
+msgstr ""
+
+msgid "Comments:"
+msgstr ""
+
+msgid "Visibility:"
+msgstr ""
 
 msgid "mark read"
 msgstr "Marcar como leída"
@@ -304,9 +310,12 @@ msgstr "Sólo se puede usar como avatar archivos .png, .jpeg, y .gif "
 msgid "You already have a river for that."
 msgstr "Ya tienes un Río para ello."
 
+msgid "Please input a valid label for this river."
+msgstr "Por favor, ingrese un nivel válido para este río."
+
 #: view/comments/_comments.xhtml
-msgid "One comment"
-msgstr "Un comentario."
+msgid "1 comment"
+msgstr "1 comentario"
 
 msgid "showing 1 comment"
 msgstr "Mostrando 1 comentario."
@@ -342,7 +351,7 @@ msgid "Comment"
 msgstr "Comentario"
 
 #: view/comments/_comment.xhtml
-msgid "One like"
+msgid "1 like"
 msgstr "Un me gusta"
 
 msgid "%d likes"
@@ -359,6 +368,9 @@ msgstr "Me gusta este comentario"
 
 msgid "shareable link for this comment"
 msgstr "Enlace para compartir este comentario"
+
+msgid "Delete this comment?"
+msgstr ""
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
@@ -425,6 +437,12 @@ msgstr "Personalizar Java Script:"
 msgid "Automatic embedding:"
 msgstr "Incrustación automática:"
 
+msgid "Filter images:"
+msgstr "Filtrar imágenes:"
+
+msgid "Display post tools as:"
+msgstr ""
+
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "Hace miniaturas de las imágenes en los extractos de publicaciones:"
 
@@ -480,6 +498,35 @@ msgstr "Las contraseñas no coinciden. Por favor intente de nuevo."
 
 msgid "Password changed."
 msgstr "Cambio de contraseña exitoso."
+
+msgid ""
+"account-delete|The username you provided does not match your username. "
+"Please input your own username to confirm account deletion."
+msgstr ""
+
+msgid "Account Deletion"
+msgstr ""
+
+msgid "Delete your account"
+msgstr ""
+
+msgid "Account deletion is permanent!"
+msgstr ""
+
+msgid ""
+"Also note that after your account is deleted, anyone is free to claim the "
+"username that you have abandoned, and impersonation becomes a possibility."
+msgstr ""
+
+msgid "(read warnings above)"
+msgstr ""
+
+msgid ""
+"To delete your account and all associated data, input your username below:"
+msgstr ""
+
+msgid "account-delete|Confirm"
+msgstr ""
 
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
@@ -547,6 +594,9 @@ msgstr "A %1$s les gustó tu %2$spublicación%3$s."
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s te envió un %2$smensaje%3$s."
 
+msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
+msgstr ""
+
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ","
@@ -575,6 +625,10 @@ msgstr "Hace %d minutos"
 
 msgid "seconds ago"
 msgstr "Hace algunos segundos"
+
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr "Clic para ver el comentario anterior hecho por %s"
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -623,6 +677,9 @@ msgstr "Crear"
 
 msgid "contact-list|delete"
 msgstr "Eliminar"
+
+msgid "Delete this contact list?"
+msgstr "¿Borrar esta lista de contactos?"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -762,9 +819,6 @@ msgstr "A:"
 msgid "direct-message|Send"
 msgstr "Enviar"
 
-msgid "direct-message|Preview"
-msgstr "Vista previa"
-
 msgid "direct-message|Recipients"
 msgstr "Destinatarios"
 
@@ -776,6 +830,11 @@ msgid ""
 "secure.  As with all data on this tree, direct messages are fully accessible"
 " to the arborista (administrator)."
 msgstr "Por favor, note que los mensajes directos no son totalmente privados, ni encriptados ni seguros. Como todos los datos en este árbol, los mensajes directos son totalmente accesibles."
+
+msgid ""
+"Your message is longer than 4096 characters. Please shorten it and try "
+"again."
+msgstr ""
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -800,7 +859,8 @@ msgstr "Nombre:"
 
 msgid ""
 "&quot;Springing&quot; a pool causes the pool and which posts it contains to "
-"become publicly visible.  Members can add other members' springs to rivers."
+"become publicly visible.  Members can add other members&#39; springs to "
+"rivers."
 msgstr "&quot;Brotar&quot; un estanque causa que el el estanque y las publicaciones que contiene pasen a ser públicamente visibles. Los miembros pueden agregar los brotes de otros miembros a los ríos."
 
 msgid "new-pool|Create"
@@ -818,6 +878,9 @@ msgstr "Estanque: %s"
 
 msgid "Add this spring to a river"
 msgstr "Agregar este brote a un río"
+
+msgid "Added to river."
+msgstr "Agregado al río."
 
 msgid "Spring this pool:"
 msgstr "Brotar éste estanque"
@@ -873,8 +936,8 @@ msgstr "Publicaciones por %s"
 msgid "Add %s to a contact list"
 msgstr "Agregar %s a una Lista de contactos"
 
-msgid "%1$ssee more posts by %2$s%3$s"
-msgstr "%1$sVer más publicaciones por %2$s%3$s"
+msgid "Added %s to contact list."
+msgstr "Agregado %s a la lista de contactos"
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -1022,6 +1085,11 @@ msgid ""
 msgstr "Otros términos especiales: %s, %s y %s. Estos son para limitar a las publicaciones que te gustan, en las que comentaste o  te suscribiste respectivamente."
 
 msgid ""
+"(advanced) Use the special term %s followed by a source name in quotes to "
+"match posts posted with a given source or tool."
+msgstr ""
+
+msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
 msgstr "(Avanzado) Usa el término especial %s seguido por el nombre de un río en comillas para hacer un río utilizando otro ríos."
@@ -1122,6 +1190,13 @@ msgstr "Chat  (No hay contactos en línea)"
 msgid "Start new chat with..."
 msgstr "Iniciar nueva conversación con..."
 
+#: layout/_sidebar.xhtml
+msgid "Rivers"
+msgstr "Ríos"
+
+msgid "manage rivers"
+msgstr "Manejar ríos"
+
 #: layout/_menu.xhtml
 msgid "menu|Profile"
 msgstr "Perfil"
@@ -1131,9 +1206,6 @@ msgstr "Configuraciones"
 
 msgid "menu|Contact Lists"
 msgstr "Listas de contactos"
-
-msgid "menu|Pools"
-msgstr "Estanques"
 
 msgid "menu|Legible font size"
 msgstr "Fuente legible"
@@ -1177,6 +1249,9 @@ msgstr "Nueva publicación "
 msgid "menu|Known Issues"
 msgstr "Problemas conocidos"
 
+msgid "menu|Toggle sidebar"
+msgstr ""
+
 #: layout/_notifications.xhtml
 msgid "No notifications"
 msgstr "No hay notificacones"
@@ -1198,6 +1273,19 @@ msgstr "%2$d sin leer de %1$s"
 msgid "Failed to post comment."
 msgstr "Error al publicar comentario."
 
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr "Guardar este listado de etiquetas como un río."
+
+msgid "Add this hashtag to an existing river."
+msgstr "Agregar esta etiqueta a un río existente."
+
+msgid "Added hashtag #%s to river."
+msgstr ""
+
+msgid "There are no posts matching this hashtag."
+msgstr ""
+
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
 msgstr "Mis intereses"
@@ -1218,22 +1306,10 @@ msgid "tutorial|An error occurred while trying to create a river."
 msgstr "Ha ocurrido un error mientras intentabas crear un río"
 
 msgid "tutorial-step-1\n"
-msgstr ""
-"# ¡Bienvenido a Libertree!\n"
-"¡Hola, y bienvenido a Libertree! Nos gustaría tomarnos un minuto "
-"para explicar los conceptos más importantes en Libertree, ya que "
-"esto te ayudará a sacarle el máximo provecho. Puedes [saltar este tutorial](/home) "
-"y reanudarlo en otro momento.\n\n"
-"Libertree es un lugar donde las personas escriben cosas en público "
-"o comparten unas con otra cosas interesantes.\n\n"
-" - Cualquiera que sea parte de Libertree es llamado *miembro*.\n"
-" - Los miembros escriben publicaciones <a href='#' class='help' rel='popover' title='¿Qué es una publicación?' data-content='Una publicación es un mensaje. Exactamente qué hay en esas publicaciones es ampliamente variado: personas diferentes están interesadas en cosas diferentes y dicen muchas cosas diferentes. Las publicaciones pueden ser tan cortas como una oración o tan largas como un artículo de periódico.'>?</a> para que otros miembros lo vean.\n"
-" - Los miembros pueden comentar <a href='#' class='help' rel='popover' title='¿Qué es un comentario?' data-content='Los comentarios son respuestas escritas a otras publicaciones u otros comentarios.'>?</a> en una publicación.\n\n"
+msgstr "# ¡Bienvenido a Libertree!\n¡Hola, y bienvenido a Libertree! Nos gustaría tomarnos un minuto para explicar los conceptos más importantes en Libertree, ya que esto te ayudará a sacarle el máximo provecho. Puedes [saltar este tutorial](/home) y reanudarlo en otro momento.\n\nLibertree es un lugar donde las personas escriben cosas en público o comparten unas con otra cosas interesantes.\n\n - Cualquiera que sea parte de Libertree es llamado *miembro*.\n - Los miembros escriben publicaciones <a href='#' class='help' rel='popover' title='¿Qué es una publicación?' data-content='Una publicación es un mensaje. Exactamente qué hay en esas publicaciones es ampliamente variado: personas diferentes están interesadas en cosas diferentes y dicen muchas cosas diferentes. Las publicaciones pueden ser tan cortas como una oración o tan largas como un artículo de periódico.'>?</a> para que otros miembros lo vean.\n - Los miembros pueden comentar <a href='#' class='help' rel='popover' title='¿Qué es un comentario?' data-content='Los comentarios son respuestas escritas a otras publicaciones u otros comentarios.'>?</a> en una publicación.\n\n"
 
 msgid "tutorial-step-2a"
-msgstr ""
-"# Sus intereses\n"
-"Hay una gran cantidad de mensajes publicados en Libertree todos los días. Si lo deseas, puede tomarte un minuto en este momento para hacernos saber cuáles son tus intereses. Usaremos esta información para reducir los mensajes verás en primer lugar, para que no sea abrumador para ti. Siempre puedes cambiar las cosas después, o explorar formas de leer más artículos. Escribe una lista de intereses (una palabra para cada uno):"
+msgstr "# Sus intereses\nHay una gran cantidad de mensajes publicados en Libertree todos los días. Si lo deseas, puede tomarte un minuto en este momento para hacernos saber cuáles son tus intereses. Usaremos esta información para reducir los mensajes verás en primer lugar, para que no sea abrumador para ti. Siempre puedes cambiar las cosas después, o explorar formas de leer más artículos. Escribe una lista de intereses (una palabra para cada uno):"
 
 msgid "tutorial-step-2b"
 msgstr "¡Felicidades! Acabas de crear tu primer río"

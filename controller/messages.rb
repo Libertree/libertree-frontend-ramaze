@@ -31,17 +31,22 @@ module Controller
           recipient_member_ids: request['recipients']
         )
 
-        message.recipients.group_by { |r|
-          r.tree
-        }.each do |tree, recipients|
-          next  if tree.nil?
+        trees = message.recipients.reduce(Set.new) { |_trees, recipient|
+          if recipient.tree
+            _trees << recipient.tree
+          end
+          _trees
+        }
+        recipient_ids = message.recipients.map(&:id)
+
+        trees.each do |tree|
           Libertree::Model::Job.create(
             {
               task: 'request:MESSAGE',
               params: {
-                'message_id'          => message.id,
-                'server_id'           => tree.id,
-                'recipient_usernames' => recipients.map(&:username)
+                'message_id'           => message.id,
+                'server_id'            => tree.id,
+                'recipient_member_ids' => recipient_ids,
               }.to_json,
             }
           )

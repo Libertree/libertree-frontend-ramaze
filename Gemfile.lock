@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 1108ec533254592bb76d9b17f7cd0582e36129b1
+  revision: 8de6d72dcdc9912b053a3dfdb5608dd481790632
   specs:
     libertree-model (0.0.1)
 
@@ -59,7 +59,6 @@ GEM
     activesupport (3.2.7)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.2.7)
     archive-tar-minitar (0.5.2)
     bcrypt-ruby (3.0.1)
     capybara (2.0.2)
@@ -74,15 +73,16 @@ GEM
     columnize (0.3.6)
     dalli (1.1.5)
     diff-lcs (1.2.1)
-    em-websocket (0.3.6)
-      addressable (>= 2.1.1)
+    em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     epoxy (0.3.1)
-    eventmachine (0.12.10)
+    eventmachine (1.0.3)
     factory_girl (3.6.0)
       activesupport (>= 3.0.0)
     fast_gettext (0.6.8)
     ffi (1.3.1)
+    http_parser.rb (0.5.3)
     i18n (0.6.0)
     json (1.7.6)
     kgio (2.7.3)
@@ -137,6 +137,7 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     subexec (0.2.1)
+    syck (1.0.0)
     typelib (0.1.0)
     unicorn (4.2.0)
       kgio (~> 2.6)
@@ -174,4 +175,5 @@ DEPENDENCIES
   ruby-debug19
   ruby-oembed
   sass
+  syck
   unicorn
