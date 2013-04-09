@@ -115,6 +115,10 @@ Libertree.UI = {
 
   isTouchInterface: function() {
     return ("ontouchstart" in document.documentElement);
+  },
+
+  makeTextAreasExpandable: function() {
+    $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
   }
 };
 

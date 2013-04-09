@@ -102,7 +102,7 @@ $(document).ready( function() {
     th.data('height', th.outerHeight());
   } );
 
-  $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
+  Libertree.UI.makeTextAreasExpandable();
 
   if( Libertree.UI.isTouchInterface() ) {
     $('body').addClass('touch-interface');
