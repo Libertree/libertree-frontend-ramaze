@@ -16,7 +16,7 @@ $(document).ready( function() {
           Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#chat-window');
           $('#chat-window').hide();
-          var o = $(html);
+          var o = $( $.trim(html) );
           Libertree.Chat.markConversationSeen( o.find('.log.active').data('member-id') );
 
           $('#chat-window')
