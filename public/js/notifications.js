@@ -19,7 +19,7 @@ $(document).ready( function() {
         function(html) {
           Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#notifications-window');
-          Libertree.Notifications.updateNumUnseen( $(html).find('.n').text() );
+          Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
         }
       ).
       toggle()
