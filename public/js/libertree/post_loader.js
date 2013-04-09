@@ -26,22 +26,27 @@ Libertree.PostLoader = {
         type: 'GET',
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function(html) {
-          var o = $(html);
-          o.css('display', 'none');
+          var DOMNodes = $( $.trim(html) );
+          var excerpts_array = $.grep( DOMNodes, function(node, i) {
+            /* Ignore text nodes and other types which cannot have slideDown called on them. */
+            return node.nodeType == 1;
+          } );
+          var excerpts = $(excerpts_array);
+          excerpts.css('display', 'none');
 
           // Remove old copies of incoming excerpts that may already be in the DOM
           var container = $('<div/>');
-          container.prepend(o);
+          container.prepend(excerpts);
           container.find('.post-excerpt').each( function() {
             $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
           } );
 
           if( older_or_newer === 'newer' ) {
-            $('#post-excerpts').prepend(o);
+            $('#post-excerpts').prepend(excerpts);
           } else {
-            $('#post-excerpts').append(o);
+            $('#post-excerpts').append(excerpts);
           }
-          o.slideDown( function() {
+          excerpts.slideDown( function() {
             Libertree.PostLoader.loading = false;
           } );
 
