@@ -65,6 +65,7 @@ require_relative 'controller/intro'
 require_relative 'controller/api/v1/base'
 require_relative 'controller/api/v1/invitations'
 require_relative 'controller/api/v1/posts'
+require_relative 'controller/api/v1/comments'
 
 require_relative 'controller/admin/base'
 require_relative 'controller/admin/main'
