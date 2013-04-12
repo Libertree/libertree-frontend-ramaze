@@ -94,7 +94,7 @@ module Libertree
           end
         end
       end
-    rescue SocketError, Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError, OpenSSL::SSL::SSLError
+    rescue SocketError, Timeout::Error, URI::InvalidURIError, IOError, Errno::ECONNREFUSED, Errno::ECONNRESET, Net::HTTPBadResponse, ArgumentError, OpenSSL::SSL::SSLError, Zlib::BufError
       # Use URL as is.  Arbo can delete url_expansions record to force retry.
     end
 
