@@ -8,7 +8,6 @@ Libertree.Home = {
       indicator.slideDown();
     }
   }
-
 };
 
 /* ---------------------------------------------------- */
@@ -52,12 +51,13 @@ $(document).ready( function() {
     );
 
     if( Libertree.Home.wantsToComment ) {
-      var scrollTop = $('html').scrollTop();
+      var scrollable = Libertree.UI.scrollable();
+      var scrollTop = scrollable.scrollTop();
       var excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
       if( excerptTruncation < 0 ) {
         excerptTruncation = 0;
       }
-      $('html').animate(
+      scrollable.animate(
         { scrollTop: scrollTop + heightDifference + excerptTruncation },
         animationDuration,
         function() {
@@ -80,10 +80,11 @@ $(document).ready( function() {
     var animationDuration = Libertree.UI.duration(distance);
 
     var excerptTop = excerpt.position().top;
-    var windowTop = $('html').scrollTop();
+    var scrollable = Libertree.UI.scrollable();
+    var windowTop = scrollable.scrollTop();
     var scrollTop = excerptTop - windowTop;
     if( scrollTop < 100 ){
-      $('html').animate(
+      scrollable.animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
         animationDuration
       );
@@ -101,8 +102,9 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('html').mousewheel( function(event, delta, deltaX, deltaY) {
-    $('html').stop();
+  var scrollable = Libertree.UI.scrollable();
+  scrollable.mousewheel( function(event, delta, deltaX, deltaY) {
+    scrollable.stop();
   } );
 
   $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
