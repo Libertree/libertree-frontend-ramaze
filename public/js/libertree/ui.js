@@ -119,6 +119,17 @@ Libertree.UI = {
 
   makeTextAreasExpandable: function() {
     $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
+  },
+
+  scrollable: function() {
+    /* Chromium needs us to use body, Firefox and Opera need us to use html */
+    var htmlScrollTop = $('html').scrollTop();
+    var bodyScrollTop = $('body').scrollTop();
+    if( htmlScrollTop > bodyScrollTop ) {
+      return $('html');
+    } else {
+      return $('body');
+    }
   }
 };
 
