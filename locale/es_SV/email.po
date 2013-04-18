@@ -1,6 +1,6 @@
 # 
 # Translators:
-# Mauricio Mejía <hectormejia@riseup.net>, 2012.
+# Mauricio Mejía <hectormejia@riseup.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

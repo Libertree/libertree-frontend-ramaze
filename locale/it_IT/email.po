@@ -1,6 +1,6 @@
 # 
 # Translators:
-#   <sun_lion@live.com>, 2012.
+# Damtux <sun_lion@live.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

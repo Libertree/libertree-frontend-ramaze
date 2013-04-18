@@ -1,8 +1,8 @@
 # 
 # Translators:
-#   <jieqichen25+libertree@gmail.com>, 2012.
-#   <rekado+libertree@elephly.net>, 2012.
-# Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
+#   <jieqichen25+libertree@gmail.com>, 2012
+# rekado <rekado+libertree@elephly.net>, 2012
+# rekado <rekado+libertree@elephly.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

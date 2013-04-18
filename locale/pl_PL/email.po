@@ -1,6 +1,6 @@
 # 
 # Translators:
-#   <marc_smith@gmx.com>, 2012.
+# marcs <marc_smith@gmx.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

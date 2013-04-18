@@ -1,6 +1,6 @@
 # 
 # Translators:
-#   <danielwine@gmail.com>, 2012.
+# danielwine <danielwine@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

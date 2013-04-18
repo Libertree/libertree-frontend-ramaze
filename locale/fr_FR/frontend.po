@@ -1,13 +1,13 @@
 # 
 # Translators:
-#  <autre7273@laposte.net>, 2013.
-#   <autre7273@laposte.net>, 2012-2013.
-#  <dannickp@hotmail.com>, 2013.
-#   <lefmeunier@free.fr>, 2012.
-#   <lunachik@zoho.com>, 2012.
-#   <mlelao@aim.com>, 2012.
-# Rudy DELANSAY <delansay.rudy@gmail.com>, 2012.
-#   <teimahu@live.fr>, 2012.
+# Loelo <autre7273@laposte.net>, 2013
+# Loelo <autre7273@laposte.net>, 2012-2013
+# shammancer <dannickp@hotmail.com>, 2013
+#   <lefmeunier@free.fr>, 2012
+# LunaChik <lunachik@zoho.com>, 2012
+# mlelao <mlelao@aim.com>, 2012
+# Rudy DELANSAY <delansay.rudy@gmail.com>, 2012
+# teimahu <teimahu@live.fr>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
