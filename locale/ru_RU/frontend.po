@@ -1,14 +1,15 @@
 # 
 # Translators:
-# glesik  <>, 2012.
-# glesik  <inglessi@gmail.com>, 2012.
+# glesik  <>, 2012
+# glesik <inglessi@gmail.com>, 2012
+# glesik <inglessi@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2012-11-11 18:49+0000\n"
-"Last-Translator: glesik <inglessi@gmail.com>\n"
+"PO-Revision-Date: 2013-04-18 00:10+0000\n"
+"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,12 +81,6 @@ msgid ""
 msgstr "Не удалось создать приглашение. У вас не может быть более 5 непринятых приглашений одновременно."
 
 #: view/home/index.xhtml
-msgid "River:"
-msgstr "Река:"
-
-msgid "manage rivers"
-msgstr "управление реками"
-
 msgid "In order to see posts here, you need to have at least one river."
 msgstr ""
 
@@ -106,14 +101,11 @@ msgstr "пометить все как прочитанные"
 msgid "New Post"
 msgstr "Новая запись"
 
-msgid "(enter hashtags here)"
-msgstr "(укажите здесь метки записи)"
-
 msgid "new-post|Post"
 msgstr "Отправить"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
-msgid "post|Preview"
+msgid "Preview"
 msgstr "Предпросмотр"
 
 msgid "Visibility"
@@ -124,6 +116,9 @@ msgstr "Интернет"
 
 msgid "visibility|Forest"
 msgstr "Лес"
+
+msgid "preview|close"
+msgstr ""
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -191,6 +186,9 @@ msgstr "нравится"
 msgid "Delete this post?"
 msgstr "Удалить эту запись?"
 
+msgid "posted with: %s"
+msgstr ""
+
 #: view/posts/_excerpts.xhtml
 msgid "No more posts (for now)."
 msgstr ""
@@ -218,6 +216,15 @@ msgstr "комментарии"
 
 msgid "comment"
 msgstr "комментировать"
+
+msgid "Likes:"
+msgstr ""
+
+msgid "Comments:"
+msgstr ""
+
+msgid "Visibility:"
+msgstr ""
 
 msgid "mark read"
 msgstr "пометить как прочитанную"
@@ -252,8 +259,9 @@ msgid "remove"
 msgstr "удалить"
 
 msgid ""
-"Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Щелкните средней кнопкой мыши или левой с нажатой клавишей Shift или Ctrl-Shift, чтобы открыть в новой вкладке/окне."
+"View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new "
+"tab/window"
+msgstr ""
 
 msgid "view post"
 msgstr "посмотреть запись"
@@ -304,9 +312,12 @@ msgstr "Для аватара можно использовать только �
 msgid "You already have a river for that."
 msgstr "У вас уже есть река для этого."
 
+msgid "Please input a valid label for this river."
+msgstr ""
+
 #: view/comments/_comments.xhtml
-msgid "One comment"
-msgstr "Один комментарий"
+msgid "1 comment"
+msgstr "1 комментарий"
 
 msgid "showing 1 comment"
 msgstr "показан 1 комментарий"
@@ -342,7 +353,7 @@ msgid "Comment"
 msgstr "Отправить"
 
 #: view/comments/_comment.xhtml
-msgid "One like"
+msgid "1 like"
 msgstr "Понравилось: 1"
 
 msgid "%d likes"
@@ -359,6 +370,9 @@ msgstr "Мне нравится этот комментарий"
 
 msgid "shareable link for this comment"
 msgstr "Ссылка на этот комментарий"
+
+msgid "Delete this comment?"
+msgstr ""
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
@@ -425,6 +439,12 @@ msgstr "Персональный JS:"
 msgid "Automatic embedding:"
 msgstr "Автоматическое встраивание:"
 
+msgid "Filter images:"
+msgstr ""
+
+msgid "Display post tools as:"
+msgstr ""
+
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "Показывать миниатюры изображений в выдержке из записи:"
 
@@ -480,6 +500,35 @@ msgstr "Пароли не совпадают. Пожалуйста, введит
 
 msgid "Password changed."
 msgstr "Пароль изменен."
+
+msgid ""
+"account-delete|The username you provided does not match your username. "
+"Please input your own username to confirm account deletion."
+msgstr ""
+
+msgid "Account Deletion"
+msgstr ""
+
+msgid "Delete your account"
+msgstr ""
+
+msgid "Account deletion is permanent!"
+msgstr ""
+
+msgid ""
+"Also note that after your account is deleted, anyone is free to claim the "
+"username that you have abandoned, and impersonation becomes a possibility."
+msgstr ""
+
+msgid "(read warnings above)"
+msgstr ""
+
+msgid ""
+"To delete your account and all associated data, input your username below:"
+msgstr ""
+
+msgid "account-delete|Confirm"
+msgstr ""
 
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
@@ -547,6 +596,9 @@ msgstr ""
 msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s отправил(а) вам %2$sсообщение%3$s."
 
+msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
+msgstr ""
+
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ", "
@@ -575,6 +627,10 @@ msgstr "%d минут назад"
 
 msgid "seconds ago"
 msgstr "несколько секунд назад"
+
+#: helper/comment.rb
+msgid "Click to see previous comment by %s"
+msgstr ""
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -623,6 +679,9 @@ msgstr "Создать"
 
 msgid "contact-list|delete"
 msgstr "удалить"
+
+msgid "Delete this contact list?"
+msgstr ""
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -762,9 +821,6 @@ msgstr "Кому:"
 msgid "direct-message|Send"
 msgstr "Отправить"
 
-msgid "direct-message|Preview"
-msgstr "Предпросмотр"
-
 msgid "direct-message|Recipients"
 msgstr "Получатели"
 
@@ -776,6 +832,11 @@ msgid ""
 "secure.  As with all data on this tree, direct messages are fully accessible"
 " to the arborista (administrator)."
 msgstr "Обратите внимание, что прямые сообщения не являются полностью приватными, зашифроваными и неприкосновенными. Как и все другие данные на этом дереве, прямые сообщения целиком доступны арбористу (администратору)."
+
+msgid ""
+"Your message is longer than 4096 characters. Please shorten it and try "
+"again."
+msgstr ""
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -800,7 +861,8 @@ msgstr "Имя:"
 
 msgid ""
 "&quot;Springing&quot; a pool causes the pool and which posts it contains to "
-"become publicly visible.  Members can add other members' springs to rivers."
+"become publicly visible.  Members can add other members&#39; springs to "
+"rivers."
 msgstr ""
 
 msgid "new-pool|Create"
@@ -817,6 +879,9 @@ msgid "Pool: %s"
 msgstr "Пруд: %s"
 
 msgid "Add this spring to a river"
+msgstr ""
+
+msgid "Added to river."
 msgstr ""
 
 msgid "Spring this pool:"
@@ -873,7 +938,7 @@ msgstr "Записи %s"
 msgid "Add %s to a contact list"
 msgstr ""
 
-msgid "%1$ssee more posts by %2$s%3$s"
+msgid "Added %s to contact list."
 msgstr ""
 
 #: view/request_password_reset.xhtml
@@ -1022,6 +1087,11 @@ msgid ""
 msgstr "Другие особые выражения: %s, %s и %s. Они служат для отбора записей, которые вам понравились, которые вы комментировали или на которые подписывались, соответственно."
 
 msgid ""
+"(advanced) Use the special term %s followed by a source name in quotes to "
+"match posts posted with a given source or tool."
+msgstr ""
+
+msgid ""
 "(advanced) Use the special term %s followed by a river label in quotes to "
 "compose rivers using other rivers."
 msgstr "(дополнительно) Используйте выражение %s с последующим названием реки в кавычках, чтобы добавлять одни реки в другие."
@@ -1122,6 +1192,13 @@ msgstr "(в сети никого нет)"
 msgid "Start new chat with..."
 msgstr "Начать новый чат с..."
 
+#: layout/_sidebar.xhtml
+msgid "Rivers"
+msgstr ""
+
+msgid "manage rivers"
+msgstr "управление реками"
+
 #: layout/_menu.xhtml
 msgid "menu|Profile"
 msgstr "Профиль"
@@ -1131,9 +1208,6 @@ msgstr "Настройки"
 
 msgid "menu|Contact Lists"
 msgstr "Списки контактов"
-
-msgid "menu|Pools"
-msgstr "Пруды"
 
 msgid "menu|Legible font size"
 msgstr "Крупный размер шрифта"
@@ -1177,6 +1251,9 @@ msgstr "Новая запись"
 msgid "menu|Known Issues"
 msgstr "Известные проблемы"
 
+msgid "menu|Toggle sidebar"
+msgstr ""
+
 #: layout/_notifications.xhtml
 msgid "No notifications"
 msgstr "Уведомлений нет"
@@ -1198,6 +1275,19 @@ msgstr "%2$d непрочитанных сообщений в чате от %1$s
 msgid "Failed to post comment."
 msgstr "Не удалось отправить комментарий."
 
+#: view/tags/index.xhtml
+msgid "Save this hashtag listing as a river."
+msgstr ""
+
+msgid "Add this hashtag to an existing river."
+msgstr ""
+
+msgid "Added hashtag #%s to river."
+msgstr ""
+
+msgid "There are no posts matching this hashtag."
+msgstr ""
+
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
 msgstr ""
@@ -1218,26 +1308,10 @@ msgid "tutorial|An error occurred while trying to create a river."
 msgstr ""
 
 msgid "tutorial-step-1\n"
-msgstr ""
-"# Welcome to Libertree!\n"
-"Hello, and welcome to Libertree! We'd like to take a minute to "
-"explain the most important concepts in Libertree, as this will help you get the "
-"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
-"Libertree is a place where people write things in public, or share interesting "
-"stuff with others.\n\n"
-" - Someone who is a part of Libertree is called a *member*.\n"
-" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
-" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+msgstr "# Welcome to Libertree!\nHello, and welcome to Libertree! We'd like to take a minute to explain the most important concepts in Libertree, as this will help you get the most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\nLibertree is a place where people write things in public, or share interesting stuff with others.\n\n - Someone who is a part of Libertree is called a *member*.\n - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
 
 msgid "tutorial-step-2a"
-msgstr ""
-"# Your interests\n"
-"There are a lot of posts made to Libertree every day. If you like, "
-"you can take a minute right now to let us know what your interests are. "
-"We'll use this information to narrow down what posts you see at first, "
-"so you don't get overwhelmed. You can always change things later, or "
-"explore ways to read more posts.  Enter a list of interests (one word "
-"each):"
+msgstr "# Your interests\nThere are a lot of posts made to Libertree every day. If you like, you can take a minute right now to let us know what your interests are. We'll use this information to narrow down what posts you see at first, so you don't get overwhelmed. You can always change things later, or explore ways to read more posts.  Enter a list of interests (one word each):"
 
 msgid "tutorial-step-2b"
 msgstr "Congratulations! You have just created your first river."
@@ -1246,17 +1320,10 @@ msgid "tutorial-step-3-heading"
 msgstr "# Rivers"
 
 msgid "tutorial-step-3a"
-msgstr ""
-"Rivers are a powerful feature that lets you pick or filter posts "
-"from the torrent of posts on Libertree. Here is a list of "
-"rivers that you may find useful. Select those that you would "
-"like added to your account."
+msgstr "Rivers are a powerful feature that lets you pick or filter posts from the torrent of posts on Libertree. Here is a list of rivers that you may find useful. Select those that you would like added to your account."
 
 msgid "tutorial-step-3b"
-msgstr ""
-"Be sure to check out the river management page after "
-"this tutorial to see interesting examples of what you "
-"can do with rivers."
+msgstr "Be sure to check out the river management page after this tutorial to see interesting examples of what you can do with rivers."
 
 msgid "tutorial-step-4-heading"
 msgstr "# Friends"
@@ -1265,27 +1332,22 @@ msgid "intro-contact-list-name|Friends"
 msgstr ""
 
 msgid "tutorial-step-4"
-msgstr ""
-"If you think some of your friends are already Libertree members, "
-"you can try to find them and add them as contacts now."
+msgstr "If you think some of your friends are already Libertree members, you can try to find them and add them as contacts now."
 
 msgid "tutorial-river-label|Unread posts"
 msgstr ""
 
-msgid ""
-"tutorial|Unread posts%sAll posts on Libertree which you haven't read yet"
+msgid "tutorial|All posts on Libertree which you haven't read yet"
 msgstr ""
 
 msgid "tutorial-river-label|Posts from the forest"
 msgstr ""
 
-msgid "tutorial|Posts from the forest%sAll posts on Libertree"
+msgid "tutorial|All posts on Libertree"
 msgstr ""
 
 msgid "tutorial-river-label|My activity"
 msgstr ""
 
-msgid ""
-"tutorial|My activity%sPosts that you have liked, commented on, or are "
-"subscribed to"
+msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
 msgstr ""

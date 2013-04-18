@@ -63,7 +63,7 @@ Libertree.Comments = {
 
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {
-          scrollable = $('html');
+          scrollable = Libertree.UI.scrollable();
         }
         var initialScrollTop = scrollable.scrollTop();
         var initialHeight = comments.height();

@@ -58,7 +58,7 @@ $(document).ready( function() {
           target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           var scrollable = target.closest('div.comments-pane');
           if( scrollable.length === 0 ) {
-            scrollable = $('html');
+            scrollable = Libertree.UI.scrollable();
             var delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
           } else {
             var delta = $('.preview-box').offset().top - 100;
@@ -102,7 +102,7 @@ $(document).ready( function() {
     th.data('height', th.outerHeight());
   } );
 
-  $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
+  Libertree.UI.makeTextAreasExpandable();
 
   if( Libertree.UI.isTouchInterface() ) {
     $('body').addClass('touch-interface');

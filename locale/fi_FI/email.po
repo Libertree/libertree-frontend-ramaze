@@ -1,6 +1,6 @@
 # 
 # Translators:
-#   <themanintheshadows@gmail.com>, 2012.
+# Makailija <themanintheshadows@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

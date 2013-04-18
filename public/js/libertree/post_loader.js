@@ -46,6 +46,7 @@ Libertree.PostLoader = {
           } else {
             $('#post-excerpts').append(excerpts);
           }
+          Libertree.UI.makeTextAreasExpandable();
           excerpts.slideDown( function() {
             Libertree.PostLoader.loading = false;
           } );

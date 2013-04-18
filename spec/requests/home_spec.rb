@@ -7,9 +7,16 @@ describe 'a local member', :type => :feature, :js => true do
     @posts = []
     @account2 = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
     5.times do |i|
-      @posts << Libertree::Model::Post.create(
+      post = Libertree::Model::Post.create(
         FactoryGirl.attributes_for( :post, member_id: @account2.member.id, text: "Test post number #{i}." )
       )
+      @posts << post
+      # TODO: This should maybe be DRYed up with the code that runs in the job (backend)
+      @account.rivers.each do |river|
+        if river.should_contain? post
+          Libertree::DB.dbh.i "INSERT INTO river_posts ( river_id, post_id ) VALUES ( ?, ? )", river.id, post.id
+        end
+      end
     end
   end
 

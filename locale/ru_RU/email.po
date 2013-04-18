@@ -1,6 +1,6 @@
 # 
 # Translators:
-# glesik  <>, 2012.
+# glesik  <>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 8de6d72dcdc9912b053a3dfdb5608dd481790632
+  revision: c478ad15418cb91718d83fd5b61803ea09c1d10a
   specs:
     libertree-model (0.0.1)
 
@@ -72,6 +72,12 @@ GEM
       ffi (~> 1.0, >= 1.0.6)
     columnize (0.3.6)
     dalli (1.1.5)
+    debugger (1.5.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
@@ -154,6 +160,7 @@ DEPENDENCIES
   bcrypt-ruby
   capybara
   dalli
+  debugger
   em-websocket
   factory_girl
   fast_gettext

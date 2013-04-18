@@ -1,6 +1,6 @@
 # 
 # Translators:
-#   <mlelao@aim.com>, 2012.
+# mlelao <mlelao@aim.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
