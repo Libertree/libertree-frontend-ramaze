@@ -2,7 +2,7 @@ Libertree.Pools = {
   createPoolAndAddPost: function(post) {
     var postId = post.data('post-id');
     var textField = post.find('.pools .chzn-search input');
-    textField.attr('disabled', 'disabled');
+    textField.prop('disabled', true);
     var poolName = textField.val();
     $.get(
       '/pools/create_pool_and_add_post/'+poolName+'/'+postId,
@@ -15,7 +15,7 @@ Libertree.Pools = {
         } else {
           alert(h.msg);
         }
-        textField.removeAttr('disabled');
+        textField.prop('disabled', false);
       }
     );
   },

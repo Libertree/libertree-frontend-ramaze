@@ -15,7 +15,7 @@ Libertree.Home = {
 
 $(document).ready( function() {
 
-  $('.post-excerpt .show-more').live( 'click', function() {
+  $(document).on('click', '.post-excerpt .show-more', function() {
     var showMoreLink = $(this);
     var excerpt = showMoreLink.siblings('.excerpt');
     var overflowed = excerpt.find('.overflowed');
@@ -70,7 +70,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-excerpt .show-less').live( 'click', function() {
+  $(document).on('click', '.post-excerpt .show-less', function() {
     var link = $(this);
     link.hide();
     var excerpt = link.closest('.post-excerpt');
@@ -107,14 +107,14 @@ $(document).ready( function() {
     scrollable.stop();
   } );
 
-  $('.post-excerpt .post-tools a.comment').live( 'click', function(event) {
+  $(document).on('click', '.post-excerpt .post-tools a.comment', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
     Libertree.Home.wantsToComment = true;
     excerpt.find('.show-more').click();
   } );
 
-  $('.overflowed img').live( 'mouseover', function() {
+  $(document).on('mouseover', '.overflowed img', function() {
     var excerpt = $(this).closest('.post-excerpt');
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
     if( excerpt.find('.post-text').height() > excerpt.find('.overflowed').height() ) {
@@ -122,7 +122,7 @@ $(document).ready( function() {
     }
   } );
 
-  $('.load-more').live( 'click', function(event) {
+  $(document).on('click', '.load-more', function(event) {
     event.preventDefault();
 
     $('#no-more-posts').remove();

@@ -19,7 +19,7 @@ $(document).ready( function() {
         function(html) {
           Libertree.Session.ensureAlive(html);
           Libertree.UI.removeSpinner('#notifications-window');
-          Libertree.Notifications.updateNumUnseen( $(html).find('.n').text() );
+          Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
         }
       ).
       toggle()
@@ -27,11 +27,11 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.notification.seen a').live( 'click', function(e) {
+  $(document).on('click', '.notification.seen a', function(e) {
     e.stopPropagation();
   } );
 
-  $('.notification.unseen').live( 'click', function() {
+  $(document).on('click', '.notification.unseen', function() {
     var ids = $(this).data('notification-ids');
     $(this).removeClass('unseen').addClass('seen');
     /* Also toggle on Notifications page */
@@ -43,7 +43,7 @@ $(document).ready( function() {
     } );
   } );
 
-  $('.notification.seen').live( 'click', function() {
+  $(document).on('click', '.notification.seen', function() {
     var ids = $(this).data('notification-ids');
     $(this).removeClass('seen').addClass('unseen');
     /* Also toggle on Notifications page */
@@ -55,7 +55,7 @@ $(document).ready( function() {
     } );
   } );
 
-  $('#mark-all-notifications-seen').live( 'click', function(event) {
+  $(document).on('click', '#mark-all-notifications-seen', function(event) {
     event.preventDefault();
     $.get('/notifications/seen/all', function () {
       $('.notification')

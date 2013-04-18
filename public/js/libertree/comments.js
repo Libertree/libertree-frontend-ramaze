@@ -23,7 +23,7 @@ Libertree.Comments = {
     $.get(
       '/comments/_comment/'+commentId+'/' + post.find('.comments .num-comments').data('n'),
       function(html) {
-        var o = $(html);
+        var o = $( $.trim(html) );
         o.insertBefore( post.find('.comments .detachable') );
         Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
         var height = o.height();
@@ -58,7 +58,7 @@ Libertree.Comments = {
         if( $.trim(html).length === 0 ) {
           return;
         }
-        var o = $(html);
+        var o = $( $.trim(html) );
         Libertree.Notifications.updateNumUnseen( o.filter('span.num-notifs-unseen').detach().text() );
 
         var scrollable = $('div.comments-pane');

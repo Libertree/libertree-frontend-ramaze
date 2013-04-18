@@ -9,7 +9,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('#toggle-sidebar').live('click', function() {
+  $(document).on('click', '#toggle-sidebar', function() {
     $('#sidebar').toggle();
   } );
 
@@ -30,7 +30,7 @@ $(document).ready( function() {
   } );
 
 
-  $('input.preview').live( 'click', function() {
+  $(document).on('click', 'input.preview', function() {
     var $this = $(this);
     var unrendered = $this.closest('form').find('textarea[name="text"]').val();
 
@@ -72,12 +72,12 @@ $(document).ready( function() {
     );
   } );
 
-  $('.preview-box a.close').live( 'click', function() {
+  $(document).on('click', '.preview-box a.close', function() {
     $(this).closest('.preview-box').remove();
     return false;
   } );
 
-  $('.textarea-clear').live( 'click', function() {
+  $(document).on('click', '.textarea-clear', function() {
     var id = $(this).data('textarea-id');
     $('#'+id).val('');
     $.get( '/textarea_clear/' + id );
@@ -88,12 +88,12 @@ $(document).ready( function() {
   setInterval( Libertree.UI.updateAges, 60 * 1000 );
   Libertree.UI.TextAreaBackup.enable();
 
-  $('textarea').live( 'mousedown', function() {
+  $(document).on('mousedown', 'textarea', function() {
     $(this).data('width', $(this).outerWidth());
     $(this).data('height', $(this).outerHeight());
   } );
 
-  $('textarea').live( 'mouseup', function() {
+  $(document).on('mouseup', 'textarea', function() {
     var th = $(this);
     if( th.outerWidth() != th.data('width') || th.outerHeight() != th.data('height') ) {
       th.addClass('no-autoresize');

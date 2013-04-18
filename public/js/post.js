@@ -1,14 +1,14 @@
 $(document).ready( function() {
 
-  $('.post-tools a.like').live( 'click', function(event) {
+  $(document).on('click', '.post-tools a.like', function(event) {
     Libertree.Posts.like( $(this), event, 'div.post, .post-excerpt' );
   } );
 
-  $('.post-tools a.unlike').live( 'click', function(event) {
+  $(document).on('click', '.post-tools a.unlike', function(event) {
     Libertree.Posts.unlike( $(this), event, 'div.post, .post-excerpt' );
   } );
 
-  $('.mark-read').live( 'click', function() {
+  $(document).on('click', '.mark-read', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     Libertree.UI.enableIconSpinner(post.find('.mark-read img'));
     Libertree.Posts.markRead( post.data('post-id') );
@@ -35,12 +35,12 @@ $(document).ready( function() {
     );
   } );
 
-  $('.post-tools a.hide').live( 'click', function() {
+  $(document).on('click', '.post-tools a.hide', function() {
     $(this).hide();
     $(this).siblings('.confirm-hide').show();
     return false;
   } );
-  $('.excerpts-view .confirm-hide').live( 'click', function(event) {
+  $(document).on('click', '.excerpts-view .confirm-hide', function(event) {
     event.preventDefault();
     var post = $(this).closest('div.post-excerpt');
     Libertree.Posts.hide(
@@ -56,7 +56,7 @@ $(document).ready( function() {
       }
     );
   } );
-  $('.single-post-view .confirm-hide').live( 'click', function(event) {
+  $(document).on('click', '.single-post-view .confirm-hide', function(event) {
     event.preventDefault();
     var post = $(this).closest('div.post');
     Libertree.Posts.hide(
@@ -67,7 +67,7 @@ $(document).ready( function() {
     );
   } );
 
-  $('.mark-unread').live( 'click', function() {
+  $(document).on('click', '.mark-unread', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     var icon = post.find('.mark-unread img');
     Libertree.UI.enableIconSpinner(icon);
@@ -82,7 +82,7 @@ $(document).ready( function() {
     return false;
   } );
 
-  $('.post-tools .delete').live( 'click', function(event) {
+  $(document).on('click', '.post-tools .delete', function(event) {
     event.preventDefault();
     if( confirm($(this).data('msg')) ) {
       var post = $(this).closest('div[data-post-id]');
@@ -90,12 +90,12 @@ $(document).ready( function() {
     }
   } );
 
-  $('.post-tools .subscribe').live( 'click', function() {
+  $(document).on('click', '.post-tools .subscribe', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     Libertree.Posts.subscribe( post );
     return false;
   } );
-  $('.post-tools .unsubscribe').live( 'click', function() {
+  $(document).on('click', '.post-tools .unsubscribe', function() {
     var post = $(this).closest('div.post, div.post-excerpt');
     Libertree.Posts.unsubscribe( post );
     return false;

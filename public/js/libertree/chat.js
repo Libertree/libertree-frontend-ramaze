@@ -5,7 +5,7 @@ Libertree.Chat = {
     $.get(
       '/chat/_message/' + chatMessage.id,
       function(html) {
-        var o = $(html);
+        var o = $( $.trim(html) );
         o.appendTo(messages);
         var height = o.height();
         var animationDuration = height*5;

@@ -14,7 +14,7 @@ $(document).ready( function() {
       }
     }
   } );
-  $('table.jobs td a.delete').live( 'click', function(event) {
+  $(document).on('click', 'table.jobs td a.delete', function(event) {
     event.preventDefault();
     if( confirm($(this).data('msg')) ) {
       window.location = $(this).attr('href');
