@@ -1,16 +1,16 @@
 # 
 # Translators:
-#   <hectormejia@riseup.net>, 2012.
-#   <lunachik@zoho.com>, 2012.
-# Mauricio Mejía <hectormejia@riseup.net>, 2012.
-# Miguel Aguilar <miguel.aguilarmolina@gmail.com>, 2012.
-#   <simbobo@cooptel.net>, 2012.
+# Mauricio Mejía <hectormejia@riseup.net>, 2012
+# LunaChik <lunachik@zoho.com>, 2012
+# Mauricio Mejía <hectormejia@riseup.net>, 2012
+# Miguel Aguilar <miguel.aguilarmolina@gmail.com>, 2012
+# obado <simbobo@cooptel.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-03-22 09:13+0000\n"
+"PO-Revision-Date: 2013-03-30 00:53+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/libertree/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -261,8 +261,9 @@ msgid "remove"
 msgstr "Eliminar"
 
 msgid ""
-"Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window"
-msgstr "Clic de medio, Shift-clic, o Ctrl-Shift-clic para abrir en una pestaña/ventana nueva"
+"View post. Middle click, Shift-click, or Ctrl-Shift-click to open in new "
+"tab/window"
+msgstr ""
 
 msgid "view post"
 msgstr "Ver la publicación"
@@ -1309,26 +1310,10 @@ msgid "tutorial|An error occurred while trying to create a river."
 msgstr ""
 
 msgid "tutorial-step-1\n"
-msgstr ""
-"# Welcome to Libertree!\n"
-"Hello, and welcome to Libertree! We'd like to take a minute to "
-"explain the most important concepts in Libertree, as this will help you get the "
-"most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\n"
-"Libertree is a place where people write things in public, or share interesting "
-"stuff with others.\n\n"
-" - Someone who is a part of Libertree is called a *member*.\n"
-" - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n"
-" - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
+msgstr "# Welcome to Libertree!\nHello, and welcome to Libertree! We'd like to take a minute to explain the most important concepts in Libertree, as this will help you get the most out of it. You can [skip this tutorial](/home) and resume it at a later time.\n\nLibertree is a place where people write things in public, or share interesting stuff with others.\n\n - Someone who is a part of Libertree is called a *member*.\n - Members write posts <a href='#' class='help' rel='popover' title='What is a post?' data-content='A post is a message. What exactly is in these posts can vary widely; different people are interested in different things, and say many different things. Posts can be as short as a single sentence, or as long as a newspaper article.'>?</a> for other members to see.\n - Members can comment <a href='#' class='help' rel='popover' title='What is a comment?' data-content='Comments are written responses to posts or other comments.'>?</a> on posts.\n\n"
 
 msgid "tutorial-step-2a"
-msgstr ""
-"# Your interests\n"
-"There are a lot of posts made to Libertree every day. If you like, "
-"you can take a minute right now to let us know what your interests are. "
-"We'll use this information to narrow down what posts you see at first, "
-"so you don't get overwhelmed. You can always change things later, or "
-"explore ways to read more posts.  Enter a list of interests (one word "
-"each):"
+msgstr "# Your interests\nThere are a lot of posts made to Libertree every day. If you like, you can take a minute right now to let us know what your interests are. We'll use this information to narrow down what posts you see at first, so you don't get overwhelmed. You can always change things later, or explore ways to read more posts.  Enter a list of interests (one word each):"
 
 msgid "tutorial-step-2b"
 msgstr "Congratulations! You have just created your first river."
@@ -1337,17 +1322,10 @@ msgid "tutorial-step-3-heading"
 msgstr "# Rivers"
 
 msgid "tutorial-step-3a"
-msgstr ""
-"Rivers are a powerful feature that lets you pick or filter posts "
-"from the torrent of posts on Libertree. Here is a list of "
-"rivers that you may find useful. Select those that you would "
-"like added to your account."
+msgstr "Rivers are a powerful feature that lets you pick or filter posts from the torrent of posts on Libertree. Here is a list of rivers that you may find useful. Select those that you would like added to your account."
 
 msgid "tutorial-step-3b"
-msgstr ""
-"Be sure to check out the river management page after "
-"this tutorial to see interesting examples of what you "
-"can do with rivers."
+msgstr "Be sure to check out the river management page after this tutorial to see interesting examples of what you can do with rivers."
 
 msgid "tutorial-step-4-heading"
 msgstr "# Friends"
@@ -1356,9 +1334,7 @@ msgid "intro-contact-list-name|Friends"
 msgstr ""
 
 msgid "tutorial-step-4"
-msgstr ""
-"If you think some of your friends are already Libertree members, "
-"you can try to find them and add them as contacts now."
+msgstr "If you think some of your friends are already Libertree members, you can try to find them and add them as contacts now."
 
 msgid "tutorial-river-label|Unread posts"
 msgstr ""
