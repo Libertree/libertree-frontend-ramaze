@@ -27,11 +27,7 @@ Libertree.PostLoader = {
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function(html) {
           var DOMNodes = $( $.trim(html) );
-          var excerpts_array = $.grep( DOMNodes, function(node, i) {
-            /* Ignore text nodes and other types which cannot have slideDown called on them. */
-            return node.nodeType == 1;
-          } );
-          var excerpts = $(excerpts_array);
+          var excerpts = Libertree.UI.animatableNodesOnly(DOMNodes);
           excerpts.css('display', 'none');
 
           // Remove old copies of incoming excerpts that may already be in the DOM

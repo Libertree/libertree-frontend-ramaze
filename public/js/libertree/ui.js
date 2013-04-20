@@ -131,6 +131,14 @@ Libertree.UI = {
     } else {
       return $('body');
     }
+  },
+
+  animatableNodesOnly: function(nodes) {
+    var array = $.grep( nodes, function(node, i) {
+      /* Ignore text nodes and other types which cannot have jQuery animations (e.g. slideDown) called on them. */
+      return node.nodeType == 1;
+    } );
+    return $(array);
   }
 };
 
