@@ -5,6 +5,15 @@ module Controller
       default_before_filter
     end
 
+    layout do |path|
+      case path
+      when 'heartbeat'
+        nil
+      else
+        :default
+      end
+    end
+
     def edit
       @invitations = account.invitations_not_accepted
       @host = request.host_with_port
