@@ -115,7 +115,7 @@ $(document).ready( function() {
   } );
 
   $(document).on('mouseover', '.overflowed img', function() {
-    var excerpt = $(this).closest('.post-excerpt');
+    var excerpt = $(this).closest('.excerpt');
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
     if( excerpt.find('.post-text').height() > excerpt.find('.overflowed').height() ) {
       excerpt.siblings('.show-more').show();
