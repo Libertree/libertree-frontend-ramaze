@@ -114,10 +114,19 @@ $(document).ready( function() {
     excerpt.find('.show-more').click();
   } );
 
+  /* Displays "show more" when hovering over an image.
+     This is necessary for two reasons:
+     - when the image has not been loaded yet, the post contents
+       might not immediately overflow.
+     - per account setting, images may be displayed as thumbnails,
+       only overflowing the container on hover
+  */
   $(document).on('mouseover', '.overflowed img', function() {
     var excerpt = $(this).closest('.excerpt');
+    // do not do anything when this post is currently being expanded
+    var overflowed = excerpt.find('.overflowed').not(':animated');
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
-    if( excerpt.find('.post-text').height() > excerpt.find('.overflowed').height() ) {
+    if( overflowed.length > 0 && excerpt.find('.post-text').height() > overflowed.height() ) {
       excerpt.siblings('.show-more').show();
     }
   } );
