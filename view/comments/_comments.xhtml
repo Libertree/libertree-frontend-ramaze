@@ -1,7 +1,7 @@
 #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @num_shown, num_total: @post.comments.count, hidden: true }
 
 <?r @comments.each do |c| ?>
-  #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post }
+  #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post, all_comments: @post.comments }
 <?r end ?>
 
 <span class="hidden num-notifs-unseen">#{@num_notifs_unseen}</span>

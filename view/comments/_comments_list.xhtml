@@ -1,5 +1,5 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @post.comments(@comment_fetch_options).count, num_total: @post.comments.count }
+  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: @comments.count, num_total: @all_comments.count }
   <br/>
 
   <?r if logged_in? ?>
@@ -8,11 +8,11 @@
     | <a href="/login">Log in</a> to comment.
   <?r end ?>
 
-  <?r loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( @post.comments(@comment_fetch_options).count == @post.comments.count ) ?>
+  <?r loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( @comments.count == @all_comments.count ) ?>
   <a href="#" class="load-comments #{loader_hidden ? 'hidden' : ''}">#{_('more comments')}</a>
 
-  <?r @post.comments(@comment_fetch_options).each do |c| ?>
-    #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post }
+  <?r @comments.each do |c| ?>
+    #{ render_file 'view/comments/_comment.xhtml', comment: c, post: @post, all_comments: @all_comments }
   <?r end ?>
 
   <div class="detachable">
