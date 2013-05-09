@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 8ede2fa5ff1cc8424e54dca0e27f9d6b4119e4b2
+  revision: 5760d3db661258e4007f6c98cc7969dc60bf495a
+  branch: memoize-more
   specs:
     libertree-model (0.0.1)
 

@@ -18,7 +18,7 @@ gem 'ruby-oembed'
 gem 'fast_gettext'
 gem 'syck', :platforms => [:ruby_20]
 
-gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
+gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git', branch: 'memoize-more'
 
 group 'development' do
   gem 'rspec'
