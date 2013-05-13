@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 996cb0508e9d2a833f69996ffb585a8caa0f8139
+  revision: 49fe3122ae6b5ab536a4cb56d3be916f0a2710fc
   branch: memoize-more
   specs:
     libertree-model (0.0.1)
@@ -93,7 +93,7 @@ GEM
     i18n (0.6.0)
     json (1.7.6)
     kgio (2.7.3)
-    m4dbi (0.8.7)
+    m4dbi (0.8.8)
       metaid
       rdbi
     metaid (1.0)
