@@ -22,6 +22,7 @@ describe 'Controller::API::V1::Comments', :type => :feature do
            'token' => @account.api_token,
            'text' => 'A new comment.',
            'post_id' => @post.id
+      @post.dirty
 
       expect(last_response.status).to eq 200
       expect(@post.comments.count).to eq 1
