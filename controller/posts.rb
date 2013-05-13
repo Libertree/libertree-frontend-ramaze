@@ -8,6 +8,7 @@ module Controller
           require_login
         end
         init_locale
+        $md4bi_cache_id = request.object_id
       end
     end
 
