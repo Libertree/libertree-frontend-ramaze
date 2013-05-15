@@ -212,6 +212,11 @@ textarea, input[type="text"], input[type="password"] {
             height: 26px;
             cursor: pointer;
             position: relative;
+            @media screen and (max-width: 500px) {
+                #account-name {
+                    display: none;
+                }
+            }
         }
 
         #toggle-sidebar {

@@ -10,9 +10,7 @@
     <a class="menu-item" id="menu-log-in" href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>
   <?r else ?>
     <a class="menu-item" id="menu-account" href="#">
-      <?r if @account_name ?>
-        #{account.member.name_display}
-      <?r end ?>
+      <span id="account-name">#{account.member.name_display}</span>
       #{ member_img(account.member) }
     </a>
     <div id="account-window" class="window has-shadow">

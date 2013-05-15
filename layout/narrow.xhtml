@@ -4,7 +4,7 @@
 #{ render_file 'layout/_head.xhtml' }
 
 <body class="#{ @view }">
-  #{ render_file 'layout/_menu.xhtml', title: false, account_name: false }
+  #{ render_file 'layout/_menu.xhtml', title: false }
   <div class="main">
     <?r if flash[:error] ?>
       <div class="flash error">#{flash[:error]}</div>
