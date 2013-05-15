@@ -1,7 +1,9 @@
-Libertree.PostLoader = {
-  loading: false,
+Libertree.PostLoader = (function() {
+  var mkLoader = function( type ) {
+    var endpoint,
+        loading = false;
+        self = this;
 
-  loader: function( type ) {
     switch( type ) {
       case 'river':
         endpoint = '/posts/_excerpts';
@@ -49,11 +51,12 @@ Libertree.PostLoader = {
         }
       } );
     };
-  },
+  };
 
-  // TODO: simplifying this to Libertree.PostLoader.loader('river') throws an error; why?
-  loadFromRiver:   function() { this.loader( 'river'   ).apply( this, arguments ) },
-  loadFromTags:    function() { this.loader( 'tags'    ).apply( this, arguments ) },
-  loadFromProfile: function() { this.loader( 'profile' ).apply( this, arguments ) },
-  loadFromPool:    function() { this.loader( 'pool'    ).apply( this, arguments ) },
-};
+  return {
+    loadFromRiver:   mkLoader( 'river'   ),
+    loadFromTags:    mkLoader( 'tags'    ),
+    loadFromProfile: mkLoader( 'profile' ),
+    loadFromPool:    mkLoader( 'pool'    ),
+  };
+}());
