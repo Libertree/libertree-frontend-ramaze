@@ -1,12 +1,3 @@
-// register tag loader function as continuous scroll handler
-$(window).scroll( function() {
-  Libertree.UI.continuousScrollHandler(
-    function() {
-      Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
-    }
-  );
-} );
-
 $(document).ready( function() {
   $('.tags #river-selector').chosen().change( function() {
     var selector = $('#river-selector');

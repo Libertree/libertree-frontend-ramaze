@@ -134,8 +134,20 @@ Libertree.UI = {
       return node.nodeType == 1;
     } );
     return $(array);
+  },
+
+  init: function() {
+    // register post loaders as continuous scroll handlers
+    $(window).scroll( function() {
+      Libertree.UI.continuousScrollHandler( function() {
+        Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
+        Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
+        Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
+      } );
+    } );
   }
 };
 
 // speed = pixels per second
 Libertree.UI.duration = Libertree.UI.setSpeed(600);
+Libertree.UI.init();

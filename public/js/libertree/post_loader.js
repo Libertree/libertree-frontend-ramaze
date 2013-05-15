@@ -23,7 +23,7 @@ Libertree.PostLoader = (function() {
     }
 
     return function( value, older_or_newer, time, onSuccess ) {
-      if (self.loading === true) { return; }
+      if (self.loading === true || value === undefined) { return; }
 
       if (older_or_newer === undefined) {
         older_or_newer = 'older';
