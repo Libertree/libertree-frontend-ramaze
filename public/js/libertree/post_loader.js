@@ -26,10 +26,10 @@ Libertree.PostLoader = {
         type: 'GET',
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function(html) {
-          var DOMNodes = $( $.trim(html) );
-          var excerpts = Libertree.UI.animatableNodesOnly(DOMNodes);
-          excerpts.css('display', 'none');
+          var DOMNodes = $( $.trim(html) ),
+              excerpts = Libertree.UI.animatableNodesOnly(DOMNodes);
 
+          excerpts.css('display', 'none');
 
           if( older_or_newer === 'newer' ) {
             $('#post-excerpts').prepend(excerpts);
