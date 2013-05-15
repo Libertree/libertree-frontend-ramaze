@@ -4,11 +4,19 @@
 body.single-post-view {
   height: 100%;
   .main {
-    @include border-box;
-    margin: 0 auto;
-    padding: 70px 0px 30px 0px;
-    background: transparent;
-    height: 100%;
+    @media screen and (min-width: 500px) {
+      @include border-box;
+      margin: 0 auto;
+      padding: 70px 0px 30px 0px;
+      background: transparent;
+      height: 100%;
+    }
+    @media screen and (max-width: 500px) {
+      margin: 60px 0px;
+      padding: 0px;
+      max-width: none;
+      min-width: none;
+    }
   }
 }
 
@@ -17,11 +25,18 @@ body.single-post-view {
     display: none;
   }
   div.post {
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-    padding: 0;
-    @include rounded;
+    @media screen and (min-width: 500px) {
+      height: 100%;
+      width: 100%;
+      display: inline-block;
+      padding: 0;
+      @include rounded;
+    }
+    @media screen and (max-width: 500px) {
+      @include border-box;
+      background-color: $dust;
+      padding: 2em;
+    }
 
     &.with-comments-sliding {
       background-color: $dust; /* fallback for browsers that don't support alpha in colours */
@@ -33,18 +48,20 @@ body.single-post-view {
     }
 
     div.post-pane {
-      @include border-box;
-      width: 55%;
-      height: 100%;
-      overflow-y: auto;
+      @media screen and (min-width: 500px) {
+        @include border-box;
+        width: 55%;
+        height: 100%;
+        overflow-y: auto;
 
-      padding: 2em;
-      background: $dust;
-      float: left;
-      border-right: 1px solid $sand;
-      border-radius: $border-radius 0 0 $border-radius;
+        padding: 2em;
+        background: $dust;
+        float: left;
+        border-right: 1px solid $sand;
+        border-radius: $border-radius 0 0 $border-radius;
 
-      vertical-align: top;
+        vertical-align: top;
+      }
 
       .post-proper {
         width: 100%;
@@ -102,18 +119,20 @@ body.single-post-view {
       }
     }
     div.comments-pane {
-      @include border-box;
-      width: 45%;
-      height: 100%;
-      padding: 28px;
-      border-radius: 0 $border-radius $border-radius 0;
-      /* position: relative; */
-      float: right;
-      z-index: 0;
-      overflow-y: auto;
+      @media screen and (min-width: 500px) {
+        @include border-box;
+        width: 45%;
+        height: 100%;
+        padding: 28px;
+        border-radius: 0 $border-radius $border-radius 0;
+        /* position: relative; */
+        float: right;
+        z-index: 0;
+        overflow-y: auto;
 
-      background-color: $dust; /* fallback for browsers that don't support alpha in colours */
-      background-color: $dust_translucent;
+        background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+        background-color: $dust_translucent;
+      }
 
       div.comments {
         vertical-align: top;

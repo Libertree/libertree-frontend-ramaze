@@ -1,9 +1,7 @@
 #{ render_file 'layout/_sidebar.xhtml' }
 
 <div class="post has-shadow" data-post-id="#{@post.id}">
-  <?r if session[:layout] != 'narrow' ?>
     <div class="post-pane">
-  <?r end ?>
       <div class="post-proper">
         <div class="meta">
           <div class="member">
@@ -47,13 +45,9 @@
           <?r end ?>
         </div>
       </div>
-  <?r if session[:layout] != 'narrow' ?>
     </div>
 
     <div class="comments-pane">
-  <?r end ?>
       #{ Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
-  <?r if session[:layout] != 'narrow' ?>
     </div>
-  <?r end ?>
 </div>

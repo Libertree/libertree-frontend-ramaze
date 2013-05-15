@@ -123,21 +123,6 @@ input#search {
     }
 }
 
-.single-post-view {
-  .main {
-    margin: 60px 0px;
-    padding: 0px;
-    max-width: none;
-    min-width: none;
-
-    div.post {
-      @include border-box;
-      background-color: $dust;
-      padding: 2em;
-    }
-  }
-}
-
 #chat-window {
     width: 280px;
     left: 0.5em;
