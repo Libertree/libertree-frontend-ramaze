@@ -25,6 +25,13 @@ Libertree.PostLoader = (function() {
     return function( value, older_or_newer, time, onSuccess ) {
       if (self.loading === true) { return; }
 
+      if (older_or_newer === undefined) {
+        older_or_newer = 'older';
+      }
+      if (time === undefined) {
+        time = $('.post-excerpt:last').data('t')
+      }
+
       self.loading = true;
       Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
 

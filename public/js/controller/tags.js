@@ -2,11 +2,7 @@
 $(window).scroll( function() {
   Libertree.UI.continuousScrollHandler(
     function() {
-      Libertree.PostLoader.loadFromTags(
-        $('#post-excerpts').data('tag'),
-        'older',
-        $('.post-excerpt:last').data('t')
-      );
+      Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
     }
   );
 } );
