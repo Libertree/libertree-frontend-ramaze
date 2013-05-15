@@ -26,6 +26,7 @@ Libertree.PostLoader = (function() {
       if (self.loading === true) { return; }
 
       self.loading = true;
+      Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
 
       $.ajax( {
         type: 'GET',
@@ -46,6 +47,8 @@ Libertree.PostLoader = (function() {
             self.loading = false;
           } );
 
+          // move the spinner container to the bottom of the stream
+          $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
           Libertree.UI.removeSpinner('#post-excerpts');
           Libertree.UI.showShowMores();
           if(onSuccess) {

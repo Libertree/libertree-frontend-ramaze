@@ -16,8 +16,6 @@ Libertree.UI = {
 
   continuousScrollHandler: function (loader) {
     if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
-      Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
       if( $('#no-more-posts').length ) { return; }
       loader();
     }
