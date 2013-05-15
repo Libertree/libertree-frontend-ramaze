@@ -104,7 +104,7 @@ $(document).ready( function() {
 
   Libertree.UI.makeTextAreasExpandable();
 
-  if( Libertree.UI.isTouchInterface() ) {
+  if( Libertree.UI.isTouchInterface ) {
     $('body').addClass('touch-interface');
   }
 
