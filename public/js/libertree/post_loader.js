@@ -30,12 +30,6 @@ Libertree.PostLoader = {
           var excerpts = Libertree.UI.animatableNodesOnly(DOMNodes);
           excerpts.css('display', 'none');
 
-          // Remove old copies of incoming excerpts that may already be in the DOM
-          var container = $('<div/>');
-          container.prepend(excerpts);
-          container.find('.post-excerpt').each( function() {
-            $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
-          } );
 
           if( older_or_newer === 'newer' ) {
             $('#post-excerpts').prepend(excerpts);
