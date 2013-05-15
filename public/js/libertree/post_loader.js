@@ -23,7 +23,10 @@ Libertree.PostLoader = (function() {
     }
 
     return function( value, older_or_newer, time, onSuccess ) {
-      Libertree.PostLoader.loading = true;
+      if (self.loading === true) { return; }
+
+      self.loading = true;
+
       $.ajax( {
         type: 'GET',
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
@@ -40,7 +43,7 @@ Libertree.PostLoader = (function() {
           }
           Libertree.UI.makeTextAreasExpandable();
           excerpts.slideDown( function() {
-            Libertree.PostLoader.loading = false;
+            self.loading = false;
           } );
 
           Libertree.UI.removeSpinner('#post-excerpts');
