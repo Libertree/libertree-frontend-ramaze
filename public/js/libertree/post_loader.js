@@ -57,6 +57,8 @@ Libertree.PostLoader = (function() {
           // move the spinner container to the bottom of the stream
           $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
           Libertree.UI.removeSpinner('#post-excerpts');
+
+          //TODO: only process new excerpts!
           Libertree.UI.showShowMores();
           if(onSuccess) {
             onSuccess();
