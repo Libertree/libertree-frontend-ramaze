@@ -2,7 +2,7 @@ Libertree.Posts = {
   setSubscription: function(type) {
     var endpoint = '/posts/_' + type + '/',
         classes = ['.subscribe', '.unsubscribe'],
-        toggle = (type === 'subscribe') ? classes : Array.reverse(classes);
+        toggle = (type === 'subscribe') ? classes : classes.reverse();
 
     return function (post) {
       var icon = post.find(toggle[0] + ' img');
