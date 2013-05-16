@@ -37,6 +37,9 @@ Libertree.PostLoader = (function () {
       }
 
       loading = true;
+
+      // move the spinner container to the bottom of the stream
+      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
       Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
 
       $.ajax({
@@ -67,8 +70,6 @@ Libertree.PostLoader = (function () {
             loading = false;
           });
 
-          // move the spinner container to the bottom of the stream
-          $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
           Libertree.UI.removeSpinner('#post-excerpts');
 
           //TODO: only process new excerpts!
