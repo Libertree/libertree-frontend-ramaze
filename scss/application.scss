@@ -194,8 +194,15 @@ textarea, input[type="text"], input[type="password"] {
         a#home {
             float: left;
             margin-left: 0px;
-            @media screen and (max-width: $threshold) {
-                display: none;
+            #logo {
+                @media screen and (max-width: 400px) {
+                    display: none;
+                }
+            }
+            #wordmark {
+                @media screen and (max-width: $threshold) {
+                    display: none;
+                }
             }
         }
 
