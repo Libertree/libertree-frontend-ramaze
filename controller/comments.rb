@@ -14,8 +14,6 @@ module Controller
     layout do |path|
       if path =~ %r{^_|create}
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end
