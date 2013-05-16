@@ -231,6 +231,11 @@ textarea, input[type="text"], input[type="password"] {
             width: 360px;
             padding-top: 6px;
             height: 26px;
+            @media screen and (max-width: $threshold) {
+                #known-issues {
+                    display: none;
+                }
+            }
         }
         #main-menu-container.with-custom {
             width: 386px;
