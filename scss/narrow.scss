@@ -1,7 +1,9 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
-@media screen and (max-width: 1100px) {
+$threshold: 700px;
+
+@media screen and (max-width: $threshold) {
     html {
         height: auto;
     }
