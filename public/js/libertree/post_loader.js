@@ -45,9 +45,18 @@ Libertree.PostLoader = (function () {
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function (html) {
           var DOMNodes = $($.trim(html)),
-            excerpts = Libertree.UI.animatableNodesOnly(DOMNodes);
+            excerpts = Libertree.UI.animatableNodesOnly(DOMNodes),
+            container = $('<div/>');
 
           excerpts.css('display', 'none');
+
+          // Remove old copies of incoming excerpts that may already be in the DOM
+          // When sort order is by update/comment time, posts that are already in the DOM
+          // may appear in the result set and have to be removed from the DOM.
+          container.prepend(excerpts);
+          container.find('.post-excerpt').each( function() {
+            $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
+          } );
 
           if (older_or_newer === 'newer') {
             $('#post-excerpts').prepend(excerpts);
