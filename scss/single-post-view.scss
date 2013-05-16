@@ -1,17 +1,19 @@
 @import "colours.scss";
 @import "scss-include/mixins.scss";
 
+$threshold: 700px;
+
 body.single-post-view {
   height: 100%;
   .main {
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: $threshold) {
       @include border-box;
       margin: 0 auto;
       padding: 70px 0px 30px 0px;
       background: transparent;
       height: 100%;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: $threshold) {
       margin: 60px 0px;
       padding: 0px;
       max-width: none;
@@ -25,14 +27,14 @@ body.single-post-view {
     display: none;
   }
   div.post {
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: $threshold) {
       height: 100%;
       width: 100%;
       display: inline-block;
       padding: 0;
       @include rounded;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: $threshold) {
       @include border-box;
       background-color: $dust;
       padding: 2em;
@@ -48,7 +50,7 @@ body.single-post-view {
     }
 
     div.post-pane {
-      @media screen and (min-width: 500px) {
+      @media screen and (min-width: $threshold) {
         @include border-box;
         width: 55%;
         height: 100%;
@@ -119,7 +121,7 @@ body.single-post-view {
       }
     }
     div.comments-pane {
-      @media screen and (min-width: 500px) {
+      @media screen and (min-width: $threshold) {
         @include border-box;
         width: 45%;
         height: 100%;
