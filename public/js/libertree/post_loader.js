@@ -6,8 +6,7 @@ Libertree.PostLoader = (function () {
 
   var mkLoader = function (type) {
     var endpoint,
-      loading = false,
-      self = this;
+      loading = false;
 
     switch (type) {
     case 'river':
@@ -28,7 +27,7 @@ Libertree.PostLoader = (function () {
     }
 
     return function (value, older_or_newer, time, onSuccess) {
-      if (self.loading === true || value === undefined) { return; }
+      if (loading || value === undefined) { return; }
 
       if (older_or_newer === undefined) {
         older_or_newer = 'older';
@@ -37,7 +36,7 @@ Libertree.PostLoader = (function () {
         time = $('.post-excerpt:last').data('t');
       }
 
-      self.loading = true;
+      loading = true;
       Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
 
       $.ajax({
@@ -65,7 +64,7 @@ Libertree.PostLoader = (function () {
           }
           Libertree.UI.makeTextAreasExpandable();
           excerpts.slideDown(function () {
-            self.loading = false;
+            loading = false;
           });
 
           // move the spinner container to the bottom of the stream
