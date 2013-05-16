@@ -1,10 +1,8 @@
 <div class="menu has-shadow"><div id="menu-narrower">
-  <?r if @title ?>
-  <a href="/home" class="home">
+  <a href="/home" id="home">
     #{ img 'small-logo.png', {alt: 'logo', id: 'logo'} }
     #{ img 'wordmark.png',   {alt: 'Libertree', id: 'wordmark'} }
   </a>
-  <?r end ?>
 
   <?r if ! logged_in? ?>
     <a class="menu-item" id="menu-log-in" href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>

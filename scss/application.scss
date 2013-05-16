@@ -191,11 +191,11 @@ textarea, input[type="text"], input[type="password"] {
             margin-left: 5px;
             border-bottom: 0px;
         }
-        a.home {
+        a#home {
             float: left;
             margin-left: 0px;
-            span {
-                float: left;
+            @media screen and (max-width: $threshold) {
+                display: none;
             }
         }
 
