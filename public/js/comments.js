@@ -151,9 +151,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  // TODO: replace with window.location.hash
-  var match = document.URL.match(/#comment-([0-9]+)/);
-  if( match ) {
+  if( window.location.hash.length > 0 ) {
     window.location = window.location;  /* Hack for Firefox */
     Libertree.Comments.loadMore( $('a.load-comments'), true );
   }
