@@ -134,17 +134,16 @@ Libertree.Intro = (function () {
 
     /* step 3 --------------------------------------------------*/
     addRiversFromList: function(that) {
-      var step = Libertree.Intro.currentStep(that);
-      var rivers = $(step).find('input').map(
-        function(i,e) {
+      var step = Libertree.Intro.currentStep(that),
+        objectify = function(i,e) {
           if ($(e).prop('checked')) {
             return {
               'query': $(e).data('query'),
               'label': $(e).data('label')
             };
           }
-        }
-      ).get();
+        },
+        rivers = $(step).find('input').map(objectify).get();
 
       // don't make a request if nothing is selected
       if (rivers.length === 0) {
