@@ -16,8 +16,9 @@ Libertree.Chat = (function () {
 
     // n is of type string
     updateNumUnseenForPartner = function(memberId, n) {
-      var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
-      var indicator = tab.find('.num-chat-unseen');
+      var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]'),
+        indicator = tab.find('.num-chat-unseen');
+
       if( n === '0' ) {
         indicator.hide();
       } else {
@@ -32,10 +33,14 @@ Libertree.Chat = (function () {
       $.get(
         '/chat/_message/' + chatMessage.id,
         function(html) {
-          var o = $( $.trim(html) );
+          var o = $( $.trim(html) ),
+            height,
+            animationDuration;
+
           o.appendTo(messages);
-          var height = o.height();
-          var animationDuration = height*5;
+          height = o.height();
+          animationDuration = height*5;
+
           o.hide().slideDown(animationDuration);
 
           messages.animate(
