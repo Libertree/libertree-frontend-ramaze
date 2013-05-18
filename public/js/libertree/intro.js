@@ -1,201 +1,208 @@
-Libertree.Intro = {
-  currentStep: function(that) {
-    return $(that).closest('.tutorial-step');
-  },
+/*jslint white: true, indent: 2, todo: true */
+/*global $, Libertree, console */
 
-  /* step 2 --------------------------------------------------*/
-  createRiver: function(that) {
-    // get river query from input field
-    var query = $(that.id+' #first-river-query').val();
+Libertree.Intro = (function () {
+  "use strict";
 
-    // don't create river for empty query
-    if (query === "") {
-      return {'status': 'skip'};
-    }
+  return {
+    currentStep: function(that) {
+      return $(that).closest('.tutorial-step');
+    },
 
-    return $.post(
-      '/rivers/_create_tutorial_river',
-      { query: query }
-    );
-  },
+    /* step 2 --------------------------------------------------*/
+    createRiver: function(that) {
+      // get river query from input field
+      var query = $(that.id+' #first-river-query').val();
 
-  /* step 3 --------------------------------------------------*/
-  addRiversFromList: function(that) {
-    var step = Libertree.Intro.currentStep(that);
-    var rivers = $(step).find('input').map(
-      function(i,e) {
-        if ($(e).prop('checked')) {
-          return {
-            'query': $(e).data('query'),
-            'label': $(e).data('label')
-          };
+      // don't create river for empty query
+      if (query === "") {
+        return {'status': 'skip'};
+      }
+
+      return $.post(
+        '/rivers/_create_tutorial_river',
+        { query: query }
+      );
+    },
+
+    /* step 3 --------------------------------------------------*/
+    addRiversFromList: function(that) {
+      var step = Libertree.Intro.currentStep(that);
+      var rivers = $(step).find('input').map(
+        function(i,e) {
+          if ($(e).prop('checked')) {
+            return {
+              'query': $(e).data('query'),
+              'label': $(e).data('label')
+            };
+          }
         }
+      ).get();
+
+      // don't make a request if nothing is selected
+      if (rivers.length === 0) {
+        return {'status':'success'};
       }
-    ).get();
 
-    // don't make a request if nothing is selected
-    if (rivers.length === 0) {
-      return {'status':'success'};
-    }
+      return $.post(
+        '/rivers/_create_default_rivers',
+        { rivers: rivers }
+      );
+    },
 
-    return $.post(
-      '/rivers/_create_default_rivers',
-      { rivers: rivers }
-    );
-  },
+    /* step 4 --------------------------------------------------*/
+    createContactList: function(that) {
+      var step = Libertree.Intro.currentStep(that),
+        members = $(that.id+' #contact-list-members').val();
 
-  /* step 4 --------------------------------------------------*/
-  createContactList: function(that) {
-    var step = Libertree.Intro.currentStep(that),
-      members = $(that.id+' #contact-list-members').val();
-
-    // don't create contact list if no members specified
-    if( members === null ) {
-      return {'status': 'skip'};
-    }
-
-    console.log(members);
-
-    return $.post(
-      '/contact-lists/create.json',
-      {
-        name: $(step).data('name'),
-        members: members,
-        intro: true
+      // don't create contact list if no members specified
+      if( members === null ) {
+        return {'status': 'skip'};
       }
-    );
-  },
+
+      console.log(members);
+
+      return $.post(
+        '/contact-lists/create.json',
+        {
+          name: $(step).data('name'),
+          members: members,
+          intro: true
+        }
+      );
+    },
 
 
-  /* all steps -----------------------------------------------*/
-  nextStep: function(step) {
-    var errorContainer = $(step).find('.error'),
-      next_id = "#step-" + $(step).find('.button.next').data('next');
+    /* all steps -----------------------------------------------*/
+    nextStep: function(step) {
+      var errorContainer = $(step).find('.error'),
+        next_id = "#step-" + $(step).find('.button.next').data('next');
 
-    // clear errors
-    if (errorContainer) {
-      errorContainer.html("");
-    }
-
-    // show next step
-    step.hide();
-    $(next_id).show();
-    window.location = next_id;
-  },
-
-  restoreStep: function(step) {
-    Libertree.UI.removeSpinner(step);
-    $(step).find('.button').show();
-  },
-
-  forward: function(step, element) {
-    if ($(element).data('next') === undefined) {
-      window.location = $(element).prop('href');
-    } else {
-      this.nextStep(step);
-    }
-  },
-
-  // observe a function's return value
-  evaluateResponse: function(result, step, that) {
-    var message = $(step).data('success'),
-      errorContainer = $(step).find('.errors');
-
-    // interpret result as object
-    if (typeof result === 'object' && result.responseText) {
-      result = JSON.parse(result.responseText);
-    }
-
-    // success?
-    if(result.status === 'success') {
-      // display success message in next step if defined
-      if (message !== undefined && message !== "") {
-        $(step).next().find('h1').after("<p class='message'>"+message+"</p>");
-      }
-      this.forward(step, that);
-    } else if (result.status === 'skip') {
-      this.forward(step, that);
-    } else {
-      // display errors
+      // clear errors
       if (errorContainer) {
-        errorContainer.html(result.msg);
-      } else {
-        console.log(result.msg);
+        errorContainer.html("");
       }
-    }
-    this.restoreStep(step);
-  },
 
-  init: function() {
-    // unhide the step that is indicated in the URL, or unhide the first step
-    // TODO: show and hide steps when the hash in the location changes
+      // show next step
+      step.hide();
+      $(next_id).show();
+      window.location = next_id;
+    },
 
-    var step = window.location.hash;
-    if (step) {
-      $(step).show();
-    } else {
-      $('.tutorial-step').first().show();
-    }
+    restoreStep: function(step) {
+      Libertree.UI.removeSpinner(step);
+      $(step).find('.button').show();
+    },
 
-    // bootstrap popovers for additional information
-    $("a[rel=popover]")
-      .popover()
-      .click(function() {
-        return false;
-      });
-    $(document).click( function() {
-      // hide all popovers
-      $("a[rel=popover]").popover('hide');
-    });
+    forward: function(step, element) {
+      if ($(element).data('next') === undefined) {
+        window.location = $(element).prop('href');
+      } else {
+        this.nextStep(step);
+      }
+    },
 
-    // enable fancy contact list member selector
-    $('select#contact-list-members').chosen();
+    // observe a function's return value
+    evaluateResponse: function(result, step, that) {
+      var message = $(step).data('success'),
+        errorContainer = $(step).find('.errors');
 
-    // unhide the previous and hide the current step
-    $(document).on('click', '.tutorial-step .button.prev', function() {
-      var prev_id = "#step-" + $(this).data('prev');
-      Libertree.Intro.currentStep(this).hide();
-      $(prev_id).show();
-    });
+      // interpret result as object
+      if (typeof result === 'object' && result.responseText) {
+        result = JSON.parse(result.responseText);
+      }
 
-    // go to next step without executing functions
-    $(document).on('click', '.tutorial-step .button.skip', function(event) {
-      event.preventDefault();
-      var step = Libertree.Intro.currentStep(this);
-      Libertree.Intro.nextStep(step);
-    });
-
-    // Execute a function (if provided).
-    // Then, unhide the next and hide the current step.
-    $(document).on('click', '.tutorial-step .button.next', function(event) {
-      event.preventDefault();
-
-      var step = Libertree.Intro.currentStep(this),
-        result,
-        that = this;
-
-      // execute function if provided and valid
-      if (step.data('func') && Libertree.Intro[step.data('func')] !== undefined) {
-        Libertree.UI.addSpinner(this, 'after');
-        $(step).find('.button').hide();
-
-        // execute specified function
-        result = Libertree.Intro[step.data('func')](this);
-
-        // If the return value is evaluated asynchronously, wait for it
-        // TODO: I don't like this. Pass the function to a handler that does all of this instead?
-        if (typeof result.promise === "function") {
-          result.promise().done(
-            function() {
-              Libertree.Intro.evaluateResponse(result, step, that);
-            });
-        } else {
-          Libertree.Intro.evaluateResponse(result, step, that);
+      // success?
+      if(result.status === 'success') {
+        // display success message in next step if defined
+        if (message !== undefined && message !== "") {
+          $(step).next().find('h1').after("<p class='message'>"+message+"</p>");
         }
+        this.forward(step, that);
+      } else if (result.status === 'skip') {
+        this.forward(step, that);
       } else {
-        // end tutorial or move on to next step
-        Libertree.Intro.forward(step, that);
+        // display errors
+        if (errorContainer) {
+          errorContainer.html(result.msg);
+        } else {
+          console.log(result.msg);
+        }
       }
-    });
-  }
-};
+      this.restoreStep(step);
+    },
+
+    init: function() {
+      // unhide the step that is indicated in the URL, or unhide the first step
+      // TODO: show and hide steps when the hash in the location changes
+
+      var step = window.location.hash;
+      if (step) {
+        $(step).show();
+      } else {
+        $('.tutorial-step').first().show();
+      }
+
+      // bootstrap popovers for additional information
+      $("a[rel=popover]")
+        .popover()
+        .click(function() {
+          return false;
+        });
+      $(document).click( function() {
+        // hide all popovers
+        $("a[rel=popover]").popover('hide');
+      });
+
+      // enable fancy contact list member selector
+      $('select#contact-list-members').chosen();
+
+      // unhide the previous and hide the current step
+      $(document).on('click', '.tutorial-step .button.prev', function() {
+        var prev_id = "#step-" + $(this).data('prev');
+        Libertree.Intro.currentStep(this).hide();
+        $(prev_id).show();
+      });
+
+      // go to next step without executing functions
+      $(document).on('click', '.tutorial-step .button.skip', function(event) {
+        event.preventDefault();
+        var step = Libertree.Intro.currentStep(this);
+        Libertree.Intro.nextStep(step);
+      });
+
+      // Execute a function (if provided).
+      // Then, unhide the next and hide the current step.
+      $(document).on('click', '.tutorial-step .button.next', function(event) {
+        event.preventDefault();
+
+        var step = Libertree.Intro.currentStep(this),
+          result,
+          that = this;
+
+        // execute function if provided and valid
+        if (step.data('func') && Libertree.Intro[step.data('func')] !== undefined) {
+          Libertree.UI.addSpinner(this, 'after');
+          $(step).find('.button').hide();
+
+          // execute specified function
+          result = Libertree.Intro[step.data('func')](this);
+
+          // If the return value is evaluated asynchronously, wait for it
+          // TODO: I don't like this. Pass the function to a handler that does all of this instead?
+          if (typeof result.promise === "function") {
+            result.promise().done(
+              function() {
+                Libertree.Intro.evaluateResponse(result, step, that);
+              });
+          } else {
+            Libertree.Intro.evaluateResponse(result, step, that);
+          }
+        } else {
+          // end tutorial or move on to next step
+          Libertree.Intro.forward(step, that);
+        }
+      });
+    }
+  };
+}());
