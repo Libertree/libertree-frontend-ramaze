@@ -195,7 +195,7 @@ Libertree.Chat = (function () {
       } );
 
       $(document).on('keydown', '#chat-window .textarea-chat', function(event) {
-        if( event.keyCode != 13 ) {
+        if( event.keyCode !== 13 ) {
           return;
         }
 
