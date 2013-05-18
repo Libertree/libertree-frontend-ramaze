@@ -47,21 +47,8 @@ module Controller
     def create
       redirect_referrer  if ! request.post?
 
-      if request['hashtags'] && ! request['hashtags'].to_s.strip.empty?
-        hashtags = "\n\n" + request['hashtags'].to_s.strip.
-          split(/[;., ]+/).
-          map { |tag|
-            if tag[0] != '#'
-              '#' + tag
-            else
-              tag
-            end
-          }.join(' ')
-      else
-        hashtags = ''
-      end
-
-      text = ( request['text'].to_s + hashtags )
+      text = request['text'].to_s
+      # TODO: this looks odd. Why are we doing this?
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
 
