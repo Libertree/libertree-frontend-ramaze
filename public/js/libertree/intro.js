@@ -46,8 +46,8 @@ Libertree.Intro = {
 
   /* step 4 --------------------------------------------------*/
   createContactList: function(that) {
-    var step = Libertree.Intro.currentStep(that);
-    var members = $(that.id+' #contact-list-members').val();
+    var step = Libertree.Intro.currentStep(that),
+      members = $(that.id+' #contact-list-members').val();
 
     // don't create contact list if no members specified
     if( members === null ) {
@@ -69,14 +69,15 @@ Libertree.Intro = {
 
   /* all steps -----------------------------------------------*/
   nextStep: function(step) {
+    var errorContainer = $(step).find('.error'),
+      next_id = "#step-" + $(step).find('.button.next').data('next');
+
     // clear errors
-    var errorContainer = $(step).find('.error');
     if (errorContainer) {
       errorContainer.html("");
     }
 
     // show next step
-    var next_id = "#step-" + $(step).find('.button.next').data('next');
     step.hide();
     $(next_id).show();
     window.location = next_id;
@@ -97,15 +98,17 @@ Libertree.Intro = {
 
   // observe a function's return value
   evaluateResponse: function(result, step, that) {
+    var message = $(step).data('success'),
+      errorContainer = $(step).find('.errors');
+
     // interpret result as object
-    if (typeof(result) === 'object' && result.responseText) {
-      var result = JSON.parse(result.responseText);
+    if (typeof result === 'object' && result.responseText) {
+      result = JSON.parse(result.responseText);
     }
 
     // success?
     if(result.status === 'success') {
       // display success message in next step if defined
-      var message = $(step).data('success');
       if (message !== undefined && message !== "") {
         $(step).next().find('h1').after("<p class='message'>"+message+"</p>");
       }
@@ -114,7 +117,6 @@ Libertree.Intro = {
       this.forward(step, that);
     } else {
       // display errors
-      var errorContainer = $(step).find('.errors');
       if (errorContainer) {
         errorContainer.html(result['msg']);
       } else {
@@ -168,8 +170,9 @@ Libertree.Intro = {
     $(document).on('click', '.tutorial-step .button.next', function(event) {
       event.preventDefault();
 
-      var step = Libertree.Intro.currentStep(this);
-      var that = this;
+      var step = Libertree.Intro.currentStep(this),
+        result,
+        that = this;
 
       // execute function if provided and valid
       if (step.data('func') && Libertree.Intro[step.data('func')] !== undefined) {
@@ -177,7 +180,7 @@ Libertree.Intro = {
         $(step).find('.button').hide();
 
         // execute specified function
-        var result = Libertree.Intro[step.data('func')](this);
+        result = Libertree.Intro[step.data('func')](this);
 
         // If the return value is evaluated asynchronously, wait for it
         // TODO: is there a better way to find out if this object supports ".promise()"?
