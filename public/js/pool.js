@@ -1,4 +1,9 @@
+/*jslint white: true, indent: 2 */
+/*global $, Libertree, confirm */
+
 $(document).ready( function() {
+  "use strict";
+
   $(document).on('click', '.post-tools .collect', Libertree.Pools.collectHandler);
   $(document).on('click', '.post-tools .remove', Libertree.Pools.removePostHandler);
 
@@ -25,9 +30,10 @@ $(document).ready( function() {
   } );
 
   $('.excerpts-view.pool #river-selector').chosen().change( function() {
-    var selector = $('.excerpts-view.pool #river-selector');
-    var riverId = selector.val();
-    var poolId = selector.data('pool-id');
+    var selector = $('.excerpts-view.pool #river-selector'),
+      riverId = selector.val(),
+      poolId = selector.data('pool-id');
+
     Libertree.UI.addSpinner( selector.parent(), 'append' );
     $.get(
       '/rivers/add_spring/'+riverId+'/'+poolId,
