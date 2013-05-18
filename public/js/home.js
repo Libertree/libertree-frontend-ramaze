@@ -2,8 +2,6 @@
 /*global $, Libertree */
 
 Libertree.Home = {
-  wantsToComment: false,
-
   indicateNewPosts: function(data) {
     var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
     if( indicator.length ) {
@@ -18,6 +16,8 @@ Libertree.Home = {
 
 $(document).ready( function() {
   "use strict";
+
+  var wantsToComment = false;
 
   $(document).on('click', '.post-excerpt .show-more', function() {
     var showMoreLink = $(this),
@@ -57,7 +57,7 @@ $(document).ready( function() {
       }
     );
 
-    if( Libertree.Home.wantsToComment ) {
+    if( wantsToComment ) {
       scrollable = Libertree.UI.scrollable();
       scrollTop = scrollable.scrollTop();
       excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
@@ -69,7 +69,7 @@ $(document).ready( function() {
         animationDuration,
         function() {
           excerpt.find('textarea.comment').focus();
-          Libertree.Home.wantsToComment = false;
+          wantsToComment = false;
         }
       );
     }
@@ -118,7 +118,7 @@ $(document).ready( function() {
   $(document).on('click', '.post-excerpt .post-tools a.comment', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
-    Libertree.Home.wantsToComment = true;
+    wantsToComment = true;
     excerpt.find('.show-more').click();
   } );
 
