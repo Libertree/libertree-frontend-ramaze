@@ -38,7 +38,7 @@ module Libertree
       # extract every URL from a paragraph and append embed object if supported
       html.css('p').each do |p|
         # collect urls, ignore relative links
-        urls = p.xpath(".//a/not(starts-with(@href,'/'))").map(&:value).reverse
+        urls = p.xpath(".//a[not(starts-with(@href,'/'))]/@href").map(&:value).reverse
         urls.each do |url|
           # TODO: why hit the db twice?
           cached = (
