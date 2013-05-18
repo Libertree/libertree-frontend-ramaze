@@ -152,7 +152,6 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   if( window.location.hash.length > 0 ) {
-    window.location = window.location;  /* Hack for Firefox */
     Libertree.Comments.loadMore( $('a.load-comments'), true );
   }
 
