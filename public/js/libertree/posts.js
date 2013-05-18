@@ -1,5 +1,10 @@
-Libertree.Posts = {
-  setSubscription: function(type) {
+/*jslint white: true, indent: 2 */
+/*global $, Libertree */
+
+Libertree.Posts = (function () {
+  "use strict";
+
+  var setSubscription = function(type) {
     var endpoint = '/posts/_' + type + '/',
         classes = ['.subscribe', '.unsubscribe'],
         toggle = (type === 'subscribe') ? classes : classes.reverse();
@@ -14,35 +19,35 @@ Libertree.Posts = {
                post.find(toggle[1]).removeClass('hidden');
              });
     };
-  },
+  };
 
-  markRead: function(post_id) {
-    $.get(
-      '/posts/_read/' + post_id,
-      function() {
-        var post = $('*[data-post-id="'+post_id+'"]');
-        Libertree.UI.disableIconSpinner(post.find('.mark-read img'));
-        post.find('.mark-read').addClass('hidden');
-        post.find('.mark-unread').removeClass('hidden');
-      }
-    );
-  },
-
-  hide: function(post_id, onSuccess) {
-    $.get(
-      '/posts/hidden/create/' + post_id + '.json',
-      function(response) {
-        var h = $.parseJSON(response);
-        if( h.success ) {
-          onSuccess();
+  return {
+    subscribe:   setSubscription('subscribe'),
+    unsubscribe: setSubscription('unsubscribe'),
+    like:        Libertree.mkLike('post'),
+    unlike:      Libertree.mkUnlike('post'),
+    markRead: function(post_id) {
+      $.get(
+        '/posts/_read/' + post_id,
+        function() {
+          var post = $('*[data-post-id="'+post_id+'"]');
+          Libertree.UI.disableIconSpinner(post.find('.mark-read img'));
+          post.find('.mark-read').addClass('hidden');
+          post.find('.mark-unread').removeClass('hidden');
         }
-      }
-    );
-  }
+      );
+    },
 
-};
-
-Libertree.Posts.subscribe   = Libertree.Posts.setSubscription('subscribe');
-Libertree.Posts.unsubscribe = Libertree.Posts.setSubscription('unsubscribe');
-Libertree.Posts.like        = Libertree.mkLike('post');
-Libertree.Posts.unlike      = Libertree.mkUnlike('post');
+    hide: function(post_id, onSuccess) {
+      $.get(
+        '/posts/hidden/create/' + post_id + '.json',
+        function(response) {
+          var h = $.parseJSON(response);
+          if( h.success ) {
+            onSuccess();
+          }
+        }
+      );
+    }
+  };
+}());
