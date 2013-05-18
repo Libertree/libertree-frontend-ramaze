@@ -50,7 +50,7 @@ $(document).ready( function() {
       target_comment = null;
 
     $.each( candidates, function() {
-      if( 0 + $(this).data('comment-id') < 0 + source_comment.data('comment-id') ) {
+      if( Number($(this).data('comment-id')) < Number(source_comment.data('comment-id')) ) {
         target_comment = $(this);
         return false;
       }
