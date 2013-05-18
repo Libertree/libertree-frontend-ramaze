@@ -2,6 +2,29 @@
 /*global $, Libertree */
 
 Libertree.Chat = (function () {
+
+  // n is of type string
+  var updateNumUnseen = function(n) {
+      if( n === '0' ) {
+        $('#num-chat-unseen').hide();
+      } else {
+        $('#num-chat-unseen').show();
+      }
+      $('#num-chat-unseen').html(n);
+    },
+
+    // n is of type string
+    updateNumUnseenForPartner = function(memberId, n) {
+      var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
+      var indicator = tab.find('.num-chat-unseen');
+      if( n === '0' ) {
+        indicator.hide();
+      } else {
+        indicator.show();
+      }
+      indicator.html(n);
+    };
+
   return {
     fetchMessage: function(chatMessage) {
       var messages = $('#chat-window .log[data-member-id="'+chatMessage.partnerMemberId+'"] .messages');
@@ -22,34 +45,12 @@ Libertree.Chat = (function () {
       );
     },
 
-    // n is of type string
-    updateNumUnseen: function(n) {
-      if( n === '0' ) {
-        $('#num-chat-unseen').hide();
-      } else {
-        $('#num-chat-unseen').show();
-      }
-      $('#num-chat-unseen').html(n);
-    },
-
-    // n is of type string
-    updateNumUnseenForPartner: function(memberId, n) {
-      var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]');
-      var indicator = tab.find('.num-chat-unseen');
-      if( n === '0' ) {
-        indicator.hide();
-      } else {
-        indicator.show();
-      }
-      indicator.html(n);
-    },
-
     markConversationSeen: function(memberId) {
       $.get(
         '/chat/seen/'+memberId,
         function(html) {
-          Libertree.Chat.updateNumUnseen(html);
-          Libertree.Chat.updateNumUnseenForPartner(memberId, '0');
+          updateNumUnseen(html);
+          updateNumUnseenForPartner(memberId, '0');
         }
       );
     },
@@ -99,8 +100,8 @@ Libertree.Chat = (function () {
       if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
         Libertree.Chat.markConversationSeen(data.partnerMemberId);
       } else {
-        Libertree.Chat.updateNumUnseen(data.numUnseen);
-        Libertree.Chat.updateNumUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
+        updateNumUnseen(data.numUnseen);
+        updateNumUnseenForPartner(data.partnerMemberId, data.numUnseenForPartner);
       }
 
       Libertree.Chat.fetchMessage(data);
