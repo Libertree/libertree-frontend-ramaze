@@ -2,6 +2,7 @@
 /*global $, Libertree */
 
 Libertree.Chat = (function () {
+  "use strict";
 
   // n is of type string
   var updateNumUnseen = function(n) {
