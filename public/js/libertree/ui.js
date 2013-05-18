@@ -48,7 +48,7 @@ Libertree.UI = {
     target.attr('src', "/themes/default/images/icon-spinner.gif");
   },
   disableIconSpinner: function(target) {
-    if ($(target).data('src') != undefined) {
+    if ($(target).data('src') !== undefined) {
       target.attr('src', $(target).data('src'));
       target.removeAttr('data-src');
     }
@@ -73,7 +73,7 @@ Libertree.UI = {
     var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
     div.appendTo('body');
 
-    if( ! ( typeof x === 'undefined' || typeof y === 'undefined' ) ) {
+    if( x !== undefined && y !== undefined ) {
       div.css( { left: x+'px', top: y+'px' } );
     }
     setTimeout(
@@ -136,7 +136,7 @@ Libertree.UI = {
   animatableNodesOnly: function(nodes) {
     var array = $.grep( nodes, function(node, i) {
       /* Ignore text nodes and other types which cannot have jQuery animations (e.g. slideDown) called on them. */
-      return node.nodeType == 1;
+      return node.nodeType === 1;
     } );
     return $(array);
   }
