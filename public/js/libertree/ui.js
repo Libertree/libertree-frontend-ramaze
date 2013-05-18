@@ -124,13 +124,10 @@ Libertree.UI = {
 
   scrollable: function() {
     /* Chromium needs us to use body, Firefox and Opera need us to use html */
-    var htmlScrollTop = $('html').scrollTop();
-    var bodyScrollTop = $('body').scrollTop();
-    if( htmlScrollTop > bodyScrollTop ) {
+    if( $('html').scrollTop() > $('body').scrollTop() ) {
       return $('html');
-    } else {
-      return $('body');
     }
+    return $('body');
   },
 
   animatableNodesOnly: function(nodes) {
