@@ -1,9 +1,11 @@
 Libertree.Pools = {
   createPoolAndAddPost: function(post) {
-    var postId = post.data('post-id');
-    var textField = post.find('.pools .chzn-search input');
+    var postId = post.data('post-id'),
+      textField = post.find('.pools .chzn-search input'),
+      poolName = textField.val();
+
     textField.prop('disabled', true);
-    var poolName = textField.val();
+
     $.get(
       '/pools/create_pool_and_add_post/'+poolName+'/'+postId,
       function(response) {
