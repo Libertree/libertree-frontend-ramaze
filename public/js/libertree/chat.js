@@ -34,6 +34,41 @@ Libertree.Chat = (function () {
       $('#chat_new_partner_chzn').width(
         $('#chat-window').width() - 10
       );
+    },
+
+    activateConversation = function (memberId) {
+      $('#chat-window .tab, #chat-window .log').removeClass('active');
+      $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
+      $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+      $('#chat-window .log.active .textarea-chat').focus();
+      syncUIDimensions();
+      $('#chat-window .log.active .messages').scrollTop(999999);
+    },
+
+    fetchConversationWith = function (memberId, andActivate) {
+      if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
+        activateConversation(memberId);
+        return false;
+      }
+
+      $.get(
+        '/chat/_tab/'+memberId,
+        function(html) {
+          $(html).appendTo('#chat-window .tabs');
+        }
+      );
+      $.get(
+        '/chat/_log/'+memberId,
+        function(html) {
+          var o = $(html);
+          o.appendTo('#chat-window .logs');
+          o.find('.messages').scrollTop(999999);
+          o.find('.textarea-chat').focus();
+          if( andActivate ) {
+            activateConversation(memberId);
+          }
+        }
+      );
     };
 
   return {
@@ -70,46 +105,11 @@ Libertree.Chat = (function () {
       );
     },
 
-    fetchConversationWith: function(memberId, andActivate) {
-      if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
-        Libertree.Chat.activateConversation(memberId);
-        return false;
-      }
-
-      $.get(
-        '/chat/_tab/'+memberId,
-        function(html) {
-          $(html).appendTo('#chat-window .tabs');
-        }
-      );
-      $.get(
-        '/chat/_log/'+memberId,
-        function(html) {
-          var o = $(html);
-          o.appendTo('#chat-window .logs');
-          o.find('.messages').scrollTop(999999);
-          o.find('.textarea-chat').focus();
-          if( andActivate ) {
-            Libertree.Chat.activateConversation(memberId);
-          }
-        }
-      );
-    },
-
-    activateConversation: function(memberId) {
-      $('#chat-window .tab, #chat-window .log').removeClass('active');
-      $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
-      $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
-      $('#chat-window .log.active .textarea-chat').focus();
-      syncUIDimensions();
-      $('#chat-window .log.active .messages').scrollTop(999999);
-    },
-
     receiveMessage: function(data) {
       var tab = $('#chat-window .tab[data-member-id="'+data.partnerMemberId+'"]');
 
       if( tab.length === 0 ) {
-        Libertree.Chat.fetchConversationWith(data.partnerMemberId, false);
+        fetchConversationWith(data.partnerMemberId, false);
       }
 
       if( $('#chat-window').is(':visible') && tab.hasClass('active') ) {
@@ -170,7 +170,7 @@ Libertree.Chat = (function () {
 
               $('select#chat-new-partner').chosen().change( function() {
                 var memberId = $('select#chat-new-partner').val();
-                Libertree.Chat.fetchConversationWith(memberId, true);
+                fetchConversationWith(memberId, true);
                 $('select#chat-new-partner').val('0');
                 $('select#chat-new-partner').trigger("liszt:updated");
                 return false;
@@ -190,7 +190,7 @@ Libertree.Chat = (function () {
 
       $(document).on('click', '#chat-window .tab', function() {
         var memberId = $(this).data('member-id');
-        Libertree.Chat.activateConversation(memberId);
+        activateConversation(memberId);
         Libertree.Chat.markConversationSeen(memberId);
       } );
 
@@ -235,7 +235,7 @@ Libertree.Chat = (function () {
         $('#chat-window .log[data-member-id="'+memberId+'"]').remove();
         $.get('/chat/closed/'+memberId);
         if( $('#chat-window .tab.active').length === 0 && tabToActivate.length ) {
-          Libertree.Chat.activateConversation( tabToActivate.data('member-id') );
+          activateConversation( tabToActivate.data('member-id') );
         }
         return false;
       } );
@@ -248,7 +248,7 @@ Libertree.Chat = (function () {
       } );
 
       $(document).on('click', '#online-contacts .avatar', function() {
-        Libertree.Chat.fetchConversationWith( $(this).data('member-id'), true);
+        fetchConversationWith( $(this).data('member-id'), true);
         return false;
       } );
 
