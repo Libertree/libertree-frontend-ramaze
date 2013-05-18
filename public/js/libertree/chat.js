@@ -1,5 +1,5 @@
 /*jslint white: true, indent: 2 */
-/*global $, Libertree */
+/*global $, Libertree, alert */
 
 Libertree.Chat = (function () {
   "use strict";
@@ -199,11 +199,11 @@ Libertree.Chat = (function () {
           return;
         }
 
-        var textarea = $(this);
+        var textarea = $(this),
+          memberId = textarea.closest('.log').data('member-id');
 
         textarea.prop('disabled', true);
         Libertree.UI.TextAreaBackup.disable();
-        var memberId = textarea.closest('.log').data('member-id');
 
         $.post(
           '/chat/create',
@@ -224,9 +224,10 @@ Libertree.Chat = (function () {
       } );
 
       $(document).on('click', '#chat-window .tab .close', function() {
-        var tab = $(this).closest('.tab');
-        var memberId = tab.data('member-id');
-        var tabToActivate = tab.next();
+        var tab = $(this).closest('.tab'),
+          memberId = tab.data('member-id'),
+          tabToActivate = tab.next();
+
         if( tabToActivate.length === 0 ) {
           tabToActivate = tab.prev();
         }
