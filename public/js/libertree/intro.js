@@ -207,3 +207,5 @@ Libertree.Intro = (function () {
     }
   };
 }());
+
+$(document).ready( Libertree.Intro.init );
