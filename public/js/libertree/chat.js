@@ -25,6 +25,15 @@ Libertree.Chat = (function () {
         indicator.show();
       }
       indicator.html(n);
+    },
+
+    syncUIDimensions = function () {
+      $('#chat-window .log.active .messages').height(
+        $('#chat-window').height() - 200
+      );
+      $('#chat_new_partner_chzn').width(
+        $('#chat-window').width() - 10
+      );
     };
 
   return {
@@ -92,7 +101,7 @@ Libertree.Chat = (function () {
       $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
       $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
       $('#chat-window .log.active .textarea-chat').focus();
-      Libertree.Chat.syncUIDimensions();
+      syncUIDimensions();
       $('#chat-window .log.active .messages').scrollTop(999999);
     },
 
@@ -111,15 +120,6 @@ Libertree.Chat = (function () {
       }
 
       Libertree.Chat.fetchMessage(data);
-    },
-
-    syncUIDimensions: function() {
-      $('#chat-window .log.active .messages').height(
-        $('#chat-window').height() - 200
-      );
-      $('#chat_new_partner_chzn').width(
-        $('#chat-window').width() - 10
-      );
     },
 
     rememberDimensions: function() {
@@ -159,7 +159,7 @@ Libertree.Chat = (function () {
                 .resizable( {
                   minHeight: 170,
                   resize: function(event, ui) {
-                    Libertree.Chat.syncUIDimensions();
+                    syncUIDimensions();
                   },
                   stop: function(event, ui) {
                     Libertree.Chat.rememberDimensions();
@@ -176,7 +176,7 @@ Libertree.Chat = (function () {
                 return false;
               } );
 
-              Libertree.Chat.syncUIDimensions();
+              syncUIDimensions();
               $('#chat-window').show();
               $('#chat-window .log .messages').scrollTop(999999);
               $('#chat-window .log.active .textarea-chat').focus();
