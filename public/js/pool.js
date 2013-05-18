@@ -15,7 +15,7 @@ $(document).ready( function() {
   } );
 
   $(document).on('keydown', '.pools .chzn-search input', function(event) {
-    if( event.keyCode != 13 ) {
+    if( event.keyCode !== 13 ) {
       return;
     }
 
