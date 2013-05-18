@@ -47,10 +47,10 @@ Libertree.Comments = {
   },
 
   loadMore: function( linkClicked, dontSlide ) {
-    var post = linkClicked.closest('.post, .post-excerpt');
-    var postId = post.data('post-id');
-    var comments = post.find('.comments');
-    var toId = comments.find('.comment:first').data('comment-id');
+    var post = linkClicked.closest('.post, .post-excerpt'),
+      postId = post.data('post-id'),
+      comments = post.find('.comments'),
+      toId = comments.find('.comment:first').data('comment-id');
 
     Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
     $.get(
