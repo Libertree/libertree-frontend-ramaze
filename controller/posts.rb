@@ -77,6 +77,18 @@ module Controller
         'visibility' => visibility,
         'text'       => text
       )
+
+      if ! request['springs'].nil?
+        spring_ids = request['springs'].map(&:to_i).uniq
+
+        placeholders = ( ['?'] * spring_ids.count ).join(', ')
+        springs = Libertree::Model::Pool.s  "SELECT FROM pools WHERE id IN (#{placeholders}) AND sprung AND member_id = ?", *spring_ids, account.member.id
+
+        springs.each do |spring|
+          spring << post
+        end
+      end
+
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)
