@@ -166,8 +166,6 @@ Libertree.Intro = (function () {
         return {'status': 'skip'};
       }
 
-      console.log(members);
-
       return $.post(
         '/contact-lists/create.json',
         {
