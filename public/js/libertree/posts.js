@@ -157,6 +157,8 @@ Libertree.Posts = (function () {
           unsubscribe( post );
           return false;
         } );
+
+        $(document).on('click', '#post-new input[type="submit"]', Libertree.UI.TextAreaBackup.disable);
       } );
     }
   };
