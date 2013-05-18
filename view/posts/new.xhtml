@@ -7,6 +7,14 @@
       <option value="internet">#{s_('visibility|Internet')}</option>
       <option value="forest" selected>#{s_('visibility|Forest')}</option>
     </select>
+    <?r unless @springs.empty? ?>
+      <div id="springs">
+        #{_('Publish in these springs:')}
+        <?r @springs.each do |spring| ?>
+        <input name="springs[]" type="checkbox" value="#{spring.id}">#{spring.name}</input>
+        <?r end ?>
+      </div>
+    <?r end ?>
   </div>
   <div class="form-buttons">
     <input type="submit" value="#{s_('new-post|Post')}" tabindex="1"/>

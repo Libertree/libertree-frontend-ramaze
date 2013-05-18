@@ -42,6 +42,7 @@ module Controller
 
     def new
       @view = "post-new"
+      @springs = account.member.springs
     end
 
     def create
