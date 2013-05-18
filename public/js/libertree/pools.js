@@ -59,6 +59,49 @@ Libertree.Pools = (function () {
         }
       );
       return false;
+    },
+
+    collectHandler: function(e) {
+      e.preventDefault();
+      if( $('.pools.window:visible').length ) {
+        $('.pools.window').hide();
+        return false;
+      }
+
+      var x = e.clientX,
+        y = e.clientY,
+        collect_link = $(this),
+        post = collect_link.closest('div.post, div.post-excerpt'),
+        postId = post.data('post-id');
+
+      $('div.pools').remove();
+      Libertree.UI.enableIconSpinner(collect_link.find('img'));
+
+      $.get(
+        '/pools/_index/' + postId,
+        function(html) {
+          Libertree.UI.disableIconSpinner(collect_link.find('img'));
+          var o = $(html),
+            option;
+
+          o.insertAfter(post.find('.meta'));
+          if( o.find('option').length === 2 ) {
+            option = $('select#pool-selector option:last');
+            Libertree.Pools.addPost( option.val(), postId, post, x, y );
+          } else {
+            o.show();
+            o.css( { left: (x-o.width()/2)+'px', top: (y+14)+'px' } );
+            $('select#pool-selector').chosen( {
+              //TRANSLATEME
+              no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
+            } ).change( function() {
+              Libertree.Pools.addPost( $('select#pool-selector').val(), postId, post, e.pageX, e.pageY );
+            } );
+          }
+          $('#pool_selector_chzn a.chzn-single.chzn-default').mousedown();
+        }
+      );
+      return false;
     }
 
   };
