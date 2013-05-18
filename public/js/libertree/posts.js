@@ -69,8 +69,9 @@ Libertree.Posts = (function () {
         } );
 
         $(document).on('click', '.mark-unread', function() {
-          var post = $(this).closest('div.post, div.post-excerpt');
-          var icon = post.find('.mark-unread img');
+          var post = $(this).closest('div.post, div.post-excerpt'),
+            icon = post.find('.mark-unread img');
+
           Libertree.UI.enableIconSpinner(icon);
           $.get(
             '/posts/_unread/' + post.data('post-id'),
