@@ -43,6 +43,23 @@ Libertree.Pools = (function () {
           }
         }
       );
+    },
+
+    removePostHandler: function(e) {
+      e.preventDefault();
+      var post = $(this).closest('div.post, div.post-excerpt'),
+        postId = post.data('post-id'),
+        poolId = $(this).data('pool-id');
+
+      $.get(
+        '/pools/_remove_post/' + poolId + '/' + postId,
+        function() {
+          /* TODO: Check for success */
+          post.slideUp(1000);
+        }
+      );
+      return false;
     }
+
   };
 }());

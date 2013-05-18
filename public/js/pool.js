@@ -54,20 +54,7 @@ $(document).ready( function() {
     Libertree.Pools.createPoolAndAddPost(post);
   } );
 
-  $(document).on('click', '.post-tools .remove', function(e) {
-    e.preventDefault();
-    var post = $(this).closest('div.post, div.post-excerpt');
-    var postId = post.data('post-id');
-    var poolId = $(this).data('pool-id');
-    $.get(
-      '/pools/_remove_post/' + poolId + '/' + postId,
-      function() {
-        /* TODO: Check for success */
-        post.slideUp(1000);
-      }
-    );
-    return false;
-  } );
+  $(document).on('click', '.post-tools .remove', Libertree.Pools.removePostHandler);
 
   $('li.pool a.delete').click( function() {
     if( ! confirm($(this).data('msg')) ) {
