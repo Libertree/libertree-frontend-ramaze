@@ -15,6 +15,21 @@ $(document).ready( function() {
     return false;
   } );
 
+  $(document).on('click', '.mark-unread', function() {
+    var post = $(this).closest('div.post, div.post-excerpt');
+    var icon = post.find('.mark-unread img');
+    Libertree.UI.enableIconSpinner(icon);
+    $.get(
+      '/posts/_unread/' + post.data('post-id'),
+      function() {
+        Libertree.UI.disableIconSpinner(icon);
+        post.find('.mark-unread').addClass('hidden');
+        post.find('.mark-read').removeClass('hidden');
+      }
+    );
+    return false;
+  } );
+
   $('#comments-hide').click( function() {
     $('div.post').addClass('with-comments-sliding');
     $('div.comments, #comments-hide').hide();
@@ -65,21 +80,6 @@ $(document).ready( function() {
         window.location = '/home';
       }
     );
-  } );
-
-  $(document).on('click', '.mark-unread', function() {
-    var post = $(this).closest('div.post, div.post-excerpt');
-    var icon = post.find('.mark-unread img');
-    Libertree.UI.enableIconSpinner(icon);
-    $.get(
-      '/posts/_unread/' + post.data('post-id'),
-      function() {
-        Libertree.UI.disableIconSpinner(icon);
-        post.find('.mark-unread').addClass('hidden');
-        post.find('.mark-read').removeClass('hidden');
-      }
-    );
-    return false;
   } );
 
   $(document).on('click', '.post-tools .delete', function(event) {
