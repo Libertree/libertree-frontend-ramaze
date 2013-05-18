@@ -1,19 +1,6 @@
 /*jslint white: true, indent: 2, todo: true */
 /*global $, Libertree */
 
-Libertree.Home = {
-  indicateNewPosts: function(data) {
-    var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
-    if( indicator.length ) {
-      indicator.find('.load-more').text(data.numNewPosts);
-      indicator.slideDown();
-    }
-  }
-};
-
-/* ---------------------------------------------------- */
-
-
 $(document).ready( function() {
   "use strict";
 

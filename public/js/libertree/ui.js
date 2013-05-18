@@ -188,6 +188,14 @@ Libertree.UI = (function () {
         return node.nodeType === 1;
       } );
       return $(array);
+    },
+
+    indicateNewPosts: function (data) {
+      var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+      if( indicator.length ) {
+        indicator.find('.load-more').text(data.numNewPosts);
+        indicator.slideDown();
+      }
     }
   };
 }());
