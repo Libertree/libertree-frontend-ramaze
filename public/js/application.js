@@ -102,6 +102,8 @@ $(document).ready( function() {
     th.data('height', th.outerHeight());
   } );
 
+  $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
+
   Libertree.UI.makeTextAreasExpandable();
 
   if( Libertree.UI.isTouchInterface ) {
