@@ -118,9 +118,9 @@ Libertree.Intro = {
     } else {
       // display errors
       if (errorContainer) {
-        errorContainer.html(result['msg']);
+        errorContainer.html(result.msg);
       } else {
-        console.log(result['msg']);
+        console.log(result.msg);
       }
     }
     this.restoreStep(step);
@@ -183,9 +183,8 @@ Libertree.Intro = {
         result = Libertree.Intro[step.data('func')](this);
 
         // If the return value is evaluated asynchronously, wait for it
-        // TODO: is there a better way to find out if this object supports ".promise()"?
         // TODO: I don't like this. Pass the function to a handler that does all of this instead?
-        if (jQuery.type(result['promise']) === "function") {
+        if (typeof result.promise === "function") {
           result.promise().done(
             function() {
               Libertree.Intro.evaluateResponse(result, step, that);
