@@ -7,6 +7,23 @@ require 'fast_gettext'
 require 'markdown'
 require_relative 'lib/libertree/lang'
 
+# concatenate all files in public/js/libertree/
+libertree_js = [ "session",
+                 "post_loader",
+                 "ui",
+                 "intro",
+                 "pools",
+                 "notifications",
+                 "chat",
+                 "likes",
+                 "posts",
+                 "comments" ].reduce("var Libertree = {};") do |res, filename|
+  res += IO.read("public/js/libertree/#{filename}.js")
+end
+File.open("public/js/libertree.js", "w") do |file|
+  file.write libertree_js
+end
+
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
