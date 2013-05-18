@@ -13,6 +13,9 @@ body.single-post-view {
 }
 
 .single-post-view {
+  #sidebar {
+    display: none;
+  }
   div.post {
     height: 100%;
     width: 100%;

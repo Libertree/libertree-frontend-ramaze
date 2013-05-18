@@ -33,7 +33,7 @@ $(document).ready( function() {
         Libertree.Comments.insertHtmlFor( data.postId, data.commentId );
         break;
       case 'river-posts':
-        Libertree.Home.indicateNewPosts(data);
+        Libertree.UI.indicateNewPosts(data);
         break;
       case 'notification':
         Libertree.Notifications.updateNumUnseen(data.n);

@@ -1,4 +1,9 @@
+/*jslint white: true, indent: 2, todo: true */
+/*global $, Libertree, alert, confirm */
+
 $(document).ready( function() {
+  "use strict";
+
   $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
     var comments = $(this).closest('div.comments');
@@ -38,13 +43,14 @@ $(document).ready( function() {
 
   $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
-    var source = $(this);
-    var member_id = source.data('member-id');
-    var source_comment = source.closest('div.comment');
-    var candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse();
-    var target_comment = null;
+    var source = $(this),
+      member_id = source.data('member-id'),
+      source_comment = source.closest('div.comment'),
+      candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
+      target_comment = null;
+
     $.each( candidates, function() {
-      if( 0 + $(this).data('comment-id') < 0 + source_comment.data('comment-id') ) {
+      if( Number($(this).data('comment-id')) < Number(source_comment.data('comment-id')) ) {
         target_comment = $(this);
         return false;
       }
@@ -69,13 +75,14 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', 'form.comment input.submit', function() {
-    var submitButton = $(this);
+    var submitButton = $(this),
+      form = submitButton.closest('form.comment'),
+      textarea = form.find('textarea.comment'),
+      postId = form.data('post-id');
+
     submitButton.prop('disabled', true);
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
-    var form = submitButton.closest('form.comment');
-    var textarea = form.find('textarea.comment');
     Libertree.UI.TextAreaBackup.disable();
-    var postId = form.data('post-id');
 
     $.post(
       '/comments/create',
@@ -84,11 +91,13 @@ $(document).ready( function() {
         text: textarea.val()
       },
       function(response) {
-        var h = $.parseJSON(response);
+        var h = $.parseJSON(response),
+          post;
+
         if( h.success ) {
           textarea.val('').height(50);
           $('.preview-box').remove();
-          var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+          post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
@@ -109,8 +118,9 @@ $(document).ready( function() {
 
   $(document).on('click', '.detachable .detach', function(event) {
     event.preventDefault();
-    var detachable = $(this).closest('.detachable');
-    var offset = detachable.offset();
+    var detachable = $(this).closest('.detachable'),
+      offset = detachable.offset();
+
     detachable.addClass('detached');
     detachable.addClass('has-shadow');
     detachable.css('top', offset.top + 'px');
@@ -141,10 +151,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  // TODO: replace with window.location.hash
-  match = document.URL.match(/#comment-([0-9]+)/);
-  if( match ) {
-    window.location = window.location;  /* Hack for Firefox */
+  if( window.location.hash.length > 0 ) {
     Libertree.Comments.loadMore( $('a.load-comments'), true );
   }
 

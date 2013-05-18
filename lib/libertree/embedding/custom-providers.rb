@@ -11,6 +11,7 @@ module Libertree
           FreeMusicArchive.format => FreeMusicArchive,
           Jamendo.format => Jamendo,
           TED.format => TED,
+          Bandcamp.format => Bandcamp,
         }
       end
 
@@ -106,6 +107,34 @@ OBJECT
                 return e.attr('value')
               else
                 raise Libertree::Embedding::Error, "failed to find embedding code"
+              end
+            end
+          end
+        end
+      end
+
+      class Bandcamp
+        def self.format
+          %r{https?://.*\.bandcamp\.com/track/.+}
+        end
+
+        def self.get(url)
+          return unless url =~ self.format
+
+          uri = URI.parse(url)
+          Timeout.timeout(10) do
+            Net::HTTP.start(uri.host) do |http|
+              resp = http.get(uri.path)
+              html = Nokogiri::HTML(resp.body)
+              node = html.xpath("//meta[@property='og:video']/@content")
+              if node.empty?
+                raise Libertree::Embedding::Error, "failed to find embedding code"
+              else
+                if node.text.match(/track=(\d+)/)
+                  "<iframe width=\"400\" height=\"100\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://bandcamp.com/EmbeddedPlayer/size=venti/track=#{$1}\"></iframe>"
+                else
+                  raise Libertree::Embedding::Error, "failed to find track id"
+                end
               end
             end
           end

@@ -774,3 +774,54 @@ div.pools .chzn-container .chzn-results li {
 video {
     max-width: 100%;
 }
+
+#sidebar {
+    @include shadow;
+    @include border-box;
+    padding: (40px + 10px) 10px 10px; // 40px = height of the menu bar
+    position: fixed;
+    overflow-y: auto;
+    z-index: 2; // one less than the menu bar
+    top: 0;
+    left: auto;
+    @media screen and (max-width: 1100px) {
+        left: 0;
+    }
+
+    width: 250px;
+    height: 100%;
+    background-color: $dust_translucent;
+
+    .menu-item {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .menu-item + .menu-item {
+        border-left: 1px solid $main_green;
+    }
+
+    h3 {
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0.5em 0;
+        li {
+            padding: 5px;
+            margin-left: 1em;
+            cursor: pointer;
+            &.selected {
+                cursor: default;
+            }
+            a {
+                display: block;
+                border: none;
+            }
+            &:hover {
+                background: $sand;
+            }
+        }
+    }
+}
