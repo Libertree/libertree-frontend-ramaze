@@ -4,7 +4,8 @@
 $(document).ready( function() {
   "use strict";
 
-  var wantsToComment = false;
+  var wantsToComment = false,
+    scrollable = Libertree.UI.scrollable();
 
   $(document).on('click', '.post-excerpt .show-more', function() {
     var showMoreLink = $(this),
@@ -97,7 +98,6 @@ $(document).ready( function() {
     return false;
   } );
 
-  var scrollable = Libertree.UI.scrollable();
   scrollable.mousewheel( function(event, delta, deltaX, deltaY) {
     scrollable.stop();
   } );
