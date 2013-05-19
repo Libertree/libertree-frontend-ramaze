@@ -2,11 +2,7 @@
 $(window).scroll( function() {
   Libertree.UI.continuousScrollHandler(
     function() {
-      Libertree.PostLoader.loadFromProfile(
-        $('#post-excerpts').data('member-id'),
-        'older',
-        $('.post-excerpt:last').data('t')
-      );
+      Libertree.PostLoader.loadFromProfile( $('#post-excerpts').data('member-id') );
     }
   );
 } );
