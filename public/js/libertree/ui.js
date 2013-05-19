@@ -15,24 +15,19 @@ Libertree.UI = (function () {
     // speed = pixels per second
     duration: setSpeed(600),
 
+    continuousScrollHandler: function (loader) {
+      if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
+        if( $('#no-more-posts').length ) { return; }
+        loader();
+      }
+    },
+
     showShowMores: function() {
       $('.excerpt').each( function() {
         if( $(this).find('.post-text').height() > $(this).find('.overflowed').height() ) {
           $(this).closest('.excerpt').siblings('.show-more').show();
         }
       } );
-    },
-
-    continuousScrollHandler: function (loader) {
-      if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-        if( Libertree.PostLoader.loading || $('#no-more-posts').length ) {
-          return;
-        }
-
-        $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
-        Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
-        loader();
-      }
     },
 
     markdownInjector: function () {
@@ -196,6 +191,19 @@ Libertree.UI = (function () {
         indicator.find('.load-more').text(data.numNewPosts);
         indicator.slideDown();
       }
+    },
+
+    init: function() {
+      // register post loaders as continuous scroll handlers
+      $(window).scroll( function() {
+        Libertree.UI.continuousScrollHandler( function() {
+          Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
+          Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
+          Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
+        } );
+      } );
     }
   };
 }());
+
+Libertree.UI.init();
