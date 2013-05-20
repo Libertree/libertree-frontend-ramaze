@@ -39,6 +39,6 @@ $(document).ready( function() {
         Libertree.Notifications.updateNumUnseen(data.n);
         break;
     }
-  }
+  };
 
 } );
