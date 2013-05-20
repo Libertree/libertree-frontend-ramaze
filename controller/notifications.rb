@@ -38,16 +38,14 @@ module Controller
       notifs.each do |n|
         next  if n.subject.nil?
 
-        case n.subject
-        when Libertree::Model::Comment, Libertree::Model::PostLike
-          target = n.subject.post
-        when Libertree::Model::CommentLike
-          target = n.subject.comment
-        when Libertree::Model::Message
-          target = n.subject
-        when Libertree::Model::PoolPost
-          target = n.subject
-        end
+        target = case n.subject
+                 when Libertree::Model::Comment, Libertree::Model::PostLike
+                   n.subject.post
+                 when Libertree::Model::CommentLike
+                   n.subject.comment
+                 else
+                   n.subject
+                 end
 
         key = [target, n.subject.class]
         @set_keys << key
