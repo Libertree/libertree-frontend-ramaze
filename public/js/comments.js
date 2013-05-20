@@ -33,12 +33,13 @@ $(document).ready( function() {
 
   $(document).on('click', '.comment .delete', function(event) {
     event.preventDefault();
-    var comment = $(this).closest('.comment');
-    if( confirm(comment.find('.delete').data('msg')) ) {
+    var $this = $(this),
+      comment = $this.closest('.comment');
+
+    if( confirm($this.data('msg')) ) {
       $.get( '/comments/destroy/' + comment.data('comment-id') );
       comment.fadeOut( function() { comment.remove } );
     }
-    return false;
   } );
 
   $(document).on('click', '.commenter-ref', function(event) {
