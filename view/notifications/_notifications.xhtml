@@ -2,8 +2,8 @@
 @set_keys.each do |key|
   notifications = @sets[key]
   notif = notifications[0]
-  actor_array = notifications.map { |n| n.subject.member }
-  actors = anded_list( actor_array.map(&:name_display).uniq )
+  actor_array = notifications.map { |n| n.subject.member.name_display }
+  actors = anded_list( actor_array.uniq )
   sg_or_pl = actor_array.uniq.length == 1 ? "singular" : "plural"
 
   case notif.subject
