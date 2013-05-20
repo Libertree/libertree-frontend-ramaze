@@ -21,6 +21,8 @@ module Controller
       end
     end
 
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
+
     def create
       return '{}'  if ! request.post?
       return '{}'  if request['text'].to_s.empty?
@@ -39,10 +41,15 @@ module Controller
 
       session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
 
-      {
-        'success' => true,
-        'commentId' => comment.id,
-      }.to_json
+      if Ramaze::Current.action.wish == 'json'
+        {
+          'success' => true,
+          'commentId' => comment.id,
+        }
+      else
+        flash[:notice] = _('Comment successfully posted.')
+        redirect_referrer
+      end
     end
 
     def _comments_list

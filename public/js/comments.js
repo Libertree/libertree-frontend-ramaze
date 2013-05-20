@@ -74,7 +74,8 @@ $(document).ready( function() {
     Libertree.Comments.unlike( $(this), event, 'div.comment' );
   } );
 
-  $(document).on('click', 'form.comment input.submit', function() {
+  $(document).on('click', 'form.comment input.submit', function(event) {
+    event.preventDefault();
     var submitButton = $(this),
       form = submitButton.closest('form.comment'),
       textarea = form.find('textarea.comment'),
@@ -85,25 +86,24 @@ $(document).ready( function() {
     Libertree.UI.TextAreaBackup.disable();
 
     $.post(
-      '/comments/create',
+      '/comments/create.json',
       {
         post_id: postId,
         text: textarea.val()
       },
       function(response) {
-        var h = $.parseJSON(response),
-          post;
+        var post;
 
-        if( h.success ) {
+        if( response.success ) {
           textarea.val('').height(50);
           $('.preview-box').remove();
           post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
-          if( $('#comment-'+h.commentId).length === 0 ) {
+          if( $('#comment-'+response.commentId).length === 0 ) {
             form.closest('.comments').find('.success')
-              .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
+              .attr('data-comment-id', response.commentId) /* setting with .data() can't be read with later .data() call */
               .fadeIn()
             ;
           }
