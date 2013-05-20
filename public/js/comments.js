@@ -57,14 +57,13 @@ $(document).ready( function() {
       }
     } );
     if( target_comment ) {
-      target_comment.find('.go-ref-back').data('id-back', source_comment.attr('id')).show();
+      target_comment.find('.go-ref-back').attr('href', '#' + source_comment.attr('id')).show();
       target_comment.css('opacity', '0').animate({opacity: 1.0}, 2000);
       window.location = '#' + target_comment.attr('id');
     }
   } );
-  $(document).on('click', '.go-ref-back', function() {
+  $(document).on('click', '.go-ref-back', function () {
     $(this).hide();
-    window.location = '#' + $(this).data('id-back');
   } );
 
   $(document).on('click', 'div.comment a.like', function(event) {
