@@ -14,10 +14,5 @@ $(document).ready( function() {
       }
     }
   } );
-  $(document).on('click', 'table.jobs td a.delete', function(event) {
-    event.preventDefault();
-    if( confirm($(this).data('msg')) ) {
-      window.location = $(this).attr('href');
-    }
-  } );
+  $(document).on('click', 'table.jobs td a.delete', Libertree.UI.confirmAction);
 } );

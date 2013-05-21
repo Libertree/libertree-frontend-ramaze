@@ -17,9 +17,5 @@ $(document).ready( function() {
     independentLabel = true;
   } );
 
-  $(document).on('click', '.river-tools .delete', function(event) {
-    if( ! confirm($(this).data('msg')) ) {
-      event.preventDefault();
-    }
-  } );
+  $(document).on('click', '.river-tools .delete', Libertree.UI.confirmAction);
 } );

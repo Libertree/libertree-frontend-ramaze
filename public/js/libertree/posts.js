@@ -1,5 +1,5 @@
 /*jslint white: true, indent: 2 */
-/*global $, Libertree, confirm */
+/*global $, Libertree */
 
 Libertree.Posts = (function () {
   "use strict";
@@ -139,13 +139,7 @@ Libertree.Posts = (function () {
           );
         } );
 
-        $(document).on('click', '.post-tools .delete', function(event) {
-          event.preventDefault();
-          if( confirm($(this).data('msg')) ) {
-            var post = $(this).closest('div[data-post-id]');
-            window.location = '/posts/destroy/' + post.data('post-id');
-          }
-        } );
+        $(document).on('click', '.post-tools .delete', Libertree.UI.confirmAction);
 
         $(document).on('click', '.post-tools .subscribe', function() {
           var post = $(this).closest('div.post, div.post-excerpt');

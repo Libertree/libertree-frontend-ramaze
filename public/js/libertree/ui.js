@@ -15,6 +15,12 @@ Libertree.UI = (function () {
     // speed = pixels per second
     duration: setSpeed(600),
 
+    confirmAction: function (event) {
+      if( ! confirm($(this).data('msg')) ) {
+        event.preventDefault();
+      }
+    },
+
     continuousScrollHandler: function (loader) {
       if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
         if( $('#no-more-posts').length ) { return; }

@@ -1,5 +1,5 @@
 /*jslint white: true, indent: 2 */
-/*global $, Libertree, confirm */
+/*global $, Libertree */
 
 $(document).ready( function() {
   "use strict";
@@ -23,11 +23,7 @@ $(document).ready( function() {
     Libertree.Pools.createPoolAndAddPost(post);
   } );
 
-  $('li.pool a.delete').click( function() {
-    if( ! confirm($(this).data('msg')) ) {
-      return false;
-    }
-  } );
+  $('li.pool a.delete').click( Libertree.UI.confirmAction );
 
   $('.excerpts-view.pool #river-selector').chosen().change( function() {
     var selector = $('.excerpts-view.pool #river-selector'),

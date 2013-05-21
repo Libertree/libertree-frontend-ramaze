@@ -1,10 +1,5 @@
 $(document).ready( function() {
-  $(document).on('click', '#avatar-reset', function(event) {
-    event.preventDefault();
-    if( confirm($(this).data('msg')) ) {
-      window.location = '/profiles/avatar_reset';
-    }
-  } );
+  $(document).on('click', '#avatar-reset', Libertree.UI.confirmAction );
 
   $('.profile #contact-list-selector').chosen().change( function (event) {
     event.preventDefault();
