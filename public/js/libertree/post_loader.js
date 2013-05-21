@@ -27,12 +27,12 @@ Libertree.PostLoader = (function () {
     }
 
     return function (value, older_or_newer, time, onSuccess) {
-      if (loading || value === undefined) { return; }
+      if (loading || value === undefined || value === null) { return; }
 
-      if (older_or_newer === undefined) {
+      if (older_or_newer === undefined || older_or_newer === null) {
         older_or_newer = 'older';
       }
-      if (time === undefined) {
+      if (time === undefined || time === null) {
         time = $('.post-excerpt:last').data('t');
       }
 
