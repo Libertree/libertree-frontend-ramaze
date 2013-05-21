@@ -5,11 +5,18 @@ Libertree.UI = (function () {
   "use strict";
 
   var setSpeed = function(speed) {
-    return function(pixels) {
-      // calculate the duration to move an amount of pixels at a given speed
-      return pixels * 1000 / speed;
+      return function(pixels) {
+        // calculate the duration to move an amount of pixels at a given speed
+        return pixels * 1000 / speed;
+      };
+    },
+
+    continuousScrollHandler = function (loader) {
+      if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
+        if( $('#no-more-posts').length ) { return; }
+        loader();
+      }
     };
-  };
 
   return {
     // speed = pixels per second
@@ -31,13 +38,6 @@ Libertree.UI = (function () {
           selector.trigger("liszt:updated");
         }
       );
-    },
-
-    continuousScrollHandler: function (loader) {
-      if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-        if( $('#no-more-posts').length ) { return; }
-        loader();
-      }
     },
 
     showShowMores: function() {
@@ -214,7 +214,7 @@ Libertree.UI = (function () {
     init: function() {
       // register post loaders as continuous scroll handlers
       $(window).scroll( function() {
-        Libertree.UI.continuousScrollHandler( function() {
+        continuousScrollHandler( function() {
           Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
           Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
           Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
