@@ -149,35 +149,35 @@ Libertree.UI = (function () {
       );
     },
 
-    TextAreaBackup: {
-      timer: undefined,
-      stored: '',
-      enable: function() {
-        Libertree.UI.TextAreaBackup.timer = setInterval(
-          Libertree.UI.TextAreaBackup.save,
-          15 * 1000
-        );
-      },
-      disable: function() {
-        clearInterval(Libertree.UI.TextAreaBackup.timer);
-      },
-      save: function() {
-        $('textarea').each( function(i) {
-          var text = $(this).val();
-          if( text !== '' && text !== Libertree.UI.TextAreaBackup.stored ) {
-            Libertree.UI.TextAreaBackup.stored = text;
-            $.post(
-              '/textarea_save',
-              {
-                text: text,
-                id: $(this).attr('id')
-              }
-            );
-            return false;
-          }
-        } );
-      }
-    },
+    TextAreaBackup: (function () {
+      var timer,
+        stored = '';
+
+      return {
+        enable: function() {
+          timer = setInterval(Libertree.UI.TextAreaBackup.save, 15 * 1000);
+        },
+        disable: function() {
+          clearInterval(timer);
+        },
+        save: function() {
+          $('textarea').each( function(i) {
+            var text = $(this).val();
+            if( text !== '' && text !== stored ) {
+              stored = text;
+              $.post(
+                '/textarea_save',
+                {
+                  text: text,
+                  id: $(this).attr('id')
+                }
+              );
+              return false;
+            }
+          } );
+        }
+      };
+    }()),
 
     isTouchInterface: (function() {
       return ("ontouchstart" in document.documentElement);
