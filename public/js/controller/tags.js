@@ -1,9 +1,10 @@
 $(document).ready( function() {
   $('.tags #river-selector').chosen().change( function (event) {
     event.preventDefault();
-    var selector = $('#river-selector');
-    var riverId = selector.val();
-    var tag = selector.data('tag');
+    var selector = $('#river-selector'),
+      riverId = selector.val(),
+      tag = selector.data('tag');
+
     Libertree.UI.addSpinner( selector.parent(), 'append' );
     $.get(
       '/rivers/_add_term/'+riverId+'/'+'%23'+tag,
