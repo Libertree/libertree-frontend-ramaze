@@ -6,7 +6,8 @@ $(document).ready( function() {
     }
   } );
 
-  $('.profile #contact-list-selector').chosen().change( function() {
+  $('.profile #contact-list-selector').chosen().change( function (event) {
+    event.preventDefault();
     var selector = $('#contact-list-selector');
     var contactListId = selector.val();
     var memberId = selector.data('member-id');
@@ -20,6 +21,5 @@ $(document).ready( function() {
         selector.trigger("liszt:updated");
       }
     );
-    return false;
   } );
 } );

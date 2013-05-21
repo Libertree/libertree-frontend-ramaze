@@ -1,5 +1,6 @@
 $(document).ready( function() {
-  $('.tags #river-selector').chosen().change( function() {
+  $('.tags #river-selector').chosen().change( function (event) {
+    event.preventDefault();
     var selector = $('#river-selector');
     var riverId = selector.val();
     var tag = selector.data('tag');
@@ -13,6 +14,5 @@ $(document).ready( function() {
         selector.trigger("liszt:updated");
       }
     );
-    return false;
   } );
 } );
