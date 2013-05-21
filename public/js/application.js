@@ -92,8 +92,9 @@ $(document).ready( function() {
   Libertree.UI.TextAreaBackup.enable();
 
   $(document).on('mousedown', 'textarea', function() {
-    $(this).data('width', $(this).outerWidth());
-    $(this).data('height', $(this).outerHeight());
+    var $this = $(this);
+    $this.data('width', $this.outerWidth());
+    $this.data('height', $this.outerHeight());
   } );
 
   $(document).on('mouseup', 'textarea', function() {
