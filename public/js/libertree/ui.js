@@ -221,6 +221,16 @@ Libertree.UI = (function () {
           Libertree.PostLoader.loadFromProfile( $('#post-excerpts').data('member-id') );
         } );
       } );
+
+      $(document).ready( function () {
+        setInterval( Libertree.UI.updateAges, 60 * 1000 );
+        Libertree.UI.TextAreaBackup.enable();
+        Libertree.UI.makeTextAreasExpandable();
+
+        if( Libertree.UI.isTouchInterface ) {
+          $('body').addClass('touch-interface');
+        }
+      });
     }
   };
 }());

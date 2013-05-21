@@ -88,9 +88,6 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  setInterval( Libertree.UI.updateAges, 60 * 1000 );
-  Libertree.UI.TextAreaBackup.enable();
-
   $(document).on('mousedown', 'textarea', function() {
     var $this = $(this);
     $this.data('width', $this.outerWidth());
@@ -107,12 +104,6 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
-
-  Libertree.UI.makeTextAreasExpandable();
-
-  if( Libertree.UI.isTouchInterface ) {
-    $('body').addClass('touch-interface');
-  }
 
   if( layout === 'narrow' ) {
     $('*').mouseover();
