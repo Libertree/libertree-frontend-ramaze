@@ -1,12 +1,3 @@
-// register tag loader function as continuous scroll handler
-$(window).scroll( function() {
-  Libertree.UI.continuousScrollHandler(
-    function() {
-      Libertree.PostLoader.loadFromProfile( $('#post-excerpts').data('member-id') );
-    }
-  );
-} );
-
 $(document).ready( function() {
   $(document).on('click', '#avatar-reset', function(event) {
     event.preventDefault();

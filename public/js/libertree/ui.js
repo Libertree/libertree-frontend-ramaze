@@ -200,6 +200,7 @@ Libertree.UI = (function () {
           Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
           Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
           Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
+          Libertree.PostLoader.loadFromProfile( $('#post-excerpts').data('member-id') );
         } );
       } );
     }
