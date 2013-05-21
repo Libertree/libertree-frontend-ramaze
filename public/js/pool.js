@@ -25,21 +25,13 @@ $(document).ready( function() {
 
   $('li.pool a.delete').click( Libertree.UI.confirmAction );
 
-  $('.excerpts-view.pool #river-selector').chosen().change( function() {
+  $('.excerpts-view.pool #river-selector').chosen().change( function (event) {
+    event.preventDefault();
     var selector = $('.excerpts-view.pool #river-selector'),
       riverId = selector.val(),
-      poolId = selector.data('pool-id');
+      poolId = selector.data('pool-id'),
+      url = '/rivers/add_spring/'+riverId+'/'+poolId;
 
-    Libertree.UI.addSpinner( selector.parent(), 'append' );
-    $.get(
-      '/rivers/add_spring/'+riverId+'/'+poolId,
-      function() {
-        Libertree.UI.removeSpinner( selector.parent() );
-        Libertree.UI.fadingAlert( selector.data('msg') );
-        selector.val('0');
-        selector.trigger("liszt:updated");
-      }
-    );
-    return false;
+    Libertree.UI.listHandler( selector, url );
   } );
 } );

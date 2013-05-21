@@ -21,6 +21,18 @@ Libertree.UI = (function () {
       }
     },
 
+    listHandler: function (selector, url) {
+      Libertree.UI.addSpinner( selector.parent(), 'append' );
+      $.get( url,
+        function() {
+          Libertree.UI.removeSpinner( selector.parent() );
+          Libertree.UI.fadingAlert( selector.data('msg') );
+          selector.val('0');
+          selector.trigger("liszt:updated");
+        }
+      );
+    },
+
     continuousScrollHandler: function (loader) {
       if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
         if( $('#no-more-posts').length ) { return; }
