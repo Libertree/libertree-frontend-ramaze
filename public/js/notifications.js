@@ -21,9 +21,7 @@ $(document).ready( function() {
           Libertree.UI.removeSpinner('#notifications-window');
           Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
         }
-      ).
-      toggle()
-    ;
+      ).toggle();
     return false;
   } );
 
@@ -37,10 +35,7 @@ $(document).ready( function() {
   $(document).on('click', '#mark-all-notifications-seen', function(event) {
     event.preventDefault();
     $.get('/notifications/seen/all', function () {
-      $('.notification')
-        .removeClass('unseen')
-        .addClass('seen')
-      ;
+      $('.notification').removeClass('unseen').addClass('seen');
       Libertree.Notifications.updateNumUnseen('0');
     } );
   } );
