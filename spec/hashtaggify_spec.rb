@@ -66,6 +66,13 @@ describe Libertree do
       subject.render('').should == ''
     end
 
+    it 'should not filter single angle brackets' do
+      subject.render("GNU <-- a #great project").should ==
+        "<p>GNU &lt;-- a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project</p>"
+      subject.render("a #great project --> GNU").should ==
+        "<p>a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project --&gt; GNU</p>"
+    end
+
     it 'should leave a space between two nodes' do
       subject.render('[separate](URL) [this](URL)').should == %{<p><a href="URL">separate</a> <a href="URL">this</a></p>}
       subject.render('#hash [tag](http://libertreeproject.org)').should == %{<p><a href="/tags/hash" class="hashtag">#hash</a> <a href="http://libertreeproject.org">tag</a></p>}
