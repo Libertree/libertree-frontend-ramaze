@@ -117,6 +117,9 @@ module Controller
           password_encrypted: BCrypt::Password.create( request['password'].to_s ),
           email: email
         )
+        if $conf['post_tools_default'].to_s == 'icons'
+            a.icons = true
+        end
         invitation.account_id = a.id
 
         account_login request.subset('username', 'password')
