@@ -46,11 +46,11 @@ describe Libertree do
     end
 
     it 'should linkify hashtags in headings' do
-      subject.render('# A #simple heading').should == Nokogiri::HTML::fragment(%{<h1>A <a href="/tags/simple" class="hashtag">#simple</a> heading</h1>\n}).to_xhtml
+      subject.render('# A #simple heading').should == Nokogiri::HTML::fragment(%{<h1>A <a href="/tags/simple" class="hashtag">#simple</a> heading</h1>}).to_xhtml
     end
 
     it 'should linkify hashtags in parentheses' do
-      subject.render('a hashtag (#hashtag)').should == Nokogiri::HTML::fragment(%{<p>a hashtag \(<a href="/tags/hashtag" class="hashtag">#hashtag</a>\)</p>\n}).to_xhtml
+      subject.render('a hashtag (#hashtag)').should == Nokogiri::HTML::fragment(%{<p>a hashtag \(<a href="/tags/hashtag" class="hashtag">#hashtag</a>\)</p>}).to_xhtml
     end
 
     it 'should not linkify hashtags in code blocks' do
@@ -58,7 +58,7 @@ describe Libertree do
     end
 
     it 'should linkify hashtags up to, but excluding, invalid characters.' do
-      subject.render('#ab$c').should == Nokogiri::HTML::fragment(%{<p><a href="/tags/ab" class="hashtag">#ab</a>$c</p>\n}).to_xhtml
+      subject.render('#ab$c').should == Nokogiri::HTML::fragment(%{<p><a href="/tags/ab" class="hashtag">#ab</a>$c</p>}).to_xhtml
     end
 
     it 'should not linkify hashtag edge cases' do
