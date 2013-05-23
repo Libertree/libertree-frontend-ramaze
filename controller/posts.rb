@@ -82,7 +82,15 @@ module Controller
         spring_ids = Array(request['spring_ids']).map(&:to_i).uniq
 
         placeholders = ( ['?'] * spring_ids.count ).join(', ')
-        springs = Libertree::Model::Pool.s  "SELECT FROM pools WHERE id IN (#{placeholders}) AND sprung AND member_id = ?", *spring_ids, account.member.id
+        springs = Libertree::Model::Pool.where(
+          %{
+            id IN (#{placeholders})
+            AND sprung
+            AND member_id = ?
+          },
+          *spring_ids,
+          account.member.id
+        )
 
         springs.each do |spring|
           spring << post
