@@ -78,8 +78,8 @@ module Controller
         'text'       => text
       )
 
-      if ! request['springs'].nil?
-        spring_ids = Array(request['springs']).map(&:to_i).uniq
+      if ! request['spring_ids'].nil?
+        spring_ids = Array(request['spring_ids']).map(&:to_i).uniq
 
         placeholders = ( ['?'] * spring_ids.count ).join(', ')
         springs = Libertree::Model::Pool.s  "SELECT FROM pools WHERE id IN (#{placeholders}) AND sprung AND member_id = ?", *spring_ids, account.member.id
