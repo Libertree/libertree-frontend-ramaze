@@ -42,6 +42,7 @@ module Controller
 
     def new
       @view = "post-new"
+      @springs = account.member.springs
     end
 
     def create
@@ -76,6 +77,26 @@ module Controller
         'visibility' => visibility,
         'text'       => text
       )
+
+      if ! request['spring_ids'].nil?
+        spring_ids = Array(request['spring_ids']).map(&:to_i).uniq
+
+        placeholders = ( ['?'] * spring_ids.count ).join(', ')
+        springs = Libertree::Model::Pool.where(
+          %{
+            id IN (#{placeholders})
+            AND sprung
+            AND member_id = ?
+          },
+          *spring_ids,
+          account.member.id
+        )
+
+        springs.each do |spring|
+          spring << post
+        end
+      end
+
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)
