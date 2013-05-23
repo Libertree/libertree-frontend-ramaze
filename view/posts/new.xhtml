@@ -9,7 +9,7 @@
     </select>
     <?r unless @springs.empty? ?>
       <div id="springs">
-        #{_('Publish in these springs:')}
+        #{_('Publish to these springs:')}
         <?r @springs.each do |spring| ?>
         <input name="springs[]" type="checkbox" value="#{spring.id}">#{spring.name}</input>
         <?r end ?>

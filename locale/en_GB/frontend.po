@@ -79,7 +79,7 @@ msgid "New Post"
 msgstr ""
 msgid "new-post|Post"
 msgstr ""
-msgid "Publish in these springs:"
+msgid "Publish to these springs:"
 msgstr ""
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
