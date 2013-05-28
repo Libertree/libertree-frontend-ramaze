@@ -8,6 +8,7 @@ module Controller
           require_admin
           init_locale
         end
+        @view = 'admin'
       end
 
       def index(task=nil)
