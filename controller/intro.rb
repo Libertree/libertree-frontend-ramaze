@@ -12,8 +12,6 @@ module Controller
     layout do |path|
       if path =~ /_post_icon/
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :splash
       end

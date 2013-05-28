@@ -8,8 +8,6 @@ module Controller
     layout do |path|
       if path =~ %r{\b_|create_pool_and_add_post|add_post}
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end

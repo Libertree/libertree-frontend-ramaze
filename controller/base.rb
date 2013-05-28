@@ -6,8 +6,6 @@ module Controller
     layout do |path|
       if path =~ /error/
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end
@@ -102,11 +100,5 @@ module Controller
       render_file "#{Ramaze.options.views[0]}/404.xhtml"
     end
 
-    def force_mobile_to_narrow
-      if request.env['HTTP_USER_AGENT'] =~ /Mobile|PlayStation|Nintendo 3DS|webOS.*(Pre|Pixi)/ && session[:layout] != 'narrow'
-        session[:layout] = 'narrow'
-        redirect r(:/)
-      end
-    end
   end
 end

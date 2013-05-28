@@ -1,9 +1,7 @@
 #{ render_file 'layout/_sidebar.xhtml' }
 
 <div class="post has-shadow" data-post-id="#{@post.id}">
-  <?r if session[:layout] != 'narrow' ?>
     <div class="post-pane">
-  <?r end ?>
       <div class="post-proper">
         <div class="meta">
           <div class="member">
@@ -32,10 +30,8 @@
             <a class="visibility" href="#" rel="popover" title="#{_('Visibility')}" data-content="#{visibility_description(@post)}">#{img 'icon-eye.png', {class:"size-16", alt: visibility_description(@post)}}</a>
           <?r end ?>
 
-          <?r if session[:layout] != 'narrow' ?>
           <a href="#" id="comments-show" title="show comments">&lt;&lt;</a>
           <a href="#" id="comments-hide" title="hide comments">&gt;&gt;</a>
-          <?r end ?>
         </div>
 
         <div class="post-text typed-text">
@@ -47,13 +43,9 @@
           <?r end ?>
         </div>
       </div>
-  <?r if session[:layout] != 'narrow' ?>
     </div>
 
     <div class="comments-pane">
-  <?r end ?>
       #{ Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
-  <?r if session[:layout] != 'narrow' ?>
     </div>
-  <?r end ?>
 </div>
