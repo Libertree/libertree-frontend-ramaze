@@ -9,6 +9,7 @@ Icon set by http://icons8.com/
 
 @import "colours.scss";
 @import "scss-include/mixins.scss";
+$threshold: 700px;
 
 html {
     height: 100%;
@@ -190,11 +191,18 @@ textarea, input[type="text"], input[type="password"] {
             margin-left: 5px;
             border-bottom: 0px;
         }
-        a.home {
+        a#home {
             float: left;
             margin-left: 0px;
-            span {
-                float: left;
+            #logo {
+                @media screen and (max-width: 400px) {
+                    display: none;
+                }
+            }
+            #wordmark {
+                @media screen and (max-width: $threshold) {
+                    display: none;
+                }
             }
         }
 
@@ -212,6 +220,11 @@ textarea, input[type="text"], input[type="password"] {
             height: 26px;
             cursor: pointer;
             position: relative;
+            @media screen and (max-width: $threshold) {
+                #account-name {
+                    display: none;
+                }
+            }
         }
 
         #toggle-sidebar {
@@ -225,6 +238,11 @@ textarea, input[type="text"], input[type="password"] {
             width: 360px;
             padding-top: 6px;
             height: 26px;
+            @media screen and (max-width: $threshold) {
+                #known-issues {
+                    display: none;
+                }
+            }
         }
         #main-menu-container.with-custom {
             width: 386px;

@@ -8,8 +8,6 @@ module Controller
     layout do |path|
       if path =~ %r{^_}
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end
