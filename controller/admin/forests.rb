@@ -10,13 +10,7 @@ module Controller
         end
       end
 
-      layout do |path|
-        if session[:layout] == 'narrow'
-          :narrow
-        else
-          :default
-        end
-      end
+      layout :default
 
       # TODO:
       def _index

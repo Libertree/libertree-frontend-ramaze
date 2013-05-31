@@ -1,29 +1,25 @@
-Libertree.Home = {
-  wantsToComment: false,
-
-  indicateNewPosts: function(data) {
-    var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
-    if( indicator.length ) {
-      indicator.find('.load-more').text(data.numNewPosts);
-      indicator.slideDown();
-    }
-  }
-};
-
-/* ---------------------------------------------------- */
-
+/*jslint white: true, indent: 2, todo: true */
+/*global $, Libertree */
 
 $(document).ready( function() {
+  "use strict";
+
+  var wantsToComment = false,
+    scrollable = Libertree.UI.scrollable();
 
   $(document).on('click', '.post-excerpt .show-more', function() {
-    var showMoreLink = $(this);
-    var excerpt = showMoreLink.siblings('.excerpt');
-    var overflowed = excerpt.find('.overflowed');
-
-    var excerptParent = showMoreLink.closest('.post-excerpt');
-    var postId = excerptParent.data('post-id');
-    var comments = excerptParent.find('div.comments');
-    var commentHeight = comments.get(0).scrollHeight;
+    var showMoreLink = $(this),
+      excerpt = showMoreLink.siblings('.excerpt'),
+      overflowed = excerpt.find('.overflowed'),
+      excerptParent = showMoreLink.closest('.post-excerpt'),
+      postId = excerptParent.data('post-id'),
+      comments = excerptParent.find('div.comments'),
+      commentHeight = comments.get(0).scrollHeight,
+      heightDifference,
+      animationDuration,
+      scrollable,
+      scrollTop,
+      excerptTruncation;
 
     Libertree.Posts.markRead(postId);
     showMoreLink.hide();
@@ -32,9 +28,8 @@ $(document).ready( function() {
     overflowed.data( 'contracted-height', overflowed.height() );
 
     excerptParent.find('div.comments.hidden').removeClass('hidden');
-
-    var heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
-    var animationDuration = Libertree.UI.duration(heightDifference);
+    heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
+    animationDuration = Libertree.UI.duration(heightDifference);
 
     overflowed.animate(
       {
@@ -50,10 +45,10 @@ $(document).ready( function() {
       }
     );
 
-    if( Libertree.Home.wantsToComment ) {
-      var scrollable = Libertree.UI.scrollable();
-      var scrollTop = scrollable.scrollTop();
-      var excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
+    if( wantsToComment ) {
+      scrollable = Libertree.UI.scrollable();
+      scrollTop = scrollable.scrollTop();
+      excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
       if( excerptTruncation < 0 ) {
         excerptTruncation = 0;
       }
@@ -62,7 +57,7 @@ $(document).ready( function() {
         animationDuration,
         function() {
           excerpt.find('textarea.comment').focus();
-          Libertree.Home.wantsToComment = false;
+          wantsToComment = false;
         }
       );
     }
@@ -71,18 +66,19 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.post-excerpt .show-less', function() {
-    var link = $(this);
-    link.hide();
-    var excerpt = link.closest('.post-excerpt');
-    var overflowed = excerpt.find('.overflowed');
-    var comments = excerpt.find('div.comments');
-    var distance = excerpt.height() - overflowed.data('contracted-height');
-    var animationDuration = Libertree.UI.duration(distance);
+    var link = $(this),
+      excerpt = link.closest('.post-excerpt'),
+      overflowed = excerpt.find('.overflowed'),
+      comments = excerpt.find('div.comments'),
+      distance = excerpt.height() - overflowed.data('contracted-height'),
+      animationDuration = Libertree.UI.duration(distance),
+      excerptTop = excerpt.position().top,
+      scrollable = Libertree.UI.scrollable(),
+      windowTop = scrollable.scrollTop(),
+      scrollTop = excerptTop - windowTop;
 
-    var excerptTop = excerpt.position().top;
-    var scrollable = Libertree.UI.scrollable();
-    var windowTop = scrollable.scrollTop();
-    var scrollTop = excerptTop - windowTop;
+    link.hide();
+
     if( scrollTop < 100 ){
       scrollable.animate(
         { scrollTop: windowTop + ( scrollTop - 100 ) },
@@ -102,7 +98,6 @@ $(document).ready( function() {
     return false;
   } );
 
-  var scrollable = Libertree.UI.scrollable();
   scrollable.mousewheel( function(event, delta, deltaX, deltaY) {
     scrollable.stop();
   } );
@@ -110,7 +105,7 @@ $(document).ready( function() {
   $(document).on('click', '.post-excerpt .post-tools a.comment', function(event) {
     event.preventDefault();
     var excerpt = $(this).closest('.post-excerpt');
-    Libertree.Home.wantsToComment = true;
+    wantsToComment = true;
     excerpt.find('.show-more').click();
   } );
 
@@ -122,9 +117,10 @@ $(document).ready( function() {
        only overflowing the container on hover
   */
   $(document).on('mouseover', '.overflowed img', function() {
-    var excerpt = $(this).closest('.excerpt');
     // do not do anything when this post is currently being expanded
-    var overflowed = excerpt.find('.overflowed').not(':animated');
+    var excerpt = $(this).closest('.excerpt'),
+      overflowed = excerpt.find('.overflowed').not(':animated');
+
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
     if( overflowed.length > 0 && excerpt.find('.post-text').height() > overflowed.height() ) {
       excerpt.siblings('.show-more').show();

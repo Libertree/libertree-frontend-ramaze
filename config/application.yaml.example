@@ -31,3 +31,6 @@ frontend_url_base: 'http://domain-or-ip-without-trailing-slash'
 
 themes:
   - default
+
+# Uncomment the following line to use post tool icons per default
+#post_tools_default: icons

@@ -1,38 +1,13 @@
-// register tag loader function as continuous scroll handler
-$(window).scroll( function() {
-  Libertree.UI.continuousScrollHandler(
-    function() {
-      Libertree.PostLoader.loadFromProfile(
-        $('#post-excerpts').data('member-id'),
-        'older',
-        $('.post-excerpt:last').data('t')
-      );
-    }
-  );
-} );
-
 $(document).ready( function() {
-  $(document).on('click', '#avatar-reset', function(event) {
-    event.preventDefault();
-    if( confirm($(this).data('msg')) ) {
-      window.location = '/profiles/avatar_reset';
-    }
-  } );
+  $(document).on('click', '#avatar-reset', Libertree.UI.confirmAction );
 
-  $('.profile #contact-list-selector').chosen().change( function() {
-    var selector = $('#contact-list-selector');
-    var contactListId = selector.val();
-    var memberId = selector.data('member-id');
-    Libertree.UI.addSpinner( selector.parent(), 'append' );
-    $.get(
-      '/contact-lists/add_member/'+contactListId+'/'+memberId,
-      function() {
-        Libertree.UI.removeSpinner( selector.parent() );
-        Libertree.UI.fadingAlert( selector.data('msg') );
-        selector.val('0');
-        selector.trigger("liszt:updated");
-      }
-    );
-    return false;
+  $('.profile #contact-list-selector').chosen().change( function (event) {
+    event.preventDefault();
+    var selector = $('#contact-list-selector'),
+      contactListId = selector.val(),
+      memberId = selector.data('member-id'),
+      url = '/contact-lists/add_member/'+contactListId+'/'+memberId;
+
+    Libertree.UI.listHandler( selector, url );
   } );
 } );

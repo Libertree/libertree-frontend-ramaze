@@ -21,9 +21,7 @@ $(document).ready( function() {
           Libertree.UI.removeSpinner('#notifications-window');
           Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
         }
-      ).
-      toggle()
-    ;
+      ).toggle();
     return false;
   } );
 
@@ -31,37 +29,13 @@ $(document).ready( function() {
     e.stopPropagation();
   } );
 
-  $(document).on('click', '.notification.unseen', function() {
-    var ids = $(this).data('notification-ids');
-    $(this).removeClass('unseen').addClass('seen');
-    /* Also toggle on Notifications page */
-    $.each( ids, function(j, id) {
-      $('.notification[data-notification-ids="['+id+']"]').removeClass('unseen').addClass('seen');
-    } );
-    $.get('/notifications/seen/' + ids.join('/'), function(data) {
-      Libertree.Notifications.updateNumUnseen(data);
-    } );
-  } );
-
-  $(document).on('click', '.notification.seen', function() {
-    var ids = $(this).data('notification-ids');
-    $(this).removeClass('seen').addClass('unseen');
-    /* Also toggle on Notifications page */
-    $.each( ids, function(j, id) {
-      $('.notification[data-notification-ids="['+id+']"]').removeClass('seen').addClass('unseen');
-    } );
-    $.get('/notifications/unseen/' + ids.join('/'), function(data) {
-      Libertree.Notifications.updateNumUnseen(data);
-    } );
-  } );
+  $(document).on('click', '.notification.unseen', Libertree.Notifications.setState('seen') );
+  $(document).on('click', '.notification.seen', Libertree.Notifications.setState('unseen') );
 
   $(document).on('click', '#mark-all-notifications-seen', function(event) {
     event.preventDefault();
     $.get('/notifications/seen/all', function () {
-      $('.notification')
-        .removeClass('unseen')
-        .addClass('seen')
-      ;
+      $('.notification').removeClass('unseen').addClass('seen');
       Libertree.Notifications.updateNumUnseen('0');
     } );
   } );

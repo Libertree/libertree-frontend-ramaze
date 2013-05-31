@@ -15,11 +15,7 @@ module Controller
       when 'textarea_clear'
         nil
       when 'search'
-        if session[:layout] == 'narrow'
-          :narrow
-        else
-          :default
-        end
+        :default
       else
         :splash
       end
@@ -40,7 +36,6 @@ module Controller
       if logged_in?
         redirect Home.r(:/)
       end
-      force_mobile_to_narrow
 
       if account_login( request.subset('password_reset_code') )
         redirect Accounts.r(:change_password)
@@ -81,7 +76,6 @@ module Controller
     def signup
       @view = 'signup'
       redirect '/intro'  if logged_in?
-      force_mobile_to_narrow
 
       @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
 
@@ -117,6 +111,9 @@ module Controller
           password_encrypted: BCrypt::Password.create( request['password'].to_s ),
           email: email
         )
+        if $conf['post_tools_default'].to_s == 'icons'
+            a.icons = true
+        end
         invitation.account_id = a.id
 
         account_login request.subset('username', 'password')
@@ -136,16 +133,6 @@ module Controller
           raise e
         end
       end
-    end
-
-    def layout(width)
-      case width
-      when 'narrow'
-        session[:layout] = 'narrow'
-      when 'wide'
-        session[:layout] = 'default'
-      end
-      redirect_referrer
     end
 
     def _render

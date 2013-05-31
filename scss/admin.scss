@@ -25,12 +25,27 @@ body.admin {
         }
     }
 
-    table.jobs {
+    table.job {
       width: 100%;
+      border-spacing: 5px;
       border-collapse: collapse;
-      margin-bottom: 1.5em;
-      tr {
-        border-bottom: 1px dotted $separator;
+      margin-bottom: 0.5em;
+      background: $dust;
+      border-radius: 3px;
+      th {
+        width: 10em;
+        text-align: right;
+        border-right: 1px dotted $bark;
+        font-weight: normal;
+        font-style: italic;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+        padding-right: 0.5em;
+      }
+      td {
+        padding-left: 0.5em;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
       }
     }
 }

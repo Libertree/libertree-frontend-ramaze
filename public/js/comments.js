@@ -1,4 +1,9 @@
+/*jslint white: true, indent: 2, todo: true */
+/*global $, Libertree, alert, confirm */
+
 $(document).ready( function() {
+  "use strict";
+
   $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
     var comments = $(this).closest('div.comments');
@@ -28,36 +33,37 @@ $(document).ready( function() {
 
   $(document).on('click', '.comment .delete', function(event) {
     event.preventDefault();
-    var comment = $(this).closest('.comment');
-    if( confirm(comment.find('.delete').data('msg')) ) {
+    var $this = $(this),
+      comment = $this.closest('.comment');
+
+    if( confirm($this.data('msg')) ) {
       $.get( '/comments/destroy/' + comment.data('comment-id') );
       comment.fadeOut( function() { comment.remove } );
     }
-    return false;
   } );
 
   $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
-    var source = $(this);
-    var member_id = source.data('member-id');
-    var source_comment = source.closest('div.comment');
-    var candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse();
-    var target_comment = null;
+    var source = $(this),
+      member_id = source.data('member-id'),
+      source_comment = source.closest('div.comment'),
+      candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
+      target_comment = null;
+
     $.each( candidates, function() {
-      if( 0 + $(this).data('comment-id') < 0 + source_comment.data('comment-id') ) {
+      if( Number($(this).data('comment-id')) < Number(source_comment.data('comment-id')) ) {
         target_comment = $(this);
         return false;
       }
     } );
     if( target_comment ) {
-      target_comment.find('.go-ref-back').data('id-back', source_comment.attr('id')).show();
+      target_comment.find('.go-ref-back').attr('href', '#' + source_comment.attr('id')).show();
       target_comment.css('opacity', '0').animate({opacity: 1.0}, 2000);
       window.location = '#' + target_comment.attr('id');
     }
   } );
-  $(document).on('click', '.go-ref-back', function() {
+  $(document).on('click', '.go-ref-back', function () {
     $(this).hide();
-    window.location = '#' + $(this).data('id-back');
   } );
 
   $(document).on('click', 'div.comment a.like', function(event) {
@@ -68,33 +74,36 @@ $(document).ready( function() {
     Libertree.Comments.unlike( $(this), event, 'div.comment' );
   } );
 
-  $(document).on('click', 'form.comment input.submit', function() {
-    var submitButton = $(this);
+  $(document).on('click', 'form.comment input.submit', function(event) {
+    event.preventDefault();
+    var submitButton = $(this),
+      form = submitButton.closest('form.comment'),
+      textarea = form.find('textarea.comment'),
+      postId = form.data('post-id');
+
     submitButton.prop('disabled', true);
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
-    var form = submitButton.closest('form.comment');
-    var textarea = form.find('textarea.comment');
     Libertree.UI.TextAreaBackup.disable();
-    var postId = form.data('post-id');
 
     $.post(
-      '/comments/create',
+      '/comments/create.json',
       {
         post_id: postId,
         text: textarea.val()
       },
       function(response) {
-        var h = $.parseJSON(response);
-        if( h.success ) {
+        var post;
+
+        if( response.success ) {
           textarea.val('').height(50);
           $('.preview-box').remove();
-          var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+          post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
           post.find('.subscribe').addClass('hidden');
           post.find('.unsubscribe').removeClass('hidden');
 
-          if( $('#comment-'+h.commentId).length === 0 ) {
+          if( $('#comment-'+response.commentId).length === 0 ) {
             form.closest('.comments').find('.success')
-              .attr('data-comment-id', h.commentId) /* setting with .data() can't be read with later .data() call */
+              .attr('data-comment-id', response.commentId) /* setting with .data() can't be read with later .data() call */
               .fadeIn()
             ;
           }
@@ -109,8 +118,9 @@ $(document).ready( function() {
 
   $(document).on('click', '.detachable .detach', function(event) {
     event.preventDefault();
-    var detachable = $(this).closest('.detachable');
-    var offset = detachable.offset();
+    var detachable = $(this).closest('.detachable'),
+      offset = detachable.offset();
+
     detachable.addClass('detached');
     detachable.addClass('has-shadow');
     detachable.css('top', offset.top + 'px');
@@ -141,10 +151,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  // TODO: replace with window.location.hash
-  match = document.URL.match(/#comment-([0-9]+)/);
-  if( match ) {
-    window.location = window.location;  /* Hack for Firefox */
+  if( window.location.hash.length > 0 ) {
     Libertree.Comments.loadMore( $('a.load-comments'), true );
   }
 

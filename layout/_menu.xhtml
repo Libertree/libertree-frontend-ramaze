@@ -1,18 +1,14 @@
 <div class="menu has-shadow"><div id="menu-narrower">
-  <?r if @title ?>
-  <a href="/home" class="home">
+  <a href="/home" id="home">
     #{ img 'small-logo.png', {alt: 'logo', id: 'logo'} }
     #{ img 'wordmark.png',   {alt: 'Libertree', id: 'wordmark'} }
   </a>
-  <?r end ?>
 
   <?r if ! logged_in? ?>
     <a class="menu-item" id="menu-log-in" href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>
   <?r else ?>
     <a class="menu-item" id="menu-account" href="#">
-      <?r if @account_name ?>
-        #{account.member.name_display}
-      <?r end ?>
+      <span id="account-name">#{account.member.name_display}</span>
       #{ member_img(account.member) }
     </a>
     <div id="account-window" class="window has-shadow">
@@ -26,11 +22,6 @@
         #{s_('menu|legible')} | <a href="/accounts/font/small" title="#{s_('menu|Small font size')}">#{s_('menu|small')}</a>
       <?r end ?>
       <br/>
-      <?r if session[:layout] == 'narrow' ?>
-        <a href="/layout/wide" title="#{s_('menu|Currently in &quot;small display&quot; mode; click to change')}">#{img 'icon-display.png', {alt:s_('menu|Large display')}} #{s_('menu|Large display')}</a><br/>
-      <?r else ?>
-        <a href="/layout/narrow" title="#{s_('menu|Currently in &quot;large display&quot; mode; click to change')}">#{img 'icon-display.png', {alt:s_('menu|Small display')}} #{s_('menu|Small display')}</a><br/>
-      <?r end ?>
       <?r if account.admin? ?>
         <a href="/admin">#{img 'icon-admin.png', {alt:s_('menu|Administrate')}} #{s_('menu|Administrate')}</a><br/>
       <?r end ?>
@@ -41,9 +32,7 @@
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q"/>
       </form>
-      <?r if session[:layout] != 'narrow' ?>
-      <a href="http://issues.libertreeproject.org" class="menu-item" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
-      <?r end ?>
+      <a href="http://issues.libertreeproject.org" class="menu-item" id="known-issues" title="#{s_('menu|Known Issues')}">#{img 'icon-exclamation.png', {alt:s_('menu|Known Issues')}}</a>
       <a href="#" class="menu-item" id="toggle-sidebar" title="#{s_('menu|Toggle sidebar')}">#{img 'icon-sidebar.png', {alt:s_('menu|Toggle sidebar')}}</a>
       <a href="/posts/new" class="menu-item" id="menu-post-new" title="#{s_('menu|New Post')}">#{img 'icon-edit.png', {alt:s_('menu|New Post')}}</a>
       <a href="/messages" class="menu-item" title="#{_('Direct Messages')}">#{img 'icon-message.png', {alt:_('Direct Messages')}}</a>

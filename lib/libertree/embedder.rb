@@ -37,8 +37,10 @@ module Libertree
     def self.inject_objects(html)
       # extract every URL from a paragraph and append embed object if supported
       html.css('p').each do |p|
-        urls = p.xpath(".//a/@href").map(&:value).reverse
+        # collect urls, ignore relative links
+        urls = p.xpath(".//a[not(starts-with(@href,'/'))]/@href").map(&:value).reverse
         urls.each do |url|
+          # TODO: why hit the db twice?
           cached = (
             Libertree::Model::EmbedCache[ url: url ] ||
             Libertree::Model::EmbedCache[ url: url.gsub('&amp;', '&') ]

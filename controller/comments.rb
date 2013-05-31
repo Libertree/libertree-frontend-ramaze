@@ -14,12 +14,12 @@ module Controller
     layout do |path|
       if path =~ %r{^_|create}
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end
     end
+
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
 
     def create
       return '{}'  if ! request.post?
@@ -39,10 +39,15 @@ module Controller
 
       session[:saved_text]["textarea-comment-on-post-#{post.id}"] = nil
 
-      {
-        'success' => true,
-        'commentId' => comment.id,
-      }.to_json
+      if Ramaze::Current.action.wish == 'json'
+        {
+          'success' => true,
+          'commentId' => comment.id,
+        }
+      else
+        flash[:notice] = _('Comment successfully posted.')
+        redirect_referrer
+      end
     end
 
     def _comments_list

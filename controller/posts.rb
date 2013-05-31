@@ -14,8 +14,6 @@ module Controller
     layout do |path|
       if path =~ %r{\b_}
         nil
-      elsif session[:layout] == 'narrow'
-        :narrow
       else
         :default
       end
@@ -42,26 +40,14 @@ module Controller
 
     def new
       @view = "post-new"
+      @springs = account.member.springs
     end
 
     def create
       redirect_referrer  if ! request.post?
 
-      if request['hashtags'] && ! request['hashtags'].to_s.strip.empty?
-        hashtags = "\n\n" + request['hashtags'].to_s.strip.
-          split(/[;., ]+/).
-          map { |tag|
-            if tag[0] != '#'
-              '#' + tag
-            else
-              tag
-            end
-          }.join(' ')
-      else
-        hashtags = ''
-      end
-
-      text = ( request['text'].to_s + hashtags )
+      text = request['text'].to_s
+      # TODO: this looks odd. Why are we doing this?
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
 
@@ -89,6 +75,26 @@ module Controller
         'visibility' => visibility,
         'text'       => text
       )
+
+      if ! request['spring_ids'].nil?
+        spring_ids = Array(request['spring_ids']).map(&:to_i).uniq
+
+        placeholders = ( ['?'] * spring_ids.count ).join(', ')
+        springs = Libertree::Model::Pool.where(
+          %{
+            id IN (#{placeholders})
+            AND sprung
+            AND member_id = ?
+          },
+          *spring_ids,
+          account.member.id
+        )
+
+        springs.each do |spring|
+          spring << post
+        end
+      end
+
       session[:saved_text]['textarea-post-new'] = nil
 
       redirect r(:show, post.id)
