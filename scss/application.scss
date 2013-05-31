@@ -289,8 +289,14 @@ textarea, input[type="text"], input[type="password"] {
     }
 }
 
+// used for old-style post stats and comments
 .age, .age-update {
     color: $faint_text;
+    font-size: 0.9em;
+}
+.post-stats.text .age, .post-stats.text .age-update {
+    color: inherit;
+    font-size: inherit;
 }
 
 img.avatar {
@@ -403,6 +409,7 @@ form.comment {
     right: 1em;
     margin-right: 16px;
     opacity: 0.3;
+    float: right;
     a {
         cursor: pointer;
         white-space: nowrap;
@@ -438,10 +445,8 @@ form.comment {
 
 .post-stats, .post-tools {
     display: inline-block;
-    margin-top: 15px;
     height: 35px;
     line-height: 1.5em;
-    float: right;
 }
 
 .window {

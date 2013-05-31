@@ -92,6 +92,7 @@ body.single-post-view {
           padding-top: 28px;
           padding-bottom: 4px;
           overflow: hidden;
+          position: relative;
 
           &:hover .post-tools {
             opacity: 1;
@@ -109,6 +110,11 @@ body.single-post-view {
             img.avatar {
                 margin-bottom: 0px; /* override application.scss */
             }
+          }
+
+          .post-stats.text {
+              color: #888;
+              font-size: 11px;
           }
 
           .post-tools {
