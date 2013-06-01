@@ -47,6 +47,7 @@ module Controller
         time: time.to_f,
         newer: false,
       )
+      render_file "#{Ramaze.options.views[0]}/posts/_excerpts.xhtml"
     end
 
     def create

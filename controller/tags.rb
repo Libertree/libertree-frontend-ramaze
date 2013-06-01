@@ -36,6 +36,7 @@ module Controller
         time: time.to_f,
         newer: ( older_or_newer == 'newer' ),
       )
+      render_file "#{Ramaze.options.views[0]}/posts/_excerpts.xhtml"
     end
   end
 end

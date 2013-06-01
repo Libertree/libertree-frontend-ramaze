@@ -8,6 +8,6 @@
   </div>
 <?r else ?>
   <?r @posts.each do |post| ?>
-    #{ render_partial '_excerpt', post: post }
+    #{ Controller::Posts.render_partial '_excerpt', post: post }
   <?r end ?>
 <?r end ?>
