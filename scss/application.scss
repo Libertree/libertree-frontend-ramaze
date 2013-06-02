@@ -725,6 +725,7 @@ textarea#invitations {
 }
 
 div.pools {
+    position: fixed;
     z-index: 2;
     width: 250px;
     padding: 1em;
@@ -736,13 +737,12 @@ div.pools {
 }
 
 .post-excerpt div.pools {
-    right: 0px;
+    top: 150px;
+    left: 0px;
 }
 .post div.pools {
+    top: 20px;
     left: 300px;
-    @media screen and (max-width: $threshold) {
-        left: 5px;
-    }
 }
 div.pools .chzn-container .chzn-results li {
     line-height: 24px;

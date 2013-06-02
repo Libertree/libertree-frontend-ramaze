@@ -27,7 +27,6 @@ body.single-post-view {
     display: none;
   }
   div.post {
-    position: relative;
     @media screen and (min-width: $threshold) {
       height: 100%;
       width: 100%;
