@@ -1,7 +1,7 @@
 <h2>#{_('Account Settings')}</h2>
 
 <form action="update" method="POST">
-  <div class="item">
+  <div class="field">
     <label>
       #{_('Email:')}
       #{help_bubble _('Your email address is only used for password recovery. It is never made public and never shared.'), _('Why do you want to know my email address?')}
@@ -9,48 +9,48 @@
     <input type="text" name="email" size="30" value="#{account.email}"/>
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Post excerpt maximum height:')}</label>
     <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Custom menu link:')}</label>
     <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/>
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Custom CSS:')}</label>
     <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea>
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Custom JS:')}</label>
     <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea>
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Automatic embedding:')}</label>
     <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} />
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Filter images:')}</label>
     <input type="checkbox" name="filter_images" #{account.filter_images ? "checked" : ""} />
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Display post tools as:')}</label>
     <input type="radio" name="post_tools_icons" value="text" #{account.icons ? "" : "checked"} />text
     <input type="radio" name="post_tools_icons" value="icons" #{account.icons ? "checked" : ""} />icons
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Make thumbnails for images in post excerpts:')}</label>
     <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} />
   </div>
 
-  <div class="item">
+  <div class="field">
     <label>#{_('Language:')}</label>
     <select name="locale">
       <?r Libertree::LANG.each do |locale,name| ?>
