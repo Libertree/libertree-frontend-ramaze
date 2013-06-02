@@ -104,6 +104,7 @@ module Controller
     end
 
     def delete
+      @view = "accounts edit"
       return  if ! request.post?
 
       if account.username != request['username'].to_s
