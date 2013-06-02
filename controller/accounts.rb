@@ -78,6 +78,7 @@ module Controller
     end
 
     def change_password
+      @view = "accounts edit"
       return  if ! request.post?
 
       if request['password'].to_s != request['password_again'].to_s
