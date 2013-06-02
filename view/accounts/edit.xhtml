@@ -7,24 +7,61 @@
 </div>
 
 <form action="update" method="POST">
-  #{_('Email:')} <input type="text" name="email" size="30" value="#{account.email}"/> #{_('(for password recovery; never public)')}<br/>
-  #{_('Post excerpt maximum height:')} <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}<br/>
-  #{_('Custom menu link:')} <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/><br/>
-  #{_('Custom CSS:')} <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea><br/>
-  #{_('Custom JS:')} <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea><br/>
-  #{_('Automatic embedding:')} <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} /><br/>
-  #{_('Filter images:')} <input type="checkbox" name="filter_images" #{account.filter_images ? "checked" : ""} /><br/>
-  #{_('Display post tools as:')}
+  <div class="item">
+    <label>#{_('Email:')}</label>
+    <input type="text" name="email" size="30" value="#{account.email}"/> #{_('(for password recovery; never public)')}
+  </div>
+
+  <div class="item">
+    <label>#{_('Post excerpt maximum height:')}</label>
+    <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}
+  </div>
+
+  <div class="item">
+    <label>#{_('Custom menu link:')}</label>
+    <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/>
+  </div>
+
+  <div class="item">
+    <label>#{_('Custom CSS:')}</label>
+    <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea>
+  </div>
+
+  <div class="item">
+    <label>#{_('Custom JS:')}</label>
+    <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea>
+  </div>
+
+  <div class="item">
+    <label>#{_('Automatic embedding:')}</label>
+    <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} />
+  </div>
+
+  <div class="item">
+    <label>#{_('Filter images:')}</label>
+    <input type="checkbox" name="filter_images" #{account.filter_images ? "checked" : ""} />
+  </div>
+
+  <div class="item">
+    <label>#{_('Display post tools as:')}</label>
     <input type="radio" name="post_tools_icons" value="text" #{account.icons ? "" : "checked"} />text
     <input type="radio" name="post_tools_icons" value="icons" #{account.icons ? "checked" : ""} />icons
-    <br/>
-  #{_('Make thumbnails for images in post excerpts:')} <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} /><br/>
-  #{_('Language:')}
+  </div>
+
+  <div class="item">
+    <label>#{_('Make thumbnails for images in post excerpts:')}</label>
+    <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} />
+  </div>
+
+  <div class="item">
+    <label>#{_('Language:')}</label>
     <select name="locale">
       <?r Libertree::LANG.each do |locale,name| ?>
         <option value="#{locale}" #{account.locale.eql?(locale) ? "selected" : ""}>#{name}</option>
       <?r end ?>
-    </select><br/>
+    </select>
+  </div>
+
   <input type="submit" value="#{_('Save')}"/>
 </form>
 
