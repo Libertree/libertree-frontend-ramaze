@@ -97,6 +97,7 @@ body.excerpts-view .main {
         }
         background-color: $dust;
         @include dynamic-excerpt-width;
+        position: relative;
     }
 
     .post-excerpt {
