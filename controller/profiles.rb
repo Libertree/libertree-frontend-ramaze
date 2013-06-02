@@ -36,6 +36,7 @@ module Controller
     end
 
     def edit
+      @view = "profile edit"
       @profile = account.member.profile
     end
 
