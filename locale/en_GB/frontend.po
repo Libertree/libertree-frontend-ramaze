@@ -355,6 +355,8 @@ msgid "API documentation"
 msgstr ""
 msgid "Generate API token"
 msgstr ""
+msgid "settings|Other actions"
+msgstr ""
 
 msgid "Data Export"
 msgstr ""
