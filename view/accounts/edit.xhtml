@@ -8,8 +8,11 @@
 
 <form action="update" method="POST">
   <div class="item">
-    <label>#{_('Email:')}</label>
-    <input type="text" name="email" size="30" value="#{account.email}"/> #{_('(for password recovery; never public)')}
+    <label>
+      #{_('Email:')}
+      #{help_bubble _('Your email address is only used for password recovery. It is never made public and never shared.'), _('Why do you want to know my email address?')}
+    </label>
+    <input type="text" name="email" size="30" value="#{account.email}"/>
   </div>
 
   <div class="item">
