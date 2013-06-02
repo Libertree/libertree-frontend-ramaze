@@ -20,5 +20,15 @@ body.profile.edit {
             padding: 1em;
             margin: -30px -30px 1em;
         }
+        label {
+            width: 150px;
+            text-align: right;
+            margin-right: 1.5em;
+            float: left;
+            clear: left;
+        }
+        .item {
+            margin-bottom: 1em;
+        }
     }
 }
