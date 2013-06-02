@@ -312,7 +312,7 @@ msgstr ""
 
 msgid "Email:"
 msgstr ""
-msgid "Why do you want to know my email address?"
+msgid "Use of Email Address"
 msgstr ""
 msgid "Your email address is only used for password recovery. It is never made public and never shared."
 msgstr ""
