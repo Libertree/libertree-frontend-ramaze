@@ -1,10 +1,10 @@
 <h2>#{_('Account Settings')}</h2>
 
-<div style="margin-bottom: 1em;">
-  <a href="/profiles/edit">#{_('Edit profile')}</a><br/>
-  <a href="/rivers">#{_('Manage rivers')}</a><br/>
-  <a href="/accounts/change_password">#{_('Change password')}</a>
-</div>
+<ul class="actions">
+  <li><a href="/profiles/edit">#{_('Edit profile')}</a></li>
+  <li><a href="/rivers">#{_('Manage rivers')}</a></li>
+  <li><a href="/accounts/change_password">#{_('Change password')}</a></li>
+</ul>
 
 <form action="update" method="POST">
   <div class="item">

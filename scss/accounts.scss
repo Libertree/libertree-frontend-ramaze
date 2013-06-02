@@ -3,6 +3,14 @@
 @import "colours.scss";
 
 body.accounts.edit {
+    ul.actions {
+        margin-bottom: 1em;
+        margin-left: 0;
+        padding-left: 0;
+        li {
+            list-style: none;
+        }
+    }
     .main {
         @include shadow;
         @include rounded;
