@@ -329,6 +329,11 @@ div.comments {
         display: none;
         margin-bottom: 1em;
     }
+    @media screen and (max-width: 400px) {
+        .content .avatar {
+            display: none;
+        }
+    }
 }
 
 div.comment {
