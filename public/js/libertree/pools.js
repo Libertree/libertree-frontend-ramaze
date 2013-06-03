@@ -90,6 +90,7 @@ Libertree.Pools = (function () {
             addPost( option.val(), postId, post, x, y );
           } else {
             o.show();
+            o.css( { top: (collect_link.offset().top-50)+'px' } );
             $('select#pool-selector').chosen( {
               //TRANSLATEME
               no_results_text: "<a href='#' class='create-pool-and-add-post'>Add to a new pool</a> called"
