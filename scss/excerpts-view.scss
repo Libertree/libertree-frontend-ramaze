@@ -166,6 +166,9 @@ body.excerpts-view .main {
         }
         div.excerpt {
             padding: 1.8em 1.8em 0;
+            @media screen and (max-width: $threshold) {
+                padding: 1em 1em 0;
+            }
             overflow: hidden;
             .overflowed {
               min-height: 200px;
