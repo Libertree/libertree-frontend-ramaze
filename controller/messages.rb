@@ -20,7 +20,16 @@ module Controller
 
     def create
       redirect_referrer  if ! request.post?
-      redirect_referrer  if request['text'].to_s.empty?
+
+      if request['text'].to_s.empty?
+        flash[:error] = _('You cannot send an empty message.')
+        redirect_referrer
+      end
+
+      if request['recipients'].to_s.empty?
+        flash[:error] = _('You did not specify a recipient. Please try again.')
+        redirect_referrer
+      end
 
       begin
         message = Libertree::Model::Message.create_with_recipients(

@@ -621,6 +621,10 @@ msgid "Please note that direct messages are not fully private, encrypted nor sec
 msgstr ""
 msgid "Your message is longer than 4096 characters. Please shorten it and try again."
 msgstr ""
+msgid "You cannot send an empty message."
+msgstr ""
+msgid "You did not specify a recipient. Please try again."
+msgstr ""
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
