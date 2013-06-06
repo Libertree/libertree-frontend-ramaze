@@ -128,6 +128,10 @@ body.excerpts-view .main {
               right: 1em;
               position: absolute;
               top: 25%;
+              @media screen and (max-width: $threshold) {
+                  position: relative;
+                  height: auto;
+              }
             }
         }
 
