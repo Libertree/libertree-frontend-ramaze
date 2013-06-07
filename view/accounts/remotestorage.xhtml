@@ -1,0 +1,30 @@
+<h2>#{_('Remote storage connection')}</h2>
+
+<?r if @storage.access_token ?>
+
+<div id="connection">
+  <div class="field">
+    <label>#{s_('remote-storage|Remote storage handle')}</label>
+    <span>#{@storage.handle}</span>
+  </div>
+  <div class="field">
+    <label>#{s_('remote-storage|Access token')}</label>
+    <span>#{@storage.access_token}</span>
+  </div>
+</div>
+
+<?r # TODO: allow user to destroy connection ?>
+
+<?r else ?>
+
+<?r # TODO: add explanation ?>
+
+<form method="POST">
+  <div class="field">
+    <label>#{s_('remote-storage|Remote storage handle')}</label>
+    <input type="text" name="handle" value="#{@storage.handle}" />
+  </div>
+  <input type="submit" value="#{s_('remote-storage|Connect')}"/>
+</form>
+
+<?r end ?>
