@@ -18,6 +18,11 @@ gem 'ruby-oembed'
 gem 'fast_gettext'
 gem 'syck', :platforms => [:ruby_20]
 
+group 'extensions' do
+  gem 'curb'           # libcurl-dev (Debian) / libcurl-devel (Fedora)
+  gem 'ruby-filemagic' # libmagic-dev (Debian) / file-devel (Fedora)
+end
+
 gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
 
 group 'development' do
