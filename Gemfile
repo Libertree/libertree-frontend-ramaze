@@ -23,7 +23,7 @@ group 'extensions' do
   gem 'ruby-filemagic' # libmagic-dev (Debian) / file-devel (Fedora)
 end
 
-gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git'
+gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.git', :branch => 'remotestorage'
 
 group 'development' do
   gem 'rspec'
