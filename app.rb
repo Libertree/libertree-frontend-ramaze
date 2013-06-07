@@ -40,6 +40,7 @@ Libertree::DB.config = conf_db
 
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/embedder'
+require_relative 'lib/libertree/remotestorage'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
