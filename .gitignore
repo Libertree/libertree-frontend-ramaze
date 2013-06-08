@@ -1,3 +1,7 @@
 .sass-cache
 pids
 log
+vendor
+.bundle
+\#*\#
+*\~
