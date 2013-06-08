@@ -145,8 +145,15 @@ textarea, input[type="text"], input[type="password"] {
 
 
 .flash {
-  margin: 0 0 1em;
+  @include border-box;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 50%;
+  width: 75%;
+  margin: 0 0 0 -37.5%;
   padding-left: 50px; //make room for icon
+
   &.error {
     background: url('../images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
     border: 1px solid $red;
