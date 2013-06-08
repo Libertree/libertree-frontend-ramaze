@@ -8,11 +8,17 @@
   <div class="main">
 
     <?r if flash[:error] ?>
-      <div class="flash error">#{flash[:error]}</div>
+      <div class="flash error alert alert-error alert-block">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        #{flash[:error]}
+      </div>
     <?r end ?>
 
     <?r if flash[:notice] ?>
-      <div class="flash notice">#{flash[:notice]}</div>
+      <div class="flash notice alert alert-info alert-block">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        #{flash[:notice]}
+      </div>
     <?r end ?>
 
     #{@content}
