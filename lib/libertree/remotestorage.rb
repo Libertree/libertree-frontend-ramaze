@@ -38,7 +38,7 @@ module Libertree
     # @param [Hash] the hash containing the remoteStorage definition or nil
     def self.auth_request_url(info, update_token, scope='public/libertree:rw')
       base_url = info['properties']['auth-endpoint']
-      redirect = "#{$conf['frontend_url_base']}/accounts/remotestorage/#{update_token}"
+      redirect = "#{$conf['frontend_url_base']}/remotestorage/connection/#{update_token}"
       "#{base_url}&redirect_uri=#{redirect}&scope=#{scope}"
     end
 
