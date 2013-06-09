@@ -67,9 +67,9 @@ module Libertree
       nil
     end
 
-    def self.delete(url, access_token)
-      Curl::Easy.http_delete(url) do |req|
-        req.headers['Authorization'] = "Bearer #{access_token}"
+    def self.delete(path, storage)
+      Curl::Easy.http_delete("#{storage.storage_url}/#{path}") do |req|
+        req.headers['Authorization'] = "Bearer #{storage.access_token}"
         req.on_success {|easy| return true }
       end
       false
