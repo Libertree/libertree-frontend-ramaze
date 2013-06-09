@@ -52,6 +52,7 @@ module Controller
     end
 
     def show(contact_list_id)
+      @view = "contact-lists"
       @list = Libertree::Model::ContactList[
         account_id: account.id,
         id: contact_list_id.to_i
