@@ -115,11 +115,13 @@ OBJECT
 
       class Bandcamp
         def self.format
-          %r{https?://.*\.bandcamp\.com/track/.+}
+          %r{https?://.*\.bandcamp\.com/(track|album)/.+}
         end
 
         def self.get(url)
           return unless url =~ self.format
+
+          type = $1
 
           uri = URI.parse(url)
           Timeout.timeout(10) do
@@ -130,10 +132,10 @@ OBJECT
               if node.empty?
                 raise Libertree::Embedding::Error, "failed to find embedding code"
               else
-                if node.text.match(/track=(\d+)/)
-                  "<iframe width=\"400\" height=\"100\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://bandcamp.com/EmbeddedPlayer/size=venti/track=#{$1}\"></iframe>"
+                if node.text.match(/#{type}=(\d+)/)
+                  "<iframe width=\"400\" height=\"100\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://bandcamp.com/EmbeddedPlayer/size=venti/#{type}=#{$1}\"></iframe>"
                 else
-                  raise Libertree::Embedding::Error, "failed to find track id"
+                  raise Libertree::Embedding::Error, "failed to find #{type} id"
                 end
               end
             end
