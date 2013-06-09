@@ -70,6 +70,24 @@ module Controller
       @files = Libertree::RemoteStorage.get("/public/libertree/", @storage)
     end
 
+    def delete_file(filename)
+      redirect_referrer  if filename.nil?
+
+      @storage = account.remote_storage_connection
+      if @storage.nil? || @storage.access_token.nil?
+        flash[:error] = s_("remote-storage|Please connect your remote storage account first.")
+        redirect_referrer
+      end
+
+      if Libertree::RemoteStorage.delete("/public/libertree/#{filename}", @storage)
+        flash[:notice] = s_("remote-storage|File %s has been deleted.") % filename
+      else
+        flash[:error] = s_("remote-storage|An error occurred. Please try again later.")
+      end
+
+      redirect_referrer
+    end
+
     def destroy
       redirect_referrer  if ! request.post?
       storage = account.remote_storage_connection
