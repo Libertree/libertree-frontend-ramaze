@@ -307,6 +307,8 @@ msgid "Edit profile"
 msgstr ""
 msgid "Manage rivers"
 msgstr ""
+msgid "Manage remote storage"
+msgstr ""
 msgid "Change password"
 msgstr ""
 
