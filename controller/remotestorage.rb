@@ -55,5 +55,15 @@ module Controller
         redirect r(:connection)
       end
     end
+
+    def destroy
+      redirect_referrer  if ! request.post?
+      storage = account.remote_storage_connection
+      redirect_referrer  if ! storage
+
+      storage.delete
+      flash[:notice] = _("The connection to your remote storage account has been removed.")
+      redirect r(:connection)
+    end
   end
 end

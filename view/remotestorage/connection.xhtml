@@ -13,7 +13,9 @@
   </div>
 </div>
 
-<?r # TODO: allow user to destroy connection ?>
+<form action="/remotestorage/destroy" method="POST">
+  <input type="submit" value="#{s_('remote-storage|Destroy connection')}"/>
+</form>
 
 <?r else ?>
 

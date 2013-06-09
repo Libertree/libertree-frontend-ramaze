@@ -371,6 +371,8 @@ msgid "remote-storage|Access token"
 msgstr ""
 msgid "remote-storage|Connect"
 msgstr ""
+msgid "remote-storage|Destroy connection"
+msgstr ""
 msgid "remote-storage|The remote storage handle may not be empty."
 msgstr ""
 msgid "remote-storage|The remote storage provider could not be found."
@@ -381,7 +383,8 @@ msgid "remote-storage|The remote server does not offer remote storage."
 msgstr ""
 msgid "Your remote storage account (%s) has been connected!"
 msgstr ""
-
+msgid "The connection to your remote storage account has been removed."
+msgstr ""
 
 #: controller/accounts.rb
 msgid "Settings saved."
