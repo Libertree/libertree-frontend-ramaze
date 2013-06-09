@@ -1,0 +1,35 @@
+// TODO: this shares a lot with scss/accounts.scss
+@import "scss-include/mixins.scss";
+@import "colours.scss";
+
+body.rivers {
+    ul.actions {
+        margin-bottom: 1em;
+        margin-left: 0;
+        padding-left: 0;
+        li {
+            list-style: none;
+        }
+    }
+    .main {
+        @include shadow;
+        @include rounded;
+        background: $dust;
+        padding: 30px;
+        & > h2 {
+            @include rounded-top;
+            background: $sand;
+            padding: 1em;
+            margin: -30px -30px 1em;
+        }
+
+        div.river {
+            margin-bottom: 1em;
+            .river-tools {}
+            .query {
+                display: block;
+                clear: both;
+            }
+        }
+    }
+}
