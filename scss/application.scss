@@ -150,8 +150,8 @@ textarea, input[type="text"], input[type="password"] {
   z-index: 100;
   top: 0;
   left: 50%;
-  width: 75%;
-  margin: 0 0 0 -37.5%;
+  width: 500px;
+  margin: 0 0 0 -250px;
   padding-left: 50px; //make room for icon
 
   &.error {
