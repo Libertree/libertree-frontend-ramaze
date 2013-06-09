@@ -58,6 +58,18 @@ module Controller
       end
     end
 
+    def files
+      @view = "accounts edit"
+      @storage = account.remote_storage_connection
+
+      if @storage.nil? || @storage.access_token.nil?
+        flash[:error] = s_("remote-storage|Please connect your remote storage account first.")
+        redirect r(:connection)
+      end
+
+      @files = Libertree::RemoteStorage.get("/public/libertree/", @storage)
+    end
+
     def destroy
       redirect_referrer  if ! request.post?
       storage = account.remote_storage_connection
