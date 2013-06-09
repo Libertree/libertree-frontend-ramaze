@@ -36,6 +36,8 @@ module Controller
           redirect r(:connection)
         end
 
+        @storage.storage_url = info['href']
+
         # Store random update token in session and add it to the
         # redirect URL.  When we receive a GET request with the
         # access_token, check whether the update token matches.  This
