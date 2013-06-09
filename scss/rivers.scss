@@ -31,5 +31,15 @@ body.rivers {
                 clear: both;
             }
         }
+        label {
+            width: 200px;
+            text-align: right;
+            margin-right: 1.5em;
+            float: left;
+            clear: left;
+        }
+        .field {
+            margin-bottom: 1em;
+        }
     }
 }
