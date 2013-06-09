@@ -389,6 +389,8 @@ msgid "Your remote storage account (%s) has been connected!"
 msgstr ""
 msgid "The connection to your remote storage account has been removed."
 msgstr ""
+msgid "remote-storage|Manage files"
+msgstr ""
 
 #: controller/accounts.rb
 msgid "Settings saved."
