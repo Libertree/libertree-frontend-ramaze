@@ -74,5 +74,14 @@ module Libertree
       end
       false
     end
+
+    def self.get(path, storage)
+      Curl::Easy.http_get("#{storage.storage_url}/#{path}") do |req|
+        req.headers['Authorization'] = "Bearer #{storage.access_token}"
+        req.on_success do |res|
+          return JSON[res.body_str]
+        end
+      end
+    end
   end
 end
