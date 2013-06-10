@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-03-30 01:05+0000\n"
+"PO-Revision-Date: 2013-06-07 19:22+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Spanish (El Salvador) (http://www.transifex.com/projects/p/libertree/language/es_SV/)\n"
 "MIME-Version: 1.0\n"
@@ -102,6 +102,9 @@ msgstr "Nueva publicación"
 
 msgid "new-post|Post"
 msgstr "Publicar"
+
+msgid "Publish to these springs:"
+msgstr ""
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "Preview"
@@ -417,8 +420,13 @@ msgstr "Cambiar contraseña"
 msgid "Email:"
 msgstr "Correo electrónico."
 
-msgid "(for password recovery; never public)"
-msgstr "(para recuperación de contraseña; nunca debe ser público)"
+msgid "Use of Email Address"
+msgstr ""
+
+msgid ""
+"Your email address is only used for password recovery. It is never made "
+"public and never shared."
+msgstr ""
 
 msgid "Post excerpt maximum height:"
 msgstr "Altura máxima de extracto de publicación:"
@@ -476,6 +484,9 @@ msgstr "Documentación de API"
 
 msgid "Generate API token"
 msgstr "Generar muestra de API"
+
+msgid "settings|Other actions"
+msgstr ""
 
 msgid "Data Export"
 msgstr "Exportar datos"
@@ -835,6 +846,12 @@ msgstr "Por favor, note que los mensajes directos no son totalmente privados, ni
 msgid ""
 "Your message is longer than 4096 characters. Please shorten it and try "
 "again."
+msgstr ""
+
+msgid "You cannot send an empty message."
+msgstr ""
+
+msgid "You did not specify a recipient. Please try again."
 msgstr ""
 
 #: view/messages/show.xhtml
@@ -1219,18 +1236,6 @@ msgstr "Legible"
 
 msgid "menu|small"
 msgstr "Pequeño"
-
-msgid "menu|Currently in &quot;small display&quot; mode; click to change"
-msgstr "Actualmente en &quot;modo &quot;pantalla pequeña; Click para cambiar"
-
-msgid "menu|Currently in &quot;large display&quot; mode; click to change"
-msgstr "Actualmente en &quot;modo &quot;pantalla grande; Click para cambiar"
-
-msgid "menu|Large display"
-msgstr "Pantalla grande"
-
-msgid "menu|Small display"
-msgstr "Pantalla pequeña"
 
 msgid "menu|Administrate"
 msgstr "Administrar"
