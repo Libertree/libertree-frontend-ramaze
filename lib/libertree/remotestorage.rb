@@ -53,7 +53,7 @@ module Libertree
     end
 
     # returns a link on success, nil on failure
-    def self.upload(file, storage_url, access_token, path='public/libertree')
+    def self.upload(file, storage, path='public/libertree')
       tempfile, filename = file.values_at(:tempfile, :filename)
 
       fm = FileMagic.new(FileMagic::MAGIC_MIME)
@@ -66,11 +66,11 @@ module Libertree
       ext = File.extname(filename)
       basename = File.basename(filename, ext)[0..50] # truncate to 50 chars
       filename = "#{basename}-#{Time.now.strftime('%s%4N')}#{ext}"
-      remote_url = "#{storage_url}/#{path}/#{filename}"
+      remote_url = "#{storage.storage_url}/#{path}/#{filename}"
 
       res = Curl::Easy.http_put(remote_url, data) do |req|
         req.timeout = 30 # TODO: how long may the upload take?
-        req.headers['Authorization'] = "Bearer #{access_token}"
+        req.headers['Authorization'] = "Bearer #{storage.access_token}"
         req.headers['Content-type'] = content_type
 
         req.on_success {|easy| return remote_url }
