@@ -67,7 +67,7 @@ module Controller
         redirect r(:connection)
       end
 
-      @files = Libertree::RemoteStorage.get("/public/libertree/", @storage)
+      @files = Libertree::RemoteStorage.get("public/libertree/", @storage)
     end
 
     def delete_file(filename)
@@ -79,7 +79,7 @@ module Controller
         redirect_referrer
       end
 
-      if Libertree::RemoteStorage.delete("/public/libertree/#{filename}", @storage)
+      if Libertree::RemoteStorage.delete("public/libertree/#{filename}", @storage)
         flash[:notice] = s_("remote-storage|File %s has been deleted.") % filename
       else
         flash[:error] = s_("remote-storage|An error occurred. Please try again later.")
