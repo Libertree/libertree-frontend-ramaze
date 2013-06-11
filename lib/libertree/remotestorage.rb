@@ -65,7 +65,7 @@ module Libertree
       # append time to file name to avoid overwriting files with the same name
       ext = File.extname(filename)
       basename = File.basename(filename, ext)[0..50] # truncate to 50 chars
-      filename = "#{basename}-#{Time.now.strftime('%s%4N')}#{ext}"
+      filename = URI.encode("#{basename}-#{Time.now.strftime('%s%4N')}#{ext}")
       remote_url = "#{storage.storage_url}/#{path}/#{filename}"
 
       res = Curl::Easy.http_put(remote_url, data) do |req|
