@@ -70,6 +70,39 @@ module Controller
       @files = Libertree::RemoteStorage.get("public/libertree/", @storage)
     end
 
+    def upload
+      # With JavaScript we could directly upload the file to the remote storage
+      # without first uploading it to Libertree.  As we need to set an authorisation
+      # header, we cannot do this without JavaScript, so this controller action
+      # should be used whenever JavaScript is not activated.
+
+      # The disadvantages of synchronous uploads:
+      # - it takes twice as long to upload a file
+      # - the request might time out
+      # - somewhat larger file uploads are not feasible
+
+      redirect_referrer  if ! request.post?
+
+      @storage = account.remote_storage_connection
+      if @storage.nil? || @storage.access_token.nil?
+        flash[:error] = s_("remote-storage|Please connect your remote storage account first.")
+        redirect r(:connection)
+      end
+
+      begin
+        if Libertree::RemoteStorage.upload(request['file'], @storage)
+          flash[:notice] = s_("remote-storage|Successfully uploaded %s to remote storage.") %
+            request['file'][:filename]
+        else
+          flash[:error] = s_("remote-storage|An error occurred. Please try again later.")
+        end
+      rescue => e
+        flash[:error] = s_("remote-storage|An error occurred. Please try again later.")
+      end
+
+      redirect r(:files)
+    end
+
     def delete_file(filename)
       redirect_referrer  if filename.nil?
 
