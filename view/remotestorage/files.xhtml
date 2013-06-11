@@ -2,7 +2,7 @@
 
 <p><a href="/remotestorage/connection">#{s_('remote-storage|View connection details')}</a></p>
 
-<?r if @files.empty? ?>
+<?r if @files.nil? || @files.empty? ?>
   <p>#{_('There are currently no files in your remote storage.')}</p>
 <?r else ?>
   <ul>

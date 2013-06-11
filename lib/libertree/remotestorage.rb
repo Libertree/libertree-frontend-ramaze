@@ -94,6 +94,7 @@ module Libertree
           return JSON[res.body_str]
         end
       end
+      nil
     end
   end
 end
