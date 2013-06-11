@@ -53,16 +53,18 @@ module Libertree
     end
 
     # returns a link on success, nil on failure
-    def self.upload(filepath, storage_url, access_token, path='public/libertree')
+    def self.upload(file, storage_url, access_token, path='public/libertree')
+      tempfile, filename = file.values_at(:tempfile, :filename)
+
       fm = FileMagic.new(FileMagic::MAGIC_MIME)
-      content_type = fm.file(filepath)
+      content_type = fm.file(tempfile.path)
       fm.close
 
-      data = IO.read(filepath)
+      data = IO.read(tempfile.path)
 
       # append time to file name to avoid overwriting files with the same name
-      ext = File.extname(filepath)
-      basename = File.basename(filepath, ext)[0..50] # truncate to 50 chars
+      ext = File.extname(filename)
+      basename = File.basename(filename, ext)[0..50] # truncate to 50 chars
       filename = "#{basename}-#{Time.now.strftime('%s%4N')}#{ext}"
       remote_url = "#{storage_url}/#{path}/#{filename}"
 
