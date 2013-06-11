@@ -1,14 +1,14 @@
 # 
 # Translators:
 # glesik  <>, 2012
-# glesik <inglessi@gmail.com>, 2012
-# glesik <inglessi@gmail.com>, 2012
+# Alexander Inglessi <inglessi@gmail.com>, 2012
+# Alexander Inglessi <inglessi@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-04-18 00:10+0000\n"
+"PO-Revision-Date: 2013-06-07 19:22+0000\n"
 "Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -103,6 +103,9 @@ msgstr "Новая запись"
 
 msgid "new-post|Post"
 msgstr "Отправить"
+
+msgid "Publish to these springs:"
+msgstr ""
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "Preview"
@@ -418,8 +421,13 @@ msgstr "Сменить пароль"
 msgid "Email:"
 msgstr "Email:"
 
-msgid "(for password recovery; never public)"
-msgstr "(для восстановления пароля; не публикуется)"
+msgid "Use of Email Address"
+msgstr ""
+
+msgid ""
+"Your email address is only used for password recovery. It is never made "
+"public and never shared."
+msgstr ""
 
 msgid "Post excerpt maximum height:"
 msgstr "Максимальная высота выдержки из записи:"
@@ -477,6 +485,9 @@ msgstr "Документация по API"
 
 msgid "Generate API token"
 msgstr "Создать токен API"
+
+msgid "settings|Other actions"
+msgstr ""
 
 msgid "Data Export"
 msgstr "Экспорт данных"
@@ -836,6 +847,12 @@ msgstr "Обратите внимание, что прямые сообщени�
 msgid ""
 "Your message is longer than 4096 characters. Please shorten it and try "
 "again."
+msgstr ""
+
+msgid "You cannot send an empty message."
+msgstr ""
+
+msgid "You did not specify a recipient. Please try again."
 msgstr ""
 
 #: view/messages/show.xhtml
@@ -1220,18 +1237,6 @@ msgstr "крупный"
 
 msgid "menu|small"
 msgstr "мелкий"
-
-msgid "menu|Currently in &quot;small display&quot; mode; click to change"
-msgstr "Включен режим &quot;маленький экран&quot;; нажмите, чтобы сменить"
-
-msgid "menu|Currently in &quot;large display&quot; mode; click to change"
-msgstr "Включен режим &quot;большой экран&quot;; нажмите, чтобы сменить"
-
-msgid "menu|Large display"
-msgstr "Большой экран"
-
-msgid "menu|Small display"
-msgstr "Маленький экран"
 
 msgid "menu|Administrate"
 msgstr "Администрирование"

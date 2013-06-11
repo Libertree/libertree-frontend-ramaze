@@ -2,10 +2,14 @@
 @import "scss-include/mixins.scss";
 
 $threshold: 700px;
+$full_width_threshold: 1024px;
 
 body.single-post-view {
   height: 100%;
   .main {
+    @media screen and (max-width: $full_width_threshold) {
+      width: auto;
+    }
     @media screen and (min-width: $threshold) {
       @include border-box;
       margin: 0 auto;
@@ -27,6 +31,7 @@ body.single-post-view {
     display: none;
   }
   div.post {
+    position: relative;
     @media screen and (min-width: $threshold) {
       height: 100%;
       width: 100%;

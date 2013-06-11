@@ -14,6 +14,7 @@ module Controller
     end
 
     def index
+      @view = "rivers"
       @rivers = account.rivers_not_appended
       @rivers_global = account.rivers_appended
     end
@@ -101,6 +102,7 @@ module Controller
     end
 
     def edit(river_id)
+      @view = "rivers"
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
       redirect_referrer  if @river.nil?
     end

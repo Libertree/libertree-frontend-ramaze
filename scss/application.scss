@@ -664,13 +664,6 @@ table.table {
     }
 }
 
-div.river {
-    margin-top: 1em;
-
-    .river-tools {
-        margin-right: 20px
-    }
-}
 textarea.custom {
     width: 500px;
 }
@@ -737,7 +730,6 @@ textarea#invitations {
 }
 
 div.pools {
-    position: fixed;
     z-index: 2;
     width: 250px;
     padding: 1em;
@@ -749,12 +741,13 @@ div.pools {
 }
 
 .post-excerpt div.pools {
-    top: 150px;
-    left: 0px;
+    right: 0px;
 }
 .post div.pools {
-    top: 20px;
     left: 300px;
+    @media screen and (max-width: $threshold) {
+        left: 5px;
+    }
 }
 div.pools .chzn-container .chzn-results li {
     line-height: 24px;
@@ -784,10 +777,6 @@ div.pools .chzn-container .chzn-results li {
 
 .more-posts-divider {
     border-top: 5px solid $bark;
-}
-
-.contact-list-form td {
-    vertical-align: top;
 }
 
 .via {
