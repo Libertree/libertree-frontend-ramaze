@@ -8,13 +8,7 @@ module Controller
       default_before_filter
     end
 
-    layout do |path|
-      if session[:layout] == 'narrow'
-        :narrow
-      else
-        :default
-      end
-    end
+    layout :default
 
     def index(username, spring_name)
       @view = 'excerpts-view pool'
