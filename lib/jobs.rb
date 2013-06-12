@@ -1,6 +1,6 @@
 require 'libertree/model'
 require 'libertree/job-processor'
-require_relative 'libertree/embedder'
+require 'libertree/embedder'
 require 'net/http'
 require 'uri'
 

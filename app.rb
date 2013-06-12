@@ -38,8 +38,8 @@ $dbh ||= M4DBI.connect(
 require 'libertree/model'
 Libertree::DB.config = conf_db
 
+require 'libertree/embedder'
 require_relative 'lib/libertree/render'
-require_relative 'lib/libertree/embedder'
 
 require_relative 'controller/base'
 require_relative 'controller/accounts'
