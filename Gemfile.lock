@@ -1,10 +1,10 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 4110ed2e1142574d2efae1498f46e4f7e72da27a
+  revision: a641da06a4119ee7c8cd9cdea367d11eca690bd5
   specs:
     libertree-model (0.0.1)
       bcrypt-ruby (= 3.0.1)
-      nokogiri (= 1.6.0)
+      nokogiri (~> 1.5)
       pg (= 0.9.0)
       ruby-oembed (~> 0.8.8)
 
