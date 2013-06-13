@@ -824,8 +824,14 @@ video {
     }
 
     h3 {
+        text-align: center;
         margin-top: 1em;
         margin-bottom: 0;
+        padding-bottom: 0.5em;
+        border-bottom: 1px dotted $bark;
+        a {
+            border: none;
+        }
     }
     ul {
         list-style: none;
