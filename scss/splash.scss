@@ -66,6 +66,16 @@ body.signup {
     margin-top: 2em;
     overflow: auto;
   }
+  label {
+      width: 200px;
+      text-align: right;
+      margin-right: 1.5em;
+      float: left;
+      clear: left;
+  }
+  .field {
+      margin-bottom: 1em;
+  }
   h1 {
     @include rounded;
     margin: -30px -30px 1em;
