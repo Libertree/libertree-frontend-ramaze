@@ -78,16 +78,6 @@ body.excerpts-view .main {
       margin-top: 1em;
     }
 
-    &.profile {
-        #no-more-posts {
-            display: none;
-        }
-
-        #see-more {
-            padding: 1em;
-        }
-    }
-
     #post-excerpts {
         @include shadow;
         @include rounded;
