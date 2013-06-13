@@ -81,6 +81,7 @@ module Controller
     end
 
     def edit(pool_id)
+      @view = 'pools'
       @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect_referrer  if @pool.nil?
     end
