@@ -14,6 +14,7 @@ module Controller
     end
 
     def index
+      @view = 'pools'
       @pools = account.member.pools
     end
     def _index(target_post_id)
