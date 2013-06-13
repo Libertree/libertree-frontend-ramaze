@@ -7,18 +7,6 @@ html.splash {
   background: url('../images/silhouette-dust.png') bottom center repeat-x $dust;
   height: 100%;
   font-family: 'Droid Sans', Tahoma, Arial, sans-serif;
-
-  .flash {
-    padding: 0.5em;
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    &.error {
-      background: $rose;
-    }
-    &.notice {
-      background: $water;
-    }
-  }
 }
 
 body.splash {
