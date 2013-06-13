@@ -20,13 +20,15 @@ body.excerpts-view .main {
       width: 400px;
     }
 
-    div.panel {
+    & > div.panel {
         @include dynamic-excerpt-width;
         @include border-box;
         float: right;
         @media screen and (max-width: $dynamic-excerpt-width-threshold) {
             float: none;
         }
+    }
+    div.panel {
         padding-left: 30px;
         padding-right: 30px;
 
@@ -66,7 +68,6 @@ body.excerpts-view .main {
       @include border-box;
       text-align: center;
       border-radius: 0 0 $border-radius $border-radius;
-      float: right;
       padding: 1em 4em;
     }
 
