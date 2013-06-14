@@ -5,7 +5,7 @@
   </a>
 
   <?r if ! logged_in? ?>
-    <a class="menu-item" id="menu-log-in" href="/login"><img src="/images/icon-login.png" alt="Log in"/> Log in</a>
+    <a class="menu-item" id="menu-log-in" href="/login">#{img 'icon-login.png', {alt:s_('menu|Log in')}} s_('menu|Log in')</a>
   <?r else ?>
     <a class="menu-item" id="menu-account" href="#">
       <span id="account-name">#{account.member.name_display}</span>
