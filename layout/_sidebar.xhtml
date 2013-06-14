@@ -1,3 +1,4 @@
+<?r if logged_in? ?>
 <div id="sidebar">
   <?r if @river_post_order == :comment ?>
     <span class="menu-item"><a href="/home/sort_by_time_created">#{_('by post time')}</a></span>
@@ -38,3 +39,4 @@
     </ul>
   <?r end ?>
 </div>
+<?r end ?>
