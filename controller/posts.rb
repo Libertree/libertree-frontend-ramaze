@@ -71,11 +71,21 @@ module Controller
         end
       end
 
-      post = Libertree::Model::Post.create(
-        'member_id'  => account.member.id,
-        'visibility' => visibility,
-        'text'       => text
-      )
+      begin
+        post = Libertree::Model::Post.create(
+          'member_id'  => account.member.id,
+          'visibility' => visibility,
+          'text'       => text
+        )
+      rescue PGError => e
+        # TODO: test whether this fails when postgresql is running in a non-English locale
+        if e.message =~ /value too long/
+          flash[:error] = _('Your post is langer than 16kB. Please shorten it and try again.')
+          redirect_referrer
+        else
+          raise e
+        end
+      end
 
       if ! request['spring_ids'].nil?
         spring_ids = Array(request['spring_ids']).map(&:to_i).uniq

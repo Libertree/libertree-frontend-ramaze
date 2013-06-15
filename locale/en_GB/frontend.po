@@ -203,6 +203,8 @@ msgstr ""
 #: controller/posts.rb
 msgid "Post may not be empty."
 msgstr ""
+msgid "Your post is langer than 16kB. Please shorten it and try again."
+msgstr ""
 
 #: controller/pools.rb
 msgid "You already have a pool with that name."
