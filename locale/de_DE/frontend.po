@@ -1,22 +1,22 @@
 # 
 # Translators:
-#   <donnerkarlson@web.de>, 2012.
-#   <faldrian@och-noe.de>, 2012.
-#   Jakob Kramer <jakob.kramer@gmx.de>, 2012.
-#  <kudlaty@ymail.com>, 2013.
-#   <kudlaty@ymail.com>, 2012-2013.
-#   <moritz.kiefer@gmail.com>, 2012.
-#   <rekado+libertree@elephly.net>, 2012.
-# Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
-#   <sk8erBLN@lavabit.com>, 2012.
-#   <The_Butcher@gmx.at>, 2012.
+# donnerkarlson <donnerkarlson@web.de>, 2012
+# Faldrian <faldrian@och-noe.de>, 2012
+# Jakob Kramer <jakob.kramer@gmx.de>, 2012
+# shaggy <kudlaty@ymail.com>, 2013
+# shaggy <kudlaty@ymail.com>, 2012-2013
+# Javafant <moritz.kiefer@gmail.com>, 2012
+# rekado <rekado+libertree@elephly.net>, 2012
+# rekado <rekado+libertree@elephly.net>, 2012
+# adrenalin <sk8erBLN@lavabit.com>, 2012
+# deadlyhappen <The_Butcher@gmx.at>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-03-22 16:27+0000\n"
-"Last-Translator: shaggy <kudlaty@ymail.com>\n"
+"PO-Revision-Date: 2013-06-15 15:01+0000\n"
+"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/libertree/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,6 +110,9 @@ msgstr "Neuer Beitrag"
 
 msgid "new-post|Post"
 msgstr "Post"
+
+msgid "Publish to these springs:"
+msgstr "In diesen Quellen veröffentlichen:"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "Preview"
@@ -425,8 +428,13 @@ msgstr "Kennwort ändern"
 msgid "Email:"
 msgstr "E-Mail:"
 
-msgid "(for password recovery; never public)"
-msgstr "(wird nur benutzt, um das Kennwort zurückzusetzen; wird niemals veröffentlicht)"
+msgid "Use of Email Address"
+msgstr "Nutzung der E-Mail-Adresse"
+
+msgid ""
+"Your email address is only used for password recovery. It is never made "
+"public and never shared."
+msgstr "Deine E-Mail-Adresse wird ausschließlich zur Wiederherstellung des Passworts benutzt. Sie wird niemals öffentlich angezeigt oder an Dritte weitergegeben."
 
 msgid "Post excerpt maximum height:"
 msgstr "Maximalhöhe von Post-Auszügen:"
@@ -484,6 +492,9 @@ msgstr "API-Dokumentation"
 
 msgid "Generate API token"
 msgstr "Generiere API-Schlüssel"
+
+msgid "settings|Other actions"
+msgstr "Weitere Einstellungsmöglichkeiten"
 
 msgid "Data Export"
 msgstr "Daten exportieren"
@@ -581,16 +592,16 @@ msgstr "%1$s haben %2$ss %3$sBeitrag%4$s kommentiert."
 
 #: view/notifications/_comment_like.xhtml
 msgid "singular|%1$s liked your %2$scomment%3$s on your post."
-msgstr "%1$s gefällt dein %2$sKommentar%3$s auf deinen Beitrag."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s zu deinem Beitrag."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on your post."
-msgstr "%1$s gefällt dein %2$sKommentar%3$s auf deinen Beitrag."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s zu deinem Beitrag."
 
 msgid "singular|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "%1$s gefällt dein %2$sKommentar%3$s auf %4$ss Beitrag."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s zu %4$ss Beitrag."
 
 msgid "plural|%1$s liked your %2$scomment%3$s on %4$s's post."
-msgstr "%1$s gefällt dein %2$sKommentar%3$s auf %4$ss Beitrag."
+msgstr "%1$s gefällt dein %2$sKommentar%3$s zu %4$ss Beitrag."
 
 #: view/notifications/_post_like.xhtml
 msgid "singular|%1$s liked your %2$spost%3$s."
@@ -844,6 +855,12 @@ msgid ""
 "Your message is longer than 4096 characters. Please shorten it and try "
 "again."
 msgstr "Deine Nachricht ist länger als 4096 Zeichen. Bitte kürzen und noch einmal versuchen."
+
+msgid "You cannot send an empty message."
+msgstr "Du kannst keine leere Nachricht versenden."
+
+msgid "You did not specify a recipient. Please try again."
+msgstr "Kein Empfänger angegeben, bitte erneut versuchen."
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -1228,18 +1245,6 @@ msgstr "lesbar"
 msgid "menu|small"
 msgstr "klein"
 
-msgid "menu|Currently in &quot;small display&quot; mode; click to change"
-msgstr "Aktuell im Modus für  &quot;kleine Bildschirme&quot;; anklicken zum Ändern"
-
-msgid "menu|Currently in &quot;large display&quot; mode; click to change"
-msgstr "Aktuell im Modus für  &quot;grosse Bildschirme&quot; anklicken zum Ändern"
-
-msgid "menu|Large display"
-msgstr "Großer Bildschirm"
-
-msgid "menu|Small display"
-msgstr "Kleiner Bildschirm"
-
 msgid "menu|Administrate"
 msgstr "Verwalten"
 
@@ -1260,6 +1265,9 @@ msgstr "Bekannte Probleme"
 
 msgid "menu|Toggle sidebar"
 msgstr "Seitenleiste ein-/ausblenden"
+
+msgid "menu|Log in"
+msgstr "Anmelden"
 
 #: layout/_notifications.xhtml
 msgid "No notifications"
