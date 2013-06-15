@@ -80,8 +80,6 @@ module Controller
       Libertree::Model::Notification.mark_seen_for_account_and_message(account, @message)
     end
 
-    def _new
-      @contacts = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
-    end
+    def _new; end
   end
 end
