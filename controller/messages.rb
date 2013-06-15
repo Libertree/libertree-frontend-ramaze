@@ -81,5 +81,24 @@ module Controller
     end
 
     def _new; end
+
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
+    def search
+      query = request['q'].to_s
+      return '[]'  if query.empty?
+
+      # TODO: write a member search function in the model
+      members = Libertree::Model::Member.s("SELECT * FROM members WHERE username ILIKE '%' || ? || '%'", query)
+      accounts = Libertree::Model::Account.s("SELECT * FROM accounts WHERE username ILIKE '%' || ? || '%'", query)
+
+      result = members.map do |m|
+        { 'id' => m.id,
+          'text' => m.handle }
+      end
+      result + accounts.map do |a|
+        { 'id' => a.member.id,
+          'text' => a.member.handle }
+      end
+    end
   end
 end
