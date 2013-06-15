@@ -35,7 +35,7 @@ module Controller
         message = Libertree::Model::Message.create_with_recipients(
           sender_member_id: account.member.id,
           text: request['text'].to_s,
-          recipient_member_ids: request['recipients']
+          recipient_member_ids: request['recipients'].split(",")
         )
 
         trees = message.recipients.reduce(Set.new) { |_trees, recipient|

@@ -1,6 +1,6 @@
 <form id="new-message" action="/messages/create" method="POST" data-member-id="#{account.member.id}">
 
-  <input id="recipients" name="recipients[]" data-placeholder="#{s_('direct-message|Recipients')}" />
+  <input id="recipients" name="recipients" data-placeholder="#{s_('direct-message|Recipients')}" />
 
   #{ Controller::Main.render_partial '_markdown_injector' }
   <textarea name="text" rows="5" id="textarea-message-new" tabindex="1">#{session[:saved_text]['textarea-message-new']}</textarea><br/>
