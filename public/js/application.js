@@ -59,7 +59,7 @@ $(document).ready( function() {
         Libertree.Session.ensureAlive(html);
         if( target.length > 0 ) {
           $('.preview-box').remove();
-          target.append( $('<div class="preview-box" class="'+type+'"><a class="close" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+          target.append( $('<div class="preview-box" class="'+type+'"><a class="close-preview" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
           if( scrollable.length === 0 ) {
             scrollable = Libertree.UI.scrollable();
             delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
@@ -75,7 +75,7 @@ $(document).ready( function() {
     );
   } );
 
-  $(document).on('click', '.preview-box a.close', function() {
+  $(document).on('click', '.preview-box a.close-preview', function() {
     $(this).closest('.preview-box').remove();
     return false;
   } );
