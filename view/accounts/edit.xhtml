@@ -51,6 +51,11 @@
   </div>
 
   <div class="field">
+    <label>#{_('Enable posting from river view:')}</label>
+    <input type="checkbox" name="new_post_in_river" #{account.new_post_in_river ? "checked" : ""} />
+  </div>
+
+  <div class="field">
     <label>#{_('Language:')}</label>
     <select name="locale">
       <?r Libertree::LANG.each do |locale,name| ?>
