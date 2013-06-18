@@ -80,7 +80,7 @@ module Controller
       rescue PGError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale
         if e.message =~ /value too long/
-          flash[:error] = _('Your post is langer than 16kB. Please shorten it and try again.')
+          flash[:error] = _('Please submit fewer than 16,000 characters.')
           redirect_referrer
         else
           raise e

@@ -203,7 +203,7 @@ msgstr ""
 #: controller/posts.rb
 msgid "Post may not be empty."
 msgstr ""
-msgid "Your post is langer than 16kB. Please shorten it and try again."
+msgid "Please submit fewer than 16,000 characters."
 msgstr ""
 
 #: controller/pools.rb
