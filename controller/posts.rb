@@ -20,6 +20,8 @@ module Controller
       end
     end
 
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
+
     def index
       @posts = Libertree::Model::Post.s("SELECT * FROM posts ORDER BY id DESC")
     end
@@ -53,8 +55,16 @@ module Controller
       text.encode!('UTF-8', 'UTF-16')
 
       if text.empty?
-        flash[:error] = _('Post may not be empty.')
-        redirect_referrer
+        error = _('Post may not be empty.')
+        if Ramaze::Current.action.wish == 'json'
+          return {
+            'success' => false,
+            'error' => error,
+          }
+        else
+          flash[:error] = error
+          redirect_referrer
+        end
       end
 
       visibility = request['visibility'].to_s
@@ -66,8 +76,16 @@ module Controller
           text: text
         ]
         if post
-          flash[:error] = _('You already posted that. (%s)' % ago(post.time_created) )
-          redirect_referrer
+          error = _('You already posted that. (%s)' % ago(post.time_created) )
+          if Ramaze::Current.action.wish == 'json'
+            return {
+              'success' => false,
+              'error' => error,
+            }
+          else
+            flash[:error] = error
+            redirect_referrer
+          end
         end
       end
 
@@ -80,8 +98,16 @@ module Controller
       rescue PGError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale
         if e.message =~ /value too long/
-          flash[:error] = _('Please submit fewer than 16,000 characters.')
-          redirect_referrer
+          error = _('Please submit fewer than 16,000 characters.')
+          if Ramaze::Current.action.wish == 'json'
+            return {
+              'success' => false,
+              'error' => error,
+            }
+          else
+            flash[:error] = error
+            redirect_referrer
+          end
         else
           raise e
         end
@@ -108,7 +134,20 @@ module Controller
 
       session[:saved_text]['textarea-post-new'] = nil
 
-      redirect r(:show, post.id)
+      if Ramaze::Current.action.wish == 'json'
+        message = _("Successfully posted.")
+        river = Libertree::Model::River[ request['river_id'].to_i ]
+        if river && ! river.matches_post?(post)
+          message << ' ' + _("Note that your post cannot be seen here because it does not match this river.")
+        end
+        {
+          'success' => true,
+          'postId' => post.id,
+          'message' => message
+        }
+      else
+        redirect r(:show, post.id)
+      end
     end
 
     def show(post_id, from_comment_id = nil)

@@ -7,6 +7,31 @@ $(document).ready( function() {
   var wantsToComment = false,
     scrollable = Libertree.UI.scrollable();
 
+  $(document).on('click', '#post-new input[type="submit"]', function() {
+    $('#post-new .message').hide();
+    $.post(
+      '/posts/create.json',
+      $('#post-new').serialize(),
+      function(result) {
+        if( result.success ) {
+          $('#post-new .message').
+            removeClass('error').
+            text(result.message).
+            show()
+          ;
+        } else {
+          $('#post-new .message').
+            addClass('error').
+            text(result.error).
+            show()
+          ;
+        }
+      }
+    );
+
+    return false;
+  } );
+
   $(document).on('click', '.post-excerpt .show-more', function() {
     var showMoreLink = $(this),
       excerpt = showMoreLink.siblings('.excerpt'),

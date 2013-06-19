@@ -45,6 +45,17 @@ body.excerpts-view .main {
             margin-left: 2em;
         }
     }
+    #post-new {
+        .message {
+            background-color: $sand;
+            padding: 0.5em;
+            display: none;
+            margin-top: 0.5em;
+            &.error {
+                color: $red;
+            }
+        }
+    }
 }
 
 .excerpts-view {
