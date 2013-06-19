@@ -19,6 +19,29 @@ $(document).ready( function() {
             text(result.message).
             show()
           ;
+          if( result.matchesRiver ) {
+            $.get(
+              '/posts/_excerpt/' + result.postId,
+              function(html) {
+                var o = $( $.trim(html) ),
+                  verticalDelta,
+                  animationDuration
+                ;
+
+                o.insertBefore('#post-excerpts .post-excerpt:first');
+                /* Adjust by 60 pixels to account for navigation bar */
+                verticalDelta = o.offset().top - scrollable.scrollTop() - 60;
+                animationDuration = verticalDelta*2;
+
+                o.hide().slideDown(animationDuration);
+
+                scrollable.animate(
+                  { scrollTop: scrollable.scrollTop() + verticalDelta },
+                  animationDuration
+                );
+              }
+            );
+          }
         } else {
           $('#post-new .message').
             addClass('error').

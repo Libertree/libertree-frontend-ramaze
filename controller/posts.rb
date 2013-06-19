@@ -26,6 +26,10 @@ module Controller
       @posts = Libertree::Model::Post.s("SELECT * FROM posts ORDER BY id DESC")
     end
 
+    def _excerpt(post_id)
+      @post = Libertree::Model::Post[ post_id.to_i ]
+    end
+
     def _excerpts( river_id, older_or_newer = 'older', time = Time.now.to_i )
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
       if @river.nil?
@@ -137,13 +141,17 @@ module Controller
       if Ramaze::Current.action.wish == 'json'
         message = _("Successfully posted.")
         river = Libertree::Model::River[ request['river_id'].to_i ]
-        if river && ! river.matches_post?(post)
-          message << ' ' + _("Note that your post cannot be seen here because it does not match this river.")
+        if river
+          matches_river = river.matches_post?(post)
+          if ! matches_river
+            message << ' ' + _("Note that your post cannot be seen here because it does not match this river.")
+          end
         end
         {
           'success' => true,
           'postId' => post.id,
-          'message' => message
+          'message' => message,
+          'matchesRiver' => !! matches_river,
         }
       else
         redirect r(:show, post.id)
