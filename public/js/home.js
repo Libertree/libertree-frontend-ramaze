@@ -13,7 +13,13 @@ $(document).ready( function() {
       '/posts/create.json',
       $('#post-new').serialize(),
       function(result) {
-        if( result.success ) {
+        if( ! result.success ) {
+          $('#post-new .message').
+            addClass('error').
+            text(result.error).
+            show()
+          ;
+        } else {
           $('#post-new .message').
             removeClass('error').
             text(result.message).
@@ -42,12 +48,6 @@ $(document).ready( function() {
               }
             );
           }
-        } else {
-          $('#post-new .message').
-            addClass('error').
-            text(result.error).
-            show()
-          ;
         }
       }
     );
