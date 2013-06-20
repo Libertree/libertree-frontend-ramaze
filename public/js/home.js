@@ -56,6 +56,12 @@ $(document).ready( function() {
     return false;
   } );
 
+  $(document).on('keydown', '#textarea-post-new', function(event) {
+    if( $('#post-new .message').is(':visible') ) {
+      $('#post-new .message').slideUp();
+    }
+  } );
+
   $(document).on('click', '.post-excerpt .show-more', function() {
     var showMoreLink = $(this),
       excerpt = showMoreLink.siblings('.excerpt'),
