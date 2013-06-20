@@ -25,6 +25,7 @@ $(document).ready( function() {
             text(result.message).
             show()
           ;
+          $('#textarea-post-new').val('');
           if( result.matchesRiver ) {
             $.get(
               '/posts/_excerpt/' + result.postId,
