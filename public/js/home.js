@@ -7,7 +7,7 @@ $(document).ready( function() {
   var wantsToComment = false,
     scrollable = Libertree.UI.scrollable();
 
-  $(document).on('click', '#post-new input[type="submit"]', function() {
+  $(document).on('click', '.excerpts-view #post-new input[type="submit"]', function() {
     $('#post-new .message').hide();
     $.post(
       '/posts/create.json',
