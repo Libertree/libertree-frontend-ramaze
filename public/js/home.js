@@ -8,23 +8,21 @@ $(document).ready( function() {
     scrollable = Libertree.UI.scrollable();
 
   $(document).on('click', '.excerpts-view #post-new input[type="submit"]', function() {
+    var message = $('#post-new .message');
+
     $('#post-new .message').hide();
     $.post(
       '/posts/create.json',
       $('#post-new').serialize(),
       function(result) {
         if( ! result.success ) {
-          $('#post-new .message').
-            addClass('error').
-            text(result.error).
-            show()
-          ;
+          message.addClass('error');
+          message.text(result.error);
+          message.show();
         } else {
-          $('#post-new .message').
-            removeClass('error').
-            text(result.message).
-            show()
-          ;
+          message.removeClass('error');
+          message.text(result.message);
+          message.show();
           $('#textarea-post-new').val('');
           if( result.matchesRiver ) {
             $.get(
