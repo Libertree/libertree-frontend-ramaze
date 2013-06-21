@@ -15,6 +15,7 @@ module Controller
 
     def index(river_id = nil)
       @view = "excerpts-view home"
+      @springs = account.member.springs
       @rivers = account.rivers_not_appended
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ] || account.home_river || @rivers[0]
       @river_post_order = session[:river_post_order]

@@ -121,10 +121,11 @@ EventMachine.run do
           if num_posts > 0
             ws.send(
               {
-                'command'     => 'river-posts',
-                'riverId'     => river.id,
+                'command' => 'river-posts',
+                'riverId' => river.id,
+                'postIds' => posts.map(&:id),
                 # TODO: i18n
-                'numNewPosts' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}"
+                'newPostsMessage' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}",
               }.to_json
             )
             post_ids += posts.map(&:id)

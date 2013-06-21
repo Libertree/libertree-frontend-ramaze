@@ -1,5 +1,13 @@
 #{ render_file 'layout/_sidebar.xhtml' }
 
+<?r if account.new_post_in_river ?>
+  <form id="post-new">
+    #{ Controller::Main.render_partial 'posts/_form-new', springs: @springs }
+    <input type="hidden" name="river_id" value="#{@river.id}"/>
+    <div class="message"></div>
+  </form>
+<?r end ?>
+
 <?r if @no_rivers ?>
   <div id="no-rivers" class="panel">
     <p>
