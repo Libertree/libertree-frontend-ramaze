@@ -18,11 +18,11 @@ $(document).ready( function() {
         if( ! result.success ) {
           message.addClass('error');
           message.text(result.error);
-          message.show();
+          message.slideDown();
         } else {
           message.removeClass('error');
           message.text(result.message);
-          message.show();
+          message.slideDown();
           $('#textarea-post-new').val('');
           if( result.matchesRiver ) {
             $.get(
