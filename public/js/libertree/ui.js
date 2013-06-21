@@ -204,8 +204,10 @@ Libertree.UI = (function () {
     },
 
     indicateNewPosts: function (data) {
-      var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
-      var numNewPosts = data.postIds.length;
+      var
+        indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
+        numNewPosts = data.postIds.length
+      ;
       if( indicator.length ) {
         /* Don't count posts which are already shown in the river */
         $.each( data.postIds, function(i, postId) {

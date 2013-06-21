@@ -28,9 +28,10 @@ $(document).ready( function() {
             $.get(
               '/posts/_excerpt/' + result.postId,
               function(html) {
-                var o = $( $.trim(html) );
-                var verticalDelta;
-                var animationDuration;
+                var o = $( $.trim(html) ),
+                  verticalDelta,
+                  animationDuration
+                ;
 
                 o.insertBefore('#post-excerpts .post-excerpt:first');
                 /* Adjust by 60 pixels to account for navigation bar */
