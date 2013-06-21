@@ -46,6 +46,12 @@ body.excerpts-view .main {
         }
     }
     #post-new {
+        width: 660px; /* account for padding */
+        margin-bottom: 20px;
+        textarea {
+            margin: auto;
+        }
+
         .message {
             background-color: $sand;
             padding: 0.5em;
@@ -90,7 +96,7 @@ body.excerpts-view .main {
       margin-top: 1em;
     }
 
-    #post-excerpts {
+    #post-excerpts, form#post-new {
         @include shadow;
         @include rounded;
         float: right;
