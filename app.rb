@@ -1,4 +1,5 @@
 require 'ramaze'
+require 'sass'
 require 'm4dbi'
 require 'rdbi-driver-postgresql'
 require 'syck'
@@ -6,6 +7,16 @@ require 'mini_magick'
 require 'fast_gettext'
 require 'markdown'
 require_relative 'lib/libertree/lang'
+
+
+# compile SCSS to CSS
+css_path = "public/themes/default/css"
+Dir.mkdir css_path unless Dir.exists? css_path
+Dir.glob("scss/*.scss") do |filename|
+  target = filename.match(%r{/(.+)\.scss}) { "#{css_path}/#{$1}.css" }
+  Sass.compile_file(filename, target)
+end
+
 
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
