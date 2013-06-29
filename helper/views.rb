@@ -6,7 +6,7 @@ module Ramaze
       end
 
       def help_bubble(s, title="help|What does this mean?")
-        "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content='#{s}'>?</a>"
+        "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content=\"#{s}\">?</a>"
       end
 
       def img(src,options={})

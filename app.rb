@@ -1,4 +1,5 @@
 require 'ramaze'
+require 'sass'
 require 'm4dbi'
 require 'rdbi-driver-postgresql'
 require 'syck'
@@ -6,6 +7,16 @@ require 'mini_magick'
 require 'fast_gettext'
 require 'markdown'
 require_relative 'lib/libertree/lang'
+
+
+# compile SCSS to CSS
+css_path = "public/themes/default/css"
+Dir.mkdir css_path unless Dir.exists? css_path
+Dir.glob("scss/*.scss") do |filename|
+  target = filename.match(%r{/(.+)\.scss}) { "#{css_path}/#{$1}.css" }
+  Sass.compile_file(filename, target)
+end
+
 
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
@@ -26,7 +37,6 @@ all_confs = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/database.
 env = ENV['LIBERTREE_ENV'] || 'development'
 conf_db = all_confs[env]
 
-$m4dbi_cached_fetches = true
 $dbh ||= M4DBI.connect(
   :PostgreSQL,
   host:     conf_db['host'],
@@ -38,8 +48,8 @@ $dbh ||= M4DBI.connect(
 require 'libertree/model'
 Libertree::DB.config = conf_db
 
+require 'libertree/embedder'
 require_relative 'lib/libertree/render'
-require_relative 'lib/libertree/embedder'
 require_relative 'lib/libertree/remotestorage'
 
 require_relative 'controller/base'
@@ -58,6 +68,7 @@ require_relative 'controller/profiles_local'
 require_relative 'controller/posts-hidden'
 require_relative 'controller/post-likes'
 require_relative 'controller/pools'
+require_relative 'controller/springs'
 require_relative 'controller/posts'
 require_relative 'controller/remotestorage'
 require_relative 'controller/rivers'

@@ -7,23 +7,11 @@ html.splash {
   background: url('../images/silhouette-dust.png') bottom center repeat-x $dust;
   height: 100%;
   font-family: 'Droid Sans', Tahoma, Arial, sans-serif;
-
-  .flash {
-    padding: 0.5em;
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    &.error {
-      background: $rose;
-    }
-    &.notice {
-      background: $water;
-    }
-  }
 }
 
 body.splash {
   margin: 0 auto;
-  width: 400px;
+  max-width: 450px;
   background: transparent;
   color: $text;
 
@@ -54,6 +42,11 @@ body.splash {
     font-size: 0.7em;
     text-align: center;
   }
+
+  form, p {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
 
 html.signup {
@@ -72,6 +65,16 @@ body.signup {
     padding: 30px;
     margin-top: 2em;
     overflow: auto;
+  }
+  label {
+      width: 200px;
+      text-align: right;
+      margin-right: 1.5em;
+      float: left;
+      clear: left;
+  }
+  .field {
+      margin-bottom: 1em;
   }
   h1 {
     @include rounded;

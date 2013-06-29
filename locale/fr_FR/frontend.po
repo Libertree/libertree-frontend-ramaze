@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-06-07 19:22+0000\n"
-"Last-Translator: rekado <rekado+libertree@elephly.net>\n"
+"PO-Revision-Date: 2013-06-20 16:55+0000\n"
+"Last-Translator: Loelo <autre7273@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/libertree/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -284,6 +284,9 @@ msgstr "montrer moins"
 msgid "Post may not be empty."
 msgstr "Un message ne peut pas être vide."
 
+msgid "Please submit fewer than 16,000 characters."
+msgstr "Merci de soumettre moins de 16.000 caractères."
+
 #: controller/pools.rb
 msgid "You already have a pool with that name."
 msgstr "Vous avez déjà un bassin avec ce nom."
@@ -427,12 +430,12 @@ msgid "Email:"
 msgstr "adresse de courrier électronique :"
 
 msgid "Use of Email Address"
-msgstr ""
+msgstr "Usage de l’adresse de couriel"
 
 msgid ""
 "Your email address is only used for password recovery. It is never made "
 "public and never shared."
-msgstr ""
+msgstr "Votre adresse de courriel sera utilisée uniquement pour retrouver votre mot de passe. Elle ne sera jamais rendue publique ni partagée."
 
 msgid "Post excerpt maximum height:"
 msgstr "Hauteur maximale des extraits de message :"
@@ -492,7 +495,7 @@ msgid "Generate API token"
 msgstr "Générer le jeton de l'API"
 
 msgid "settings|Other actions"
-msgstr ""
+msgstr "Autres actions"
 
 msgid "Data Export"
 msgstr "Exporter les données"
@@ -855,10 +858,10 @@ msgid ""
 msgstr "Votre message dépasse les 4096 caractères. Merci de le réduire et de réessayer."
 
 msgid "You cannot send an empty message."
-msgstr ""
+msgstr "Vous ne pouvez pas envoyez un message vide."
 
 msgid "You did not specify a recipient. Please try again."
-msgstr ""
+msgstr "Vous n’avez pas spécifié de destinataire. Merci de recommencer."
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -1263,6 +1266,9 @@ msgstr "Problèmes connus"
 
 msgid "menu|Toggle sidebar"
 msgstr "Voir la barre latérale"
+
+msgid "menu|Log in"
+msgstr "Se connecter"
 
 #: layout/_notifications.xhtml
 msgid "No notifications"

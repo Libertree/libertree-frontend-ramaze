@@ -151,7 +151,7 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  if( window.location.hash.startsWith("#comment-") ) {
+  if( window.location.hash.indexOf("#comment-") === 0 ) {
     Libertree.Comments.loadMore( $('a.load-comments'), true );
   }
 

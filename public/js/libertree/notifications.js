@@ -27,6 +27,6 @@ Libertree.Notifications = {
       }
     }
     document.title = title;
-    $('#num-notifications-unseen').html(n);
+    $('#num-notifications-unseen').text(n);
   }
 };

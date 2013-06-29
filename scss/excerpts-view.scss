@@ -16,17 +16,19 @@ body.excerpts-view .main {
     padding: 0;
     background-color: transparent;
 
-    select {
+    select#river-selector {
       width: 400px;
     }
 
-    div.panel {
+    & > div.panel {
         @include dynamic-excerpt-width;
         @include border-box;
         float: right;
         @media screen and (max-width: $dynamic-excerpt-width-threshold) {
             float: none;
         }
+    }
+    div.panel {
         padding-left: 30px;
         padding-right: 30px;
 
@@ -41,6 +43,30 @@ body.excerpts-view .main {
 
         ul {
             margin-left: 2em;
+        }
+    }
+    #post-new {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 20px;
+
+        h3 {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        textarea {
+            margin: auto;
+        }
+
+        .message {
+            background-color: $sand;
+            padding: 0.5em;
+            display: none;
+            margin-top: 0.5em;
+            &.error {
+                color: $red;
+            }
         }
     }
 }
@@ -66,7 +92,6 @@ body.excerpts-view .main {
       @include border-box;
       text-align: center;
       border-radius: 0 0 $border-radius $border-radius;
-      float: right;
       padding: 1em 4em;
     }
 
@@ -78,17 +103,7 @@ body.excerpts-view .main {
       margin-top: 1em;
     }
 
-    &.profile {
-        #no-more-posts {
-            display: none;
-        }
-
-        #see-more {
-            padding: 1em;
-        }
-    }
-
-    #post-excerpts {
+    #post-excerpts, form#post-new {
         @include shadow;
         @include rounded;
         float: right;
@@ -181,6 +196,7 @@ body.excerpts-view .main {
                 margin-bottom: 1em;
                 form.comment {
                   display: inline-block;
+                  width: 80%;
                 }
               }
             }

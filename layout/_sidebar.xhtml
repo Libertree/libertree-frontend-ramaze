@@ -1,3 +1,4 @@
+<?r if logged_in? ?>
 <div id="sidebar">
   <?r if @river_post_order == :comment ?>
     <span class="menu-item"><a href="/home/sort_by_time_created">#{_('by post time')}</a></span>
@@ -10,7 +11,7 @@
   <?r if @river ?>
   <a href="/home/mark_all_read/#{@river.id}">#{_('mark all read')}</a>
   <?r end ?>
-  <h3>#{_('Rivers')} <a href="/rivers">#{img 'icon-edit.png', {alt:s_('manage rivers'), title:s_('manage rivers'), class:"size-16"}}</a></h3>
+  <h3><a href="/rivers">#{_('Rivers')}</a></h3>
   <ul>
     <?r if account.home_river ?>
       <?r if account.home_river == @river ?>
@@ -30,9 +31,7 @@
   </ul>
 
   <?r unless account.member.pools.empty? ?>
-    <hr/>
-
-    <h3>#{_('Pools')} <a href="/pools">#{img 'icon-edit.png', {alt:s_('Pools'), title:s_('Pools'), class:"size-16"}}</a></h3>
+    <h3><a href="/pools">#{_('Pools')}</a></h3>
     <ul>
     <?r account.member.pools.each do |p| ?>
       <li><a href="/pools/show/#{p.id}">#{p.name}</a></li>
@@ -40,3 +39,4 @@
     </ul>
   <?r end ?>
 </div>
+<?r end ?>

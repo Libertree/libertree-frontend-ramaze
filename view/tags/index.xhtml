@@ -16,9 +16,9 @@
 </div>
 
 <?r if @posts.empty? ?>
-  <p id="no-more-posts" class="panel">
+  <div id="no-more-posts" class="panel">
     #{_('There are no posts matching this hashtag.')}
-  </p>
+  </div>
 <?r else ?>
 <div id="post-excerpts" data-tag="#{@tag}">
   <div class="more-posts">

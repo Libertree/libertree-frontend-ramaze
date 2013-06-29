@@ -15,7 +15,7 @@ module Controller
 
     def index
       @messages = account.messages
-      @view = 'messages-index'
+      @view = 'messages'
     end
 
     def create

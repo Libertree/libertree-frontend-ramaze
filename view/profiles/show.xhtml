@@ -45,9 +45,9 @@
 </div>
 
 <?r if @posts.empty? ?>
-  <p id="no-more-posts" class="panel">
+  <div id="no-more-posts" class="panel">
     #{_('No more posts (for now).')}
-  </p>
+  </div>
 <?r else ?>
 <div id="post-excerpts" data-member-id="#{@member.id}">
   <div class="more-posts">

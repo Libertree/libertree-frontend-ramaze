@@ -19,6 +19,10 @@ module Controller
       @rivers_global = account.rivers_appended
     end
 
+    def new
+      @view = "rivers"
+    end
+
     def _create_tutorial_river
       return  if ! request.post?
 

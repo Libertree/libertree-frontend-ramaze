@@ -55,6 +55,7 @@ module Controller
       account.thumbnail = !! request['thumbnail']
       account.icons = ( request['post_tools_icons'].to_s == 'icons' )
       account.locale = request['locale'].to_s
+      account.new_post_in_river = !! request['new_post_in_river']
       session[:locale] = account.locale
 
       flash[:notice] = _('Settings saved.')

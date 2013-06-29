@@ -1,25 +1,19 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: ba8610ce8ccbfce0908c531383b3817175c11a99
+  revision: 1a06703af8951ada528612ce5b40292fd6aa7cec
   branch: remotestorage
   specs:
-    libertree-model (0.0.1)
-
-GIT
-  remote: git://github.com/RDBI/rdbi-driver-postgresql.git
-  revision: be571a9909f74160be8b0c638275e33fe62c75cf
-  branch: fix-execute-memory-leak
-  specs:
-    rdbi-driver-postgresql (0.9.1)
-      epoxy (>= 0.3.1)
-      methlab
-      pg (= 0.9.0)
-      rdbi
+    libertree-model (0.5.0)
+      bcrypt-ruby (= 3.0.1)
+      m4dbi
+      nokogiri (~> 1.5)
+      rdbi-driver-postgresql
+      ruby-oembed (~> 0.8.8)
 
 GIT
   remote: git://github.com/RDBI/rdbi.git
-  revision: 3742c7fc3eb2876716ed5a1cf4883389be13e631
-  branch: sth-leak
+  revision: e5accb27a99f314db1474f5bb01538b4d2ccb26a
+  ref: pre-sth-leak
   specs:
     rdbi (0.9.1)
       epoxy (>= 0.3.1)
@@ -94,7 +88,7 @@ GEM
     i18n (0.6.0)
     json (1.7.6)
     kgio (2.7.3)
-    m4dbi (0.8.7)
+    m4dbi (0.8.9)
       metaid
       rdbi
     metaid (1.0)
@@ -102,9 +96,11 @@ GEM
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
+    mini_portile (0.5.0)
     multi_json (1.1.0)
-    nokogiri (1.5.2)
-    pg (0.9.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    pg (0.15.1)
     rack (1.4.1)
     rack-test (0.6.1)
       rack (>= 1.0)
@@ -113,6 +109,9 @@ GEM
       rack-test (>= 0.5)
     raindrops (0.8.0)
     rake (0.9.2.2)
+    rdbi-driver-postgresql (0.9.2)
+      pg (>= 0.10.0)
+      rdbi
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -179,7 +178,7 @@ DEPENDENCIES
   racksh
   ramaze!
   rdbi!
-  rdbi-driver-postgresql!
+  rdbi-driver-postgresql
   rpeg-markdown (= 1.4.6)!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
