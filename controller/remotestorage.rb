@@ -67,7 +67,11 @@ module Controller
         redirect r(:connection)
       end
 
-      @files = Libertree::RemoteStorage.get("public/libertree/", @storage)
+      begin
+        @files = Libertree::RemoteStorage.get("public/libertree/", @storage)
+      rescue => e
+        # TODO: report connection error in view
+      end
     end
 
     def upload
