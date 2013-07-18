@@ -15,7 +15,8 @@ module Controller
             respond '', 405
           end
 
-          if request['source'].nil? || request['source'].to_s.strip.empty?
+          if request['source'].nil? || request['source'].to_s.strip.empty? ||
+              Libertree.plain( request['source'].to_s ).empty?
             respond '', 400
           end
 
