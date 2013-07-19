@@ -22,7 +22,7 @@ module Libertree
         if valid?(info)
           info
         end
-      rescue Exception => e
+      rescue StandardError => e
         nil
       end
     end
