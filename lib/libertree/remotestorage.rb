@@ -11,10 +11,10 @@ module Libertree
       return  if base_url.nil?
 
       url = "http://#{base_url}/.well-known/host-meta?resource=acct:#{handle}"
-      res = Curl::Easy.http_get(url) do |req|
+      res = Curl::Easy.http_get(url) { |req|
         req.follow_location = true
         req.timeout = 15
-      end
+      }
 
       begin
         json = JSON[res.body_str]
@@ -69,13 +69,13 @@ module Libertree
       filename = URI.encode("#{basename}-#{Time.now.strftime('%s%4N')}#{ext}")
       remote_url = "#{storage.storage_url}/#{path}/#{filename}"
 
-      res = Curl::Easy.http_put(remote_url, data) do |req|
+      res = Curl::Easy.http_put(remote_url, data) { |req|
         req.timeout = 30 # TODO: how long may the upload take?
         req.headers['Authorization'] = "Bearer #{storage.access_token}"
         req.headers['Content-type'] = content_type
 
         req.on_success {|easy| return remote_url }
-      end
+      }
 
       nil
     end
