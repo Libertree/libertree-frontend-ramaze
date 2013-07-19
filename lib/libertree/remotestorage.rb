@@ -19,13 +19,15 @@ module Libertree
       begin
         json = JSON[res.body_str]
         info = json['links'].find {|e| e.keys.include?('rel') && e['rel'] == 'remoteStorage' }
-        if validate info then info else nil end
+        if valid?(info)
+          info
+        end
       rescue Exception => e
         nil
       end
     end
 
-    def self.validate(info)
+    def self.valid?(info)
       info['rel'] == 'remoteStorage' &&
         info['href'] &&
         ! info['href'].empty? &&
