@@ -5,7 +5,7 @@ require 'filemagic'
 module Libertree
   module RemoteStorage
     # @param [String] the full remote storage account handle, e.g. rekado@my.remotestorage.domain
-    # @return [Hash] returns a hash containing the remoteStorage definition or nil
+    # @return [Hash] the remoteStorage definition or nil
     def self.finger(handle)
       base_url = handle.split(/@/, 2)[1]
       return  if base_url.nil?
@@ -35,7 +35,8 @@ module Libertree
         ! info['properties']['auth-endpoint'].empty?
     end
 
-    # @param [Hash] the hash containing the remoteStorage definition or nil
+    # @param [Hash] the remoteStorage definition
+    # @return [String]
     def self.auth_request_url(info, update_token, scope='public/libertree:rw')
       url = URI.parse(info['properties']['auth-endpoint'])
       redirect = "#{$conf['frontend_url_base']}/remotestorage/connection/#{update_token}"
@@ -52,7 +53,7 @@ module Libertree
       url.to_s
     end
 
-    # returns a link on success, nil on failure
+    # @return [String] a link on success, nil on failure
     def self.upload(file, storage, path='public/libertree')
       tempfile, filename = file.values_at(:tempfile, :filename)
 
