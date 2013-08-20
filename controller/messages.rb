@@ -74,6 +74,7 @@ module Controller
     end
 
     def show(message_id)
+      @view = 'messages'
       @message = Libertree::Model::Message[message_id.to_i]
       redirect_referrer  if @message.nil?
       redirect_referrer  if ! @message.visible_to?(account)
