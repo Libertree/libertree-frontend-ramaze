@@ -172,6 +172,7 @@ module Controller
     end
 
     def request_password_reset
+      @view = 'signup'
       Ramaze::Log.debug request.inspect
       return  if ! request.post?
 
