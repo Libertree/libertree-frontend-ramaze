@@ -46,6 +46,11 @@
       </tr>
 
       <tr>
+        <th>#{s_('jobs|Retry reason')}</th>
+        <td>#{job.retry_reason}</td>
+      </tr>
+
+      <tr>
         <th>#{s_('jobs|Actions')}</th>
         <td>
           <a href="/admin/jobs/retry/#{job.id}">

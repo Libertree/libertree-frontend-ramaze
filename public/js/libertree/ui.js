@@ -204,10 +204,21 @@ Libertree.UI = (function () {
     },
 
     indicateNewPosts: function (data) {
-      var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts');
+      var
+        indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
+        numNewPosts = data.postIds.length
+      ;
       if( indicator.length ) {
-        indicator.find('.load-more').text(data.numNewPosts);
-        indicator.slideDown();
+        /* Don't count posts which are already shown in the river */
+        $.each( data.postIds, function(i, postId) {
+          if( $('#post-'+postId).length ) {
+            numNewPosts--;
+          }
+        } );
+        if( numNewPosts > 0 ) {
+          indicator.find('.load-more').text(data.newPostsMessage);
+          indicator.slideDown();
+        }
       }
     },
 
