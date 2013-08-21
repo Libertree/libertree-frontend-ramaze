@@ -1,0 +1,44 @@
+// TODO: definition of .main is the same as in other stylesheets
+@import "../scss-include/mixins.scss";
+@import "colours.scss";
+
+body.messages {
+    .main {
+        @include shadow;
+        @include rounded;
+        background: $dust;
+        padding: 30px;
+        & > h2 {
+            @include rounded-top;
+            background: $sand;
+            padding: 1em;
+            margin: -30px -30px 1em;
+        }
+    }
+
+    select#recipients {
+        width: 400px;
+    }
+
+    #recipients_chzn {
+        margin-bottom: 1em;
+    }
+
+    .search-choice-close {
+        border-bottom: 0px;
+    }
+
+    .message {
+        border-bottom: 1px dotted $main;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+
+        .text {
+            margin-top: 1em;
+        }
+    }
+
+    form#new-message {
+        display: none;
+    }
+}
