@@ -647,13 +647,13 @@ a.go-ref-back {
 }
 
 table.table {
-    border: 1px solid $main_green;
+    border: 1px solid $main;
     border-collapse: collapse;
     th {
         text-align: left;
     }
     th, td {
-        border: 1px solid $main_green;
+        border: 1px solid $main;
         padding: 0.5em;
     }
 }
@@ -821,7 +821,7 @@ video {
         padding-right: 4px;
     }
     .menu-item + .menu-item {
-        border-left: 1px solid $main_green;
+        border-left: 1px solid $main;
     }
 
     h3 {

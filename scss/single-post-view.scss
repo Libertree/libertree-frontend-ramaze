@@ -174,7 +174,7 @@ body.single-post-view {
           .drag-handle-bar {
             display: none;
             height: 1.5em;
-            background: $main_green;
+            background: $main;
             cursor: move;
           }
           .comment {
@@ -185,7 +185,7 @@ body.single-post-view {
         .detachable.detached {
           position: fixed;
           z-index: 2;
-          border: 1px solid $main_green;
+          border: 1px solid $main;
           @include rounded;
 
           .drag-handle-bar {
