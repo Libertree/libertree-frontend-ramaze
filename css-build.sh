@@ -5,14 +5,14 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
-if [[ ! -d "$1/scss" ]]; then
-    echo "The source directory \`$1/scss' does not exist."
+if [[ ! -d "themes/$1/scss" ]]; then
+    echo "The source directory \`themes/$1/scss' does not exist."
     exit 1
 fi
 
-if [[ ! -d "$1/css" ]]; then
-    echo "The target directory \`$1/css' does not exist."
+if [[ ! -d "themes/$1/css" ]]; then
+    echo "The target directory \`themes/$1/css' does not exist."
     exit 1
 fi
 
-bundle exec "sass --update $1/scss:$1/css"
+bundle exec "sass --update themes/$1/scss:themes/$1/css"
