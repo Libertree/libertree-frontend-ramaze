@@ -344,6 +344,8 @@ msgid "Enable posting from river view:"
 msgstr ""
 msgid "Language:"
 msgstr ""
+msgid "Theme:"
+msgstr ""
 msgid "Save"
 msgstr ""
 

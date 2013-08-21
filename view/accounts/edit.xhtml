@@ -64,6 +64,15 @@
     </select>
   </div>
 
+  <div class="field">
+    <label>#{_('Theme:')}</label>
+    <select name="theme">
+      <?r $conf['themes'].each do |theme| ?>
+        <option value="#{theme}" #{account.theme.eql?(theme) ? "selected" : ""}>#{theme}</option>
+      <?r end ?>
+    </select>
+  </div>
+
   <input type="submit" value="#{_('Save')}"/>
 </form>
 

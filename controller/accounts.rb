@@ -54,6 +54,11 @@ module Controller
       account.filter_images = !! request['filter_images']
       account.thumbnail = !! request['thumbnail']
       account.icons = ( request['post_tools_icons'].to_s == 'icons' )
+      account.theme = if $conf['themes'].include? request['theme'].to_s
+                        request['theme'].to_s
+                      else
+                        'default'
+                      end
       account.locale = request['locale'].to_s
       account.new_post_in_river = !! request['new_post_in_river']
       session[:locale] = account.locale
