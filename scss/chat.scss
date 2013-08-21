@@ -19,7 +19,7 @@
     #online-contacts {
         padding: 5px;
         margin: 0px;
-        background-color: $light_green;
+        background-color: $main_light;
         a {
             margin: 0px;
             .avatar {
@@ -30,7 +30,7 @@
 
     #chat-new-partner-wrapper {
         padding: 8px 0px;
-        background-color: $light_green;
+        background-color: $main_light;
         select#chat-new-partner {
             width: 380px;
         }
@@ -39,7 +39,7 @@
     .tabs {
         width: 100%;
         height: 35px;
-        background-color: $light_green;
+        background-color: $main_light;
         overflow: hidden;
 
         .tab {

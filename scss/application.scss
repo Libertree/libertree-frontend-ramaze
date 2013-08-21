@@ -319,7 +319,7 @@ img.avatar {
     text-align: left;
     word-wrap: break-word;
     a img { border-bottom: 2px dotted $main; }
-    a:visited img { border-bottom: 2px dotted $light_green; }
+    a:visited img { border-bottom: 2px dotted $main_light; }
     a:hover img { border-bottom: 2px dotted $autumn_red; }
     a:active img { border-bottom: 2px dotted $autumn_red; }
 
