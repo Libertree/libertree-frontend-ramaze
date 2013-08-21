@@ -35,7 +35,7 @@ module Controller
         message = Libertree::Model::Message.create_with_recipients(
           sender_member_id: account.member.id,
           text: request['text'].to_s,
-          recipient_member_ids: request['recipients']
+          recipient_member_ids: request['recipients'].split(",")
         )
 
         trees = message.recipients.reduce(Set.new) { |_trees, recipient|
@@ -74,14 +74,32 @@ module Controller
     end
 
     def show(message_id)
+      @view = 'messages'
       @message = Libertree::Model::Message[message_id.to_i]
       redirect_referrer  if @message.nil?
       redirect_referrer  if ! @message.visible_to?(account)
       Libertree::Model::Notification.mark_seen_for_account_and_message(account, @message)
     end
 
-    def _new
-      @contacts = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
+    def _new; end
+
+    provide(:json, type: 'application/json') { |action,value| value.to_json }
+    def search
+      query = request['q'].to_s
+      return '[]'  if query.empty?
+
+      # TODO: write a member search function in the model
+      members = Libertree::Model::Member.s("SELECT * FROM members WHERE username ILIKE '%' || ? || '%'", query)
+      accounts = Libertree::Model::Account.s("SELECT * FROM accounts WHERE username ILIKE '%' || ? || '%'", query)
+
+      result = members.map do |m|
+        { 'id' => m.id,
+          'text' => m.handle }
+      end
+      result + accounts.map do |a|
+        { 'id' => a.member.id,
+          'text' => a.member.handle }
+      end
     end
   end
 end
