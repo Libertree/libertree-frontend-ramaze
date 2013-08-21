@@ -50,7 +50,7 @@ body.splash {
 }
 
 html.signup {
-  background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
+  background: url('../images/bg-green.png') fixed bottom center repeat-x $main;
   height: 100%;
 }
 body.signup {
@@ -82,6 +82,6 @@ body.signup {
     padding: 1em;
     padding-left: 160px;
     background: $sand url(../images/logo-in-heading.png) no-repeat 20px bottom;
-    color: $leaf;
+    color: $main;
   }
 }

@@ -7,7 +7,7 @@ $font_family: 'Droid Sans', Tahoma, Arial, sans-serif;
 html.intro {
   // This background image is based on photos copyright by Jim Champion
   // (http://www.geograph.org.uk/profile/1086), available under a CC licence.
-  background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
+  background: url('../images/bg-green.png') fixed bottom center repeat-x $main;
   height: 100%;
   font-size: $font_normal;
   font-family: $font_family;
@@ -58,7 +58,7 @@ body.intro {
       padding-left: 160px;
       @include rounded;
       background: $sand url(../images/logo-in-heading.png) no-repeat 20px bottom;
-      color: $leaf;
+      color: $main;
     }
 
     p, div.errors {
