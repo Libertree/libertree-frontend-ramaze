@@ -225,10 +225,14 @@ module Controller
         post.delete_cascade
       end
 
-      if request.env['HTTP_REFERER'] =~ %r{/posts/show/#{post_id}}
-        redirect Home.r(:/)
+      if Ramaze::Current.action.wish == 'json'
+        return { 'success' => true }
       else
-        redirect_referrer
+        if request.env['HTTP_REFERER'] =~ %r{/posts/show/#{post_id}}
+          redirect Home.r(:/)
+        else
+          redirect_referrer
+        end
       end
     end
 
