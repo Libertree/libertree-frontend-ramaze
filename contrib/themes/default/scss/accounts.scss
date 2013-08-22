@@ -1,0 +1,42 @@
+// TODO: this is almost the same as scss/profiles.scss
+@import "../scss-include/mixins.scss";
+@import "colours.scss";
+
+body.accounts.edit {
+    ul.actions {
+        margin-bottom: 1em;
+        margin-left: 0;
+        padding-left: 0;
+        li {
+            list-style: none;
+        }
+    }
+    .main {
+        @include shadow;
+        @include rounded;
+        background: $dust;
+        padding: 30px;
+        & > h2 {
+            @include rounded-top;
+            background: $sand;
+            padding: 1em;
+            margin: -30px -30px 1em;
+        }
+        h4 {
+            margin-top: 1em;
+        }
+        label {
+            width: 200px;
+            text-align: right;
+            margin-right: 1.5em;
+            float: left;
+            clear: left;
+        }
+        .field {
+            margin-bottom: 1em;
+        }
+        textarea {
+            padding: 1em;
+        }
+    }
+}
