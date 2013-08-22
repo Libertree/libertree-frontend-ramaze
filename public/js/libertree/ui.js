@@ -28,6 +28,11 @@ Libertree.UI = (function () {
       }
     },
 
+    confirmAjax: function(event, msg, fn) {
+      event.preventDefault();
+      if( confirm(msg) ) { fn(); }
+    },
+
     listHandler: function (selector, url) {
       Libertree.UI.addSpinner( selector.parent(), 'append' );
       $.get( url,
