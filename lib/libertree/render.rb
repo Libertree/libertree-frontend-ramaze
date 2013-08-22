@@ -100,10 +100,21 @@ module Libertree
       Ramaze::Log.error e
     end
 
-    Libertree::Model::UrlExpansion.create(
-      :url_short => url_s,
-      :url_expanded => resolution
-    )
+    begin
+      Libertree::Model::UrlExpansion.create(
+        :url_short => url_s,
+        :url_expanded => resolution
+      )
+    rescue PGError => e
+      # expansion already exists
+      if e.message =~ /url_expansions_url_short_key/
+        resolution = Libertree::Model::UrlExpansion[ url_short: url_s ]
+      else
+        # silently fail
+        resolution = url_s
+        Ramaze::Log.error e
+      end
+    end
 
     resolution
   end
