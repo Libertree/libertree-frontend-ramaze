@@ -10,10 +10,10 @@ require_relative 'lib/libertree/lang'
 
 
 # compile SCSS to CSS
-css_path = "public/themes/default/css"
-Dir.mkdir css_path unless Dir.exists? css_path
-Dir.glob("scss/*.scss") do |filename|
-  target = filename.match(%r{/(.+)\.scss}) { "#{css_path}/#{$1}.css" }
+theme_path = "public/themes/default"
+Dir.mkdir "#{theme_path}/css" unless Dir.exists? "#{theme_path}/css"
+Dir.glob("#{theme_path}/scss/*.scss") do |filename|
+  target = filename.match(%r{/scss/(.+)\.scss}) { "#{theme_path}/css/#{$1}.css" }
   Sass.compile_file(filename, target)
 end
 
