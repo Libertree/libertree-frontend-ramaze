@@ -11,6 +11,8 @@ module Controller
         @view = 'admin'
       end
 
+      provide(:json, type: 'application/json') { |action,value| value.to_json }
+
       def index(task=nil)
         if task
           @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE task = ? AND time_finished IS NULL", task)
@@ -33,7 +35,11 @@ module Controller
         if job
           job.delete
         end
-        redirect_referrer
+        if Ramaze::Current.action.wish == 'json'
+          return { 'success' => true }
+        else
+          redirect_referrer
+        end
       end
 
       def introduce

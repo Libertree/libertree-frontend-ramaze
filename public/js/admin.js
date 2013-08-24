@@ -14,5 +14,20 @@ $(document).ready( function() {
       }
     }
   } );
-  $(document).on('click', 'table.job td a.delete', Libertree.UI.confirmAction);
+  $(document).on('click', 'table.job td a.delete',
+    function (event) {
+      var $this = $(this),
+        job = $this.closest('table.job'),
+        jobId = job.data('job-id'),
+        fn = function () {
+               $.get(
+                 '/admin/jobs/destroy/' + jobId + '.json',
+                 function () {
+                   /* TODO: Check for success */
+                   job.fadeOut(300);
+                 }
+               );
+             };
+      Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
+    });
 } );

@@ -10,7 +10,7 @@
 <div class="jobs">
 
   <?r @unfinished.each do |job| ?>
-    <table class="job">
+    <table class="job" data-job-id="#{job.id}">
       <tr>
         <th>#{s_('jobs|ID')}</th>
         <td>#{job.id}</td>
