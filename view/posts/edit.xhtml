@@ -8,6 +8,7 @@
     #{_('Visibility')}: <select name="visibility">
       <option value="internet" #{@post.visibility == 'internet' ? 'selected' : ''}>#{s_('visibility|Internet')}</option>
       <option value="forest" #{@post.visibility == 'forest' ? 'selected' : ''}>#{s_('visibility|Forest')}</option>
+      <option value="tree" #{@post.visibility == 'tree' ? 'selected' : ''}>#{s_('visibility|Tree')}</option>
     </select>
   </div>
 

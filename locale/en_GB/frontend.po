@@ -91,6 +91,8 @@ msgid "visibility|Internet"
 msgstr ""
 msgid "visibility|Forest"
 msgstr ""
+msgid "visibility|Tree"
+msgstr ""
 msgid "preview|close"
 msgstr ""
 
