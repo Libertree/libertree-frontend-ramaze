@@ -1,16 +1,14 @@
-// TODO: this shares a lot with scss/accounts.scss
-@import "scss-include/mixins.scss";
+@import "../scss-include/mixins.scss";
 @import "colours.scss";
 
-body.rivers {
-    ul.actions {
-        margin-bottom: 1em;
-        margin-left: 0;
-        padding-left: 0;
-        li {
-            list-style: none;
-        }
-    }
+div.profile {
+  padding: 2em;
+  border-radius: 3px 3px 0px 0px;
+  background-color: $dust; /* fallback for browsers that don't support alpha in colours */
+  background-color: $dust_translucent;
+}
+
+body.profile.edit {
     .main {
         @include shadow;
         @include rounded;
@@ -22,17 +20,8 @@ body.rivers {
             padding: 1em;
             margin: -30px -30px 1em;
         }
-
-        div.river {
-            margin-bottom: 1em;
-            .river-tools {}
-            .query {
-                display: block;
-                clear: both;
-            }
-        }
         label {
-            width: 200px;
+            width: 150px;
             text-align: right;
             margin-right: 1.5em;
             float: left;
@@ -40,6 +29,9 @@ body.rivers {
         }
         .field {
             margin-bottom: 1em;
+        }
+        textarea {
+            padding: 1em;
         }
     }
 }

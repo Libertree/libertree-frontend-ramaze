@@ -3,5 +3,6 @@ pids
 log
 vendor
 .bundle
+contrib/themes/*/css/
 \#*\#
 *\~

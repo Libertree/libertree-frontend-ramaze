@@ -8,7 +8,7 @@ Icon set by http://icons8.com/
 */
 
 @import "colours.scss";
-@import "scss-include/mixins.scss";
+@import "../scss-include/mixins.scss";
 $threshold: 700px;
 
 html {
@@ -19,7 +19,7 @@ body {
     padding: 0px;
     margin: 0px;
     color: $text;
-    background: url('../images/bg-green.png') fixed bottom center repeat-x $leaf;
+    background: url('../images/bg-green.png') fixed bottom center repeat-x $main;
     width: 100%;
 }
 
@@ -74,8 +74,8 @@ code {
 }
 
 a {
-    color: $leaf;
-    border-bottom: 1px dotted $leaf;
+    color: $main;
+    border-bottom: 1px dotted $main;
     text-decoration: none;
 }
 a:visited {
@@ -100,7 +100,7 @@ a.help {
   padding: 2px;
   border-radius: 1em;
   background: $dust;
-  border: 1px solid $leaf;
+  border: 1px solid $main;
   font-size: 12px;
 }
 
@@ -318,8 +318,8 @@ img.avatar {
     line-height: 1.4em;
     text-align: left;
     word-wrap: break-word;
-    a img { border-bottom: 2px dotted $leaf; }
-    a:visited img { border-bottom: 2px dotted $light_green; }
+    a img { border-bottom: 2px dotted $main; }
+    a:visited img { border-bottom: 2px dotted $main_light; }
     a:hover img { border-bottom: 2px dotted $autumn_red; }
     a:active img { border-bottom: 2px dotted $autumn_red; }
 
@@ -647,13 +647,13 @@ a.go-ref-back {
 }
 
 table.table {
-    border: 1px solid $main_green;
+    border: 1px solid $main;
     border-collapse: collapse;
     th {
         text-align: left;
     }
     th, td {
-        border: 1px solid $main_green;
+        border: 1px solid $main;
         padding: 0.5em;
     }
 }
@@ -821,7 +821,7 @@ video {
         padding-right: 4px;
     }
     .menu-item + .menu-item {
-        border-left: 1px solid $main_green;
+        border-left: 1px solid $main;
     }
 
     h3 {

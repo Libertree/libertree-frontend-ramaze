@@ -139,7 +139,23 @@ Libertree.Posts = (function () {
           );
         } );
 
-        $(document).on('click', '.post-tools .delete', Libertree.UI.confirmAction);
+        $(document).on('click', '.post-tools .delete',
+          function (event) {
+            var $this = $(this),
+              post = $this.closest('div.post, div.post-excerpt'),
+              postId = post.data('post-id'),
+              poolId = $this.data('pool-id'),
+              fn = function () {
+                     $.get(
+                       '/posts/destroy/' + postId + '.json',
+                       function () {
+                         /* TODO: Check for success */
+                         post.slideUp(1000);
+                       }
+                     );
+                   };
+            Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
+          });
 
         $(document).on('click', '.post-tools .subscribe', function() {
           var post = $(this).closest('div.post, div.post-excerpt');

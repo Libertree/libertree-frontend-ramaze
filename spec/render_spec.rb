@@ -93,5 +93,11 @@ tail}).should == %{<p>head</p>
       url = "/posts/show/987/123/#comment-123"
       subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
     end
+
+    it 'should autolink relative URLs in weird contexts' do
+      url = "/posts/show/987/123/#comment-123"
+      subject.autolinker("("+url).should == %{(<a href='#{url}'>#{url}</a>}
+      subject.autolinker("["+url).should == %{[<a href='#{url}'>#{url}</a>}
+    end
   end
 end

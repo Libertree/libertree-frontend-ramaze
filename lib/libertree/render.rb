@@ -22,7 +22,7 @@ module Libertree
 
     # Crude autolinker for relative links to local resources
     s.gsub(
-      %r{(?<=^|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+/?(#comment-\d+)?|/(\d+/?)?)?)},
+      %r{(?<=^|\(|\[|\p{Space}|^<p>|^<li>)(/posts/show/\d+(/\d+/?(#comment-\d+)?|/(\d+/?)?)?)},
       "<a href='\\1'>\\1</a>"
     )
   end
@@ -100,10 +100,21 @@ module Libertree
       Ramaze::Log.error e
     end
 
-    Libertree::Model::UrlExpansion.create(
-      :url_short => url_s,
-      :url_expanded => resolution
-    )
+    begin
+      Libertree::Model::UrlExpansion.create(
+        :url_short => url_s,
+        :url_expanded => resolution
+      )
+    rescue PGError => e
+      # expansion already exists
+      if e.message =~ /url_expansions_url_short_key/
+        resolution = Libertree::Model::UrlExpansion[ url_short: url_s ]
+      else
+        # silently fail
+        resolution = url_s
+        Ramaze::Log.error e
+      end
+    end
 
     resolution
   end

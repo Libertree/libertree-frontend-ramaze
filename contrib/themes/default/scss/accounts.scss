@@ -1,8 +1,16 @@
-// TODO: this shares a lot with scss/accounts.scss
-@import "scss-include/mixins.scss";
+// TODO: this is almost the same as scss/profiles.scss
+@import "../scss-include/mixins.scss";
 @import "colours.scss";
 
-body.pools {
+body.accounts.edit {
+    ul.actions {
+        margin-bottom: 1em;
+        margin-left: 0;
+        padding-left: 0;
+        li {
+            list-style: none;
+        }
+    }
     .main {
         @include shadow;
         @include rounded;
@@ -14,7 +22,9 @@ body.pools {
             padding: 1em;
             margin: -30px -30px 1em;
         }
-
+        h4 {
+            margin-top: 1em;
+        }
         label {
             width: 200px;
             text-align: right;
@@ -24,6 +34,9 @@ body.pools {
         }
         .field {
             margin-bottom: 1em;
+        }
+        textarea {
+            padding: 1em;
         }
     }
 }

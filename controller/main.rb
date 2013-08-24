@@ -172,6 +172,7 @@ module Controller
     end
 
     def request_password_reset
+      @view = 'signup'
       Ramaze::Log.debug request.inspect
       return  if ! request.post?
 
@@ -188,7 +189,7 @@ Someone (IP address: #{request.ip}) has requested that a password reset link
 be sent to this email address.  If you wish to change your Libertree password
 now, visit:
 
-http://#{request.host_with_port}/login?password_reset_code=#{a.password_reset_code}
+#{$conf['frontend_url_base']}/login?password_reset_code=#{a.password_reset_code}
 
 This link is only valid for 1 hour.
             }

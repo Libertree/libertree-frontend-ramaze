@@ -1,4 +1,4 @@
-@import "scss-include/mixins.scss";
+@import "../scss-include/mixins.scss";
 @import "colours.scss";
 
 body.admin {
@@ -15,7 +15,7 @@ body.admin {
         }
     }
     .forest {
-        background: $light_green;
+        background: $main_light;
         padding: 1em;
         margin-bottom: 0.5em;
 
