@@ -199,7 +199,26 @@ Libertree.Intro = (function () {
       });
 
       // enable fancy contact list member selector
-      $('select#contact-list-members').chosen();
+      $('input#contact-list-members').select2({
+          width: '450px',
+          multiple: true,
+          minimumInputLength: 3,
+          //TRANSLATEME
+          //formatSearching: function () { return "Searching ..." },
+          formatInputTooShort: false, // do not show "type n more characters to search"
+
+          // TODO: move search.json out of messages to a shared location
+          ajax: {
+              url: "/messages/search.json",
+              dataType: 'json',
+              data: function (term, page) {
+                  return { q: term };
+              },
+              results: function (data, page) {
+                  return {results: data};
+              }
+          },
+      });
 
       $(document).on('click', '.tutorial-step .button.prev', prevHandler);
       $(document).on('click', '.tutorial-step .button.skip', skipHandler);

@@ -34,7 +34,7 @@ module Controller
         name: request['name'].to_s,
         account_id: account.id
       )
-      list.members = request['members']  # TODO: Can this be hacked?
+      list.members = request['members'].split(",")  # TODO: Can this be hacked?
       if request['intro']
         Libertree::Model::River.create(
           account_id: account.id,

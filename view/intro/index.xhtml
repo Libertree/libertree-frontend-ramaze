@@ -48,11 +48,7 @@
   #{ Libertree::render(_("tutorial-step-4-heading")) }
   #{ Libertree::render(_("tutorial-step-4")) }
   <div class="contact-list-container">
-    <select id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(type here to search)')}">
-      <?r @all_members.each do |m| ?>
-        <option value="#{m.id}">#{m.name_display} (#{m.handle})</option>
-      <?r end ?>
-    </select>
+    <input id="contact-list-members" name="contact-list-members" data-placeholder="#{_('(type here to search)')}" />
   </div>
   #{ render_partial '_navigation', done: true, prev: 3, next: nil }
 </div>
