@@ -21,6 +21,26 @@ Libertree.UI = (function () {
   return {
     // speed = pixels per second
     duration: setSpeed(600),
+    selectDefaults: {
+        width: '450px',
+        multiple: true,
+        minimumInputLength: 3,
+        //TRANSLATEME
+        //formatSearching: function () { return "Searching ..." },
+        formatInputTooShort: false, // do not show "type n more characters to search"
+
+        // TODO: move search.json out of messages to a shared location
+        ajax: {
+            url: "/messages/search.json",
+            dataType: 'json',
+            data: function (term, page) {
+                return { q: term };
+            },
+            results: function (data, page) {
+                return {results: data};
+            }
+        },
+    },
 
     confirmAction: function (event) {
       if( ! confirm($(this).data('msg')) ) {
