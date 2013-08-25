@@ -28,7 +28,7 @@ body.intro {
     @include rounded;
 
     ul, div.contact-list-container {
-      margin: 1em auto;
+      margin: 0 auto;
       max-width: 30em;
     }
 
@@ -76,6 +76,8 @@ body.intro {
       display: block;
       float: right;
       width: auto;
+      margin-top: 1em;
+      margin-bottom: 1em;
 
       li {
         list-style: none;
@@ -101,13 +103,6 @@ body.intro {
             color: $dust;
           }
         }
-      }
-    }
-
-    .contact-list-container {
-      min-height: 300px;
-      #contact-list-members {
-        width: 400px;
       }
     }
   }
