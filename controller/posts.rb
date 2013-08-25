@@ -54,7 +54,7 @@ module Controller
       redirect_referrer  if ! request.post?
 
       text = request['text'].to_s
-      # TODO: this looks odd. Why are we doing this?
+      # Censor/clean invalid UTF characters
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
 
@@ -250,6 +250,7 @@ module Controller
 
       if ! request.params['cancel']
         text = request['text'].to_s
+        # Censor/clean invalid UTF characters
         # TODO: DRY up along with #encode! calls in #create action
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
