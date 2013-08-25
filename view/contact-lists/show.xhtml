@@ -12,11 +12,7 @@
     <label>
       #{s_('contact-list|Members:')}
     </label>
-    <select style="width: 400px" id="contact-list-members" name="members[]" multiple="" class="enhanced" data-placeholder="#{_('(type here to search)')}">
-      <?r @all_members.each do |m| ?>
-        <option value="#{m.id}" #{@list.members.include?(m) ? 'selected="selected"' : ''}>#{m.name_display} (#{m.handle})</option>
-      <?r end ?>
-    </select>
+    <input id="contact-list-members" name="members" data-placeholder="#{_('(type here to search)')}" value='#{@list.members.map{|m| "#{m.id}=#{m.handle}"}.join(",")}' />
   </div>
 
   <input type="submit" value="#{s_('contact-list|Save')}"/>

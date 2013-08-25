@@ -28,6 +28,15 @@ Libertree.UI = (function () {
         //TRANSLATEME
         //formatSearching: function () { return "Searching ..." },
         formatInputTooShort: false, // do not show "type n more characters to search"
+        initSelection : function (element, callback) {
+            var data = [];
+            $(element.val().split(",")).each(function () {
+              var parts = this.split("=");
+              data.push({id: parts[0], text: parts[1]});
+            });
+            element.val('');
+            callback(data);
+        },
 
         // TODO: move search.json out of messages to a shared location
         ajax: {

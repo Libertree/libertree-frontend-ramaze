@@ -80,7 +80,7 @@ module Controller
         respond "404: Not Found", 404
       end
 
-      @list.members = request['members']  # Note that @list.members= coerces the argument (LHS) to an Array
+      @list.members = request['members'].split(",")  # TODO: Can this be hacked?
       @list.name = request['name'].to_s
 
       flash[:notice] = _('Contact list updated.')
