@@ -7,8 +7,9 @@ module Libertree
     # @param [String] the full remote storage account handle, e.g. rekado@my.remotestorage.domain
     # @return [Hash] the remoteStorage definition or nil
     def self.finger(handle)
-      host = handle.split(/@/, 2)[1]
-      return  if host.nil?
+      host_dirty = handle.split(/@/)[-1]
+      return  if host_dirty.nil?
+      host = host_dirty.tr('/@:', '')
 
       url = "http://#{host}/.well-known/host-meta?resource=acct:#{handle}"
       res = Curl::Easy.http_get(url) { |req|
