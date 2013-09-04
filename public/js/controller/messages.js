@@ -25,6 +25,7 @@ $(document).ready( function() {
               if (element.val() !== 'all') {
                   data = [ data[0] ];
               }
+              element.val('');
               callback(data);
             }
           }));
