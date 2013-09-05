@@ -60,6 +60,7 @@ module Controller
       if @list.nil?
         respond "404: Not Found", 404
       end
+      @list_name = @list.name
       @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
       @all_members.delete(account.member)
     end
