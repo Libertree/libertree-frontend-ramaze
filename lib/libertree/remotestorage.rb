@@ -72,7 +72,7 @@ module Libertree
       filename = URI.encode("#{basename}-#{Time.now.strftime('%s%4N')}#{ext}")
       remote_url = "#{storage.storage_url}/#{path}/#{filename}"
 
-      res = Curl::Easy.http_put(remote_url, data) { |req|
+      Curl::Easy.http_put(remote_url, data) { |req|
         req.timeout = 30 # TODO: how long may the upload take?
         req.headers['Authorization'] = "Bearer #{storage.access_token}"
         req.headers['Content-type'] = content_type
