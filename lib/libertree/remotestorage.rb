@@ -58,6 +58,7 @@ module Libertree
 
     # @return [String] a link on success, nil on failure
     def self.upload(file, storage, path='public/libertree')
+      return  unless file.respond_to? :values_at
       tempfile, filename = file.values_at(:tempfile, :filename)
 
       fm = FileMagic.new(FileMagic::MAGIC_MIME)
