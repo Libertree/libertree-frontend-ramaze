@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 7eb96d0114bf5005d02297526e1332ac38d2e4ad
+  revision: 1c01508f900e12026dadedc9b9963e16ed6e76fe
+  branch: remotestorage
   specs:
     libertree-model (0.5.0)
       bcrypt-ruby (= 3.0.1)
@@ -65,6 +66,7 @@ GEM
     childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
     columnize (0.3.6)
+    curb (0.8.4)
     dalli (1.1.5)
     debugger (1.5.0)
       columnize (>= 0.3.1)
@@ -131,6 +133,7 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby-debug-base19 (>= 0.11.19)
+    ruby-filemagic (0.4.2)
     ruby-oembed (0.8.8)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
@@ -158,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   capybara
+  curb
   dalli
   debugger
   em-websocket
@@ -179,6 +183,7 @@ DEPENDENCIES
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
   ruby-debug19
+  ruby-filemagic
   ruby-oembed
   sass
   syck
