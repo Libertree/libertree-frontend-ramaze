@@ -44,6 +44,27 @@ module Ramaze
         return ""  if time.nil?
         time.strftime('%F %T')
       end
+
+      def job_param_format(params)
+        return ""  if params.nil?
+
+        # add hints
+        if params['server_id']
+          server = Libertree::Model::Server[ params['server_id'].to_i ]
+          if server
+            params['server_id'] = "<span title='#{server.domain}'>#{params['server_id']}</span>"
+          end
+        end
+
+        if params['member_id']
+          member = Libertree::Model::Member[ params['member_id'].to_i ]
+          if server
+            params['member_id'] = "<span title='#{member.username}'>#{params['member_id']}</span>"
+          end
+        end
+
+        params.to_s
+      end
     end
   end
 end
