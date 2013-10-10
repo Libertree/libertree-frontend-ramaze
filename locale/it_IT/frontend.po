@@ -1,13 +1,14 @@
 # 
 # Translators:
+# Damtux <sun_lion@live.com>, 2013
 # Damtux <sun_lion@live.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-08-22 09:06+0000\n"
-"Last-Translator: Pistos <transifex.pistos@purepistos.net>\n"
+"PO-Revision-Date: 2013-09-27 21:46+0000\n"
+"Last-Translator: Damtux <sun_lion@live.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +104,7 @@ msgid "new-post|Post"
 msgstr "Condividi"
 
 msgid "Publish to these springs:"
-msgstr ""
+msgstr "Pubblica in queste fonti:"
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "Preview"
@@ -118,8 +119,11 @@ msgstr "Internet"
 msgid "visibility|Forest"
 msgstr "Foresta"
 
+msgid "visibility|Tree"
+msgstr "Albero"
+
 msgid "preview|close"
-msgstr ""
+msgstr "chiudi"
 
 #: helper/post.rb
 msgid "This post and its comments are visible to the whole Internet"
@@ -219,13 +223,13 @@ msgid "comment"
 msgstr "commenta"
 
 msgid "Likes:"
-msgstr ""
+msgstr "Mi piace:"
 
 msgid "Comments:"
-msgstr ""
+msgstr "Commenti:"
 
 msgid "Visibility:"
-msgstr ""
+msgstr "Visibilità:"
 
 msgid "mark read"
 msgstr "segna come già letto"
@@ -278,10 +282,10 @@ msgid "Post may not be empty."
 msgstr "Il post potrebbe essere non vuoto."
 
 msgid "Please submit fewer than 16,000 characters."
-msgstr ""
+msgstr "Per favore inserire meno di 16000 caratteri."
 
 msgid "Successfully posted."
-msgstr ""
+msgstr "Pubblicato con successo."
 
 msgid ""
 "Note that your post cannot be seen here because it does not match this "
@@ -325,7 +329,7 @@ msgid "You already have a river for that."
 msgstr "Hai già un fiume per questo."
 
 msgid "Please input a valid label for this river."
-msgstr ""
+msgstr "Per favore inserisci un'etichetta valida per questo fiume."
 
 #: view/comments/_comments.xhtml
 msgid "1 comment"
@@ -384,7 +388,7 @@ msgid "shareable link for this comment"
 msgstr "link per condividere questo commento"
 
 msgid "Delete this comment?"
-msgstr ""
+msgstr "Vuoi eliminare questo commento?"
 
 #: view/_markdown_injector.xhtml
 msgid "markdown|title"
@@ -424,6 +428,9 @@ msgstr "Modifica il tuo profilo"
 msgid "Manage rivers"
 msgstr "Gestisci i fiumi"
 
+msgid "Manage remote storage"
+msgstr "Gestisci l'archiviazione remota"
+
 msgid "Change password"
 msgstr "Cambia password"
 
@@ -431,12 +438,12 @@ msgid "Email:"
 msgstr "Indirizzo di posta elettronica:"
 
 msgid "Use of Email Address"
-msgstr ""
+msgstr "Scopo dell'Indirizzo Email"
 
 msgid ""
 "Your email address is only used for password recovery. It is never made "
 "public and never shared."
-msgstr ""
+msgstr "Il tuo indirizzo email viene usato solo per il recupero della password. Non verrà mai reso pubblico, né condiviso."
 
 msgid "Post excerpt maximum height:"
 msgstr "Altezza massima dei post compressi:"
@@ -457,10 +464,10 @@ msgid "Automatic embedding:"
 msgstr "Integrazione automatica:"
 
 msgid "Filter images:"
-msgstr ""
+msgstr "Filtra immagini:"
 
 msgid "Display post tools as:"
-msgstr ""
+msgstr "Mostra le interazioni nei post come:"
 
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "Crea l&#8217;anteprima delle immagini nei post compressi:"
@@ -472,7 +479,7 @@ msgid "Language:"
 msgstr "Lingua:"
 
 msgid "Theme:"
-msgstr ""
+msgstr "Tema:"
 
 msgid "Save"
 msgstr "Salva"
@@ -502,7 +509,7 @@ msgid "Generate API token"
 msgstr "Genera un token per le API"
 
 msgid "settings|Other actions"
-msgstr ""
+msgstr "Altre azioni"
 
 msgid "Data Export"
 msgstr "Esportazione dei dati"
@@ -511,6 +518,80 @@ msgid ""
 "Download your account settings, profile, posts, comments and direct "
 "messages:"
 msgstr "Scarica le impostazioni del tuo account, il profilo, i post, i commenti e i messaggi diretti:"
+
+msgid "Remote storage connection"
+msgstr "Connessione all'archivio remoto"
+
+msgid "remote-storage|Remote storage handle"
+msgstr "Handle dell'archivio remoto"
+
+msgid "remote-storage|Remote storage URL"
+msgstr "URL Archivio remoto"
+
+msgid "remote-storage|Access token"
+msgstr "Token di accesso"
+
+msgid "remote-storage|Connect"
+msgstr "Connetti"
+
+msgid "remote-storage|Destroy connection"
+msgstr "Elimina connessione"
+
+msgid "remote-storage|The remote storage handle may not be empty."
+msgstr "L'handle dell'archivio remoto non può essere vuoto."
+
+msgid "remote-storage|The remote storage provider could not be found."
+msgstr ""
+
+msgid ""
+"remote-storage|The connection to the remote storage provider timed out."
+msgstr ""
+
+msgid "remote-storage|The remote server does not offer remote storage."
+msgstr "Il server remoto non ha una funzione di archiviazione remota."
+
+msgid "remote-storage|Please connect your remote storage account first."
+msgstr ""
+
+msgid "remote-storage|An error occurred. Please try again later."
+msgstr "Si è verificato un errore. Per favore riprova più tardi."
+
+msgid "remote-storage|An error occurred during file upload: "
+msgstr "Si è verificato un errore durante il caricamento del file:"
+
+msgid "Your remote storage account (%s) has been connected!"
+msgstr "Il tuo account di archiviazione remota (%s) è stato connesso!"
+
+msgid "The connection to your remote storage account has been removed."
+msgstr "La connessione al tuo account di archiviazione remota è stata eliminata."
+
+msgid "remote-storage|Manage files"
+msgstr "Gestisci i file"
+
+msgid "remote-storage|File %s has been deleted."
+msgstr "Il file %s è stato eliminato."
+
+msgid "remote-storage|Successfully uploaded %s to remote storage."
+msgstr "%s caricato con successo nell'archivio remoto."
+
+#: view/remotestorage/files.xhtml
+msgid "Files in your remote storage"
+msgstr "File nel tuo archivio remoto"
+
+msgid "remote-storage|View connection details"
+msgstr "Visualizza i dettagli della connessione"
+
+msgid "There are currently no files in your remote storage."
+msgstr "Attualmente non ci sono file nel tuo archivio remoto."
+
+msgid "Delete this file?"
+msgstr "Vuoi eliminare questo file?"
+
+msgid "remote-storage|delete"
+msgstr "elimina"
+
+msgid "remote-storage|The file has been uploaded successfully."
+msgstr "Il file è stato caricato con successo."
 
 #: controller/accounts.rb
 msgid "Settings saved."
@@ -530,31 +611,31 @@ msgstr "Password cambiata."
 msgid ""
 "account-delete|The username you provided does not match your username. "
 "Please input your own username to confirm account deletion."
-msgstr ""
+msgstr "Il nome utente che hai inserito non corrisponde al tuo nome utente. Per favore inserisci il tuo nome utente per confermare l'eliminazione dell'account."
 
 msgid "Account Deletion"
-msgstr ""
+msgstr "Eliminazione Account"
 
 msgid "Delete your account"
-msgstr ""
+msgstr "Elimina il tuo account"
 
 msgid "Account deletion is permanent!"
-msgstr ""
+msgstr "L'eliminazione dell'account è definitiva!"
 
 msgid ""
 "Also note that after your account is deleted, anyone is free to claim the "
 "username that you have abandoned, and impersonation becomes a possibility."
-msgstr ""
+msgstr "Per favore tieni presente che dopo aver eliminato il tuo account chiunque può usare il nome utente che hai abbandonato ed è possibile l'imitazione."
 
 msgid "(read warnings above)"
-msgstr ""
+msgstr "(leggi sopra le avvertenze)"
 
 msgid ""
 "To delete your account and all associated data, input your username below:"
-msgstr ""
+msgstr "Per eliminare il tuo account e tutti i dati associati, inserisci il tuo nome utente qui sotto:"
 
 msgid "account-delete|Confirm"
-msgstr ""
+msgstr "Conferma"
 
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
@@ -623,7 +704,7 @@ msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s ti ha inviato un %2$smessaggio%3$s."
 
 msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
-msgstr ""
+msgstr "%1$s ha aggiunto il tuo %2$spost%3$s a una fonte che si chiama \"%4$s\"."
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -656,7 +737,7 @@ msgstr "secondi fa"
 
 #: helper/comment.rb
 msgid "Click to see previous comment by %s"
-msgstr ""
+msgstr "Clicca per vedere il commento precedente di %s"
 
 #: view/search.xhtml
 msgid "Search Results for \"%s\""
@@ -707,7 +788,7 @@ msgid "contact-list|delete"
 msgstr "elimina"
 
 msgid "Delete this contact list?"
-msgstr ""
+msgstr "Eliminare questa lista contatti?"
 
 #: view/contact-lists/show.xhtml
 msgid "Contact List: %s"
@@ -865,13 +946,13 @@ msgstr "Per favore tieni presente che i messaggi diretti non sono totalmente pri
 msgid ""
 "Your message is longer than 4096 characters. Please shorten it and try "
 "again."
-msgstr ""
+msgstr "Il tuo messaggio è più lungo di 4096 caratteri. Per favore accorcialo e riprova."
 
 msgid "You cannot send an empty message."
-msgstr ""
+msgstr "Non puoi inviare un messaggio vuoto."
 
 msgid "You did not specify a recipient. Please try again."
-msgstr ""
+msgstr "Non hai specificato un destinatario. Per favore riprova."
 
 #: view/messages/show.xhtml
 msgid "direct-message|reply"
@@ -917,7 +998,7 @@ msgid "Add this spring to a river"
 msgstr "Aggiungi questa fonte a un fiume"
 
 msgid "Added to river."
-msgstr ""
+msgstr "Aggiunto al fiume."
 
 msgid "Spring this pool:"
 msgstr "Trasforma questo stagno in una fonte:"
@@ -974,7 +1055,7 @@ msgid "Add %s to a contact list"
 msgstr "Aggiungi %s a una lista contatti"
 
 msgid "Added %s to contact list."
-msgstr ""
+msgstr "%s è stato aggiunto alla lista contatti."
 
 #: view/request_password_reset.xhtml
 msgid "Password Reset"
@@ -1229,7 +1310,7 @@ msgstr "Inizia una nuova conversazione con..."
 
 #: layout/_sidebar.xhtml
 msgid "Rivers"
-msgstr "Fiume"
+msgstr "Fiumi"
 
 msgid "manage rivers"
 msgstr "gestisci i fiumi"
@@ -1278,7 +1359,7 @@ msgid "menu|Toggle sidebar"
 msgstr ""
 
 msgid "menu|Log in"
-msgstr ""
+msgstr "Accedi"
 
 #: layout/_notifications.xhtml
 msgid "No notifications"
