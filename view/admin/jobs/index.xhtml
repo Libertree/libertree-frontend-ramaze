@@ -3,9 +3,16 @@
 <p>
   <a href="/admin/jobs">#{s_('jobs|Show all')}</a>
 </p>
+<p>
+  <a href="/admin/jobs/retry_all/#{@task}">#{s_('jobs|Retry all displayed jobs')}</a>
+</p>
 <?r else ?>
 <h2>#{_('Unfinished Jobs')}</h2>
+<p>
+  <a href="/admin/jobs/retry_all">#{s_('jobs|Retry all unfinished jobs')}</a>
+</p>
 <?r end ?>
+
 
 <div class="jobs">
 

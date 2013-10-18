@@ -30,6 +30,19 @@ module Controller
         redirect_referrer
       end
 
+      def retry_all(task=nil)
+        if task
+          unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE task = ? AND time_finished IS NULL", task)
+        else
+          unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
+        end
+
+        unfinished.each do |job|
+          job.retry!  if job
+        end
+        redirect_referrer
+      end
+
       def destroy(job_id)
         job = Libertree::Model::Job[ job_id ]
         if job
