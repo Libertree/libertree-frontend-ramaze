@@ -58,26 +58,12 @@ module Controller
     end
 
     def seen(*notification_ids)
-      if notification_ids[0] == 'all'
-        Libertree::DB.dbh.u "UPDATE notifications SET seen = TRUE WHERE account_id = ?", account.id
-      else
-        placeholders = ( ['?'] * notification_ids.count ).join(', ')
-        Libertree::DB.dbh.
-          u "UPDATE notifications SET seen = TRUE WHERE account_id = ? AND id IN (#{placeholders})",
-          account.id,
-          *notification_ids
-      end
-      account.dirty
+      Libertree::Model::Notification.mark_seen_for_account(account, notification_ids)
       account.num_notifications_unseen
     end
 
     def unseen(*notification_ids)
-      placeholders = ( ['?'] * notification_ids.count ).join(', ')
-      Libertree::DB.dbh.
-        u "UPDATE notifications SET seen = FALSE WHERE account_id = ? AND id IN (#{placeholders})",
-        account.id,
-        *notification_ids
-      account.dirty
+      Libertree::Model::Notification.mark_unseen_for_account(account, notification_ids)
       account.num_notifications_unseen
     end
 
