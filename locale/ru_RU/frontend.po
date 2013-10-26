@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-09-16 09:21+0000\n"
+"PO-Revision-Date: 2013-10-18 09:19+0000\n"
 "Last-Translator: Pistos <transifex.pistos@purepistos.net>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/libertree/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -890,6 +890,12 @@ msgstr "Удалить"
 
 msgid "jobs|Back to forest administration"
 msgstr "Назад к администрированию леса"
+
+msgid "jobs|Retry all displayed jobs"
+msgstr ""
+
+msgid "jobs|Retry all unfinished jobs"
+msgstr ""
 
 msgid "Delete this job?"
 msgstr "Удалить эту задачу?"
