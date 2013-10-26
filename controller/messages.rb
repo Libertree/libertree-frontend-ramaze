@@ -88,9 +88,8 @@ module Controller
       query = request['q'].to_s
       return '[]'  if query.empty?
 
-      # TODO: write a member search function in the model
-      members = Libertree::Model::Member.s("SELECT * FROM members WHERE username ILIKE '%' || ? || '%'", query)
-      accounts = Libertree::Model::Account.s("SELECT * FROM accounts WHERE username ILIKE '%' || ? || '%'", query)
+      members = Libertree::Model::Member.search(query)
+      accounts = Libertree::Model::Account.search(query)
 
       result = members.map do |m|
         { 'id' => m.id,
