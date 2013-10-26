@@ -14,12 +14,8 @@ module Controller
       provide(:json, type: 'application/json') { |action,value| value.to_json }
 
       def index(task=nil)
-        if task
-          @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE task = ? AND time_finished IS NULL", task)
-          @task = task
-        else
-          @unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
-        end
+        @unfinished = Libertree::Model::Job.unfinished(task)
+        @task = task
       end
 
       def retry(job_id)
@@ -31,13 +27,7 @@ module Controller
       end
 
       def retry_all(task=nil)
-        if task
-          unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE task = ? AND time_finished IS NULL", task)
-        else
-          unfinished = Libertree::Model::Job.s("SELECT * FROM jobs WHERE time_finished IS NULL")
-        end
-
-        unfinished.each do |job|
+        Libertree::Model::Job.unfinished(task).each do |job|
           job.retry!  if job
         end
         redirect_referrer
