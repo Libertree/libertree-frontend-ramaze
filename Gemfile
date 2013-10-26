@@ -28,6 +28,7 @@ gem 'libertree-model', :git => 'git://github.com/Libertree/libertree-model-rb.gi
 group 'development' do
   gem 'rspec'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'factory_girl'
   gem 'racksh'
   gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache', :platforms => [:ruby_19]
