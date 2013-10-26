@@ -33,7 +33,7 @@
   <?r unless account.member.pools.empty? ?>
     <h3><a href="/pools">#{_('Pools')}</a></h3>
     <ul>
-    <?r account.member.pools.each do |p| ?>
+    <?r account.member.pools.sort_by(&:name).each do |p| ?>
       <li><a href="/pools/show/#{p.id}">#{p.name}</a></li>
     <?r end ?>
     </ul>
