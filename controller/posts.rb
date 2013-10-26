@@ -22,10 +22,6 @@ module Controller
 
     provide(:json, type: 'application/json') { |action,value| value.to_json }
 
-    def index
-      @posts = Libertree::Model::Post.s("SELECT * FROM posts ORDER BY id DESC")
-    end
-
     def _excerpt(post_id)
       @post = Libertree::Model::Post[ post_id.to_i ]
     end
