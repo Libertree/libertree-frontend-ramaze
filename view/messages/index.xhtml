@@ -14,7 +14,7 @@
         #{s_('direct-message|To:')}
         #{ m.recipients.map { |r| member_name_link(r) }.join(', ') }
       </div>
-      <div class="timestamp">#{ago(m.time_created)}</div>
+      <div class="age">#{ago(m.time_created)}</div>
     </div>
     <a class="text" href="/messages/show/#{m.id}">#{::CGI.escape_html(m.glimpse)}</a>
   </div>
