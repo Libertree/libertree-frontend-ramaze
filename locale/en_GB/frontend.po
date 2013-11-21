@@ -511,6 +511,10 @@ msgstr ""
 msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
 msgstr ""
 
+#: view/notifications/_mention.xhtml
+msgid "%1$s mentioned you a %2$spost%3$s."
+msgstr ""
+
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
 msgstr ""
