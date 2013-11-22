@@ -53,6 +53,7 @@ module Controller
       account.autoembed = !! request['autoembed']
       account.filter_images = !! request['filter_images']
       account.thumbnail = !! request['thumbnail']
+      account.hide_markdown_bar = !! request['hide_markdown_bar']
       account.icons = ( request['post_tools_icons'].to_s == 'icons' )
       account.theme = if $conf['themes'].include? request['theme'].to_s
                         request['theme'].to_s

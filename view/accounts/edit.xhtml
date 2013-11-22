@@ -51,6 +51,11 @@
   </div>
 
   <div class="field">
+    <label>#{_('Hide markdown bar:')}</label>
+    <input type="checkbox" name="hide_markdown_bar" #{account.hide_markdown_bar ? "checked" : ""} />
+  </div>
+
+  <div class="field">
     <label>#{_('Enable posting from river view:')}</label>
     <input type="checkbox" name="new_post_in_river" #{account.new_post_in_river ? "checked" : ""} />
   </div>

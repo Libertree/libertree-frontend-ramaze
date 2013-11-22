@@ -71,6 +71,9 @@
         account.excerpt_max_height ?  account.excerpt_max_height.to_s+'px' : 'auto'
       };
     }
+    .markdown-injector {
+      display: #{account.hide_markdown_bar ? 'none' : 'inherit'};
+    }
     #{account.custom_css}
   </style>
 
