@@ -57,7 +57,7 @@ module Controller
       account.theme = if $conf['themes'].include? request['theme'].to_s
                         request['theme'].to_s
                       else
-                        'default'
+                        $conf['themes'].first
                       end
       account.locale = request['locale'].to_s
       account.new_post_in_river = !! request['new_post_in_river']

@@ -2,7 +2,7 @@ module Ramaze
   module Helper
     module Views
       def current_theme
-        $conf['themes'].find {|t| t == account.theme } || 'default'
+        $conf['themes'].find {|t| t == account.theme } || $conf['themes'].first || 'default'
       end
 
       def help_bubble(s, title="help|What does this mean?")

@@ -9,15 +9,6 @@ require 'markdown'
 require_relative 'lib/libertree/lang'
 
 
-# compile SCSS to CSS
-theme_path = "public/themes/default"
-Dir.mkdir "#{theme_path}/css" unless Dir.exists? "#{theme_path}/css"
-Dir.glob("#{theme_path}/scss/*.scss") do |filename|
-  target = filename.match(%r{/scss/(.+)\.scss}) { "#{theme_path}/css/#{$1}.css" }
-  Sass.compile_file(filename, target)
-end
-
-
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
@@ -28,6 +19,14 @@ include FastGettext::Translation
 $conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
 $conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
+
+# compile SCSS to CSS
+theme_path = "public/themes/#{$conf['themes'].first}"
+Dir.mkdir "#{theme_path}/css" unless Dir.exists? "#{theme_path}/css"
+Dir.glob("#{theme_path}/scss/*.scss") do |filename|
+  target = filename.match(%r{/scss/(.+)\.scss}) { "#{theme_path}/css/#{$1}.css" }
+  Sass.compile_file(filename, target)
+end
 
 if $conf['graphicsmagick']
   MiniMagick.processor = :gm
