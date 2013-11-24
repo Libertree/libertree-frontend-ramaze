@@ -679,7 +679,8 @@ textarea#invitations {
 #textarea-post-new,
 #textarea-post-edit,
 #textarea-message-new {
-    width: 500px;
+    @include border-box;
+    width: 100%;
     padding: 1em;
 }
 
