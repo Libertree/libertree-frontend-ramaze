@@ -20,6 +20,8 @@ $(document).ready( function() {
       return false;
     });
 
+  $(document).on('click', 'a[rel="confirm"]', Libertree.UI.confirmAction);
+
   $(document).click( function(event) {
     var t = $(event.target);
     if( t.closest('.window').length === 0 && ! t.hasClass('result-selected') ) {

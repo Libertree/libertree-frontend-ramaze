@@ -28,7 +28,7 @@
     <li class="pool">
       <a href="/pools/show/#{p.id}">#{p.name}</a>
       <a href="/pools/edit/#{p.id}">#{img 'icon-edit.png', {alt:s_('pool|edit'), title:s_('pool|edit'), class:"size-16"}}</a>
-      <a href="/pools/destroy/#{p.id}" data-msg="#{_('All record of collected posts will be lost. Delete this pool?')}" class="delete">#{img 'icon-delete.png', {alt:s_('pool|Delete'), class:"size-16"}}</a>
+      <a href="/pools/destroy/#{p.id}" rel="confirm" data-msg="#{_('All record of collected posts will be lost. Delete this pool?')}" class="delete">#{img 'icon-delete.png', {alt:s_('pool|Delete'), class:"size-16"}}</a>
     </li>
   <?r end ?>
 </ul>

@@ -23,8 +23,6 @@ $(document).ready( function() {
     Libertree.Pools.createPoolAndAddPost(post);
   } );
 
-  $('li.pool a.delete').click( Libertree.UI.confirmAction );
-
   $('.excerpts-view.pool #river-selector').chosen().change( function (event) {
     event.preventDefault();
     var selector = $('.excerpts-view.pool #river-selector'),

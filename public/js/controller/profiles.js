@@ -1,6 +1,4 @@
 $(document).ready( function() {
-  $(document).on('click', '#avatar-reset', Libertree.UI.confirmAction );
-
   $('.profile #contact-list-selector').chosen().change( function (event) {
     event.preventDefault();
     var selector = $('#contact-list-selector'),

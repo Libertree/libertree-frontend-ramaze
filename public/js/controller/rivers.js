@@ -16,6 +16,4 @@ $(document).ready( function() {
   $('.form-river input[name="label"]').change( function() {
     independentLabel = true;
   } );
-
-  $(document).on('click', '.river-tools .delete', Libertree.UI.confirmAction);
 } );
