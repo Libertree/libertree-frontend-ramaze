@@ -1,6 +1,5 @@
 <div class="post-excerpt #{@is_first ? 'first' : ''}" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
 
-  <?r @comments = @post.comments ?>
   <div class="meta">
     <a href="#river-menu" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
     <div class="member">
@@ -20,8 +19,8 @@
             </span> |
             <span
                class="num-comments"
-               title="#{@comments.empty? ? '' : n_('1 comment by %1$s', '%2$d comments by %1$s', @comments.count) % [commenter_list(@comments), @comments.count]}">
-              #{_('Comments: %s') % "<span class='value'>#{@comments.size}</span>" }
+               title="#{@post.comments.empty? ? '' : n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}">
+              #{_('Comments: %s') % "<span class='value'>#{@post.comments.size}</span>" }
             </span>
           </div>
         <?r else ?>
@@ -40,11 +39,12 @@
         >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
           <span class="value">#{@post.likes.size}</span>
         </span><br/>
+
         <span
-          class="num-comments #{@comments.empty? ? 'hidden' : ''}"
-          title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @comments.count) % [commenter_list(@comments), @comments.count]}"
+          class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
+          title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
         >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
-          <span class="num-comments">#{@comments.size}</span>
+          <span class="num-comments">#{@post.comments.size}</span>
         </span>
       </div>
       #{ render_partial '_post_tools_text', post: @post, excerpt_links: true }
@@ -61,7 +61,7 @@
           </div>
         <?r end ?>
       </div>
-      #{ Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options, hidden: false }
+      #{ render_file 'view/comments/_comments_list.xhtml', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 }, hidden: true }
     </div>
   </div>
 
