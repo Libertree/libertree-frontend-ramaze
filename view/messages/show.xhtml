@@ -10,7 +10,7 @@
           <span class="recipient">#{member_name_link(r)}</span>
         <?r end ?>
       </div>
-      <input id="participants" type="hidden" value='#{([@message.sender] + @message.recipients).map{|m| {"id"=>m.id, "text"=>m.handle}}.to_json}'/>
+      <input id="participants" type="hidden" value='#{@participants.to_json}'/>
 
       <div class="timestamp">#{ago(@message.time_created)}</div>
       <div class="message-tools">
