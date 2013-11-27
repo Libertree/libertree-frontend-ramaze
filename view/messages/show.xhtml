@@ -12,7 +12,7 @@
       </div>
       <input id="participants" type="hidden" value='#{@participants.to_json}'/>
 
-      <div class="timestamp">#{ago(@message.time_created)}</div>
+      <div class="age">#{ago(@message.time_created)}</div>
       <div class="message-tools">
         <a class="reply" href="#">#{s_('direct-message|reply')}</a>
         <?r if @message.recipients.count > 1 ?>
