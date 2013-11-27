@@ -33,14 +33,14 @@ Libertree.PostLoader = (function () {
         older_or_newer = 'older';
       }
       if (time === undefined || time === null) {
-        time = $('.post-excerpt:last').data('t');
+        time = $('.autoloadable:last').data('t');
       }
 
       loading = true;
 
       // move the spinner container to the bottom of the stream
-      $('#post-excerpts div.spinner').appendTo($('#post-excerpts'));
-      Libertree.UI.addSpinner('#post-excerpts div.spinner', 'append');
+      $('.autoload-container div.spinner').appendTo($('.autoload-container'));
+      Libertree.UI.addSpinner('.autoload-container div.spinner', 'append');
 
       $.ajax({
         type: 'GET',
@@ -56,21 +56,22 @@ Libertree.PostLoader = (function () {
           // When sort order is by update/comment time, posts that are already in the DOM
           // may appear in the result set and have to be removed from the DOM.
           container.prepend(excerpts);
+          // TODO: generalise this.  Use .autoloadable instead of .post-excerpt
           container.find('.post-excerpt').each( function() {
             $('.post-excerpt[data-post-id="'+$(this).data('post-id')+'"]').remove();
           } );
 
           if (older_or_newer === 'newer') {
-            $('#post-excerpts').prepend(excerpts);
+            $('.autoload-container').prepend(excerpts);
           } else {
-            $('#post-excerpts').append(excerpts);
+            $('.autoload-container').append(excerpts);
           }
           Libertree.UI.makeTextAreasExpandable();
           excerpts.slideDown(function () {
             loading = false;
           });
 
-          Libertree.UI.removeSpinner('#post-excerpts');
+          Libertree.UI.removeSpinner('.autoload-container');
 
           //TODO: only process new excerpts!
           Libertree.UI.showShowMores();
