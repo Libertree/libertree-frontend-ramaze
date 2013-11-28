@@ -18,6 +18,12 @@ module Controller
       @view = 'messages'
     end
 
+    # TODO: the first two arguments are ignored.  They are expected in the other post loaders.
+    def _more( ignore, older_or_newer = 'older', time = Time.now.to_i )
+      @messages = account.messages(limit: 8, time: time.to_f)
+      render_file "#{Ramaze.options.views[0]}/messages/_records.xhtml"
+    end
+
     def create
       redirect_referrer  if ! request.post?
 

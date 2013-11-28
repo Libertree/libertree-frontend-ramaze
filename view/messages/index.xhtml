@@ -6,16 +6,7 @@
 
 <h3>#{s_('direct-message|Messages')}</h3>
 
-<?r @messages.each do |m| ?>
-  <div class="message">
-    <div class="meta">
-      <div class="sender">#{s_('direct-message|From:')} #{member_avatar_link(m.sender)} #{member_name_link(m.sender)}</div>
-      <div class="recipients">
-        #{s_('direct-message|To:')}
-        #{ m.recipients.map { |r| member_name_link(r) }.join(', ') }
-      </div>
-      <div class="age">#{ago(m.time_created)}</div>
-    </div>
-    <a class="text" href="/messages/show/#{m.id}">#{::CGI.escape_html(m.glimpse)}</a>
-  </div>
-<?r end ?>
+<div id="message-list" data-loadable="messages" class="autoload-container">
+  #{ render_partial '_records', messages: @messages }
+  <div class="spinner"></div>
+</div>

@@ -21,6 +21,9 @@ Libertree.PostLoader = (function () {
     case 'pool':
       endpoint = '/pools/_more';
       break;
+    case 'messages':
+      endpoint = '/messages/_more';
+      break;
     default:
       // not supported
       return function () {};
@@ -84,9 +87,10 @@ Libertree.PostLoader = (function () {
   };
 
   return {
-    loadFromRiver:   mkLoader('river'),
-    loadFromTags:    mkLoader('tags'),
-    loadFromProfile: mkLoader('profile'),
-    loadFromPool:    mkLoader('pool')
+    loadFromRiver:    mkLoader('river'),
+    loadFromTags:     mkLoader('tags'),
+    loadFromProfile:  mkLoader('profile'),
+    loadFromPool:     mkLoader('pool'),
+    loadFromMessages: mkLoader('messages')
   };
 }());

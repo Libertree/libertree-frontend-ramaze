@@ -1,0 +1,13 @@
+<?r @messages.each do |m| ?>
+  <div class="message autoloadable" data-t="#{@message.time_created.to_time.to_f}">
+    <div class="meta">
+      <div class="sender">#{s_('direct-message|From:')} #{member_avatar_link(@message.sender)} #{member_name_link(@message.sender)}</div>
+      <div class="recipients">
+        #{s_('direct-message|To:')}
+        #{ @message.recipients.map { |r| member_name_link(r) }.join(', ') }
+      </div>
+      <div class="age">#{ago(@message.time_created)}</div>
+    </div>
+    <a class="text" href="/messages/show/#{@message.id}">#{::CGI.escape_html(@message.glimpse)}</a>
+  </div>
+<?r end ?>

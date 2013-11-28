@@ -260,6 +260,8 @@ Libertree.UI = (function () {
       // register post loaders as continuous scroll handlers
       $(window).scroll( function() {
         continuousScrollHandler( function() {
+          // TODO: bind these functions to DOM elements, don't run them all the time
+          Libertree.PostLoader.loadFromMessages( $('#message-list').data('loadable') );
           Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
           Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
           Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
