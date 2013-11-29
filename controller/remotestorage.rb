@@ -26,7 +26,7 @@ module Controller
         rescue Curl::Err::HostResolutionError => e
           flash[:error] = s_('remote-storage|The remote storage provider could not be found.')
           redirect r(:connection)
-        rescue Curl::Err::TimeoutError => e
+        rescue Curl::Err::ConnectionFailedError, Curl::Err::TimeoutError => e
           flash[:error] = s_('remote-storage|The connection to the remote storage provider timed out.')
           redirect r(:connection)
         end
