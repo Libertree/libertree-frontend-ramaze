@@ -20,7 +20,8 @@
     #{_('There are no posts matching this hashtag.')}
   </div>
 <?r else ?>
-<div id="post-excerpts" class="autoload-container" data-tag="#{@tag}">
+<div id="post-excerpts" class="autoload-container"
+     data-loader-type="tags" data-loader-args="#{@tag}">
   <div class="more-posts">
     <a href="#" class="load-more"></a>
   </div>

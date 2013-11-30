@@ -6,7 +6,8 @@
 
 <h3>#{s_('direct-message|Messages')}</h3>
 
-<div id="message-list" data-loadable="messages" class="autoload-container">
+<div id="message-list" class="autoload-container"
+     data-loader-type="messages" data-loader-args="ignore">
   #{ render_partial '_records', messages: @messages }
   <div class="spinner"></div>
 </div>

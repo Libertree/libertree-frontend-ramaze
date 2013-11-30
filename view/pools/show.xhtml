@@ -21,7 +21,8 @@
   <?r end ?>
 
 </div>
-<div id="post-excerpts" data-pool-id="#{@pool.id}">
+<div id="post-excerpts" class="autoload-container" data-loader-type="pool"
+     data-loader-args="#{@pool.id}" data-pool-id="#{@pool.id}">
   <?r @pool.posts.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, pool: @pool }
   <?r end ?>

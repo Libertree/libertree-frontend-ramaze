@@ -256,20 +256,30 @@ Libertree.UI = (function () {
       }
     },
 
-    init: function() {
-      // register post loaders as continuous scroll handlers
-      $(window).scroll( function() {
-        continuousScrollHandler( function() {
-          // TODO: bind these functions to DOM elements, don't run them all the time
-          Libertree.PostLoader.loadFromMessages( $('#message-list').data('loadable') );
-          Libertree.PostLoader.loadFromRiver( $('#post-excerpts').data('river-id') );
-          Libertree.PostLoader.loadFromPool( $('#post-excerpts').data('pool-id') );
-          Libertree.PostLoader.loadFromTags( $('#post-excerpts').data('tag') );
-          Libertree.PostLoader.loadFromProfile( $('#post-excerpts').data('member-id') );
-        } );
-      } );
+    // register content loaders as continuous scroll handlers
+    registerScrollHandler: function () {
+      var loaderContainer = $('.autoload-container'),
+        loaderType,
+        loaderArgs,
+        loader;
 
+      if (loaderContainer) {
+        loaderType = loaderContainer.data('loader-type');
+        loaderArgs = loaderContainer.data('loader-args');
+        loader = Libertree.PostLoader.mkLoader(loaderType);
+
+        $(window).scroll(function () {
+          continuousScrollHandler(function () {
+            loader(loaderArgs);
+          });
+        });
+      }
+    },
+
+    init: function() {
       $(document).ready( function () {
+        Libertree.UI.registerScrollHandler();
+
         setInterval( Libertree.UI.updateAges, 60 * 1000 );
         Libertree.UI.TextAreaBackup.enable();
         Libertree.UI.makeTextAreasExpandable();

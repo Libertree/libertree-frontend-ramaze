@@ -87,10 +87,7 @@ Libertree.PostLoader = (function () {
   };
 
   return {
-    loadFromRiver:    mkLoader('river'),
-    loadFromTags:     mkLoader('tags'),
-    loadFromProfile:  mkLoader('profile'),
-    loadFromPool:     mkLoader('pool'),
-    loadFromMessages: mkLoader('messages')
+    mkLoader: mkLoader,
+    loadFromRiver: mkLoader('river'), /*needed for new post loader in home.js*/
   };
 }());
