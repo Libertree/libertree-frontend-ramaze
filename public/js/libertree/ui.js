@@ -9,13 +9,6 @@ Libertree.UI = (function () {
         // calculate the duration to move an amount of pixels at a given speed
         return pixels * 1000 / speed;
       };
-    },
-
-    continuousScrollHandler = function (loader) {
-      if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
-        if( $('#no-more-posts').length ) { return; }
-        loader();
-      }
     };
 
   return {
@@ -269,9 +262,10 @@ Libertree.UI = (function () {
         loader = Libertree.PostLoader.mkLoader(loaderType);
 
         $(window).scroll(function () {
-          continuousScrollHandler(function () {
+          if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
+            if( $('#no-more-posts').length ) { return; }
             loader(loaderArgs);
-          });
+          }
         });
       }
     },
