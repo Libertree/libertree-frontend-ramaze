@@ -26,6 +26,8 @@ module Controller
     end
 
     def _more( member_id, older_or_newer = 'older', time = Time.now.to_i )
+      # TODO: this is called by the profile post loader.  Make sure that
+      # only those posts are returned for which the requester has view permissions.
       member = Libertree::Model::Member[ member_id.to_i ]
       @posts = member.posts(
         limit: 8,
