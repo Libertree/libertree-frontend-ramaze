@@ -157,8 +157,12 @@ body.single-post-view {
         padding-right: 1em;
         padding-bottom: 1em;
 
+        div.content img.avatar {
+            display: none;
+        }
+
         form.comment {
-          margin-left: 50px;
+          margin-left: 0;
           .form-buttons {
             a.detach {
               display: inline;
