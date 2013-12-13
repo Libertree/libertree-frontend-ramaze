@@ -209,9 +209,12 @@ body.excerpts-view .main {
               min-height: auto;
               .comments {
                 margin-bottom: 1em;
+                div.content img.avatar {
+                  display: none;
+                }
                 form.comment {
                   display: inline-block;
-                  width: 80%;
+                  width: 100%;
                 }
               }
             }
