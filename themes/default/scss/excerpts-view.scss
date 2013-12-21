@@ -6,7 +6,7 @@ $dynamic-excerpt-width-threshold: 1060px;
 
 @mixin dynamic-excerpt-width {
     width: 720px;
-    @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+    @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
         width: auto;
         margin-left: 240px;
     }
