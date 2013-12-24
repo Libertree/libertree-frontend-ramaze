@@ -13,6 +13,7 @@ body.accounts.edit {
     }
     textarea.custom {
         width: 500px;
+        @include border-box;
         @media screen and (max-width: $threshold) {
             width: 100%;
         }
