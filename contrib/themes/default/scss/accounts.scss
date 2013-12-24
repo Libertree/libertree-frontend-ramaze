@@ -1,5 +1,6 @@
 @import "../scss-include/mixins.scss";
 @import "colours.scss";
+$threshold: 700px; // TODO: same as in application.scss
 
 body.accounts.edit {
     ul.actions {
@@ -8,6 +9,12 @@ body.accounts.edit {
         padding-left: 0;
         li {
             list-style: none;
+        }
+    }
+    textarea.custom {
+        width: 500px;
+        @media screen and (max-width: $threshold) {
+            width: 100%;
         }
     }
 }
