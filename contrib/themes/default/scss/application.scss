@@ -443,6 +443,7 @@ form.comment {
 #post-new, #post-edit {
     @include shadow;
     @include rounded;
+    @include border-box;
     margin: 0px auto;
     text-align: center;
     /* TODO: make the width somewhat flexible */
@@ -721,6 +722,7 @@ textarea#invitations {
 }
 
 #textarea-description {
+    @include border-box;
     width: 500px;
 }
 
