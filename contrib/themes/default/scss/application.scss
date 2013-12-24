@@ -721,11 +721,6 @@ textarea#invitations {
     padding: 1em;
 }
 
-#textarea-description {
-    @include border-box;
-    width: 500px;
-}
-
 #form-river-new, #form-river-edit {
     input[type="text"], textarea {
         width: 400px;
