@@ -710,6 +710,9 @@ table.table {
 
 textarea.custom {
     width: 500px;
+    @media screen and (max-width: $threshold) {
+        width: 100%;
+    }
 }
 textarea#invitations {
     width: 85%;
