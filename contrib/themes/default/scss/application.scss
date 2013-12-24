@@ -169,6 +169,13 @@ body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.p
             margin-right: 1.5em;
             float: left;
             clear: left;
+            @media screen and (max-width: $threshold) {
+                width: auto;
+                text-align: left;
+                margin-right: 0.5em;
+                float: none;
+                clear: both;
+            }
         }
         .field {
             margin-bottom: 1em;
