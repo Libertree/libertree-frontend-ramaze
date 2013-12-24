@@ -19,5 +19,10 @@ body.rivers {
                 clear: both;
             }
         }
+        #form-river-new, #form-river-edit {
+            input[type="text"], textarea {
+                width: 400px;
+            }
+        }
     }
 }
