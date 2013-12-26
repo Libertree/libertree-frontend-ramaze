@@ -14,6 +14,7 @@ Libertree.UI = (function () {
   return {
     // speed = pixels per second
     duration: setSpeed(600),
+    threshold: 700, // pixels, same as used by @media queries in CSS
     selectDefaults: {
         width: '450px',
         multiple: true,

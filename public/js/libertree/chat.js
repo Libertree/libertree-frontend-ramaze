@@ -123,11 +123,14 @@ Libertree.Chat = (function () {
     },
 
     rememberDimensions: function() {
-      $.cookie( 'chat-top', $('#chat-window').css('top') );
-      $.cookie( 'chat-left', $('#chat-window').css('left') );
-      $.cookie( 'chat-width', $('#chat-window').css('width') );
-      $.cookie( 'chat-height', $('#chat-window').css('height') );
-      $.cookie( 'chat-open', $('#chat-window').is(':visible') );
+      // only remember position if this is not a device with a small screen
+      if (document.documentElement.clientWidth > Libertree.UI.threshold) {
+        $.cookie( 'chat-top', $('#chat-window').css('top') );
+        $.cookie( 'chat-left', $('#chat-window').css('left') );
+        $.cookie( 'chat-width', $('#chat-window').css('width') );
+        $.cookie( 'chat-height', $('#chat-window').css('height') );
+        $.cookie( 'chat-open', $('#chat-window').is(':visible') );
+      }
     },
 
     heartbeat: function() {
@@ -240,12 +243,15 @@ Libertree.Chat = (function () {
         return false;
       } );
 
-      $('#chat-window').draggable( {
-        handle: '.header',
-        stop: function(event, ui) {
-          Libertree.Chat.rememberDimensions();
-        }
-      } );
+      // do this only on wide screens
+      if (document.documentElement.clientWidth > Libertree.UI.threshold) {
+        $('#chat-window').draggable( {
+          handle: '.header',
+          stop: function(event, ui) {
+            Libertree.Chat.rememberDimensions();
+          }
+        } );
+      }
 
       $(document).on('click', '#online-contacts .avatar', function() {
         fetchConversationWith( $(this).data('member-id'), true);
@@ -254,14 +260,19 @@ Libertree.Chat = (function () {
 
       /* ------------------------------------------------------ */
 
-      $.cookie('chat-width', $.cookie('chat-width') || 400);
-      $.cookie('chat-height', $.cookie('chat-height') || 400);
-      $('#chat-window').css( {
-        top: $.cookie('chat-top'),
-        left: $.cookie('chat-left'),
-        width: $.cookie('chat-width'),
-        height: $.cookie('chat-height')
-      } );
+      // do this only on wide screens
+      if (document.documentElement.clientWidth > Libertree.UI.threshold) {
+        $.cookie('chat-width', $.cookie('chat-width') || 400);
+        $.cookie('chat-height', $.cookie('chat-height') || 400);
+
+        $('#chat-window').css( {
+          top: $.cookie('chat-top'),
+          left: $.cookie('chat-left'),
+          width: $.cookie('chat-width'),
+          height: $.cookie('chat-height')
+        } );
+      }
+
       if( $.cookie('chat-open') === 'true' ) {
         $('#menu-chat').click();
       }
