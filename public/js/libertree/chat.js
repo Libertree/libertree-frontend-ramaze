@@ -129,8 +129,8 @@ Libertree.Chat = (function () {
         $.cookie( 'chat-left', $('#chat-window').css('left') );
         $.cookie( 'chat-width', $('#chat-window').css('width') );
         $.cookie( 'chat-height', $('#chat-window').css('height') );
-        $.cookie( 'chat-open', $('#chat-window').is(':visible') );
       }
+      $.cookie( 'chat-open', $('#chat-window').is(':visible') );
     },
 
     heartbeat: function() {
