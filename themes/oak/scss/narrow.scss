@@ -125,24 +125,4 @@ $threshold: 700px;
             }
         }
     }
-
-    #chat-window {
-        width: 280px;
-        left: 0.5em;
-        margin-left: 0px;
-
-        #chat-new-partner-wrapper {
-            select#chat-new-partner {
-                width: 260px;
-            }
-        }
-
-        .logs {
-            .log {
-                .messages {
-                    max-height: 300px;
-                }
-            }
-        }
-    }
 }

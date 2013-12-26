@@ -1,4 +1,5 @@
 @import "colours.scss";
+$threshold: 700px;
 
 #chat-window {
     top: 41px;
@@ -8,12 +9,21 @@
     min-width: 150px;
     min-height: 150px;
 
+    @media screen and (max-width: $threshold) {
+        left: 0;
+        width: 100%;
+        margin: 0;
+    }
+
     .header {
         .title {
             font-weight: bold;
         }
         padding: 0.3em;
         cursor: move;
+        @media screen and (max-width: $threshold) {
+            cursor: default;
+        }
     }
 
     #online-contacts {
@@ -33,6 +43,9 @@
         background-color: $main_light;
         select#chat-new-partner {
             width: 380px;
+            @media screen and (max-width: $threshold) {
+                width: 100%;
+            }
         }
     }
 
@@ -82,6 +95,9 @@
             &.active { display: block; }
 
             .messages {
+                @media screen and (max-width: $threshold) {
+                    max-height: 300px;
+                }
                 overflow: auto;
                 .message {
                     margin: 0px 0px 5px 0px;
