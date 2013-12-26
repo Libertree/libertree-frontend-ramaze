@@ -94,6 +94,9 @@ body.single-post-view {
           @include rounded-top;
           background: $sand;
           margin: -2em -2em 1em;
+          @media screen and (max-width: $threshold) {
+              margin: -1em -1em 1em;
+          }
           padding-top: 28px;
           padding-bottom: 4px;
           overflow: hidden;
