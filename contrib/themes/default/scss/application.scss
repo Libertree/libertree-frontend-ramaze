@@ -203,7 +203,10 @@ body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.p
   width: 500px;
   margin: 0 0 0 -250px;
   padding-left: 50px; //make room for icon
-
+  @media screen and (max-width: $threshold) {
+      width: 100%;
+      margin: 0 0 0 -50%;
+  }
   &.error {
     background: url('../images/flash-error.png') no-repeat scroll 10px 0.5em $rose;
     border: 1px solid $red;
