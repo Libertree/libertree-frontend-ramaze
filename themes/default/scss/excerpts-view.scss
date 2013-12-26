@@ -200,6 +200,9 @@ body.excerpts-view .main {
                 form.comment {
                   display: inline-block;
                   width: 80%;
+                  @media screen and (max-width: $threshold) {
+                      width: 100%;
+                  }
                 }
               }
             }
