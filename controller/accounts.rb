@@ -1,3 +1,4 @@
+require 'gpgme'
 module Controller
   class Accounts < Base
     map '/accounts'
@@ -55,6 +56,36 @@ module Controller
       account.thumbnail = !! request['thumbnail']
       account.hide_markdown_bar = !! request['hide_markdown_bar']
       account.icons = ( request['post_tools_icons'].to_s == 'icons' )
+
+      # TODO: move validation to the account model?
+      if request['pubkey'].nil? || request['pubkey'].to_s.strip.empty?
+        account.pubkey = nil
+      else
+        # import pubkey into temporary keyring to verify it
+        GPGME::Engine.home_dir = Dir.tmpdir
+        result = GPGME::Key.import request['pubkey'].to_s
+
+        if result.considered == 1 && result.secret_read == 1
+          # Delete the key immediately from the keyring and
+          # alert the user in case a secret key was uploaded
+          keys = GPGME::Key.find(:secret, result.imports.first.fpr)
+          keys.first.delete!(true)  # force deletion of secret key
+          keys = nil; result = nil
+          flash[:error] = _('You imported a secret key!  Although we did not store it you should consider this key compromised.')
+          redirect_referrer
+        elsif result.considered == 1 && (result.imported == 1 || result.unchanged == 1)
+          # We do not check whether the key matches the given email address.
+          # This is not necessary, because we don't search the keyring to get
+          # the encryption key when sending emails.  Instead, we just take
+          # whatever key the user provided.
+
+          account.pubkey = request['pubkey'].to_s
+        else
+          flash[:error] = _('The provided public key could not be read.  Is it a valid PGP public key?')
+          redirect_referrer
+        end
+      end
+
       account.theme = if $conf['themes'].include? request['theme'].to_s
                         request['theme'].to_s
                       else
