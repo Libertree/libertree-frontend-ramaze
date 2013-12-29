@@ -757,7 +757,7 @@ msgstr ""
 msgid "pool|Public spring URL:"
 msgstr ""
 msgid "Leave this field empty if you do not want the spring to be accessible outside of Libertree."
-msgid ""
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
