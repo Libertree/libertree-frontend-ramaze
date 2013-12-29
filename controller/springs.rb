@@ -12,7 +12,6 @@ module Controller
 
     def index(username, spring_name)
       @view = 'excerpts-view pool'
-      @rivers = account.rivers_not_appended # required by sidebar
 
       account = Libertree::Model::Account[ username: username ]
       if account

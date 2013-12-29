@@ -29,7 +29,6 @@ module Controller
         Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
         Libertree::Model::Pool[ id: pool_id.to_i, sprung: true, ]
       )
-      @rivers = account.rivers_not_appended
       if @pool
         @posts = @pool.posts( limit: 16 )
       else
