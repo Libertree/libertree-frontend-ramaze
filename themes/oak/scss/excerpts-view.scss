@@ -19,6 +19,12 @@ body.excerpts-view .main {
     padding: 0;
     background-color: transparent;
 
+    @media screen and (min-width: $threshold) {
+        #sidebar {
+            display: block;
+        }
+    }
+
     select#river-selector {
       width: 400px;
     }

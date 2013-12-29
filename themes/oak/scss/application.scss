@@ -846,6 +846,7 @@ video {
 }
 
 #sidebar {
+    display: none;
     @include shadow;
     @include border-box;
     padding: (40px + 10px) 10px 10px; // 40px = height of the menu bar
