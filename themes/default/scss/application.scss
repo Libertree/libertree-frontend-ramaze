@@ -125,6 +125,7 @@ textarea, input[type="text"], input[type="password"] {
 }
 
 .main {
+    @include border-box;
     max-width: 1000px;
     min-width: 500px;
     width: 90%;
