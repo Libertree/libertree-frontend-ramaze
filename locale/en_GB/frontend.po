@@ -221,6 +221,12 @@ msgid "Failed to add post to pool."
 msgstr ""
 msgid "Post added to &ldquo;%s&rdquo; pool."
 msgstr ""
+msgid "The spring URL may only consist of letters, hyphens or underscores."
+msgstr ""
+msgid "You already have a spring with this name."
+msgstr ""
+msgid "The custom spring URL is too long.  You may use up to 64 characters."
+msgstr ""
 
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
@@ -748,6 +754,10 @@ msgid "pool|Update"
 msgstr ""
 msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
 msgstr ""
+msgid "pool|Public spring URL:"
+msgstr ""
+msgid "Leave this field empty if you do not want the spring to be accessible outside of Libertree."
+msgid ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
