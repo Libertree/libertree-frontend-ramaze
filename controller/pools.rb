@@ -15,7 +15,8 @@ module Controller
 
     def index
       @view = 'pools'
-      @pools = account.member.pools
+      @springs = account.member.springs
+      @pools = account.member.pools - @springs
     end
     def _index(target_post_id)
       @pools = account.member.pools

@@ -734,6 +734,12 @@ msgid "pool|Delete"
 msgstr ""
 msgid "All record of collected posts will be lost. Delete this pool?"
 msgstr ""
+msgid "Your pools"
+msgstr ""
+msgid "Your springs"
+msgstr ""
+msgid "You don't have any springs.  Springs are post collections that are visible to other people.  &ldquo;Spring&rdquo; a pool to make it public!"
+msgstr ""
 
 #: view/pools/show.xhtml
 msgid "Pool: %s"
