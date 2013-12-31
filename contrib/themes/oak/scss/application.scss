@@ -155,7 +155,7 @@ textarea, input[type="text"], input[type="password"] {
     }
 }
 
-body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.pools, body.rivers {
+body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.notifications, body.pools, body.rivers {
     .main {
         @include shadow;
         @include rounded;
