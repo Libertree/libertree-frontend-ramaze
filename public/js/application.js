@@ -9,7 +9,8 @@ $(document).ready( function() {
     return false;
   } );
 
-  $(document).on('click', '#toggle-sidebar', function() {
+  $(document).on('click', '#toggle-sidebar', function(event) {
+    event.preventDefault();
     $('#sidebar').toggle();
   } );
 
