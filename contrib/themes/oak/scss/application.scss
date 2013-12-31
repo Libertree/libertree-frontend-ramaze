@@ -150,6 +150,9 @@ textarea, input[type="text"], input[type="password"] {
 .post-new .main, .post-edit .main {
     padding: 0;
     background-color: transparent;
+    #sidebar {
+        margin-left: 0;  // override .main padding correction
+    }
 }
 
 body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.pools, body.rivers {
@@ -852,8 +855,10 @@ video {
     z-index: 2; // one less than the menu bar
     top: 0;
     left: auto;
+    margin-left: -30px; // .main padding correction
     @media screen and (max-width: 1100px) {
         left: 0;
+        margin-left: 0;
     }
 
     width: 250px;

@@ -19,8 +19,9 @@ body.excerpts-view .main {
     padding: 0;
     background-color: transparent;
 
-    @media screen and (min-width: $threshold) {
-        #sidebar {
+    #sidebar {
+        margin-left: 0; // override .main padding correction
+        @media screen and (min-width: $threshold) {
             display: block;
         }
     }
