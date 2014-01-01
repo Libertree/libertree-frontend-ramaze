@@ -89,7 +89,9 @@ $threshold: 700px;
 
     .excerpts-view {
         .back-to-top {
-            float: right;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
 
         #post-excerpts {
