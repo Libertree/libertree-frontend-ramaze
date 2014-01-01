@@ -180,10 +180,14 @@ body.excerpts-view .main {
         div.meta {
             background-color: $sand;
             position: relative;
-            @media screen and (min-width: $threshold) {
-                .back-to-top {
+
+            .back-to-top {
+                @media screen and (min-width: $threshold) {
                     display: none;
                 }
+                position: absolute;
+                right: 0;
+                top: 0;
             }
 
             .post-tools {
