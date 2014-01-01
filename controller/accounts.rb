@@ -48,6 +48,8 @@ module Controller
       else
         account.email = request['email'].to_s
       end
+
+      account.forward_dms_via_email = !! request['forward_dms_via_email']
       account.custom_css = request['custom_css'].to_s
       account.custom_js = request['custom_js'].to_s
       account.autoembed = !! request['autoembed']

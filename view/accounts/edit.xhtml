@@ -10,6 +10,11 @@
   </div>
 
   <div class="field">
+    <label>#{_('Forward direct messages via email:')}</label>
+    <input type="checkbox" name="forward_dms_via_email" #{account.forward_dms_via_email ? "checked" : ""} />
+  </div>
+
+  <div class="field">
     <label>#{_('Post excerpt maximum height:')}</label>
     <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}
   </div>
