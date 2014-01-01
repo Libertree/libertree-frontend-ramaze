@@ -15,6 +15,11 @@
   </div>
 
   <div class="field">
+    <label>#{_('Public key:')}</label>
+    <textarea name="pubkey" class="custom" rows="5">#{account.pubkey}</textarea>
+  </div>
+
+  <div class="field">
     <label>#{_('Post excerpt maximum height:')}</label>
     <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}
   </div>

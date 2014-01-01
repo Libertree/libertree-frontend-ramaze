@@ -81,6 +81,7 @@ GEM
       activesupport (>= 3.0.0)
     fast_gettext (0.6.8)
     ffi (1.9.0)
+    gpgme (2.0.2)
     http_parser.rb (0.5.3)
     i18n (0.6.0)
     json (1.7.6)
@@ -164,6 +165,7 @@ DEPENDENCIES
   em-websocket
   factory_girl
   fast_gettext
+  gpgme
   innate!
   json
   libertree-model!

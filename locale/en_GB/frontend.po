@@ -463,6 +463,10 @@ msgid "To delete your account and all associated data, input your username below
 msgstr ""
 msgid "account-delete|Confirm"
 msgstr ""
+msgid "The provided public key could not be read.  Is it a valid PGP public key?"
+msgstr ""
+msgid "You imported a secret key!  Although we did not store it you should consider this key compromised."
+msgstr ""
 
 #: view/accounts/change_password.xhtml
 
