@@ -10,9 +10,11 @@
   <?r if @springs.any? ?>
     <div id="springs">
       #{_('Publish to these springs:')}
+      <ul>
       <?r @springs.each do |spring| ?>
-        <input name="spring_ids[]" type="checkbox" value="#{spring.id}">#{spring.name}</input>
+        <li><input name="spring_ids[]" type="checkbox" value="#{spring.id}">#{spring.name}</input></li>
       <?r end ?>
+      </ul>
     </div>
   <?r end ?>
 </div>

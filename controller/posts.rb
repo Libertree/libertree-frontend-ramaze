@@ -156,7 +156,6 @@ module Controller
 
     def show(post_id, from_comment_id = nil)
       @view = "single-post-view"
-      @rivers = account.rivers_not_appended
       @post = Libertree::Model::Post[post_id.to_i]
       if @post.nil?
         respond (render_full "/error_404"), 404

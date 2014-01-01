@@ -20,7 +20,6 @@ module Controller
         redirect_referrer
       end
 
-      @rivers = account.rivers_not_appended
       @profile = @member.profile
       @posts = @member.posts
     end

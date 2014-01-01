@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: d1b0991ec5ab3a1e301404b5719bf958807910ce
+  revision: b14d31c634bb41fe86a660b37380b587924535af
   specs:
     libertree-model (0.5.0)
       bcrypt-ruby (= 3.0.1)

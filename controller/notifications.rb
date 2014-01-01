@@ -19,6 +19,7 @@ module Controller
     # is mostly shared, so the same instance variables are set up.
 
     def index
+      @view = "notifications"
       @sets = Hash.new { |h,k| h[k] = [] }
       @set_keys = Array.new # so we have a display order
       notifs = account.notifications

@@ -15,7 +15,8 @@ module Controller
 
     def index
       @view = 'pools'
-      @pools = account.member.pools
+      @springs = account.member.springs
+      @pools = account.member.pools - @springs
     end
     def _index(target_post_id)
       @pools = account.member.pools
@@ -28,7 +29,6 @@ module Controller
         Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
         Libertree::Model::Pool[ id: pool_id.to_i, sprung: true, ]
       )
-      @rivers = account.rivers_not_appended
       if @pool
         @posts = @pool.posts( limit: 16 )
       else
@@ -83,6 +83,7 @@ module Controller
 
     def edit(pool_id)
       @view = 'pools'
+      @host = request.host_with_port
       @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect_referrer  if @pool.nil?
     end
@@ -95,6 +96,26 @@ module Controller
 
       @pool.name = request['name'].to_s
       @pool.sprung = !! request['sprung']
+
+      spring_url_name = request['spring_url_name'].to_s.downcase.strip
+      begin
+        puts "saving as #{spring_url_name} or nil"
+        @pool.spring_url_name = spring_url_name.empty? ? nil : spring_url_name
+      rescue PGError => e
+        if e.message =~ /valid_spring_url_name/
+          flash[:error] = _('The spring URL may only consist of letters, hyphens or underscores.')
+          redirect_referrer
+        elsif e.message =~ /unique_spring_url_name/
+          flash[:error] = _('You already have a spring with this name.')
+          redirect_referrer
+        elsif e.message =~ /value too long/
+          # TODO: does this depend on the postgresql locale?
+          flash[:error] = _('The custom spring URL is too long.  You may use up to 64 characters.')
+          redirect_referrer
+        else
+          raise e
+        end
+      end
 
       redirect r(:/)
     end

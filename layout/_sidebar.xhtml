@@ -21,7 +21,7 @@
       <?r end ?>
     <?r end ?>
 
-    <?r @rivers.reject(&:home).sort_by(&:label).each do |r| ?>
+    <?r account.rivers_not_appended.reject(&:home).sort_by(&:label).each do |r| ?>
       <?r if r == @river ?>
         <li class="selected">#{r.label}</li>
       <?r else ?>

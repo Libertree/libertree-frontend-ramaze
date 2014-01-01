@@ -16,6 +16,13 @@
     <input type="checkbox" name="sprung" value="true" #{@pool.sprung? ? 'checked' : '' }/>
   </div>
 
+  <div class="field">
+    <label>
+      #{s_('pool|Public spring URL:')}
+      #{help_bubble _("Leave this field empty if you do not want the spring to be accessible outside of Libertree.")}
+    </label>
+    <span>http://#{@host}/s/#{account.username}/</span><input type="text" name="spring_url_name" value="#{@pool.spring_url_name}"/>
+  </div>
   <input type="submit" value="#{s_('pool|Update')}"/>
 </form>
 
