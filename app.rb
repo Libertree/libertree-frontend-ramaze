@@ -21,11 +21,12 @@ $conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
 # compile SCSS to CSS
-theme_path = "public/themes/#{$conf['themes'].first}"
-Dir.mkdir "#{theme_path}/css" unless Dir.exists? "#{theme_path}/css"
-Dir.glob("#{theme_path}/scss/*.scss") do |filename|
-  target = filename.match(%r{/scss/(.+)\.scss}) { "#{theme_path}/css/#{$1}.css" }
-  Sass.compile_file(filename, target)
+Dir.glob("public/themes/*") do |theme_path|
+  Dir.mkdir "#{theme_path}/css" unless Dir.exists? "#{theme_path}/css"
+  Dir.glob("#{theme_path}/scss/*.scss") do |filename|
+    target = filename.match(%r{/scss/(.+)\.scss}) { "#{theme_path}/css/#{$1}.css" }
+    Sass.compile_file(filename, target)
+  end
 end
 
 if $conf['graphicsmagick']
