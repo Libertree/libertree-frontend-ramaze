@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
-"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-10-18 09:19+0000\n"
+"PO-Revision-Date: 2014-01-01 09:21+0000\n"
 "Last-Translator: Pistos <transifex.pistos@purepistos.net>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/libertree/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -305,6 +305,15 @@ msgstr "A bejegyzést nem sikerült hozzáadni a medencéhez."
 msgid "Post added to &ldquo;%s&rdquo; pool."
 msgstr "Bejegyzés hozzáadva a &ldquo;%s&rdquo; nevű medencéhez."
 
+msgid "The spring URL may only consist of letters, hyphens or underscores."
+msgstr ""
+
+msgid "You already have a spring with this name."
+msgstr ""
+
+msgid "The custom spring URL is too long.  You may use up to 64 characters."
+msgstr ""
+
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
 msgstr "Különleges jelek nem szerepelhetnek a világi nevekben."
@@ -445,6 +454,9 @@ msgid ""
 "public and never shared."
 msgstr ""
 
+msgid "Forward direct messages via email:"
+msgstr ""
+
 msgid "Post excerpt maximum height:"
 msgstr "a bejegyzésminta legnagyobb magassága:"
 
@@ -471,6 +483,9 @@ msgstr ""
 
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "A bejegyzésmintákban készüljenek a képekhez miniatűrök:"
+
+msgid "Hide markdown bar:"
+msgstr ""
 
 msgid "Enable posting from river view:"
 msgstr ""
@@ -637,6 +652,15 @@ msgstr "Fiókod és minden hozzátartozó adatod törléséhez add meg alább a 
 msgid "account-delete|Confirm"
 msgstr "Megerősítés"
 
+msgid ""
+"The provided public key could not be read.  Is it a valid PGP public key?"
+msgstr ""
+
+msgid ""
+"You imported a secret key!  Although we did not store it you should consider"
+" this key compromised."
+msgstr ""
+
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
 msgstr "Jelszó megváltoztatása"
@@ -704,6 +728,10 @@ msgid "%1$s sent you a %2$smessage%3$s."
 msgstr "%1$s küldött neked egy %2$süzenetet%3$s."
 
 msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
+msgstr ""
+
+#: view/notifications/_mention.xhtml
+msgid "%1$s mentioned you in a %2$spost%3$s."
 msgstr ""
 
 #: helper/wording.rb, view/messages/show.xhtml
@@ -996,6 +1024,17 @@ msgstr "törlés"
 msgid "All record of collected posts will be lost. Delete this pool?"
 msgstr "Az összegyűjtött bejegyzések ebben a csoportosításban többé nem lesznek láthatóak. Töröljük a medencét?"
 
+msgid "Your pools"
+msgstr ""
+
+msgid "Your springs"
+msgstr ""
+
+msgid ""
+"You don't have any springs.  Springs are post collections that are visible "
+"to other people.  &ldquo;Spring&rdquo; a pool to make it public!"
+msgstr ""
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "medence: %s"
@@ -1021,6 +1060,14 @@ msgstr "frissítés"
 
 msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
 msgstr "(eltávolíthatsz bejegyzéseket ebből a medencéből a %1$sgyűjtőmedencék oldalon%2$s.)"
+
+msgid "pool|Public spring URL:"
+msgstr ""
+
+msgid ""
+"Leave this field empty if you do not want the spring to be accessible "
+"outside of Libertree."
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"

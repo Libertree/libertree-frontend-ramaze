@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libertree\n"
-"Report-Msgid-Bugs-To: http://issues.libertreeproject.org/\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2013-10-18 09:19+0000\n"
+"PO-Revision-Date: 2014-01-01 09:21+0000\n"
 "Last-Translator: Pistos <transifex.pistos@purepistos.net>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -305,6 +305,15 @@ msgstr "Impossibile aggiungere il post allo stagno."
 msgid "Post added to &ldquo;%s&rdquo; pool."
 msgstr "Post aggiunto allo stagno &ldquo;%s&rdquo; ."
 
+msgid "The spring URL may only consist of letters, hyphens or underscores."
+msgstr ""
+
+msgid "You already have a spring with this name."
+msgstr ""
+
+msgid "The custom spring URL is too long.  You may use up to 64 characters."
+msgstr ""
+
 #: controller/profiles.rb
 msgid "Special characters are not allowed in display names."
 msgstr "Non sono ammessi caratteri speciali per i nomi visualizzati."
@@ -445,6 +454,9 @@ msgid ""
 "public and never shared."
 msgstr "Il tuo indirizzo email viene usato solo per il recupero della password. Non verrà mai reso pubblico, né condiviso."
 
+msgid "Forward direct messages via email:"
+msgstr ""
+
 msgid "Post excerpt maximum height:"
 msgstr "Altezza massima dei post compressi:"
 
@@ -471,6 +483,9 @@ msgstr "Mostra le interazioni nei post come:"
 
 msgid "Make thumbnails for images in post excerpts:"
 msgstr "Crea l&#8217;anteprima delle immagini nei post compressi:"
+
+msgid "Hide markdown bar:"
+msgstr ""
 
 msgid "Enable posting from river view:"
 msgstr ""
@@ -637,6 +652,15 @@ msgstr "Per eliminare il tuo account e tutti i dati associati, inserisci il tuo 
 msgid "account-delete|Confirm"
 msgstr "Conferma"
 
+msgid ""
+"The provided public key could not be read.  Is it a valid PGP public key?"
+msgstr ""
+
+msgid ""
+"You imported a secret key!  Although we did not store it you should consider"
+" this key compromised."
+msgstr ""
+
 #: view/accounts/change_password.xhtml
 msgid "Change Password"
 msgstr "Cambia Password"
@@ -705,6 +729,10 @@ msgstr "%1$s ti ha inviato un %2$smessaggio%3$s."
 
 msgid "%1$s added your %2$spost%3$s to a spring called \"%4$s\"."
 msgstr "%1$s ha aggiunto il tuo %2$spost%3$s a una fonte che si chiama \"%4$s\"."
+
+#: view/notifications/_mention.xhtml
+msgid "%1$s mentioned you in a %2$spost%3$s."
+msgstr ""
 
 #: helper/wording.rb, view/messages/show.xhtml
 msgid "list-comma|, "
@@ -996,6 +1024,17 @@ msgstr "Elimina"
 msgid "All record of collected posts will be lost. Delete this pool?"
 msgstr "L&#8217;archivio dei post memorizzati sarà cancellato. Vuoi proprio eliminare questo stagno?"
 
+msgid "Your pools"
+msgstr ""
+
+msgid "Your springs"
+msgstr ""
+
+msgid ""
+"You don't have any springs.  Springs are post collections that are visible "
+"to other people.  &ldquo;Spring&rdquo; a pool to make it public!"
+msgstr ""
+
 #: view/pools/show.xhtml
 msgid "Pool: %s"
 msgstr "Stagno: %s"
@@ -1021,6 +1060,14 @@ msgstr "Aggiorna"
 
 msgid "(You can remove posts from this pool via %1$sthe pool's page%2$s.)"
 msgstr "(Puoi rimuovere i post da questo stagno attraverso %1$sla pagina degli stagni%2$s.)"
+
+msgid "pool|Public spring URL:"
+msgstr ""
+
+msgid ""
+"Leave this field empty if you do not want the spring to be accessible "
+"outside of Libertree."
+msgstr ""
 
 #: view/profiles/edit.xhtml
 msgid "My Profile"
