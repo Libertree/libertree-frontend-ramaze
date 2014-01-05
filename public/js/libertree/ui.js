@@ -263,7 +263,7 @@ Libertree.UI = (function () {
         loader = Libertree.PostLoader.mkLoader(loaderType);
 
         $(window).scroll(function () {
-          if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 300 ) {
+          if( $(window).scrollTop() + $(window).innerHeight() >= $(document).height() - 600 ) {
             if( $('#no-more-posts').length ) { return; }
             loader(loaderArgs);
           }
