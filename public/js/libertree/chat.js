@@ -156,7 +156,10 @@ Libertree.Chat = (function () {
               Libertree.UI.removeSpinner('#chat-window');
               $('#chat-window').hide();
               var o = $( $.trim(html) );
-              markConversationSeen( o.find('.log.active').data('member-id') );
+              var memberId = o.find('.log.active').data('member-id');
+              if (memberId) {
+                markConversationSeen( memberId );
+              }
 
               $('#chat-window')
                 .resizable( {
