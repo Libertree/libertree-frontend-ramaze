@@ -12,5 +12,10 @@ module Controller
 
       redirect_referrer
     end
+
+    def index
+      @view = "accounts edit"
+      @invitations = account.invitations_not_accepted
+    end
   end
 end
