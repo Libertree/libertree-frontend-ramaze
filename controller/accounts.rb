@@ -17,7 +17,6 @@ module Controller
 
     def edit
       @view = "accounts edit"
-      @host = request.host_with_port
       @export_filename = "libertree-data-#{account.username}-#{Time.now.strftime('%Y-%m-%d')}.json"
     end
 

@@ -15,6 +15,7 @@ module Controller
 
     def index
       @view = "accounts edit"
+      @host = request.host_with_port
       @invitations = account.invitations_not_accepted
     end
   end
