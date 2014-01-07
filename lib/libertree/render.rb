@@ -106,9 +106,8 @@ module Libertree
         :url_expanded => resolution
       )
     rescue PGError => e
-      # expansion already exists
       if e.message =~ /url_expansions_url_short_key/
-        resolution = Libertree::Model::UrlExpansion[ url_short: url_s ]
+        # expansion already exists, ignore
       else
         # silently fail
         resolution = url_s
