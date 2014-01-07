@@ -6,7 +6,7 @@
 
 <?r if @invitations.any? ?>
 <h3>#{_('My Invitations')}</h3>
-<textarea id="invitations" rows="5">#{
+<textarea readonly="true" id="invitations" rows="5">#{
   @invitations.map { |i| "http://#{@host}/signup?invitation_code=#{i.code}" }.join("\n")
 }</textarea>
 <?r end ?>
