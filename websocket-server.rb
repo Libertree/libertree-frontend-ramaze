@@ -1,4 +1,4 @@
-require 'syck'
+require 'yaml'
 require 'json'
 require 'em-websocket'
 require 'libertree/db'
@@ -12,7 +12,7 @@ Libertree::DB.dbh
 #
 require 'libertree/model'
 
-$conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
+$conf = YAML.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
 $sessions = Hash.new
 
 pid_dir = File.join( File.dirname(__FILE__), 'pids' )
