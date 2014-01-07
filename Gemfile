@@ -17,7 +17,6 @@ gem 'sass'
 gem 'ruby-oembed'
 gem 'fast_gettext'
 gem 'gpgme'  # to verify PGP public keys before storing them
-gem 'syck', :platforms => [:ruby_20]
 
 group 'extensions' do
   gem 'curb'           # libcurl-dev (Debian) / libcurl-devel (Fedora)

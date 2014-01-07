@@ -143,7 +143,6 @@ GEM
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
     subexec (0.2.1)
-    syck (1.0.0)
     typelib (0.1.0)
     unicorn (4.2.0)
       kgio (~> 2.6)
@@ -186,5 +185,4 @@ DEPENDENCIES
   ruby-oembed
   sass
   selenium-webdriver
-  syck
   unicorn

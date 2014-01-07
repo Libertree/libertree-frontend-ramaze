@@ -2,7 +2,7 @@ require 'ramaze'
 require 'sass'
 require 'm4dbi'
 require 'rdbi-driver-postgresql'
-require 'syck'
+require 'yaml'
 require 'mini_magick'
 require 'fast_gettext'
 require 'markdown'
@@ -16,7 +16,7 @@ FastGettext.default_text_domain = 'frontend'
 FastGettext.default_available_locales = Libertree::LANG.map(&:first)
 include FastGettext::Translation
 
-$conf = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
+$conf = YAML.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
 $conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
@@ -33,7 +33,7 @@ if $conf['graphicsmagick']
   MiniMagick.processor = :gm
 end
 
-all_confs = Syck.load( File.read("#{ File.dirname( __FILE__ ) }/config/database.yaml") )
+all_confs = YAML.load( File.read("#{ File.dirname( __FILE__ ) }/config/database.yaml") )
 env = ENV['LIBERTREE_ENV'] || 'development'
 conf_db = all_confs[env]
 
