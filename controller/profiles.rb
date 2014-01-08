@@ -39,6 +39,8 @@ module Controller
     def edit
       @view = "profile edit"
       @profile = account.member.profile
+      avatar_path = "/images/avatars/#{account.member.id}.png"
+      @has_avatar = File.exists?(File.join(Ramaze.options.roots.first, Ramaze.options.publics.first, avatar_path))
     end
 
     def update
@@ -74,7 +76,7 @@ module Controller
 
       begin
         FileUtils.rm avatar_path
-        account.member.avatar_path = nil
+        # TODO: distribute avatar deletion
         flash[:notice] = _('Avatar deleted.')
       rescue
         flash[:error] = _('Failed to reset avatar.')
@@ -114,8 +116,6 @@ module Controller
       result = MiniMagick::Image.open(avatar_mask).composite(image) {|c| c.compose "In"}
       result.write save_path
       File.chmod  0644, save_path
-
-      account.member.avatar_path = "/images/avatars/#{basename}"
 
       flash[:notice] = _('Avatar changed.')
       redirect_referrer
