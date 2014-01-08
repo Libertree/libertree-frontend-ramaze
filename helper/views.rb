@@ -58,7 +58,7 @@ module Ramaze
 
         if params['member_id']
           member = Libertree::Model::Member[ params['member_id'].to_i ]
-          if server
+          if member
             params['member_id'] = "<span title='#{member.username}'>#{params['member_id']}</span>"
           end
         end
