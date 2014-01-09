@@ -1,0 +1,22 @@
+@import "../scss-include/mixins.scss";
+@import "colours.scss";
+
+body.messages {
+    .search-choice-close {
+        border-bottom: 0px;
+    }
+
+    .message {
+        border-bottom: 1px dotted $main;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+
+        .text {
+            margin-top: 1em;
+        }
+    }
+
+    form#new-message {
+        display: none;
+    }
+}
