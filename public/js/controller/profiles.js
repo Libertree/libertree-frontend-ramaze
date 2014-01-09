@@ -1,8 +1,8 @@
 $(document).ready( function() {
-  $('.profile #contact-list-selector').chosen().change( function (event) {
+  $('.profile #contact-list-selector').select2({width: '450px'}).change( function (event) {
     event.preventDefault();
     var selector = $('#contact-list-selector'),
-      contactListId = selector.val(),
+      contactListId = event.val;
       memberId = selector.data('member-id'),
       url = '/contact-lists/add_member/'+contactListId+'/'+memberId;
 
