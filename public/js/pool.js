@@ -23,10 +23,10 @@ $(document).ready( function() {
     Libertree.Pools.createPoolAndAddPost(post);
   } );
 
-  $('.excerpts-view.pool #river-selector').chosen().change( function (event) {
+  $('.excerpts-view.pool #river-selector').select2({ width: '450px' }).change(function (event) {
     event.preventDefault();
     var selector = $('.excerpts-view.pool #river-selector'),
-      riverId = selector.val(),
+      riverId = event.val,
       poolId = selector.data('pool-id'),
       url = '/rivers/add_spring/'+riverId+'/'+poolId;
 
