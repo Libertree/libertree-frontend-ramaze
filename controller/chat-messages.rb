@@ -7,10 +7,6 @@ module Controller
     layout nil
 
     def _index
-      @contacts = Libertree::Model::Member.
-        all.
-        reject { |m| m == account.member }.
-        sort_by { |m| m.name_display.downcase }
       @contacts_online = account.contacts_mutual.find_all { |c| c.online? }
       @n = account.num_chat_unseen
       @partners = account.

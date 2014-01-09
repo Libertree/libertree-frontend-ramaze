@@ -174,13 +174,14 @@ Libertree.Chat = (function () {
               ;
               $('#chat-window').addClass('resizable');
 
-              $('select#chat-new-partner').chosen().change( function() {
-                var memberId = $('select#chat-new-partner').val();
-                fetchConversationWith(memberId, true);
-                $('select#chat-new-partner').val('0');
-                $('select#chat-new-partner').trigger("liszt:updated");
-                return false;
-              } );
+              $('input#chat-new-partner').select2(
+                  jQuery.extend(Libertree.UI.selectDefaults,
+                                { multiple: false,
+                                  width: '100%',
+                                })).
+                    change(function (event) {
+                        fetchConversationWith(event.val, true);
+                    });
 
               syncUIDimensions();
               $('#chat-window').show();
