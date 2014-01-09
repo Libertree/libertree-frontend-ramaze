@@ -17,4 +17,7 @@ div.profile {
   border-radius: 3px 3px 0px 0px;
   background-color: $dust; /* fallback for browsers that don't support alpha in colours */
   background-color: $dust_translucent;
+  .description {
+      word-wrap: break-word;
+  }
 }
