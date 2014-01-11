@@ -906,3 +906,10 @@ video {
 .select2-container, .select2-input, input {
     max-width: 100%;
 }
+
+#notes > li {
+    margin-bottom: 0.5em;
+}
+#notes p {
+    display: inline;
+}
