@@ -21,9 +21,6 @@ body.excerpts-view .main {
 
     #sidebar {
         margin-left: 0; // override .main padding correction
-        @media screen and (min-width: $threshold) {
-            display: block;
-        }
     }
 
     select#river-selector {
@@ -82,14 +79,19 @@ body.excerpts-view .main {
     #header {
       @include shadow;
       @include rounded;
-      margin-bottom: 1em;
       @include border-box;
+      margin: 0 auto 1em;
       background-color: $dust;
       padding: 20px;
       @include dynamic-excerpt-width;
-      float: right;
-      @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-        float: none;
+      float: none;
+      &.with-sidebar {
+          margin: 0;
+          margin-bottom: 1em;
+          float: right;
+          @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+              float: none;
+          }
       }
     }
 
@@ -110,12 +112,17 @@ body.excerpts-view .main {
 
     #post-excerpts {
         @include rounded;
-        float: right;
-        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-            float: none;
-        }
         @include dynamic-excerpt-width;
+        float: none;
+        margin: 0 auto;
         position: relative;
+        &.with-sidebar {
+            margin: 0;
+            float: right;
+            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+                float: none;
+            }
+        }
     }
     form#post-new {
         @include shadow;
