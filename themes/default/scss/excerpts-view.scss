@@ -30,9 +30,14 @@ body.excerpts-view .main {
     & > div.panel {
         @include dynamic-excerpt-width;
         @include border-box;
-        float: right;
-        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-            float: none;
+        float: none;
+        margin: 0 auto;
+        &.with-sidebar {
+            margin: 0;
+            float: right;
+            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+                float: none;
+            }
         }
     }
     div.panel {
