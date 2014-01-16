@@ -12,6 +12,8 @@ $(document).ready( function() {
   $(document).on('click', '#toggle-sidebar', function(event) {
     event.preventDefault();
     $('#sidebar').toggle();
+    $('.excerpts-view #header').toggleClass('with-sidebar');
+    $('#post-excerpts').toggleClass('with-sidebar');
   } );
 
   // bootstrap popovers for additional information
