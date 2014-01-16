@@ -76,8 +76,8 @@ Libertree.PostLoader = (function () {
 
           Libertree.UI.removeSpinner('.autoload-container');
 
-          //TODO: only process new excerpts!
-          Libertree.UI.showShowMores();
+          // show "show more" links on new excerpts (where required)
+          Libertree.UI.showShowMores(excerpts.children('.excerpt'));
           if (onSuccess) {
             onSuccess();
           }

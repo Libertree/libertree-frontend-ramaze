@@ -68,8 +68,12 @@ Libertree.UI = (function () {
       );
     },
 
-    showShowMores: function() {
-      $('.excerpt').each( function() {
+    showShowMores: function(excerpts) {
+      var set = excerpts;
+      if (set == undefined || set == null) {
+          set = $('.excerpt');
+      }
+      set.each( function() {
         if( $(this).find('.post-text').height() > $(this).find('.overflowed').height() ) {
           $(this).closest('.excerpt').siblings('.show-more').show();
         }
