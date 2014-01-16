@@ -4,7 +4,7 @@
   <?r if @rivers ?>
   <div>
     <select id="river-selector" name="river_id" data-tag="#{@tag}" data-placeholder="#{_('Add this hashtag to an existing river.')}" data-msg="#{_('Added hashtag #%s to river.') % @tag}">
-      <option value="0"></option>
+      <option></option>
       <?r @rivers.each do |r| ?>
         <option value="#{r.id}">#{r.label}</option>
       <?r end ?>

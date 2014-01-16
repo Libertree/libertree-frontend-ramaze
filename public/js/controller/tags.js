@@ -1,8 +1,8 @@
 $(document).ready( function() {
-  $('.tags #river-selector').chosen().change( function (event) {
+  $('.tags #river-selector').select2({width: '450px'}).change( function (event) {
     event.preventDefault();
     var selector = $('#river-selector'),
-      riverId = selector.val(),
+      riverId = event.val,
       tag = selector.data('tag'),
       url = '/rivers/_add_term/'+riverId+'/'+'%23'+tag;
 
