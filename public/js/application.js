@@ -13,6 +13,7 @@ $(document).ready( function() {
     event.preventDefault();
     $('#sidebar').toggle();
     $('.excerpts-view #header').toggleClass('with-sidebar');
+    $('.excerpts-view .panel').toggleClass('with-sidebar');
     $('#post-excerpts').toggleClass('with-sidebar');
   } );
 
