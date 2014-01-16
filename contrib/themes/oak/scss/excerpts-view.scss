@@ -9,9 +9,10 @@ $dynamic-excerpt-width-threshold: 1060px;
     @media screen and (max-width: $dynamic-excerpt-width-threshold) {
         width: auto;
     }
-    @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
-    
-        margin-left: 240px;
+    &.with-sidebar {
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+            margin-left: 240px;
+        }
     }
 }
 
