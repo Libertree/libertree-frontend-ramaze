@@ -38,8 +38,17 @@ def onmessage(ws, data)
     sockets: Hash.new,
     account: session_account.account,
   }
+
   $sessions[sid][:sockets][ws] ||= {
-    last_post_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts"),
+    last_post_id: session_account.account.rivers_not_appended.reduce({}) {|acc, river|
+      last_post = river.posts({:limit => 1}).first
+      if last_post
+        acc[river.id] = last_post.id
+      else
+        acc[river.id] = Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts")
+      end
+      acc
+    },
     last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
     last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments"),
     last_chat_message_id: Libertree::DB.dbh.sc(
@@ -109,31 +118,26 @@ EventMachine.run do
         #       When at first only one new post is detected, but on the
         #       next iteration 100 new posts are discovered, the hint will
         #       still say "1 new post".
-        post_ids = []
-
         rivers = account.rivers_not_appended
         rivers.each do |river|
           posts = Libertree::Model::Post.
             s("SELECT p.* FROM posts p, river_posts rp WHERE rp.river_id = ? AND p.id = rp.post_id AND p.id > ?",
                river.id,
-               socket_data[:last_post_id])
+               socket_data[:last_post_id][river.id])
           num_posts = posts.count
           if num_posts > 0
+            post_ids = posts.map(&:id)
             ws.send(
               {
                 'command' => 'river-posts',
                 'riverId' => river.id,
-                'postIds' => posts.map(&:id),
+                'postIds' => post_ids,
                 # TODO: i18n
                 'newPostsMessage' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}",
               }.to_json
             )
-            post_ids += posts.map(&:id)
+            socket_data[:last_post_id][river.id] = post_ids.max
           end
-        end
-
-        if post_ids.any?
-          socket_data[:last_post_id] = post_ids.max
         end
 
         notifs = Libertree::Model::Notification.s(
