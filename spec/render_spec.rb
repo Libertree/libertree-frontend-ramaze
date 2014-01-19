@@ -4,6 +4,12 @@ require 'spec_helper'
 
 describe Libertree do
   describe '#render' do
+    it 'should not turn a line break into a paragraph break at hashtags' do
+      pending "bug in our fork of peg-markdown"
+      text = "There is no paragraph\n #break here."
+      subject.render(text).should == '<p>There is no paragraph<br> <a href="/tags/break" class="hashtag">break</a> here.'
+    end
+
     it 'should escape XHTML tags' do
       subject.render('<script>alert("hello world")</script>').should == ""
     end
