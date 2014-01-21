@@ -18,6 +18,4 @@ required.  memcached is recommended, but not required.
 
 ### Running
 
-    ./css-build.sh
     bundle exec unicorn -p <port number>
-    bundle exec ruby websocket-server.rb
