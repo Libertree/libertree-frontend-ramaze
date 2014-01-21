@@ -43,43 +43,7 @@ module Libertree
       }
     end
 
-    @server_blk = lambda do
-      if $conf['secure_websocket']
-        options = {
-          :host => $conf['websocket_listen_host'],
-          :port => 8080,
-          :secure => true,
-          :tls_options => {
-            :private_key_file => $conf['websocket_ssl_private_key'],
-            :cert_chain_file => $conf['websocket_ssl_cert']
-          }
-        }
-      else
-        options = {
-          :host => $conf['websocket_listen_host'],
-          :port => 8080,
-        }
-      end
-
-      EventMachine::WebSocket.start(options) do |ws|
-        ws.onopen do
-        end
-
-        ws.onclose do
-          $sessions.each do |sid,session_data|
-            session_data[:sockets].delete ws
-          end
-        end
-
-        ws.onmessage do |json_data|
-          begin
-            self.onmessage ws, JSON.parse(json_data)
-          rescue Exception => e
-            $stderr.puts e.message + "\n" + e.backtrace.join("\n\t")
-          end
-        end
-      end
-
+    def self.monitor_changes
       EventMachine.add_periodic_timer(2) do
         $sessions.each do |sid,session_data|
           session_data[:sockets].each do |ws,socket_data|
@@ -174,6 +138,46 @@ module Libertree
           end
         end
       end
+    end
+
+    @server_blk = lambda do
+      if $conf['secure_websocket']
+        options = {
+          :host => $conf['websocket_listen_host'],
+          :port => 8080,
+          :secure => true,
+          :tls_options => {
+            :private_key_file => $conf['websocket_ssl_private_key'],
+            :cert_chain_file => $conf['websocket_ssl_cert']
+          }
+        }
+      else
+        options = {
+          :host => $conf['websocket_listen_host'],
+          :port => 8080,
+        }
+      end
+
+      EventMachine::WebSocket.start(options) do |ws|
+        ws.onopen do
+        end
+
+        ws.onclose do
+          $sessions.each do |sid,session_data|
+            session_data[:sockets].delete ws
+          end
+        end
+
+        ws.onmessage do |json_data|
+          begin
+            self.onmessage ws, JSON.parse(json_data)
+          rescue Exception => e
+            $stderr.puts e.message + "\n" + e.backtrace.join("\n\t")
+          end
+        end
+      end
+
+      self.monitor_changes
     end
 
   end
