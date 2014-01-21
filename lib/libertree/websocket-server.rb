@@ -6,20 +6,20 @@ module Libertree
 
     $sessions = Hash.new
 
-    def self.start
-      if $conf['secure_websocket']
+    def self.start(conf)
+      if conf['secure_websocket']
         options = {
-          :host => $conf['websocket_listen_host'],
+          :host => conf['websocket_listen_host'],
           :port => 8080,
           :secure => true,
           :tls_options => {
-            :private_key_file => $conf['websocket_ssl_private_key'],
-            :cert_chain_file => $conf['websocket_ssl_cert']
+            :private_key_file => conf['websocket_ssl_private_key'],
+            :cert_chain_file => conf['websocket_ssl_cert']
           }
         }
       else
         options = {
-          :host => $conf['websocket_listen_host'],
+          :host => conf['websocket_listen_host'],
           :port => 8080,
         }
       end
