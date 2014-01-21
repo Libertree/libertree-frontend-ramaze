@@ -24,9 +24,28 @@ module Libertree
         }
       end
 
+      server_blk = lambda do |ws|
+        ws.onopen do
+        end
+
+        ws.onclose do
+          $sessions.each do |sid,session_data|
+            session_data[:sockets].delete ws
+          end
+        end
+
+        ws.onmessage do |json_data|
+          begin
+            self.onmessage ws, JSON.parse(json_data)
+          rescue Exception => e
+            $stderr.puts e.message + "\n" + e.backtrace.join("\n\t")
+          end
+        end
+      end
+
       Thread.new {
         EventMachine.run do
-          EventMachine::WebSocket.start(options, &@server_blk)
+          EventMachine::WebSocket.start(options, &server_blk)
           self.monitor_changes
         end
       }
@@ -158,25 +177,6 @@ module Libertree
               socket_data[:last_chat_message_id] = cm.id
             end
           end
-        end
-      end
-    end
-
-    @server_blk = lambda do |ws|
-      ws.onopen do
-      end
-
-      ws.onclose do
-        $sessions.each do |sid,session_data|
-          session_data[:sockets].delete ws
-        end
-      end
-
-      ws.onmessage do |json_data|
-        begin
-          self.onmessage ws, JSON.parse(json_data)
-        rescue Exception => e
-          $stderr.puts e.message + "\n" + e.backtrace.join("\n\t")
         end
       end
     end
