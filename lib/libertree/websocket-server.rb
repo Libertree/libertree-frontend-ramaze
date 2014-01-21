@@ -3,17 +3,6 @@ require 'em-websocket'
 
 $sessions = Hash.new
 
-pid_dir = File.join( File.dirname(__FILE__), 'pids' )
-if ! Dir.exists?(pid_dir)
-  Dir.mkdir pid_dir
-end
-pid_file = File.join(pid_dir, 'websocket-server.pid')
-File.open(pid_file, 'w') do |f|
-  f.print Process.pid
-end
-
-puts "Starting websocket server (pid #{Process.pid})..."
-
 def onmessage(ws, data)
   sid = data['sid']
   session_account = Libertree::Model::SessionAccount[sid: sid]
