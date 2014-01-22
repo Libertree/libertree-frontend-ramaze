@@ -43,12 +43,10 @@ module Libertree
         end
       end
 
-      Thread.new {
-        EventMachine.run do
-          EventMachine::WebSocket.start(options, &server_blk)
-          self.monitor_changes
-        end
-      }
+      EventMachine.run do
+        EventMachine::WebSocket.start(options, &server_blk)
+        self.monitor_changes
+      end
     end
 
     def self.onmessage(ws, data)

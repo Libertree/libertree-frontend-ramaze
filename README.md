@@ -19,3 +19,4 @@ required.  memcached is recommended, but not required.
 ### Running
 
     bundle exec unicorn -p <port number>
+    bundle exec ruby -Ilib websocket-server.rb
