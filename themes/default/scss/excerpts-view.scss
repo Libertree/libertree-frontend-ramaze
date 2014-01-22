@@ -134,13 +134,16 @@ body.excerpts-view .main {
     form#post-new {
         @include shadow;
         @include rounded;
-        float: right;
-        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-            float: none;
-        }
         background-color: $dust;
         @include dynamic-excerpt-width;
         position: relative;
+        float: none;
+        &.with-sidebar {
+            float: right;
+            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+                float: none;
+            }
+        }
     }
 
     .post-excerpt {
