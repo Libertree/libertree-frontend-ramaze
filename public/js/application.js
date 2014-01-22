@@ -15,6 +15,7 @@ $(document).ready( function() {
     $('.excerpts-view #header').toggleClass('with-sidebar');
     $('.excerpts-view .panel').toggleClass('with-sidebar');
     $('#post-excerpts').toggleClass('with-sidebar');
+    $('.excerpts-view #post-new').toggleClass('with-sidebar');
   } );
 
   // bootstrap popovers for additional information
