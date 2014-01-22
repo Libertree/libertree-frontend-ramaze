@@ -45,10 +45,7 @@ module Libertree
 
       Thread.new {
         EventMachine.run do
-          EventMachine::start_server(options[:host], options[:port],
-                                     EventMachine::WebSocket::Connection, options) do |c|
-            server_blk.call(c)
-          end
+          EventMachine::WebSocket.start(options, &server_blk)
           self.monitor_changes
         end
       }
