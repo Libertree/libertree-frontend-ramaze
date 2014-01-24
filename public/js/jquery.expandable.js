@@ -106,6 +106,9 @@
                         newHeight = Math.max( height - (rowSize * (availableRows - (options.by + options.within))), minHeight );
                         $this.stop().animate({ height: newHeight }, options.duration);
                     }
+                    $('textarea').data('original-width', $this.outerWidth());
+                    $('textarea').data('original-height', $this.outerHeight());
+
                 };
                 if ( options.init ) check();
             }).end();
