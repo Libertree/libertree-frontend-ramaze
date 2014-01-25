@@ -76,7 +76,11 @@ module Controller
 
       begin
         FileUtils.rm avatar_path
-        # TODO: distribute avatar deletion
+
+        # This is required for distributing avatar deletion.  The
+        # model library will send an empty avatar path to the forest.
+        account.member.avatar_path = nil
+
         flash[:notice] = _('Avatar deleted.')
       rescue
         flash[:error] = _('Failed to reset avatar.')
@@ -116,6 +120,11 @@ module Controller
       result = MiniMagick::Image.open(avatar_mask).composite(image) {|c| c.compose "In"}
       result.write save_path
       File.chmod  0644, save_path
+
+      # This is required to distribute the avatar to the forest.
+      # Distribution is handled by the frontend-agnostic model library
+      # which makes no assumptions about the location of avatars.
+      account.member.avatar_path = "/images/avatars/#{account.member.id}.png"
 
       flash[:notice] = _('Avatar changed.')
       redirect_referrer
