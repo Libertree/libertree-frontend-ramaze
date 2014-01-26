@@ -1,3 +1,9 @@
+<?r if @river ?>
+<div id="header">
+  <h1>#{@river.label}</h1>
+</div>
+<?r end ?>
+
 <?r if account.new_post_in_river ?>
   <form id="post-new">
     #{ Controller::Main.render_partial 'posts/_form-new', springs: @springs }
