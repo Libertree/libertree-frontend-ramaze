@@ -91,6 +91,9 @@ if $conf['memcache']
   Ramaze::Cache.options.session = Ramaze::Cache::MemCache.using(compression: false)
 end
 
+# specifying the mode in config.ru has no effect
+Ramaze.options[:mode] = $conf['environment'] || :dev
+
 Ramaze.middleware :live do
   use Rack::CommonLogger, Ramaze::Log  if $conf['log_http_requests']
   use Rack::RouteExceptions
