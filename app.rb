@@ -90,4 +90,15 @@ require_relative 'controller/admin/jobs'
 if $conf['memcache']
   Ramaze::Cache.options.session = Ramaze::Cache::MemCache.using(compression: false)
 end
+
+Ramaze.middleware :live do
+  use Rack::CommonLogger, Ramaze::Log  if $conf['log_http_requests']
+  use Rack::RouteExceptions
+  use Rack::ShowStatus
+  use Rack::ConditionalGet
+  use Rack::ETag, 'public'
+  use Rack::Head
+
+  run Ramaze.core
+end
 Rack::RouteExceptions.route( Exception, '/error' )
