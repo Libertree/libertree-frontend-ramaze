@@ -92,7 +92,7 @@ if $conf['memcache']
 end
 
 # specifying the mode in config.ru has no effect
-Ramaze.options[:mode] = $conf['environment'] || :dev
+Ramaze.options[:mode] = $conf['environment'].to_sym || :dev
 
 Ramaze.middleware :live do
   use Rack::CommonLogger, Ramaze::Log  if $conf['log_http_requests']
