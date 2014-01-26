@@ -124,6 +124,13 @@ body.single-post-view {
           .post-stats.text {
               color: #888;
               font-size: 11px;
+              & > span {
+                  padding-right: 4px;
+              }
+              span + span {
+                  border-left: 1px solid;
+                  padding-left: 4px;
+              }
           }
 
           .post-tools {
