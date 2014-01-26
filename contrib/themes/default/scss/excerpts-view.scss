@@ -165,6 +165,13 @@ body.excerpts-view .main {
               font-size: 11px;
               margin: inherit;
               float: none;
+              & > span {
+                  padding-right: 4px;
+              }
+              span + span {
+                  border-left: 1px solid;
+                  padding-left: 4px;
+              }
             }
         }
 
