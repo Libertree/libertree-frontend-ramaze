@@ -13,7 +13,7 @@
             <br/>
             <span
                class="num-likes"
-               title="#{@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post)}"
+               title="#{@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post.likes)}"
             >#{_('Likes: %s') % "<span class='value'>#{@post.likes.size}</span>" }
             </span><span
                class="num-comments"
@@ -33,7 +33,7 @@
       <div class="post-stats">
         <span
           class="num-likes #{@post.likes.empty? ? 'hidden' : ''}"
-          title="#{_('Liked by %s') % like_list(@post)}"
+          title="#{_('Liked by %s') % like_list(@post.likes)}"
         >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
           <span class="value">#{@post.likes.size}</span>
         </span><br/>

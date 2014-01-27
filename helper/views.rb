@@ -32,8 +32,8 @@ module Ramaze
         end
       end
 
-      def like_list(entity)
-        entity.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')
+      def like_list(likes)
+        likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')
       end
 
       def commenter_list(comments)
