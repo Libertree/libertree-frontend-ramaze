@@ -1,7 +1,7 @@
 <div class="comments #{@hidden ? 'hidden' : ''}">
-  <?r all_comments = @post.comments ?>
+  <?r all_comments_count = @post.comments.count ?>
   <?r fetched_comments = @post.comments(@comment_fetch_options) ?>
-  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: fetched_comments.count, num_total: all_comments.count }
+  #{ render_file 'view/comments/_num_comments.xhtml', num_shown: fetched_comments.count, num_total: all_comments_count }
   <br/>
 
   <?r if logged_in? ?>
@@ -10,7 +10,7 @@
     | <a href="/login">Log in</a> to comment.
   <?r end ?>
 
-  <?r loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( fetched_comments.count == all_comments.count ) ?>
+  <?r loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( fetched_comments.count == all_comments_count ) ?>
   <a href="#" class="load-comments #{loader_hidden ? 'hidden' : ''}">#{_('more comments')}</a>
 
   <?r fetched_comments.each do |c| ?>
