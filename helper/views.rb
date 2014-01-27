@@ -37,7 +37,9 @@ module Ramaze
       end
 
       def commenter_list(post)
-        post.comments.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', ')
+        cs = post.comments
+        commenter_list = cs.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', ')
+        n_('1 comment by %1$s', '%2$d comments by %1$s', cs.count) % [commenter_list, cs.count]
       end
 
       def timefmt(time)

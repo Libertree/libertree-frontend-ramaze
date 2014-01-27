@@ -17,7 +17,7 @@
             >#{_('Likes: %s') % "<span class='value'>#{@post.likes.size}</span>" }
             </span><span
                class="num-comments"
-               title="#{@post.comments.empty? ? '' : n_('1 comment by %1$s', '%2$d comments by %1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
+               title="#{@post.comments.empty? ? '' : commenter_list(@post)}"
             >#{_('Comments: %s') % "<span class='value'>#{@post.comments.size}</span>" }
             </span>
           </div>
@@ -40,7 +40,7 @@
 
         <span
           class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
-          title="#{n_('1 comment by %1$s', '%2$d comments by % 1$s', @post.comments.count) % [commenter_list(@post), @post.comments.count]}"
+          title="#{commenter_list(@post)}"
         >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
           <span class="num-comments">#{@post.comments.size}</span>
         </span>
