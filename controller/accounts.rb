@@ -104,6 +104,11 @@ module Controller
       redirect_referrer
     end
 
+    def clear_api_token
+      account.api_token = nil
+      redirect_referrer
+    end
+
     def api
       @view = "accounts edit"
     end

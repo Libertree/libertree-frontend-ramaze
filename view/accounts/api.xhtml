@@ -1,9 +1,16 @@
 <h2>#{_('Member API')}</h2>
 
-<div>
-  #{_('Current API token:')} #{account.api_token || _('(none)') }<br/>
-  <a href="https://github.com/Libertree/libertree-frontend-ramaze/wiki/Member-API">#{_('API documentation')}</a>
-</div>
+<?r if account.api_token ?>
+  <p>#{_('Current API token:')} #{account.api_token}</p>
+  <ul>
+    <li><a href="/accounts/generate_api_token">#{_('Generate a new API token')}</a></li>
+    <li><a href="/accounts/clear_api_token">#{_('Clear API token')}</a></li>
+  </ul>
+<?r else ?>
+  <p>
+    <a href="/accounts/generate_api_token">#{_('Generate API token')}</a>
+  </p>
+<?r end ?>
 
-<a href="/accounts/generate_api_token">#{_('Generate API token')}</a>
+<a href="https://github.com/Libertree/libertree-frontend-ramaze/wiki/Member-API">#{_('API documentation')}</a>
 
