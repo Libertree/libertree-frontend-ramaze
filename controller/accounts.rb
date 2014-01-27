@@ -104,6 +104,10 @@ module Controller
       redirect_referrer
     end
 
+    def api
+      @view = "accounts edit"
+    end
+
     def font(choice = nil)
       case choice
       when 'small'
