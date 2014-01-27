@@ -1,5 +1,6 @@
 <div class="post-excerpt autoloadable #{@is_first ? 'first' : ''}" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
   <?r comments = @post.comments ?>
+  <?r likes = @post.likes ?>
   <div class="meta">
     <a href="#post-excerpts" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
     <div class="member">
@@ -13,8 +14,8 @@
             <br/>
             <span
                class="num-likes"
-               title="#{@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post.likes)}"
-            >#{_('Likes: %s') % "<span class='value'>#{@post.likes.size}</span>" }
+               title="#{likes.empty? ? '' : _('Liked by %s') % like_list(likes)}"
+            >#{_('Likes: %s') % "<span class='value'>#{likes.size}</span>" }
             </span><span
                class="num-comments"
                title="#{comments.empty? ? '' : commenter_list(comments)}"
@@ -32,10 +33,10 @@
     <?r else ?>
       <div class="post-stats">
         <span
-          class="num-likes #{@post.likes.empty? ? 'hidden' : ''}"
-          title="#{_('Liked by %s') % like_list(@post.likes)}"
+          class="num-likes #{likes.empty? ? 'hidden' : ''}"
+          title="#{_('Liked by %s') % like_list(likes)}"
         >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
-          <span class="value">#{@post.likes.size}</span>
+          <span class="value">#{likes.size}</span>
         </span><br/>
 
         <span
