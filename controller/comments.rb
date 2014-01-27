@@ -82,10 +82,10 @@ module Controller
 
     def _comment(comment_id, old_n = nil)
       @comment = Libertree::Model::Comment[comment_id.to_i]
-      @post = @comment.post
+      @all_comments = @comment.post.comments
       @old_n = old_n ? old_n.to_i : nil
-      @n_total = @post.comments.count
-      return ""  if ! @post.v_internet? && ! logged_in?
+      @n_total = @all_comments.count
+      return ""  if ! @comment.post.v_internet? && ! logged_in?
     end
 
     def destroy(comment_id)
