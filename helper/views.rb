@@ -36,10 +36,9 @@ module Ramaze
         entity.likes.map { |l| ::CGI.escape_html(l.member.name_display) }.join(', ')
       end
 
-      def commenter_list(post)
-        cs = post.comments
-        commenter_list = cs.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', ')
-        n_('1 comment by %1$s', '%2$d comments by %1$s', cs.count) % [commenter_list, cs.count]
+      def commenter_list(comments)
+        commenter_list = comments.map { |l| ::CGI.escape_html(l.member.name_display) }.uniq.join(', ')
+        n_('1 comment by %1$s', '%2$d comments by %1$s', comments.count) % [commenter_list, comments.count]
       end
 
       def timefmt(time)

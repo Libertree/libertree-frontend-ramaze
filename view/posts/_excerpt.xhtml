@@ -1,5 +1,5 @@
 <div class="post-excerpt autoloadable #{@is_first ? 'first' : ''}" id="post-#{@post.id}" data-post-id="#{@post.id}" data-t="#{ @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f }">
-
+  <?r comments = @post.comments ?>
   <div class="meta">
     <a href="#post-excerpts" class="back-to-top" title="#{_('back to top')}">#{img 'up-arrow.png', {alt:"back to top", class:"size-16"}}</a>
     <div class="member">
@@ -17,8 +17,8 @@
             >#{_('Likes: %s') % "<span class='value'>#{@post.likes.size}</span>" }
             </span><span
                class="num-comments"
-               title="#{@post.comments.empty? ? '' : commenter_list(@post)}"
-            >#{_('Comments: %s') % "<span class='value'>#{@post.comments.size}</span>" }
+               title="#{comments.empty? ? '' : commenter_list(comments)}"
+            >#{_('Comments: %s') % "<span class='value'>#{comments.size}</span>" }
             </span>
           </div>
         <?r else ?>
@@ -39,10 +39,10 @@
         </span><br/>
 
         <span
-          class="num-comments #{@post.comments.empty? ? 'hidden' : ''}"
-          title="#{commenter_list(@post)}"
+          class="num-comments #{comments.empty? ? 'hidden' : ''}"
+          title="#{commenter_list(comments)}"
         >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
-          <span class="num-comments">#{@post.comments.size}</span>
+          <span class="num-comments">#{comments.size}</span>
         </span>
       </div>
       #{ render_partial '_post_tools_text', post: @post, excerpt_links: true }
