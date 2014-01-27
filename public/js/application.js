@@ -95,19 +95,16 @@ $(document).ready( function() {
 
   /* ---------------------------------------------------- */
 
-  $(document).on('mousedown', 'textarea', function() {
-    var $this = $(this);
-    $this.data('width', $this.outerWidth());
-    $this.data('height', $this.outerHeight());
-  } );
-
-  $(document).on('mouseup', 'textarea', function() {
-    var th = $(this);
-    if( th.outerWidth() != th.data('width') || th.outerHeight() != th.data('height') ) {
-      th.addClass('no-autoresize');
-    }
-    th.data('width', th.outerWidth());
-    th.data('height', th.outerHeight());
+  /* Disable autoresize on any textarea that is manually resized */
+  $(document).on('mouseup', function() {
+    $('textarea').each( function() {
+      var th = $(this);
+      if( th.outerWidth() != th.data('original-width') || th.outerHeight() != th.data('original-height') ) {
+        th.addClass('no-autoresize');
+      }
+      th.data('original-width', th.outerWidth());
+      th.data('original-height', th.outerHeight());
+    } );
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
