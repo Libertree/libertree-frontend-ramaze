@@ -216,7 +216,11 @@ Libertree.UI = (function () {
     }()),
 
     makeTextAreasExpandable: function() {
-      $('textarea').not('.textarea-chat').expandable( { maxRows: 60 } );
+      $('textarea').not('.textarea-chat').each( function() {
+        $(this).expandable( { maxRows: 60 } );
+        $(this).data('original-width', $(this).outerWidth());
+        $(this).data('original-height', $(this).outerHeight());
+      } );
     },
 
     scrollable: function() {
