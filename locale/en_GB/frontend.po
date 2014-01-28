@@ -1095,3 +1095,43 @@ msgid "tutorial-river-label|My activity"
 msgstr ""
 msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
 msgstr ""
+
+
+#---------------------------------------------
+#  API Documentation
+#---------------------------------------------
+
+msgid "api-endpoint-documentation"
+msgstr ""
+"#### POST /posts/create\n\n"
+
+"**Required parameters**: `text`, `source`\n"
+"**Optional parameters**: `visibility` (\"forest\", \"tree\" or \"internet\")\n\n"
+
+"Creates a new post with the provided `text`.  `source` may be the name of the application used to submit the post.\n\n"
+
+"Example with curl:\n\n"
+"    curl -d 'text=Hello world!' \\\n"
+"         -d 'source=curl' \\\n"
+"         'http://%1$s/api/v1/posts/create?token=your-token-goes-here'"
+"\n\n"
+
+"#### POST /comments/create\n\n"
+
+"**Required parameters**: `text`, `post_id`\n\n"
+
+"Example with curl:\n\n"
+"    curl -d 'text=A comment' \\\n"
+"         -d 'post_id=1234' \\\n"
+"         'http://%1$s/api/v1/comments/create?token=your-token-goes-here'"
+"\n\n"
+
+"#### POST /invitations/create\n\n"
+
+"**Parameters**: *(none)*\n\n"
+
+"Generates an [invitation code](/invitations) for this Libertree instance.\n\n"
+"Example with curl:\n\n"
+
+"    curl -X POST \\\n"
+"         'http://%1$s/api/v1/invitations/create?token=your-token-goes-here'"

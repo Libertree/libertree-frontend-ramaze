@@ -111,6 +111,7 @@ module Controller
 
     def api
       @view = "accounts edit"
+      @host = request.host_with_port
     end
 
     def font(choice = nil)
