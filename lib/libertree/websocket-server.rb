@@ -109,8 +109,7 @@ module Libertree
             #       When at first only one new post is detected, but on the
             #       next iteration 100 new posts are discovered, the hint will
             #       still say "1 new post".
-            rivers = account.rivers_not_appended
-            rivers.each do |river|
+            account.rivers_not_appended.each do |river|
               posts = Libertree::Model::Post.
                 s("SELECT p.* FROM posts p, river_posts rp WHERE rp.river_id = ? AND p.id = rp.post_id AND p.id > ?",
                  river.id,
