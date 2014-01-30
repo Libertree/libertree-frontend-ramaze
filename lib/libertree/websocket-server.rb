@@ -41,6 +41,10 @@ module Libertree
             $stderr.puts e.message + "\n" + e.backtrace.join("\n\t")
           end
         end
+
+        ws.onerror do |error|
+          $stderr.puts "ERROR: #{error.inspect}"
+        end
       end
 
       EventMachine.run do
