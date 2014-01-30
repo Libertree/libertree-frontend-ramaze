@@ -54,7 +54,7 @@
 
   <script type="text/javascript">
     var host = #{ $conf['websocket_js_host'].to_s.inspect || request.host.inspect };
-    var secure_websocket = #{ $conf['secure_websocket'].to_s.inspect || 'false' };
+    var secure_websocket = #{ $conf['secure_websocket'].inspect || 'false' };
   </script>
   <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
     #{ js_nocache 'websocket' }
