@@ -103,32 +103,33 @@ module Libertree
               )
             end
 
+            # TODO: This is disabled until it is debugged.  Too many false positives.
 
-            # TODO: The first new post since websocket server start is missed
-            # TODO: The new post text is never updated when it is once set.
-            #       When at first only one new post is detected, but on the
-            #       next iteration 100 new posts are discovered, the hint will
-            #       still say "1 new post".
-            account.rivers_not_appended.each do |river|
-              posts = Libertree::Model::Post.
-                s("SELECT p.* FROM posts p, river_posts rp WHERE rp.river_id = ? AND p.id = rp.post_id AND p.id > ?",
-                 river.id,
-                 socket_data[:last_post_id][river.id])
-              num_posts = posts.count
-              if num_posts > 0
-                post_ids = posts.map(&:id)
-                ws.send(
-                  {
-                    'command' => 'river-posts',
-                    'riverId' => river.id,
-                    'postIds' => post_ids,
-                    # TODO: i18n
-                    'newPostsMessage' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}",
-                  }.to_json
-                )
-                socket_data[:last_post_id][river.id] = post_ids.max
-              end
-            end
+            # # TODO: The first new post since websocket server start is missed
+            # # TODO: The new post text is never updated when it is once set.
+            # #       When at first only one new post is detected, but on the
+            # #       next iteration 100 new posts are discovered, the hint will
+            # #       still say "1 new post".
+            # account.rivers_not_appended.each do |river|
+              # posts = Libertree::Model::Post.
+                # s("SELECT p.* FROM posts p, river_posts rp WHERE rp.river_id = ? AND p.id = rp.post_id AND p.id > ?",
+                 # river.id,
+                 # socket_data[:last_post_id][river.id])
+              # num_posts = posts.count
+              # if num_posts > 0
+                # post_ids = posts.map(&:id)
+                # ws.send(
+                  # {
+                    # 'command' => 'river-posts',
+                    # 'riverId' => river.id,
+                    # 'postIds' => post_ids,
+                    # # TODO: i18n
+                    # 'newPostsMessage' => "#{num_posts} new post#{num_posts == 1 ? '' : 's'}",
+                  # }.to_json
+                # )
+                # socket_data[:last_post_id][river.id] = post_ids.max
+              # end
+            # end
 
             notifs = Libertree::Model::Notification.s(
               "SELECT * FROM notifications WHERE id > ? AND account_id = ? ORDER BY id LIMIT 1",
