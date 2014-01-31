@@ -1097,9 +1097,9 @@ msgid "tutorial|Posts that you have liked, commented on, or are subscribed to"
 msgstr ""
 
 
-#---------------------------------------------
+# ---------------------------------------------
 #  API Documentation
-#---------------------------------------------
+# ---------------------------------------------
 
 msgid "api-endpoint-documentation"
 msgstr ""
