@@ -10,8 +10,12 @@ $dynamic-excerpt-width-threshold: 1060px;
         width: auto;
     }
     &.with-sidebar {
+        float: right;
         @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
             margin-left: 240px;
+        }
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+            float: none;
         }
     }
 }
@@ -35,10 +39,6 @@ body.excerpts-view .main {
         margin: 0 auto;
         &.with-sidebar {
             margin: 0;
-            float: right;
-            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-                float: none;
-            }
         }
     }
     div.panel {
@@ -92,10 +92,6 @@ body.excerpts-view .main {
       float: none;
       &.with-sidebar {
           margin: 0;
-          float: right;
-          @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-              float: none;
-          }
       }
     }
 
@@ -122,12 +118,6 @@ body.excerpts-view .main {
         float: none;
         margin: 0 auto;
         position: relative;
-        &.with-sidebar {
-            float: right;
-            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-                float: none;
-            }
-        }
     }
 
     form#post-new {
@@ -137,12 +127,6 @@ body.excerpts-view .main {
         @include dynamic-excerpt-width;
         position: relative;
         float: none;
-        &.with-sidebar {
-            float: right;
-            @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-                float: none;
-            }
-        }
     }
 
     .post-excerpt {
