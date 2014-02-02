@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Libertree\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-08 10:12+0300\n"
-"PO-Revision-Date: 2014-01-01 09:21+0000\n"
+"PO-Revision-Date: 2014-01-28 09:21+0000\n"
 "Last-Translator: Pistos <transifex.pistos@purepistos.net>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/libertree/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
@@ -437,6 +437,9 @@ msgstr "Modifica il tuo profilo"
 msgid "Manage rivers"
 msgstr "Gestisci i fiumi"
 
+msgid "Manage pools and springs"
+msgstr ""
+
 msgid "Manage remote storage"
 msgstr "Gestisci l'archiviazione remota"
 
@@ -514,14 +517,14 @@ msgstr "API per l&#8217;utente"
 msgid "Current API token:"
 msgstr "Token API in uso:"
 
-msgid "(none)"
-msgstr "(nessuno)"
-
 msgid "API documentation"
 msgstr "Documentazione API"
 
 msgid "Generate API token"
 msgstr "Genera un token per le API"
+
+msgid "Generate a new API token"
+msgstr ""
 
 msgid "settings|Other actions"
 msgstr "Altre azioni"
