@@ -43,9 +43,9 @@ GIT
 
 GIT
   remote: git://github.com/rekado/rpeg-markdown.git
-  revision: 2f469b6151240b5851a48badde718b20892bd2c0
+  revision: 372974a6a13968b1f501daab5e3e7ea5c323b449
   specs:
-    rpeg-markdown (1.4.6)
+    rpeg-markdown (1.4.7)
 
 GEM
   remote: http://rubygems.org/
@@ -171,7 +171,7 @@ DEPENDENCIES
   ramaze!
   rdbi!
   rdbi-driver-postgresql
-  rpeg-markdown (= 1.4.6)!
+  rpeg-markdown!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
   ruby-debug19
