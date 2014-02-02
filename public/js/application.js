@@ -96,15 +96,13 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   /* Disable autoresize on any textarea that is manually resized */
-  $(document).on('mouseup', function() {
-    $('textarea').each( function() {
-      var th = $(this);
-      if( th.outerWidth() != th.data('original-width') || th.outerHeight() != th.data('original-height') ) {
-        th.addClass('no-autoresize');
-      }
-      th.data('original-width', th.outerWidth());
-      th.data('original-height', th.outerHeight());
-    } );
+  $(document).on('mouseup', 'textarea', function(event) {
+    var th = $(this);
+    if( th.outerWidth() != th.data('original-width') || th.outerHeight() != th.data('original-height') ) {
+      th.addClass('no-autoresize');
+    }
+    th.data('original-width', th.outerWidth());
+    th.data('original-height', th.outerHeight());
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
