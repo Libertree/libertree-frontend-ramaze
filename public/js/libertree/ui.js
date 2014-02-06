@@ -304,7 +304,9 @@ Libertree.UI = (function () {
         setInterval( Libertree.UI.updateAges, 60 * 1000 );
         Libertree.UI.TextAreaBackup.enable();
         Libertree.UI.makeTextAreasExpandable();
-        Libertree.UI.restoreSidebar();
+        if ($("body").hasClass("excerpts-view")) {
+          Libertree.UI.restoreSidebar();
+        }
 
         if( Libertree.UI.isTouchInterface ) {
           $('body').addClass('touch-interface');
