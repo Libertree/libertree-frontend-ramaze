@@ -11,11 +11,7 @@ $(document).ready( function() {
 
   $(document).on('click', '#toggle-sidebar', function(event) {
     event.preventDefault();
-    $('#sidebar').toggle();
-    $('.excerpts-view #header').toggleClass('with-sidebar');
-    $('.excerpts-view .panel').toggleClass('with-sidebar');
-    $('#post-excerpts').toggleClass('with-sidebar');
-    $('.excerpts-view #post-new').toggleClass('with-sidebar');
+    Libertree.UI.toggleSidebar();
   } );
 
   // bootstrap popovers for additional information

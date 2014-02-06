@@ -279,6 +279,24 @@ Libertree.UI = (function () {
       }
     },
 
+    restoreSidebar: function () {
+      if (($.cookie('sidebar-status') == "true") && ! $('.excerpts-view #sidebar').is(":visible")) {
+        Libertree.UI.toggleSidebar();
+      }
+    },
+
+    toggleSidebar: function () {
+      $('#sidebar').toggle();
+      $('.excerpts-view #header').toggleClass('with-sidebar');
+      $('.excerpts-view .panel').toggleClass('with-sidebar');
+      $('#post-excerpts').toggleClass('with-sidebar');
+      $('.excerpts-view #post-new').toggleClass('with-sidebar');
+
+      if ($("body").hasClass("excerpts-view")) {
+        $.cookie('sidebar-status', $('.excerpts-view #sidebar').is(":visible"));
+      }
+    },
+
     init: function() {
       $(document).ready( function () {
         Libertree.UI.registerScrollHandler();
@@ -286,6 +304,7 @@ Libertree.UI = (function () {
         setInterval( Libertree.UI.updateAges, 60 * 1000 );
         Libertree.UI.TextAreaBackup.enable();
         Libertree.UI.makeTextAreasExpandable();
+        Libertree.UI.restoreSidebar();
 
         if( Libertree.UI.isTouchInterface ) {
           $('body').addClass('touch-interface');
