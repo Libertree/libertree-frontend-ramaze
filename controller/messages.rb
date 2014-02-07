@@ -96,16 +96,14 @@ module Controller
       query = request['q'].to_s
       return '[]'  if query.empty?
 
-      members = Libertree::Model::Member.search(query)
-      accounts = Libertree::Model::Account.search(query)
-
-      result = members.map do |m|
+      Libertree::Model::Member.search(query).map do |m|
+        display = m.name_display
+        handle = m.handle
+        if handle != display
+          display += " (#{handle})"
+        end
         { 'id' => m.id,
-          'text' => m.handle }
-      end
-      result + accounts.map do |a|
-        { 'id' => a.member.id,
-          'text' => a.member.handle }
+          'text' => display }
       end
     end
   end
