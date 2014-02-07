@@ -50,7 +50,7 @@
 
     <?r if @excerpt_links ?>
       <span class="excerpt_links">
-        <a href="#" class="comment">#{ img 'icon-comment.png', {alt:_('comment'), class: 'size-16'}}</a>
+        <a href="#" title="#{_('comment')}" class="comment">#{ img 'icon-comment.png', {alt:_('comment'), class: 'size-16'}}</a>
         <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{ img 'icon-view-post.png', {alt:_('view post'), class: 'size-16'}}</a>
       </span>
     <?r end ?>
