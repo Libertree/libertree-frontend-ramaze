@@ -293,7 +293,7 @@ Libertree.UI = (function () {
       $('.excerpts-view #post-new').toggleClass('with-sidebar');
 
       if ($("body").hasClass("excerpts-view")) {
-        $.cookie('sidebar-status', $('.excerpts-view #sidebar').is(":visible"));
+        $.cookie('sidebar-status', $('.excerpts-view #sidebar').is(":visible"), {'path': '/'});
       }
     },
 
