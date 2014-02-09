@@ -4,7 +4,7 @@ module Controller
 
     before_all do
       if action.view_value.nil?
-        if Ramaze::Current.request.path !~ %r{^/posts/show/}
+        if Ramaze::Current.request.path !~ %r{^(?:/posts/show/|/comments/_comments/)}
           require_login
         end
         init_locale
