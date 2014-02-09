@@ -3,7 +3,7 @@
 
 #{ render_file 'layout/_head.xhtml' }
 
-<body class="#{ @view }">
+<body class="#{ @view } #{ (account && account.filter_images) ? 'filter-images' : '' }">
   #{ render_file 'layout/_menu.xhtml' }
 
   <?r if flash[:error] ?>
