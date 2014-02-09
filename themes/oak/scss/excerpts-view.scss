@@ -252,8 +252,12 @@ body.excerpts-view .main {
             text-align: center;
             position: relative;
             margin-bottom: -1em;
+            min-height: 1em;
+            opacity: 0.5;
+
             &:hover {
                 background-color: $sand;
+                opacity: 1;
             }
             a {
                 width: 100%;
@@ -261,6 +265,14 @@ body.excerpts-view .main {
                 border: none;
                 padding: 0.5em 0;
             }
+        }
+        .show-more a {
+            background: url("../images/show-more.png") no-repeat scroll center center;
+            text-indent: -9999px;
+        }
+        .show-less a {
+            background: url("../images/show-less.png") no-repeat scroll center center;
+            text-indent: -9999px;
         }
 
         .jump-to-comment {
