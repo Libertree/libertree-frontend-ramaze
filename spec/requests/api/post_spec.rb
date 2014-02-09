@@ -5,6 +5,7 @@ describe 'Controller::API::V1::Posts', :type => :feature do
 
   before :each do
     @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
+    Libertree::Model::AccountSettings.create( FactoryGirl.attributes_for(:account_settings, 'account_id' => @account.id ) )
     @account.api_token = "secrettoken#{@account.id}"
   end
 
