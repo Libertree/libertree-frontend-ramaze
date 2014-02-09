@@ -189,6 +189,7 @@ body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.n
         }
         .field {
             margin-bottom: 1em;
+            overflow: auto;
         }
         textarea {
             padding: 1em;
