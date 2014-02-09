@@ -80,6 +80,99 @@ Libertree.UI = (function () {
       } );
     },
 
+    showMore: function (event) {
+      var showMoreLink = $(this),
+        excerpt = showMoreLink.siblings('.excerpt'),
+        overflowed = excerpt.find('.overflowed'),
+        excerptParent = showMoreLink.closest('.post-excerpt'),
+        postId = excerptParent.data('post-id'),
+        comments = excerptParent.find('div.comments'),
+        commentHeight = comments.get(0).scrollHeight,
+        heightDifference,
+        animationDuration,
+        scrollable,
+        scrollTop,
+        excerptTruncation;
+
+      event.preventDefault();
+      Libertree.Posts.markRead(postId);
+      showMoreLink.hide();
+
+      //TODO: don't do this. Record the excerpt height somewhere and operate on that.
+      overflowed.data( 'contracted-height', overflowed.height() );
+
+      excerptParent.find('div.comments.hidden').removeClass('hidden');
+      heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
+      animationDuration = Libertree.UI.duration(heightDifference);
+
+      overflowed.animate(
+        {
+          height: excerpt.get(0).scrollHeight + 'px',
+          'max-height': excerpt.get(0).scrollHeight + 'px'
+        },
+        animationDuration,
+        function() {
+          /* cancel explicit height set by animation */
+          overflowed.height('auto');
+          overflowed.css('max-height', 'none');
+          showMoreLink.siblings('.show-less').show();
+        }
+      );
+
+      if( wantsToComment ) {
+        scrollable = Libertree.UI.scrollable();
+        scrollTop = scrollable.scrollTop();
+        excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
+        if( excerptTruncation < 0 ) {
+          excerptTruncation = 0;
+        }
+        scrollable.animate(
+          { scrollTop: scrollTop + heightDifference + excerptTruncation },
+          animationDuration,
+          function() {
+            excerpt.find('textarea.comment').focus();
+            wantsToComment = false;
+          }
+        );
+      }
+    },
+
+    showLess: function (event) {
+      var link = $(this),
+        excerpt = link.closest('.post-excerpt'),
+        overflowed = excerpt.find('.overflowed'),
+        comments = excerpt.find('div.comments'),
+        distance = excerpt.height() - overflowed.data('contracted-height'),
+        animationDuration = Libertree.UI.duration(distance),
+        excerptTop = excerpt.position().top,
+        scrollable = Libertree.UI.scrollable(),
+        windowTop = scrollable.scrollTop(),
+        scrollTop = excerptTop - windowTop;
+
+      event.preventDefault();
+      link.hide();
+
+      if( scrollTop < 100 ){
+        scrollable.animate(
+          { scrollTop: windowTop + ( scrollTop - 100 ) },
+          animationDuration
+        );
+      }
+
+      overflowed.animate(
+        { height: overflowed.data('contracted-height')+'px' },
+        animationDuration,
+        function() {
+          /* set max-height, not height.  This makes for a smooth "show
+           * more" animation in other themes. */
+          overflowed.css('max-height', overflowed.data('contracted-height')+'px');
+          overflowed.height('auto');
+          $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
+          link.siblings('.show-more').show();
+        }
+      );
+    },
+
     markdownInjector: function () {
       var $this = $(this),
         textarea = $this.closest('.markdown-injector').siblings('textarea');
