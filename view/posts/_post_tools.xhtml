@@ -21,7 +21,7 @@
 
     <?r if @post.collected_by?(account) ?>
       <?r if @pool && @pool.member == account.member ?>
-      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
+      <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{ img 'icon-collected.png', {alt:_('remove'), class:'size-16'}}</a>
       <?r else ?>
       <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collected.png', {alt:_('collected'), class:'size-16'}}</a>
       <a class="collect hidden" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collect.png', {alt:_('collect'), class:'size-16'}}</a>
