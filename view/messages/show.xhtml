@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="text typed-text">
-      #{Libertree.render(@message.text, account.autoembed, account.filter_images)}
+      #{Libertree.render(@message.text, account.settings.autoembed, account.settings.filter_images)}
     </div>
   </div>
 

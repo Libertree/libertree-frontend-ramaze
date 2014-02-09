@@ -112,7 +112,7 @@ module Controller
           email: email
         )
         if $conf['post_tools_default'].to_s == 'icons'
-            a.icons = true
+            a.settings.icons = true
         end
         invitation.account_id = a.id
 
@@ -137,7 +137,7 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s, account.autoembed, account.filter_images )
+      respond Libertree.render( request['s'].to_s, account.settings.autoembed, account.settings.filter_images )
     end
 
     # This is not in the Posts controller because we will handle many other search

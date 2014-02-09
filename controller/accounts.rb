@@ -25,9 +25,9 @@ module Controller
 
       begin
         if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
-          account.excerpt_max_height = nil
+          account.settings.excerpt_max_height = nil
         else
-          account.excerpt_max_height = request['excerpt_max_height'].to_i
+          account.settings.excerpt_max_height = request['excerpt_max_height'].to_i
         end
       rescue PGError => e
         if e.message =~ /valid_excerpt_max_height/
@@ -39,9 +39,9 @@ module Controller
       end
 
       if request['custom_link'] && ! request['custom_link'].to_s.empty?
-        account.custom_link = request['custom_link'].to_s
+        account.settings.custom_link = request['custom_link'].to_s
       else
-        account.custom_link = nil
+        account.settings.custom_link = nil
       end
 
       if request['email'].nil? || request['email'].to_s.strip.empty?
@@ -50,14 +50,14 @@ module Controller
         account.email = request['email'].to_s
       end
 
-      account.forward_dms_via_email = !! request['forward_dms_via_email']
-      account.custom_css = request['custom_css'].to_s
-      account.custom_js = request['custom_js'].to_s
-      account.autoembed = !! request['autoembed']
-      account.filter_images = !! request['filter_images']
-      account.thumbnail = !! request['thumbnail']
-      account.hide_markdown_bar = !! request['hide_markdown_bar']
-      account.icons = ( request['post_tools_icons'].to_s == 'icons' )
+      account.settings.forward_dms_via_email = !! request['forward_dms_via_email']
+      account.settings.custom_css = request['custom_css'].to_s
+      account.settings.custom_js = request['custom_js'].to_s
+      account.settings.autoembed = !! request['autoembed']
+      account.settings.filter_images = !! request['filter_images']
+      account.settings.thumbnail = !! request['thumbnail']
+      account.settings.hide_markdown_bar = !! request['hide_markdown_bar']
+      account.settings.icons = ( request['post_tools_icons'].to_s == 'icons' )
 
       # TODO: move validation to the account model?
       if request['pubkey'].nil? || request['pubkey'].to_s.strip.empty?
@@ -88,13 +88,13 @@ module Controller
         end
       end
 
-      account.theme = if $conf['themes'].include? request['theme'].to_s
-                        request['theme'].to_s
-                      else
-                        $conf['themes'].first
-                      end
+      if $conf['themes'].include? request['theme'].to_s
+        account.settings.theme = request['theme'].to_s
+      else
+        account.settings.theme = $conf['themes'].first
+      end
       account.locale = request['locale'].to_s
-      account.new_post_in_river = !! request['new_post_in_river']
+      account.settings.new_post_in_river = !! request['new_post_in_river']
       session[:locale] = account.locale
 
       flash[:notice] = _('Settings saved.')

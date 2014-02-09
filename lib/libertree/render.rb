@@ -169,8 +169,8 @@ module Libertree
   module HasRenderableText
     def text_rendered(account=nil)
       if account
-        autoembed = account.autoembed
-        filter_images = account.filter_images
+        autoembed = account.settings.autoembed
+        filter_images = account.settings.filter_images
       else
         autoembed = false
         filter_images = false

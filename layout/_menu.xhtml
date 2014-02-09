@@ -28,7 +28,7 @@
       <a href="/logout">#{img 'icon-logout.png', {alt:s_('menu|Log out')}} #{s_('menu|Log out')}</a>
     </div>
 
-    <div id="main-menu-container" class="#{account.custom_link ? 'with-custom' : ''}">
+    <div id="main-menu-container" class="#{account.settings.custom_link ? 'with-custom' : ''}">
       <form action="/search" method="POST" class="search">
         <input id="search" type="text" name="q"/>
       </form>
@@ -42,8 +42,8 @@
         class="menu-item"
         id="menu-home"
         title="#{(request.fullpath !~ /home/) ? s_('menu|Go Home') : s_('menu|You are at Home')}">#{img 'icon-home.png', {alt:s_('menu|Home')}}</a>
-      <?r if account.custom_link ?>
-        <a href="#{account.custom_link}" class="menu-item">#{img 'icon-custom-link.png', {alt:"custom"}}</a>
+      <?r if account.settings.custom_link ?>
+        <a href="#{account.settings.custom_link}" class="menu-item">#{img 'icon-custom-link.png', {alt:"custom"}}</a>
       <?r end ?>
     </div>
   <?r end ?>

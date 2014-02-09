@@ -20,7 +20,7 @@
 
   <div class="field">
     <label>#{_('Forward direct messages via email:')}</label>
-    <input type="checkbox" name="forward_dms_via_email" #{account.forward_dms_via_email ? "checked" : ""} />
+    <input type="checkbox" name="forward_dms_via_email" #{account.settings.forward_dms_via_email ? "checked" : ""} />
   </div>
 
   <div class="field">
@@ -34,62 +34,62 @@
     <label>#{_('Theme:')}</label>
     <select name="theme">
       <?r $conf['themes'].each do |theme| ?>
-        <option value="#{theme}" #{account.theme.eql?(theme) ? "selected" : ""}>#{theme}</option>
+        <option value="#{theme}" #{account.settings.theme.eql?(theme) ? "selected" : ""}>#{theme}</option>
       <?r end ?>
     </select>
   </div>
 
   <div class="field">
     <label>#{_('Post excerpt maximum height:')}</label>
-    <input type="text" name="excerpt_max_height" size="5" value="#{account.excerpt_max_height}"/>#{_('pixels')}
+    <input type="text" name="excerpt_max_height" size="5" value="#{account.settings.excerpt_max_height}"/>#{_('pixels')}
   </div>
 
   <div class="field">
     <label>#{_('Automatic embedding:')}</label>
-    <input type="checkbox" name="autoembed" #{account.autoembed ? "checked" : ""} />
+    <input type="checkbox" name="autoembed" #{account.settings.autoembed ? "checked" : ""} />
   </div>
 
   <div class="field">
     <label>#{_('Display post tools as:')}</label>
-    <input type="radio" name="post_tools_icons" value="text" #{account.icons ? "" : "checked"} />text
-    <input type="radio" name="post_tools_icons" value="icons" #{account.icons ? "checked" : ""} />icons
+    <input type="radio" name="post_tools_icons" value="text" #{account.settings.icons ? "" : "checked"} />text
+    <input type="radio" name="post_tools_icons" value="icons" #{account.settings.icons ? "checked" : ""} />icons
   </div>
 
   <div class="field">
     <label>#{_('Make thumbnails for images in post excerpts:')}</label>
-    <input type="checkbox" name="thumbnail" #{account.thumbnail ? "checked" : ""} />
+    <input type="checkbox" name="thumbnail" #{account.settings.thumbnail ? "checked" : ""} />
   </div>
 
   <div class="field">
     <label>#{_('Filter images:')}</label>
-    <input type="checkbox" name="filter_images" #{account.filter_images ? "checked" : ""} />
+    <input type="checkbox" name="filter_images" #{account.settings.filter_images ? "checked" : ""} />
   </div>
 
   <div class="field">
     <label>#{_('Hide markdown bar:')}</label>
-    <input type="checkbox" name="hide_markdown_bar" #{account.hide_markdown_bar ? "checked" : ""} />
+    <input type="checkbox" name="hide_markdown_bar" #{account.settings.hide_markdown_bar ? "checked" : ""} />
   </div>
 
   <div class="field">
     <label>#{_('Enable posting from river view:')}</label>
-    <input type="checkbox" name="new_post_in_river" #{account.new_post_in_river ? "checked" : ""} />
+    <input type="checkbox" name="new_post_in_river" #{account.settings.new_post_in_river ? "checked" : ""} />
   </div>
 
 
   <h3>#{_('Advanced Settings')}</h3>
   <div class="field">
     <label>#{_('Custom menu link:')}</label>
-    <input type="text" name="custom_link" value="#{account.custom_link}" size="60"/>
+    <input type="text" name="custom_link" value="#{account.settings.custom_link}" size="60"/>
   </div>
 
   <div class="field">
     <label>#{_('Custom CSS:')}</label>
-    <textarea name="custom_css" class="custom" rows="5">#{account.custom_css}</textarea>
+    <textarea name="custom_css" class="custom" rows="5">#{account.settings.custom_css}</textarea>
   </div>
 
   <div class="field">
     <label>#{_('Custom JS:')}</label>
-    <textarea name="custom_js" class="custom" rows="5">#{account.custom_js}</textarea>
+    <textarea name="custom_js" class="custom" rows="5">#{account.settings.custom_js}</textarea>
   </div>
 
   <input type="submit" value="#{_('Save')}"/>
