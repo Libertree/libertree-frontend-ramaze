@@ -33,6 +33,8 @@ module Controller
         if e.message =~ /valid_excerpt_max_height/
           flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
           redirect_referrer
+        else
+          raise e
         end
       end
 
