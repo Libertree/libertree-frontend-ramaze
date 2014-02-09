@@ -913,3 +913,17 @@ video {
 #notes p {
     display: inline;
 }
+
+body.filter-images {
+    a[href$="jpg"]:before,
+    a[href$="jpeg"]:before,
+    a[href$="png"]:before,
+    a[href$="gif"]:before,
+    a[href$="JPG"]:before,
+    a[href$="JPEG"]:before,
+    a[href$="PNG"]:before,
+    a[href$="GIF"]:before {
+        content: url("../images/image.png");
+        margin-right: 0.5em;
+    }
+}
