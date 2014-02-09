@@ -7,52 +7,7 @@ $(document).ready( function() {
   var wantsToComment = false,
     scrollable = Libertree.UI.scrollable();
 
-  $(document).on('click', '.excerpts-view #post-new input[type="submit"]', function() {
-    var message = $('#post-new .message');
-
-    $('#post-new .message').hide();
-    $.post(
-      '/posts/create.json',
-      $('#post-new').serialize(),
-      function(result) {
-        if( ! result.success ) {
-          message.addClass('error');
-          message.text(result.error);
-          message.slideDown();
-        } else {
-          message.removeClass('error');
-          message.text(result.message);
-          message.slideDown();
-          $('#textarea-post-new').val('');
-          if( result.matchesRiver ) {
-            $.get(
-              '/posts/_excerpt/' + result.postId,
-              function(html) {
-                var o = $( $.trim(html) ),
-                  verticalDelta,
-                  animationDuration
-                ;
-
-                o.insertBefore('#post-excerpts .post-excerpt:first');
-                /* Adjust by 60 pixels to account for navigation bar */
-                verticalDelta = o.offset().top - scrollable.scrollTop() - 60;
-                animationDuration = verticalDelta*2;
-
-                o.hide().slideDown(animationDuration);
-
-                scrollable.animate(
-                  { scrollTop: scrollable.scrollTop() + verticalDelta },
-                  animationDuration
-                );
-              }
-            );
-          }
-        }
-      }
-    );
-
-    return false;
-  } );
+  $(document).on('click', '.excerpts-view #post-new input[type="submit"]', Libertree.Posts.create);
 
   $(document).on('keydown', '#textarea-post-new', function(event) {
     if( $('#post-new .message').is(':visible') ) {
