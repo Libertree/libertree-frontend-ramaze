@@ -143,6 +143,10 @@ $(document).ready( function() {
       { height: overflowed.data('contracted-height')+'px' },
       animationDuration,
       function() {
+        /* set max-height, not height.  This makes for a smooth "show
+         * more" animation in other themes. */
+        overflowed.css('max-height', overflowed.data('contracted-height')+'px');
+        overflowed.height('auto');
         $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
         link.siblings('.show-more').show();
       }
