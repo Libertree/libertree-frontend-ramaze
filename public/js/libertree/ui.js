@@ -80,21 +80,16 @@ Libertree.UI = (function () {
       } );
     },
 
-    showMore: function (event) {
-      var showMoreLink = $(this),
-        excerpt = showMoreLink.siblings('.excerpt'),
+    showMore: function (showMoreLink) {
+      var excerpt = showMoreLink.siblings('.excerpt'),
         overflowed = excerpt.find('.overflowed'),
         excerptParent = showMoreLink.closest('.post-excerpt'),
         postId = excerptParent.data('post-id'),
         comments = excerptParent.find('div.comments'),
         commentHeight = comments.get(0).scrollHeight,
         heightDifference,
-        animationDuration,
-        scrollable,
-        scrollTop,
-        excerptTruncation;
+        animationDuration;
 
-      event.preventDefault();
       Libertree.Posts.markRead(postId);
       showMoreLink.hide();
 
@@ -119,27 +114,11 @@ Libertree.UI = (function () {
         }
       );
 
-      if( wantsToComment ) {
-        scrollable = Libertree.UI.scrollable();
-        scrollTop = scrollable.scrollTop();
-        excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
-        if( excerptTruncation < 0 ) {
-          excerptTruncation = 0;
-        }
-        scrollable.animate(
-          { scrollTop: scrollTop + heightDifference + excerptTruncation },
-          animationDuration,
-          function() {
-            excerpt.find('textarea.comment').focus();
-            wantsToComment = false;
-          }
-        );
-      }
+      return heightDifference;
     },
 
-    showLess: function (event) {
-      var link = $(this),
-        excerpt = link.closest('.post-excerpt'),
+    showLess: function (link) {
+      var excerpt = link.closest('.post-excerpt'),
         overflowed = excerpt.find('.overflowed'),
         comments = excerpt.find('div.comments'),
         distance = excerpt.height() - overflowed.data('contracted-height'),
@@ -149,7 +128,6 @@ Libertree.UI = (function () {
         windowTop = scrollable.scrollTop(),
         scrollTop = excerptTop - windowTop;
 
-      event.preventDefault();
       link.hide();
 
       if( scrollTop < 100 ){
@@ -169,6 +147,30 @@ Libertree.UI = (function () {
           overflowed.height('auto');
           $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
           link.siblings('.show-more').show();
+        }
+      );
+    },
+
+    jumpToComments: function (excerpt) {
+      var scrollable = Libertree.UI.scrollable(),
+        scrollTop = scrollable.scrollTop(),
+        heightDifference,
+        excerptTruncation,
+        animationDuration;
+
+      heightDifference = Libertree.UI.showMore(excerpt.find('.show-more'));
+      animationDuration = Libertree.UI.duration(heightDifference);
+
+      excerptTruncation = excerpt.position().top + excerpt.height() - scrollTop - $(window).height();
+      if( excerptTruncation < 0 ) {
+          excerptTruncation = 0;
+      }
+
+      scrollable.animate(
+        { scrollTop: scrollTop + heightDifference + excerptTruncation },
+        animationDuration,
+        function() {
+          excerpt.find('textarea.comment').focus();
         }
       );
     },

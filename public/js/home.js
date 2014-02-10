@@ -4,8 +4,7 @@
 $(document).ready( function() {
   "use strict";
 
-  var wantsToComment = false,
-    scrollable = Libertree.UI.scrollable();
+  var scrollable = Libertree.UI.scrollable();
 
   $(document).on('click', '.excerpts-view #post-new input[type="submit"]', Libertree.Posts.create);
 
@@ -15,19 +14,23 @@ $(document).ready( function() {
     }
   } );
 
-  $(document).on('click', '.post-excerpt .show-more', Libertree.UI.showMore);
-  $(document).on('click', '.post-excerpt .show-less', Libertree.UI.showLess);
+  $(document).on('click', '.post-excerpt .show-more', function (event) {
+    event.preventDefault();
+    Libertree.UI.showMore($(this));
+  });
+  $(document).on('click', '.post-excerpt .show-less', function (event) {
+    event.preventDefault();
+    Libertree.UI.showLess($(this));
+  });
 
   scrollable.mousewheel( function(event, delta, deltaX, deltaY) {
     scrollable.stop();
   } );
 
-  $(document).on('click', '.post-excerpt .post-tools a.comment', function(event) {
+  $(document).on('click', '.post-excerpt .post-tools a.comment', function (event) {
     event.preventDefault();
-    var excerpt = $(this).closest('.post-excerpt');
-    wantsToComment = true;
-    excerpt.find('.show-more').click();
-  } );
+    Libertree.UI.jumpToComments( $(this).closest('.post-excerpt') );
+  });
 
   /* Displays "show more" when hovering over an image.
      This is necessary for two reasons:
