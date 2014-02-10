@@ -39,6 +39,9 @@ body.excerpts-view .main {
         margin: 0 auto;
         &.with-sidebar {
             margin: 0;
+            @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+                margin-left: 240px;
+            }
         }
     }
     div.panel {
@@ -92,6 +95,9 @@ body.excerpts-view .main {
       float: none;
       &.with-sidebar {
           margin: 0;
+          @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+              margin-left: 240px;
+          }
       }
     }
 
