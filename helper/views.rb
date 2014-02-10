@@ -2,12 +2,7 @@ module Ramaze
   module Helper
     module Views
       def current_theme
-        # Under certain conditions when running tests, account is not a Libertree::Model::Account
-        if account.settings
-          $conf['themes'].find {|t| t == account.settings.theme }
-        else
-          $conf['themes'].first || 'default'
-        end
+        $conf['themes'].find {|t| t == account.settings.theme } || $conf['themes'].first || 'default'
       end
 
       def help_bubble(s, title="help|What does this mean?")
