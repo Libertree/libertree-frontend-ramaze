@@ -8,7 +8,9 @@
   #{ css 'select2' }
   #{ css 'bootstrap' }
   #{ css_nocache 'application' }
-  #{ css_nocache (account.font_css || 'fonts') }
+  <?r if logged_in? ?>
+    #{ css_nocache (account.font_css || 'fonts') }
+  <?r end ?>
   #{ css_nocache 'single-post-view' }
   #{ css_nocache 'excerpts-view' }
   #{ css_nocache 'contact-lists' }
@@ -19,7 +21,7 @@
   #{ css_nocache 'rivers' }
   #{ css_nocache 'pools' }
   #{ css_nocache 'search' }
-  <?r if account.admin? ?>
+  <?r if logged_in? && account.admin? ?>
     #{ css_nocache 'admin' }
   <?r end ?>
   #{ css_nocache 'narrow' }
@@ -56,30 +58,32 @@
     var host = #{ $conf['websocket_js_host'].to_s.inspect || request.host.inspect };
     var secure_websocket = #{ $conf['secure_websocket'].inspect || 'false' };
   </script>
-  <?r if ! $conf['websocket_blacklist'].include?(account.username) ?>
+  <?r if ! logged_in? || ! $conf['websocket_blacklist'].include?(account.username) ?>
     #{ js_nocache 'websocket' }
   <?r end ?>
 
-  <?r if account.admin? ?>
+  <?r if logged_in? && account.admin? ?>
     #{ js_nocache 'admin' }
   <?r end ?>
   #{ controller_js }
 
-  <style type="text/css">
-    .excerpts-view .post-excerpt div.excerpt .overflowed {
-      max-height: #{
-        account.settings.excerpt_max_height ? account.settings.excerpt_max_height.to_s+'px' : 'auto'
-      };
-    }
-    .markdown-injector {
-      display: #{account.settings.hide_markdown_bar ? 'none' : 'inherit'};
-    }
-    #{account.settings.custom_css}
-  </style>
+  <?r if logged_in? ?>
+    <style type="text/css">
+      .excerpts-view .post-excerpt div.excerpt .overflowed {
+        max-height: #{
+          account.settings.excerpt_max_height ? account.settings.excerpt_max_height.to_s+'px' : 'auto'
+        };
+      }
+      .markdown-injector {
+        display: #{account.settings.hide_markdown_bar ? 'none' : 'inherit'};
+      }
+      #{account.settings.custom_css}
+    </style>
+  <?r end ?>
 
   <script type="text/javascript">
     var layout = #{ session[:layout].to_s.inspect };
 
-    #{account.settings.custom_js}
+    #{logged_in? ? account.settings.custom_js : ''}
   </script>
 </head>

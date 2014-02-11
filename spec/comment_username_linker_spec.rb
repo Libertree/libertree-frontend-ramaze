@@ -162,7 +162,7 @@ describe Ramaze::Helper::Comment do
                                      :text => "@George: hope you find this interesting."))
 
         processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
-        processed.should == comment.text_rendered
+        processed.should == comment.text_rendered(nil)
       end
     end
 

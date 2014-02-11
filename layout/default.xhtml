@@ -3,7 +3,7 @@
 
 #{ render_file 'layout/_head.xhtml' }
 
-<body class="#{ @view } #{ (account && account.settings.filter_images) ? 'filter-images' : '' }">
+<body class="#{ @view } #{ (logged_in? && account.settings.filter_images) ? 'filter-images' : '' }">
   #{ render_file 'layout/_menu.xhtml' }
 
   <?r if flash[:error] ?>
