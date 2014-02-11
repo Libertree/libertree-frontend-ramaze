@@ -6,7 +6,7 @@ describe 'a local member', :type => :feature, :js => true do
   def make_test_posts
     @posts = []
     @account2 = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
-    Libertree::Model::AccountSettings.create( FactoryGirl.attributes_for(:account_settings, 'account_id' => @account2.id ) )
+    Libertree::Model::AccountSettings.create( FactoryGirl.attributes_for(:account_settings, 'account_id' => @account.id ) )
     5.times do |i|
       post = Libertree::Model::Post.create(
         FactoryGirl.attributes_for( :post, member_id: @account2.member.id, text: "Test post number #{i}." )
