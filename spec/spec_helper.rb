@@ -26,7 +26,6 @@ $post_login_path = '/test_user_logged_in'
 shared_context 'logged in' do
   before do
     @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
-    Libertree::Model::AccountSettings.create( FactoryGirl.attributes_for(:account_settings, 'account_id' => @account.id ) )
     @account.password = 'testpass'
     visit '/login'
     fill_in 'username', :with => @account.username
