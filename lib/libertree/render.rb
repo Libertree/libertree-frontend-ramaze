@@ -128,8 +128,8 @@ module Libertree
   end
 
   # filter HTML but ignore markdown
-  def self.plain(s)
-    Nokogiri::HTML.fragment(self.markdownify(s)).inner_text
+  def self.plain(s, opts=nil)
+    Nokogiri::HTML.fragment(self.markdownify(s, opts)).inner_text
   end
 
   def self.render(s, autoembed=false, filter_images=false)
