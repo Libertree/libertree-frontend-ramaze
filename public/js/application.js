@@ -89,21 +89,5 @@ $(document).ready( function() {
     $.get( '/textarea_clear/' + id );
   } );
 
-  /* ---------------------------------------------------- */
-
-  /* Disable autoresize on any textarea that is manually resized */
-  $(document).on('mouseup', 'textarea', function(event) {
-    var th = $(this);
-    if( th.outerWidth() != th.data('original-width') || th.outerHeight() != th.data('original-height') ) {
-      th.addClass('no-autoresize');
-    }
-    th.data('original-width', th.outerWidth());
-    th.data('original-height', th.outerHeight());
-  } );
-
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
-
-  if( layout === 'narrow' ) {
-    $('*').mouseover();
-  }
 } );

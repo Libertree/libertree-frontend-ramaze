@@ -95,6 +95,7 @@ module Controller
       end
       account.locale = request['locale'].to_s
       account.settings.new_post_in_river = !! request['new_post_in_river']
+      account.settings.auto_resize_textareas = !! request['auto_resize_textareas']
       session[:locale] = account.locale
 
       flash[:notice] = _('Settings saved.')

@@ -76,9 +76,6 @@
                     });
 
                 function check() {
-                    if( $this.hasClass('no-autoresize') ) {
-                      return;
-                    }
                     var text = $this.val(), newHeight, height, usedHeight, usedRows, availableRows;
                     // copy textarea value to the $mirror
                     // encode any html passed in and replace new lines with a <br>
@@ -106,9 +103,6 @@
                         newHeight = Math.max( height - (rowSize * (availableRows - (options.by + options.within))), minHeight );
                         $this.stop().animate({ height: newHeight }, options.duration);
                     }
-                    $('textarea').data('original-width', $this.outerWidth());
-                    $('textarea').data('original-height', $this.outerHeight());
-
                 };
                 if ( options.init ) check();
             }).end();

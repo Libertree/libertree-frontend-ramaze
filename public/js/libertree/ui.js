@@ -15,6 +15,7 @@ Libertree.UI = (function () {
     // speed = pixels per second
     duration: setSpeed(600),
     threshold: 700, // pixels, same as used by @media queries in CSS
+    autoResizeTextareas: true, // overridden by serverside initialization
     selectDefaults: {
         width: '450px',
         multiple: true,
@@ -311,10 +312,14 @@ Libertree.UI = (function () {
     }()),
 
     makeTextAreasExpandable: function() {
+      if( ! Libertree.UI.autoResizeTextareas ) {
+        return;
+      }
+
       $('textarea').not('.textarea-chat').each( function() {
+        /* TODO: Try to do something intelligent to dynamically determine a
+        good number instead of hardcoded 60 */
         $(this).expandable( { maxRows: 60 } );
-        $(this).data('original-width', $(this).outerWidth());
-        $(this).data('original-height', $(this).outerHeight());
       } );
     },
 

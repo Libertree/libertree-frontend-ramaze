@@ -83,7 +83,13 @@
 
   <script type="text/javascript">
     var layout = #{ session[:layout].to_s.inspect };
+    if( layout === 'narrow' ) {
+      $('*').mouseover();
+    }
+    <?r if logged_in? ?>
+      Libertree.UI.autoResizeTextareas = #{account.settings.auto_resize_textareas};
 
-    #{logged_in? ? account.settings.custom_js : ''}
+      #{account.settings.custom_js}
+    <?r end ?>
   </script>
 </head>
