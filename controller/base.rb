@@ -15,7 +15,6 @@ module Controller
       if action.view_value.nil?
         require_login
         init_locale
-        $m4dbi_cache_id = request.object_id
       end
     end
 
