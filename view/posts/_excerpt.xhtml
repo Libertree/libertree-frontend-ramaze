@@ -15,11 +15,11 @@
             <span
                class="num-likes"
                title="#{likes.empty? ? '' : _('Liked by %s') % like_list(likes)}"
-            >#{_('Likes: %s') % "<span class='value'>#{likes.size}</span>" }
+            >#{_('Likes: %s') % "<span class='value'>#{likes.count}</span>" }
             </span><span
                class="num-comments"
                title="#{comments.empty? ? '' : commenter_list(comments)}"
-            >#{_('Comments: %s') % "<span class='value'>#{comments.size}</span>" }
+            >#{_('Comments: %s') % "<span class='value'>#{comments.count}</span>" }
             </span>
           </div>
         <?r else ?>
@@ -36,14 +36,14 @@
           class="num-likes #{likes.empty? ? 'hidden' : ''}"
           title="#{_('Liked by %s') % like_list(likes)}"
         >#{img 'icon-like.png', {class:"size-16", alt:_('likes')}}
-          <span class="value">#{likes.size}</span>
+          <span class="value">#{likes.count}</span>
         </span><br/>
 
         <span
           class="num-comments #{comments.empty? ? 'hidden' : ''}"
           title="#{commenter_list(comments)}"
         >#{img 'icon-comment.png', {class:"size-16", alt:_('comments')}}
-          <span class="num-comments">#{comments.size}</span>
+          <span class="num-comments">#{comments.count}</span>
         </span>
       </div>
       #{ render_partial '_post_tools_text', post: @post, excerpt_links: true }
