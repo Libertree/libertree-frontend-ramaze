@@ -3,9 +3,7 @@ gem 'ramaze', git: 'git://github.com/Ramaze/ramaze.git'
 gem 'innate', git: 'git://github.com/Ramaze/innate.git'
 gem 'json'
 gem 'pg'
-gem 'rdbi', git: 'git://github.com/RDBI/rdbi.git', ref: 'pre-sth-leak'
-gem 'rdbi-driver-postgresql' # , git: 'git://github.com/RDBI/rdbi-driver-postgresql.git'
-gem 'm4dbi' # , git: 'git://github.com/Pistos/m4dbi.git'
+gem 'sequel'
 gem 'bcrypt-ruby'
 gem 'dalli'  # memcached client
 gem 'unicorn'
@@ -23,7 +21,7 @@ group 'extensions' do
   gem 'ruby-filemagic' # libmagic-dev (Debian) / file-devel (Fedora)
 end
 
-gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git'
+gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git', branch: 'sequel'
 
 group 'development' do
   gem 'rspec'

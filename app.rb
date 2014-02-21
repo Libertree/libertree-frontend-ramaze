@@ -1,13 +1,15 @@
 require 'ramaze'
 require 'sass'
-require 'm4dbi'
-require 'rdbi-driver-postgresql'
 require 'yaml'
 require 'mini_magick'
 require 'fast_gettext'
 require 'markdown'
 require_relative 'lib/libertree/lang'
+require 'libertree/db'
 
+Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yaml")
+$dbh = Libertree::DB.dbh
+require 'libertree/model'
 
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
@@ -32,21 +34,6 @@ end
 if $conf['graphicsmagick']
   MiniMagick.processor = :gm
 end
-
-all_confs = YAML.load( File.read("#{ File.dirname( __FILE__ ) }/config/database.yaml") )
-env = ENV['LIBERTREE_ENV'] || 'development'
-conf_db = all_confs[env]
-
-$dbh ||= M4DBI.connect(
-  :PostgreSQL,
-  host:     conf_db['host'],
-  database: conf_db['database'],
-  username: conf_db['username'],
-  password: conf_db['password']
-)
-
-require 'libertree/model'
-Libertree::DB.config = conf_db
 
 require 'libertree/embedder'
 require_relative 'lib/libertree/render'

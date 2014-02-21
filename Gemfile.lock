@@ -1,23 +1,14 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 517794a1a7e283f8da526c522222a265dd5fea28
+  revision: 335c8cbadbcf2ba68fab305468a915dd182ee955
+  branch: sequel
   specs:
-    libertree-model (0.5.0)
+    libertree-model (0.6.0)
       bcrypt-ruby (= 3.0.1)
-      m4dbi
       nokogiri (~> 1.5)
-      rdbi-driver-postgresql
+      pg
       ruby-oembed (~> 0.8.8)
-
-GIT
-  remote: git://github.com/RDBI/rdbi.git
-  revision: e5accb27a99f314db1474f5bb01538b4d2ccb26a
-  ref: pre-sth-leak
-  specs:
-    rdbi (0.9.1)
-      epoxy (>= 0.3.1)
-      methlab (>= 0.0.9)
-      typelib
+      sequel
 
 GIT
   remote: git://github.com/Ramaze/innate.git
@@ -76,7 +67,6 @@ GEM
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
-    epoxy (0.3.1)
     eventmachine (1.0.3)
     factory_girl (3.6.0)
       activesupport (>= 3.0.0)
@@ -87,11 +77,6 @@ GEM
     i18n (0.6.0)
     json (1.7.6)
     kgio (2.7.3)
-    m4dbi (0.9.0)
-      metaid
-      rdbi
-    metaid (1.0)
-    methlab (0.1.0)
     method_source (0.8.2)
     mime-types (1.25)
     mini_magick (3.4)
@@ -116,9 +101,6 @@ GEM
       rack-test (>= 0.5)
     raindrops (0.8.0)
     rake (0.9.2.2)
-    rdbi-driver-postgresql (0.9.2)
-      pg (>= 0.10.0)
-      rdbi
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -151,13 +133,13 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
+    sequel (4.7.0)
     slop (3.4.7)
     subexec (0.2.1)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
-    typelib (0.1.0)
     unicorn (4.2.0)
       kgio (~> 2.6)
       rack
@@ -182,15 +164,12 @@ DEPENDENCIES
   json
   libertree-model!
   linecache19!
-  m4dbi
   mini_magick
   nokogiri
   pg
   pry-byebug
   racksh
   ramaze!
-  rdbi!
-  rdbi-driver-postgresql
   rpeg-markdown!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
@@ -199,5 +178,6 @@ DEPENDENCIES
   ruby-oembed
   sass
   selenium-webdriver
+  sequel
   thin
   unicorn
