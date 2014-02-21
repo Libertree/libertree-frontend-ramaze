@@ -11,8 +11,8 @@ module Controller
 
       if comment
         like = Libertree::Model::CommentLike.find_or_create(
-          'member_id'  => account.member.id,
-          'comment_id' => comment.id,
+          member_id:  account.member.id,
+          comment_id: comment.id,
         )
 
         return {

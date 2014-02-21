@@ -10,7 +10,7 @@ module Controller
     def connection(update_token=nil)
       @view = "accounts edit"
       @storage = account.remote_storage_connection ||
-        Libertree::Model::RemoteStorageConnection.create({'account_id' => account.id})
+        Libertree::Model::RemoteStorageConnection.create({account_id: account.id})
 
       if request.post?
         handle = request['handle'].to_s.strip

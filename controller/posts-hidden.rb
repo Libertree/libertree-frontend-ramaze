@@ -11,8 +11,8 @@ module Controller
 
       if post
         Libertree::Model::PostHidden.find_or_create(
-          'account_id' => account.id,
-          'post_id'    => post.id,
+          account_id: account.id,
+          post_id:    post.id,
         )
 
         return { 'success' => true }.to_json
