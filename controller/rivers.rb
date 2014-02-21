@@ -156,6 +156,7 @@ module Controller
 
     def set_home(river_id)
       account.home_river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
+      account.save
       redirect_referrer
     end
 

@@ -72,17 +72,17 @@ module Libertree
           if last_post
             acc[river.id] = last_post.id
           else
-            acc[river.id] = Libertree::DB.dbh.sc("SELECT MAX(id) FROM posts")
+            acc[river.id] = Libertree::DB.dbh[ "SELECT MAX(id) FROM posts" ].single_value
           end
           acc
         },
-        last_notification_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id),
-        last_comment_id: Libertree::DB.dbh.sc("SELECT MAX(id) FROM comments"),
-        last_chat_message_id: Libertree::DB.dbh.sc(
+        last_notification_id: Libertree::DB.dbh[ "SELECT MAX(id) FROM notifications WHERE account_id = ?", session_account.account.id ].single_value,
+        last_comment_id: Libertree::DB.dbh[ "SELECT MAX(id) FROM comments" ].single_value,
+        last_chat_message_id: Libertree::DB.dbh[
           "SELECT MAX(id) FROM chat_messages WHERE to_member_id = ? OR from_member_id = ?",
           session_account.account.member.id,
           session_account.account.member.id
-        ),
+        ].single_value,
       }
     end
 

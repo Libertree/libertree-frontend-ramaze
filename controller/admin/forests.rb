@@ -44,6 +44,7 @@ module Controller
         begin
           if ! f.local? && server_id == 'local'
             f.local_is_member = true
+            f.save
           else
             s = Libertree::Model::Server[server_id.to_i]
             if s && f.local?
@@ -77,6 +78,7 @@ module Controller
         if ! f.local?
           if server_id == 'local'
             f.local_is_member = false
+            f.save
           end
         else
           s = Libertree::Model::Server[server_id.to_i]

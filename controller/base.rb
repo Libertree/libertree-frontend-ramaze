@@ -52,6 +52,7 @@ module Controller
       if logged_in?
         @num_unseen = account.num_notifications_unseen
         account.time_heartbeat = Time.now
+        account.save
         # TODO: We may be able to get rid of these two session initializations,
         # but existing sessions would need to be killed at upgrade time, or
         # there may be "unexpected nil" errors

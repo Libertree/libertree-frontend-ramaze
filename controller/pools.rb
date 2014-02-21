@@ -94,13 +94,12 @@ module Controller
       @pool = Libertree::Model::Pool[ member_id: account.member.id, id: pool_id.to_i ]
       redirect r(:/)  if @pool.nil?
 
-      @pool.name = request['name'].to_s
-      @pool.sprung = !! request['sprung']
-
-      spring_url_name = request['spring_url_name'].to_s.downcase.strip
       begin
-        puts "saving as #{spring_url_name} or nil"
+        @pool.name = request['name'].to_s
+        @pool.sprung = !! request['sprung']
+        spring_url_name = request['spring_url_name'].to_s.downcase.strip
         @pool.spring_url_name = spring_url_name.empty? ? nil : spring_url_name
+        @pool.save
       rescue PGError => e
         if e.message =~ /valid_spring_url_name/
           flash[:error] = _('The spring URL may only consist of letters, hyphens or underscores.')

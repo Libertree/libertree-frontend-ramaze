@@ -52,7 +52,7 @@ module Controller
       end
       begin
         account.member.dirty
-        account.member.profile.set(
+        account.member.profile.update(
           name_display: name_display,
           description: request['description'].to_s
         )
@@ -80,6 +80,7 @@ module Controller
         # This is required for distributing avatar deletion.  The
         # model library will send an empty avatar path to the forest.
         account.member.avatar_path = nil
+        account.member.save
 
         flash[:notice] = _('Avatar deleted.')
       rescue
@@ -125,6 +126,7 @@ module Controller
       # Distribution is handled by the frontend-agnostic model library
       # which makes no assumptions about the location of avatars.
       account.member.avatar_path = "/images/avatars/#{account.member.id}.png"
+      account.member.save
 
       flash[:notice] = _('Avatar changed.')
       redirect_referrer

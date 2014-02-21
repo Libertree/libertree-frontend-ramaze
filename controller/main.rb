@@ -112,9 +112,11 @@ module Controller
           email: email
         )
         if $conf['post_tools_default'].to_s == 'icons'
-            a.settings.icons = true
+          a.settings.icons = true
+          a.settings.save
         end
         invitation.account_id = a.id
+        invitation.save
 
         account_login request.subset('username', 'password')
         flash[:error] = nil
