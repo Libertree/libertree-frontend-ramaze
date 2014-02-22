@@ -142,6 +142,7 @@ module Controller
         account.password = request['password'].to_s
         account.password_reset_code = nil
         account.password_reset_expiry = nil
+        account.save
         flash[:notice] = _('Password changed.')
         redirect r(:edit)
       end
@@ -178,6 +179,7 @@ module Controller
 
     def heartbeat
       account.time_heartbeat = Time.now
+      account.save
     end
   end
 end
