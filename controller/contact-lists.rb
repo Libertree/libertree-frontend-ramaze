@@ -10,8 +10,6 @@ module Controller
     def index
       @view = "contact-lists"
       @lists = account.contact_lists
-      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
-      @all_members.delete(account.member)
     end
 
     def create
@@ -61,8 +59,6 @@ module Controller
         respond "404: Not Found", 404
       end
       @list_name = @list.name
-      @all_members = Libertree::Model::Member.all.sort_by { |m| m.name_display.downcase }
-      @all_members.delete(account.member)
     end
 
     def update(contact_list_id)
