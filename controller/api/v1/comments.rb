@@ -25,9 +25,9 @@ module Controller
           end
 
           comment = Libertree::Model::Comment.create(
-            'member_id'  => @account.member.id,
-            'post_id'    => post.id,
-            'text'       => request['text'].to_s
+            member_id:  @account.member.id,
+            post_id:    post.id,
+            text:       request['text'].to_s
           )
 
           { 'success' => true, 'id' => comment.id }.to_json

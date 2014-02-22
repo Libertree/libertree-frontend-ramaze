@@ -98,6 +98,8 @@ module Controller
       account.settings.auto_resize_textareas = !! request['auto_resize_textareas']
       session[:locale] = account.locale
 
+      account.save
+      account.settings.save
       flash[:notice] = _('Settings saved.')
       redirect_referrer
     end
@@ -109,6 +111,7 @@ module Controller
 
     def clear_api_token
       account.api_token = nil
+      account.save
       redirect_referrer
     end
 
@@ -125,6 +128,7 @@ module Controller
         account.font_css = nil
       end
 
+      account.save
       redirect_referrer
     end
 
@@ -138,6 +142,7 @@ module Controller
         account.password = request['password'].to_s
         account.password_reset_code = nil
         account.password_reset_expiry = nil
+        account.save
         flash[:notice] = _('Password changed.')
         redirect r(:edit)
       end
@@ -174,6 +179,7 @@ module Controller
 
     def heartbeat
       account.time_heartbeat = Time.now
+      account.save
     end
   end
 end

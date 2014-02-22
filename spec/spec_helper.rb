@@ -27,6 +27,8 @@ shared_context 'logged in' do
   before do
     @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
     @account.password = 'testpass'
+    @account.save
+
     visit '/login'
     fill_in 'username', :with => @account.username
     fill_in 'password', :with => 'testpass'

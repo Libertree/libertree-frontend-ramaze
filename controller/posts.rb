@@ -8,7 +8,6 @@ module Controller
           require_login
         end
         init_locale
-        $m4dbi_cache_id = request.object_id
       end
     end
 
@@ -91,9 +90,9 @@ module Controller
 
       begin
         post = Libertree::Model::Post.create(
-          'member_id'  => account.member.id,
-          'visibility' => visibility,
-          'text'       => text
+          member_id:  account.member.id,
+          visibility: visibility,
+          text:       text
         )
       rescue PGError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale

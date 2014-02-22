@@ -21,6 +21,7 @@ module Controller
           end
 
           @account.api_time_last = DateTime.now
+          @account.save
         end
 
       end

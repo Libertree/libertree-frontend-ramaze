@@ -10,7 +10,7 @@ module Controller
     def connection(update_token=nil)
       @view = "accounts edit"
       @storage = account.remote_storage_connection ||
-        Libertree::Model::RemoteStorageConnection.create({'account_id' => account.id})
+        Libertree::Model::RemoteStorageConnection.create({account_id: account.id})
 
       if request.post?
         handle = request['handle'].to_s.strip
@@ -37,6 +37,7 @@ module Controller
         end
 
         @storage.storage_url = info['href']
+        @storage.save
 
         # Store random update token in session and add it to the
         # redirect URL.  When we receive a GET request with the
@@ -53,6 +54,8 @@ module Controller
 
         # update access_token and reload page
         @storage.access_token = request['access_token'].to_s
+        @storage.save
+
         flash[:notice] = _("Your remote storage account (%s) has been connected!") % @storage.handle
         redirect r(:connection)
       end

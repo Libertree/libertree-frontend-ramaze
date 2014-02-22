@@ -33,6 +33,7 @@ module Controller
         account_id: account.id
       )
       list.members = request['members'].split(",")  # TODO: Can this be hacked?
+      list.save
       if request['intro']
         Libertree::Model::River.create(
           account_id: account.id,
@@ -79,6 +80,7 @@ module Controller
 
       @list.members = request['members'].split(",")  # TODO: Can this be hacked?
       @list.name = request['name'].to_s
+      @list.save
 
       flash[:notice] = _('Contact list updated.')
       redirect r(:/)

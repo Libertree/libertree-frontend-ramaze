@@ -16,6 +16,7 @@ describe 'main', :type => :feature, :js => true do
     before :each do
       @account = Libertree::Model::Account.create( FactoryGirl.attributes_for(:account) )
       @account.password = 'testpass'
+      @account.save
     end
 
     it 'authenticates with good credentials' do

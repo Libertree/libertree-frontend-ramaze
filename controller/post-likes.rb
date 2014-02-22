@@ -12,8 +12,8 @@ module Controller
       if post
         # TODO: Check that the member is allowed to view and like the post.
         like = Libertree::Model::PostLike.find_or_create(
-          'member_id' => account.member.id,
-          'post_id'   => post.id,
+          member_id: account.member.id,
+          post_id:   post.id,
         )
 
         # TODO: Use partial for number of likes
