@@ -7,7 +7,6 @@ gem 'sequel'
 gem 'bcrypt-ruby'
 gem 'dalli'  # memcached client
 gem 'unicorn'
-gem 'em-websocket'
 gem 'rpeg-markdown', git: 'git://github.com/rekado/rpeg-markdown.git'
 gem 'nokogiri'
 gem 'mini_magick'
