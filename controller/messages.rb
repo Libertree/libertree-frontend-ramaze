@@ -38,32 +38,11 @@ module Controller
       end
 
       begin
-        message = Libertree::Model::Message.create_with_recipients(
+        Libertree::Model::Message.create_with_recipients(
           sender_member_id: account.member.id,
           text: request['text'].to_s,
           recipient_member_ids: request['recipients'].split(",")
         )
-
-        trees = message.recipients.reduce(Set.new) { |_trees, recipient|
-          if recipient.tree
-            _trees << recipient.tree
-          end
-          _trees
-        }
-        recipient_ids = message.recipients.map(&:id)
-
-        trees.each do |tree|
-          Libertree::Model::Job.create(
-            {
-              task: 'request:MESSAGE',
-              params: {
-                'message_id'           => message.id,
-                'server_id'            => tree.id,
-                'recipient_member_ids' => recipient_ids,
-              }.to_json,
-            }
-          )
-        end
       rescue PGError => e
         # TODO: this may fail when postgresql is running in a non-English locale
         if e.message =~ /value too long/

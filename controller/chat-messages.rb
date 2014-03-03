@@ -48,22 +48,11 @@ module Controller
       end
 
       begin
-        cm = Libertree::Model::ChatMessage.create(
+        Libertree::Model::ChatMessage.create(
           from_member_id: account.member.id,
           to_member_id: request['to_member_id'].to_i,
           text: request['text'].to_s
         )
-        if cm.recipient.tree
-          Libertree::Model::Job.create(
-            {
-              task: 'request:CHAT',
-              params: {
-                'chat_message_id' => cm.id,
-                'server_id'       => cm.recipient.tree.id,
-              }.to_json,
-            }
-          )
-        end
 
         { 'success' => true }.to_json
       rescue PGError => e
