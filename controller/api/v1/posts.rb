@@ -20,7 +20,7 @@ module Controller
             respond '', 400
           end
 
-          visibility = request['visibilty'] || 'forest'
+          visibility = request['visibility'] || 'forest'
           visibility = visibility.to_s
 
           post = Libertree::Model::Post.create(
