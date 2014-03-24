@@ -1,0 +1,21 @@
+# Ricardo Wurmus <rekado+libertree@elephly.net>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Libertree\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-08 10:12+0300\n"
+"PO-Revision-Date: 2014-03-24 15:29-0300\n"
+"Last-Translator: Marcelo Soares Souza <marcelo@juntadados.org>\n"
+"Language-Team: Marcelo Soares Souza <marcelo@juntadados.org>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: view/login.xhtml
+msgid "[Libertree] Password reset"
+msgstr "[Libertree] Redefinir senha"
+
