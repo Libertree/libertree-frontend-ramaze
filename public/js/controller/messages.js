@@ -1,4 +1,6 @@
 $(document).ready( function() {
+  $(document).on('click', '#textarea-message-new input[type="submit"]', Libertree.UI.TextAreaBackup.disable);
+
   $('#toggle-new-message, a.reply, a.reply-to-all').click( function() {
     $('form#new-message').slideDown();
     return false;
