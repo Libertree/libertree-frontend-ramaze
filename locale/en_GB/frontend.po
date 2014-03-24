@@ -575,6 +575,12 @@ msgstr ""
 msgid "search-results|Comments"
 msgstr ""
 
+#: controller/messages.rb
+msgid "The message has been deleted."
+msgstr ""
+msgid "Failed to delete the message.  Please try again later."
+msgstr ""
+
 #: controller/contact-lists.rb
 msgid "Contact list updated."
 msgstr ""
@@ -706,6 +712,9 @@ msgid "direct-message|From:"
 msgstr ""
 msgid "direct-message|To:"
 msgstr ""
+msgid "direct-message|delete"
+msgstr ""
+
 
 #: view/messages/_new.xhtml
 msgid "direct-message|Send"

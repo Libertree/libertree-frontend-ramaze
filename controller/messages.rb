@@ -70,6 +70,20 @@ module Controller
 
     def _new; end
 
+    def delete(message_id)
+      @message = Libertree::Model::Message[message_id.to_i]
+      redirect_referrer  if @message.nil?
+      redirect_referrer  if ! @message.visible_to?(account)
+
+      if @message.delete_for_participant(account.member)
+        flash[:notice] = _('The message has been deleted.')
+        redirect r(:index)
+      else
+        flash[:error] = _('Failed to delete the message.  Please try again later.')
+        redirect_referrer
+      end
+    end
+
     provide(:json, type: 'application/json') { |action,value| value.to_json }
     def search
       query = request['q'].to_s
