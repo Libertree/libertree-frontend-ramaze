@@ -72,15 +72,32 @@ module Controller
 
     def delete(message_id)
       @message = Libertree::Model::Message[message_id.to_i]
-      redirect_referrer  if @message.nil?
-      redirect_referrer  if ! @message.visible_to?(account)
 
-      if @message.delete_for_participant(account.member)
-        flash[:notice] = _('The message has been deleted.')
-        redirect r(:index)
+      if Ramaze::Current.action.wish == 'json'
+        if @message.nil? || ! @message.visible_to?(account)
+          return { 'success' => false }
+        end
+
+        if @message.delete_for_participant(account.member)
+          { 'success' => true }
+        else
+          {
+            'success' => false,
+            'error'   => _('Failed to delete the message.  Please try again later.')
+          }
+        end
       else
-        flash[:error] = _('Failed to delete the message.  Please try again later.')
-        redirect_referrer
+        if @message.nil? || ! @message.visible_to?(account)
+          redirect_referrer
+        end
+
+        if @message.delete_for_participant(account.member)
+          flash[:notice] = _('The message has been deleted.')
+          redirect r(:index)
+        else
+          flash[:error] = _('Failed to delete the message.  Please try again later.')
+          redirect_referrer
+        end
       end
     end
 

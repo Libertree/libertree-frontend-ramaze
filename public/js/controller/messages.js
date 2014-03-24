@@ -14,6 +14,23 @@ $(document).ready( function() {
     $('input#recipients').val('all').trigger('change');
   } );
 
+  $(document).on('click', '#message-list .delete',
+    function (event) {
+      var $this = $(this),
+        message = $this.closest('div.message'),
+        messageId = message.data('message-id'),
+      fn = function () {
+        $.get(
+          '/messages/delete/' + messageId + '.json',
+          function () {
+            /* TODO: Check for success */
+            message.slideUp(1000);
+          }
+        );
+      };
+      Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
+    });
+
   $('input#recipients').select2(
       jQuery.extend(
           Libertree.UI.selectDefaults,
