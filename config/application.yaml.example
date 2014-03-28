@@ -36,3 +36,16 @@ themes:
 
 # Uncomment the following line to use post tool icons per default
 #post_tools_default: icons
+
+# Uncomment the following settings to authenticate users against LDAP
+#ldap:
+#  connection:
+#    host: 'localhost'
+#    port: 389
+#    base: 'dc=localdomain'
+#    bind_dn: 'cn=Directory Manager'
+#    password: '12345678'
+#  mapping:
+#    username:     'uid'
+#    email:        'mail'
+#    display_name: 'displayName'

@@ -35,6 +35,10 @@ if $conf['graphicsmagick']
   MiniMagick.processor = :gm
 end
 
+if $conf['ldap']
+  Libertree::Model::Account.set_auth_settings(:ldap, $conf['ldap'])
+end
+
 require 'libertree/embedder'
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/remotestorage'

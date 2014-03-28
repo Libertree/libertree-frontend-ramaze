@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: e3b617c33992489664b9fc61ee38f74f36a11f22
+  revision: 29d31e3011d2fb6276bfa10fc059c2d0ccfbc109
   specs:
-    libertree-model (0.6.0)
+    libertree-model (0.7.0)
       bcrypt-ruby (= 3.0.1)
+      net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
       pg
       ruby-oembed (~> 0.8.8)
@@ -78,6 +79,7 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
     multi_json (1.8.2)
+    net-ldap (0.5.1)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     pg (0.17.0)
