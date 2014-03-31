@@ -37,6 +37,8 @@ end
 
 if $conf['ldap']
   Libertree::Model::Account.set_auth_settings(:ldap, $conf['ldap'])
+else
+  Libertree::Model::Account.set_auth_settings(:default, nil)
 end
 
 require 'libertree/embedder'
