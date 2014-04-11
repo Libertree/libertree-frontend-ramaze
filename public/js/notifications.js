@@ -33,18 +33,18 @@ $(document).ready( function() {
       function() {
         window.location = $(e.currentTarget).attr('href');
       }
-    )();
+    );
     e.stopPropagation();
   } );
   $(document).on('click', '.notification.unseen', function(e) {
-    Libertree.Notifications.setState($(this), 'seen')();
+    Libertree.Notifications.setState($(this), 'seen');
   } );
 
   $(document).on('click', '.notification.seen a', function(e) {
     e.stopPropagation();
   } );
   $(document).on('click', '.notification.seen', function(e) {
-    Libertree.Notifications.setState($(this), 'unseen')();
+    Libertree.Notifications.setState($(this), 'unseen');
   } );
 
   $(document).on('click', '#mark-all-notifications-seen', function(event) {
