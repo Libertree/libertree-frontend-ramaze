@@ -26,12 +26,13 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.notification.unseen a', function(e) {
+    var link = $(this);
     e.preventDefault();
     Libertree.Notifications.setState(
-      $(this).closest('.notification.unseen'),
+      link.closest('.notification.unseen'),
       'seen',
       function() {
-        window.location = $(e.currentTarget).attr('href');
+        window.location = link.attr('href');
       }
     );
     e.stopPropagation();
