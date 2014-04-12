@@ -38,7 +38,7 @@ module Controller
       end
 
       begin
-        Libertree::Model::Message.create_with_recipients(
+        message = Libertree::Model::Message.create_with_recipients(
           sender_member_id: account.member.id,
           text: request['text'].to_s,
           recipient_member_ids: request['recipients'].split(",")
@@ -69,6 +69,37 @@ module Controller
     end
 
     def _new; end
+
+    def delete(message_id)
+      @message = Libertree::Model::Message[message_id.to_i]
+
+      if Ramaze::Current.action.wish == 'json'
+        if @message.nil? || ! @message.visible_to?(account)
+          return { 'success' => false }
+        end
+
+        if @message.delete_for_participant(account.member)
+          { 'success' => true }
+        else
+          {
+            'success' => false,
+            'error'   => _('Failed to delete the message.  Please try again later.')
+          }
+        end
+      else
+        if @message.nil? || ! @message.visible_to?(account)
+          redirect_referrer
+        end
+
+        if @message.delete_for_participant(account.member)
+          flash[:notice] = _('The message has been deleted.')
+          redirect r(:index)
+        else
+          flash[:error] = _('Failed to delete the message.  Please try again later.')
+          redirect_referrer
+        end
+      end
+    end
 
     provide(:json, type: 'application/json') { |action,value| value.to_json }
     def search

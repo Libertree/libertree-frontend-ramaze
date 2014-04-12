@@ -18,6 +18,7 @@
         <?r if @message.recipients.count > 1 ?>
           <a class="reply-to-all" href="#">#{s_('direct-message|reply to all')}</a>
         <?r end ?>
+        <a class="delete" href="/messages/delete/#{@message.id}">#{s_('direct-message|delete')}</a>
       </div>
     </div>
     <div class="text typed-text">
