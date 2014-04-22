@@ -171,7 +171,9 @@ Libertree.UI = (function () {
         { scrollTop: scrollTop + heightDifference + excerptTruncation },
         animationDuration,
         function() {
-          excerpt.find('textarea.comment').focus();
+          if( ! Libertree.UI.isTouchInterface ) {
+            excerpt.find('textarea.comment').focus();
+          }
         }
       );
     },
