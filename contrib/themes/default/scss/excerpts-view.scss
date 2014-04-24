@@ -4,6 +4,7 @@
 $threshold: 700px;
 $dynamic-excerpt-width-threshold: 1060px;
 $excerpt-padding: 30px;
+$narrow-excerpt-padding: 1em;
 
 @mixin dynamic-excerpt-width {
     width: 720px;
@@ -138,6 +139,9 @@ body.excerpts-view .main {
 
     .post-excerpt {
         padding: 0px 0px $excerpt-padding 0px;
+        @media screen and (max-width: $threshold) {
+            padding: 0px 0px $narrow-excerpt-padding 0px;
+        }
         border-bottom: 1px dotted $main;
         overflow: auto;
 
@@ -182,7 +186,7 @@ body.excerpts-view .main {
             position: relative;
             padding: $excerpt-padding;
             @media screen and (max-width: $threshold) {
-                padding: 1em;
+                padding: $narrow-excerpt-padding;
             }
 
             .back-to-top {
@@ -218,10 +222,11 @@ body.excerpts-view .main {
         }
 
         div.excerpt {
-            padding: $excerpt-padding $excerpt-padding 0;
+            padding: $excerpt-padding $excerpt-padding 0px;
             @media screen and (max-width: $threshold) {
-                padding: 1em 1em 0;
+                padding: $narrow-excerpt-padding $narrow-excerpt-padding 0px;
             }
+
             overflow: hidden;
             .overflowed {
               min-height: 200px;
