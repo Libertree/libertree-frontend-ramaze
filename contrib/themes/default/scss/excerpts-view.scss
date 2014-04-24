@@ -3,6 +3,7 @@
 
 $threshold: 700px;
 $dynamic-excerpt-width-threshold: 1060px;
+$excerpt-padding: 30px;
 
 @mixin dynamic-excerpt-width {
     width: 720px;
@@ -136,7 +137,7 @@ body.excerpts-view .main {
     }
 
     .post-excerpt {
-        padding: 0px 0px 2em 0px;
+        padding: 0px 0px $excerpt-padding 0px;
         border-bottom: 1px dotted $main;
         overflow: auto;
 
@@ -179,7 +180,7 @@ body.excerpts-view .main {
         div.meta {
             background-color: $sand;
             position: relative;
-            padding: 30px;
+            padding: $excerpt-padding;
             @media screen and (max-width: $threshold) {
                 padding: 1em;
             }
@@ -215,8 +216,9 @@ body.excerpts-view .main {
                 }
             }
         }
+
         div.excerpt {
-            padding: 1.8em 1.8em 0;
+            padding: $excerpt-padding $excerpt-padding 0;
             @media screen and (max-width: $threshold) {
                 padding: 1em 1em 0;
             }
@@ -254,7 +256,6 @@ body.excerpts-view .main {
             display: none;
             text-align: center;
             position: relative;
-            margin-bottom: -1em;
             &:hover {
                 background-color: $sand;
             }
