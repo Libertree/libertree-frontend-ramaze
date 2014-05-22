@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
+ruby "2.0.0"
+
 gem 'ramaze', git: 'git://github.com/Ramaze/ramaze.git'
 gem 'innate', git: 'git://github.com/Ramaze/innate.git'
 gem 'json'
