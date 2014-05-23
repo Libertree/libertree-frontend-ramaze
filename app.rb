@@ -7,7 +7,11 @@ require 'markdown'
 require_relative 'lib/libertree/lang'
 require 'libertree/db'
 
-Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yaml")
+if File.exists?("#{ File.dirname( __FILE__ ) }/config/database.yml")
+  Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yml")
+else
+  Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yaml")
+end
 $dbh = Libertree::DB.dbh
 require 'libertree/model'
 
