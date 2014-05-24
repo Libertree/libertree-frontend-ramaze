@@ -1,6 +1,7 @@
 require 'curb'
 require 'json'
-require 'filemagic'
+# FileMagic not supported on Heroku
+# require 'filemagic'
 
 module Libertree
   module RemoteStorage
@@ -61,9 +62,12 @@ module Libertree
       return  unless file.respond_to? :values_at
       tempfile, filename = file.values_at(:tempfile, :filename)
 
-      fm = FileMagic.new(FileMagic::MAGIC_MIME)
-      content_type = fm.file(tempfile.path)
-      fm.close
+      # fm = FileMagic.new(FileMagic::MAGIC_MIME)
+      # content_type = fm.file(tempfile.path)
+      # fm.close
+
+      # FileMagic not supported on Heroku
+      content_type = 'text'
 
       data = IO.read(tempfile.path)
 
