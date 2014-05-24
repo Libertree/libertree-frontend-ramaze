@@ -7,8 +7,16 @@ require 'markdown'
 require_relative 'lib/libertree/lang'
 require 'libertree/db'
 
-if File.exists?("#{ File.dirname( __FILE__ ) }/config/database.yml")
-  Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yml")
+if ENV['DATABASE_URL']
+  # Heroku
+  ENV['DATABASE_URL'] =~ %r{postgres://(.+?):(.+?)@(.+?):(\d+)/(.+?)$}
+  Libertree::DB.config = {
+    'username' => $1,
+    'password' => $2,
+    'host' => $3,
+    'port' => $4,
+    'database' => $5,
+  }
 else
   Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yaml")
 end
