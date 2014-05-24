@@ -22,7 +22,23 @@ FastGettext.default_text_domain = 'frontend'
 FastGettext.default_available_locales = Libertree::LANG.map(&:first)
 include FastGettext::Translation
 
-$conf = YAML.load( File.read("#{ File.dirname( __FILE__ ) }/config/application.yaml") )
+conf_filepath = "#{ File.dirname( __FILE__ ) }/config/application.yaml"
+if File.exists?(conf_filepath)
+  $conf = YAML.load( File.read(conf_filepath) )
+else
+  # Please leave these as defined without looping or string construction
+  $conf = {
+    'environment' => ENV['LIBERTREE_ENVIRONMENT'],
+    'websocket_js_host' => ENV['LIBERTREE_WEBSOCKET_JS_HOST'],
+    'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'],
+    'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'],
+    'memcache' => ENV['LIBERTREE_MEMCACHE'],
+    'api_min_time_between' => ENV['LIBERTREE_API_MIN_TIME_BETWEEN'].to_i,
+    'title_insert' => ENV['LIBERTREE_TITLE_INSERT'],
+    'frontend_url_base' => ENV['LIBERTREE_FRONTEND_URL_BASE'],
+    'themes' => ENV['LIBERTREE_THEMES'].split(',').map(&:strip),
+  }
+end
 $conf['websocket_blacklist'] ||= []
 ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
