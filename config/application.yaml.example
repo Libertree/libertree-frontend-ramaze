@@ -6,6 +6,7 @@ environment: live
 
 websocket_js_host: domain.of.your.tree.com
 websocket_path: /ws
+websocket_port: 8080
 secure_websocket: false
 
 # These accounts (by username) will have websockets disabled
