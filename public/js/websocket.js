@@ -7,9 +7,9 @@ $(document).ready( function() {
     protocol = "wss://";
   }
   if( 'MozWebSocket' in window ) {
-    ws = new MozWebSocket(protocol + host + ":" + port);
+    ws = new MozWebSocket(protocol + host + ":" + port + websocket_path);
   } else if( 'WebSocket' in window ) {
-    ws = new WebSocket(protocol + host + ":" + port);
+    ws = new WebSocket(protocol + host + ":" + port + websocket_path);
   } else {
     return;
   }
