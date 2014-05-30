@@ -94,7 +94,7 @@ module Controller
         account.settings.save
       rescue Sequel::CheckConstraintViolation => e
         if e.message =~ /valid_excerpt_max_height/
-          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
+          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to zero, or no number for no maximum.')
           redirect_referrer
         else raise e end
       end
