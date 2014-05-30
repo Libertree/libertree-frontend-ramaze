@@ -60,7 +60,7 @@ module Controller
           name: request['name'].to_s,
           sprung: !! request['sprung']
         )
-      rescue PGError => e
+      rescue Sequel::UniqueConstraintViolation => e
         if e.message =~ /pools_member_id_name_key/
           flash[:error] = _('You already have a pool with that name.')
           redirect_referrer
@@ -100,20 +100,22 @@ module Controller
         spring_url_name = request['spring_url_name'].to_s.downcase.strip
         @pool.spring_url_name = spring_url_name.empty? ? nil : spring_url_name
         @pool.save
-      rescue PGError => e
+      rescue Sequel::CheckConstraintViolation => e
         if e.message =~ /valid_spring_url_name/
           flash[:error] = _('The spring URL may only consist of letters, hyphens or underscores.')
           redirect_referrer
-        elsif e.message =~ /unique_spring_url_name/
+        else raise e end
+      rescue Sequel::UniqueConstraintViolation => e
+        if e.message =~ /unique_spring_url_name/
           flash[:error] = _('You already have a spring with this name.')
           redirect_referrer
-        elsif e.message =~ /value too long/
+        else raise e end
+      rescue Sequel::DatabaseError => e
+        if e.message =~ /value too long/
           # TODO: does this depend on the postgresql locale?
           flash[:error] = _('The custom spring URL is too long.  You may use up to 64 characters.')
           redirect_referrer
-        else
-          raise e
-        end
+        else raise e end
       end
 
       redirect r(:/)

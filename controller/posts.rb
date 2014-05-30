@@ -94,7 +94,7 @@ module Controller
           visibility: visibility,
           text:       text
         )
-      rescue PGError => e
+      rescue Sequel::DatabaseError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale
         if e.message =~ /value too long/
           error = _('Please submit fewer than 16,000 characters.')

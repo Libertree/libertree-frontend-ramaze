@@ -77,16 +77,16 @@ module Controller
           query: request['query'].to_s,
           appended_to_all: !! request['appended_to_all']
         )
-      rescue PGError => e
+      rescue Sequel::UniqueConstraintViolation => e
         if e.message =~ /rivers_account_id_query_key/
           flash[:error] = _('You already have a river for that.')
           redirect_referrer
-        elsif e.message =~ /rivers_label_check/
+        else raise e end
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /rivers_label_check/
           flash[:error] = _('Please input a valid label for this river.')
           redirect_referrer
-        else
-          raise e
-        end
+        else raise e end
       end
 
       if river.appended_to_all
@@ -117,7 +117,14 @@ module Controller
       @river = Libertree::Model::River[ account_id: account.id, id: river_id.to_i ]
       redirect Home.r(:/)  if @river.nil?
 
-      @river.revise request.params
+      begin
+        @river.revise request.params
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /rivers_label_check/
+          flash[:error] = _('Please input a valid label for this river.')
+          redirect_referrer
+        else raise e end
+      end
 
       redirect r(:/)
     end

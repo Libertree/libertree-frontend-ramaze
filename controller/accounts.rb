@@ -23,19 +23,10 @@ module Controller
     def update
       redirect_referrer  if ! request.post?
 
-      begin
-        if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
-          account.settings.excerpt_max_height = nil
-        else
-          account.settings.excerpt_max_height = request['excerpt_max_height'].to_i
-        end
-      rescue PGError => e
-        if e.message =~ /valid_excerpt_max_height/
-          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
-          redirect_referrer
-        else
-          raise e
-        end
+      if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
+        account.settings.excerpt_max_height = nil
+      else
+        account.settings.excerpt_max_height = request['excerpt_max_height'].to_i
       end
 
       if request['custom_link'] && ! request['custom_link'].to_s.empty?
@@ -98,8 +89,16 @@ module Controller
       account.settings.auto_resize_textareas = !! request['auto_resize_textareas']
       session[:locale] = account.locale
 
-      account.save
-      account.settings.save
+      begin
+        account.save
+        account.settings.save
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /valid_excerpt_max_height/
+          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
+          redirect_referrer
+        else raise e end
+      end
+
       flash[:notice] = _('Settings saved.')
       redirect_referrer
     end

@@ -43,14 +43,11 @@ module Controller
           text: request['text'].to_s,
           recipient_member_ids: request['recipients'].split(",")
         )
-      rescue PGError => e
-        # TODO: this may fail when postgresql is running in a non-English locale
+      rescue Sequel::DatabaseError => e
         if e.message =~ /value too long/
           flash[:error] = _('Your message is longer than 4096 characters. Please shorten it and try again.')
           redirect_referrer
-        else
-          raise e
-        end
+        else raise e end
       end
 
       session[:saved_text]["textarea-message-new"] = nil
