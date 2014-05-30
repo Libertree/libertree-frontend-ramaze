@@ -78,7 +78,7 @@ module Controller
           appended_to_all: !! request['appended_to_all']
         )
       rescue Sequel::UniqueConstraintViolation => e
-        if e.message =~ /rivers_account_id_query_key/
+        if e.message =~ /rivers_account_id_key/
           flash[:error] = _('You already have a river for that.')
           redirect_referrer
         else raise e end
