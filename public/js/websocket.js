@@ -1,4 +1,3 @@
-var port = "8080";
 var ws = null;
 
 $(document).ready( function() {
@@ -7,9 +6,9 @@ $(document).ready( function() {
     protocol = "wss://";
   }
   if( 'MozWebSocket' in window ) {
-    ws = new MozWebSocket(protocol + host + ":" + port);
+    ws = new MozWebSocket(protocol + host + ":" + websocket_port + websocket_path);
   } else if( 'WebSocket' in window ) {
-    ws = new WebSocket(protocol + host + ":" + port);
+    ws = new WebSocket(protocol + host + ":" + websocket_port + websocket_path);
   } else {
     return;
   }

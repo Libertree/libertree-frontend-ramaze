@@ -121,19 +121,14 @@ module Controller
         account_login request.subset('username', 'password')
         flash[:error] = nil
         redirect Intro.r(:/)
-      rescue PGError => e
-        case e.message
-        # TODO: we need to find a better solution than matching on error strings,
-        #       because PostgreSQL translates them under non-English locales.
-        # duplicate key value violates unique constraint "accounts_username_key"
-        when /accounts_username_key/
+      rescue Sequel::UniqueConstraintViolation => e
+        if e.message =~ /accounts_username_key/
           flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
-        # constraint "username_valid"
-        when /username_valid/
+        else raise e end
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /username_valid/
           flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
-        else
-          raise e
-        end
+        else raise e end
       end
     end
 

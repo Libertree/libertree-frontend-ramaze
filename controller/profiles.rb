@@ -56,7 +56,7 @@ module Controller
           name_display: name_display,
           description: request['description'].to_s
         )
-      rescue PGError => e
+      rescue Sequel::CheckConstraintViolation => e
         if e.message =~ /valid_name_display/
           flash[:error] = _('Special characters are not allowed in display names.')
           redirect_referrer

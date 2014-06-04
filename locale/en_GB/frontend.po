@@ -449,7 +449,7 @@ msgstr ""
 #: controller/accounts.rb
 msgid "Settings saved."
 msgstr ""
-msgid "Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum."
+msgid "Post excerpt maximum height: Please enter a number greater than or equal to zero, or no number for no maximum."
 msgstr ""
 msgid "Passwords did not match.  Please reenter."
 msgstr ""
