@@ -25,12 +25,28 @@ $(document).ready( function() {
     return false;
   } );
 
+  $(document).on('click', '.notification.unseen a', function(e) {
+    var link = $(this);
+    e.preventDefault();
+    Libertree.Notifications.setState(
+      link.closest('.notification.unseen'),
+      'seen',
+      function() {
+        window.location = link.attr('href');
+      }
+    );
+    e.stopPropagation();
+  } );
+  $(document).on('click', '.notification.unseen', function(e) {
+    Libertree.Notifications.setState($(this), 'seen');
+  } );
+
   $(document).on('click', '.notification.seen a', function(e) {
     e.stopPropagation();
   } );
-
-  $(document).on('click', '.notification.unseen', Libertree.Notifications.setState('seen') );
-  $(document).on('click', '.notification.seen', Libertree.Notifications.setState('unseen') );
+  $(document).on('click', '.notification.seen', function(e) {
+    Libertree.Notifications.setState($(this), 'unseen');
+  } );
 
   $(document).on('click', '#mark-all-notifications-seen', function(event) {
     event.preventDefault();
