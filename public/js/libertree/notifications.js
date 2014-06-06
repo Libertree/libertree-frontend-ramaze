@@ -1,8 +1,11 @@
 Libertree.Notifications = {
   setState: function (new_state) {
     var old_state = (new_state === 'seen') ? 'unseen' : 'seen';
-    return function () {
-      var ids = $(this).data('notification-ids');
+    return function (event) {
+      event.preventDefault();
+      var ids = $(this).data('notification-ids'),
+        target = $(event.target).attr('href');
+
       $(this).removeClass(old_state).addClass(new_state);
       /* Also toggle on Notifications page */
       $.each( ids, function(j, id) {
@@ -10,6 +13,8 @@ Libertree.Notifications = {
       } );
       $.get('/notifications/'+new_state+'/' + ids.join('/'), function(data) {
         Libertree.Notifications.updateNumUnseen(data);
+        /* resume link following when the GET request is complete */
+        if (target) { window.location = target; }
       } );
     };
   },
