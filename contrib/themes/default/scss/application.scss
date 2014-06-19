@@ -122,6 +122,12 @@ input[type="password"],
 
 textarea, input[type="text"], input[type="password"] {
     @include rounded;
+    box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.30);
+}
+
+textarea:focus, input:focus {
+    outline: 0;
+    /* TODO: Use some other colour that matches with the Libertree theme */
 }
 
 .main {
@@ -367,7 +373,7 @@ img.avatar {
 }
 
 .typed-text {
-    line-height: 1.4em;
+    line-height: 1.6em;
     text-align: left;
     word-wrap: break-word;
     a img { border-bottom: 2px dotted $main; }
