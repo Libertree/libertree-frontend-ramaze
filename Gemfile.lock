@@ -34,9 +34,9 @@ GIT
 
 GIT
   remote: git://github.com/rekado/rpeg-markdown.git
-  revision: f414d439266b3611cd5e8a3013f0d052359ec051
+  revision: ee5dacacceeb997588d5a9d045535c982f8062e8
   specs:
-    rpeg-markdown (1.4.9)
+    rpeg-markdown (1.4.10)
 
 GEM
   remote: http://rubygems.org/
