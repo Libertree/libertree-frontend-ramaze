@@ -59,6 +59,7 @@ module Controller
       end
     end
 
+    # called by JS: Libertree.Comments.loadMore
     def _comments(post_id, to_id, old_n)
       # TODO: Check that member is allowed to view the post and its comments
       # (when we introduce such restrictions in the system)
@@ -79,6 +80,7 @@ module Controller
       @num_notifs_unseen = account.num_notifications_unseen
     end
 
+    # called by JS: Libertree.Comments.insertHtmlFor
     def _comment(comment_id, old_n = nil)
       @comment = Libertree::Model::Comment[comment_id.to_i]
       @all_comments = @comment.post.comments
