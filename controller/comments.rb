@@ -71,6 +71,10 @@ module Controller
         limit: 8,
         to_id: to_id.to_i,
       } )
+
+      all_comments = @post.comments
+      @commenters = commenters(all_comments)
+      @offset = all_comments.index(@comments.first)
       @num_shown = @comments.count + old_n.to_i
       if logged_in?
         @comments.each do |c|

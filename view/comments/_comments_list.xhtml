@@ -13,8 +13,10 @@
   <?r loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( fetched_comments.count == all_comments.count ) ?>
   <a href="#" class="load-comments #{loader_hidden ? 'hidden' : ''}">#{_('more comments')}</a>
 
-  <?r fetched_comments.each do |c| ?>
-    #{ render_file 'view/comments/_comment.xhtml', comment: c, all_comments: all_comments }
+  <?r commenters = commenters(all_comments) ?>
+  <?r offset = all_comments.count - fetched_comments.count ?>
+  <?r fetched_comments.each_with_index do |c,i| ?>
+    #{ render_file 'view/comments/_comment.xhtml', comment: c, commenters: commenters, i: i+offset }
   <?r end ?>
 
   <div class="detachable">
