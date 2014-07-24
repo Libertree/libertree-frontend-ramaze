@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap, :notes, :codeblock ])
+  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap, :notes, :codeblock, :hashtags ])
     return ''  if s.nil? or s.empty?
     Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
@@ -44,22 +44,7 @@ module Libertree
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
   def self.apply_hashtags(html)
-    # hashtaggify everything that is not inside of code, link or pre tags
-    html.traverse do |node|
-      if node.text? && ["code", "pre", "a"].all? {|tag| node.ancestors(tag).empty? }
-        hashtag = Libertree::hashtaggify(node.to_s)
-
-        if ! hashtag.eql? node.to_s
-          # nokogiri strips trailing whitespace, so
-          # we need to replace it with &#32; to preserve it
-          if hashtag[-1] =~ /\s/
-            hashtag = hashtag[0..-2] + "&#32;"
-          end
-
-          node.replace( Nokogiri::HTML.fragment(hashtag) )
-        end
-      end
-    end
+    html.xpath('.//span["rel=hashtag"]').each {|n| n.replace(hashtaggify(n.content)) }
     html
   end
 
@@ -149,7 +134,8 @@ module Libertree
       :autolink,
       :hard_wrap,
       :notes,
-      :codeblock
+      :codeblock,
+      :hashtags
     ]
     opts.push :no_images if filter_images
     opts.push :media if autoembed
