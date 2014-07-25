@@ -1,14 +1,15 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: f7cadc4afb7e3f1a5eea09c46938e27cbe5ec3a1
+  revision: 9fa047cd34301495450f2272d8f16e53788c415f
   specs:
-    libertree-model (0.7.0)
+    libertree-model (0.8.0)
       bcrypt-ruby (= 3.0.1)
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
       pg
       ruby-oembed (~> 0.8.8)
       sequel
+      timedcache
 
 GIT
   remote: git://github.com/Ramaze/innate.git
@@ -137,6 +138,7 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
+    timedcache (0.4.0)
     unicorn (4.2.0)
       kgio (~> 2.6)
       rack
