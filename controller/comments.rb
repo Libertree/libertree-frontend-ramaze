@@ -56,14 +56,7 @@ module Controller
       @post ||= Libertree::Model::Post[ post_id.to_i ]
       @comment_fetch_options ||= { limit: 4 }
       @comments = @post.comments(@comment_fetch_options)
-
-      # TODO: this is too slow!  Not only because it's done one by one
-      # but also because the method requests the likes for each
-      # individual comment.
-
-      @comments.each do |c|
-        Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, c.id )
-      end
+      Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, @comments.map(&:id) )
     end
 
     # called by JS: Libertree.Comments.loadMore
@@ -84,9 +77,7 @@ module Controller
       @offset = all_comments.index(@comments.first)
       @num_shown = @comments.count + old_n.to_i
       if logged_in?
-        @comments.each do |c|
-          Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, c.id )
-        end
+        Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, @comments.map(&:id) )
       end
       @num_notifs_unseen = account.num_notifications_unseen
     end
