@@ -1,6 +1,7 @@
 module Ramaze
   module Helper
     module Views
+      # TODO: this has to be cached
       def current_theme
         # Under certain conditions when running tests, account is not a Libertree::Model::Account
         if account.settings
