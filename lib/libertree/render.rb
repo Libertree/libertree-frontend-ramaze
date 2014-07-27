@@ -52,10 +52,10 @@ module Libertree
   # if the contained username is that of a participant in the comment thread
   def self.username_linker(html, commenters)
     html.xpath('.//span[@rel="username"]').each do |n|
-      name = n.content[1..-1]
+      name = n.content[1..-1].downcase
       if commenter = commenters[name]
-        content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(commenter[:name])}">@#{name}</a>|
-          n.replace(content)
+        content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(commenter[:name])}">#{n.content}</a>|
+        n.replace(content)
       end
     end
     html
