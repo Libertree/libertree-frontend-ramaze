@@ -171,5 +171,11 @@ module Libertree
     class Comment
       include Libertree::HasRenderableText
     end
+    class Message
+      include Libertree::HasRenderableText
+    end
+    class ChatMessage
+      include Libertree::HasRenderableText
+    end
   end
 end
