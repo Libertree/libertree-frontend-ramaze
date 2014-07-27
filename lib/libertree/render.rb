@@ -48,6 +48,19 @@ module Libertree
     html
   end
 
+  # a render stage replacing <span rel='username'/> tags with commenter references
+  # if the contained username is that of a participant in the comment thread
+  def self.username_linker(html, commenters)
+    html.xpath('.//span[@rel="username"]').each do |n|
+      name = n.content[1..-1]
+      if commenter = commenters[name]
+        content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(commenter[:name])}">@#{name}</a>|
+          n.replace(content)
+      end
+    end
+    html
+  end
+
   def self.resolve_redirection( url_s )
     cached = Libertree::Model::UrlExpansion[ url_short: url_s ]
     if cached
@@ -174,6 +187,12 @@ module Libertree
     end
     class Comment
       include Libertree::HasRenderableText
+
+      # render comment text with additional render stage
+      def text_rendered_and_participants_linked( commenters, account=nil, i=nil )
+        linker = lambda {|html| Libertree.username_linker(html, commenters)}
+        self.text_rendered(account, [linker])
+      end
     end
     class Message
       include Libertree::HasRenderableText
