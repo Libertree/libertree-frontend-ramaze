@@ -44,7 +44,7 @@ module Libertree
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
   def self.apply_hashtags(html)
-    html.xpath('.//span["rel=hashtag"]').each {|n| n.replace(hashtaggify(n.content)) }
+    html.xpath('.//span[@rel="hashtag"]').each {|n| n.replace(hashtaggify(n.content)) }
     html
   end
 
