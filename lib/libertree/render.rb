@@ -117,7 +117,7 @@ module Libertree
     Nokogiri::HTML.fragment(self.markdownify(s, opts)).inner_text
   end
 
-  def self.render(s, autoembed=false, filter_images=false)
+  def self.render(s, settings={})
 
     # FIXME: when :smart is enabled, "/posts/show/987/123/#comment-123" is
     # turned into "<p>/posts/show/987/123/#comment&ndash;123</p>".
@@ -138,15 +138,15 @@ module Libertree
       :hashtags,
       :usernames
     ]
-    opts.push :no_images if filter_images
-    opts.push :media if autoembed
+    opts.push :no_images  if settings[:filter_images]
+    opts.push :media      if settings[:autoembed]
 
     pipeline = [
       method(:autolinker),
       Nokogiri::HTML.method(:fragment),
       method(:process_links),
       method(:apply_hashtags),
-      (Embedder.method(:inject_objects) if autoembed)
+      (Embedder.method(:inject_objects)  if settings[:autoembed])
     ].compact
 
     # apply methods sequentially to string
@@ -155,15 +155,12 @@ module Libertree
 
   module HasRenderableText
     def text_rendered(account)
-      if account.respond_to?(:settings)
-        autoembed = account.settings.autoembed
-        filter_images = account.settings.filter_images
-      else
-        autoembed = false
-        filter_images = false
-      end
-
-      Libertree.render self.text, autoembed, filter_images
+      settings = if account.respond_to?(:settings)
+                   account.settings
+                 else
+                   {}
+                 end
+      Libertree.render self.text, settings
     end
   end
 
