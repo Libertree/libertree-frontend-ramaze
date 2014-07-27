@@ -177,7 +177,7 @@ module Controller
           }
         else
           @comment_fetch_options = {
-            limit: 8,
+            limit: 50,
           }
         end
 
