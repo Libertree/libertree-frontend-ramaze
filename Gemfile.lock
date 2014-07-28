@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 29d5d679a75722d5cc4bef1a43a8b4829058f088
+  revision: 74b267cb910bca20120f11b82823db0a61b53954
   specs:
-    libertree-model (0.8.2)
+    libertree-model (0.8.3)
       bcrypt-ruby (= 3.0.1)
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
@@ -35,9 +35,9 @@ GIT
 
 GIT
   remote: git://github.com/rekado/rpeg-markdown.git
-  revision: 13c2b5d8f74f077a5a61b53490c45689279d6cdd
+  revision: 742667617ec219020969b40d52c0ead0dd703608
   specs:
-    rpeg-markdown (1.4.15)
+    rpeg-markdown (1.4.16)
 
 GEM
   remote: http://rubygems.org/
