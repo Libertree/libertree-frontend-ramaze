@@ -54,7 +54,8 @@ module Libertree
     html.xpath('.//span[@rel="username"]').each do |n|
       name = n.content[1..-1].downcase
       if commenter = commenters[name]
-        content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(commenter[:name])}">#{n.content}</a>|
+        display_name = ::CGI.escape_html(commenter[:name])
+        content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % display_name}">@#{display_name}</a>|
         n.replace(content)
       end
     end
