@@ -72,4 +72,5 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   Libertree.UI.showShowMores();
+  Libertree.UI.initSpoilers();
 } );

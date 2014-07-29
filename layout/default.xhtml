@@ -3,7 +3,8 @@
 
 #{ render_file 'layout/_head.xhtml' }
 
-<body class="#{ @view } #{ (logged_in? && account.settings.filter_images) ? 'filter-images' : '' }">
+<body class="#{ @view } #{ (logged_in? && account.settings.filter_images) ? 'filter-images' : '' }"
+      data-msg-spoiler-prompt="#{_('Show hidden content')}">
   #{ render_file 'layout/_menu.xhtml' }
 
   <?r if flash[:error] ?>

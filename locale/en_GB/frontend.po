@@ -13,6 +13,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: layouts/default.xhtml
+# Text on a link to display spoilers
+msgid "Show hidden content"
+msgstr ""
+
 #: view/login.xhtml
 
 msgid "Username"

@@ -103,6 +103,8 @@ Libertree.Posts = (function () {
     init: function() {
       $(document).ready( function() {
 
+        Libertree.UI.initSpoilers();
+
         $(document).on('click', '.post-tools a.like', function(event) {
           like( $(this), event, 'div.post, .post-excerpt' );
         } );

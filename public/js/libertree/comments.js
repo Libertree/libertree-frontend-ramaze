@@ -42,6 +42,7 @@ Libertree.Comments = {
             animationDuration
           );
         }
+        Libertree.UI.initSpoilers();
       }
     );
   },

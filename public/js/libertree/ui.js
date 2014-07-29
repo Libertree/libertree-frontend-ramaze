@@ -9,6 +9,16 @@ Libertree.UI = (function () {
         // calculate the duration to move an amount of pixels at a given speed
         return pixels * 1000 / speed;
       };
+    },
+
+    /* insert clickable prompt before hidden element to show it */
+    initSpoiler = function (spoiler) {
+      if (spoiler.siblings('a.spoiler-show').length === 0) {
+        var msg = $('body').data('msg-spoiler-prompt'),
+          link = $('<a href="#" class="spoiler-show">'+msg+'</a>');
+        link.click(function () { spoiler.show(); link.hide(); });
+        link.insertBefore(spoiler);
+      }
     };
 
   return {
@@ -150,6 +160,10 @@ Libertree.UI = (function () {
           link.siblings('.show-more').show();
         }
       );
+    },
+
+    initSpoilers: function () {
+        $('div.spoilers').each( function () { initSpoiler($(this)); } );
     },
 
     jumpToComments: function (excerpt) {

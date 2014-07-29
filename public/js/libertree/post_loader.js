@@ -78,6 +78,7 @@ Libertree.PostLoader = (function () {
 
           // show "show more" links on new excerpts (where required)
           Libertree.UI.showShowMores(excerpts.children('.excerpt'));
+          Libertree.UI.initSpoilers();
           if (onSuccess) {
             onSuccess();
           }
