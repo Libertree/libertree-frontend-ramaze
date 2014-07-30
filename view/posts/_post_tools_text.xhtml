@@ -39,7 +39,7 @@
   <?r end ?>
 
   <?r if @post.collected_by?(account) ?>
-    <?r if @pool && @pool.member == account.member ?>
+    <?r if @pool && @pool.member.id == account.member.id ?>
     <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{_('remove')}</a>
     <?r else ?>
     <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{_('collected')}</a>
@@ -51,7 +51,7 @@
   <?r end ?>
 
   <span class="admin">
-    <?r if @post.member == account.member ?>
+    <?r if @post.member.id == account.member.id ?>
       <a href="/posts/edit/#{@post.id}" class="edit">#{_('edit')}</a>
       <a href="/posts/destroy/#{@post.id}" data-msg="#{_('Delete this post?')}" class="delete">#{_('delete')}</a>
     <?r else ?>

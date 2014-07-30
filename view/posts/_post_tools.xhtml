@@ -2,7 +2,7 @@
 
 <?r if logged_in? ?>
   <span class="admin">
-    <?r if @post.member == account.member ?>
+    <?r if @post.member.id == account.member.id ?>
       <a href="/posts/edit/#{@post.id}" title="#{_('edit')}" class="edit">#{ img 'icon-post-tools-edit.png', {alt:_('edit'), class:'size-16'}}</a>
       <a href="/posts/destroy/#{@post.id}" title="#{_('delete')}" data-msg="#{_('Delete this post?')}" class="delete">#{ img 'icon-post-tools-delete.png', {alt:_('delete'), class:'size-16'}}</a>
     <?r else ?>
@@ -21,7 +21,7 @@
     <?r end ?>
 
     <?r if @post.collected_by?(account) ?>
-      <?r if @pool && @pool.member == account.member ?>
+      <?r if @pool && @pool.member.id == account.member.id ?>
       <a class="remove" data-pool-id="#{@pool.id}" href="#" title="#{_('Remove this post from this pool')}">#{ img 'icon-collected.png', {alt:_('remove'), class:'size-16'}}</a>
       <?r else ?>
       <a class="collect collected" href="#" title="#{_('Collect this post in a pool')}">#{ img 'icon-collected.png', {alt:_('collected'), class:'size-16'}}</a>
