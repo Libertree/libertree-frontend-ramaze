@@ -1,4 +1,5 @@
 <div class="post-tools textual">
+<?r if logged_in? ?>
   <span class="mutation">
     <?r if @post.like_by(account.member) ?>
       <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
@@ -22,11 +23,13 @@
   </span>
 
   <br />
+<?r end ?>
 
   <?r if @excerpt_links ?>
     <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
   <?r end ?>
 
+<?r if logged_in? ?>
   <?r if ! account.subscribed_to?(@post) ?>
     <a href="#" class="subscribe" title="#{_('Start receiving notifications about comments on this post')}">#{_('subscribe')}</a>
     <a href="#" class="unsubscribe hidden" title="#{_('Stop receiving notifications about comments on this post')}">#{_('unsubscribe')}</a>
@@ -56,4 +59,5 @@
       <a class="confirm-hide" href="#" title="#{_('Click to confirm hiding of this post.')}">#{_('confirm')}</a>
     <?r end ?>
   </span>
+<?r end ?>
 </div>

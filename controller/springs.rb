@@ -3,9 +3,12 @@ module Controller
     map '/s'
 
     before_all do
-      # TODO: grant non-members access if the spring is public,
-      #       but only show internet visible posts
-      default_before_filter
+      if action.view_value.nil?
+        # NOTE: there is no login required for actions here.
+        # Non-members are granted access if the spring is public, but
+        # they are only shown internet visible posts
+        init_locale
+      end
     end
 
     layout :default
@@ -24,8 +27,15 @@ module Controller
 
       redirect r(:/)  if @spring.nil?
 
+      posts = if logged_in?
+                @spring.posts
+              else
+                @spring.posts({:public => true})
+              end
+
       render_file("#{Ramaze.options.views[0]}/pools/show.xhtml",
                   { :pool => @spring,
+                    :posts => posts,
                     :member => account.member })
     end
   end

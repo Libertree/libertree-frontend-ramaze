@@ -1,13 +1,13 @@
 <div id="header">
   <h2>
-  <?r if @pool.member != account.member ?>
+  <?r if ! logged_in? || @pool.member != account.member ?>
     #{_('Spring: %s') % @pool.name}
   <?r else ?>
     #{_('Pool: %s') % @pool.name}
   <?r end ?>
   </h2>
 
-  <?r if @pool.member != account.member ?>
+  <?r if logged_in? && @pool.member != account.member ?>
     <div class="spinner-container">
       <select id="river-selector" name="river_id" data-pool-id="#{@pool.id}" data-placeholder="#{_('Add this spring to a river')}" data-msg="#{_('Added to river.')}">
         <option></option>
@@ -21,7 +21,7 @@
 </div>
 <div id="post-excerpts" class="autoload-container" data-loader-type="pool"
      data-loader-args="#{@pool.id}" data-pool-id="#{@pool.id}">
-  <?r @pool.posts.each do |post| ?>
+  <?r @posts.each do |post| ?>
     #{ Controller::Posts.render_partial '_excerpt', post: post, pool: @pool }
   <?r end ?>
   <div class="spinner"></div>

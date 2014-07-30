@@ -4,7 +4,9 @@ module Controller
 
     before_all do
       if action.view_value.nil?
-        if Ramaze::Current.request.path !~ %r{^/posts/show/}
+        # authentication is handled in single post view (/posts/show/)
+        # and on spring display (/s/, /pools/_more/)
+        if Ramaze::Current.request.path !~ %r{^(/posts/show/|/s/|/pools/_more/)}
           require_login
         end
         init_locale
@@ -23,6 +25,11 @@ module Controller
 
     def _excerpt(post_id)
       @post = Libertree::Model::Post[ post_id.to_i ]
+      # caution: only give away this post to strangers if it is
+      # visible to the Internet
+      if ! @post.v_internet?
+        require_login
+      end
     end
 
     def _excerpts( river_id, older_or_newer = 'older', time = Time.now.to_i )

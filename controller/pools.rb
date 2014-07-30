@@ -2,7 +2,13 @@ module Controller
   class Pools < Base
     map '/pools'
     before_all do
-      default_before_filter
+      if action.view_value.nil?
+        # /pools/_more/ restricts strangers to public posts
+        if Ramaze::Current.request.path !~ %r{^/pools/_more}
+          require_login
+        end
+        init_locale
+      end
     end
 
     layout do |path|
@@ -39,15 +45,24 @@ module Controller
 
     # careful: filter posts according to view permissions of the requester
     def _more( pool_id, older_or_newer = 'older', time = Time.now.to_i )
-      pool = (
-        Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
-        Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
-      )
-      @posts = pool.posts(
+      options = {
         limit: 8,
         time: time.to_f,
         newer: false,
-      )
+      }
+
+      if logged_in?
+        pool = (
+          Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
+          Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
+        )
+      else
+        pool = Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
+        options[:public] = true
+      end
+
+      # TODO: throw error if pool doesn't exist
+      @posts = pool.posts(options)
       render_file "#{Ramaze.options.views[0]}/posts/_excerpts.xhtml"
     end
 

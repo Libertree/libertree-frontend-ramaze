@@ -1,5 +1,6 @@
 <div class="post-tools iconic">
 
+<?r if logged_in? ?>
   <span class="admin">
     <?r if @post.member == account.member ?>
       <a href="/posts/edit/#{@post.id}" title="#{_('edit')}" class="edit">#{ img 'icon-post-tools-edit.png', {alt:_('edit'), class:'size-16'}}</a>
@@ -47,6 +48,7 @@
       <a class="mark-read" title="#{_('mark read')}" href="#">#{ img 'icon-unread.png', {alt:_('mark read'), class:'size-16'}}</a>
     <?r end ?>
   </span>
+<?r end ?>
 
     <?r if @excerpt_links ?>
       <span class="excerpt_links">
