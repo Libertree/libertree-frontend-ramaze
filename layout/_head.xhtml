@@ -8,8 +8,10 @@
   #{ css 'select2' }
   #{ css 'bootstrap' }
   #{ css_nocache 'application' }
-  <?r if logged_in? ?>
-    #{ css_nocache (account.font_css || 'fonts') }
+  <?r if logged_in? && account.font_css ?>
+    #{ css_nocache account.font_css }
+  <?r else ?>
+    #{ css_nocache 'fonts' }
   <?r end ?>
   #{ css_nocache 'single-post-view' }
   #{ css_nocache 'excerpts-view' }
