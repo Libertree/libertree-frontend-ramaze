@@ -4,7 +4,19 @@ require 'nokogiri'
 require 'libertree/model'
 
 module Libertree
-  def self.markdownify(s, opts = [ :filter_html, :strike, :autolink, :hard_wrap, :notes, :codeblock, :hashtags, :usernames, :spoilerblock ])
+  RenderOptions = [ :filter_html,
+                    #:smart,
+                    :strike,
+                    :autolink,
+                    :hard_wrap,
+                    :notes,
+                    :codeblock,
+                    :hashtags,
+                    :usernames,
+                    :spoilerblock
+                  ]
+
+  def self.markdownify(s, opts = RenderOptions)
     return ''  if s.nil? or s.empty?
     Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
   end
@@ -141,18 +153,7 @@ module Libertree
     # into the markdown parser. A solution that matches against
     # "#comment&ndash;" would be quite ugly.
 
-    opts = [
-      :filter_html,
-      #:smart,
-      :strike,
-      :autolink,
-      :hard_wrap,
-      :notes,
-      :codeblock,
-      :hashtags,
-      :usernames,
-      :spoilerblock
-    ]
+    opts = Libertree::RenderOptions.dup
     opts.push :no_images  if settings[:filter_images]
     opts.push :media      if settings[:autoembed]
 
