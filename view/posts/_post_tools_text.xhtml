@@ -1,6 +1,6 @@
 <div class="post-tools textual">
-<?r if logged_in? ?>
   <span class="mutation">
+<?r if logged_in? ?>
     <?r if @post.like_by(account.member) ?>
       <a href="#" class="unlike" data-post-like-id="#{@post.like_by(account.member).id}">#{_('unlike')}</a>
       <a href="#" class="like hidden">#{_('like')}</a>
@@ -8,11 +8,13 @@
       <a href="#" class="like">#{_('like')}</a>
       <a href="#" class="unlike hidden">#{_('unlike')}</a>
     <?r end ?>
+<?r end ?>
 
     <?r if @excerpt_links ?>
       <a href="#" class="comment">#{_('comment')}</a>
     <?r end ?>
 
+<?r if logged_in? ?>
     <?r if @post.read_by?(account) ?>
       <a class="mark-unread" href="#">#{_('mark unread')}</a>
       <a class="mark-read hidden" href="#">#{_('mark read')}</a>
@@ -20,10 +22,10 @@
       <a class="mark-unread hidden" href="#">#{_('mark unread')}</a>
       <a class="mark-read" href="#">#{_('mark read')}</a>
     <?r end ?>
+<?r end ?>
   </span>
 
   <br />
-<?r end ?>
 
   <?r if @excerpt_links ?>
     <a href="/posts/show/#{@post.id}" title="#{_('Middle click, Shift-click, or Ctrl-Shift-click to open in new tab/window')}">#{_('view post')}</a>
