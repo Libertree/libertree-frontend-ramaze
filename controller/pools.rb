@@ -52,17 +52,17 @@ module Controller
       }
 
       if logged_in?
-        pool = (
+        @pool = (
           Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
           Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
         )
       else
-        pool = Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
+        @pool = Libertree::Model::Pool[ id: pool_id.to_i, sprung: true ]
         options[:public] = true
       end
 
       # TODO: throw error if pool doesn't exist
-      @posts = pool.posts(options)
+      @posts = @pool.posts(options)
       render_file "#{Ramaze.options.views[0]}/posts/_excerpts.xhtml"
     end
 
