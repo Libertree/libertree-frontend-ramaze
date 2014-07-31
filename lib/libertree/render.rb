@@ -5,7 +5,7 @@ require 'libertree/model'
 
 module Libertree
   RenderOptions = [ :filter_html,
-                    #:smart,
+                    :smart,
                     :strike,
                     :autolink,
                     :hard_wrap,
