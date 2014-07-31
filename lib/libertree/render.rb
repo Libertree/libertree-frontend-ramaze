@@ -33,10 +33,15 @@ module Libertree
     return ''  if s.nil? or s.empty?
 
     # Crude autolinker for relative links to local resources
-    s.gsub(
-      %r{(?<=^|\(|\[|\p{Space}|^<p>|^<li>)<?(/posts/show/\d+(/\d+/?(#comment-\d+)?|/(\d+/?)?)?)>?},
-      "<a href='\\1'>\\1</a>"
-    )
+
+    # NOTE: when the :smart extension is enabled,
+    # "/posts/show/987/123/#comment-123" is turned into
+    # "<p>/posts/show/987/123/#comment&ndash;123</p>".
+
+    s.gsub(%r{(?<=^|\(|\[|\p{Space}|^<p>|^<li>)<?(/posts/show/\d+(/\d+/?(#comment(&ndash;|-)\d+)?|/(\d+/?)?)?)>?}) {
+      url = $1.gsub('&ndash;', '-')
+      "<a href='#{url}'>#{url}</a>"
+    }
   end
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
@@ -144,15 +149,6 @@ module Libertree
   end
 
   def self.render(s, settings={}, pipeline_steps=[])
-
-    # FIXME: when :smart is enabled, "/posts/show/987/123/#comment-123" is
-    # turned into "<p>/posts/show/987/123/#comment&ndash;123</p>".
-    #
-    # This only affects relative URLs that should be caught by the autolinker.
-    # The problem could be fixed by moving the autolinker for relative URLs
-    # into the markdown parser. A solution that matches against
-    # "#comment&ndash;" would be quite ugly.
-
     opts = Libertree::RenderOptions.dup
     opts.push :no_images  if settings[:filter_images]
     opts.push :media      if settings[:autoembed]
