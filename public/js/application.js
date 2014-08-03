@@ -1,3 +1,13 @@
+function memberHandleAutocompletion(event, ui) {
+  var textfield = $(event.target);
+  var text = textfield.val();
+  var indexOfSpace = text.lastIndexOf(' ');
+  var lastWord = text.substring(indexOfSpace+1);
+  var textWithoutLastWord = text.substring(0, indexOfSpace+1);
+  textfield.val(textWithoutLastWord + '@' + ui.item.value);
+  return false;
+}
+
 $(document).ready( function() {
 
   $('#menu-account').click( function() {
@@ -90,4 +100,23 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
+
+  $('textarea, input[type="text"]').autocomplete( {
+    delay: 500,
+    source: function( request, response ) {
+      var lastWord = request.term.split(' ').splice(-1)[0];
+      if( lastWord.charAt(0) != '@' || lastWord.length < 3 ) {
+        $('textarea').autocomplete('close');
+        return;
+      }
+
+      var query = lastWord.substring(1);
+      $.get('/members/autocomplete_handle.json?q='+query, function(data) {
+        response(data);
+      });
+    },
+    focus: memberHandleAutocompletion,
+    change: memberHandleAutocompletion,
+    select: memberHandleAutocompletion
+  } );
 } );
