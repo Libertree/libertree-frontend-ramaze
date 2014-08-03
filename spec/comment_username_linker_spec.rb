@@ -36,7 +36,7 @@ describe Libertree::Model::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@George: indeed. I thought you'd like that."))
+                                     :text => "@George@#{@george.server.domain}: indeed. I thought you'd like that."))
 
         commenters = @s.commenters(@post.comments)
         processed = comment.text_rendered_and_participants_linked(commenters)
@@ -56,7 +56,7 @@ describe Libertree::Model::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@SomeName: indeed. I thought you'd like that."))
+                                     :text => "@SomeName@#{@server.domain}: indeed. I thought you'd like that."))
 
         commenters = @s.commenters(@post.comments)
         processed = comment.text_rendered_and_participants_linked(commenters)
@@ -78,7 +78,7 @@ describe Libertree::Model::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@george: I mean you, George 2."))
+                                     :text => "@george@#{@george2.server.domain}: I mean you, George 2."))
 
         commenters = @s.commenters(@post.comments)
         processed = comment.text_rendered_and_participants_linked(commenters)
@@ -101,7 +101,7 @@ describe Libertree::Model::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@george: I agree. @john: I also agree."))
+                                     :text => "@george@#{@george.server.domain}: I agree. @john@#{@author.server.domain}: I also agree."))
 
         commenters = @s.commenters(@post.comments)
         processed = comment.text_rendered_and_participants_linked(commenters)
@@ -116,7 +116,7 @@ describe Libertree::Model::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@George: hope you find this interesting."))
+                                     :text => "@George@#{@george.server.domain}: hope you find this interesting."))
 
         commenters = @s.commenters(@post.comments)
         processed = comment.text_rendered_and_participants_linked(commenters)
