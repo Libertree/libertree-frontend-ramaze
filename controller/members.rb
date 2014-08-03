@@ -31,7 +31,7 @@ module Controller
           'label' => selection_text,
           'value' => m.handle
         }
-      }
+      }.sort_by { |hash| hash['label'].downcase }
     end
   end
 end
