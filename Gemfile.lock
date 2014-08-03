@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: d0184d87b54007ae98f2a3730259dfa36dc123a0
+  revision: aeded1582b9d64d9fbc58ac7a7e7aa3a463df8b0
   specs:
-    libertree-model (0.8.4)
+    libertree-model (0.8.5)
       bcrypt-ruby (= 3.0.1)
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
