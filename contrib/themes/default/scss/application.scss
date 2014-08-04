@@ -938,3 +938,11 @@ body.filter-images {
 div.spoilers {
     display: none;
 }
+
+.ui-autocomplete {
+  .ui-menu-item.ui-state-focus {
+    color: $leaf;
+    border-color: $leaf;
+    background: $sand;
+  }
+}

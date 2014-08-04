@@ -1,3 +1,45 @@
+/* Taken from http://stackoverflow.com/a/14223324/28558 */
+$.fn.textCursorPosition = function() {
+  var pos;
+  if (this[0].setSelectionRange) {
+    pos = this[0].selectionStart;
+  } else if (document.selection && document.selection.createRange) {
+    var range = document.selection.createRange();
+    pos = 0 - range.duplicate().moveStart('character', -100000);
+  }
+  return pos;
+}
+
+/* Taken from http://stackoverflow.com/a/10227475/28558 */
+$.fn.setTextCursorPosition = function(index) {
+    var range;
+
+    /* different ways to do it due to browser differences */
+    if (this[0].createTextRange) {
+      range = this[0].createTextRange();
+      range.move('character', index);
+      range.select();
+    } else {
+      this[0].focus();
+      if (this[0].selectionStart !== undefined) {
+        this[0].setSelectionRange(index, index);
+      }
+    }
+}
+
+function memberHandleAutocompletion(event, ui) {
+  if( ! ui.item ) { return; }
+
+  var textfield = $(event.target);
+  var text = textfield.val();
+  var indexOfAtSymbol = text.substring(0, textfield.textCursorPosition()).search(/@\S+$/);
+  var newText = text.substring(0, indexOfAtSymbol+1) + ui.item.value + text.substring(textfield.textCursorPosition());
+  textfield.val(newText);
+  textfield.setTextCursorPosition(indexOfAtSymbol + ui.item.value.length + 1);
+
+  return false;
+}
+
 $(document).ready( function() {
 
   $('#menu-account').click( function() {
@@ -90,4 +132,25 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
+
+  $('textarea, input[type="text"]').autocomplete( {
+    delay: 500,
+    source: function( request, response ) {
+      var entireText = request.term;
+      var textUpToCursor = entireText.substring(0, this.element.textCursorPosition());
+      var indexOfAtSymbol = textUpToCursor.search(/@\S{2,}$/);  /* require at least 2 characters */
+      if( indexOfAtSymbol == -1 ) {
+        this.element.autocomplete('close');
+        return;
+      }
+
+      var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+1);
+      $.get('/members/autocomplete_handle.json?q='+autocompletableWord, function(data) {
+        response(data);
+      });
+    },
+    focus: memberHandleAutocompletion,
+    change: memberHandleAutocompletion,
+    select: memberHandleAutocompletion
+  } );
 } );
