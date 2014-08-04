@@ -68,9 +68,9 @@ describe Libertree do
 
     it 'should not filter single angle brackets' do
       subject.render("GNU <-- a #great project").should ==
-        "<p>GNU &lt;-- a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project</p>"
+        "<p>GNU &lt;— a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project</p>"
       subject.render("a #great project --> GNU").should ==
-        "<p>a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project --&gt; GNU</p>"
+        "<p>a <a href=\"/tags/great\" class=\"hashtag\">#great</a> project —&gt; GNU</p>"
     end
 
     it 'should leave a space between two nodes' do
