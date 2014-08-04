@@ -79,6 +79,19 @@ module Libertree
     html
   end
 
+  # a render stage replacing <span rel='username'/> tags with display names
+  def self.jid_renderer(html)
+    html.xpath('.//span[@rel="username"]').each do |n|
+      handle = n.content[1..-1].downcase
+      if member = Libertree::Model::Member.with_handle(handle)
+        display_name = ::CGI.escape_html(member.name_display)
+        content = %|<a href="/profiles/show/#{member.id}" class="member-name" title="#{member.handle}">@#{member.name_display}</a>|
+        n.replace(content)
+      end
+    end
+    html
+  end
+
   def self.resolve_redirection( url_s )
     cached = Libertree::Model::UrlExpansion[ url_short: url_s ]
     if cached
@@ -183,6 +196,17 @@ module Libertree
   module Model
     class Post
       include Libertree::HasRenderableText
+
+      # render JIDs as display names
+      def text_rendered(account, pipeline_steps=[])
+        linker = Libertree.method(:jid_renderer)
+        steps = if pipeline_steps.nil?
+                  [linker]
+                else
+                  pipeline_steps + [linker]
+                end
+        super(account, steps)
+      end
     end
     class Comment
       include Libertree::HasRenderableText
