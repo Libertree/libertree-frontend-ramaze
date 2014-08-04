@@ -41,6 +41,13 @@ else
   Libertree::Model::Account.set_auth_settings(:default, nil)
 end
 
+if $conf['domain']
+  Libertree::Model::Server.own_domain = $conf['domain']
+else
+  raise "ERROR: 'domain' setting in configuration file must be set!"
+end
+
+
 require 'libertree/embedder'
 require_relative 'lib/libertree/render'
 require_relative 'lib/libertree/remotestorage'
