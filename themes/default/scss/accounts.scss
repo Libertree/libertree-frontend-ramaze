@@ -1,6 +1,6 @@
-// TODO: this is almost the same as scss/profiles.scss
 @import "../scss-include/mixins.scss";
 @import "colours.scss";
+$threshold: 700px; // TODO: same as in application.scss
 
 body.accounts.edit {
     ul.actions {
@@ -11,32 +11,11 @@ body.accounts.edit {
             list-style: none;
         }
     }
-    .main {
-        @include shadow;
-        @include rounded;
-        background: $dust;
-        padding: 30px;
-        & > h2 {
-            @include rounded-top;
-            background: $sand;
-            padding: 1em;
-            margin: -30px -30px 1em;
-        }
-        h4 {
-            margin-top: 1em;
-        }
-        label {
-            width: 200px;
-            text-align: right;
-            margin-right: 1.5em;
-            float: left;
-            clear: left;
-        }
-        .field {
-            margin-bottom: 1em;
-        }
-        textarea {
-            padding: 1em;
+    textarea.custom {
+        width: 500px;
+        @include border-box;
+        @media screen and (max-width: $threshold) {
+            width: 100%;
         }
     }
 }

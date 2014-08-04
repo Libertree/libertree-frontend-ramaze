@@ -3,18 +3,32 @@
 
 $threshold: 700px;
 $dynamic-excerpt-width-threshold: 1060px;
+$excerpt-padding: 30px;
+$narrow-excerpt-padding: 1em;
 
 @mixin dynamic-excerpt-width {
     width: 720px;
     @media screen and (max-width: $dynamic-excerpt-width-threshold) {
         width: auto;
-        margin-left: 240px;
+    }
+    &.with-sidebar {
+        float: right;
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+            margin-left: 240px;
+        }
+        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
+            float: none;
+        }
     }
 }
 
 body.excerpts-view .main {
     padding: 0;
     background-color: transparent;
+
+    #sidebar {
+        margin-left: 0; // override .main padding correction
+    }
 
     select#river-selector {
       width: 400px;
@@ -23,9 +37,13 @@ body.excerpts-view .main {
     & > div.panel {
         @include dynamic-excerpt-width;
         @include border-box;
-        float: right;
-        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-            float: none;
+        float: none;
+        margin: 0 auto;
+        &.with-sidebar {
+            margin: 0;
+            @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+                margin-left: 240px;
+            }
         }
     }
     div.panel {
@@ -46,14 +64,7 @@ body.excerpts-view .main {
         }
     }
     #post-new {
-        padding-left: 0px;
-        padding-right: 0px;
         margin-bottom: 20px;
-
-        h3 {
-            margin-left: 0px;
-            margin-right: 0px;
-        }
 
         textarea {
             margin: auto;
@@ -78,13 +89,17 @@ body.excerpts-view .main {
 
     #header {
       @include border-box;
+      margin: 0 auto;
       background-color: $dust;
       padding: 20px;
       border-radius: $border-radius $border-radius 0 0;
       @include dynamic-excerpt-width;
-      float: right;
-      @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-        float: none;
+      float: none;
+      &.with-sidebar {
+          margin: 0;
+          @media screen and (max-width: $dynamic-excerpt-width-threshold) and (min-width: $threshold) {
+              margin-left: 240px;
+          }
       }
     }
 
@@ -103,20 +118,30 @@ body.excerpts-view .main {
       margin-top: 1em;
     }
 
-    #post-excerpts, form#post-new {
+    #post-excerpts {
         @include shadow;
         @include rounded;
-        float: right;
-        @media screen and (max-width: $dynamic-excerpt-width-threshold) {
-            float: none;
-        }
         background-color: $dust;
         @include dynamic-excerpt-width;
+        float: none;
+        margin: 0 auto;
         position: relative;
     }
 
+    form#post-new {
+        @include shadow;
+        @include rounded;
+        background-color: $dust;
+        @include dynamic-excerpt-width;
+        position: relative;
+        float: none;
+    }
+
     .post-excerpt {
-        padding: 0px 0px 2em 0px;
+        padding: 0px 0px $excerpt-padding 0px;
+        @media screen and (max-width: $threshold) {
+            padding: 0px 0px $narrow-excerpt-padding 0px;
+        }
         border-bottom: 1px dotted $main;
         overflow: auto;
 
@@ -126,19 +151,23 @@ body.excerpts-view .main {
 
         .post-stats {
             color: $bark;
-            margin-top: 15px;
-            margin-right: 16px;
             float: right;
             &.text {
               color: #888;
               font-size: 11px;
               margin: inherit;
               float: none;
+              & > span {
+                  padding-right: 4px;
+              }
+              span + span {
+                  border-left: 1px solid;
+                  padding-left: 4px;
+              }
             }
         }
 
         .post-tools {
-            margin-top: 15px;
             &.iconic {
               margin-top: inherit;
               right: 1em;
@@ -155,10 +184,18 @@ body.excerpts-view .main {
         div.meta {
             background-color: $sand;
             position: relative;
-            @media screen and (min-width: $threshold) {
-                .back-to-top {
+            padding: $excerpt-padding;
+            @media screen and (max-width: $threshold) {
+                padding: $narrow-excerpt-padding;
+            }
+
+            .back-to-top {
+                @media screen and (min-width: $threshold) {
                     display: none;
                 }
+                position: absolute;
+                right: 0;
+                top: 0;
             }
 
             .post-tools {
@@ -170,7 +207,6 @@ body.excerpts-view .main {
             }
 
             .member {
-                padding: 1em;
                 white-space: nowrap;
                 display: inline-block;
                 .member-text {
@@ -184,11 +220,13 @@ body.excerpts-view .main {
                 }
             }
         }
+
         div.excerpt {
-            padding: 1.8em 1.8em 0;
+            padding: $excerpt-padding $excerpt-padding 0px;
             @media screen and (max-width: $threshold) {
-                padding: 1em 1em 0;
+                padding: $narrow-excerpt-padding $narrow-excerpt-padding 0px;
             }
+
             overflow: hidden;
             .overflowed {
               min-height: 200px;
@@ -197,6 +235,9 @@ body.excerpts-view .main {
                 form.comment {
                   display: inline-block;
                   width: 80%;
+                  @media screen and (max-width: $threshold) {
+                      width: 100%;
+                  }
                 }
               }
             }
@@ -220,7 +261,6 @@ body.excerpts-view .main {
             display: none;
             text-align: center;
             position: relative;
-            margin-bottom: -1em;
             &:hover {
                 background-color: $sand;
             }
@@ -246,4 +286,8 @@ body.excerpts-view .main {
     textarea.comment {
         width: 100%;
     }
+}
+
+.excerpts-view.home #header {
+    display: none;
 }

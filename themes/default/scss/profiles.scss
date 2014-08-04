@@ -1,37 +1,23 @@
 @import "../scss-include/mixins.scss";
 @import "colours.scss";
+$threshold: 700px; // TODO: same as in application.scss
+
+body.profile {
+    #textarea-description {
+        @include border-box;
+        width: 500px;
+        @media screen and (max-width: $threshold) {
+            width: 100%;
+        }
+    }
+}
 
 div.profile {
   padding: 2em;
   border-radius: 3px 3px 0px 0px;
   background-color: $dust; /* fallback for browsers that don't support alpha in colours */
   background-color: $dust_translucent;
-}
-
-body.profile.edit {
-    .main {
-        @include shadow;
-        @include rounded;
-        background: $dust;
-        padding: 30px;
-        & > h2 {
-            @include rounded-top;
-            background: $sand;
-            padding: 1em;
-            margin: -30px -30px 1em;
-        }
-        label {
-            width: 150px;
-            text-align: right;
-            margin-right: 1.5em;
-            float: left;
-            clear: left;
-        }
-        .field {
-            margin-bottom: 1em;
-        }
-        textarea {
-            padding: 1em;
-        }
-    }
+  .description {
+      word-wrap: break-word;
+  }
 }

@@ -14,7 +14,6 @@ $threshold: 700px;
 
     .main {
         width: auto !important;
-        padding: 1em;
         min-width: 0;
     }
 
@@ -27,9 +26,6 @@ $threshold: 700px;
         #menu-narrower {
             width: 100%;
             min-width: 0px;
-            #toggle-sidebar {
-                display: inline;
-            }
             #main-menu-container {
                 margin-left: 0px;
                 margin-right: 0px;
@@ -52,8 +48,8 @@ $threshold: 700px;
         width: 85%;
     }
 
-    #post-new, #textarea-description {
-        width: 90%;
+    #post-new {
+        width: 100%;
     }
     #textarea-post-new {
         width: 100%;
@@ -92,10 +88,6 @@ $threshold: 700px;
     }
 
     .excerpts-view {
-        .back-to-top {
-            float: right;
-        }
-
         #post-excerpts {
             float: none;
             margin-left: 0px;
@@ -121,26 +113,6 @@ $threshold: 700px;
                     a {
                         padding: 0px 50px;
                     }
-                }
-            }
-        }
-    }
-
-    #chat-window {
-        width: 280px;
-        left: 0.5em;
-        margin-left: 0px;
-
-        #chat-new-partner-wrapper {
-            select#chat-new-partner {
-                width: 260px;
-            }
-        }
-
-        .logs {
-            .log {
-                .messages {
-                    max-height: 300px;
                 }
             }
         }
