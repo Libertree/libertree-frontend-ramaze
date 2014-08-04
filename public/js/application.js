@@ -1,45 +1,3 @@
-/* Taken from http://stackoverflow.com/a/14223324/28558 */
-$.fn.textCursorPosition = function() {
-  var pos;
-  if (this[0].setSelectionRange) {
-    pos = this[0].selectionStart;
-  } else if (document.selection && document.selection.createRange) {
-    var range = document.selection.createRange();
-    pos = 0 - range.duplicate().moveStart('character', -100000);
-  }
-  return pos;
-}
-
-/* Taken from http://stackoverflow.com/a/10227475/28558 */
-$.fn.setTextCursorPosition = function(index) {
-    var range;
-
-    /* different ways to do it due to browser differences */
-    if (this[0].createTextRange) {
-      range = this[0].createTextRange();
-      range.move('character', index);
-      range.select();
-    } else {
-      this[0].focus();
-      if (this[0].selectionStart !== undefined) {
-        this[0].setSelectionRange(index, index);
-      }
-    }
-}
-
-function memberHandleAutocompletion(event, ui) {
-  if( ! ui.item ) { return; }
-
-  var textfield = $(event.target);
-  var text = textfield.val();
-  var indexOfAtSymbol = text.substring(0, textfield.textCursorPosition()).search(/@\S+$/);
-  var newText = text.substring(0, indexOfAtSymbol+1) + ui.item.value + text.substring(textfield.textCursorPosition());
-  textfield.val(newText);
-  textfield.setTextCursorPosition(indexOfAtSymbol + ui.item.value.length + 1);
-
-  return false;
-}
-
 $(document).ready( function() {
 
   $('#menu-account').click( function() {
@@ -149,8 +107,8 @@ $(document).ready( function() {
         response(data);
       });
     },
-    focus: memberHandleAutocompletion,
-    change: memberHandleAutocompletion,
-    select: memberHandleAutocompletion
+    focus: Libertree.UI.memberHandleAutocompletion,
+    change: Libertree.UI.memberHandleAutocompletion,
+    select: Libertree.UI.memberHandleAutocompletion
   } );
 } );
