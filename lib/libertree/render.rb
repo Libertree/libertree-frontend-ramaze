@@ -67,7 +67,7 @@ module Libertree
 
   # a render stage replacing <span rel='username'/> tags with commenter references
   # if the contained username is that of a participant in the comment thread
-  def self.username_linker(html, commenters)
+  def self.comment_jid_linker(html, commenters)
     html.xpath('.//span[@rel="username"]').each do |n|
       handle = n.content[1..-1].downcase
       if commenter = commenters[handle]
@@ -189,7 +189,7 @@ module Libertree
 
       # render comment text with additional render stage
       def text_rendered_and_participants_linked( commenters, account=nil, i=nil )
-        linker = lambda {|html| Libertree.username_linker(html, commenters)}
+        linker = lambda {|html| Libertree.comment_jid_linker(html, commenters)}
         self.text_rendered(account, [linker])
       end
     end
