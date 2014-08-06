@@ -103,9 +103,26 @@ $(document).ready( function() {
       }
 
       var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+1);
-      $.get('/members/autocomplete_handle.json?q='+autocompletableWord, function(data) {
-        response(data);
-      });
+      var post = $(this.element).closest('[data-post-id]');
+      var post_id;
+      if( post.length ) {
+        post_id = post.data('post-id')
+      }
+
+      $.get(
+        '/members/autocomplete_handle.json?q='+autocompletableWord+'&commenters_of_post_id='+post_id,
+        function(data) {
+          var selections = [];
+          if( data.commenting_members.length && data.members.length ) {
+            selections = data.commenting_members.concat(['---------']).concat(data.members);
+          } else if( data.members.length ) {
+            selections = data.members;
+          } else if( data.commenting_members.length ) {
+            selections = data.commenting_members;
+          }
+
+          response(selections);
+        });
     },
     focus: Libertree.UI.memberHandleAutocompletion,
     change: Libertree.UI.memberHandleAutocompletion,
