@@ -94,6 +94,11 @@ a.member-name, a.member-name:visited {
     border: 0px;
     color: $text;
 }
+.typed-text a.member-name, .typed-text a.member-name:visited {
+    border-bottom: 1px dotted $main;
+    color: $main;
+}
+
 
 a.help {
   vertical-align: super;
