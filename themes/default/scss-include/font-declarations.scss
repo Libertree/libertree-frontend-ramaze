@@ -26,6 +26,10 @@ h5, h6 { font-size: $font_small; }
     // serifs or slab serifs look better here
 }
 
+.typed-text .member-name {
+    font-weight: normal;
+}
+
 .post-text {
     font-size: $font_normal;
 }
