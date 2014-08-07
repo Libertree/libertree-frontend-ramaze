@@ -101,7 +101,7 @@ $(document).ready( function() {
         indexOfAtSymbol == -1 ||
         textUpToCursor.charAt(indexOfAtSymbol-1).search(/\S/) > -1  /* Non-space before at symbol */
       ) {
-        return;
+        return response([]);
       }
 
       var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+1);
