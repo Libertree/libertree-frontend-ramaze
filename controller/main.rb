@@ -134,7 +134,9 @@ module Controller
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s, account.settings )
+      respond Libertree.render( request['s'].to_s,
+                                account.settings,
+                                [ Libertree.method(:jid_renderer) ] )
     end
 
     # This is not in the Posts controller because we will handle many other search
