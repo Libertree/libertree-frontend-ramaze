@@ -97,8 +97,10 @@ $(document).ready( function() {
       var entireText = request.term;
       var textUpToCursor = entireText.substring(0, this.element.textCursorPosition());
       var indexOfAtSymbol = textUpToCursor.search(/@\S{2,}$/);  /* require at least 2 characters */
-      if( indexOfAtSymbol == -1 ) {
-        this.element.autocomplete('close');
+      if(
+        indexOfAtSymbol == -1 ||
+        textUpToCursor.charAt(indexOfAtSymbol-1).search(/\S/) > -1  /* Non-space before at symbol */
+      ) {
         return;
       }
 
