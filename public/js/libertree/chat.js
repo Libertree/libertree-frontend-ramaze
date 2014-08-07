@@ -6,80 +6,80 @@ Libertree.Chat = (function () {
 
   // n is of type string
   var updateNumUnseen = function(n) {
-      if( n === '0' ) {
-        $('#num-chat-unseen').hide();
-      } else {
-        $('#num-chat-unseen').show();
-      }
-      $('#num-chat-unseen').html(n);
-    },
-
-    // n is of type string
-    updateNumUnseenForPartner = function(memberId, n) {
-      var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]'),
-        indicator = tab.find('.num-chat-unseen');
-
-      if( n === '0' ) {
-        indicator.hide();
-      } else {
-        indicator.show();
-      }
-      indicator.html(n);
-    },
-
-    syncUIDimensions = function () {
-      $('#chat-window .log.active .messages').height(
-        $('#chat-window').height() - 200
-      );
-      $('#chat_new_partner_chzn').width(
-        $('#chat-window').width() - 10
-      );
-    },
-
-    activateConversation = function (memberId) {
-      $('#chat-window .tab, #chat-window .log').removeClass('active');
-      $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
-      $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
-      $('#chat-window .log.active .textarea-chat').focus();
-      syncUIDimensions();
-      $('#chat-window .log.active .messages').scrollTop(999999);
-    },
-
-    fetchConversationWith = function (memberId, andActivate) {
-      if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
-        activateConversation(memberId);
-        return false;
-      }
-
-      $.get(
-        '/chat/_tab/'+memberId,
-        function(html) {
-          $(html).appendTo('#chat-window .tabs');
+        if( n === '0' ) {
+          $('#num-chat-unseen').hide();
+        } else {
+          $('#num-chat-unseen').show();
         }
-      );
-      $.get(
-        '/chat/_log/'+memberId,
-        function(html) {
-          var o = $(html);
-          o.appendTo('#chat-window .logs');
-          o.find('.messages').scrollTop(999999);
-          o.find('.textarea-chat').focus();
-          if( andActivate ) {
-            activateConversation(memberId);
+        $('#num-chat-unseen').html(n);
+      },
+
+      // n is of type string
+      updateNumUnseenForPartner = function(memberId, n) {
+        var tab = $('#chat-window .tab[data-member-id="'+memberId+'"]'),
+            indicator = tab.find('.num-chat-unseen');
+
+        if( n === '0' ) {
+          indicator.hide();
+        } else {
+          indicator.show();
+        }
+        indicator.html(n);
+      },
+
+      syncUIDimensions = function () {
+        $('#chat-window .log.active .messages').height(
+          $('#chat-window').height() - 200
+        );
+        $('#chat_new_partner_chzn').width(
+          $('#chat-window').width() - 10
+        );
+      },
+
+      activateConversation = function (memberId) {
+        $('#chat-window .tab, #chat-window .log').removeClass('active');
+        $('#chat-window .tab[data-member-id="'+memberId+'"]').addClass('active');
+        $('#chat-window .log[data-member-id="'+memberId+'"]').addClass('active');
+        $('#chat-window .log.active .textarea-chat').focus();
+        syncUIDimensions();
+        $('#chat-window .log.active .messages').scrollTop(999999);
+      },
+
+      fetchConversationWith = function (memberId, andActivate) {
+        if( $('#chat-window .tab[data-member-id="'+memberId+'"]').length ) {
+          activateConversation(memberId);
+          return false;
+        }
+
+        $.get(
+          '/chat/_tab/'+memberId,
+          function(html) {
+            $(html).appendTo('#chat-window .tabs');
           }
-        }
-      );
-    },
+        );
+        $.get(
+          '/chat/_log/'+memberId,
+          function(html) {
+            var o = $(html);
+            o.appendTo('#chat-window .logs');
+            o.find('.messages').scrollTop(999999);
+            o.find('.textarea-chat').focus();
+            if( andActivate ) {
+              activateConversation(memberId);
+            }
+          }
+        );
+      },
 
-    markConversationSeen = function (memberId) {
-      $.get(
-        '/chat/seen/'+memberId,
-        function(html) {
-          updateNumUnseen(html);
-          updateNumUnseenForPartner(memberId, '0');
-        }
-      );
-    };
+      markConversationSeen = function (memberId) {
+        $.get(
+          '/chat/seen/'+memberId,
+          function(html) {
+            updateNumUnseen(html);
+            updateNumUnseenForPartner(memberId, '0');
+          }
+        );
+      };
 
   return {
     fetchMessage: function(chatMessage) {
