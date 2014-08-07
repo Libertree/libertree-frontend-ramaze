@@ -26,7 +26,8 @@ module Controller
 
       {
         'label' => selection_text,
-        'value' => member.handle
+        'value' => member.handle,
+        'avatar_img_src' => member_img_path(member),
       }
     end
 

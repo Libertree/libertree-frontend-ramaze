@@ -30,6 +30,15 @@ $.fn.setTextCursorPosition = function(index) {
     }
 }
 
+$.widget('custom.libertreeAutocomplete', $.ui.autocomplete, {
+  _renderItem: function( ul, item ) {
+    return $('<li>')
+      .append( $('<img src="'+item.avatar_img_src+'">') )
+      .append( $('<a>').text(item.label) )
+      .appendTo(ul);
+  }
+});
+
 Libertree.UI = (function () {
   "use strict";
 

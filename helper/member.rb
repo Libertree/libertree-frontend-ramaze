@@ -1,12 +1,16 @@
 module Ramaze
   module Helper
     module Member
-      def member_img(member, styles="avatar")
+      def member_img_path(member)
         path = "/images/avatars/#{member.id}.png"
         if ! File.exists?(File.join(options.roots.first, options.publics.first, path))
           path = "/themes/#{current_theme}/images/avatar-default.png"
         end
-        %|<img src="#{path}" class="#{styles}" alt="#{member.name_display}" title="#{member.name_display}" data-member-id="#{member.id}"/>|
+        path
+      end
+
+      def member_img(member, styles="avatar")
+        %|<img src="#{member_img_path(member)}" class="#{styles}" alt="#{member.name_display}" title="#{member.name_display}" data-member-id="#{member.id}"/>|
       end
 
       def member_avatar_link(member)
