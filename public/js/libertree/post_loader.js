@@ -89,6 +89,6 @@ Libertree.PostLoader = (function () {
 
   return {
     mkLoader: mkLoader,
-    loadFromRiver: mkLoader('river'), /*needed for new post loader in home.js*/
+    loadFromRiver: mkLoader('river') /*needed for new post loader in home.js*/
   };
 }());

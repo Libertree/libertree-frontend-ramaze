@@ -178,7 +178,7 @@ Libertree.Chat = (function () {
               $('input#chat-new-partner').select2(
                   jQuery.extend(Libertree.UI.selectDefaults,
                                 { multiple: false,
-                                  width: '100%',
+                                  width: '100%'
                                 })).
                     change(function (event) {
                         fetchConversationWith(event.val, true);
