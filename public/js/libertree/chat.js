@@ -88,8 +88,8 @@ Libertree.Chat = (function () {
         '/chat/_message/' + chatMessage.id,
         function(html) {
           var o = $( $.trim(html) ),
-            height,
-            animationDuration;
+              height,
+              animationDuration;
 
           o.appendTo(messages);
           height = o.height();
@@ -155,8 +155,9 @@ Libertree.Chat = (function () {
               Libertree.Session.ensureAlive(html);
               Libertree.UI.removeSpinner('#chat-window');
               $('#chat-window').hide();
-              var o = $( $.trim(html) );
-              var memberId = o.find('.log.active').data('member-id');
+              var o = $( $.trim(html) ),
+                  memberId = o.find('.log.active').data('member-id');
+
               if (memberId) {
                 markConversationSeen( memberId );
               }
@@ -207,7 +208,7 @@ Libertree.Chat = (function () {
         }
 
         var textarea = $(this),
-          memberId = textarea.closest('.log').data('member-id');
+            memberId = textarea.closest('.log').data('member-id');
 
         textarea.prop('disabled', true);
         Libertree.UI.TextAreaBackup.disable();
@@ -232,8 +233,8 @@ Libertree.Chat = (function () {
 
       $(document).on('click', '#chat-window .tab .close', function() {
         var tab = $(this).closest('.tab'),
-          memberId = tab.data('member-id'),
-          tabToActivate = tab.next();
+            memberId = tab.data('member-id'),
+            tabToActivate = tab.next();
 
         if( tabToActivate.length === 0 ) {
           tabToActivate = tab.prev();

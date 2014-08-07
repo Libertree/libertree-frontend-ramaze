@@ -24,8 +24,8 @@ Libertree.Pools = (function () {
   return {
     createPoolAndAddPost: function(post) {
       var postId = post.data('post-id'),
-        textField = post.find('.pools .chzn-search input'),
-        poolName = textField.val();
+          textField = post.find('.pools .chzn-search input'),
+          poolName = textField.val();
 
       textField.prop('disabled', true);
 
@@ -48,8 +48,8 @@ Libertree.Pools = (function () {
     removePostHandler: function(e) {
       e.preventDefault();
       var post = $(this).closest('div.post, div.post-excerpt'),
-        postId = post.data('post-id'),
-        poolId = $(this).data('pool-id');
+          postId = post.data('post-id'),
+          poolId = $(this).data('pool-id');
 
       $.get(
         '/pools/_remove_post/' + poolId + '/' + postId,
@@ -69,10 +69,10 @@ Libertree.Pools = (function () {
       }
 
       var x = e.clientX,
-        y = e.clientY,
-        collect_link = $(this),
-        post = collect_link.closest('div.post, div.post-excerpt'),
-        postId = post.data('post-id');
+          y = e.clientY,
+          collect_link = $(this),
+          post = collect_link.closest('div.post, div.post-excerpt'),
+          postId = post.data('post-id');
 
       $('div.pools').remove();
       Libertree.UI.enableIconSpinner(collect_link.find('img'));
@@ -82,7 +82,7 @@ Libertree.Pools = (function () {
         function(html) {
           Libertree.UI.disableIconSpinner(collect_link.find('img'));
           var o = $(html),
-            option;
+              option;
 
           o.insertAfter(post.find('.meta'));
           if( o.find('option').length === 2 ) {

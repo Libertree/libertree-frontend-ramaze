@@ -4,7 +4,7 @@ Libertree.Notifications = {
     return function (event) {
       event.preventDefault();
       var ids = $(this).data('notification-ids'),
-        target = $(event.target).attr('href');
+          target = $(event.target).attr('href');
 
       $(this).removeClass(old_state).addClass(new_state);
       /* Also toggle on Notifications page */

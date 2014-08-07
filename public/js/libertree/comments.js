@@ -49,9 +49,9 @@ Libertree.Comments = {
 
   loadMore: function( linkClicked, dontSlide ) {
     var post = linkClicked.closest('.post, .post-excerpt'),
-      postId = post.data('post-id'),
-      comments = post.find('.comments'),
-      toId = comments.find('.comment:first').data('comment-id');
+        postId = post.data('post-id'),
+        comments = post.find('.comments'),
+        toId = comments.find('.comment:first').data('comment-id');
 
     Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
     $.get(
@@ -92,9 +92,9 @@ Libertree.Comments = {
   submit: function (event) {
     event.preventDefault();
     var submitButton = $(this),
-      form = submitButton.closest('form.comment'),
-      textarea = form.find('textarea.comment'),
-      postId = form.data('post-id');
+        form = submitButton.closest('form.comment'),
+        textarea = form.find('textarea.comment'),
+        postId = form.data('post-id');
 
     submitButton.prop('disabled', true);
     Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );

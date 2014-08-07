@@ -42,7 +42,7 @@ $(document).ready( function() {
   $(document).on('mouseover', '.overflowed img', function() {
     // do not do anything when this post is currently being expanded
     var excerpt = $(this).closest('.excerpt'),
-      overflowed = excerpt.find('.overflowed').not(':animated');
+        overflowed = excerpt.find('.overflowed').not(':animated');
 
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
     if( overflowed.length > 0 && excerpt.find('.post-text').height() > overflowed.height() ) {

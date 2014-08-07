@@ -75,9 +75,8 @@ Libertree.Posts = (function () {
                 '/posts/_excerpt/' + result.postId,
                 function(html) {
                   var o = $( $.trim(html) ),
-                    verticalDelta,
-                    animationDuration
-                  ;
+                      verticalDelta,
+                      animationDuration;
 
                   o.insertBefore('#post-excerpts .post-excerpt:first');
                   /* Adjust by 60 pixels to account for navigation bar */
@@ -122,7 +121,7 @@ Libertree.Posts = (function () {
 
         $(document).on('click', '.mark-unread', function() {
           var post = $(this).closest('div.post, div.post-excerpt'),
-            icon = post.find('.mark-unread img');
+              icon = post.find('.mark-unread img');
 
           Libertree.UI.enableIconSpinner(icon);
           $.get(
@@ -191,18 +190,18 @@ Libertree.Posts = (function () {
         $(document).on('click', '.post-tools .delete',
           function (event) {
             var $this = $(this),
-              post = $this.closest('div.post, div.post-excerpt'),
-              postId = post.data('post-id'),
-              poolId = $this.data('pool-id'),
-              fn = function () {
-                     $.get(
-                       '/posts/destroy/' + postId + '.json',
-                       function () {
-                         /* TODO: Check for success */
-                         post.slideUp(1000);
-                       }
-                     );
-                   };
+                post = $this.closest('div.post, div.post-excerpt'),
+                postId = post.data('post-id'),
+                poolId = $this.data('pool-id'),
+                fn = function () {
+                  $.get(
+                    '/posts/destroy/' + postId + '.json',
+                    function () {
+                      /* TODO: Check for success */
+                      post.slideUp(1000);
+                    }
+                  );
+                };
             Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
           });
 

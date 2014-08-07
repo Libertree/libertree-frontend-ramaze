@@ -6,7 +6,7 @@ Libertree.PostLoader = (function () {
 
   var mkLoader = function (type) {
     var endpoint,
-      loading = false;
+        loading = false;
 
     switch (type) {
     case 'river':
@@ -50,8 +50,8 @@ Libertree.PostLoader = (function () {
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function (html) {
           var DOMNodes = $($.trim(html)),
-            excerpts = Libertree.UI.animatableNodesOnly(DOMNodes),
-            container = $('<div/>');
+              excerpts = Libertree.UI.animatableNodesOnly(DOMNodes),
+              container = $('<div/>');
 
           excerpts.css('display', 'none');
 

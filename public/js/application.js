@@ -50,9 +50,10 @@ $(document).ready( function() {
   $('textarea, input[type="text"]').libertreeAutocomplete( {
     delay: 500,
     source: function( request, response ) {
-      var entireText = request.term;
-      var textUpToCursor = entireText.substring(0, this.element.textCursorPosition());
-      var indexOfAtSymbol = textUpToCursor.search(/@\S{2,}$/);  /* require at least 2 characters */
+      var entireText = request.term,
+          textUpToCursor = entireText.substring(0, this.element.textCursorPosition()),
+          indexOfAtSymbol = textUpToCursor.search(/@\S{2,}$/);  /* require at least 2 characters */
+
       if(
         indexOfAtSymbol == -1 ||
         textUpToCursor.charAt(indexOfAtSymbol-1).search(/\S/) > -1  /* Non-space before at symbol */
@@ -60,9 +61,10 @@ $(document).ready( function() {
         return response([]);
       }
 
-      var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+1);
-      var post = $(this.element).closest('[data-post-id]');
-      var post_id;
+      var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+1),
+          post = $(this.element).closest('[data-post-id]'),
+          post_id;
+
       if( post.length ) {
         post_id = post.data('post-id')
       }
