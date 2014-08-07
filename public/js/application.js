@@ -32,51 +32,7 @@ $(document).ready( function() {
     $("a[rel=popover]").popover('hide');
   } );
 
-
-  $(document).on('click', 'input.preview', function() {
-    var $this = $(this);
-    var unrendered = $this.closest('form').find('textarea[name="text"]').val();
-
-    // abort unless there is text to be rendered
-    if (unrendered.length === 0) {
-      return false;
-    }
-
-    var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message'),
-      preview_heading = $this.data('preview-heading'),
-      close_label = $this.data('preview-close-label'),
-      type = $this.data('type'),
-      textType = null;
-
-    if( type === 'post' ) {
-      textType = 'post-text';
-    }
-
-    $.post(
-      '/_render',
-      { s: unrendered },
-      function(html) {
-        var scrollable = target.closest('div.comments-pane'),
-          delta;
-
-        Libertree.Session.ensureAlive(html);
-        if( target.length > 0 ) {
-          $('.preview-box').remove();
-          target.append( $('<div class="preview-box" class="'+type+'"><a class="close-preview" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
-          if( scrollable.length === 0 ) {
-            scrollable = Libertree.UI.scrollable();
-            delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
-          } else {
-            delta = $('.preview-box').offset().top - 100;
-          }
-          scrollable.animate(
-            { scrollTop: scrollable.scrollTop() + delta },
-            delta * 2
-          );
-        }
-      }
-    );
-  } );
+  $(document).on('click', 'input.preview', Libertree.UI.renderPreview);
 
   $(document).on('click', '.preview-box a.close-preview', function() {
     $(this).closest('.preview-box').remove();
