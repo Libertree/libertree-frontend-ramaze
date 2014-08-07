@@ -7,8 +7,8 @@ $(document).ready( function() {
   $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
     var commentsDiv = $(this).closest('div.comments'),
-      commentsPane = $(this).closest('div.comments-pane'),
-      targetScrollTop = commentsDiv.height() - commentsPane.height();
+        commentsPane = $(this).closest('div.comments-pane'),
+        targetScrollTop = commentsDiv.height() - commentsPane.height();
 
     commentsPane.animate(
       { scrollTop: targetScrollTop },
@@ -37,7 +37,7 @@ $(document).ready( function() {
   $(document).on('click', '.comment .delete', function(event) {
     event.preventDefault();
     var $this = $(this),
-      comment = $this.closest('.comment');
+        comment = $this.closest('.comment');
 
     if( confirm($this.data('msg')) ) {
       $.get( '/comments/destroy/' + comment.data('comment-id') );
@@ -48,10 +48,10 @@ $(document).ready( function() {
   $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
     var source = $(this),
-      member_id = source.data('member-id'),
-      source_comment = source.closest('div.comment'),
-      candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
-      target_comment = null;
+        member_id = source.data('member-id'),
+        source_comment = source.closest('div.comment'),
+        candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
+        target_comment = null;
 
     $.each( candidates, function() {
       if( Number($(this).data('comment-id')) < Number(source_comment.data('comment-id')) ) {
@@ -122,7 +122,7 @@ $(document).ready( function() {
   $(document).on('click', '.detachable .detach', function(event) {
     event.preventDefault();
     var detachable = $(this).closest('.detachable'),
-      offset = detachable.offset();
+        offset = detachable.offset();
 
     detachable.addClass('detached');
     detachable.addClass('has-shadow');

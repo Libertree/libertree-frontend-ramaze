@@ -149,13 +149,13 @@ Libertree.UI = (function () {
 
     showMore: function (showMoreLink) {
       var excerpt = showMoreLink.siblings('.excerpt'),
-        overflowed = excerpt.find('.overflowed'),
-        excerptParent = showMoreLink.closest('.post-excerpt'),
-        postId = excerptParent.data('post-id'),
-        comments = excerptParent.find('div.comments'),
-        commentHeight = comments.get(0).scrollHeight,
-        heightDifference,
-        animationDuration;
+          overflowed = excerpt.find('.overflowed'),
+          excerptParent = showMoreLink.closest('.post-excerpt'),
+          postId = excerptParent.data('post-id'),
+          comments = excerptParent.find('div.comments'),
+          commentHeight = comments.get(0).scrollHeight,
+          heightDifference,
+          animationDuration;
 
       Libertree.Posts.markRead(postId);
       showMoreLink.hide();
@@ -186,14 +186,14 @@ Libertree.UI = (function () {
 
     showLess: function (link) {
       var excerpt = link.closest('.post-excerpt'),
-        overflowed = excerpt.find('.overflowed'),
-        comments = excerpt.find('div.comments'),
-        distance = excerpt.height() - overflowed.data('contracted-height'),
-        animationDuration = Libertree.UI.duration(distance),
-        excerptTop = excerpt.position().top,
-        scrollable = Libertree.UI.scrollable(),
-        windowTop = scrollable.scrollTop(),
-        scrollTop = excerptTop - windowTop;
+          overflowed = excerpt.find('.overflowed'),
+          comments = excerpt.find('div.comments'),
+          distance = excerpt.height() - overflowed.data('contracted-height'),
+          animationDuration = Libertree.UI.duration(distance),
+          excerptTop = excerpt.position().top,
+          scrollable = Libertree.UI.scrollable(),
+          windowTop = scrollable.scrollTop(),
+          scrollTop = excerptTop - windowTop;
 
       link.hide();
 
@@ -224,10 +224,10 @@ Libertree.UI = (function () {
 
     jumpToCommentField: function (excerpt) {
       var scrollable = Libertree.UI.scrollable(),
-        scrollTop = scrollable.scrollTop(),
-        heightDifference,
-        excerptTruncation,
-        animationDuration;
+          scrollTop = scrollable.scrollTop(),
+          heightDifference,
+          excerptTruncation,
+          animationDuration;
 
       heightDifference = Libertree.UI.showMore(excerpt.find('.show-more'));
       animationDuration = Libertree.UI.duration(heightDifference);
@@ -250,7 +250,7 @@ Libertree.UI = (function () {
 
     markdownInjector: function () {
       var $this = $(this),
-        textarea = $this.closest('.markdown-injector').siblings('textarea');
+          textarea = $this.closest('.markdown-injector').siblings('textarea');
 
       switch ($this.data('markdown')) {
       case "title":
@@ -351,7 +351,7 @@ Libertree.UI = (function () {
 
     TextAreaBackup: (function () {
       var timer,
-        stored = '';
+          stored = '';
 
       return {
         enable: function() {
@@ -412,10 +412,9 @@ Libertree.UI = (function () {
     },
 
     indicateNewPosts: function (data) {
-      var
-        indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
-        numNewPosts = data.postIds.length
-      ;
+      var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
+          numNewPosts = data.postIds.length;
+
       if( indicator.length ) {
         /* Don't count posts which are already shown in the river */
         $.each( data.postIds, function(i, postId) {
@@ -432,7 +431,7 @@ Libertree.UI = (function () {
 
     renderPreview: function () {
       var $this = $(this),
-        unrendered = $this.closest('form').find('textarea[name="text"]').val();
+          unrendered = $this.closest('form').find('textarea[name="text"]').val();
 
       // abort unless there is text to be rendered
       if (unrendered.length === 0) {
@@ -440,10 +439,10 @@ Libertree.UI = (function () {
       }
 
       var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message'),
-        preview_heading = $this.data('preview-heading'),
-        close_label = $this.data('preview-close-label'),
-        type = $this.data('type'),
-        textType = null;
+          preview_heading = $this.data('preview-heading'),
+          close_label = $this.data('preview-close-label'),
+          type = $this.data('type'),
+          textType = null;
 
       if( type === 'post' ) {
         textType = 'post-text';
@@ -454,7 +453,7 @@ Libertree.UI = (function () {
         { s: unrendered },
         function(html) {
           var scrollable = target.closest('div.comments-pane'),
-            delta;
+              delta;
 
           Libertree.Session.ensureAlive(html);
           if( target.length > 0 ) {
@@ -478,9 +477,9 @@ Libertree.UI = (function () {
     // register content loaders as continuous scroll handlers
     registerScrollHandler: function () {
       var loaderContainer = $('.autoload-container'),
-        loaderType,
-        loaderArgs,
-        loader;
+          loaderType,
+          loaderArgs,
+          loader;
 
       if (loaderContainer) {
         loaderType = loaderContainer.data('loader-type');
