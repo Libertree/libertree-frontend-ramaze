@@ -6,13 +6,15 @@ $(document).ready( function() {
 
   $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
-    var comments = $(this).closest('div.comments');
-    comments.animate(
-      { scrollTop: comments.scrollTop() + comments.height() + 200 },
-      ( $('.detachable').position().top - 500 ) * 2,
+    var commentsDiv = $(this).closest('div.comments');
+    var commentsPane = $(this).closest('div.comments-pane');
+    var targetScrollTop = commentsDiv.height() - commentsPane.height();
+    commentsPane.animate(
+      { scrollTop: targetScrollTop },
+      targetScrollTop - commentsPane.scrollTop(),
       'easeOutQuint',
       function() {
-        comments.find('textarea').focus().hide().fadeIn();
+        commentsPane.find('textarea').focus().hide().fadeIn();
       }
     );
   } );
