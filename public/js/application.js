@@ -66,7 +66,7 @@ $(document).ready( function() {
           post_id;
 
       if( post.length ) {
-        post_id = post.data('post-id')
+        post_id = post.data('post-id');
       }
 
       $.get(

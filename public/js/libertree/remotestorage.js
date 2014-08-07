@@ -51,7 +51,7 @@ Libertree.RemoteStorage = (function () {
                     msgbox.show();
                 }
             ).then(cb);
-        }
+        };
         reader.readAsArrayBuffer(file);
         reader.onload = shipOff;
     }
