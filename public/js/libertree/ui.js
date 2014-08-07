@@ -218,7 +218,7 @@ Libertree.UI = (function () {
         $('div.spoilers').each( function () { initSpoiler($(this)); } );
     },
 
-    jumpToComments: function (excerpt) {
+    jumpToCommentField: function (excerpt) {
       var scrollable = Libertree.UI.scrollable(),
         scrollTop = scrollable.scrollTop(),
         heightDifference,

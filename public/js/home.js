@@ -29,7 +29,7 @@ $(document).ready( function() {
 
   $(document).on('click', '.post-excerpt .post-tools a.comment', function (event) {
     event.preventDefault();
-    Libertree.UI.jumpToComments( $(this).closest('.post-excerpt') );
+    Libertree.UI.jumpToCommentField( $(this).closest('.post-excerpt') );
   });
 
   /* Displays "show more" when hovering over an image.
