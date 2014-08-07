@@ -77,47 +77,7 @@ $(document).ready( function() {
     Libertree.Comments.unlike( $(this), event, 'div.comment' );
   } );
 
-  $(document).on('click', 'form.comment input.submit', function(event) {
-    event.preventDefault();
-    var submitButton = $(this),
-      form = submitButton.closest('form.comment'),
-      textarea = form.find('textarea.comment'),
-      postId = form.data('post-id');
-
-    submitButton.prop('disabled', true);
-    Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
-    Libertree.UI.TextAreaBackup.disable();
-
-    $.post(
-      '/comments/create.json',
-      {
-        post_id: postId,
-        text: textarea.val()
-      },
-      function(response) {
-        var post;
-
-        if( response.success ) {
-          textarea.val('').height(50);
-          $('.preview-box').remove();
-          post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
-          post.find('.subscribe').addClass('hidden');
-          post.find('.unsubscribe').removeClass('hidden');
-
-          if( $('#comment-'+response.commentId).length === 0 ) {
-            form.closest('.comments').find('.success')
-              .attr('data-comment-id', response.commentId) /* setting with .data() can't be read with later .data() call */
-              .fadeIn()
-            ;
-          }
-        } else {
-          alert(submitButton.data('msg-failure'));
-        }
-        submitButton.prop('disabled', false);
-        Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
-      }
-    );
-  } );
+  $(document).on('click', 'form.comment input.submit', Libertree.Comments.submit);
 
   $(document).on('click', '.detachable .detach', function(event) {
     event.preventDefault();
