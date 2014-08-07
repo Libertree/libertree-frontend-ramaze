@@ -6,9 +6,10 @@ $(document).ready( function() {
 
   $(document).on('click', '.jump-to-comment', function(event) {
     event.preventDefault();
-    var commentsDiv = $(this).closest('div.comments');
-    var commentsPane = $(this).closest('div.comments-pane');
-    var targetScrollTop = commentsDiv.height() - commentsPane.height();
+    var commentsDiv = $(this).closest('div.comments'),
+      commentsPane = $(this).closest('div.comments-pane'),
+      targetScrollTop = commentsDiv.height() - commentsPane.height();
+
     commentsPane.animate(
       { scrollTop: targetScrollTop },
       targetScrollTop - commentsPane.scrollTop(),
