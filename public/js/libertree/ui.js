@@ -15,19 +15,19 @@ $.fn.textCursorPosition = function() {
 
 /* Taken from http://stackoverflow.com/a/10227475/28558 */
 $.fn.setTextCursorPosition = function(index) {
-    var range;
+  var range;
 
-    /* different ways to do it due to browser differences */
-    if (this[0].createTextRange) {
-      range = this[0].createTextRange();
-      range.move('character', index);
-      range.select();
-    } else {
-      this[0].focus();
-      if (this[0].selectionStart !== undefined) {
-        this[0].setSelectionRange(index, index);
-      }
+  /* different ways to do it due to browser differences */
+  if (this[0].createTextRange) {
+    range = this[0].createTextRange();
+    range.move('character', index);
+    range.select();
+  } else {
+    this[0].focus();
+    if (this[0].selectionStart !== undefined) {
+      this[0].setSelectionRange(index, index);
     }
+  }
 };
 
 $.widget('custom.libertreeAutocomplete', $.ui.autocomplete, {
