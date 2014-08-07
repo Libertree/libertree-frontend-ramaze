@@ -11,7 +11,7 @@ $.fn.textCursorPosition = function() {
     pos = 0 - range.duplicate().moveStart('character', -100000);
   }
   return pos;
-}
+};
 
 /* Taken from http://stackoverflow.com/a/10227475/28558 */
 $.fn.setTextCursorPosition = function(index) {
@@ -28,7 +28,7 @@ $.fn.setTextCursorPosition = function(index) {
         this[0].setSelectionRange(index, index);
       }
     }
-}
+};
 
 $.widget('custom.libertreeAutocomplete', $.ui.autocomplete, {
   _renderItem: function( ul, item ) {
