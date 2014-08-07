@@ -69,33 +69,33 @@ Libertree.UI = (function () {
     threshold: 700, // pixels, same as used by @media queries in CSS
     autoResizeTextareas: true, // overridden by serverside initialization
     selectDefaults: {
-        width: '450px',
-        multiple: true,
-        minimumInputLength: 3,
-        //TRANSLATEME
-        //formatSearching: function () { return "Searching ..." },
-        formatInputTooShort: false, // do not show "type n more characters to search"
-        initSelection : function (element, callback) {
-            var data = [];
-            $(element.val().split(",")).each(function () {
-              var parts = this.split("=");
-              data.push({id: parts[0], text: parts[1]});
-            });
-            element.val('');
-            callback(data);
-        },
+      width: '450px',
+      multiple: true,
+      minimumInputLength: 3,
+      //TRANSLATEME
+      //formatSearching: function () { return "Searching ..." },
+      formatInputTooShort: false, // do not show "type n more characters to search"
+      initSelection : function (element, callback) {
+        var data = [];
+        $(element.val().split(",")).each(function () {
+          var parts = this.split("=");
+          data.push({id: parts[0], text: parts[1]});
+        });
+        element.val('');
+        callback(data);
+      },
 
-        // TODO: move search.json out of messages to a shared location
-        ajax: {
-            url: "/messages/search.json",
-            dataType: 'json',
-            data: function (term, page) {
-                return { q: term };
-            },
-            results: function (data, page) {
-                return {results: data};
-            }
+      // TODO: move search.json out of messages to a shared location
+      ajax: {
+        url: "/messages/search.json",
+        dataType: 'json',
+        data: function (term, page) {
+          return { q: term };
         },
+        results: function (data, page) {
+          return {results: data};
+        }
+      }
     },
 
     confirmAction: function (event) {
