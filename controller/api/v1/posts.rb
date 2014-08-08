@@ -23,14 +23,19 @@ module Controller
           visibility = request['visibility'] || 'forest'
           visibility = visibility.to_s
 
-          post = Libertree::Model::Post.create(
-            member_id:  @account.member.id,
-            visibility: visibility,
-            text:       request['text'].to_s,
-            via:        Libertree.plain( request['source'].to_s )
-          )
+          text = request['text'].to_s
+          if Libertree::Model::Post.urls_already_posted?(text)
+            respond '', 403
+          else
+            post = Libertree::Model::Post.create(
+              member_id:  @account.member.id,
+              visibility: visibility,
+              text:       text,
+              via:        Libertree.plain( request['source'].to_s )
+            )
 
-          { 'success' => true, 'id' => post.id }.to_json
+            { 'success' => true, 'id' => post.id }.to_json
+          end
         end
       end
     end
