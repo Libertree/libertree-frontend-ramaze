@@ -60,9 +60,25 @@ $(document).ready( function() {
       }
     } );
     if( target_comment ) {
-      target_comment.find('.go-ref-back').attr('href', '#' + source_comment.attr('id')).show();
-      target_comment.css('opacity', '0').animate({opacity: 1.0}, 2000);
-      window.location = '#' + target_comment.attr('id');
+      var scrollable, targetScrollTop;
+
+      scrollable = target_comment.closest('div.comments-pane');
+      if( scrollable.length ) {
+        targetScrollTop = scrollable.scrollTop() + target_comment.position().top;
+      } else {
+        scrollable = Libertree.UI.scrollable();
+        targetScrollTop = target_comment.position().top;
+      }
+
+      scrollable.animate(
+        { scrollTop: targetScrollTop },
+        scrollable.scrollTop() - targetScrollTop,
+        'easeOutQuint',
+        function() {
+          target_comment.find('.go-ref-back').attr('href', '#' + source_comment.attr('id')).show();
+          target_comment.css('opacity', '0').animate({opacity: 1.0}, 2000);
+        }
+      );
     }
   } );
   $(document).on('click', '.go-ref-back', function () {
