@@ -167,3 +167,14 @@ div.river .query {
         }
     }
 }
+
+.ui-widget {
+  font-family: $font_family;
+  font-size: 1em;
+
+  /* Does this actually change anything visually? */
+  button {
+    font-family: $font_family;
+    font-size: 1em;
+  }
+}
