@@ -50,7 +50,8 @@ $(document).ready( function() {
     var source = $(this),
         member_id = source.data('member-id'),
         source_comment = source.closest('div.comment'),
-        candidates = $('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
+        commentContainer = source.closest('div.comments'),
+        candidates = commentContainer.find('div.comment[data-commenter-member-id="'+member_id+'"]').toArray().reverse(),
         target_comment = null;
 
     $.each( candidates, function() {
