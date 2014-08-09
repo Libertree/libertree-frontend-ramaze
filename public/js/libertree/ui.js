@@ -58,8 +58,12 @@ Libertree.UI = (function () {
     initSpoiler = function (spoiler) {
       if (spoiler.siblings('a.spoiler-show').length === 0) {
         var msg = $('body').data('msg-spoiler-prompt'),
-          link = $('<a href="#" class="spoiler-show">'+msg+'</a>');
-        link.click(function () { spoiler.show(); link.hide(); });
+            link = $('<a href="#" class="spoiler-show">'+msg+'</a>');
+        link.click(function (event) {
+          event.preventDefault();
+          spoiler.show();
+          link.hide();
+        });
         link.insertBefore(spoiler);
       }
     };
