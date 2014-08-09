@@ -1,6 +1,10 @@
 <h3>#{_('New Post')}</h3>
 #{ Controller::Main.render_partial '_markdown_injector' }
 <textarea name="text" rows="5" id="textarea-post-new">#{session[:saved_text]['textarea-post-new']}</textarea>
+<div id="urls-already-posted-message">
+  #{_('The URL you are writing about has already been posted.')}
+  #{_('Please consider commenting on %s instead of sharing the URL again.' % "<a id='earlier-post'>#{_('the existing post')}</a>")}
+</div>
 <div id="settings">
   #{_('Visibility')}: <select name="visibility">
     <option value="internet">#{s_('visibility|Internet')}</option>

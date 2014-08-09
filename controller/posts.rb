@@ -269,5 +269,12 @@ module Controller
 
       redirect Posts.r(:show, post.id)
     end
+
+    def urls_already_posted
+      post = Libertree::Model::Post.urls_already_posted?(request.params['text'].to_s)
+      {
+        'post_id' => post ? post.id : ''
+      }
+    end
   end
 end

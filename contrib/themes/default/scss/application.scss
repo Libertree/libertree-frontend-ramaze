@@ -475,6 +475,15 @@ form.comment {
         padding: 1em;
         margin: -30px -30px 1em;
     }
+    #urls-already-posted-message {
+      display: none;
+      margin: 0.5em;
+      padding: 1em;
+      border: 2px solid $bark;
+      color: $bark;
+      font-weight: bold;
+      text-align: left;
+    }
     #settings {
         margin-top: 1em;
         text-align: left;

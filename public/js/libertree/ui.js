@@ -46,7 +46,8 @@ $.widget('custom.libertreeAutocomplete', $.ui.autocomplete, {
 Libertree.UI = (function () {
   "use strict";
 
-  var setSpeed = function(speed) {
+  var newPostURLCheckTimeout,
+    setSpeed = function(speed) {
       return function(pixels) {
         // calculate the duration to move an amount of pixels at a given speed
         return pixels * 1000 / speed;

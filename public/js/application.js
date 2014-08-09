@@ -88,4 +88,30 @@ $(document).ready( function() {
     change: Libertree.UI.memberHandleAutocompletion,
     select: Libertree.UI.memberHandleAutocompletion
   } );
+
+  $('textarea#textarea-post-new').on('keypress', function(event) {
+    clearTimeout(Libertree.UI.newPostURLCheckTimeout);
+
+    var text = $(this).val();
+    if(text.search(/https?:/) == -1) {
+      return;
+    }
+
+    Libertree.UI.newPostURLCheckTimeout = setTimeout(
+      function() {
+        $.get(
+          '/posts/urls_already_posted.json',
+          { text: text },
+          function(data) {
+            if(data.post_id) {
+              $('#earlier-post').attr('href', '/posts/show/'+data.post_id);
+              $('#urls-already-posted-message').slideDown();
+            } else {
+              $('#urls-already-posted-message').slideUp();
+            }
+          });
+      },
+      3000
+    );
+  } );
 } );

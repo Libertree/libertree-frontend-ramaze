@@ -86,6 +86,13 @@ msgid "new-post|Post"
 msgstr ""
 msgid "Publish to these springs:"
 msgstr ""
+msgid "The URL you are writing about has already been posted."
+msgstr ""
+msgid "Please consider commenting on %s instead of sharing the URL again."
+msgstr ""
+msgid "the existing post"
+msgstr ""
+
 
 #: view/comments/_comments.xhtml, view/posts/{new,edit}.xhtml
 msgid "Preview"
