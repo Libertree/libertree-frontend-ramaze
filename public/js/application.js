@@ -48,7 +48,6 @@ $(document).ready( function() {
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
 
   $('textarea, input[type="text"]').libertreeAutocomplete( {
-    delay: 500,
     source: function( request, response ) {
       var entireText = request.term,
           textUpToCursor = entireText.substring(0, this.element.textCursorPosition()),
