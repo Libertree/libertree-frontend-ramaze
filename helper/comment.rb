@@ -9,6 +9,10 @@ module Ramaze
       # - all comment ids of this member in this thread
       # - the display name
       # - the member id
+
+      # TODO: find an fast, efficient way to exclude commenters after
+      # a certain comment id.  We need this for the case when a
+      # comment contains the handle of a later commenter.
       def commenters(comments)
         @commenters ||= comments.reduce({}) do |hash,comment|
           handle = comment.member.handle
