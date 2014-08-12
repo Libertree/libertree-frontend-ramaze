@@ -65,14 +65,21 @@ module Libertree
     html
   end
 
-  # a render stage replacing <span rel='username'/> tags with commenter references
-  # if the contained username is that of a participant in the comment thread
+  # a render stage replacing <span rel='username'/> tags with
+  # commenter references if the contained username is that of a
+  # participant in the comment thread.  If the handle doesn't belong
+  # to a commenter but is a valid member handle, it is rendered as a
+  # profile link.
   def self.comment_jid_linker(html, commenters)
     html.xpath('.//span[@rel="username"]').each do |n|
       handle = n.content[1..-1].downcase
       if commenter = commenters[handle]
         display_name = ::CGI.escape_html(commenter[:name])
         content = %|<a class="commenter-ref" data-member-id="#{commenter[:id]}" title="#{_("Click to see previous comment by %s") % display_name}">@#{display_name}</a>|
+        n.replace(content)
+      elsif member = Libertree::Model::Member.with_handle(handle)
+        display_name = ::CGI.escape_html(member.name_display)
+        content = %|<a href="/profiles/show/#{member.id}" class="member-name" title="#{member.handle}">@#{display_name}</a>|
         n.replace(content)
       end
     end
