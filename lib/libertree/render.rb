@@ -92,7 +92,7 @@ module Libertree
       handle = n.content[1..-1].downcase
       if member = Libertree::Model::Member.with_handle(handle)
         display_name = ::CGI.escape_html(member.name_display)
-        content = %|<a href="/profiles/show/#{member.id}" class="member-name" title="#{member.handle}">@#{member.name_display}</a>|
+        content = %|<a href="/profiles/show/#{member.id}" class="member-name" title="#{member.handle}">@#{display_name}</a>|
         n.replace(content)
       end
     end
