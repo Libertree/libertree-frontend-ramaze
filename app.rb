@@ -49,7 +49,7 @@ end
 
 
 require 'libertree/embedder'
-require_relative 'lib/libertree/render'
+require_relative 'lib/libertree/rendering'
 require_relative 'lib/libertree/remotestorage'
 
 require_relative 'controller/base'

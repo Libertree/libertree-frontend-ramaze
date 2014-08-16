@@ -2,25 +2,9 @@
 require 'net/http'
 require 'nokogiri'
 require 'libertree/model'
+require 'libertree/render'
 
 module Libertree
-  RenderOptions = [ :filter_html,
-                    :smart,
-                    :strike,
-                    :autolink,
-                    :hard_wrap,
-                    :notes,
-                    :codeblock,
-                    :hashtags,
-                    :usernames,
-                    :spoilerblock
-                  ]
-
-  def self.markdownify(s, opts = RenderOptions)
-    return ''  if s.nil? or s.empty?
-    Markdown.new( s, *opts ).to_html.force_encoding('utf-8')
-  end
-
   def self.hashtaggify(s)
     return ''  if s.nil? or s.empty?
     s.gsub(/(?<=^|\p{Space}|\()#([\p{Word}\p{Pd}]+)(?=\p{Space}|\b|\)|$)/i) {
@@ -29,6 +13,7 @@ module Libertree
   end
 
   # @param [String] rendered markdown as HTML string
+  # TODO: rewrite to work on node set like all other additional render stages
   def self.autolinker(s)
     return ''  if s.nil? or s.empty?
 
@@ -155,21 +140,17 @@ module Libertree
   end
 
   def self.render_unsafe(s)
-    Markdown.new(
-      s,
-      :strike,
-      :autolink,
-      :hard_wrap
-    ).to_html.force_encoding('utf-8')
+    opts = [:strike, :autolink, :hard_wrap]
+    Render.to_html_string(s, opts)
   end
 
   # filter HTML but ignore markdown
   def self.plain(s, opts=nil)
-    Nokogiri::HTML.fragment(self.markdownify(s, opts)).inner_text
+    Render.to_html_nodeset(s, opts).inner_text
   end
 
   def self.render(s, settings={}, pipeline_steps=[])
-    opts = Libertree::RenderOptions.dup
+    opts = Render::Options.dup
     opts.push :no_images  if settings[:filter_images]
     opts.push :media      if settings[:autoembed]
 
@@ -186,7 +167,7 @@ module Libertree
     pipeline.compact!
 
     # apply methods sequentially to string
-    pipeline.reduce(markdownify(s, opts)) {|acc,f| f.call(acc)}.to_s
+    pipeline.reduce(Render.to_html_string(s, opts)) {|acc,f| f.call(acc)}.to_s
   end
 
   module HasRenderableText

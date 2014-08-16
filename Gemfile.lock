@@ -1,11 +1,12 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: d549c425f5f1acb8a26895f685c0a576b31c7caf
+  revision: 0943072311d5f7d1bc0dfed3550cb997f9b62826
   specs:
-    libertree-model (0.8.9)
+    libertree-model (0.9.0)
       bcrypt-ruby (= 3.0.1)
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
+      parkdown (~> 1.4.22)
       pg
       ruby-oembed (~> 0.8.8)
       sequel
@@ -32,12 +33,6 @@ GIT
   specs:
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
-
-GIT
-  remote: git://github.com/rekado/rpeg-markdown.git
-  revision: 15128cd9d8270cc61279ffdc478b52f89a63a220
-  specs:
-    rpeg-markdown (1.4.21)
 
 GEM
   remote: http://rubygems.org/
@@ -83,6 +78,7 @@ GEM
     net-ldap (0.5.1)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    parkdown (1.4.22)
     pg (0.17.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -168,7 +164,6 @@ DEPENDENCIES
   pry-byebug
   racksh
   ramaze!
-  rpeg-markdown!
   rspec
   ruby-debug-base19x (~> 0.11.30.pre4)
   ruby-debug19
