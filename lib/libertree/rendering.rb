@@ -12,21 +12,24 @@ module Libertree
     }
   end
 
-  # @param [String] rendered markdown as HTML string
-  # TODO: rewrite to work on node set like all other additional render stages
-  def self.autolinker(s)
-    return ''  if s.nil? or s.empty?
-
+  # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
+  def self.autolinker(html)
     # Crude autolinker for relative links to local resources
 
     # NOTE: when the :smart extension is enabled,
     # "/posts/show/987/123/#comment-123" is turned into
-    # "<p>/posts/show/987/123/#comment&ndash;123</p>".
+    # "<p>/posts/show/987/123/#comment–123</p>".
 
-    s.gsub(%r{(?<=^|\(|\[|\p{Space}|^<p>|^<li>)<?(/posts/show/\d+(/\d+/?(#comment(&ndash;|-)\d+)?|/(\d+/?)?)?)>?}) {
-      url = $1.gsub('&ndash;', '-')
-      "<a href='#{url}'>#{url}</a>"
-    }
+    pattern = %r{(?<=^|\(|\[|\p{Space})(/posts/show/\d+(/\d+/?(#comment(-|–)\d+)?|/(\d+/?)?)?)}
+
+    html.xpath('.//*[not(self::code)]/text()').each do |n|
+      linked = n.content.gsub(pattern) {
+        url = $1.gsub('–','-')
+        "<a href='#{url}'>#{url}</a>"
+      }
+      n.replace(linked)
+    end
+    html
   end
 
   # @param [Nokogiri::HTML::DocumentFragment] parsed HTML tree
@@ -155,8 +158,8 @@ module Libertree
     opts.push :media      if settings[:autoembed]
 
     pipeline = [
-      method(:autolinker),
       Nokogiri::HTML.method(:fragment),
+      method(:autolinker),
       method(:process_links),
       method(:apply_hashtags),
       (Embedder.method(:inject_objects)  if settings[:autoembed])

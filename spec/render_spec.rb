@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'spec_helper'
+require 'libertree/render'
 
 describe Libertree do
   describe '#render' do
@@ -80,33 +81,29 @@ tail}).should == %{<p>head</p>
   end
 
   describe '#autolinker' do
+    def test(input, expected=nil)
+      html = Libertree::Render.to_html_nodeset(input)
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{input}\">#{input}</a>")
+    end
     it 'should autolink relative URLs' do
-      url = "/posts/show/1234"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/123/"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/987/123#comment-123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/987/123/#comment-123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/987/123/#comment-123"
-      subject.autolinker("<#{url}>").should == %{<a href='#{url}'>#{url}</a>}
+      test "/posts/show/1234"
+      test "/posts/show/1234/"
+      test "/posts/show/1234/123"
+      test "/posts/show/1234/123/"
+      test "/posts/show/987/123#comment-123"
+      test "/posts/show/987/123/#comment-123"
+      test "/posts/show/987/123/#comment-123"
     end
 
     it 'should autolink relative URLs in weird contexts' do
       url = "/posts/show/987/123/#comment-123"
-      subject.autolinker("("+url).should == %{(<a href='#{url}'>#{url}</a>}
-      subject.autolinker("["+url).should == %{[<a href='#{url}'>#{url}</a>}
+      test "(#{url})"
+
+      html = Libertree::Render.to_html_nodeset("[#{url}](whatever)")
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{url}\">#{url}</a>")
+
+      html = Libertree::Render.to_html_nodeset("- #{url}\n- something\n- else\n\n")
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{url}\">#{url}</a>")
     end
   end
 end
