@@ -158,7 +158,6 @@ module Libertree
     opts.push :media      if settings[:autoembed]
 
     pipeline = [
-      Nokogiri::HTML.method(:fragment),
       method(:autolinker),
       method(:process_links),
       method(:apply_hashtags),
@@ -170,7 +169,7 @@ module Libertree
     pipeline.compact!
 
     # apply methods sequentially to string
-    pipeline.reduce(Render.to_html_string(s, opts)) {|acc,f| f.call(acc)}.to_s
+    pipeline.reduce(Render.to_html_nodeset(s, opts)) {|acc,f| f.call(acc)}.to_s
   end
 
   module HasRenderableText
