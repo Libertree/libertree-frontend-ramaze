@@ -68,10 +68,13 @@ module Controller
       return ""  if @post.nil?
       return ""  if ! @post.v_internet? && ! logged_in?
 
-      @comments = @post.comments( {
+      # if to_id is undefined (to_id.to_i == 0) refresh the cache.
+      opts = {
         limit: 8,
         to_id: to_id.to_i,
-      } )
+      }
+      opts.merge!({ refresh_cache: true })  if to_id.to_i == 0
+      @comments = @post.comments(opts)
 
       all_comments = @post.comments
       @commenters = commenters(all_comments)
