@@ -464,6 +464,7 @@ Libertree.UI = (function () {
           if( target.length > 0 ) {
             $('.preview-box').remove();
             target.append( $('<div class="preview-box" class="'+type+'"><a class="close-preview" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+            Libertree.UI.initSpoilers();
             if( scrollable.length === 0 ) {
               scrollable = Libertree.UI.scrollable();
               delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
