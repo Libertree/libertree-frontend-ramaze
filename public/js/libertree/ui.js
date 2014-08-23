@@ -58,7 +58,7 @@ Libertree.UI = (function () {
     initSpoiler = function (spoiler) {
       if( spoiler.prev('a.spoiler-show').length === 0 ) {
         var msg = $('body').data('msg-spoiler-prompt'),
-            link = $('<a href="#" class="spoiler-show">'+msg+'</a>');
+            link = $('<p><a href="#" class="spoiler-show">'+msg+'</a></p>');
         link.click(function (event) {
           event.preventDefault();
           spoiler.show();
