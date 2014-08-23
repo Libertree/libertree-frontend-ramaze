@@ -170,13 +170,7 @@ module Controller
           require_login
         end
 
-        # TODO: move this into post.glimpse?
-        length = 60
-        snippet = Libertree.plain(@post.text, [:no_images, :filter_html])[0...length]
-        if @post.text.length > length
-          snippet + '...'
-        end
-        @subtitle = %{#{@post.member.name_display} - "#{snippet}"}
+        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
 
         if from_comment_id
           @comment_fetch_options = {
