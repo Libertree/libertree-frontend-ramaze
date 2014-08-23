@@ -70,6 +70,7 @@ Libertree.Comments = {
         var initialScrollTop = scrollable.scrollTop();
         var initialHeight = comments.height();
         o.insertBefore(comments.find('.comment:first'));
+        Libertree.UI.initSpoilers();
         var delta = comments.height() - initialHeight;
         Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
 
