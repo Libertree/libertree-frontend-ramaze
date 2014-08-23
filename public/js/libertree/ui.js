@@ -56,7 +56,7 @@ Libertree.UI = (function () {
 
     /* insert clickable prompt before hidden element to show it */
     initSpoiler = function (spoiler) {
-      if (spoiler.siblings('a.spoiler-show').length === 0) {
+      if( spoiler.prev('a.spoiler-show').length === 0 ) {
         var msg = $('body').data('msg-spoiler-prompt'),
             link = $('<a href="#" class="spoiler-show">'+msg+'</a>');
         link.click(function (event) {
