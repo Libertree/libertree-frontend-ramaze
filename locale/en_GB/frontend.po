@@ -259,6 +259,8 @@ msgid "You already have a river for that."
 msgstr ""
 msgid "Please input a valid label for this river."
 msgstr ""
+msgid "You already have a river with this exact query."
+msgstr ""
 
 #: view/comments/_comments.xhtml
 

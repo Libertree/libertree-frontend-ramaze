@@ -124,6 +124,11 @@ module Controller
           flash[:error] = _('Please input a valid label for this river.')
           redirect_referrer
         else raise e end
+      rescue Sequel::UniqueConstraintViolation => e
+        if e.message =~ /rivers_account_id_key/
+          flash[:error] = _('You already have a river with this exact query.')
+          redirect_referrer
+        else raise e end
       end
 
       redirect r(:/)
