@@ -3,8 +3,8 @@ $(document).ready( function() {
     event.preventDefault();
     var selector = $('#river-selector'),
         riverId = event.val,
-        tag = selector.data('tag'),
-        url = '/rivers/_add_term/'+riverId+'/'+'%23'+tag;
+        tags = selector.data('tags'),
+        url = '/rivers/_add_term/'+riverId+'/'+tags;
 
     Libertree.UI.listHandler( selector, url );
   } );

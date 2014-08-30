@@ -13,24 +13,28 @@ module Controller
       end
     end
 
-    def index(tag)
-      redirect_referrer  if tag.nil?
+    def index(tag_string)
+      redirect_referrer  if tag_string.nil?
       @view = "excerpts-view tags"
-      @tag = tag.downcase
+      @tags = tag_string.split(' ').map(&:downcase)
+      @tag_string = tag_string
+      @tag_list = @tags.map{|tag| "##{tag}"}.join(' ')
+      @tag_river_query = @tags.map{|tag| "%23#{tag}"}.join('%20')
       @rivers = account.rivers_not_appended
 
       # TODO: better name for river_post_order?
       @post_order = session[:river_post_order]
       @posts = Libertree::Model::Post.with_tag(
-        tag: tag,
+        tag: @tags,
         order_by: @post_order,
         limit: 16,
       ).reverse
     end
 
-    def _more( tag, older_or_newer = 'older', time = Time.now.to_i )
+    def _more( tags, older_or_newer = 'older', time = Time.now.to_i )
+      tags = tags.split(' ').map(&:downcase)
       @posts = Libertree::Model::Post.with_tag(
-        tag: tag,
+        tag: tags,
         order_by: session[:river_post_order],
         limit: 8,
         time: time.to_f,
