@@ -721,6 +721,20 @@ form.search {
         padding-right: 30px;
     }
 }
+form.big-search {
+    display: block;
+    float: none;
+    width: 100%;
+    margin-bottom: 0.5em;
+    input {
+        @include border-box;
+        width: 100%;
+        padding: 0.5em;
+        background-image: url('../images/icon-search.png');
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+}
 
 a.go-ref-back {
     display: none;
