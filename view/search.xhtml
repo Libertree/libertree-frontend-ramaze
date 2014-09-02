@@ -5,11 +5,11 @@
   | <a href="#search-results-comments">#{s_('search-results|Comments')}</a>
 </p>
 
-<?r if (@profiles.length + @posts.length + @comments.length) == 0 ?>
+<?r if (@profiles.count + @posts.count + @comments.count) == 0 ?>
 <p>#{s_('search-results|Nothing found.')}</p>
 <?r end ?>
 
-<?r if @profiles.length > 0 ?>
+<?r if @profiles.count > 0 ?>
   <h3>#{s_('search-results|Profiles')}</h3>
 
   <ul>
@@ -19,7 +19,7 @@
   </ul>
 <?r end ?>
 
-<?r if @posts.length > 0 ?>
+<?r if @posts.count > 0 ?>
   <h3 id="search-results-posts">#{s_('search-results|Posts')}</h3>
 
   <ul>
@@ -37,7 +37,7 @@
   </ul>
 <?r end ?>
 
-<?r if @comments.length > 0 ?>
+<?r if @comments.count > 0 ?>
   <h3 id="search-results-comments">#{s_('search-results|Comments')}</h3>
 
   <ul>
