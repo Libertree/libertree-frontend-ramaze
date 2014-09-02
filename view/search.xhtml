@@ -1,4 +1,4 @@
-<h2>#{_('Search Results for "%s"') % @q}</h2>
+<h2>#{_('Search Results for "%s"') % ::CGI.escape_html(@q)}</h2>
 
 <p>
   <a href="#search-results-posts">#{s_('search-results|Posts')}</a>
