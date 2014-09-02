@@ -1,5 +1,9 @@
 <h2>#{_('Search Results for "%s"') % ::CGI.escape_html(@q)}</h2>
 
+<form action="/search" method="POST" class="big-search">
+  <input type="text" name="q" value="#{::CGI.escape_html(@q)}"/>
+</form>
+
 <p>
   <a href="#search-results-posts">#{s_('search-results|Posts')}</a>
   | <a href="#search-results-comments">#{s_('search-results|Comments')}</a>
