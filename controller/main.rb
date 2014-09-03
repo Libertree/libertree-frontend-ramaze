@@ -152,18 +152,13 @@ module Controller
       @comments = []
       @profiles = []
 
-      parsed_query = Libertree::Model::River.query_parser(@q, account.id)
-      if ! parsed_query.empty?
-        @posts = Libertree::Model::Post.filter_by_query(parsed_query, account).reverse_order(:id).take(50)
+      query = Libertree::Query.new(@q, account.id)
+      if ! query.parsed.empty?
+        @posts = Libertree::Model::Post.filter_by_query(query.parsed, account).reverse_order(:id).take(50)
 
-        simple_query = parsed_query.
-          select {|k| ['phrase', 'word'].include? k}.
-          flat_map{|h| h.last[:regular]}.
-          join(' ')
-
-        if ! simple_query.empty?
-          @comments = Libertree::Model::Comment.search(simple_query)
-          @profiles = Libertree::Model::Profile.search(simple_query)
+        if ! query.simple.empty?
+          @comments = Libertree::Model::Comment.search(query.simple)
+          @profiles = Libertree::Model::Profile.search(query.simple)
         end
       end
       @view = 'search'
