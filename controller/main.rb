@@ -148,19 +148,23 @@ module Controller
       @q = request['q'].to_s
       redirect_referrer  if @q.empty?
 
+      @posts    = []
+      @comments = []
+      @profiles = []
+
       parsed_query = Libertree::Model::River.query_parser(@q, account.id)
-      if parsed_query.empty?
-        @posts    = []
-        @comments = []
-        @profiles = []
-      else
+      if ! parsed_query.empty?
+        @posts = Libertree::Model::Post.filter_by_query(parsed_query).reverse_order(:id).take(50)
+
         simple_query = parsed_query.
           select {|k| ['phrase', 'word'].include? k}.
           flat_map{|h| h.last[:regular]}.
           join(' ')
-        @posts = Libertree::Model::Post.filter_by_query(parsed_query).reverse_order(:id).take(50)
-        @comments = Libertree::Model::Comment.search(simple_query)
-        @profiles = Libertree::Model::Profile.search(simple_query)
+
+        if ! simple_query.empty?
+          @comments = Libertree::Model::Comment.search(simple_query)
+          @profiles = Libertree::Model::Profile.search(simple_query)
+        end
       end
       @view = 'search'
     end
