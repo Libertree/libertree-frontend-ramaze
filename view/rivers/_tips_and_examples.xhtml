@@ -8,7 +8,7 @@
   <li>#{_('Use the special term %s to include only posts which you have not read yet.') % "<code>+:unread</code>"}</li>
   <li>#{_('Use the special term %s to include only posts by members of the same tree as you.') % "<code>+:tree</code>"}</li>
   <li>#{_('Use double quotes to match multi-word phrases, or exact matches involving symbols.')}</li>
-  <li>#{_('Use the special term %s followed by a name in quotes to match all posts by that person.') % "<code>:from</code>"} #{_('Example: %s') % '<code>:from "Linus Torvalds"</code>'}</li>
+  <li>#{_('Use the special term %s followed by a JID in quotes to match all posts by that person.') % "<code>:from</code>"} #{_('Example: %s') % '<code>:from "rekado@oak.elephly.net"</code>'}</li>
   <li>#{_('Use the special term %s followed by a contact list name in quotes to match all posts by the people in that contact list.') % "<code>:contact-list</code>"} #{_('Example: %s') % '<code>:contact-list "Close Friends"</code>'}</li>
   <li>#{_('Use the special term %s followed by %s or %s to match posts with a given visibility.') % [ "<code>:visibility</code>", "<code>internet</code>", "<code>forest</code>",  ]}</li>
   <li>#{_('Other special terms: %s, %s and %s. These are for matching posts you have liked, commented on and subscribed to, respectively.') % ["<code>:liked</code>", "<code>:commented</code>", "<code>:subscribed</code>"]}</li>
@@ -67,12 +67,12 @@
     </tr>
     <tr>
       <td>
-        #{_(':from "rekado"%sPosts written by rekado') % "</td><td>"}
+        #{_(':from "rekado@oak.elephly.net"%sPosts written by rekado') % "</td><td>"}
       </td>
     </tr>
     <tr>
       <td>
-        #{_('#photography -:from "Photophile"%sPosts tagged with %s#photography%s, but not those by Photophile') % ["</td><td>", "<code>", "</code>"]}
+        #{_('#photography -:from \"photophile@example.net\"%sPosts tagged with %s#photography%s, but not those by the user photophile on example.net') % ["</td><td>", "<code>", "</code>"]}
       </td>
     </tr>
     <tr>
