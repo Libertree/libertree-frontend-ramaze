@@ -154,7 +154,7 @@ module Controller
 
       parsed_query = Libertree::Model::River.query_parser(@q, account.id)
       if ! parsed_query.empty?
-        @posts = Libertree::Model::Post.filter_by_query(parsed_query).reverse_order(:id).take(50)
+        @posts = Libertree::Model::Post.filter_by_query(parsed_query, account).reverse_order(:id).take(50)
 
         simple_query = parsed_query.
           select {|k| ['phrase', 'word'].include? k}.
