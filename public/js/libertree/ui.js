@@ -127,6 +127,15 @@ Libertree.UI = (function () {
       );
     },
 
+    memberHandleAutocompletionTriggerLength: function(textToScan) {
+      var MHACTriggerMatches = Libertree.UI.memberHandleAutocompletionTriggers.exec(textToScan);
+      if( MHACTriggerMatches ) {
+        return MHACTriggerMatches[1].length;
+      } else {
+        return null;
+      }
+    },
+
     memberHandleAutocompletion: function (event, ui) {
       if( ! ui.item ) { return; }
 
@@ -134,8 +143,7 @@ Libertree.UI = (function () {
         text = textfield.val(),
         autocompletableText = text.substring(0, textfield.textCursorPosition()),
         indexOfAtSymbol = autocompletableText.search(Libertree.UI.memberHandleAutocompletionTriggers),
-        MHACTriggerMatches = Libertree.UI.memberHandleAutocompletionTriggers.exec(autocompletableText),
-        triggerLength = MHACTriggerMatches[1].length,
+        triggerLength = Libertree.UI.memberHandleAutocompletionTriggerLength(autocompletableText),
         newText = text.substring(0, indexOfAtSymbol+triggerLength) + ui.item.value + text.substring(textfield.textCursorPosition());
 
       textfield.val(newText);

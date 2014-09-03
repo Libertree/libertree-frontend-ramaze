@@ -52,11 +52,7 @@ $(document).ready( function() {
       var entireText = request.term,
           textUpToCursor = entireText.substring(0, this.element.textCursorPosition()),
           indexOfAtSymbol = textUpToCursor.search(Libertree.UI.memberHandleAutocompletionTriggers),
-          MHACTriggerMatches = Libertree.UI.memberHandleAutocompletionTriggers.exec(textUpToCursor),
-          triggerLength = 0;
-      if( MHACTriggerMatches ) {
-        triggerLength = MHACTriggerMatches[1].length;
-      }
+          triggerLength = Libertree.UI.memberHandleAutocompletionTriggerLength(textUpToCursor);
 
       if(
         indexOfAtSymbol == -1 ||
