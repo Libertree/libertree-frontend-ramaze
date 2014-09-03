@@ -156,7 +156,8 @@ module Controller
       else
         simple_query = parsed_query.
           select {|k| ['phrase', 'word'].include? k}.
-          flat_map{|h| h.last[:regular]}
+          flat_map{|h| h.last[:regular]}.
+          join(' ')
         @posts = Libertree::Model::Post.filter_by_query(parsed_query).reverse_order(:id).take(50)
         @comments = Libertree::Model::Comment.search(simple_query)
         @profiles = Libertree::Model::Profile.search(simple_query)
