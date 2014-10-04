@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 gem 'ramaze'
 gem 'innate'
+gem 'grape'
 gem 'dalli'  # memcached client
 gem 'mini_magick'
 gem 'sass'
