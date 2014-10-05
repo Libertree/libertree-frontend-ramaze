@@ -61,8 +61,12 @@ module Libertree
     end
 
     after_validation do
-      set_account_from_token
+      if env['REQUEST_PATH'] !~ %r{^/docs}
+        set_account_from_token
+      end
     end
+
+    # ---------------------
 
     params do
       requires 'token', type: String, desc: "the authentication token"
@@ -142,6 +146,10 @@ module Libertree
       end
     end
 
+    params do
+      requires 'token', type: String, desc: "the authentication token"
+    end
+
     resource 'invitations' do
       content_type :v2_invitations, 'application/vnd.libertree.invitations-v2+json'
       version 'v2', using: :header, vendor: 'libertree.invitations'
@@ -167,6 +175,10 @@ module Libertree
           { 'success' => true, 'code' => invitation.code, }
         end
       end
+    end
+
+    params do
+      requires 'token', type: String, desc: "the authentication token"
     end
 
     resource 'notifications' do
