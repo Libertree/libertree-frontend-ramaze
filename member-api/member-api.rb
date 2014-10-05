@@ -90,7 +90,7 @@ module Libertree
       params do
         requires 'text', type: String, validate_urls_not_posted: true, desc: 'The content of the post to be created'
         requires 'source', type: String, validate_non_empty: true, desc: 'A description of what software or website is originating this post'
-        optional 'visibility', type: String, default: 'forest', desc: 'How public this post will be.  "tree", "forest" or "internet"'
+        optional 'visibility', type: String, default: 'forest', desc: 'How public this post will be.  "tree", "forest" (default) or "internet"'
       end
 
       rescue_from URLsAlreadyPostedError do |e|
@@ -192,22 +192,22 @@ module Libertree
         notes: %{
           Example usage:
 
-              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d seen=true 'http://nosuchtree.libertreeproject.org/api/notifications'
+              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d unseen=false 'http://nosuchtree.libertreeproject.org/api/notifications'
         }
       )
 
       params do
-        optional 'seen', type: Boolean, default: false, desc: ""
-        optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: ""
+        optional 'unseen', type: Boolean, default: true, desc: "whether to retrieve only unseen notifications (default), or all notifications"
+        optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: "the maximum number of notifications to return"
       end
 
       get do
         n = params['n']
 
-        if params['seen']
-          @account.notifications[0...n].map(&:data)
-        else
+        if params['unseen']
           @account.notifications_unseen[0...n].map(&:data)
+        else
+          @account.notifications[0...n].map(&:data)
         end
       end
     end
