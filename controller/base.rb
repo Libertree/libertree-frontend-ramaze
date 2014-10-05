@@ -3,6 +3,8 @@ module Controller
     helper :user, :xhtml, :age, :comment, :member, :wording, :views, :post, :search
     trait :user_model => ::Libertree::Model::Account
 
+    engine :erb
+
     layout do |path|
       if path =~ /error/
         nil
