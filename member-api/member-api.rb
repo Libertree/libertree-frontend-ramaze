@@ -28,6 +28,18 @@ module Libertree
     end
   end
 
+  class ValidatePositiveInteger < Grape::Validations::Validator
+    def validate_param!(attr_name, params)
+      if params[attr_name].to_i < 1
+        raise(
+          Grape::Exceptions::Validation,
+          params: [@scope.full_name(attr_name)],
+          message: "#{attr_name.inspect} must be a positive integer"
+        )
+      end
+    end
+  end
+
   class MemberAPI < Grape::API
     helpers do
       def set_account_from_token
@@ -149,6 +161,36 @@ module Libertree
           { 'success' => false }
         else
           { 'success' => true, 'code' => invitation.code, }
+        end
+      end
+    end
+
+    resource 'notifications' do
+      content_type :v2_notifications, 'application/vnd.libertree.notifications-v2+json'
+      version 'v2', using: :header, vendor: 'libertree.notifications'
+      formatter :v2_notifications, lambda { |object, env| object.to_json }
+      format :v2_notifications
+
+      desc "Retrieve your notifications" do
+        detail %{
+          Example usage:
+
+              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d seen=true 'http://nosuchtree.libertreeproject.org/api/notifications'
+        }
+      end
+
+      params do
+        optional 'seen', type: Boolean, default: false, desc: ""
+        optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: ""
+      end
+
+      get do
+        n = params['n']
+
+        if params['seen']
+          @account.notifications[0...n].map(&:data)
+        else
+          @account.notifications_unseen[0...n].map(&:data)
         end
       end
     end
