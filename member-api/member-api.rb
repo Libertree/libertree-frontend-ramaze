@@ -1,6 +1,11 @@
 require 'grape'
 require 'libertree/model'
 
+# Dev notes:
+
+# Grape does type coercion and type confirmation for us, so to_i, to_s etc.
+# on params are not necessary.
+
 module Libertree
   class ValidateNonEmpty < Grape::Validations::Validator
     def validate_param!(attr_name, params)
@@ -26,7 +31,7 @@ module Libertree
   class MemberAPI < Grape::API
     helpers do
       def set_account_from_token
-        @account = Libertree::Model::Account[ api_token: params['token'].to_s ]
+        @account = Libertree::Model::Account[ api_token: params['token'] ]
         if @account.nil?
           error! "invalid token", 404
         end
@@ -47,10 +52,10 @@ module Libertree
     end
 
     params do
-      requires :token, type: String, desc: "the authentication token"
+      requires 'token', type: String, desc: "the authentication token"
     end
 
-    resource :posts do
+    resource 'posts' do
       content_type :v2_posts, 'application/vnd.libertree.posts-v2+json'
       version 'v2', using: :header, vendor: 'libertree.posts'
       formatter :v2_posts, lambda { |object, env| object.to_json }
@@ -63,10 +68,11 @@ module Libertree
               curl -v -X POST -H 'Accept:application/vnd.libertree.posts-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Hello, world!' 'http://nosuchtree.libertreeproject.org/api/posts'
         }
       end
+
       params do
-        requires :text, type: String, validate_urls_not_posted: true, desc: 'The content of the post to be created'
-        requires :source, type: String, validate_non_empty: true, desc: 'A description of what software or website is originating this post'
-        optional :visibility, type: String, default: 'forest', desc: 'How public this post will be.  "tree", "forest" or "internet"'
+        requires 'text', type: String, validate_urls_not_posted: true, desc: 'The content of the post to be created'
+        requires 'source', type: String, validate_non_empty: true, desc: 'A description of what software or website is originating this post'
+        optional 'visibility', type: String, default: 'forest', desc: 'How public this post will be.  "tree", "forest" or "internet"'
       end
 
       rescue_from URLsAlreadyPostedError do |e|
