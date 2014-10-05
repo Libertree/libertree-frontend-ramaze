@@ -192,19 +192,19 @@ module Libertree
         notes: %{
           Example usage:
 
-              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d unseen=false 'http://nosuchtree.libertreeproject.org/api/notifications'
+              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d only-unseen=false 'http://nosuchtree.libertreeproject.org/api/notifications'
         }
       )
 
       params do
-        optional 'unseen', type: Boolean, default: true, desc: "whether to retrieve only unseen notifications (default), or all notifications"
+        optional 'only-unseen', type: Boolean, default: true, desc: "whether to retrieve only unseen notifications (default), or all notifications"
         optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: "the maximum number of notifications to return"
       end
 
       get do
         n = params['n']
 
-        if params['unseen']
+        if params['only-unseen']
           @account.notifications_unseen[0...n].map(&:data)
         else
           @account.notifications[0...n].map(&:data)
