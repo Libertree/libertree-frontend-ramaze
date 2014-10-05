@@ -101,7 +101,7 @@ module Libertree
             detail %{
               Example usage:
 
-                  curl -v -X POST -H 'Accept:application/vnd.libertree.comments-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
+                  curl -v -X POST -H 'Accept:application/vnd.libertree.comments-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
             }
           end
 
@@ -123,6 +123,32 @@ module Libertree
 
             { 'success' => true, 'id' => comment.id }
           end
+        end
+      end
+    end
+
+    resource 'invitations' do
+      content_type :v2_invitations, 'application/vnd.libertree.invitations-v2+json'
+      version 'v2', using: :header, vendor: 'libertree.invitations'
+      formatter :v2_invitations, lambda { |object, env| object.to_json }
+      format :v2_invitations
+
+      desc "Generate a new invitation code" do
+        detail %{
+          Example usage:
+
+              curl -v -X POST -H 'Accept:application/vnd.libertree.invitations-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 'http://nosuchtree.libertreeproject.org/api/invitations'
+        }
+      end
+
+      # (No parameters.)
+
+      post do
+        invitation = @account.new_invitation
+        if invitation.nil?
+          { 'success' => false }
+        else
+          { 'success' => true, 'code' => invitation.code, }
         end
       end
     end
