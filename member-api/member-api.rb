@@ -1,4 +1,5 @@
 require 'grape'
+require 'grape-swagger'
 require 'libertree/model'
 
 # Dev notes:
@@ -73,13 +74,14 @@ module Libertree
       formatter :v2_posts, lambda { |object, env| object.to_json }
       format :v2_posts
 
-      desc "Create a new post" do
-        detail %{
+      desc(
+        "Create a new post",
+        notes: %{
           Example usage:
 
               curl -v -X POST -H 'Accept:application/vnd.libertree.posts-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Hello, world!' 'http://nosuchtree.libertreeproject.org/api/posts'
         }
-      end
+      )
 
       params do
         requires 'text', type: String, validate_urls_not_posted: true, desc: 'The content of the post to be created'
@@ -109,13 +111,14 @@ module Libertree
           formatter :v2_comments, lambda { |object, env| object.to_json }
           format :v2_comments
 
-          desc "Create a new comment" do
-            detail %{
+          desc(
+            "Create a new comment",
+            notes: %{
               Example usage:
 
                   curl -v -X POST -H 'Accept:application/vnd.libertree.comments-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
             }
-          end
+          )
 
           params do
             requires 'text', type: String, desc: 'The content of the comment to be created'
@@ -145,13 +148,14 @@ module Libertree
       formatter :v2_invitations, lambda { |object, env| object.to_json }
       format :v2_invitations
 
-      desc "Generate a new invitation code" do
-        detail %{
+      desc(
+        "Generate a new invitation code",
+        notes: %{
           Example usage:
 
               curl -v -X POST -H 'Accept:application/vnd.libertree.invitations-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 'http://nosuchtree.libertreeproject.org/api/invitations'
         }
-      end
+      )
 
       # (No parameters.)
 
@@ -171,13 +175,14 @@ module Libertree
       formatter :v2_notifications, lambda { |object, env| object.to_json }
       format :v2_notifications
 
-      desc "Retrieve your notifications" do
-        detail %{
+      desc(
+        "Retrieve your notifications",
+        notes: %{
           Example usage:
 
               curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d seen=true 'http://nosuchtree.libertreeproject.org/api/notifications'
         }
-      end
+      )
 
       params do
         optional 'seen', type: Boolean, default: false, desc: ""
@@ -194,5 +199,7 @@ module Libertree
         end
       end
     end
+
+    add_swagger_documentation mount_path: '/docs', base_path: '/api', markdown: true, api_version: 'v2'
   end
 end
