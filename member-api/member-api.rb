@@ -89,6 +89,42 @@ module Libertree
 
         { 'success' => true, 'id' => post.id }
       end
+
+      route_param 'post_id' do
+        resource 'comments' do
+          content_type :v2_comments, 'application/vnd.libertree.comments-v2+json'
+          version 'v2', using: :header, vendor: 'libertree.comments'
+          formatter :v2_comments, lambda { |object, env| object.to_json }
+          format :v2_comments
+
+          desc "Create a new comment" do
+            detail %{
+              Example usage:
+
+                  curl -v -X POST -H 'Accept:application/vnd.libertree.comments-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
+            }
+          end
+
+          params do
+            requires 'text', type: String, desc: 'The content of the comment to be created'
+          end
+
+          post do
+            post = Libertree::Model::Post[ params['post_id'].to_i ]
+            if post.nil?
+              error! "Post not found.", 404
+            end
+
+            comment = Libertree::Model::Comment.create(
+              member_id:  @account.member.id,
+              post_id:    post.id,
+              text:       params['text']
+            )
+
+            { 'success' => true, 'id' => comment.id }
+          end
+        end
+      end
     end
   end
 end
