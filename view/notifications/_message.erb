@@ -1,3 +1,1 @@
-<%= render_file 'view/notifications/_notification_head.erb', notifications: @notifications, avatar_member: @message.sender %>
-  <%=_('%s sent you a %smessage%s.') % [@actors, "<a href=\"/messages/show/#{@message.id}\" title=\"#{::CGI.escape_html(@message.glimpse)}\">", "</a>"]%>
-<%= render_file 'view/notifications/_notification_foot.erb', notifications: @notifications, glimpse: @message.glimpse %>
+<%=_('%s sent you a %smessage%s.') % [@actors, "<a href=\"/messages/show/#{@subject.id}\" title=\"#{::CGI.escape_html(@subject.glimpse)}\">", "</a>"]%>

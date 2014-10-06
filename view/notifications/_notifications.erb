@@ -8,17 +8,36 @@
 
   case notif.subject
   when Libertree::Model::Comment
-    %><%= render_partial '_comment', notifications: notifications, comment: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_comment'
+    avatar_member = notif.subject.member
+    glimpse = notif.subject.post.glimpse
   when Libertree::Model::CommentLike
-    %><%= render_partial '_comment_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_comment_like'
+    avatar_member = notif.subject.member
+    glimpse = notif.subject.comment.glimpse
   when Libertree::Model::Message
-    %><%= render_partial '_message', notifications: notifications, message: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_message'
+    avatar_member = notif.subject.sender
+    glimpse = notif.subject.glimpse
   when Libertree::Model::PoolPost
-    %><%= render_partial '_pool_post', notifications: notifications, pool_post: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_pool_post'
+    avatar_member = notif.subject.pool.member
+    glimpse = notif.subject.post.glimpse
   when Libertree::Model::PostLike
-    %><%= render_partial '_post_like', notifications: notifications, like: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_post_like'
+    avatar_member = notif.subject.member
+    glimpse = notif.subject.post.glimpse
   when Libertree::Model::Post
-    %><%= render_partial '_mention', notifications: notifications, post: notif.subject, actors: actors, sg_or_pl: sg_or_pl %><%
+    partial = '_mention'
+    avatar_member = notif.subject.member
+    glimpse = notif.subject.glimpse
   end
-end
 %>
+
+<% if notif.subject %>
+  <%= render_file 'view/notifications/_notification_head.erb', notifications: notifications, avatar_member: avatar_member %>
+  <%= render_partial partial, notifications: notifications, subject: notif.subject, actors: actors, sg_or_pl: sg_or_pl %>
+  <%= render_file 'view/notifications/_notification_foot.erb', notifications: notifications, glimpse: glimpse %>
+<% end %>
+
+<% end %>
