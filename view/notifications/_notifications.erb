@@ -1,6 +1,8 @@
 <%
 @set_keys.each do |key|
   notifications = @sets[key]
+  ids = notifications.map(&:id).to_json
+  seen_or_not = notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'
   notif = notifications[0]
   actor_array = notifications.map { |n| n.subject.member.name_display }
   actors = anded_list( actor_array.uniq )
@@ -35,9 +37,16 @@
 %>
 
 <% if notif.subject %>
-  <%= render_file 'view/notifications/_notification_head.erb', notifications: notifications, avatar_member: avatar_member %>
-  <%= render_partial partial, notifications: notifications, subject: notif.subject, actors: actors, sg_or_pl: sg_or_pl %>
-  <%= render_file 'view/notifications/_notification_foot.erb', notifications: notifications, glimpse: glimpse %>
+<table class="notification <%= seen_or_not %>" data-notification-ids="<%= ids %>">
+  <tr>
+    <td class="avatar"><%= member_avatar_link(avatar_member) %></td>
+    <td>
+      <%= render_partial partial, notifications: notifications, subject: notif.subject, actors: actors, sg_or_pl: sg_or_pl %>
+      <div class="glimpse touch-only"><%= Libertree.plain(glimpse) %></div>
+      <div class="age"><%= ago(notif.time_created) %></div>
+    </td>
+  </tr>
+</table>
 <% end %>
 
 <% end %>
