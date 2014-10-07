@@ -26,7 +26,7 @@ module Controller
       targets = [] # so we have a display order
 
       notifs = account.notifications_unseen
-      notifs.each do |n|
+      notifs.last(200).reverse.each do |n|
         next  if n.subject.nil?
 
         target = case n.subject
