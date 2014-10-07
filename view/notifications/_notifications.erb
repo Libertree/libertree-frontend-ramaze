@@ -1,6 +1,5 @@
 <%
-@set_keys.each do |key|
-  notifications = @sets[key]
+@grouped_notifs.each do |notifications|
   ids = notifications.map(&:id).to_json
   seen_or_not = notifications.any? { |n| ! n.seen } ? 'unseen' : 'seen'
   notif = notifications[0]
