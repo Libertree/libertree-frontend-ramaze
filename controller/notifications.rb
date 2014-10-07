@@ -21,10 +21,13 @@ module Controller
       @grouped_notifs = notifs.map {|n| [n]}
     end
 
+    # TODO: move this to the model
     def _index
       grouped = {}
       targets = [] # so we have a display order
 
+      # TODO: this can be slow when there are many notifs;
+      # this method should not return an actual array but a Sequel wrapper
       notifs = account.notifications_unseen
       notifs.last(200).reverse.each do |n|
         next  if n.subject.nil?
