@@ -1,5 +1,1 @@
-<% if @post %>
-  <%= render_file 'view/notifications/_notification_head.erb', notifications: @notifications, avatar_member: @post.member %>
-    <%=s_("%1$s mentioned you in a %2$spost%3$s.") % [@actors, "<a href=\"/posts/show/#{@post.id}\" title=\"#{::CGI.escape_html(@post.glimpse)}\">", "</a>"]%>
-  <%= render_file 'view/notifications/_notification_foot.erb', notifications: @notifications, glimpse: @post.glimpse %>
-<% end %>
+<%=s_("%1$s mentioned you in a %2$spost%3$s.") % [@actors, "<a href=\"/posts/show/#{@subject.id}\" title=\"#{::CGI.escape_html(@subject.glimpse)}\">", "</a>"]%>

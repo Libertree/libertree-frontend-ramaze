@@ -75,9 +75,9 @@
   <% if logged_in? %>
     <style type="text/css">
       .excerpts-view .post-excerpt div.excerpt .overflowed {
-        max-height: #{
+        max-height: <%=
           account.settings.excerpt_max_height ? account.settings.excerpt_max_height.to_s+'px' : 'auto'
-        };
+        %>;
       }
       .markdown-injector {
         display: <%=account.settings.hide_markdown_bar ? 'none' : 'inherit'%>;
