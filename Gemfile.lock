@@ -22,9 +22,12 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.2.7)
-      i18n (~> 0.6)
-      multi_json (~> 1.0)
+    activesupport (4.0.10)
+      i18n (~> 0.6, >= 0.6.9)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
     archive-tar-minitar (0.5.2)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -75,24 +78,23 @@ GEM
     grape-entity (0.4.4)
       activesupport
       multi_json (>= 1.3.2)
-    grape-swagger (0.7.2)
-      grape (>= 0.2.0)
-      grape-entity (>= 0.3.0)
-      kramdown (>= 1.3.1)
+    grape-swagger (0.8.0)
+      grape
+      grape-entity
     hashie (3.3.1)
-    i18n (0.6.0)
+    i18n (0.6.11)
     ice_nine (0.11.0)
     innate (2013.02)
       rack (~> 1.4.1)
     json (1.7.6)
     kgio (2.7.3)
-    kramdown (1.4.2)
     method_source (0.8.2)
     mime-types (1.25)
     mini_magick (3.4)
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
-    multi_json (1.8.2)
+    minitest (4.7.5)
+    multi_json (1.10.1)
     multi_xml (0.5.5)
     net-ldap (0.5.1)
     nokogiri (1.6.0)
@@ -162,6 +164,7 @@ GEM
       rack (>= 1.0.0)
     thread_safe (0.3.4)
     timedcache (0.4.0)
+    tzinfo (0.3.41)
     unicorn (4.2.0)
       kgio (~> 2.6)
       rack
@@ -187,7 +190,7 @@ DEPENDENCIES
   fast_gettext
   gpgme
   grape
-  grape-swagger (~> 0.7.2)
+  grape-swagger
   innate
   json
   libertree-model!

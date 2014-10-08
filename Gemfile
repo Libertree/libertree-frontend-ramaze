@@ -7,7 +7,7 @@ gem 'mini_magick'
 gem 'sass'
 gem 'ruby-oembed'
 gem 'fast_gettext'
-gem 'grape-swagger', '~> 0.7.2'
+gem 'grape-swagger'
 
 group 'extensions' do
   gem 'json'

@@ -212,6 +212,6 @@ module Libertree
       end
     end
 
-    add_swagger_documentation mount_path: '/docs', base_path: '/api', markdown: true, api_version: 'v2'
+    add_swagger_documentation mount_path: '/docs', base_path: '/api', api_version: 'v2'
   end
 end
