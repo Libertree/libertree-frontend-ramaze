@@ -41,7 +41,8 @@
 <% end %>
 
 <% if @posts.count > 0 %>
-  <h3 id="search-results-posts"><%=s_('search-results|Posts')%></h3>
+<div id="search-results-posts" class="panel">
+  <h3><%=s_('search-results|Posts')%></h3>
 
   <ul>
   <% @posts.each do |p| %>
@@ -56,10 +57,12 @@
     </li>
   <% end %>
   </ul>
+</div>
 <% end %>
 
 <% if @comments.count > 0 %>
-  <h3 id="search-results-comments"><%=s_('search-results|Comments')%></h3>
+<div id="search-results-comments" class="panel">
+  <h3><%=s_('search-results|Comments')%></h3>
 
   <ul>
   <% @comments.each do |c| %>
@@ -74,4 +77,5 @@
     </li>
   <% end %>
   </ul>
+</div>
 <% end %>
