@@ -1,3 +1,4 @@
+<div id="header">
 <h2><%=_('Search Results for "%s"') % ::CGI.escape_html(@q)%></h2>
 
 <form action="/search" method="POST" class="big-search">
@@ -25,6 +26,7 @@
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <% if @profiles.count > 0 %>
 <div id="search-results-profiles" class="panel">
