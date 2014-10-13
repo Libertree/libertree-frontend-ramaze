@@ -14,10 +14,9 @@
                     <span class="age-update">(updated <%=ago(@post.time_updated)%>)</span>
                   <% end %></span>
                   <br/>
-                  <% if logged_in? %><span><%=_('Visibility: %s') % @post.visibility%></span><% end %><span
-                     class="num-likes"
-                     title="<%=@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post.likes)%>"
-                  ><%=_('Likes: %s') % "<span class='value'>#{@post.likes.count}</span>" %>
+                  <span><%=_('Visibility: %s') % @post.visibility%></span>
+                  <span class="num-likes" title="<%=@post.likes.empty? ? '' : _('Liked by %s') % like_list(@post.likes)%>">
+                    <%=_('Likes: %s') % "<span class='value'>#{@post.likes.count}</span>" %>
                   </span>
                 </div>
               <% else %>
