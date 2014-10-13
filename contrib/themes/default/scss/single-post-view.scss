@@ -154,6 +154,10 @@ body.single-post-view {
         padding-right: 1em;
         padding-bottom: 1em;
 
+        .num-comments {
+            display: block;
+        }
+
         form.comment {
           margin-left: 50px;
           @media screen and (max-width: $threshold) {

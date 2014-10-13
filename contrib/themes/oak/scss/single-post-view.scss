@@ -154,6 +154,10 @@ body.single-post-view {
         padding-right: 1em;
         padding-bottom: 1em;
 
+        .num-comments {
+            display: block;
+        }
+
         div.content img.avatar {
             display: none;
         }
