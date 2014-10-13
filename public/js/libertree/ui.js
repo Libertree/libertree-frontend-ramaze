@@ -239,6 +239,23 @@ Libertree.UI = (function () {
         $('div.spoilers').each( function () { initSpoiler($(this)); } );
     },
 
+    initLightbox: function () {
+      var reset = function () {
+        this[0].style = "";
+        $(this).click(openLightbox);
+      };
+      var openLightbox = function (event) {
+        event.preventDefault();
+
+        var $this = $(this);
+        $this.unbind('click');
+        // free the img first to allow the modalBox to detect larger dimensions
+        $this.css({'position': 'fixed', height: '90%'});
+        $this.modalBox({ onClose: reset });
+      };
+      $('.post-text img').click(openLightbox);
+    },
+
     jumpToCommentField: function (excerpt) {
       var scrollable = Libertree.UI.scrollable(),
           scrollTop = scrollable.scrollTop(),
@@ -534,6 +551,7 @@ Libertree.UI = (function () {
     init: function() {
       $(document).ready( function () {
         Libertree.UI.registerScrollHandler();
+        Libertree.UI.initLightbox();
 
         setInterval( Libertree.UI.updateAges, 60 * 1000 );
         Libertree.UI.TextAreaBackup.enable();

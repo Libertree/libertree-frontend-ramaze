@@ -7,6 +7,8 @@
   <%= css 'chosen' %>
   <%= css 'select2' %>
   <%= css 'bootstrap' %>
+  <%= css 'modalBox' %>
+
   <%= css_nocache 'application' %>
   <% if logged_in? && account.font_css %>
     <%= css_nocache account.font_css %>
@@ -39,6 +41,7 @@
   <%= js 'select2.min' %>
   <%= js 'textinputs_jquery' %>
   <%= js 'bootstrap' %>
+  <%= js 'modalBox' %>
 
   <%= js_nocache 'libertree' %>
   <%= js_nocache 'libertree/post_loader' %>
