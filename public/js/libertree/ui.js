@@ -253,7 +253,11 @@ Libertree.UI = (function () {
         $this.css({'position': 'fixed', height: '90%'});
         $this.modalBox({ onClose: reset });
       };
-      $('.post-text img').click(openLightbox);
+
+      // enable lightbox only for resized images
+      $('.post-text img')
+        .filter(function () { return this.naturalHeight > this.clientHeight; })
+        .click(openLightbox);
     },
 
     jumpToCommentField: function (excerpt) {
