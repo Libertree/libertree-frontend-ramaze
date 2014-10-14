@@ -242,7 +242,9 @@ Libertree.UI = (function () {
     initLightbox: function () {
       var reset = function () {
         this[0].style = "";
-        $(this).click(openLightbox);
+        $(this)
+          .css({cursor: 'zoom-in'})
+          .click(openLightbox);
       };
       var openLightbox = function (event) {
         event.preventDefault();
@@ -250,13 +252,14 @@ Libertree.UI = (function () {
         var $this = $(this);
         $this.unbind('click');
         // free the img first to allow the modalBox to detect larger dimensions
-        $this.css({'position': 'fixed', height: '90%'});
+        $this.css({'position': 'fixed', height: '90%', cursor: 'inherit'});
         $this.modalBox({ onClose: reset });
       };
 
       // enable lightbox only for resized images
       $('.post-text img')
         .filter(function () { return this.naturalHeight > this.clientHeight; })
+        .css({cursor: 'zoom-in'})
         .click(openLightbox);
     },
 
