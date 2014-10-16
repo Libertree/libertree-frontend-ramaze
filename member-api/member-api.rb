@@ -79,7 +79,7 @@ module Libertree
     end
 
     resource 'posts' do
-      content_type :v2_posts, 'application/vnd.libertree.posts-v2+json'
+      content_type :v2_posts, 'application/vnd.libertree.v2+json'
       version 'v2', using: :header, vendor: 'libertree.posts'
       formatter :v2_posts, lambda { |object, env| object.to_json }
       format :v2_posts
@@ -89,7 +89,7 @@ module Libertree
         notes: %{
           Example usage:
 
-              curl -v -X POST -H 'Accept:application/vnd.libertree.posts-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Hello, world!' 'http://nosuchtree.libertreeproject.org/api/posts'
+              curl -v -X POST -H 'Accept:application/vnd.libertree.v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d source=curl -d text='Hello, world!' 'http://nosuchtree.libertreeproject.org/api/posts'
         }
       )
 
@@ -116,7 +116,7 @@ module Libertree
 
       route_param 'post_id' do
         resource 'comments' do
-          content_type :v2_comments, 'application/vnd.libertree.comments-v2+json'
+          content_type :v2_comments, 'application/vnd.libertree.v2+json'
           version 'v2', using: :header, vendor: 'libertree.comments'
           formatter :v2_comments, lambda { |object, env| object.to_json }
           format :v2_comments
@@ -126,7 +126,7 @@ module Libertree
             notes: %{
               Example usage:
 
-                  curl -v -X POST -H 'Accept:application/vnd.libertree.comments-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
+                  curl -v -X POST -H 'Accept:application/vnd.libertree.v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d text='Wow, how interesting!' 'http://nosuchtree.libertreeproject.org/api/posts/123456/comments'
             }
           )
 
@@ -157,7 +157,7 @@ module Libertree
     end
 
     resource 'invitations' do
-      content_type :v2_invitations, 'application/vnd.libertree.invitations-v2+json'
+      content_type :v2_invitations, 'application/vnd.libertree.v2+json'
       version 'v2', using: :header, vendor: 'libertree.invitations'
       formatter :v2_invitations, lambda { |object, env| object.to_json }
       format :v2_invitations
@@ -167,7 +167,7 @@ module Libertree
         notes: %{
           Example usage:
 
-              curl -v -X POST -H 'Accept:application/vnd.libertree.invitations-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 'http://nosuchtree.libertreeproject.org/api/invitations'
+              curl -v -X POST -H 'Accept:application/vnd.libertree.v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 'http://nosuchtree.libertreeproject.org/api/invitations'
         }
       )
 
@@ -188,7 +188,7 @@ module Libertree
     end
 
     resource 'notifications' do
-      content_type :v2_notifications, 'application/vnd.libertree.notifications-v2+json'
+      content_type :v2_notifications, 'application/vnd.libertree.v2+json'
       version 'v2', using: :header, vendor: 'libertree.notifications'
       formatter :v2_notifications, lambda { |object, env| object.to_json }
       format :v2_notifications
@@ -198,7 +198,7 @@ module Libertree
         notes: %{
           Example usage:
 
-              curl -v -X GET -H 'Accept:application/vnd.libertree.notifications-v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d only-unseen=false 'http://nosuchtree.libertreeproject.org/api/notifications'
+              curl -v -X GET -H 'Accept:application/vnd.libertree.v2+json' -d token=542c21f33abcac5c38fa1e32e754e067 -d only-unseen=false 'http://nosuchtree.libertreeproject.org/api/notifications'
         }
       )
 
