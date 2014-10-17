@@ -256,8 +256,8 @@ Libertree.UI = (function () {
         $this.modalBox({ onClose: reset });
       };
 
-      // enable lightbox only for resized images
-      $('.post-text img')
+      // enable lightbox only for resized images in SPV
+      $('.single-post-view .post-text img')
         .filter(function () { return this.naturalHeight > this.clientHeight; })
         .css({cursor: 'zoom-in'})
         .click(openLightbox);
