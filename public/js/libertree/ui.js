@@ -241,8 +241,8 @@ Libertree.UI = (function () {
 
     initLightbox: function () {
       var reset = function () {
-        this[0].style = "";
         $(this)
+          .removeAttr('style')
           .css({cursor: 'zoom-in'})
           .click(openLightbox);
       };
