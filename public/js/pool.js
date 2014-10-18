@@ -4,7 +4,7 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('click', '.post-tools .collect', Libertree.Pools.collectHandler);
+  $(document).on('click', '.post-tools .collect, .post-tools .collected', Libertree.Pools.collectHandler);
   $(document).on('click', '.post-tools .remove', Libertree.Pools.removePostHandler);
 
   $(document).on('click', '.create-pool-and-add-post', function(e) {
