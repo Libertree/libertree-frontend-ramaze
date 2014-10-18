@@ -74,6 +74,9 @@ Libertree.Pools = (function () {
                } else {
                  alert(h.msg);
                }
+
+               Libertree.UI.removeSpinner('div.pools.modal');
+               submitButton.prop('disabled', false);
              });
       return;
     }
