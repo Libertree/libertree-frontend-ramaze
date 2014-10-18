@@ -151,13 +151,23 @@ module Controller
 
       if request['pool_name']
         begin
+          pool_name = request['pool_name'].to_s.strip
+
+          # TODO: validate post name in model
+          if pool_name.empty?
+            return {
+              'success' => false,
+              'msg' => _('Failed to create pool or add post.')
+            }.to_json
+          end
+
           pool = Libertree::Model::Pool.
             find_or_create(member_id: account.member.id,
-                           name: request['pool_name'].to_s)
+                           name: pool_name)
           pool << post
           return {
             'success' => true,
-            'msg'     => _("Post added to &ldquo;%s&rdquo; pool.") % request['pool_name'],
+            'msg'     => _("Post added to &ldquo;%s&rdquo; pool.") % pool.name,
             'count'   => 1
           }.to_json
         rescue
