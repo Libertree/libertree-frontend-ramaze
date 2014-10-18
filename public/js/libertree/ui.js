@@ -374,20 +374,14 @@ Libertree.UI = (function () {
       } );
     },
 
-    // TODO: replace with bootstrap popover
-    fadingAlert: function(message, x, y) {
+    fadingAlert: function(message) {
       var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
-      div.appendTo('body');
-
-      if( x !== undefined && y !== undefined ) {
-        div.css( { left: x+'px', top: y+'px' } );
-      }
-      setTimeout(
-        function() {
-          $('.fading-alert').fadeOut(2000);
-        },
-        1000 + message.length * 50
-      );
+      div
+        .appendTo('body')
+        .hide()
+        .fadeIn(500)
+        .delay(1000 + message.length * 50)
+        .fadeOut(1000, function () { $(this).remove(); });
     },
 
     TextAreaBackup: (function () {
