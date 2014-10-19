@@ -210,9 +210,9 @@ module Libertree
         n = params['n']
 
         if params['only-unseen']
-          @account.notifications_unseen[0...n].map(&:data)
+          @account.notifications_unseen.take(n).map(&:data)
         else
-          @account.notifications[0...n].map(&:data)
+          @account.notifications.take(n).map(&:data)
         end
       end
     end
