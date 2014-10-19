@@ -21,37 +21,10 @@ module Controller
       @grouped_notifs = notifs.map {|n| [n]}
     end
 
-    # TODO: move this to the model
     def _index
-      grouped = {}
-      targets = [] # so we have a display order
-
-      # TODO: this can be slow when there are many notifs;
-      # this method should not return an actual array but a Sequel wrapper
-      notifs = account.notifications_unseen
-      notifs.last(200).reverse.each do |n|
-        next  if n.subject.nil?
-
-        target = case n.subject
-                 when Libertree::Model::Comment, Libertree::Model::PostLike
-                   n.subject.post
-                 when Libertree::Model::CommentLike
-                   n.subject.comment
-                 else
-                   n.subject
-                 end
-
-        if grouped[target]
-          grouped[target] << n
-        else
-          grouped[target] = [n]
-          targets << target
-        end
-      end
-
-      @grouped_notifs = targets.take(6).map {|t| grouped[t] }
-      @n = notifs.count
-      @n_more = @n - @grouped_notifs.flat_map(&:count).reduce(&:+)
+      @grouped_notifs = account.notifications_unseen_grouped
+      @n = account.num_notifications_unseen
+      @n_more = @n - @grouped_notifs.flat_map(&:count).reduce(0, &:+)
     end
 
     def seen(*notification_ids)

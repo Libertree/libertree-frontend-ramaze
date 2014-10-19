@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 7afb5795ba3c8064b9c1dbfe196bd7f9a11172c0
+  revision: db509fccd4aa264dd9725ca1af53d66b83fd1603
   specs:
-    libertree-model (0.9.4)
+    libertree-model (0.9.8)
       bcrypt-ruby (= 3.0.1)
+      gpgme
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
       parkdown (~> 1.4.25)
@@ -155,7 +156,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequel (4.14.0)
+    sequel (4.15.0)
     slop (3.4.7)
     subexec (0.2.1)
     thin (1.6.1)

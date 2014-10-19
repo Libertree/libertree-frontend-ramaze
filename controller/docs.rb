@@ -20,7 +20,7 @@ module Controller
 
       if File.exists? filename
         contents = IO.read(filename)
-        return Libertree.render_unsafe(contents)
+        @rendered_page = Libertree.render_unsafe(contents)
       else
         # TODO: print nice error message and index of existing pages
         "Sorry, no such document."
