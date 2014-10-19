@@ -61,8 +61,7 @@ module Libertree
           error! "please try again later and less often", 503
         end
 
-        @account.api_time_last = DateTime.now
-        @account.save
+        @account.update(:api_time_last, DateTime.now)
       end
     end
 
