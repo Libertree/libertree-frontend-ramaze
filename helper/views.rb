@@ -22,6 +22,10 @@ module Ramaze
         "<script src=\"/js/#{file}.js?t=#{File.mtime("public/js/#{file}.js").to_i}\" type=\"text/javascript\"></script>"
       end
 
+      def ejs_nocache(file)
+        "<script src=\"/js/#{file}.js?t=#{File.mtime("view/js/#{file}.js.erb").to_i}\" type=\"text/javascript\"></script>"
+      end
+
       def css_nocache(file, media="screen")
         theme = current_theme
         "<link href=\"/themes/#{theme}/css/#{file}.css?t=#{File.mtime("public/themes/#{theme}/css/#{file}.css").to_i}\" media=\"#{media}\" rel=\"stylesheet\" type=\"text/css\" />"
