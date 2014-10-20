@@ -11,7 +11,7 @@ $(document).ready( function() {
           return;
         }
 
-        if( $('#num-notifications-unseen').text() === '0' ) {
+        if( Libertree.Notifications.unseenNotificationsIndicator.n == 0 ) {
           window.location = '/notifications';
           return;
         }
@@ -48,7 +48,4 @@ $(document).ready( function() {
       Libertree.Notifications.updateNumUnseen('0');
     } );
   } );
-
-  /* Cover up occasional inconsistency in backend code */
-  Libertree.Notifications.updateNumUnseen( $('#num-notifications-unseen').text() );
 } );
