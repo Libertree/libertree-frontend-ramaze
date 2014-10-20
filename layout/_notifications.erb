@@ -3,6 +3,7 @@
   href="/notifications"
   class="menu-item"
   id="menu-notifications"
+  v-on="click : onClick"
   title="<%= account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen %>"><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
   id="num-notifications-unseen"
   class="<%=account.num_notifications_unseen == 0 ? 'hidden' : ''%>"><%= account.num_notifications_unseen%></span></a>

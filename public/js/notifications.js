@@ -1,29 +1,38 @@
 $(document).ready( function() {
-  $('#menu-notifications').click( function() {
-    if( $('#notifications-window').is(':visible') ) {
-      Libertree.UI.hideWindows();
-      return false;
-    }
+  new Vue({
+    el: '#menu-notifications',
+    methods: {
+      onClick: function(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
 
-    if( $('#num-notifications-unseen').text() === '0' ) {
-      window.location = '/notifications';
-      return false;
-    }
-
-    Libertree.UI.hideWindows();
-    $('#notifications-window').empty();
-    Libertree.UI.addSpinner('#notifications-window', 'append');
-    $('#notifications-window').
-      load(
-        '/notifications/_index',
-        function(html) {
-          Libertree.Session.ensureAlive(html);
-          Libertree.UI.removeSpinner('#notifications-window');
-          Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
+        if( $('#notifications-window').is(':visible') ) {
+          Libertree.UI.hideWindows();
+          return;
         }
-      ).toggle();
-    return false;
-  } );
+
+        if( $('#num-notifications-unseen').text() === '0' ) {
+          window.location = '/notifications';
+          return;
+        }
+
+        Libertree.UI.hideWindows();
+        $('#notifications-window').empty();
+        Libertree.UI.addSpinner('#notifications-window', 'append');
+        $('#notifications-window').
+          load(
+            '/notifications/_index',
+            function(html) {
+              Libertree.Session.ensureAlive(html);
+              Libertree.UI.removeSpinner('#notifications-window');
+              Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
+            }
+          ).toggle();
+
+        return;
+      }
+    }
+  });
 
   $(document).on('click', '.notification.seen a', function(e) {
     e.stopPropagation();
