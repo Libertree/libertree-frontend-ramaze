@@ -83,7 +83,6 @@ module Controller
       if logged_in?
         Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, @comments.map(&:id) )
       end
-      @num_notifs_unseen = account.num_notifications_unseen
     end
 
     # called by JS: Libertree.Comments.insertHtmlFor

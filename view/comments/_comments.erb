@@ -3,5 +3,3 @@
 <% @comments.each_with_index do |c,i| %>
   <%= render_file 'view/comments/_comment.erb', comment: c, commenters: @commenters, i: i+@offset %>
 <% end %>
-
-<span class="hidden num-notifs-unseen"><%=@num_notifs_unseen%></span>

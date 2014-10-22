@@ -13,8 +13,8 @@ $( function() {
         $.each( ids, function(j, id) {
           $('.notification[data-notification-ids="['+id+']"]').removeClass(old_state).addClass(new_state);
         } );
+
         $.get('/notifications/'+new_state+'/' + ids.join('/'), function(data) {
-          Libertree.Notifications.notificationsSyncer.n = data;
           /* resume link following when the GET request is complete */
           if (target) { window.location = target; }
         } );
@@ -52,7 +52,6 @@ $( function() {
             function(html) {
               Libertree.Session.ensureAlive(html);
               Libertree.UI.removeSpinner('#notifications-window');
-              Libertree.Notifications.notificationsSyncer.n = $( $.trim(html) ).find('.n').text();
             }
           ).toggle();
 

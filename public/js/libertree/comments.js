@@ -61,7 +61,6 @@ Libertree.Comments = {
           return;
         }
         var o = $( $.trim(html) );
-        Libertree.Notifications.notificationsSyncer.n = o.filter('span.num-notifs-unseen').detach().text();
 
         var scrollable = $('div.comments-pane');
         if( $('.excerpts-view').length ) {
