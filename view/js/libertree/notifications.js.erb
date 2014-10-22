@@ -60,10 +60,8 @@ $( function() {
       onServerUpdate: function(data) {
         this.n = data.n;
         this.title = data.iconTitle;
-      }
-    },
-    ready: function() {
-      this.$watch('n', function(new_value) {
+      },
+      updatePageTitle: function(new_value) {
         /* In VueJS 0.11+, we will have a vm.$interpolate() method available
         which will obviate most of this complicated string manipulation. */
         var title = document.title;
@@ -76,7 +74,10 @@ $( function() {
           }
         }
         document.title = title;
-      });
+      }
+    },
+    ready: function() {
+      this.$watch('n', this.updatePageTitle);
     }
   });
 } );
