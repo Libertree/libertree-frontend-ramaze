@@ -10,7 +10,7 @@ $(document).ready( function() {
     event.preventDefault();
     $.get('/notifications/seen/all', function () {
       $('.notification').removeClass('unseen').addClass('seen');
-      Libertree.Notifications.updateNumUnseen('0');
+      Libertree.Notifications.notificationsSyncer.n = '0';
     } );
   } );
 } );
