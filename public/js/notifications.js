@@ -1,39 +1,4 @@
 $(document).ready( function() {
-  new Vue({
-    el: '#menu-notifications',
-    methods: {
-      onClick: function(ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-
-        if( $('#notifications-window').is(':visible') ) {
-          Libertree.UI.hideWindows();
-          return;
-        }
-
-        if( Libertree.Notifications.unseenNotificationsIndicator.n == 0 ) {
-          window.location = '/notifications';
-          return;
-        }
-
-        Libertree.UI.hideWindows();
-        $('#notifications-window').empty();
-        Libertree.UI.addSpinner('#notifications-window', 'append');
-        $('#notifications-window').
-          load(
-            '/notifications/_index',
-            function(html) {
-              Libertree.Session.ensureAlive(html);
-              Libertree.UI.removeSpinner('#notifications-window');
-              Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
-            }
-          ).toggle();
-
-        return;
-      }
-    }
-  });
-
   $(document).on('click', '.notification.seen a', function(e) {
     e.stopPropagation();
   } );

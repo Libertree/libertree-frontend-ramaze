@@ -35,7 +35,7 @@ $(document).ready( function() {
         Libertree.UI.indicateNewPosts(data);
         break;
       case 'notification':
-        Libertree.Notifications.updateNumUnseen(data.n);
+        Libertree.Notifications.notificationsSyncer.onServerUpdate(data);
         break;
     }
   };

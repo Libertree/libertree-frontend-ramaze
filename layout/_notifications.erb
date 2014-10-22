@@ -3,10 +3,10 @@
   href="/notifications"
   class="menu-item"
   id="menu-notifications"
-  v-on="click : onClick"
-  title="<%= account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen %>"
+  v-on="click: onClick"
+  v-attr="title: title"
 ><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
   id="num-notifications-unseen"
-  v-show="n > 0"
->{{n}}</span></a>
+  v-show="n > 0" v-text="n"
+><%= account.num_notifications_unseen %></span></a>
 <div id="notifications-window" class="window has-shadow"></div>

@@ -21,17 +21,8 @@ $( function() {
       };
     },
 
-    unseenNotificationsIndicator: new Vue({
-      el: '#num-notifications-unseen',
-      data: {
-        n: <%= account.num_notifications_unseen %>
-      }
-    }),
-
     // n is of type string
     updateNumUnseen: function(n) {
-      console.log('updateNumUnseen '+n);
-      /* TODO: move these title updates into unseenNotificationsIndicator (Vue ViewModel) */
       var title = document.title;
       if( n === '0' ) {
         /* $('#num-notifications-unseen').hide(); */
@@ -44,8 +35,52 @@ $( function() {
         }
       }
       document.title = title;
-      Libertree.Notifications.unseenNotificationsIndicator.n = n;
+      Libertree.Notifications.notificationsSyncer.n = n;
     },
 
   };
+
+  Libertree.Notifications.notificationsSyncer = new Vue({
+    el: '#menu-notifications',
+    data: {
+      n: <%= account.num_notifications_unseen %>,
+      title: "<%= account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen %>"
+    },
+    methods: {
+      onClick: function(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+
+        if( $('#notifications-window').is(':visible') ) {
+          Libertree.UI.hideWindows();
+          return;
+        }
+
+        if( this.n == 0 ) {
+          window.location = '/notifications';
+          return;
+        }
+
+        Libertree.UI.hideWindows();
+        $('#notifications-window').empty();
+        Libertree.UI.addSpinner('#notifications-window', 'append');
+        $('#notifications-window').
+          load(
+            '/notifications/_index',
+            function(html) {
+              Libertree.Session.ensureAlive(html);
+              Libertree.UI.removeSpinner('#notifications-window');
+              Libertree.Notifications.updateNumUnseen( $( $.trim(html) ).find('.n').text() );
+            }
+          ).toggle();
+
+        return;
+      },
+      onServerUpdate: function(data) {
+        this.n = data.n;
+        this.title = data.title;
+      }
+    }
+  });
+
 } );
