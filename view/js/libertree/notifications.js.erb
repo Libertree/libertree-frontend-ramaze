@@ -23,18 +23,6 @@ $( function() {
 
     // n is of type string
     updateNumUnseen: function(n) {
-      var title = document.title;
-      if( n === '0' ) {
-        /* $('#num-notifications-unseen').hide(); */
-        title = title.replace( /^\([0-9]+\) /, '' );
-      } else {
-        /* $('#num-notifications-unseen').show(); */
-        title = title.replace( /^\([0-9]+\)/, '('+n+')' );
-        if( ! title.match(/^\([0-9]+\)/) ) {
-          title = '('+n+') ' + title;
-        }
-      }
-      document.title = title;
       Libertree.Notifications.notificationsSyncer.n = n;
     },
 
@@ -80,7 +68,22 @@ $( function() {
         this.n = data.n;
         this.title = data.title;
       }
+    },
+    ready: function() {
+      this.$watch('n', function(new_value) {
+        /* In VueJS 0.11+, we will have a vm.$interpolate() method available
+        which will obviate most of this complicated string manipulation. */
+        var title = document.title;
+        if( new_value === '0' ) {
+          title = title.replace( /^\([0-9]+\) /, '' );
+        } else {
+          title = title.replace( /^\([0-9]+\)/, '('+new_value+')' );
+          if( ! title.match(/^\([0-9]+\)/) ) {
+            title = '('+new_value+') ' + title;
+          }
+        }
+        document.title = title;
+      });
     }
   });
-
 } );
