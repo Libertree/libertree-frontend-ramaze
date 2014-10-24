@@ -1,4 +1,4 @@
-<div class="comments <%=@hidden ? 'hidden' : ''%>">
+<div id="comments-for-post-<%= @post.id %>" class="comments <%=@hidden ? 'hidden' : ''%>">
   <% all_comments = @post.comments %>
   <% fetched_comments = @post.comments(@comment_fetch_options) %>
   <%= render_file 'view/comments/_num_comments.erb', num_shown: fetched_comments.count, num_total: all_comments.count %>
