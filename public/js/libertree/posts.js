@@ -47,8 +47,8 @@ Libertree.Posts = (function () {
 
     subscribe   = setSubscription('subscribe'),
     unsubscribe = setSubscription('unsubscribe'),
-    like        = Libertree.mkLike('post'),
-    unlike      = Libertree.mkUnlike('post');
+    like        = Libertree.likeFunction('post'),
+    unlike      = Libertree.unlikeFunction('post');
 
   return {
     markRead: markRead,
@@ -105,11 +105,11 @@ Libertree.Posts = (function () {
         Libertree.UI.initSpoilers();
 
         $(document).on('click', '.post-tools a.like', function(event) {
-          like( $(this), event, 'div.post, .post-excerpt' );
+          like(event);
         } );
 
         $(document).on('click', '.post-tools a.unlike', function(event) {
-          unlike( $(this), event, 'div.post, .post-excerpt' );
+          unlike(event);
         } );
 
         $(document).on('click', '.mark-read', function() {

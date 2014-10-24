@@ -88,11 +88,11 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', 'div.comment a.like', function(event) {
-    Libertree.Comments.like( $(this), event, 'div.comment' );
+    Libertree.Comments.like(event);
   } );
 
   $(document).on('click', 'div.comment a.unlike', function(event) {
-    Libertree.Comments.unlike( $(this), event, 'div.comment' );
+    Libertree.Comments.unlike(event);
   } );
 
   $(document).on('click', 'form.comment input.submit', Libertree.Comments.submit);

@@ -132,5 +132,7 @@ Libertree.Comments = {
   }
 };
 
-Libertree.Comments.like   = Libertree.mkLike('comment');
-Libertree.Comments.unlike = Libertree.mkUnlike('comment');
+Libertree.Comments.like   = Libertree.likeFunction('comment');
+Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
+
+} );
