@@ -10,6 +10,7 @@ $( function() {
     hideLoadCommentsLinkIfAllShown: function(element) {
       var n = parseInt( element.find('.comments .num-comments').data('total'), 10 );
 
+      /* TODO: Do this via Vue.js VM data binding */
       if( element.find('div.comment').length === n ) {
         element.find('a.load-comments').css('visibility', 'hidden');
       }
@@ -45,51 +46,6 @@ $( function() {
             );
           }
           Libertree.UI.initSpoilers();
-        }
-      );
-    },
-
-    loadMore: function( linkClicked, dontSlide ) {
-      var post = linkClicked.closest('.post, .post-excerpt'),
-          postId = post.data('post-id'),
-          comments = post.find('.comments'),
-          toId = comments.find('.comment:first').data('comment-id');
-
-      Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
-      $.get(
-        '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
-        function(html) {
-          if( $.trim(html).length === 0 ) {
-            return;
-          }
-          var o = $( $.trim(html) );
-
-          var scrollable = $('div.comments-pane');
-          if( $('.excerpts-view').length ) {
-            scrollable = Libertree.UI.scrollable();
-          }
-          var initialScrollTop = scrollable.scrollTop();
-          var initialHeight = comments.height();
-          o.insertBefore(comments.find('.comment:first'));
-          Libertree.Comments.listSyncers[
-            o.closest('.comments-pane, .post-excerpt .comments').attr('id')
-          ].recompile();
-          Libertree.UI.initSpoilers();
-          var delta = comments.height() - initialHeight;
-          Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
-
-          scrollable.scrollTop( initialScrollTop + delta );
-          Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
-          Libertree.UI.removeSpinner('.comments');
-          linkClicked.removeClass('disabled');
-
-          if( dontSlide === undefined || ! dontSlide ) {
-            scrollable.animate(
-              { scrollTop: initialScrollTop },
-              delta * 1.5,
-              'easeInOutQuint'
-            );
-          }
         }
       );
     },
@@ -172,6 +128,10 @@ $( function() {
     var id = $(this).attr('id');
     Libertree.Comments.listSyncers[id] = new Vue({
       el: '#' + id,
+      data: {
+        loadingComments: false,
+        slideToLoadedComment: true,
+      },
       methods: {
         recompile: function() {
           return this.$compile(this.$el);
@@ -192,9 +152,71 @@ $( function() {
               commentsPane.find('textarea').focus().hide().fadeIn();
             }
           );
+        },
+
+        loadMore: function(event) {
+          var syncer = this;
+          if( this.loadingComments ) { return true; }
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          this.loadingComments = true;
+
+          var post = $(event.target).closest('.post, .post-excerpt'),
+            postId = post.data('post-id'),
+            comments = post.find('.comments'),
+            toId = comments.find('.comment:first').data('comment-id');
+
+          Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
+          $.get(
+            '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
+            function(html) {
+              if( $.trim(html).length === 0 ) {
+                return;
+              }
+              var o = $( $.trim(html) );
+
+              var scrollable = $('div.comments-pane');
+              if( $('.excerpts-view').length ) {
+                scrollable = Libertree.UI.scrollable();
+              }
+              var initialScrollTop = scrollable.scrollTop();
+              var initialHeight = comments.height();
+              o.insertBefore(comments.find('.comment:first'));
+              Libertree.Comments.listSyncers[
+                o.closest('.comments-pane, .post-excerpt .comments').attr('id')
+              ].recompile();
+              Libertree.UI.initSpoilers();
+              var delta = comments.height() - initialHeight;
+              Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
+
+              scrollable.scrollTop( initialScrollTop + delta );
+              Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
+              Libertree.UI.removeSpinner('.comments');
+
+              syncer.loadingComments = false;
+
+              if( syncer.slideToLoadedComment ) {
+                scrollable.animate(
+                  { scrollTop: initialScrollTop },
+                  delta * 1.5,
+                  'easeInOutQuint'
+                );
+              } else {
+                syncer.slideToLoadedComment = true;
+              }
+            }
+          );
+
+          return false;
         }
       }
     });
-  } );
 
+    if( window.location.hash.indexOf("#comment-") === 0 ) {
+      Libertree.Comments.listSyncers[id].slideToLoadedComment = false;
+      Libertree.click('a.load-comments')
+    }
+  } );
 } );

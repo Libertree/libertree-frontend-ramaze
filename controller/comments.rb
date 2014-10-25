@@ -60,7 +60,7 @@ module Controller
       Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, @comments.map(&:id) )
     end
 
-    # called by JS: Libertree.Comments.loadMore
+    # called by JS: Libertree.Comments.listSyncers
     def _comments(post_id, to_id, old_n)
       # TODO: Check that member is allowed to view the post and its comments
       # (when we introduce such restrictions in the system)

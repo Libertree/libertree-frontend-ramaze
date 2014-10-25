@@ -4,13 +4,6 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('click', 'a.load-comments:not(.disabled)', function(event) {
-    event.preventDefault();
-    $(this).addClass('disabled');
-    Libertree.Comments.loadMore($(this));
-    return false;
-  } );
-
   $(document).on('mouseover', 'div.comment', function() {
     $(this).find('.comment-tools').css('visibility', 'visible');
   } );
@@ -115,10 +108,6 @@ $(document).ready( function() {
   } );
 
   /* ---------------------------------------------------- */
-
-  if( window.location.hash.indexOf("#comment-") === 0 ) {
-    Libertree.Comments.loadMore( $('a.load-comments'), true );
-  }
 
   Libertree.Comments.hideLoadCommentsLinkIfAllShown( $('.post') );
 } );
