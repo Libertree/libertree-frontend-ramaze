@@ -130,7 +130,7 @@ $( function() {
       el: '#' + id,
       data: {
         loadingComments: false,
-        slideToLoadedComment: true,
+        avoidSlidingToLoadedComments: false,
       },
       methods: {
         recompile: function() {
@@ -197,14 +197,16 @@ $( function() {
 
               syncer.loadingComments = false;
 
-              if( syncer.slideToLoadedComment ) {
+              if( syncer.avoidSlidingToLoadedComments ) {
+                // This is only used once per page load.
+                // See "indexOf("#comment-"), below
+                syncer.avoidSlidingToLoadedComments = false;
+              } else {
                 scrollable.animate(
                   { scrollTop: initialScrollTop },
                   delta * 1.5,
                   'easeInOutQuint'
                 );
-              } else {
-                syncer.slideToLoadedComment = true;
               }
             }
           );
@@ -215,7 +217,7 @@ $( function() {
     });
 
     if( window.location.hash.indexOf("#comment-") === 0 ) {
-      Libertree.Comments.listSyncers[id].slideToLoadedComment = false;
+      Libertree.Comments.listSyncers[id].avoidSlidingToLoadedComments = true;
       Libertree.click('a.load-comments')
     }
   } );
