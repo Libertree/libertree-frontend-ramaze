@@ -175,6 +175,23 @@ $( function() {
       methods: {
         recompile: function() {
           return this.$compile(this.$el);
+        },
+
+        jumpToCommentBox: function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var commentsDiv = $(event.target).closest('div.comments'),
+              commentsPane = $(event.target).closest('div.comments-pane'),
+              targetScrollTop = commentsDiv.height() - commentsPane.height();
+
+          commentsPane.animate(
+            { scrollTop: targetScrollTop },
+            targetScrollTop - commentsPane.scrollTop(),
+            'easeOutQuint',
+            function() {
+              commentsPane.find('textarea').focus().hide().fadeIn();
+            }
+          );
         }
       }
     });

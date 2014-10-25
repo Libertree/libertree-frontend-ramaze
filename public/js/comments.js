@@ -4,22 +4,6 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('click', '.jump-to-comment', function(event) {
-    event.preventDefault();
-    var commentsDiv = $(this).closest('div.comments'),
-        commentsPane = $(this).closest('div.comments-pane'),
-        targetScrollTop = commentsDiv.height() - commentsPane.height();
-
-    commentsPane.animate(
-      { scrollTop: targetScrollTop },
-      targetScrollTop - commentsPane.scrollTop(),
-      'easeOutQuint',
-      function() {
-        commentsPane.find('textarea').focus().hide().fadeIn();
-      }
-    );
-  } );
-
   $(document).on('click', 'a.load-comments:not(.disabled)', function(event) {
     event.preventDefault();
     $(this).addClass('disabled');

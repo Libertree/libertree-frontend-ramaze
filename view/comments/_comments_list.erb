@@ -4,7 +4,7 @@
   <%= render_file 'view/comments/_num_comments.erb', num_shown: fetched_comments.count, num_total: all_comments.count %>
 
   <% if logged_in? %>
-    <a href="#" class="jump-to-comment"><%=s_('jump-to-comment|Comment')%></a>
+    <a href="#" v-on="click: jumpToCommentBox"><%=s_('jump-to-comment|Comment')%></a>
   <% else %>
     <a href="/login">Log in</a> to comment.
   <% end %>
