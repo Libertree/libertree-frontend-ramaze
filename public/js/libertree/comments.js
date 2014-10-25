@@ -71,6 +71,9 @@ $( function() {
           var initialScrollTop = scrollable.scrollTop();
           var initialHeight = comments.height();
           o.insertBefore(comments.find('.comment:first'));
+          Libertree.Comments.listSyncers[
+            o.closest('.comments-pane, .post-excerpt .comments').attr('id')
+          ].recompile();
           Libertree.UI.initSpoilers();
           var delta = comments.height() - initialHeight;
           Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
@@ -138,22 +141,42 @@ $( function() {
   Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
 
   Vue.component('comp-comment', {
-    paramAttributes: ['data-likes-count', 'data-likes-desc'],
+    /* TODO:
+    Vue.js has a bug (confirmed with developer).  When we use dash-separated
+    names, we get these warnings:
+    [Vue warn]: Invalid setter function body:  scope.data-scope.likes-scope.count
+    [Vue warn]: Invalid setter function body:  scope.data-scope.likes-scope.desc
+    */
+    /* paramAttributes: ['data-likes-count', 'data-likes-desc'], */
+    paramAttributes: ['datalikescount', 'datalikesdesc'],
     computed: {
+      /* TODO: These getters and setters can go away once some upcoming changes to
+      Vue.js are made. */
       likesCount: {
-        $get: function() { return this['data-likes-count']; },
-        $set: function(newValue) { this['data-likes-count'] = newValue; }
+        /* get: function() { return this['data-likes-count']; }, */
+        /* set: function(newValue) { this['data-likes-count'] = newValue; } */
+        get: function() { return this['datalikescount']; },
+        set: function(newValue) { this['datalikescount'] = newValue; }
       },
       likesDesc: {
-        $get: function() { return this['data-likes-desc']; },
-        $set: function(newValue) { this['data-likes-desc'] = newValue; }
+        /* get: function() { return this['data-likes-desc']; }, */
+        /* set: function(newValue) { this['data-likes-desc'] = newValue; } */
+        get: function() { return this['datalikesdesc']; },
+        set: function(newValue) { this['datalikesdesc'] = newValue; }
       },
     },
   } );
 
+  Libertree.Comments.listSyncers = {};
   $('.comments-pane, .post-excerpt .comments').each( function() {
-    new Vue({
-      el: '#' + $(this).attr('id')
+    var id = $(this).attr('id');
+    Libertree.Comments.listSyncers[id] = new Vue({
+      el: '#' + id,
+      methods: {
+        recompile: function() {
+          return this.$compile(this.$el);
+        }
+      }
     });
   } );
 
