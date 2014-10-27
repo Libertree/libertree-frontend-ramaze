@@ -209,6 +209,14 @@ $( function() {
 
   Vue.component('comp-comment', {
     paramAttributes: ['data-likes-count', 'data-likes-desc'],
+    created: function() {
+      /* TODO: Not sure why Vue.js doesn't allow us to just specify `data: {...}` */
+      this.$add('toolsVisible', false);
+    },
+    methods: {
+      showTools: function() { this.toolsVisible = true; },
+      hideTools: function() { this.toolsVisible = false; }
+    }
   } );
 
   Vue.component('comp-num-comments', {

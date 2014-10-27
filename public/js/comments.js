@@ -4,13 +4,6 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('mouseover', 'div.comment', function() {
-    $(this).find('.comment-tools').css('visibility', 'visible');
-  } );
-  $(document).on('mouseout', 'div.comment', function() {
-    $(this).find('.comment-tools').css('visibility', 'hidden');
-  } );
-
   $(document).on('click', '.comment .delete', function(event) {
     event.preventDefault();
     var $this = $(this),
