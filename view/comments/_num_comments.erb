@@ -1,9 +1,0 @@
-<!--
-TODO: This partial shouldn't be called from three places.
-We should have a single data property on the comment list Vue.js VM.
--->
-<% if @num_shown == @num_total %>
-  <span class="<%= @hidden ? 'hidden' : ''%> num-comments" data-n="<%= @num_total %>" data-total="<%= @num_total %>"><%= n_('1 comment', '%d comments', @num_total) % @num_total%></span>
-<% else %>
-  <span class="<%= @hidden ? 'hidden' : ''%> num-comments" data-n="<%= @num_shown %>" data-total="<%= @num_total %>"><%= n_('showing 1 comment', 'showing %d of %d comments', @num_total) % [@num_shown, @num_total]%></span>
-<% end %>

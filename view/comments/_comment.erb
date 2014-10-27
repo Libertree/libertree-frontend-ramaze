@@ -1,5 +1,5 @@
 <% if @old_n && @n_total %>
-  <%= render_file 'view/comments/_num_comments.erb', num_shown: @old_n+1, num_total: @n_total, hidden: true %>
+  <%= render_file 'view/comments/_num_comments_data.erb', num_shown: @old_n+1, num_total: @n_total, hidden: true %>
 <% end %>
 <%
 likes = @comment.likes

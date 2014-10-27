@@ -106,8 +106,4 @@ $(document).ready( function() {
   $(document).on('blur', 'textarea.comment', function() {
     $(this).removeClass('focused');
   } );
-
-  /* ---------------------------------------------------- */
-
-  Libertree.Comments.hideLoadCommentsLinkIfAllShown( $('.post') );
 } );

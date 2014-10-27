@@ -180,7 +180,8 @@ Libertree.UI = (function () {
       //TODO: don't do this. Record the excerpt height somewhere and operate on that.
       overflowed.data( 'contracted-height', overflowed.height() );
 
-      excerptParent.find('div.comments.hidden').removeClass('hidden');
+      /* TODO: convert to Vue.js */
+      excerptParent.find('div.comments-area.hidden').removeClass('hidden');
       heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
       animationDuration = Libertree.UI.duration(heightDifference);
 
@@ -229,7 +230,8 @@ Libertree.UI = (function () {
            * more" animation in other themes. */
           overflowed.css('max-height', overflowed.data('contracted-height')+'px');
           overflowed.height('auto');
-          $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
+          /* TODO: convert to Vue.js */
+          $(this).closest('.post-excerpt').find('div.comments-area').addClass('hidden');
           link.siblings('.show-more').show();
         }
       );

@@ -1,3 +1,4 @@
+<!-- TODO: Do the num-comments elements in here conflict with the num comments Vue.js component? -->
 <div class="post-excerpt autoloadable <%=@is_first ? 'first' : ''%>" id="post-<%=@post.id%>" data-post-id="<%=@post.id%>" data-t="<%= @river_post_order == :comment ? @post.time_updated_overall.to_time.to_f : @post.time_created.to_time.to_f %>">
   <% comments = @post.comments %>
   <% likes = @post.likes %>
@@ -61,7 +62,10 @@
           </div>
         <% end %>
       </div>
-      <%= render_file 'view/comments/_comments_list.erb', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 }, hidden: true %>
+      <div class="comments-area hidden" id="comments-for-post-<%= @post.id %>">
+        <div v-component="comp-num-comments" v-with="commentCount"></div>
+        <%= render_file 'view/comments/_comments_list.erb', post: @post, comment_fetch_options: @comment_fetch_options || { limit: 4 } %>
+      </div>
     </div>
   </div>
 

@@ -1,21 +1,6 @@
 $( function() {
 
   Libertree.Comments = {
-    replaceNumCommentsFromAJAX: function(ajax_object, post) {
-      var numCommentsSpan = ajax_object.filter('span.num-comments.hidden').detach();
-      post.find('.comments span.num-comments').replaceWith(numCommentsSpan);
-      numCommentsSpan.removeClass('hidden');
-    },
-
-    hideLoadCommentsLinkIfAllShown: function(element) {
-      var n = parseInt( element.find('.comments .num-comments').data('total'), 10 );
-
-      /* TODO: Do this via Vue.js VM data binding */
-      if( element.find('div.comment').length === n ) {
-        element.find('a.load-comments').css('visibility', 'hidden');
-      }
-    },
-
     insertHtmlFor: function( postId, commentId ) {
       var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
 
@@ -23,12 +8,12 @@ $( function() {
         return;
       }
 
+      var syncer = Libertree.Comments.listSyncers[post.find('.comments-area').attr('id')];
       $.get(
-        '/comments/_comment/'+commentId+'/' + post.find('.comments .num-comments').data('n'),
+        '/comments/_comment/'+commentId+'/' + syncer.numTotalOnPost,
         function(html) {
           var o = $( $.trim(html) );
           o.insertBefore( post.find('.comments .detachable') );
-          Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
           var height = o.height();
           var animationDuration = height*5;
           o.hide();
@@ -45,6 +30,9 @@ $( function() {
               animationDuration
             );
           }
+          syncer.receiveData();
+          syncer.numShowingDirty = ! syncer.numShowingDirty;
+          syncer.recompile();
           Libertree.UI.initSpoilers();
         }
       );
@@ -100,18 +88,70 @@ $( function() {
     paramAttributes: ['data-likes-count', 'data-likes-desc'],
   } );
 
+  Vue.component('comp-num-comments', {
+    template: '#template-num-comments',
+    computed: {
+      text: function() {
+        /* We may consider using https://github.com/alexei/sprintf.js */
+        /* TODO: Or better yet, we should probably use Vue.js mustaches here! */
+        var formatString;
+        if( this.$parent.numShowing == this.$parent.numTotalOnPost ) {
+          formatString = this.$parent.commentCount.i18n.allShown;
+        } else {
+          formatString = this.$parent.commentCount.i18n.someShown;
+        }
+        return formatString.replace('%d', this.$parent.numShowing);
+      }
+    }
+  } );
+
   Libertree.Comments.listSyncers = {};
-  $('.comments-pane, .post-excerpt .comments').each( function() {
+  $('.comments-area').each( function() {
     var id = $(this).attr('id');
+
     Libertree.Comments.listSyncers[id] = new Vue({
       el: '#' + id,
+
       data: {
         loadingComments: false,
         avoidSlidingToLoadedComments: false,
+        // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
+        numShowingDirty: false,
+        numTotalOnPost: 0,
+        commentCount: {
+          i18n: {
+            allShown: '',
+            someShown: ''
+          }
+        },
       },
+
+      computed: {
+        numShowing: function() {
+          // Vue.js dependency which we use to manually dirty this numShowing computed value
+          this.numShowingDirty;
+          return $(this.$el).find('div.comment').length;
+        }
+      },
+
       methods: {
         recompile: function() {
           return this.$compile(this.$el);
+        },
+
+        receiveData: function() {
+          var el = $(this.$el).find('.data');
+          el.remove();
+
+          /* Only one el.data('data-type') for now, but when more than one is
+          possible, we'll need a case/switch here. */
+
+          /* el.data('data-type') assumed to be 'num-comments' */
+
+          /* TODO: this num total should probably be updated from the websocket instead of AJAX like this */
+          this.numTotalOnPost = el.data('num-total');
+          this.commentCount.i18n.allShown = el.data('text-all-showing');
+          this.commentCount.i18n.someShown = el.data('text-some-showing');
         },
 
         jumpToCommentBox: function(event) {
@@ -145,6 +185,7 @@ $( function() {
             comments = post.find('.comments'),
             toId = comments.find('.comment:first').data('comment-id');
 
+          /* TODO: spinner visibility based on Vue VM data */
           Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
           $.get(
             '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
@@ -161,15 +202,14 @@ $( function() {
               var initialScrollTop = scrollable.scrollTop();
               var initialHeight = comments.height();
               o.insertBefore(comments.find('.comment:first'));
-              Libertree.Comments.listSyncers[
-                o.closest('.comments-pane, .post-excerpt .comments').attr('id')
-              ].recompile();
+              syncer.receiveData();
+              syncer.numShowingDirty = ! syncer.numShowingDirty;
+              syncer.recompile();
               Libertree.UI.initSpoilers();
               var delta = comments.height() - initialHeight;
-              Libertree.Comments.replaceNumCommentsFromAJAX(o, post);
 
               scrollable.scrollTop( initialScrollTop + delta );
-              Libertree.Comments.hideLoadCommentsLinkIfAllShown(post);
+              /* TODO: spinner visibility based on Vue VM data */
               Libertree.UI.removeSpinner('.comments');
 
               syncer.loadingComments = false;
@@ -192,6 +232,8 @@ $( function() {
         }
       }
     });
+
+    Libertree.Comments.listSyncers[id].receiveData( $(this).find('.data[data-data-type="num-comments"]') );
 
     if( window.location.hash.indexOf("#comment-") === 0 ) {
       Libertree.Comments.listSyncers[id].avoidSlidingToLoadedComments = true;
