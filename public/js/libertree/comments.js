@@ -120,7 +120,10 @@ $( function() {
           );
 
           return false;
-        }
+        },
+
+        like: Libertree.likeFunction('comment'),
+        unlike: Libertree.unlikeFunction('comment'),
       }
     }),
 
@@ -203,9 +206,6 @@ $( function() {
       );
     }
   };
-
-  Libertree.Comments.like   = Libertree.likeFunction('comment');
-  Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
 
   Vue.component('comp-comment', {
     paramAttributes: ['data-likes-count', 'data-likes-desc'],

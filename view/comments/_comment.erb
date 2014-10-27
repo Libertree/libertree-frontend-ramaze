@@ -30,12 +30,13 @@ likes_desc = n_('1 like', '%d likes', likes.count) % likes.count
         <a
           href="#"
           class="unlike"
+          v-on="click: $parent.unlike"
           data-comment-like-id="<%=@comment.like_by(account.member).id%>"
         ><%=img 'icon-unlike.png', {class:"size-16", alt:_('unlike'), title:_('Unlike this comment')}%></a>
-        <a href="#" class="like hidden"><%=img 'icon-like.png', {class:"size-16", alt:_('like'), title:_('Like this comment')}%></a>
+        <a href="#" class="like hidden" v-on="click: $parent.like"><%=img 'icon-like.png', {class:"size-16", alt:_('like'), title:_('Like this comment')}%></a>
       <% else %>
-        <a href="#" class="like"><%=img 'icon-like.png', {class:"size-16", alt:_('like'), title:_('Like this comment')}%></a>
-        <a href="#" class="unlike hidden"><%=img 'icon-unlike.png', {class:"size-16", alt:_('unlike'), title:_('Unlike this comment')}%></a>
+        <a href="#" class="like" v-on="click: $parent.like"><%=img 'icon-like.png', {class:"size-16", alt:_('like'), title:_('Like this comment')}%></a>
+        <a href="#" class="unlike hidden" v-on="click: $parent.unlike"><%=img 'icon-unlike.png', {class:"size-16", alt:_('unlike'), title:_('Unlike this comment')}%></a>
       <% end %>
       <% if @comment.member == account.member %>
         <a href="#" class="delete" data-msg="<%=_('Delete this comment?')%>"><%= img 'icon-delete.png', {class:"size-16", alt:_('delete'), title:_('delete')}%></a>

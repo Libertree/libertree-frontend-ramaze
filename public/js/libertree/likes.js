@@ -28,6 +28,7 @@ Libertree.likeFunction = function(type) {
 
   return function(event) {
     event.preventDefault();
+    event.stopPropagation();
     var link = $(event.target).closest('a.like');
     var entity = link.closest(entityPath);
     Libertree.UI.enableIconSpinner(link.find('img'));
