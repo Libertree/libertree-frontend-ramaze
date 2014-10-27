@@ -97,30 +97,7 @@ $( function() {
   Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
 
   Vue.component('comp-comment', {
-    /* TODO:
-    Vue.js has a bug (confirmed with developer).  When we use dash-separated
-    names, we get these warnings:
-    [Vue warn]: Invalid setter function body:  scope.data-scope.likes-scope.count
-    [Vue warn]: Invalid setter function body:  scope.data-scope.likes-scope.desc
-    */
-    /* paramAttributes: ['data-likes-count', 'data-likes-desc'], */
-    paramAttributes: ['datalikescount', 'datalikesdesc'],
-    computed: {
-      /* TODO: These getters and setters can go away once some upcoming changes to
-      Vue.js are made. */
-      likesCount: {
-        /* get: function() { return this['data-likes-count']; }, */
-        /* set: function(newValue) { this['data-likes-count'] = newValue; } */
-        get: function() { return this['datalikescount']; },
-        set: function(newValue) { this['datalikescount'] = newValue; }
-      },
-      likesDesc: {
-        /* get: function() { return this['data-likes-desc']; }, */
-        /* set: function(newValue) { this['data-likes-desc'] = newValue; } */
-        get: function() { return this['datalikesdesc']; },
-        set: function(newValue) { this['datalikesdesc'] = newValue; }
-      },
-    },
+    paramAttributes: ['data-likes-count', 'data-likes-desc'],
   } );
 
   Libertree.Comments.listSyncers = {};
