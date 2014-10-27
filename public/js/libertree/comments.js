@@ -1,129 +1,20 @@
 $( function() {
 
   Libertree.Comments = {
-    insertHtmlFor: function( postId, commentId ) {
-      var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
-
-      if( post.find('.comments:visible').length === 0 ) {
-        return;
-      }
-
-      var syncer = Libertree.Comments.listSyncers[post.find('.comments-area').attr('id')];
-      $.get(
-        '/comments/_comment/'+commentId+'/' + syncer.numTotalOnPost,
-        function(html) {
-          var o = $( $.trim(html) );
-          o.insertBefore( post.find('.comments .detachable') );
-          var height = o.height();
-          var animationDuration = height*5;
-          o.hide();
-          Libertree.UI.animatableNodesOnly(o).slideDown(animationDuration);
-          $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
-
-          if( $('textarea.comment.focused').length ) {
-            var scrollable = post.find('div.comments-pane');
-            if( $('.excerpts-view').length ) {
-              scrollable = $('html');
-            }
-            scrollable.animate(
-              { scrollTop: scrollable.scrollTop() + height },
-              animationDuration
-            );
-          }
-          syncer.receiveData();
-          syncer.numShowingDirty = ! syncer.numShowingDirty;
-          syncer.recompile();
-          Libertree.UI.initSpoilers();
-        }
-      );
-    },
-
-    submit: function (event) {
-      event.preventDefault();
-      var submitButton = $(this),
-          form = submitButton.closest('form.comment'),
-          textarea = form.find('textarea.comment'),
-          postId = form.data('post-id');
-
-      submitButton.prop('disabled', true);
-      Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
-      Libertree.UI.TextAreaBackup.disable();
-
-      $.post(
-        '/comments/create.json',
-        {
-          post_id: postId,
-          text: textarea.val()
-        },
-        function(response) {
-          var post;
-
-          if( response.success ) {
-            textarea.val('').height(50);
-            $('.preview-box').remove();
-            post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
-            post.find('.subscribe').addClass('hidden');
-            post.find('.unsubscribe').removeClass('hidden');
-
-            if( $('#comment-'+response.commentId).length === 0 ) {
-              form.closest('.comments').find('.success')
-                .attr('data-comment-id', response.commentId) /* setting with .data() can't be read with later .data() call */
-                .fadeIn()
-              ;
-            }
-          } else {
-            alert(submitButton.data('msg-failure'));
-          }
-          submitButton.prop('disabled', false);
-          Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
-        }
-      );
-    }
-  };
-
-  Libertree.Comments.like   = Libertree.likeFunction('comment');
-  Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
-
-  Vue.component('comp-comment', {
-    paramAttributes: ['data-likes-count', 'data-likes-desc'],
-  } );
-
-  Vue.component('comp-num-comments', {
-    template: '#template-num-comments',
-    computed: {
-      text: function() {
-        /* We may consider using https://github.com/alexei/sprintf.js */
-        /* TODO: Or better yet, we should probably use Vue.js mustaches here! */
-        var formatString;
-        if( this.$parent.numShowing == this.$parent.numTotalOnPost ) {
-          formatString = this.$parent.commentCount.i18n.allShown;
-        } else {
-          formatString = this.$parent.commentCount.i18n.someShown;
-        }
-        return formatString.replace('%d', this.$parent.numShowing);
-      }
-    }
-  } );
-
-  Libertree.Comments.listSyncers = {};
-  $('.comments-area').each( function() {
-    var id = $(this).attr('id');
-
-    Libertree.Comments.listSyncers[id] = new Vue({
-      el: '#' + id,
-
-      data: {
-        loadingComments: false,
-        avoidSlidingToLoadedComments: false,
+    ListSyncer: Vue.extend({
+      created: function() {
+        /* TODO: Not sure why Vue.js doesn't allow us to just specify `data: {...}` */
+        this.$add('loadingComments', false);
+        this.$add('avoidSlidingToLoadedComments', false);
         // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
-        numShowingDirty: false,
-        numTotalOnPost: 0,
-        commentCount: {
+        this.$add('numShowingDirty', false);
+        this.$add('numTotalOnPost', 0);
+        this.$add('commentCount', {
           i18n: {
             allShown: '',
             someShown: ''
           }
-        },
+        });
       },
 
       computed: {
@@ -231,8 +122,118 @@ $( function() {
           return false;
         }
       }
-    });
+    }),
 
+    insertHtmlFor: function( postId, commentId ) {
+      var post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+
+      if( post.find('.comments:visible').length === 0 ) {
+        return;
+      }
+
+      var syncer = Libertree.Comments.listSyncers[post.find('.comments-area').attr('id')];
+      $.get(
+        '/comments/_comment/'+commentId+'/' + syncer.numTotalOnPost,
+        function(html) {
+          var o = $( $.trim(html) );
+          o.insertBefore( post.find('.comments .detachable') );
+          var height = o.height();
+          var animationDuration = height*5;
+          o.hide();
+          Libertree.UI.animatableNodesOnly(o).slideDown(animationDuration);
+          $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
+
+          if( $('textarea.comment.focused').length ) {
+            var scrollable = post.find('div.comments-pane');
+            if( $('.excerpts-view').length ) {
+              scrollable = $('html');
+            }
+            scrollable.animate(
+              { scrollTop: scrollable.scrollTop() + height },
+              animationDuration
+            );
+          }
+          syncer.receiveData();
+          syncer.numShowingDirty = ! syncer.numShowingDirty;
+          syncer.recompile();
+          Libertree.UI.initSpoilers();
+        }
+      );
+    },
+
+    submit: function (event) {
+      event.preventDefault();
+      var submitButton = $(this),
+          form = submitButton.closest('form.comment'),
+          textarea = form.find('textarea.comment'),
+          postId = form.data('post-id');
+
+      submitButton.prop('disabled', true);
+      Libertree.UI.addSpinner( submitButton.closest('.form-buttons'), 'append', 16 );
+      Libertree.UI.TextAreaBackup.disable();
+
+      $.post(
+        '/comments/create.json',
+        {
+          post_id: postId,
+          text: textarea.val()
+        },
+        function(response) {
+          var post;
+
+          if( response.success ) {
+            textarea.val('').height(50);
+            $('.preview-box').remove();
+            post = $('.post[data-post-id="'+postId+'"], .post-excerpt[data-post-id="'+postId+'"]');
+            post.find('.subscribe').addClass('hidden');
+            post.find('.unsubscribe').removeClass('hidden');
+
+            if( $('#comment-'+response.commentId).length === 0 ) {
+              form.closest('.comments').find('.success')
+                .attr('data-comment-id', response.commentId) /* setting with .data() can't be read with later .data() call */
+                .fadeIn()
+              ;
+            }
+          } else {
+            alert(submitButton.data('msg-failure'));
+          }
+          submitButton.prop('disabled', false);
+          Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
+        }
+      );
+    }
+  };
+
+  Libertree.Comments.like   = Libertree.likeFunction('comment');
+  Libertree.Comments.unlike = Libertree.unlikeFunction('comment');
+
+  Vue.component('comp-comment', {
+    paramAttributes: ['data-likes-count', 'data-likes-desc'],
+  } );
+
+  Vue.component('comp-num-comments', {
+    template: '#template-num-comments',
+    computed: {
+      text: function() {
+        /* We may consider using https://github.com/alexei/sprintf.js */
+        /* TODO: Or better yet, we should probably use Vue.js mustaches here! */
+        var formatString;
+        if( this.$parent.numShowing == this.$parent.numTotalOnPost ) {
+          formatString = this.$parent.commentCount.i18n.allShown;
+        } else {
+          formatString = this.$parent.commentCount.i18n.someShown;
+        }
+        return formatString.replace('%d', this.$parent.numShowing);
+      }
+    }
+  } );
+
+
+  Libertree.Comments.listSyncers = {};
+  $('.comments-area').each( function() {
+    var id = $(this).attr('id');
+
+    Libertree.Comments.listSyncers[id] = new Libertree.Comments.ListSyncer({el: '#'+id});
     Libertree.Comments.listSyncers[id].receiveData( $(this).find('.data[data-data-type="num-comments"]') );
 
     if( window.location.hash.indexOf("#comment-") === 0 ) {
