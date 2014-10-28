@@ -2,19 +2,20 @@ $( function() {
 
   Libertree.Comments = {
     ListSyncer: Vue.extend({
-      created: function() {
-        /* TODO: Not sure why Vue.js doesn't allow us to just specify `data: {...}` */
-        this.$add('loadingComments', false);
-        this.$add('avoidSlidingToLoadedComments', false);
-        // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
-        this.$add('numShowingDirty', false);
-        this.$add('numTotalOnPost', 0);
-        this.$add('commentCount', {
-          i18n: {
-            allShown: '',
-            someShown: ''
-          }
-        });
+      data: function() {
+        return {
+          loadingComments: false,
+          avoidSlidingToLoadedComments: false,
+          // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
+          numShowingDirty: false,
+          numTotalOnPost: 0,
+          commentCount: {
+            i18n: {
+              allShown: '',
+              someShown: ''
+            }
+          },
+        };
       },
 
       computed: {
@@ -209,9 +210,10 @@ $( function() {
 
   Vue.component('comp-comment', {
     paramAttributes: ['data-likes-count', 'data-likes-desc'],
-    created: function() {
-      /* TODO: Not sure why Vue.js doesn't allow us to just specify `data: {...}` */
-      this.$add('toolsVisible', false);
+    data: function() {
+      return {
+        toolsVisible: false
+      };
     },
     methods: {
       showTools: function() { this.toolsVisible = true; },
