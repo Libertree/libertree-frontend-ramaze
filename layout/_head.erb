@@ -42,7 +42,7 @@
   <%= js 'modalBox' %>
   <%= js 'vue-0.11.0.min' %>
 
-  <%= js_nocache 'libertree' %>
+  <%= ejs_nocache 'libertree' %>
   <%= js_nocache 'libertree/post_loader' %>
   <%= js_nocache 'libertree/ui' %>
   <%= js_nocache 'libertree/session' %>
@@ -50,6 +50,7 @@
   <%= ejs_nocache 'libertree/notifications' %>
   <%= js_nocache 'libertree/chat' %>
   <%= js_nocache 'libertree/likes' %>
+  <%= js_nocache 'libertree/members' %>
   <%= js_nocache 'libertree/posts' %>
   <%= js_nocache 'libertree/comments' %>
   <%= js_nocache 'libertree/remotestorage' %>
@@ -100,5 +101,7 @@
     <% end %>
   </script>
 
-  <%= render_file 'view/comments/vue/_num_comments.html' %>
+  <%= render_file 'view/vue/notifications/notification.html' %>
+  <%= render_file 'view/vue/notifications/comment.html' %>
+  <%= render_file 'view/vue/comments/_num_comments.html' %>
 </head>

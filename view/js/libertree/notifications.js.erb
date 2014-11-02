@@ -80,4 +80,228 @@ $( function() {
       this.$watch('n', this.updatePageTitle);
     }
   });
+
+  /* ----------------------------- */
+
+  Vue.component('comp-notif-desc-comment', {
+    template: '#template-notif-desc-comment',
+    inherit: true,
+    replace: true,
+  });
+
+  Vue.component('comp-notif-comment-link', {
+    template: '<a href="#link-to-comment-" title="{{glimpse}}">click here</a>',
+    inherit: true,
+    replace: true,
+  });
+
+  /* TODO: Make a generic function for substituting positional parameters */
+  /* See: http://slexaxton.github.io/Jed/ */
+  var partialBody;
+
+  /* TODO: DRY this up! */
+  partialBody = Libertree.I18n['commented-on-your-post-singular'];
+  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
+  // TODO: href = #{ comment_link(@subject) }
+  partialBody = partialBody.replace(/%2\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%3\$s/, '</a>');
+  Vue.partial( 'partial-i18n-commented-on-your-post-singular', partialBody );
+
+  partialBody = Libertree.I18n['commented-on-post-singular'];
+  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
+  // TODO: href = #{ comment_link(@subject) }
+  partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
+  partialBody = partialBody.replace(/%3\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%4\$s/, '</a>');
+  Vue.partial( 'partial-i18n-commented-on-post-singular', partialBody );
+
+  partialBody = Libertree.I18n['commented-on-your-post-plural'];
+  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
+  // TODO: href = #{ comment_link(@subject) }
+  partialBody = partialBody.replace(/%2\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%3\$s/, '</a>');
+  Vue.partial( 'partial-i18n-commented-on-your-post-plural', partialBody );
+
+  partialBody = Libertree.I18n['commented-on-post-plural'];
+  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
+  // TODO: href = #{ comment_link(@subject) }
+  partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
+  partialBody = partialBody.replace(/%3\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%4\$s/, '</a>');
+  Vue.partial( 'partial-i18n-commented-on-post-plural', partialBody );
+
+  Vue.component('comp-notification-group', {
+    template: '#template-notification-group',
+    computed: {
+      currentAccountId: function() { return Libertree.currentAccountId; },
+      hasUnseenNotifications: function() {
+        var has = false;
+        jQuery.grep(this.group, function(notif) {
+          has = has || ! notif.seen
+        } );
+        return has;
+      },
+      actorNames: function() {
+        return Libertree.uniq(
+          jQuery.map(this.group, function(notif) {
+            return notif.actorName;
+          } )
+        );
+      },
+      actorsPhrase: function() {
+        return Libertree.andedList(this.actorNames);
+      },
+      plurality: function() {
+        return this.actorNames.length == 1 ? 'singular' : 'plural';
+      },
+      glimpse: function() { return this.group[0].glimpse; },
+      ago: function() { return this.group[0].ago; },
+      member: function() { return this.group[0].member; },
+      postMemberAccountId: function() { return this.group[0].post.member.accountId; },
+      postMemberNameDisplay: function() { return this.group[0].post.member.nameDisplay; },
+      innerComponent: function() {
+        return 'comp-notif-desc-comment';
+      },
+      /* I18n: function() { return Libertree.I18n; } */
+    },
+  /* notif = notifications[0] */
+  /* sg_or_pl = actor_array.uniq.length == 1 ? "singular" : "plural" */
+  });
+
+  /* TODO: To be renamed or consolidated with other syncer */
+  Libertree.Notifications.notificationsPageSyncer = new Vue({
+    el: '#notifications-list',
+    data: {
+      notificationGroups: [
+        [
+          {
+            glimpse: "notif A",
+            seen: true,
+            actorName: "Pistos",
+            ago: "1 hour ago",
+            member: {
+              id: 1,
+              handle: 'pistos@maple.libertreeproject.org',
+              nameDisplay: 'Pistos',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          },
+          {
+            glimpse: "notif B",
+            seen: true,
+            actorName: "rekado",
+            ago: "10 minutes ago",
+            member: {
+              id: 2,
+              handle: 'rekado@maple.libertreeproject.org',
+              nameDisplay: 'rekado',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          }
+        ],
+        [
+          {
+            glimpse: "notif C",
+            seen: true,
+            actorName: "Paks",
+            ago: "36 minutes ago",
+            member: {
+              id: 3,
+              handle: 'paks@maple.libertreeproject.org',
+              nameDisplay: 'Paks',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          },
+          {
+            glimpse: "notif D",
+            seen: false,
+            actorName: "Genius Musings",
+            ago: "28 minutes ago",
+            member: {
+              id: 4,
+              handle: 'genius@maple.libertreeproject.org',
+              nameDisplay: 'Genius Musings',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          },
+          {
+            glimpse: "notif E",
+            seen: true,
+            actorName: "LNXWALT",
+            ago: "22 minutes ago",
+            member: {
+              id: 5,
+              handle: 'pistos@maple.libertreeproject.org',
+              nameDisplay: 'LNXWALT',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          }
+        ],
+        [
+          {
+            glimpse: "notif F",
+            seen: false,
+            actorName: "Sue",
+            ago: "2 days ago",
+            member: {
+              id: 6,
+              handle: 'pistos@maple.libertreeproject.org',
+              nameDisplay: 'Sue',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          },
+          {
+            glimpse: "notif G",
+            seen: false,
+            actorName: "MarSee",
+            ago: "1 day ago",
+            member: {
+              id: 7,
+              handle: 'pistos@maple.libertreeproject.org',
+              nameDisplay: 'MarSee',
+            },
+            post: {
+              member: {
+                accountId: 1,
+                nameDisplay: 'Pistos'
+              }
+            }
+          }
+        ]
+      ]
+    },
+  });
+
+  /* TODO: AJAX call to load notifs */
+  /* TODO: Remember to CGI.escape_html on the glimpse values */
 } );

@@ -1,4 +1,7 @@
 var Libertree = {
+  currentAccountId: <%= account.id %>,
+  currentAccountIdd: function() { debugger; return this.currentAccountId; },
+
   // http://stackoverflow.com/a/6158160/28558 , modified to use jQuery selector
   click: function(selector, options) {
 
@@ -43,5 +46,34 @@ var Libertree = {
     );
 
     target.dispatchEvent(event);
-  }
+  },
+
+  andedList: function(array) {
+    if( array.length < 2 ) {
+      return array[0];
+    } else {
+      return array.slice(0, -1).join(Libertree.I18n['list-comma']) +
+        Libertree.I18n['list-and'] +
+        array[array.length-1]
+      ;
+    }
+  },
+
+  /* http://stackoverflow.com/a/16065720/28558 */
+  uniq: function(array) {
+    return array.filter( function (a, b, arr) {
+      // keeps first occurrence
+      return arr.indexOf(a) === b;
+    } );
+  },
+
+  I18n: {
+    'commented-on-post-plural': <%= s_("plural|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
+    'commented-on-post-singular': <%= s_("singular|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
+    'commented-on-your-post-plural': <%= s_("plural|%1$s commented on your %2$spost%3$s.").to_json %>,
+    'commented-on-your-post-singular': <%= s_("singular|%1$s commented on your %2$spost%3$s.").to_json %>,
+    'list-and': <%= s_('list-and| and ').to_json %>,
+    'list-comma': <%= s_('list-comma|, ').to_json %>,
+  },
 };
+
