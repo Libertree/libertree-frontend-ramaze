@@ -103,7 +103,7 @@ $( function() {
   partialBody = Libertree.I18n['commented-on-your-post-singular'];
   partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
   // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%2\$s/, '<a href="{{link}}" title="{{glimpse}}">');
   partialBody = partialBody.replace(/%3\$s/, '</a>');
   Vue.partial( 'partial-i18n-commented-on-your-post-singular', partialBody );
 
@@ -111,14 +111,14 @@ $( function() {
   partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
   // TODO: href = #{ comment_link(@subject) }
   partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
-  partialBody = partialBody.replace(/%3\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%3\$s/, '<a href="{{link}}" title="{{glimpse}}">');
   partialBody = partialBody.replace(/%4\$s/, '</a>');
   Vue.partial( 'partial-i18n-commented-on-post-singular', partialBody );
 
   partialBody = Libertree.I18n['commented-on-your-post-plural'];
   partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
   // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%2\$s/, '<a href="{{link}}" title="{{glimpse}}">');
   partialBody = partialBody.replace(/%3\$s/, '</a>');
   Vue.partial( 'partial-i18n-commented-on-your-post-plural', partialBody );
 
@@ -126,7 +126,7 @@ $( function() {
   partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
   // TODO: href = #{ comment_link(@subject) }
   partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
-  partialBody = partialBody.replace(/%3\$s/, '<a href="#" title="{{glimpse}}">');
+  partialBody = partialBody.replace(/%3\$s/, '<a href="{{link}}" title="{{glimpse}}">');
   partialBody = partialBody.replace(/%4\$s/, '</a>');
   Vue.partial( 'partial-i18n-commented-on-post-plural', partialBody );
 
@@ -184,6 +184,7 @@ $( function() {
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'Pistos',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -201,6 +202,7 @@ $( function() {
               handle: 'rekado@maple.libertreeproject.org',
               nameDisplay: 'rekado',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -220,6 +222,7 @@ $( function() {
               handle: 'paks@maple.libertreeproject.org',
               nameDisplay: 'Paks',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -237,6 +240,7 @@ $( function() {
               handle: 'genius@maple.libertreeproject.org',
               nameDisplay: 'Genius Musings',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -254,6 +258,7 @@ $( function() {
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'LNXWALT',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -273,6 +278,7 @@ $( function() {
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'Sue',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
@@ -290,6 +296,7 @@ $( function() {
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'MarSee',
             },
+            link: '/posts/show/15080/38754#comment-38754',
             post: {
               member: {
                 accountId: 1,
