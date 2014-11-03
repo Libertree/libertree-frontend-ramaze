@@ -18,4 +18,6 @@ required.  memcached is recommended, but not required.
 
 ### Running
 
-    bundle exec unicorn -p <port number>
+    bundle exec unicorn -Ilib -p <port number>
+
+Don't forget the -Ilib argument to ensure libraries under the lib/ dir are found.
