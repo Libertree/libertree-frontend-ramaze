@@ -1,12 +1,29 @@
 <!-- Bell icon by Randall Barriga http://thenounproject.com/noun/bell/#icon-No3013 -->
-<a
-  href="/notifications"
-  class="menu-item"
-  id="menu-notifications"
-  v-on="click: onClick"
-  v-attr="title: title"
-><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
-  id="num-notifications-unseen"
-  v-show="n > 0" v-text="n"
-><%= account.num_notifications_unseen %></span></a>
-<div id="notifications-window" class="window has-shadow"></div>
+<div id="notifications-icon-and-window">
+  <a
+    href="/notifications"
+    class="menu-item"
+    id="menu-notifications"
+    v-on="click: onIconClick"
+    v-attr="title: title"
+  ><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
+    id="num-notifications-unseen"
+    v-show="n > 0" v-text="n"
+  ><%= account.num_notifications_unseen %></span></a>
+  <div id="notifications-window" class="window has-shadow" v-show="windowVisible">
+    <!-- TODO: DRY this up into a partial or template. -->
+    <img
+      class="spinner size-32"
+      src="/themes/default/images/spinner.gif"
+      v-if="fetchingData"
+    />
+
+    <div v-show="notifications.length == 0">
+      <%=_('You have no new notifications.')%>
+    </div>
+    <div
+      v-repeat="group: notificationGroups"
+      v-component="comp-notification-group"
+    ></div>
+  </div>
+</div>

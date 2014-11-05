@@ -551,7 +551,12 @@ form.comment {
     text-align: left;
 }
 
+#notifications-icon-and-window {
+  display: inline;
+}
+
 #notifications-window {
+  display: block;  /* override .window because visibility is controlled by Vue.js */
     top: 46px;
     margin-left: 250px;
     width: 300px;
