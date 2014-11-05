@@ -309,6 +309,7 @@ $( function() {
     },
   });
 
-  /* TODO: AJAX call to load notifs */
-  /* TODO: Remember to CGI.escape_html on the glimpse values */
+  $.get('/vue-api/notifications?only-unseen=false', function(data) {
+    Libertree.Notifications.notificationsPageSyncer.notificationGroups = data;
+  });
 } );

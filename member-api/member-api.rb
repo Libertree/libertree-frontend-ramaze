@@ -48,6 +48,10 @@ module Libertree
   end
 
   class MemberAPI < Grape::API
+    # TODO: Could we use
+    #    prefix 'api'
+    # here?
+
     helpers do
       def set_account_from_token
         @account = Libertree::Model::Account[ api_token: params['token'] ]

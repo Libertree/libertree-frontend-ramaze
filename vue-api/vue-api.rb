@@ -69,6 +69,11 @@ module Libertree
           notifs = @account.notifications.take(n)
         end
 
+        # TODO:
+        # notifs = account.notifications.find_all {|n| n.subject }
+        # @grouped_notifs = notifs.map {|n| [n]}
+        # /TODO
+
         notifs.map { |notif|
           h = {
             seen: notif.seen,
@@ -84,23 +89,24 @@ module Libertree
           if notif.subject.respond_to?(:glimpse)
             comment = notif.subject
             h.merge!(
-              glimpse: comment.glimpse,
+              glimpse: CGI.escape_html(comment.glimpse),
               link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
             )
           end
 
-          if notif.respond_to?(:post)
+          if notif.subject.respond_to?(:post)
+            account = notif.subject.post.member.account
             h.merge!(
               post: {
                 member: {
-                  accountId: notif.post.member.account.id,
-                  nameDisplay: notif.post.member.name_display
+                  accountId: account ? account.id: nil,
+                  nameDisplay: notif.subject.post.member.name_display
                 }
               }
             )
           end
 
-          h
+          [h]
         }
       end
     end
