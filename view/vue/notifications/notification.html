@@ -1,4 +1,5 @@
 <script type="x-template" id="template-notification-group">
+  <!-- TODO: data-notification-ids shouldn't be necessary with Vue.js -->
   <table
     class="notification"
     v-class="
@@ -9,7 +10,7 @@
   >
     <tr>
       <td class="avatar">
-        <span v-component="comp-member-avatar-link" v-with="member"></span>
+        <span v-component="comp-member-avatar-link" v-with="actor"></span>
       </td>
       <td>
         <span v-component="{{innerComponent}}"></span>

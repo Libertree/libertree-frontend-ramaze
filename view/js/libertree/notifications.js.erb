@@ -150,7 +150,7 @@ $( function() {
       actorNames: function() {
         return Libertree.uniq(
           jQuery.map(this.group, function(notif) {
-            return notif.actorName;
+            return notif.actor.nameDisplay;
           } )
         );
       },
@@ -162,10 +162,13 @@ $( function() {
       },
       glimpse: function() { return this.group[0].glimpse; },
       ago: function() { return this.group[0].ago; },
-      member: function() { return this.group[0].member; },
+      actor: function() { return this.group[0].actor; },
       postMemberAccountId: function() { return this.group[0].post.member.accountId; },
       postMemberNameDisplay: function() { return this.group[0].post.member.nameDisplay; },
       innerComponent: function() {
+        /* TODO: comment, like, pool, etc.
+        see _notifications.erb
+        */
         return 'comp-notif-desc-comment';
       },
       /* I18n: function() { return Libertree.I18n; } */
@@ -185,7 +188,7 @@ $( function() {
             seen: true,
             actorName: "Pistos",
             ago: "1 hour ago",
-            member: {
+            actor: {
               id: 1,
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'Pistos',
@@ -203,7 +206,7 @@ $( function() {
             seen: true,
             actorName: "rekado",
             ago: "10 minutes ago",
-            member: {
+            actor: {
               id: 2,
               handle: 'rekado@maple.libertreeproject.org',
               nameDisplay: 'rekado',
@@ -223,7 +226,7 @@ $( function() {
             seen: true,
             actorName: "Paks",
             ago: "36 minutes ago",
-            member: {
+            actor: {
               id: 3,
               handle: 'paks@maple.libertreeproject.org',
               nameDisplay: 'Paks',
@@ -241,7 +244,7 @@ $( function() {
             seen: false,
             actorName: "Genius Musings",
             ago: "28 minutes ago",
-            member: {
+            actor: {
               id: 4,
               handle: 'genius@maple.libertreeproject.org',
               nameDisplay: 'Genius Musings',
@@ -259,7 +262,7 @@ $( function() {
             seen: true,
             actorName: "LNXWALT",
             ago: "22 minutes ago",
-            member: {
+            actor: {
               id: 5,
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'LNXWALT',
@@ -279,7 +282,7 @@ $( function() {
             seen: false,
             actorName: "Sue",
             ago: "2 days ago",
-            member: {
+            actor: {
               id: 6,
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'Sue',
@@ -297,7 +300,7 @@ $( function() {
             seen: false,
             actorName: "MarSee",
             ago: "1 day ago",
-            member: {
+            actor: {
               id: 7,
               handle: 'pistos@maple.libertreeproject.org',
               nameDisplay: 'MarSee',
