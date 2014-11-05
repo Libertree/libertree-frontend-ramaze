@@ -175,12 +175,13 @@ $( function() {
   Libertree.Notifications.notificationsPageSyncer = new Vue({
     el: '#notifications-list',
     data: {
-      notificationGroups: []
+      notificationGroups: [],
+      fetchingInitialData: true
     },
   });
 
-  /* TODO: Show spinner while data is not loaded yet? */
   $.get('/vue-api/notifications?only-unseen=false', function(data) {
     Libertree.Notifications.notificationsPageSyncer.notificationGroups = data;
+    Libertree.Notifications.notificationsPageSyncer.fetchingInitialData = false;
   });
 } );
