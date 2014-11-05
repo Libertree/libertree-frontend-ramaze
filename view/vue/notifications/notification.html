@@ -6,7 +6,7 @@
       unseen: hasUnseenNotifications,
       seen: ! hasUnseenNotifications
     "
-    data-notification-ids="{{idList}}"
+    v-on="click: toggleState"
   >
     <tr>
       <td class="avatar">

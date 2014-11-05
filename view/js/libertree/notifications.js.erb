@@ -1,26 +1,5 @@
 $( function() {
-  Libertree.Notifications = {
-
-    setState: function (new_state) {
-      var old_state = (new_state === 'seen') ? 'unseen' : 'seen';
-      return function (event) {
-        event.preventDefault();
-        var ids = $(this).data('notification-ids'),
-            target = $(event.target).attr('href');
-
-        $(this).removeClass(old_state).addClass(new_state);
-        /* Also toggle on Notifications page */
-        $.each( ids, function(j, id) {
-          $('.notification[data-notification-ids="['+id+']"]').removeClass(old_state).addClass(new_state);
-        } );
-
-        $.get('/notifications/'+new_state+'/' + ids.join('/'), function(data) {
-          /* resume link following when the GET request is complete */
-          if (target) { window.location = target; }
-        } );
-      };
-    },
-  };
+  Libertree.Notifications = {};
 
   Libertree.Notifications.notificationsSyncer = new Vue({
     el: '#menu-notifications',
@@ -137,9 +116,6 @@ $( function() {
       ids: function() {
         return jQuery.map(this.group, function(notif) { return notif.id; } );
       },
-      idList: function() {
-        return JSON.stringify(this.ids);
-      },
       hasUnseenNotifications: function() {
         var has = false;
         jQuery.grep(this.group, function(notif) {
@@ -172,6 +148,24 @@ $( function() {
         return 'comp-notif-desc-comment';
       },
       /* I18n: function() { return Libertree.I18n; } */
+    },
+    methods: {
+      toggleState: function(ev) {
+        /* ev.stopPropagation(); */
+        ev.preventDefault();
+
+        var href = $(event.target).attr('href');
+
+        jQuery.each( ev.targetVM.group, function() {
+          this.seen = ! this.seen;
+        } );
+
+        var newState = ev.targetVM.group[0].seen ? 'seen' : 'unseen'
+        $.get('/notifications/'+newState+'/' + ev.targetVM.ids.join('/'), function(data) {
+          /* resume link following when the GET request is complete */
+          if (href) { window.location = href; }
+        } );
+      }
     },
   /* notif = notifications[0] */
   /* sg_or_pl = actor_array.uniq.length == 1 ? "singular" : "plural" */
