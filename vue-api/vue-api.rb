@@ -64,84 +64,79 @@ module Libertree
         n = params['n']
 
         if params['only-unseen']
-          notifs = @account.notifications_unseen.take(n)
+          notif_groups = @account.notifications_unseen_grouped.take(n)
         else
-          notifs = @account.notifications.take(n)
+          notif_groups = @account.notifications.take(n).map { |notif| [notif] }
         end
 
-        # TODO:
-        # notifs = account.notifications.find_all {|n| n.subject }
-        # @grouped_notifs = notifs.map {|n| [n]}
-        # /TODO
+        notif_groups.map { |group|
+          group.map { |notif|
+            h = {
+              id: notif.id,
+              seen: notif.seen,
+              ago: Libertree::Age.ago(notif.time_created),
+            }
 
-        notifs.map { |notif|
-          h = {
-            id: notif.id,
-            seen: notif.seen,
-            ago: Libertree::Age.ago(notif.time_created),
+            case notif.subject
+            when Libertree::Model::Comment
+              comment = notif.subject
+              account = comment.post.member.account
+
+              h.merge!(
+                type: 'comment',
+                glimpse: CGI.escape_html(comment.post.glimpse),
+                link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
+                # member: {
+                actor: {
+                  id: comment.member.id,
+                  handle: comment.member.handle,
+                  nameDisplay: comment.member.name_display,
+                },
+                post: {
+                  member: {
+                    accountId: account ? account.id: nil,
+                    nameDisplay: comment.post.member.name_display
+                  }
+                }
+              )
+            when Libertree::Model::CommentLike
+              # partial = '_comment_like'
+              # avatar_member = notif.subject.member
+              # glimpse = notif.subject.comment.glimpse
+              h.merge!(
+                type: 'comment-like',
+                glimpse: CGI.escape_html(comment.post.glimpse),
+                link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
+                actor: {
+                  id: comment.member.id,
+                  handle: comment.member.handle,
+                  nameDisplay: comment.member.name_display,
+                },
+                post: {
+                  member: {
+                    accountId: account ? account.id: nil,
+                    nameDisplay: comment.post.member.name_display
+                  }
+                }
+              )
+            when Libertree::Model::Message
+              # partial = '_message'
+              # avatar_member = notif.subject.sender
+              # glimpse = notif.subject.glimpse
+            when Libertree::Model::PoolPost
+              # partial = '_pool_post'
+              # avatar_member = notif.subject.pool.member
+              # glimpse = notif.subject.post.glimpse
+            when Libertree::Model::PostLike
+              # partial = '_post_like'
+              # avatar_member = notif.subject.member
+              # glimpse = notif.subject.post.glimpse
+            when Libertree::Model::Post
+              # partial = '_mention'
+              # avatar_member = notif.subject.member
+              # glimpse = notif.subject.glimpse
+            end
           }
-
-          case notif.subject
-          when Libertree::Model::Comment
-            comment = notif.subject
-            account = comment.post.member.account
-
-            h.merge!(
-              type: 'comment',
-              glimpse: CGI.escape_html(comment.post.glimpse),
-              link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
-              # member: {
-              actor: {
-                id: comment.member.id,
-                handle: comment.member.handle,
-                nameDisplay: comment.member.name_display,
-              },
-              post: {
-                member: {
-                  accountId: account ? account.id: nil,
-                  nameDisplay: comment.post.member.name_display
-                }
-              }
-            )
-          when Libertree::Model::CommentLike
-            # partial = '_comment_like'
-            # avatar_member = notif.subject.member
-            # glimpse = notif.subject.comment.glimpse
-            h.merge!(
-              type: 'comment-like',
-              glimpse: CGI.escape_html(comment.post.glimpse),
-              link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
-              actor: {
-                id: comment.member.id,
-                handle: comment.member.handle,
-                nameDisplay: comment.member.name_display,
-              },
-              post: {
-                member: {
-                  accountId: account ? account.id: nil,
-                  nameDisplay: comment.post.member.name_display
-                }
-              }
-            )
-          when Libertree::Model::Message
-            # partial = '_message'
-            # avatar_member = notif.subject.sender
-            # glimpse = notif.subject.glimpse
-          when Libertree::Model::PoolPost
-            # partial = '_pool_post'
-            # avatar_member = notif.subject.pool.member
-            # glimpse = notif.subject.post.glimpse
-          when Libertree::Model::PostLike
-            # partial = '_post_like'
-            # avatar_member = notif.subject.member
-            # glimpse = notif.subject.post.glimpse
-          when Libertree::Model::Post
-            # partial = '_mention'
-            # avatar_member = notif.subject.member
-            # glimpse = notif.subject.glimpse
-          end
-
-          [h]
         }
       end
     end
