@@ -134,6 +134,12 @@ $( function() {
     template: '#template-notification-group',
     computed: {
       currentAccountId: function() { return Libertree.currentAccountId; },
+      ids: function() {
+        return jQuery.map(this.group, function(notif) { return notif.id; } );
+      },
+      idList: function() {
+        return JSON.stringify(this.ids);
+      },
       hasUnseenNotifications: function() {
         var has = false;
         jQuery.grep(this.group, function(notif) {

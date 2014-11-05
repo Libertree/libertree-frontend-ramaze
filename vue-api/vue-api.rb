@@ -76,6 +76,7 @@ module Libertree
 
         notifs.map { |notif|
           h = {
+            id: notif.id,
             seen: notif.seen,
             actorName: notif.subject.member.name_display,  # TODO: is this redundant with the member hash below?
             ago: Libertree::Age.ago(notif.time_created),
