@@ -1,5 +1,21 @@
 $( function() {
-  Libertree.Notifications = {};
+  Libertree.Notifications = {
+    updateIconAndWindow: function() {
+      Libertree.Notifications.notificationsSyncer.fetchingData = true;
+      $.get('/vue-api/notifications?only-unseen=true', function(data) {
+        Libertree.Notifications.notificationsSyncer.notificationGroups = data;
+        Libertree.Notifications.notificationsSyncer.fetchingData = false;
+      });
+    },
+    updateNotificationsPage: function() {
+      if( $('.main #notifications-list').length == 0 ) { return; }
+
+      $.get('/vue-api/notifications?only-unseen=false', function(data) {
+        Libertree.Notifications.notificationsPageSyncer.notificationGroups = data;
+        Libertree.Notifications.notificationsPageSyncer.fetchingInitialData = false;
+      });
+    }
+  };
 
   Vue.component('comp-notif-desc-comment', {
     template: '#template-notif-desc-comment',
@@ -50,6 +66,11 @@ $( function() {
 
   Vue.component('comp-notification-group', {
     template: '#template-notification-group',
+    data: function() {
+      return {
+        expectingUpdate: false,
+      };
+    },
     computed: {
       currentAccountId: function() { return Libertree.currentAccountId; },
       ids: function() {
@@ -95,11 +116,11 @@ $( function() {
 
         var href = $(event.target).attr('href');
 
-        jQuery.each( ev.targetVM.group, function() {
-          this.seen = ! this.seen;
-        } );
+        ev.targetVM.expectingUpdate = true;
 
-        var newState = ev.targetVM.group[0].seen ? 'seen' : 'unseen'
+        /* We don't update the UI ourselves here, we let it come after the websocket message */
+
+        var newState = ev.targetVM.group[0].seen ? 'unseen' : 'seen'
         $.get('/notifications/'+newState+'/' + ev.targetVM.ids.join('/'), function(data) {
           /* resume link following when the GET request is complete */
           if (href) { window.location = href; }
@@ -191,11 +212,6 @@ $( function() {
     },
   });
 
-  Libertree.Notifications.notificationsSyncer.fetchingData = true;
-  $.get('/vue-api/notifications?only-unseen=true', function(data) {
-    Libertree.Notifications.notificationsSyncer.notificationGroups = data;
-    Libertree.Notifications.notificationsSyncer.fetchingData = false;
-  });
   /* TODO: To be renamed or consolidated with other syncers */
   Libertree.Notifications.notificationsPageSyncer = new Vue({
     el: '#notifications-list',
@@ -205,8 +221,6 @@ $( function() {
     },
   });
 
-  $.get('/vue-api/notifications?only-unseen=false', function(data) {
-    Libertree.Notifications.notificationsPageSyncer.notificationGroups = data;
-    Libertree.Notifications.notificationsPageSyncer.fetchingInitialData = false;
-  });
+  Libertree.Notifications.updateIconAndWindow();
+  Libertree.Notifications.updateNotificationsPage();
 } );

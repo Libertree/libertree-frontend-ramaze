@@ -58,6 +58,7 @@ module Libertree
       params do
         optional 'only-unseen', type: Boolean, default: true, desc: "whether to retrieve only unseen notifications (default), or all notifications"
         optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: "the maximum number of notifications to return"
+        # TODO: different limits (n) for seen and unseen
       end
 
       get do

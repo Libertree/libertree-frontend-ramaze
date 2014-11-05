@@ -15,6 +15,12 @@
         <span v-component="{{innerComponent}}"></span>
         <div class="glimpse touch-only">{{glimpse}}</div>
         <div class="age">{{ago}}</div>
+        <!-- TODO: DRY this up into a partial or template. -->
+        <img
+          class="spinner size-16"
+          src="/themes/default/images/spinner.gif"
+          v-if="expectingUpdate"
+        />
       </td>
     </tr>
   </table>
