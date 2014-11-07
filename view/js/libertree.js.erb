@@ -74,5 +74,17 @@ var Libertree = {
     'list-and': <%= s_('list-and| and ').to_json %>,
     'list-comma': <%= s_('list-comma|, ').to_json %>,
   },
+
+  /* Maybe we should use something like http://slexaxton.github.io/Jed/ */
+  createI18nPartial: function(i18nKey, params) {
+    var partialBody = Libertree.I18n[i18nKey];
+    jQuery.each( params, function( index, value ) {
+      partialBody = partialBody.replace(
+        new RegExp('%'+(index+1)+'\\$s'),
+        value
+      );
+    } );
+    Vue.partial( 'partial-i18n-'+i18nKey, partialBody );
+  },
 };
 

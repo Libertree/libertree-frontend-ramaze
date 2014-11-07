@@ -29,40 +29,43 @@ $( function() {
     replace: true,
   });
 
-  /* TODO: Make a generic function for substituting positional parameters */
-  /* See: http://slexaxton.github.io/Jed/ */
-  var partialBody;
+  /* ----------------------------- */
 
-  /* TODO: DRY this up! */
-  partialBody = Libertree.I18n['commented-on-your-post-singular'];
-  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
-  // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '<a href="{{link}}" title="{{glimpse}}">');
-  partialBody = partialBody.replace(/%3\$s/, '</a>');
-  Vue.partial( 'partial-i18n-commented-on-your-post-singular', partialBody );
+  Libertree.createI18nPartial(
+    'commented-on-your-post-singular',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
 
-  partialBody = Libertree.I18n['commented-on-post-singular'];
-  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
-  // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
-  partialBody = partialBody.replace(/%3\$s/, '<a href="{{link}}" title="{{glimpse}}">');
-  partialBody = partialBody.replace(/%4\$s/, '</a>');
-  Vue.partial( 'partial-i18n-commented-on-post-singular', partialBody );
+  Libertree.createI18nPartial(
+    'commented-on-post-singular',
+    [
+      '{{actorsPhrase}}',
+      '{{postMemberNameDisplay}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
 
-  partialBody = Libertree.I18n['commented-on-your-post-plural'];
-  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
-  // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '<a href="{{link}}" title="{{glimpse}}">');
-  partialBody = partialBody.replace(/%3\$s/, '</a>');
-  Vue.partial( 'partial-i18n-commented-on-your-post-plural', partialBody );
+  Libertree.createI18nPartial('commented-on-your-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
 
-  partialBody = Libertree.I18n['commented-on-post-plural'];
-  partialBody = partialBody.replace(/%1\$s/, '{{actorsPhrase}}');
-  // TODO: href = #{ comment_link(@subject) }
-  partialBody = partialBody.replace(/%2\$s/, '{{postMemberNameDisplay}}');
-  partialBody = partialBody.replace(/%3\$s/, '<a href="{{link}}" title="{{glimpse}}">');
-  partialBody = partialBody.replace(/%4\$s/, '</a>');
-  Vue.partial( 'partial-i18n-commented-on-post-plural', partialBody );
+  Libertree.createI18nPartial('commented-on-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '{{postMemberNameDisplay}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
 
   Vue.component('comp-notification-group', {
     template: '#template-notification-group',
