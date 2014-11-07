@@ -23,22 +23,13 @@ $( function() {
     replace: true,
   });
 
-  Vue.component('comp-notif-comment-link', {
-    template: '<a href="#link-to-comment-" title="{{glimpse}}">click here</a>',
+  Vue.component('comp-notif-desc-comment-like', {
+    template: '#template-notif-desc-comment-like',
     inherit: true,
     replace: true,
   });
 
   /* ----------------------------- */
-
-  Libertree.createI18nPartial(
-    'commented-on-your-post-singular',
-    [
-      '{{actorsPhrase}}',
-      '<a href="{{link}}" title="{{glimpse}}">',
-      '</a>',
-    ]
-  );
 
   Libertree.createI18nPartial(
     'commented-on-post-singular',
@@ -50,7 +41,8 @@ $( function() {
     ]
   );
 
-  Libertree.createI18nPartial('commented-on-your-post-plural',
+  Libertree.createI18nPartial(
+    'commented-on-your-post-singular',
     [
       '{{actorsPhrase}}',
       '<a href="{{link}}" title="{{glimpse}}">',
@@ -58,7 +50,8 @@ $( function() {
     ]
   );
 
-  Libertree.createI18nPartial('commented-on-post-plural',
+  Libertree.createI18nPartial(
+  'commented-on-post-plural',
     [
       '{{actorsPhrase}}',
       '{{postMemberNameDisplay}}',
@@ -66,6 +59,55 @@ $( function() {
       '</a>',
     ]
   );
+
+  Libertree.createI18nPartial(
+  'commented-on-your-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
+
+  Libertree.createI18nPartial(
+    'liked-comment-on-post-singular',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+      '{{commentPostMemberNameDisplay}}',
+    ]
+  );
+
+  Libertree.createI18nPartial(
+    'liked-comment-on-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+      '{{commentPostMemberNameDisplay}}',
+    ]
+  );
+
+  Libertree.createI18nPartial(
+    'liked-comment-on-your-post-singular',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
+
+  Libertree.createI18nPartial(
+    'liked-comment-on-your-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
+
+  /* ----------------------------- */
 
   Vue.component('comp-notification-group', {
     template: '#template-notification-group',
@@ -103,12 +145,18 @@ $( function() {
       ago: function() { return this.group[0].ago; },
       actor: function() { return this.group[0].actor; },
       postMemberAccountId: function() { return this.group[0].post.member.accountId; },
+      commentPostMemberAccountId: function() { return this.group[0].comment.post.member.accountId; },
       postMemberNameDisplay: function() { return this.group[0].post.member.nameDisplay; },
+      commentPostMemberNameDisplay: function() { return this.group[0].comment.post.member.nameDisplay; },
+      type: function() { return this.group[0].type; },
       innerComponent: function() {
-        /* TODO: comment, like, pool, etc.
-        see _notifications.erb
-        */
-        return 'comp-notif-desc-comment';
+        switch( this.type ) {
+          case 'comment':
+            return 'comp-notif-desc-comment';
+          case 'comment-like':
+            return 'comp-notif-desc-comment-like';
+          /* TODO: the others */
+        }
       },
       /* I18n: function() { return Libertree.I18n; } */
     },

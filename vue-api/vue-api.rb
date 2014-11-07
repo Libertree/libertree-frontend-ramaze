@@ -87,7 +87,6 @@ module Libertree
                 type: 'comment',
                 glimpse: CGI.escape_html(comment.post.glimpse),
                 link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
-                # member: {
                 actor: {
                   id: comment.member.id,
                   handle: comment.member.handle,
@@ -101,24 +100,26 @@ module Libertree
                 }
               )
             when Libertree::Model::CommentLike
-              # partial = '_comment_like'
-              # avatar_member = notif.subject.member
-              # glimpse = notif.subject.comment.glimpse
+              like = notif.subject
+              account = like.comment.post.member.account
+
               h.merge!(
                 type: 'comment-like',
-                glimpse: CGI.escape_html(comment.post.glimpse),
-                link: "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
+                glimpse: CGI.escape_html(like.comment.glimpse),
+                link: "/posts/show/#{like.comment.post.id}/#{like.comment.id}#comment-#{like.comment.id}",  # TODO: DRY up with Ramaze helper method comment_link
                 actor: {
-                  id: comment.member.id,
-                  handle: comment.member.handle,
-                  nameDisplay: comment.member.name_display,
+                  id: like.member.id,
+                  handle: like.member.handle,
+                  nameDisplay: like.member.name_display,
                 },
-                post: {
-                  member: {
-                    accountId: account ? account.id: nil,
-                    nameDisplay: comment.post.member.name_display
-                  }
-                }
+                comment: {
+                  post: {
+                    member: {
+                      accountId: account ? account.id: nil,
+                      nameDisplay: like.comment.post.member.name_display,
+                    },
+                  },
+                },
               )
             when Libertree::Model::Message
               # partial = '_message'
