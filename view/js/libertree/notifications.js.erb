@@ -93,7 +93,7 @@ $( function() {
     'liked-comment-on-your-post-singular',
     [
       '{{actorsPhrase}}',
-      '<a href="{{link}}" title="{{glimpse}}">',
+      '<a href="{{link}}" title="{{glimpse}}" class="foo">',
       '</a>',
     ]
   );
@@ -141,6 +141,7 @@ $( function() {
       plurality: function() {
         return this.actorNames.length == 1 ? 'singular' : 'plural';
       },
+      link: function() { return this.group[0].link; },
       glimpse: function() { return this.group[0].glimpse; },
       ago: function() { return this.group[0].ago; },
       actor: function() { return this.group[0].actor; },
@@ -165,7 +166,7 @@ $( function() {
         /* ev.stopPropagation(); */
         ev.preventDefault();
 
-        var href = $(event.target).attr('href');
+        var href = $(ev.target).attr('href');
 
         ev.targetVM.expectingUpdate = true;
 
