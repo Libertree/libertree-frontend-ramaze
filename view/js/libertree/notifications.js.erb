@@ -1,21 +1,5 @@
 $( function() {
-  Libertree.Notifications = {
-    updateIconAndWindow: function() {
-      Libertree.Notifications.notificationsSyncer.fetchingData = true;
-      $.get('/vue-api/notifications?only-unseen=true', function(data) {
-        Libertree.Notifications.notificationsSyncer.notificationGroups = data;
-        Libertree.Notifications.notificationsSyncer.fetchingData = false;
-      });
-    },
-    updateNotificationsPage: function() {
-      if( $('.main #notifications-list').length == 0 ) { return; }
-
-      $.get('/vue-api/notifications?only-unseen=false', function(data) {
-        Libertree.Notifications.notificationsPageSyncer.notificationGroups = data;
-        Libertree.Notifications.notificationsPageSyncer.fetchingInitialData = false;
-      });
-    }
-  };
+  Libertree.Notifications = {};
 
   Vue.component('comp-notif-desc-comment', {
     template: '#template-notif-desc-comment',
@@ -179,40 +163,58 @@ $( function() {
         } );
       }
     },
-  /* notif = notifications[0] */
-  /* sg_or_pl = actor_array.uniq.length == 1 ? "singular" : "plural" */
   });
 
   /* ----------------------------- */
 
+  /* This data hash is shared between two Vue.js syncers:
+  the notifications icon/popup and the notifications page. */
+  Libertree.Notifications.data = {
+    notifications: [],
+    windowVisible: false,
+    fetchingData: false,
+    /* TODO: static title until further notice, due to i18n */
+    /* (this is not impossible to make dynamic, it's just that it's a bit of work.  :) ) */
+    /* TODO: clear title if it is out of sync with the real number of unseen notifs */
+    /* This could be done with, say, a titleN data attribute */
+    title: <%=
+      (
+        account.num_notifications_unseen == 0 ?
+        _('No notifications') :
+        n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen
+      ).to_json
+    %>,
+  };
+
+  Libertree.Notifications.computedProperties = {
+    notificationGroups: function() {
+      return jQuery.map(this.notifications, function(notif) {
+        return [[notif]];  // Don't know why we need double brackets here, but we do.
+      } );
+    },
+    n: function() {
+      /* var count = 0; */
+      /* jQuery.each(this.notificationGroups, function(i, group) { */
+        /* count += group.length; */
+      /* } ); */
+      /* return count; */
+      return this.notifications.length;
+    },
+  }
+
   Libertree.Notifications.notificationsSyncer = new Vue({
     el: '#notifications-icon-and-window',
-    data: {
-      notificationGroups: [],
-      windowVisible: false,
-      fetchingData: false,
-      /* TODO: static title until further notice, due to i18n */
-      /* (this is not impossible to make dynamic, it's just that it's a bit of work.  :) ) */
-      /* TODO: clear title if it is out of sync with the real number of unseen notifs */
-      /* This could be done with, say, a titleN data attribute */
-      title: <%=
-        (
-          account.num_notifications_unseen == 0 ?
-          _('No notifications') :
-          n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen
-        ).to_json
-      %>,
-    },
-    computed: {
-      n: function() {
-        var count = 0;
-        jQuery.each(this.notificationGroups, function(i, group) {
-          count += group.length;
-        } );
-        return count;
-      },
-    },
+    data: Libertree.Notifications.data,
+    computed: Libertree.Notifications.computedProperties,
     methods: {
+      refresh: function() {
+        var self = this;
+        self.fetchingData = true;
+        $.get('/vue-api/notifications', function(data) {
+          self.notifications = data;
+          self.fetchingData = false;
+        });
+      },
       onIconClick: function(ev) {
         ev.stopPropagation();
         ev.preventDefault();
@@ -224,18 +226,18 @@ $( function() {
           return;
         } // else we now show the unseen notifications list
 
-        if( syncer.notificationGroups.length == 0 ) {
+        if( syncer.n == 0 ) {
           window.location = '/notifications';
           return;
         }
 
-        syncer.notificationGroups = [];
+        syncer.notifications = [];
         Libertree.UI.hideWindows();
         syncer.fetchingData = true;
         syncer.windowVisible = true;
 
-        $.get('/vue-api/notifications?only-unseen=true', function(data) {
-          syncer.notificationGroups = data;
+        $.get('/vue-api/notifications', function(data) {
+          syncer.notifications = data;
           syncer.fetchingData = false;
         });
       },
@@ -264,15 +266,11 @@ $( function() {
     },
   });
 
-  /* TODO: To be renamed or consolidated with other syncers */
   Libertree.Notifications.notificationsPageSyncer = new Vue({
     el: '#notifications-list',
-    data: {
-      notificationGroups: [],
-      fetchingInitialData: true
-    },
+    data: Libertree.Notifications.data,
+    computed: Libertree.Notifications.computedProperties,
   });
 
-  Libertree.Notifications.updateIconAndWindow();
-  Libertree.Notifications.updateNotificationsPage();
+  Libertree.Notifications.notificationsSyncer.refresh();
 } );
