@@ -107,6 +107,7 @@ $( function() {
       },
       hasUnseenNotifications: function() {
         var has = false;
+        /* TODO: Should this just be plain jQuery.each?  I don't think this grep is being used as a grep */
         jQuery.grep(this.group, function(notif) {
           has = has || ! notif.seen
         } );
@@ -186,26 +187,43 @@ $( function() {
     %>,
   };
 
-  Libertree.Notifications.computedProperties = {
-    notificationGroups: function() {
-      return jQuery.map(this.notifications, function(notif) {
-        return [[notif]];  // Don't know why we need double brackets here, but we do.
-      } );
-    },
-    n: function() {
-      /* var count = 0; */
-      /* jQuery.each(this.notificationGroups, function(i, group) { */
-        /* count += group.length; */
-      /* } ); */
-      /* return count; */
-      return this.notifications.length;
-    },
-  }
-
   Libertree.Notifications.notificationsSyncer = new Vue({
     el: '#notifications-icon-and-window',
     data: Libertree.Notifications.data,
-    computed: Libertree.Notifications.computedProperties,
+    computed: {
+      notificationGroups: function() {
+        var grouped = {},
+          keys = [], // so we have a display order
+          unseenNotifs = jQuery.grep( this.notifications, function(notif) {
+            return ! notif.seen;
+          } );
+
+        jQuery.each( unseenNotifs, function(i, notif) {
+          // collect by target and type; we don't want to but comment
+          // and post like notifs in the same bin
+          key = [notif.targetIdentifier, notif.type];
+          if( grouped[key] ) {
+            grouped[key].push(notif);
+          } else {
+            grouped[key] = [];
+            grouped[key].push(notif);
+            keys.push(key);
+          }
+        } );
+
+        // get the groups in order of keys
+        return jQuery.map( keys, function(k) {
+          return [grouped[k]]; // Extra nesting: http://stackoverflow.com/questions/703355
+        } );
+      },
+      n: function() {
+        var count = 0;
+        jQuery.each(this.notificationGroups, function(i, group) {
+          count += group.length;
+        } );
+        return count;
+      },
+    },
     methods: {
       refresh: function() {
         var self = this;
@@ -231,7 +249,8 @@ $( function() {
           return;
         }
 
-        syncer.notifications = [];
+        /* TODO: Is this update-on-click necessary?  Shouldn't our Vue.js awesomeness obviate this? */
+        /* syncer.notifications = []; */
         Libertree.UI.hideWindows();
         syncer.fetchingData = true;
         syncer.windowVisible = true;
@@ -269,7 +288,16 @@ $( function() {
   Libertree.Notifications.notificationsPageSyncer = new Vue({
     el: '#notifications-list',
     data: Libertree.Notifications.data,
-    computed: Libertree.Notifications.computedProperties,
+    computed: {
+      notificationGroups: function() {
+        return jQuery.map(this.notifications, function(notif) {
+          return [[notif]];  // Double brackets: http://stackoverflow.com/questions/703355
+        } );
+      },
+      n: function() {
+        return this.notifications.length;
+      },
+    },
   });
 
   Libertree.Notifications.notificationsSyncer.refresh();

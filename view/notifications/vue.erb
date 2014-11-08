@@ -9,7 +9,7 @@
   <img
     class="spinner size-32"
     src="/themes/default/images/spinner.gif"
-    v-if="fetchingData"
+    v-if="fetchingData && n == 0"
   />
 
   <div v-show="notifications.length == 0">

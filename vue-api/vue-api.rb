@@ -90,7 +90,8 @@ module Libertree
                   accountId: account ? account.id: nil,
                   nameDisplay: comment.post.member.name_display
                 }
-              }
+              },
+              targetIdentifier: "post-#{comment.post.id}"
             )
           when Libertree::Model::CommentLike
             like = notif.subject
@@ -113,6 +114,7 @@ module Libertree
                   },
                 },
               },
+              targetIdentifier: "comment-#{like.comment.id}"
             )
           when Libertree::Model::Message
             # partial = '_message'
@@ -131,7 +133,7 @@ module Libertree
             # avatar_member = notif.subject.member
             # glimpse = notif.subject.glimpse
           end
-        }
+        }.compact
       end
     end
   end
