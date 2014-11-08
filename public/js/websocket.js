@@ -36,8 +36,7 @@ $(document).ready( function() {
         break;
       case 'notification':
         /* Libertree.Notifications.notificationsSyncer.onServerUpdate(data); */
-        Libertree.Notifications.updateIconAndWindow();
-        Libertree.Notifications.updateNotificationsPage();
+        Libertree.Notifications.notificationsSyncer.refresh();
         break;
     }
   };
