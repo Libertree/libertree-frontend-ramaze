@@ -11,6 +11,19 @@
     v-show="n > 0" v-text="n"
   ><%= account.num_notifications_unseen %></span></a>
   <div id="notifications-window" class="window has-shadow" v-show="windowVisible">
+    <div class="header">
+      <span class="title"><%=_('Notifications')%></span>
+
+      <div class="tools">
+        <a
+          href="/notifications/seen/all"
+          v-if="notifications.length > 0"
+          v-on="click: markAllSeen"
+        ><%=_('mark all seen')%></a>
+        <a href="/notifications"><%=_('view all')%></a>
+      </div>
+    </div>
+
     <!-- TODO: DRY this up into a partial or template. -->
     <img
       class="spinner size-32"

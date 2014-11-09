@@ -207,6 +207,14 @@ module Libertree
           end
         }.compact
       end
+
+      # -----------------------
+
+      desc "Mark all notifications as seen"
+
+      put do
+        Libertree::Model::Notification.mark_seen_for_account(@account, ['all'])
+      end
     end
   end
 end
