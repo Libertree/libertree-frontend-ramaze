@@ -236,6 +236,9 @@ $( function() {
         return this.notifications.length;
       },
     },
+    methods: {
+      markAllSeen: function(ev) { Libertree.Notifications.notificationsSyncer.markAllSeen(ev); }
+    }
   });
 
   Libertree.Notifications.notificationsSyncer.refresh();

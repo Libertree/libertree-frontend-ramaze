@@ -6,7 +6,7 @@ module Controller
     end
 
     layout do |path|
-      if path =~ %r{(_index|seen)}
+      if path =~ %r{seen}
         nil
       else
         :default
@@ -15,24 +15,6 @@ module Controller
 
     def index
       @view = "notifications"
-      notifs = account.notifications.find_all {|n| n.subject }
-
-      # This is only needed because we share the view code with _index
-      @grouped_notifs = notifs.map {|n| [n]}
-    end
-
-    def vue
-      @view = "notifications"
-      notifs = account.notifications.find_all {|n| n.subject }
-
-      # This is only needed because we share the view code with _index
-      @grouped_notifs = notifs.map {|n| [n]}
-    end
-
-    def _index
-      @grouped_notifs = account.notifications_unseen_grouped
-      @n = account.num_notifications_unseen
-      @n_more = @n - @grouped_notifs.flat_map(&:count).reduce(0, &:+)
     end
 
     def seen(*notification_ids)
