@@ -63,7 +63,7 @@ module Libertree
       get do
         n = params['n']
 
-        notifs = ( @account.notifications.take(n).to_a + @account.notifications_unseen.to_a ).compact
+        notifs = ( @account.notifications.take(n).to_a + @account.notifications_unseen.to_a ).compact.uniq
         notifs.map { |notif|
           h = {
             id: notif.id,
@@ -125,9 +125,26 @@ module Libertree
             # avatar_member = notif.subject.pool.member
             # glimpse = notif.subject.post.glimpse
           when Libertree::Model::PostLike
-            # partial = '_post_like'
-            # avatar_member = notif.subject.member
-            # glimpse = notif.subject.post.glimpse
+            like = notif.subject
+            account = like.post.member.account
+
+            h.merge!(
+              type: 'post-like',
+              glimpse: CGI.escape_html(like.post.glimpse),
+              link: "/posts/show/#{like.post.id}",
+              actor: {
+                id: like.member.id,
+                handle: like.member.handle,
+                nameDisplay: like.member.name_display,
+              },
+              post: {
+                member: {
+                  accountId: account ? account.id: nil,
+                  nameDisplay: like.post.member.name_display
+                }
+              },
+              targetIdentifier: "post-#{like.post.id}"
+            )
           when Libertree::Model::Post
             # partial = '_mention'
             # avatar_member = notif.subject.member

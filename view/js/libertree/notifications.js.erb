@@ -1,17 +1,9 @@
 $( function() {
   Libertree.Notifications = {};
 
-  Vue.component('comp-notif-desc-comment', {
-    template: '#template-notif-desc-comment',
-    inherit: true,
-    replace: true,
-  });
-
-  Vue.component('comp-notif-desc-comment-like', {
-    template: '#template-notif-desc-comment-like',
-    inherit: true,
-    replace: true,
-  });
+  Vue.component('comp-notif-desc-comment', { template: '#template-notif-desc-comment', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-comment-like', { template: '#template-notif-desc-comment-like', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-post-like', { template: '#template-notif-desc-post-like', inherit: true, replace: true, });
 
   /* ----------------------------- */
 
@@ -91,6 +83,24 @@ $( function() {
     ]
   );
 
+  Libertree.createI18nPartial(
+  'liked-your-post-plural',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
+
+  Libertree.createI18nPartial(
+  'liked-your-post-singular',
+    [
+      '{{actorsPhrase}}',
+      '<a href="{{link}}" title="{{glimpse}}">',
+      '</a>',
+    ]
+  );
+
   /* ----------------------------- */
 
   Vue.component('comp-notification-group', {
@@ -130,10 +140,10 @@ $( function() {
       glimpse: function() { return this.group[0].glimpse; },
       ago: function() { return this.group[0].ago; },
       actor: function() { return this.group[0].actor; },
-      postMemberAccountId: function() { return this.group[0].post.member.accountId; },
-      commentPostMemberAccountId: function() { return this.group[0].comment.post.member.accountId; },
-      postMemberNameDisplay: function() { return this.group[0].post.member.nameDisplay; },
-      commentPostMemberNameDisplay: function() { return this.group[0].comment.post.member.nameDisplay; },
+      commentPostMemberAccountId: function() { return this.group[0].comment ? this.group[0].comment.post.member.accountId : null; },
+      commentPostMemberNameDisplay: function() { return this.group[0].comment ? this.group[0].comment.post.member.nameDisplay : null; },
+      postMemberAccountId: function() { return this.group[0].post ? this.group[0].post.member.accountId : null; },
+      postMemberNameDisplay: function() { return this.group[0].post ? this.group[0].post.member.nameDisplay: null; },
       type: function() { return this.group[0].type; },
       innerComponent: function() {
         switch( this.type ) {
@@ -141,6 +151,8 @@ $( function() {
             return 'comp-notif-desc-comment';
           case 'comment-like':
             return 'comp-notif-desc-comment-like';
+          case 'post-like':
+            return 'comp-notif-desc-post-like';
           /* TODO: the others */
         }
       },
