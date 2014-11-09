@@ -13,6 +13,7 @@ Libertree.I18n = {
   'list-and': <%= s_('list-and| and ').to_json %>,
   'list-comma': <%= s_('list-comma|, ').to_json %>,
   'mentioned-you-in-post': <%= s_("%1$s mentioned you in a %2$spost%3$s.").to_json %>,
+  'sent-you-direct-message': <%= s_('%1$s sent you a %2$smessage%3$s.').to_json %>,
 };
 
 /* Maybe we should use something like http://slexaxton.github.io/Jed/ */
@@ -133,6 +134,15 @@ Libertree.createI18nPartial(
 
 Libertree.createI18nPartial(
   'mentioned-you-in-post',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'sent-you-direct-message',
   [
     '{{actorsPhrase}}',
     '<a href="{{link}}" title="{{glimpse}}">',

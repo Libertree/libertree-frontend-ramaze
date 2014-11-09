@@ -62,6 +62,8 @@ module Libertree
       get do
         n = params['n']
 
+        # TODO: Maybe the bodies of these "when" clauses can be moved elsewhere,
+        # like presenters or something.
         notifs = ( @account.notifications.take(n).to_a + @account.notifications_unseen.to_a ).compact.uniq
         notifs.map { |notif|
           h = {
@@ -116,9 +118,26 @@ module Libertree
               targetIdentifier: "comment-#{like.comment.id}"
             )
           when Libertree::Model::Message
-            # partial = '_message'
-            # avatar_member = notif.subject.sender
-            # glimpse = notif.subject.glimpse
+            message = notif.subject
+            account = message.sender.account
+
+            h.merge!(
+              type: 'direct-message',
+              glimpse: CGI.escape_html(message.glimpse),
+              link: "/messages/show/#{message.id}",
+              actor: {
+                id: message.sender.id,
+                handle: message.sender.handle,
+                nameDisplay: message.sender.name_display,
+              },
+              message: {
+                sender: {
+                  accountId: account ? account.id: nil,
+                  nameDisplay: message.sender.name_display
+                }
+              },
+              targetIdentifier: "message-#{message.id}"
+            )
           when Libertree::Model::PoolPost
             pool = notif.subject.pool
             post = notif.subject.post

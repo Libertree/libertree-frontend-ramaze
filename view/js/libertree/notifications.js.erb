@@ -3,6 +3,7 @@ $( function() {
 
   Vue.component('comp-notif-desc-comment', { template: '#template-notif-desc-comment', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-comment-like', { template: '#template-notif-desc-comment-like', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-direct-message', { template: '#template-notif-desc-direct-message', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-mention-in-post', { template: '#template-notif-desc-mention-in-post', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-post-like', { template: '#template-notif-desc-post-like', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-pool-post', { template: '#template-notif-desc-pool-post', inherit: true, replace: true, });
@@ -61,6 +62,8 @@ $( function() {
             return 'comp-notif-desc-comment';
           case 'comment-like':
             return 'comp-notif-desc-comment-like';
+          case 'direct-message':
+            return 'comp-notif-desc-direct-message';
           case 'mention-in-post':
             return 'comp-notif-desc-mention-in-post';
           case 'pool-post':
