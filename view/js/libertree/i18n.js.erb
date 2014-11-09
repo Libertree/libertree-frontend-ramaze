@@ -11,6 +11,7 @@ Libertree.I18n = {
   'liked-your-post-plural': <%= s_("plural|%1$s liked your %2$spost%3$s.").to_json %>,
   'list-and': <%= s_('list-and| and ').to_json %>,
   'list-comma': <%= s_('list-comma|, ').to_json %>,
+  'added-your-post-to-spring': <%= s_(%{%1$s added your %2$spost%3$s to a spring called "%4$s".}).to_json %>,
 };
 
 /* Maybe we should use something like http://slexaxton.github.io/Jed/ */
@@ -45,7 +46,7 @@ Libertree.createI18nPartial(
 );
 
 Libertree.createI18nPartial(
-'commented-on-post-plural',
+  'commented-on-post-plural',
   [
     '{{actorsPhrase}}',
     '{{postMemberNameDisplay}}',
@@ -55,7 +56,7 @@ Libertree.createI18nPartial(
 );
 
 Libertree.createI18nPartial(
-'commented-on-your-post-plural',
+  'commented-on-your-post-plural',
   [
     '{{actorsPhrase}}',
     '<a href="{{link}}" title="{{glimpse}}">',
@@ -102,7 +103,7 @@ Libertree.createI18nPartial(
 );
 
 Libertree.createI18nPartial(
-'liked-your-post-plural',
+  'liked-your-post-plural',
   [
     '{{actorsPhrase}}',
     '<a href="{{link}}" title="{{glimpse}}">',
@@ -111,7 +112,7 @@ Libertree.createI18nPartial(
 );
 
 Libertree.createI18nPartial(
-'liked-your-post-singular',
+  'liked-your-post-singular',
   [
     '{{actorsPhrase}}',
     '<a href="{{link}}" title="{{glimpse}}">',
@@ -119,3 +120,12 @@ Libertree.createI18nPartial(
   ]
 );
 
+Libertree.createI18nPartial(
+  'added-your-post-to-spring',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{postLink}}" title="{{glimpse}}">',
+    '</a>',
+    '<a href="{{poolLink}}">{{poolName}}</a>',
+  ]
+);

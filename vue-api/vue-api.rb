@@ -56,8 +56,7 @@ module Libertree
       desc "Retrieve notifications"
 
       params do
-        optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: "the maximum number of notifications to return"
-        # TODO: different limits (n) for seen and unseen
+        optional 'n', type: Integer, default: 32, validate_positive_integer: true, desc: "the maximum number of seen notifications to return (all unseen are always returned)"
       end
 
       get do
@@ -121,9 +120,29 @@ module Libertree
             # avatar_member = notif.subject.sender
             # glimpse = notif.subject.glimpse
           when Libertree::Model::PoolPost
-            # partial = '_pool_post'
-            # avatar_member = notif.subject.pool.member
-            # glimpse = notif.subject.post.glimpse
+            pool = notif.subject.pool
+            post = notif.subject.post
+            account = pool.member.account
+
+            h.merge!(
+              type: 'pool-post',
+              glimpse: CGI.escape_html(post.glimpse),
+              poolLink: "/pools/show/#{pool.id}",
+              postLink: "/posts/show/#{post.id}",
+              actor: {
+                id: pool.member.id,
+                handle: pool.member.handle,
+                nameDisplay: pool.member.name_display,
+              },
+              pool: {
+                name: Libertree.plain(pool.name),
+                member: {
+                  accountId: account ? account.id: nil,
+                  nameDisplay: pool.member.name_display
+                }
+              },
+              targetIdentifier: "pool-#{pool.id}"
+            )
           when Libertree::Model::PostLike
             like = notif.subject
             account = like.post.member.account

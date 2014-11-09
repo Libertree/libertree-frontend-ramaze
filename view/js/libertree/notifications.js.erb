@@ -4,6 +4,7 @@ $( function() {
   Vue.component('comp-notif-desc-comment', { template: '#template-notif-desc-comment', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-comment-like', { template: '#template-notif-desc-comment-like', inherit: true, replace: true, });
   Vue.component('comp-notif-desc-post-like', { template: '#template-notif-desc-post-like', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-pool-post', { template: '#template-notif-desc-pool-post', inherit: true, replace: true, });
 
   /* ----------------------------- */
 
@@ -40,12 +41,16 @@ $( function() {
       plurality: function() {
         return this.actorNames.length == 1 ? 'singular' : 'plural';
       },
+      /* TODO: All these "this.group[0]" functions are starting to feel like clutter. */
       link: function() { return this.group[0].link; },
       glimpse: function() { return this.group[0].glimpse; },
       ago: function() { return this.group[0].ago; },
       actor: function() { return this.group[0].actor; },
       commentPostMemberAccountId: function() { return this.group[0].comment ? this.group[0].comment.post.member.accountId : null; },
       commentPostMemberNameDisplay: function() { return this.group[0].comment ? this.group[0].comment.post.member.nameDisplay : null; },
+      poolLink: function() { return this.group[0].poolLink; },
+      poolName: function() { return this.group[0].pool ? this.group[0].pool.name : null; },
+      postLink: function() { return this.group[0].postLink; },
       postMemberAccountId: function() { return this.group[0].post ? this.group[0].post.member.accountId : null; },
       postMemberNameDisplay: function() { return this.group[0].post ? this.group[0].post.member.nameDisplay: null; },
       type: function() { return this.group[0].type; },
@@ -55,6 +60,8 @@ $( function() {
             return 'comp-notif-desc-comment';
           case 'comment-like':
             return 'comp-notif-desc-comment-like';
+          case 'pool-post':
+            return 'comp-notif-desc-pool-post';
           case 'post-like':
             return 'comp-notif-desc-post-like';
           /* TODO: the others */
