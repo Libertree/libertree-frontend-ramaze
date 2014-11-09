@@ -1,0 +1,121 @@
+Libertree.I18n = {
+  'commented-on-post-plural': <%= s_("plural|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
+  'commented-on-post-singular': <%= s_("singular|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
+  'commented-on-your-post-plural': <%= s_("plural|%1$s commented on your %2$spost%3$s.").to_json %>,
+  'commented-on-your-post-singular': <%= s_("singular|%1$s commented on your %2$spost%3$s.").to_json %>,
+  'liked-comment-on-post-singular': <%= s_("singular|%1$s liked your %2$scomment%3$s on %4$s's post.").to_json %>,
+  'liked-comment-on-your-post-singular': <%= s_("singular|%1$s liked your %2$scomment%3$s on your post.").to_json %>,
+  'liked-comment-on-post-plural': <%= s_("plural|%1$s liked your %2$scomment%3$s on %4$s's post.").to_json %>,
+  'liked-comment-on-your-post-plural': <%= s_("plural|%1$s liked your %2$scomment%3$s on your post.").to_json %>,
+  'liked-your-post-singular': <%= s_("singular|%1$s liked your %2$spost%3$s.").to_json %>,
+  'liked-your-post-plural': <%= s_("plural|%1$s liked your %2$spost%3$s.").to_json %>,
+  'list-and': <%= s_('list-and| and ').to_json %>,
+  'list-comma': <%= s_('list-comma|, ').to_json %>,
+};
+
+/* Maybe we should use something like http://slexaxton.github.io/Jed/ */
+Libertree.createI18nPartial = function(i18nKey, params) {
+  var partialBody = Libertree.I18n[i18nKey];
+  jQuery.each( params, function( index, value ) {
+    partialBody = partialBody.replace(
+    new RegExp('%'+(index+1)+'\\$s'),
+    value
+    );
+  } );
+  Vue.partial( 'partial-i18n-'+i18nKey, partialBody );
+};
+
+Libertree.createI18nPartial(
+  'commented-on-post-singular',
+  [
+    '{{actorsPhrase}}',
+    '{{postMemberNameDisplay}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'commented-on-your-post-singular',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+'commented-on-post-plural',
+  [
+    '{{actorsPhrase}}',
+    '{{postMemberNameDisplay}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+'commented-on-your-post-plural',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'liked-comment-on-post-singular',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+    '{{commentPostMemberNameDisplay}}',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'liked-comment-on-post-plural',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+    '{{commentPostMemberNameDisplay}}',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'liked-comment-on-your-post-singular',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}" class="foo">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'liked-comment-on-your-post-plural',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+'liked-your-post-plural',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+'liked-your-post-singular',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
