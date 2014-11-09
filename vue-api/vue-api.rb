@@ -165,9 +165,26 @@ module Libertree
               targetIdentifier: "post-#{like.post.id}"
             )
           when Libertree::Model::Post
-            # partial = '_mention'
-            # avatar_member = notif.subject.member
-            # glimpse = notif.subject.glimpse
+            post = notif.subject
+            account = post.member.account
+
+            h.merge!(
+              type: 'mention-in-post',
+              glimpse: CGI.escape_html(post.glimpse),
+              link: "/posts/show/#{post.id}",
+              actor: {
+                id: post.member.id,
+                handle: post.member.handle,
+                nameDisplay: post.member.name_display,
+              },
+              post: {
+                member: {
+                  accountId: account ? account.id: nil,
+                  nameDisplay: post.member.name_display
+                }
+              },
+              targetIdentifier: "post-#{post.id}"
+            )
           end
         }.compact
       end

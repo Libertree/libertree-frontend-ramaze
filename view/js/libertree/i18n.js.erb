@@ -1,4 +1,5 @@
 Libertree.I18n = {
+  'added-your-post-to-spring': <%= s_(%{%1$s added your %2$spost%3$s to a spring called "%4$s".}).to_json %>,
   'commented-on-post-plural': <%= s_("plural|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
   'commented-on-post-singular': <%= s_("singular|%1$s commented on %2$s's %3$spost%4$s.").to_json %>,
   'commented-on-your-post-plural': <%= s_("plural|%1$s commented on your %2$spost%3$s.").to_json %>,
@@ -11,7 +12,7 @@ Libertree.I18n = {
   'liked-your-post-plural': <%= s_("plural|%1$s liked your %2$spost%3$s.").to_json %>,
   'list-and': <%= s_('list-and| and ').to_json %>,
   'list-comma': <%= s_('list-comma|, ').to_json %>,
-  'added-your-post-to-spring': <%= s_(%{%1$s added your %2$spost%3$s to a spring called "%4$s".}).to_json %>,
+  'mentioned-you-in-post': <%= s_("%1$s mentioned you in a %2$spost%3$s.").to_json %>,
 };
 
 /* Maybe we should use something like http://slexaxton.github.io/Jed/ */
@@ -129,3 +130,13 @@ Libertree.createI18nPartial(
     '<a href="{{poolLink}}">{{poolName}}</a>',
   ]
 );
+
+Libertree.createI18nPartial(
+  'mentioned-you-in-post',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
