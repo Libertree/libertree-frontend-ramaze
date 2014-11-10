@@ -145,7 +145,7 @@ $( function() {
         return count;
       },
       nMore: function() {
-        return Math.max(this.n - this.firstNotificationGroups.length, 0);
+        return Math.max(this.notificationGroups.length - this.firstNotificationGroups.length, 0);
       },
       title: function() {
         if( this.n == 0 ) {
