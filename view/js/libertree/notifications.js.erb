@@ -203,7 +203,7 @@ $( function() {
         /* TODO: In VueJS 0.11+, we will have a vm.$interpolate() method available
         which will obviate most of this complicated string manipulation. */
         var title = document.title;
-        if( new_value === '0' ) {
+        if( new_value == 0 ) {
           title = title.replace( /^\([0-9]+\) /, '' );
         } else {
           title = title.replace( /^\([0-9]+\)/, '('+new_value+')' );
