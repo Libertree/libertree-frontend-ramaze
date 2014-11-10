@@ -334,6 +334,8 @@ Libertree.UI = (function () {
     },
 
     hideWindows: function() {
+      Libertree.Notifications.notificationsSyncer.windowVisible = false;
+
       $('#chat-window.resizable').resizable('destroy');
       $('#chat-window').removeClass('resizable');
       $('.window').hide();
