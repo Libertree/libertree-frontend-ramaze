@@ -143,7 +143,10 @@ $( function() {
         // get the groups in order of keys
         return jQuery.map( keys, function(k) {
           return [grouped[k]]; // Extra nesting: http://stackoverflow.com/questions/703355
-        } );
+        } )
+      },
+      firstNotificationGroups: function() {
+        return this.notificationGroups.slice(0, 5);
       },
       n: function() {
         var count = 0;
@@ -151,6 +154,9 @@ $( function() {
           count += group.length;
         } );
         return count;
+      },
+      nMore: function() {
+        return Math.max(this.n - this.firstNotificationGroups.length, 0);
       },
     },
     methods: {
@@ -178,16 +184,8 @@ $( function() {
           return;
         }
 
-        /* TODO: Is this update-on-click necessary?  Shouldn't our Vue.js awesomeness obviate this? */
-        /* syncer.notifications = []; */
         Libertree.UI.hideWindows();
-        syncer.fetchingData = true;
         syncer.windowVisible = true;
-
-        $.get('/vue-api/notifications', function(data) {
-          syncer.notifications = data;
-          syncer.fetchingData = false;
-        });
       },
       markAllSeen: function(ev) {
         ev.preventDefault();

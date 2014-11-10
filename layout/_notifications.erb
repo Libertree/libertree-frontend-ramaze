@@ -35,8 +35,11 @@
       <%=_('You have no new notifications.')%>
     </div>
     <div
-      v-repeat="group: notificationGroups"
+      v-repeat="group: firstNotificationGroups"
       v-component="comp-notification-group"
     ></div>
+    <div id="notifications-more" v-show="nMore > 0">
+      <a href="/notifications">{{> partial-i18n-n-more}}</a>
+    </div>
   </div>
 </div>

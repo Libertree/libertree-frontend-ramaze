@@ -12,13 +12,16 @@ Libertree.I18n = {
   'liked-your-post-plural': <%= s_("plural|%1$s liked your %2$spost%3$s.").to_json %>,
   'list-and': <%= s_('list-and| and ').to_json %>,
   'list-comma': <%= s_('list-comma|, ').to_json %>,
+  'n-more': <%= _('%d more').to_json %>,
   'mentioned-you-in-post': <%= s_("%1$s mentioned you in a %2$spost%3$s.").to_json %>,
   'sent-you-direct-message': <%= s_('%1$s sent you a %2$smessage%3$s.').to_json %>,
 };
 
+var partialBody;
+
 /* Maybe we should use something like http://slexaxton.github.io/Jed/ */
 Libertree.createI18nPartial = function(i18nKey, params) {
-  var partialBody = Libertree.I18n[i18nKey];
+  partialBody = Libertree.I18n[i18nKey];
   jQuery.each( params, function( index, value ) {
     partialBody = partialBody.replace(
     new RegExp('%'+(index+1)+'\\$s'),
@@ -150,3 +153,6 @@ Libertree.createI18nPartial(
   ]
 );
 
+partialBody = Libertree.I18n['n-more'];
+partialBody = partialBody.replace( new RegExp('%d'), '{{nMore}}' );
+Vue.partial( 'partial-i18n-n-more', partialBody );
