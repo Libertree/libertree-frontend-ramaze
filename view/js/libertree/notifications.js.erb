@@ -103,17 +103,6 @@ $( function() {
     notifications: [],
     windowVisible: false,
     fetchingData: false,
-    /* TODO: static title until further notice, due to i18n */
-    /* (this is not impossible to make dynamic, it's just that it's a bit of work.  :) ) */
-    /* TODO: clear title if it is out of sync with the real number of unseen notifs */
-    /* This could be done with, say, a titleN data attribute */
-    title: <%=
-      (
-        account.num_notifications_unseen == 0 ?
-        _('No notifications') :
-        n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen
-      ).to_json
-    %>,
   };
 
   Libertree.Notifications.notificationsSyncer = new Vue({
@@ -157,6 +146,15 @@ $( function() {
       },
       nMore: function() {
         return Math.max(this.n - this.firstNotificationGroups.length, 0);
+      },
+      title: function() {
+        if( this.n == 0 ) {
+          return Libertree.I18n['no-notifications'];
+        } else if( this.n == 1 ) {
+          return Libertree.I18n['1-notification'];
+        } else {
+          return Libertree.I18n['n-notifications'].replace( new RegExp('%d'), this.n );
+        }
       },
     },
     methods: {
