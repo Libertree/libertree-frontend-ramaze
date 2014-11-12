@@ -45,6 +45,9 @@ themes:
 # allow members to generate invitation links
 invitations: true
 
+# allow people to create new accounts
+sign_up: true
+
 # Uncomment the following settings to authenticate users against LDAP
 #ldap:
 #  connection:
