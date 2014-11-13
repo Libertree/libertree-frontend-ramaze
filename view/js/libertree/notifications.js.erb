@@ -83,6 +83,7 @@ $( function() {
         var href = $(ev.target).attr('href');
 
         ev.targetVM.expectingUpdate = true;
+        Libertree.Notifications.stickyNotificationIds = Libertree.Notifications.stickyNotificationIds.concat( ev.targetVM.ids );
 
         /* We don't update the UI ourselves here, we let it come after the websocket message */
 
@@ -104,6 +105,7 @@ $( function() {
     windowVisible: false,
     fetchingData: false,
   };
+  Libertree.Notifications.stickyNotificationIds = [];
 
   Libertree.Notifications.notificationsSyncer = new Vue({
     el: '#notifications-icon-and-window',
@@ -113,7 +115,7 @@ $( function() {
         var grouped = {},
           keys = [], // so we have a display order
           unseenNotifs = jQuery.grep( this.notifications, function(notif) {
-            return ! notif.seen;
+            return ! notif.seen || Libertree.Notifications.stickyNotificationIds.indexOf(notif.id) > -1;
           } );
 
         jQuery.each( unseenNotifs, function(i, notif) {
@@ -138,9 +140,12 @@ $( function() {
         return this.notificationGroups.slice(0, 5);
       },
       n: function() {
-        var count = 0;
+        var unseenNotifs, count = 0;
         jQuery.each(this.notificationGroups, function(i, group) {
-          count += group.length;
+          /* Don't count everUnseen */
+          unseenNotifs = jQuery.each( group, function(j, notif) {
+            if( ! notif.seen ) { count++; }
+          } );
         } );
         return count;
       },
@@ -173,7 +178,10 @@ $( function() {
 
         if( syncer.windowVisible ) {
           syncer.windowVisible = false;
+          Libertree.Notifications.stickyNotificationIds = [];
           Libertree.UI.hideWindows();
+          /* Force update of list since StickNotificationIds is not watched by Vue.js */
+          Libertree.Notifications.data.notifications.push(Libertree.Notifications.data.notifications.pop());
           return;
         } // else we now show the unseen notifications list
 
