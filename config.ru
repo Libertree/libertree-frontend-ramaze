@@ -25,6 +25,9 @@ require './vue-api/vue-api'
 
 Ramaze.start  :root => __DIR__, :started => true
 
+$libertree_member_api = Libertree::MemberAPI.new
+$libertree_vue_api = Libertree::VueAPI.new
+
 class APIRoutingAdapter
   def initialize(app)
     @app = app
@@ -40,9 +43,9 @@ class APIRoutingAdapter
       ['REQUEST_PATH', 'PATH_INFO', 'REQUEST_URI'].each do |key|
         env_without_api_prefix[key] = env_without_api_prefix[key].gsub(%r{^/api}, '')
       end
-      Libertree::MemberAPI.new.call(env_without_api_prefix)
+      $libertree_member_api.call(env_without_api_prefix)
     elsif request.path =~ %r{^/vue-api}
-      Libertree::VueAPI.new.call env
+      $libertree_vue_api.call env
     else
       # Let Ramaze handle the request
       @app.call(env)
