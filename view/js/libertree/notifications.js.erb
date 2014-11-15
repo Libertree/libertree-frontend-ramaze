@@ -77,21 +77,28 @@ $( function() {
     },
     methods: {
       toggleState: function(ev) {
-        /* ev.stopPropagation(); */
+        ev.stopPropagation();
         ev.preventDefault();
 
         var href = $(ev.target).attr('href');
 
-        ev.targetVM.expectingUpdate = true;
-        Libertree.Notifications.stickyNotificationIds = Libertree.Notifications.stickyNotificationIds.concat( ev.targetVM.ids );
-
         /* We don't update the UI ourselves here, we let it come after the websocket message */
 
         var newState = ev.targetVM.group[0].seen ? 'unseen' : 'seen'
-        $.get('/notifications/'+newState+'/' + ev.targetVM.ids.join('/'), function(data) {
-          /* resume link following when the GET request is complete */
-          if (href) { window.location = href; }
-        } );
+        if( href && newState == 'unseen' ) {
+          /* Don't mark unseen when clicking directly on a link in a notif */
+          window.location = href;
+        } else {
+          ev.targetVM.expectingUpdate = true;
+          Libertree.Notifications.stickyNotificationIds = Libertree.Notifications.stickyNotificationIds.concat( ev.targetVM.ids );
+
+          $.get('/notifications/'+newState+'/' + ev.targetVM.ids.join('/'), function(data) {
+            /* resume link following when the GET request is complete */
+            if( href ) {
+              window.location = href;
+            }
+          } );
+        }
       }
     },
   });
