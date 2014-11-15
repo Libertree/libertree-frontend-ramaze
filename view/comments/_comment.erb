@@ -14,6 +14,7 @@ likes_desc = n_('1 like', '%d likes', likes.count) % likes.count
   data-commenter-member-id="<%= @comment.member.id%>"
   data-likes-count="<%= likes.count %>"
   data-likes-desc="<%= likes_desc %>"
+  data-deletion-confirmation-prompt="<%=_('Delete this comment?')%>"
 >
   <div
     class="num-likes"
@@ -40,7 +41,7 @@ likes_desc = n_('1 like', '%d likes', likes.count) % likes.count
         <a href="#" class="unlike hidden" v-on="click: $parent.unlike"><%=img 'icon-unlike.png', {class:"size-16", alt:_('unlike'), title:_('Unlike this comment')}%></a>
       <% end %>
       <% if @comment.member == account.member %>
-        <a href="#" v-on="click: delete" data-msg="<%=_('Delete this comment?')%>"><%=
+        <a href="#" v-on="click: delete"><%=
           img 'icon-delete.png', {class:"size-16", alt:_('delete'), title:_('delete')}
         %></a>
       <% end %>

@@ -222,7 +222,7 @@ $( function() {
 
   /* TODO: A comment Vue should know its own id (as a property) */
   Vue.component('comp-comment', {
-    paramAttributes: ['data-likes-count', 'data-likes-desc'],
+    paramAttributes: ['data-comment-id', 'data-likes-count', 'data-likes-desc', 'data-deletion-confirmation-prompt'],
     data: function() {
       return {
         toolsVisible: false
@@ -233,15 +233,14 @@ $( function() {
       hideTools: function() { this.toolsVisible = false; },
       delete: function(event) {
         event.preventDefault();
-        /* TODO: The comment should know about its own data (properties) */
-        var $this = $(event.target),
-            comment = $this.closest('.comment'),
-            fn = function () {
-              $.get( '/comments/destroy/' + comment.data('comment-id') );
-              comment.fadeOut( function() { comment.remove; } );
-            };
+        var commentId = this.commentId,
+          fn = function () {
+            $.get( '/comments/destroy/' + commentId );
+            /* TODO: Visually, the comment remains on-screen.  In a future
+            commit, we will have the comment list update via websocket. */
+          };
 
-        Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
+        Libertree.UI.confirmAjax(event, this.deletionConfirmationPrompt, fn);
       }
     }
   } );
