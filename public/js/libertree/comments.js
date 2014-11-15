@@ -125,6 +125,17 @@ $( function() {
 
         like: Libertree.likeFunction('comment'),
         unlike: Libertree.unlikeFunction('comment'),
+
+        commentDeleted: function(commentId) {
+          var comment = $(this.$el).find('.comment[data-comment-id="'+commentId+'"]');
+          comment.animate(
+            { height: 'toggle', opacity: 'toggle' },
+            3000,
+            function() {
+              comment.remove;
+            }
+          );
+        },
       }
     }),
 
