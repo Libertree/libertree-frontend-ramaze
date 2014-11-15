@@ -70,6 +70,12 @@ Libertree.PostLoader = (function () {
             $('.autoload-container').append(excerpts);
           }
           Libertree.UI.makeTextAreasExpandable();
+
+          /* This should all eventually be reorganized so that posts and post excerpts themselves are Vue.js-ized */
+          excerpts.find('.comments-area').each( function() {
+            Libertree.Comments.createCommentListSyncer($(this));
+          } );
+
           excerpts.slideDown(function () {
             loading = false;
           });

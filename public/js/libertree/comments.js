@@ -205,6 +205,18 @@ $( function() {
           Libertree.UI.removeSpinner( submitButton.closest('.form-buttons') );
         }
       );
+    },
+
+    createCommentListSyncer: function(commentsArea) {  /* commentsArea should be a $('.comments-area') */
+      var id = commentsArea.attr('id');
+
+      Libertree.Comments.listSyncers[id] = new Libertree.Comments.ListSyncer({el: '#'+id});
+      Libertree.Comments.listSyncers[id].receiveData( commentsArea.find('.data[data-data-type="num-comments"]') );
+
+      if( window.location.hash.indexOf("#comment-") === 0 ) {
+        Libertree.Comments.listSyncers[id].avoidSlidingToLoadedComments = true;
+        Libertree.click('a.load-comments')
+      }
     }
   };
 
@@ -241,14 +253,6 @@ $( function() {
 
   Libertree.Comments.listSyncers = {};
   $('.comments-area').each( function() {
-    var id = $(this).attr('id');
-
-    Libertree.Comments.listSyncers[id] = new Libertree.Comments.ListSyncer({el: '#'+id});
-    Libertree.Comments.listSyncers[id].receiveData( $(this).find('.data[data-data-type="num-comments"]') );
-
-    if( window.location.hash.indexOf("#comment-") === 0 ) {
-      Libertree.Comments.listSyncers[id].avoidSlidingToLoadedComments = true;
-      Libertree.click('a.load-comments')
-    }
+    Libertree.Comments.createCommentListSyncer($(this));
   } );
 } );
