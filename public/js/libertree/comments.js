@@ -220,6 +220,7 @@ $( function() {
     }
   };
 
+  /* TODO: A comment Vue should know its own id (as a property) */
   Vue.component('comp-comment', {
     paramAttributes: ['data-likes-count', 'data-likes-desc'],
     data: function() {
@@ -229,7 +230,19 @@ $( function() {
     },
     methods: {
       showTools: function() { this.toolsVisible = true; },
-      hideTools: function() { this.toolsVisible = false; }
+      hideTools: function() { this.toolsVisible = false; },
+      delete: function(event) {
+        event.preventDefault();
+        /* TODO: The comment should know about its own data (properties) */
+        var $this = $(event.target),
+            comment = $this.closest('.comment'),
+            fn = function () {
+              $.get( '/comments/destroy/' + comment.data('comment-id') );
+              comment.fadeOut( function() { comment.remove; } );
+            };
+
+        Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
+      }
     }
   } );
 

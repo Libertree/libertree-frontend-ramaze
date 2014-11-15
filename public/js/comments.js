@@ -4,18 +4,6 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('click', '.comment .delete', function(event) {
-    event.preventDefault();
-    var $this = $(this),
-        comment = $this.closest('.comment'),
-        fn = function () {
-          $.get( '/comments/destroy/' + comment.data('comment-id') );
-          comment.fadeOut( function() { comment.remove; } );
-        };
-
-    Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
-  });
-
   $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
     var source = $(this),
