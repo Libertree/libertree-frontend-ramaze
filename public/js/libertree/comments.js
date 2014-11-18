@@ -154,8 +154,6 @@ $( function() {
           o.insertBefore( post.find('.comments .detachable') );
           var height = o.height();
           var animationDuration = height*5;
-          o.hide();
-          Libertree.UI.animatableNodesOnly(o).slideDown(animationDuration);
           $('.comments .success[data-comment-id="'+commentId+'"]').fadeOut();
 
           if( $('textarea.comment.focused').length ) {
