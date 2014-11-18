@@ -250,6 +250,9 @@ $( function() {
           };
 
         Libertree.UI.confirmAjax(event, this.deletionConfirmationPrompt, fn);
+      },
+      revealSpoiler: function(event) {
+        return Libertree.UI.revealSpoiler(event);
       }
     }
   } );

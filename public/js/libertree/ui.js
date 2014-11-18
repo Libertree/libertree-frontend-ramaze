@@ -58,12 +58,7 @@ Libertree.UI = (function () {
     initSpoiler = function (spoiler) {
       if( spoiler.prev('.spoiler-show').length === 0 ) {
         var msg = $('body').data('msg-spoiler-prompt'),
-            link = $('<p class="spoiler-show"><a href="#">'+msg+'</a></p>');
-        link.click(function (event) {
-          event.preventDefault();
-          spoiler.show();
-          link.hide();
-        });
+            link = $('<p class="spoiler-show" v-on="click: revealSpoiler"><a href="#">'+msg+'</a></p>');
         link.insertBefore(spoiler);
       }
     };
@@ -152,6 +147,15 @@ Libertree.UI = (function () {
       return false;
     },
 
+    revealSpoiler: function(event) {
+      event.preventDefault();
+      $(event.target).
+        hide().
+        parent('.spoiler-show').
+        next('div.spoilers').
+        show();
+    },
+
     showShowMores: function(excerpts) {
       var set = excerpts;
       if (set == undefined || set == null) {
@@ -238,7 +242,7 @@ Libertree.UI = (function () {
     },
 
     initSpoilers: function () {
-        $('div.spoilers').each( function () { initSpoiler($(this)); } );
+      $('div.spoilers').each( function () { initSpoiler($(this)); } );
     },
 
     initLightbox: function () {
