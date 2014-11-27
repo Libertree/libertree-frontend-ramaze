@@ -242,12 +242,16 @@ Libertree.Posts = (function () {
       }
     }),
 
+    createPostSyncerFor: function(element) {
+      var id = $(element).attr('id');
+      Libertree.Posts.syncers[id] = new Libertree.Posts.Syncer({el: '#'+id});
+      Libertree.Posts.syncers[id].receiveData();
+    },
+
     init: function() {
       $(document).ready( function() {
         $('.post, .post-excerpt').each( function() {
-          var id = $(this).attr('id');
-          Libertree.Posts.syncers[id] = new Libertree.Posts.Syncer({el: '#'+id});
-          Libertree.Posts.syncers[id].receiveData();
+          Libertree.Posts.createPostSyncerFor(this);
 
           if( window.location.hash.indexOf("#comment-") === 0 ) {
             Libertree.Posts.syncers[id].avoidSlidingToLoadedComments = true;
