@@ -254,7 +254,7 @@ Libertree.Posts = (function () {
           Libertree.Posts.createPostSyncerFor(this);
 
           if( window.location.hash.indexOf("#comment-") === 0 ) {
-            Libertree.Posts.syncers[id].avoidSlidingToLoadedComments = true;
+            Libertree.Posts.syncers[$(this).attr('id')].avoidSlidingToLoadedComments = true;
             Libertree.click('a.load-comments')
           }
         } );
