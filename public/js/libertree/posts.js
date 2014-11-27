@@ -235,6 +235,10 @@ Libertree.Posts = (function () {
             }
           );
         },
+
+        revealSpoiler: function(event) {
+          return Libertree.UI.revealSpoiler(event);
+        },
       }
     }),
 

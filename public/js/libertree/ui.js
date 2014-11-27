@@ -60,6 +60,10 @@ Libertree.UI = (function () {
         var msg = $('body').data('msg-spoiler-prompt'),
             link = $('<p class="spoiler-show" v-on="click: revealSpoiler"><a href="#">'+msg+'</a></p>');
         link.insertBefore(spoiler);
+        var parent = spoiler.closest('.post, .post-excerpt');
+        if( Libertree.Posts.syncers[parent.attr('id')] ) {
+          Libertree.Posts.syncers[parent.attr('id')].recompile();
+        }
       }
     };
 
