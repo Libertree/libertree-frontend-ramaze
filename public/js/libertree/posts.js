@@ -247,7 +247,7 @@ Libertree.Posts = (function () {
         $('.post, .post-excerpt').each( function() {
           var id = $(this).attr('id');
           Libertree.Posts.syncers[id] = new Libertree.Posts.Syncer({el: '#'+id});
-          Libertree.Posts.syncers[id].receiveData( $(this).find('.data[data-data-type="num-comments"]') );
+          Libertree.Posts.syncers[id].receiveData();
 
           if( window.location.hash.indexOf("#comment-") === 0 ) {
             Libertree.Posts.syncers[id].avoidSlidingToLoadedComments = true;
