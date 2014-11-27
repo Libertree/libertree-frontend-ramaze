@@ -99,8 +99,157 @@ Libertree.Posts = (function () {
       return false;
     },
 
+    syncers: {},
+    Syncer: Vue.extend({
+      data: function() {
+        return {
+          loadingComments: false,
+          avoidSlidingToLoadedComments: false,
+          // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
+          numShowingDirty: false,
+          numTotalOnPost: 0,
+          commentCount: {
+            i18n: {
+              allShown: '',
+              someShown: ''
+            }
+          },
+        };
+      },
+
+      computed: {
+        numShowing: function() {
+          // Vue.js dependency which we use to manually dirty this numShowing computed value
+          this.numShowingDirty;
+          return $(this.$el).find('div.comment').length;
+        }
+      },
+
+      methods: {
+        recompile: function() {
+          return this.$compile(this.$el);
+        },
+
+        receiveData: function() {
+          var el = $(this.$el).find('.data');
+          el.remove();
+
+          /* Only one el.data('data-type') for now, but when more than one is
+          possible, we'll need a case/switch here. */
+
+          /* el.data('data-type') assumed to be 'num-comments' */
+
+          /* TODO: this num total should probably be updated from the websocket instead of AJAX like this */
+          this.numTotalOnPost = el.data('num-total');
+          this.commentCount.i18n.allShown = el.data('text-all-showing');
+          this.commentCount.i18n.someShown = el.data('text-some-showing');
+        },
+
+        jumpToCommentBox: function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var commentsDiv = $(event.target).closest('div.comments'),
+              commentsPane = $(event.target).closest('div.comments-pane'),
+              targetScrollTop = commentsDiv.height() - commentsPane.height();
+
+          commentsPane.animate(
+            { scrollTop: targetScrollTop },
+            targetScrollTop - commentsPane.scrollTop(),
+            'easeOutQuint',
+            function() {
+              commentsPane.find('textarea').focus().hide().fadeIn();
+            }
+          );
+        },
+
+        loadMore: function(event) {
+          var syncer = this;
+          if( this.loadingComments ) { return true; }
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          this.loadingComments = true;
+
+          var post = $(event.target).closest('.post, .post-excerpt'),
+            postId = post.data('post-id'),
+            comments = post.find('.comments'),
+            toId = comments.find('.comment:first').data('comment-id');
+
+          /* TODO: spinner visibility based on Vue VM data */
+          Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
+          $.get(
+            '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
+            function(html) {
+              if( $.trim(html).length === 0 ) {
+                return;
+              }
+              var o = $( $.trim(html) );
+
+              var scrollable = $('div.comments-pane');
+              if( $('.excerpts-view').length ) {
+                scrollable = Libertree.UI.scrollable();
+              }
+              var initialScrollTop = scrollable.scrollTop();
+              var initialHeight = comments.height();
+              o.insertBefore(comments.find('.comment:first'));
+              syncer.receiveData();
+              syncer.numShowingDirty = ! syncer.numShowingDirty;
+              syncer.recompile();
+              Libertree.UI.initSpoilers();
+              var delta = comments.height() - initialHeight;
+
+              scrollable.scrollTop( initialScrollTop + delta );
+              /* TODO: spinner visibility based on Vue VM data */
+              Libertree.UI.removeSpinner('.comments');
+
+              syncer.loadingComments = false;
+
+              if( syncer.avoidSlidingToLoadedComments ) {
+                // This is only used once per page load.
+                // See "indexOf("#comment-"), below
+                syncer.avoidSlidingToLoadedComments = false;
+              } else {
+                scrollable.animate(
+                  { scrollTop: initialScrollTop },
+                  delta * 1.5,
+                  'easeInOutQuint'
+                );
+              }
+            }
+          );
+
+          return false;
+        },
+
+        like: Libertree.likeFunction('comment'),
+        unlike: Libertree.unlikeFunction('comment'),
+
+        commentDeleted: function(commentId) {
+          var comment = $(this.$el).find('.comment[data-comment-id="'+commentId+'"]');
+          comment.animate(
+            { height: 'toggle', opacity: 'toggle' },
+            3000,
+            function() {
+              comment.remove;
+            }
+          );
+        },
+      }
+    }),
+
     init: function() {
       $(document).ready( function() {
+        $('.post, .post-excerpt').each( function() {
+          var id = $(this).attr('id');
+          Libertree.Posts.syncers[id] = new Libertree.Posts.Syncer({el: '#'+id});
+          Libertree.Posts.syncers[id].receiveData( $(this).find('.data[data-data-type="num-comments"]') );
+
+          if( window.location.hash.indexOf("#comment-") === 0 ) {
+            Libertree.Posts.syncers[id].avoidSlidingToLoadedComments = true;
+            Libertree.click('a.load-comments')
+          }
+        } );
 
         Libertree.UI.initSpoilers();
 
