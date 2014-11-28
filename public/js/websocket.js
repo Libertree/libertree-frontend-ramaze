@@ -32,7 +32,7 @@ $(document).ready( function() {
         Libertree.Comments.insertHtmlFor( data.postId, data.commentId );
         break;
       case 'comment-deleted':
-        Libertree.Comments.listSyncers['comments-for-post-'+data.postId].commentDeleted(data.commentId);
+        Libertree.Posts.syncers['post-'+data.postId].commentDeleted(data.commentId);
         break;
       case 'river-posts':
         Libertree.UI.indicateNewPosts(data);
