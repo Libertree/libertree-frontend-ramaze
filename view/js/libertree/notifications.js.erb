@@ -130,10 +130,10 @@ $( function() {
           // and post like notifs in the same bin
           key = [notif.targetIdentifier, notif.type];
           if( grouped[key] ) {
-            grouped[key].push(notif);
+            grouped[key].unshift(notif);
           } else {
             grouped[key] = [];
-            grouped[key].push(notif);
+            grouped[key].unshift(notif);
             keys.push(key);
           }
         } );
@@ -187,7 +187,7 @@ $( function() {
           syncer.windowVisible = false;
           Libertree.Notifications.stickyNotificationIds = [];
           Libertree.UI.hideWindows();
-          /* Force update of list since StickNotificationIds is not watched by Vue.js */
+          /* Force update of list since stickyNotificationIds is not watched by Vue.js */
           Libertree.Notifications.data.notifications.push(Libertree.Notifications.data.notifications.pop());
           return;
         } // else we now show the unseen notifications list
