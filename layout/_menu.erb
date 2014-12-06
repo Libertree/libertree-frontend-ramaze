@@ -23,6 +23,7 @@
         <%= s_('menu|legible') %> | <a href="/accounts/font/small" title="<%= s_('menu|Small font size') %>"><%= s_('menu|small')%></a>
         <% end %>
       </li>
+      <li><a href="/docs/index"><%=img 'icon-documentation.png', {alt:s_('menu|Documentation')}%> <%= s_('menu|Documentation')%></a></li>
       <% if account.admin? %>
       <li>
         <a href="/admin"><%=img 'icon-admin.png', {alt:s_('menu|Administrate')}%> <%= s_('menu|Administrate')%></a>
