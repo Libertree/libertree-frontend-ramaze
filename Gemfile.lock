@@ -3,7 +3,7 @@ GIT
   revision: 8b218867376d10c5c8078d147c0722ccd2d3d3c1
   branch: vue-js
   specs:
-    libertree-model (0.9.8)
+    libertree-model (0.9.9)
       bcrypt-ruby (= 3.0.1)
       gpgme
       net-ldap (~> 0.5.1)
