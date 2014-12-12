@@ -68,22 +68,22 @@
   <%= js 'bootstrap' %>
   <%= js 'modalBox' %>
 
-  <%= js_nocache 'libertree' %>
-  <%= js_nocache 'libertree/post_loader' %>
-  <%= js_nocache 'libertree/ui' %>
-  <%= js_nocache 'libertree/session' %>
-  <%= js_nocache 'libertree/pools' %>
-  <%= js_nocache 'libertree/notifications' %>
-  <%= js_nocache 'libertree/chat' %>
-  <%= js_nocache 'libertree/likes' %>
-  <%= js_nocache 'libertree/posts' %>
-  <%= js_nocache 'libertree/comments' %>
-  <%= js_nocache 'libertree/remotestorage' %>
-  <%= js_nocache 'application' %>
-  <%= js_nocache 'comments' %>
-  <%= js_nocache 'notifications' %>
-  <%= js_nocache 'pool' %>
-  <%= js_nocache 'home' %>
+  <%= js 'libertree' %>
+  <%= js 'libertree/post_loader' %>
+  <%= js 'libertree/ui' %>
+  <%= js 'libertree/session' %>
+  <%= js 'libertree/pools' %>
+  <%= js 'libertree/notifications' %>
+  <%= js 'libertree/chat' %>
+  <%= js 'libertree/likes' %>
+  <%= js 'libertree/posts' %>
+  <%= js 'libertree/comments' %>
+  <%= js 'libertree/remotestorage' %>
+  <%= js 'application' %>
+  <%= js 'comments' %>
+  <%= js 'notifications' %>
+  <%= js 'pool' %>
+  <%= js 'home' %>
 
   <script type="text/javascript">
     var host = <%= $conf['websocket_js_host'].to_s.inspect || request.host.inspect %>;
@@ -92,11 +92,11 @@
     var websocket_port = <%= $conf['websocket_port'].to_s.inspect || '8080' %>;
   </script>
   <% if ! logged_in? || ! $conf['websocket_blacklist'].include?(account.username) %>
-    <%= js_nocache 'websocket' %>
+    <%= js 'websocket' %>
   <% end %>
 
   <% if logged_in? && account.admin? %>
-    <%= js_nocache 'admin' %>
+    <%= js 'admin' %>
   <% end %>
   <%= controller_js %>
 
