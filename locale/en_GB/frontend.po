@@ -13,6 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: layouts/splash.xhtml
+msgid "JavaScript licence information"
+msgstr ""
+
 #: layouts/default.xhtml
 # Text on a link to display spoilers
 msgid "Show hidden content"
@@ -1007,6 +1011,8 @@ msgstr ""
 msgid "menu|small"
 msgstr ""
 msgid "menu|Administrate"
+msgstr ""
+msgid "menu|Documentation"
 msgstr ""
 msgid "menu|Log out"
 msgstr ""

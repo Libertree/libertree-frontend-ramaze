@@ -345,6 +345,8 @@ body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.n
             right: 0px;
             width: 180px;
             padding: 5px;
+            list-style: none;
+            margin: 0;
 
             a {
                 line-height: 28px;
@@ -982,72 +984,71 @@ div.spoilers {
 
 a[href*="tumblr.com"]:before,
 a[href*="tumblr.com"]:before {
-  content: url("../images/tumbler.ico");
+  content: url("../images/site-icons/tumbler.ico");
   margin-right: 0.5em; }
 
 a[href*="bbc.com"]:before,
 a[href*="bbcimg.co.uk"]:before {
-  content: url("../images/bbc.ico");
+  content: url("../images/site-icons/bbc.ico");
   margin-right: 0.5em; }
 
 a[href*="facebook.com"]:before,
 a[href*="fbcdn.net"]:before {
-  content: url("../images/facebook.ico");
+  content: url("../images/site-icons/facebook.ico");
   margin-right: 0.5em; }
 
 a[href*="twitter.com"]:before,
 a[href*="twimg.com"]:before {
-  content: url("../images/twitter.ico");
+  content: url("../images/site-icons/twitter.ico");
   margin-right: 0.5em; }
 
 a[href*="youtube.com"]:before,
 a[href*="ytimg.com"]:before {
-  content: url("../images/youtube.ico");
+  content: url("../images/site-icons/youtube.ico");
   margin-right: 0.5em; }
 
 a[href*="wikipedia.org"]:before,
 a[href*="wikimedia.org"]:before {
-  content: url("../images/wikipedia.ico");
+  content: url("../images/site-icons/wikipedia.ico");
   margin-right: 0.5em; }
 
 a[href*="soundcloud.com"]:before,
 a[href*="sndcdn.com"]:before {
-  content: url("../images/soundcloud.ico");
+  content: url("../images/site-icons/soundcloud.ico");
   margin-right: 0.5em; }
 
 a[href*="theguardian.com"]:before,
 a[href*="guim.co.uk"]:before {
-  content: url("../images/guardian.ico");
+  content: url("../images/site-icons/guardian.ico");
   margin-right: 0.5em; }
 
 a[href*="theregister.co.uk"]:before,
 a[href*="regmedia.co.uk"]:before {
-  content: url("../images/register.ico");
+  content: url("../images/site-icons/register.ico");
   margin-right: 0.5em; }
 
 a[href*="cheezburger.com"]:before,
 a[href*="chzbgr.com"]:before {
-  content: url("../images/cheezeburger.ico");
+  content: url("../images/site-icons/cheezeburger.ico");
   margin-right: 0.5em; }
 
 a[href*="theoatmeal.com"]:before,
 a[href*="amazonaws.com/theoatmeal-img"]:before {
-  content: url("../images/oatmeal.ico");
+  content: url("../images/site-icons/oatmeal.ico");
   margin-right: 0.5em; }
 
 a[href*="http://xkcd.com"]:before {
-  content: url("../images/xkcd.ico");
+  content: url("../images/site-icons/xkcd.ico");
   margin-right: 0.5em; }
 
 a[href*="dilbert.com"]:before {
-  content: url("../images/dilbert.ico");
+  content: url("../images/site-icons/dilbert.ico");
   margin-right: 0.5em; }
 
 a[href*="boingboing.net/"]:before {
-  content: url("../images/boingboing.ico");
+  content: url("../images/site-icons/boingboing.ico");
   margin-right: 0.5em; }
 
 a[href*="rt.com"]:before {
-  content: url("../images/rt.ico");
+  content: url("../images/site-icons/rt.ico");
   margin-right: 0.5em; }
-  
