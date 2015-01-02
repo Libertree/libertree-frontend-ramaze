@@ -982,9 +982,16 @@ div.spoilers {
   }
 }
 
-a[href*="tumblr.com"]:before,
 a[href*="tumblr.com"]:before {
   content: url("../images/site-icons/tumbler.ico");
+  margin-right: 0.5em; }
+  
+a[href*="techdirt.com"]:before {
+  content: url("../images/site-icons/techdirt.ico");
+  margin-right: 0.5em; }
+  
+a[href*="slashdot.org"]:before {
+  content: url("../images/site-icons/slashdot.ico");
   margin-right: 0.5em; }
 
 a[href*="bbc.com"]:before,
@@ -1049,6 +1056,7 @@ a[href*="boingboing.net/"]:before {
   content: url("../images/site-icons/boingboing.ico");
   margin-right: 0.5em; }
 
-a[href*="rt.com"]:before {
+a[href*="img.rt.com"]:before,
+a[href*="//rt.com"]:before {
   content: url("../images/site-icons/rt.ico");
   margin-right: 0.5em; }
