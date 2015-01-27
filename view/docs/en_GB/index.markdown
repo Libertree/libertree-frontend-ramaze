@@ -2,3 +2,5 @@
 
 
 - [Markdown](markdown)
+- [Philosophy](philosophy)
+- [Contributing](contributing)
