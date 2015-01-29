@@ -1,7 +1,13 @@
 # Custom CSS File
-You can copy paste the code below into your settings. Please put behind the semicolons a number in hexadecimal for the color. This file is dedicated to average users, if you are familiar with CSS please take a look at the application.scss-file for advanced changes of the Libertree interface.
 
-## Changes to the Inteface
+You can copy paste the code below into your settings. Please put
+behind the semicolons a number in hexadecimal for the color. This file
+is dedicated to average users, if you are familiar with CSS please
+take a look at the application.scss-file for advanced changes of the
+Libertree interface.
+
+## Changes to the Interface
+
 In this picture you can see the changes of the custom css file.
 
 ![Picture with notations](link_to_the_picture)
@@ -14,43 +20,58 @@ In this picture you can see the changes of the custom css file.
 ## CSS File
 
 ~~~
-/* THIS IS THE EXAMPLE-CSS-FILE FOR LIBERTREE */
+/*
+  This is an example CSS file for Libertree
 
-/* Hint: If you want to change the colors, you have to edit the hexadecimal numbers #000000 and #ffffff */
+  Hint: If you want to change the colors, you have to edit the
+  hexadecimal numbers #000000 and #ffffff.
 
-/* In this section you can put a picture-link in for the background and you can choose a color if you picture doesn't cover the whole area */
+  In this section you can put a picture-link in for the background and
+  you can choose a color if you picture doesn't cover the whole area.
+*/
 
 body {
     padding: 0px;
     margin: 0px;
-    background: url("www.please-replace-this-link.org/example-picture.png") fixed center repeat-x #000000;
+    background: url("http://example.com/picture.png") fixed center repeat-x;
+    background-color: #000000;
     width: 100%;
 }
 
-/* In this section you can change the color of the main menu bar. */
+/*
+  In this section you can change the color of the main menu bar.
 
-/* Hint: Please mind that it is not possible to change the color of the icons. You should choose a color that fits to the icon color. */
+  Hint: Please mind that it is not possible to change the color of the
+  icons. You should choose a color that fits to the icon color.
+*/
 
 .menu {
     background: #ffffff;
 }
 
-/* In this section you can change the menu from the upper right corner */
+/*
+  In this section you can change the menu in the upper right corner.
+*/
 
 .window {
     background-color: #ffffff;
 }
 
-/* In this section you can change the color of your username and make it bigger. */
+/*
+  In this section you can change the color of your username and make
+  it bigger.
+*/
 
 #menu-narrower #menu-account {
-    font-size: 12pt; color: #000000;
+    font-size: 12pt;
+    color: #000000;
 }
 
-/* In this section you can change the color of the links */
+/* In this section you can change the color of links. */
 
 a {
-    color: #000000; border-bottom: 1px dotted;
+    color: #000000;
+    border-bottom: 1px dotted;
 }
 
 a:visited {
@@ -65,7 +86,10 @@ a:active {
     color: #000000;
 }
 
-/* In this section you can change the background color of your chat */
+/*
+  In this section you can change the background color of the chat
+  window.
+*/
 
 #chat-window {
     background-color: #ffffff;
