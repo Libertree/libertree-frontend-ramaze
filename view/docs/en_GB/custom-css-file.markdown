@@ -10,7 +10,7 @@ Libertree interface.
 
 In this picture you can see the changes of the custom css file.
 
-![Picture with notations](link_to_the_picture)
+![Picture with annotations](/images/docs/custom-css.png)
 
 * 1.) The background is now black
 * 2.) The links are also black
