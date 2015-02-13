@@ -1,3 +1,5 @@
+# Contributing
+
 There are many ways you can help Libertree, or contribute to its growth and development.
 
 ### Developers
