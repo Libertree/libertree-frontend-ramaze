@@ -255,7 +255,7 @@ module Libertree
         when 'image/jpeg; charset=binary'
           ext = 'jpg'
         when 'image/png; charset=binary'
-          exit = 'png'
+          ext = 'png'
         else
           puts "Unknown file content type: #{content_type}"
           error! "Unknown file content type: #{content_type}", 400
@@ -264,11 +264,16 @@ module Libertree
 
         new_path = File.expand_path( new_name, $conf['upload_dir'] )
         FileUtils.mv temp_file.path, new_path
+        FileUtils.chmod "u=wr,go=r", new_path
 
         Libertree::Model::File.create(
           'account_id' => @account.id,
           'filename' => new_name
         )
+
+        {
+          'filename' => new_name
+        }.to_json
       end
     end
   end

@@ -41,7 +41,8 @@ Libertree.Files = (function () {
                 }
                 return myXhr;
               },
-              success: function() {
+              success: function(json) {
+                var data = jQuery.parseJSON(json);
                 syncer.inProgress = false;
                 syncer.controlsRevealed = false;
                 syncer.uploadSuccessful = true;
@@ -51,7 +52,10 @@ Libertree.Files = (function () {
                   return;
                 }
 
-                input.val( input.val() + ' ' + 'hi there' );
+                input.val(
+                  input.val() + ' ' +
+                  '![uploaded image](' + Libertree.frontendUploadUrlBase + '/' + data.filename + ')'
+                );
               },
               error: function(e) {
                 console.log('Upload error:');

@@ -61,5 +61,7 @@ sign_up: true
 #    email:        'mail'
 #    display_name: 'displayName'
 
-upload_dir: '/path/to/some/dir'
-
+# These two upload settings need to be set appropriately so that the files will
+# be publicly accessible.
+upload_dir: '/var/www/tree-domain.org/f'
+frontend_upload_url_base: 'http://tree-domain.org/f'
