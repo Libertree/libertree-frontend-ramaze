@@ -1,3 +1,5 @@
+require 'fileutils'
+require 'filemagic'
 require 'grape'
 require 'libertree/model'
 require 'libertree/age'
@@ -214,6 +216,59 @@ module Libertree
 
       put do
         Libertree::Model::Notification.mark_seen_for_account(@account, ['all'])
+      end
+    end
+
+    resource 'files' do
+      desc "files of members"
+
+      post do
+        # params['file']
+        # {"filename"=>"avatar-mask.png",
+        # "type"=>"application/octet-stream",
+        # "name"=>"file",
+        # "tempfile"=>#<File:/tmp/RackMultipart20150215-32068-1lgzih9>,
+        # "head"=>
+        # "Content-Disposition: form-data; name=\"file\"; filename=\"avatar-mask.png\"\r\nContent-Type: application/octet-stream\r\n"}
+
+        if params['file'].nil?
+          error! "Missing file parameter", 400
+        end
+
+        filename = params['file']['filename'].to_s
+        # temp file is expected to reside in ENV['TMPDIR'] or /tmp
+        temp_file = params['file']['tempfile']  # File object
+
+        # TODO: Max file size allowed
+
+        content_type = nil
+        FileMagic.open(FileMagic::MAGIC_MIME) do |fm|
+          content_type = fm.file(temp_file.path)
+        end
+
+        # This Rack temp file should have a trustworthy name?
+        sha1 = `sha1sum '#{temp_file.path}'`[/^(\S+)/, 1]
+        ext = nil
+        case content_type
+        when 'image/gif; charset=binary'
+          ext = 'gif'
+        when 'image/jpeg; charset=binary'
+          ext = 'jpg'
+        when 'image/png; charset=binary'
+          exit = 'png'
+        else
+          puts "Unknown file content type: #{content_type}"
+          error! "Unknown file content type: #{content_type}", 400
+        end
+        new_name = "#{sha1}.#{ext}"
+
+        new_path = File.expand_path( new_name, $conf['upload_dir'] )
+        FileUtils.mv temp_file.path, new_path
+
+        Libertree::Model::File.create(
+          'account_id' => @account.id,
+          'filename' => new_name
+        )
       end
     end
   end
