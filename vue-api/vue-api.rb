@@ -239,7 +239,9 @@ module Libertree
         # temp file is expected to reside in ENV['TMPDIR'] or /tmp
         temp_file = params['file']['tempfile']  # File object
 
-        # TODO: Max file size allowed
+        if temp_file.size > ( $conf['max_upload_bytes'] || 20*1024*1024 )
+          error! "File too large", 413
+        end
 
         content_type = nil
         FileMagic.open(FileMagic::MAGIC_MIME) do |fm|
@@ -258,7 +260,7 @@ module Libertree
           ext = 'png'
         else
           puts "Unknown file content type: #{content_type}"
-          error! "Unknown file content type: #{content_type}", 400
+          error! "Unknown file content type: #{content_type}", 415
         end
         new_name = "#{sha1}.#{ext}"
 
