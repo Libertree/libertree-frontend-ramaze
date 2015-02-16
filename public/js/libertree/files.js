@@ -56,6 +56,10 @@ Libertree.Files = (function () {
                   input.val() + ' ' +
                   '![uploaded image](' + Libertree.frontendUploadUrlBase + '/' + data.filename + ')'
                 );
+
+                $('#upload-thumbnails').append(
+                  '<img src="' + Libertree.frontendUploadUrlBase + '/' + data.thumbnail + '" alt="uploaded image"/>'
+                );
               },
               error: function(e) {
                 console.log('Upload error:');

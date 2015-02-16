@@ -271,8 +271,18 @@ module Libertree
           'filename' => new_name
         )
 
+        image = MiniMagick::Image.open(new_path)
+        image.combine_options do |c|
+          c.thumbnail "100x100>"
+        end
+        thumbnail_name = "thumbnail-#{new_name}"
+        thumbnail_path = File.expand_path( thumbnail_name, $conf['upload_dir'] )
+        image.write thumbnail_path
+        File.chmod  0644, thumbnail_path
+
         {
-          'filename' => new_name
+          'filename' => new_name,
+          'thumbnail' => thumbnail_name,
         }.to_json
       end
     end
