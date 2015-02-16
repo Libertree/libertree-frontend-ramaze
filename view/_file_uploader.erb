@@ -1,6 +1,9 @@
-<form enctype="multipart/form-data" id="upload-form">
-  <input name="file" type="file" />
-  <input type="button" value="Upload" v-on="click: upload"/>
-  <progress></progress>
-  <div id="upload-success">Upload complete</div>
-</form>
+<div id="upload-widget">
+  <a id="upload-controls-revealer" v-on="click: revealUploadWidget" v-if="! controlsRevealed">Add a photo</a>
+  <div id="upload-controls" v-if="controlsRevealed">
+    <input name="file" type="file" id="file-to-upload"/>
+    <input type="button" value="Upload" v-on="click: upload"/>
+    <progress v-if="inProgress"></progress>
+  </div>
+  <div v-if="uploadSuccessful">Upload complete</div>
+</div>

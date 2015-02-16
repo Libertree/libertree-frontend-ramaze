@@ -140,16 +140,6 @@ textarea:focus, input:focus {
     /* TODO: Use some other colour that matches with the Libertree theme */
 }
 
-#upload-form {
-  progress {
-    display: none;
-  }
-
-  #upload-success {
-    display: none;
-  }
-}
-
 .main {
     @include border-box;
     max-width: 1000px;
@@ -507,6 +497,10 @@ form.comment {
         #springs {
             margin-top: 1em;
         }
+    }
+
+    #upload-controls-revealer {
+      cursor: pointer;
     }
 }
 

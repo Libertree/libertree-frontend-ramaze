@@ -12,13 +12,25 @@ Libertree.Files = (function () {
     },
     init: function() {
       new Vue( {
-        el: 'body.upload',
+        el: '#upload-widget',
+        data: {
+          controlsRevealed: false,
+          uploadSuccessful: false,
+          inProgress: false
+        },
         methods: {
+          revealUploadWidget: function(ev) {
+            ev.preventDefault();
+            this.controlsRevealed = true;
+          },
           upload: function(ev) {
             ev.preventDefault();
-            $('#upload-form progress').show();
             var syncer = this;
-            var formData = new FormData($('#upload-form')[0]);
+
+            syncer.inProgress = true;
+            syncer.uploadSuccessful = false;
+
+            var formData = new FormData($('#upload-widget').closest('form')[0]);
             $.ajax({
               url: '/vue-api/files',
               type: 'POST',
@@ -29,15 +41,20 @@ Libertree.Files = (function () {
                 }
                 return myXhr;
               },
-              // Ajax events
-              /* beforeSend: beforeSendHandler, */
               success: function() {
-                console.log('upload success');
-                $('#upload-form progress').hide();
-                $('#upload-success').show();
+                syncer.inProgress = false;
+                syncer.controlsRevealed = false;
+                syncer.uploadSuccessful = true;
+
+                var input = $('#markdown-for-images');
+                if( input.length == 0 ) {
+                  return;
+                }
+
+                input.val( input.val() + ' ' + 'hi there' );
               },
               error: function(e) {
-                console.log('upload error:');
+                console.log('Upload error:');
                 console.log(e);
               },
               data: formData,
