@@ -1,5 +1,1 @@
-<form enctype="multipart/form-data" id="upload-form">
-  <input name="file" type="file" />
-  <input type="button" value="Upload" v-on="click: upload"/>
-</form>
-<progress></progress>
+<%= Controller::Main.render_partial '_file_uploader' %>

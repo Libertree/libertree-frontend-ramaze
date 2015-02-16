@@ -15,8 +15,8 @@ Libertree.Files = (function () {
         el: 'body.upload',
         methods: {
           upload: function(ev) {
-            console.log('upload clicked');
             ev.preventDefault();
+            $('#upload-form progress').show();
             var syncer = this;
             var formData = new FormData($('#upload-form')[0]);
             $.ajax({
@@ -33,6 +33,8 @@ Libertree.Files = (function () {
               /* beforeSend: beforeSendHandler, */
               success: function() {
                 console.log('upload success');
+                $('#upload-form progress').hide();
+                $('#upload-success').show();
               },
               error: function(e) {
                 console.log('upload error:');
