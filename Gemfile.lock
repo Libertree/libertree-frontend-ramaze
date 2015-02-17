@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 7783e490fd89d7d47e5739e6220d5278e7937dba
+  revision: 1c96e55fe49b9221c6eb9757f788479a1cb0337c
   branch: uploads
   specs:
     libertree-model (0.9.9)
@@ -101,7 +101,7 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     parkdown (1.4.25)
-    pg (0.17.1)
+    pg (0.18.1)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -156,7 +156,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequel (4.16.0)
+    sequel (4.19.0)
     slop (3.4.7)
     subexec (0.2.1)
     thin (1.6.1)
