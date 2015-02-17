@@ -1,9 +1,16 @@
 <h2><%=_('Photos')%></h2>
 
+<!-- TODO: Uploader widget; automatic update of photo list via Vue.js -->
+
 <div id="photo-collection">
 <% @files.each do |f| %>
-  <div class="photo"><div class="viewport">
-    <img src='<%= $conf["frontend_upload_url_base"] %>/<%= "thumbnail-#{f.filename}" %>'/>
-  </div></div>
+  <div class="photo" id="photo-<%=f.id%>">
+    <div class="thumbnail" v-on="click: openModal" data-id="<%=f.id%>"><div class="viewport">
+      <img src='<%= $conf["frontend_upload_url_base"] %>/<%= "thumbnail-#{f.filename}" %>'/>
+    </div></div>
+    <div class="photo-full" data-id="<%=f.id%>">
+      <img src='<%= $conf["frontend_upload_url_base"] %>/<%= f.filename %>'/>
+    </div>
+  </div>
 <% end %>
 </div>

@@ -10,6 +10,19 @@ Libertree.Files = (function () {
         $('progress').attr({value: e.loaded, max: e.total});
       }
     },
+    Syncer: Vue.extend( {
+      data: function() {
+        return {
+        };
+      },
+      methods: {
+        openModal: function(ev) {
+          ev.preventDefault();
+          var fileId = $(ev.target).closest('.thumbnail').data('id');
+          $('.photo-full[data-id="'+fileId+'"]').modalBox();
+        },
+      },
+    } ),
     init: function() {
       new Vue( {
         el: '#upload-widget',
@@ -69,6 +82,11 @@ Libertree.Files = (function () {
             });
           }
         }
+      } );
+
+      $('.photo').each( function() {
+        var id = $(this).attr('id');
+        new Libertree.Files.Syncer({el: '#'+id});
       } );
     }
   };

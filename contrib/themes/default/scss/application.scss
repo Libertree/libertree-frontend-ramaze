@@ -1082,21 +1082,29 @@ a[href*="rt.com"]:before {
 #photo-collection {
   .photo {
     display: inline-block;
-    width: 110px;
-    height: 110px;
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid $leaf;
-    border-radius: 2px;
-    text-align: center;
 
-    .viewport {
-      overflow: hidden;
-      height: 100%;
+    .thumbnail {
+      width: 110px;
+      height: 110px;
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid $leaf;
+      border-radius: 2px;
+      text-align: center;
+      cursor: pointer;
+
+      .viewport {
+        overflow: hidden;
+        height: 100%;
+      }
+
+      img {
+        height: 100%;
+      }
     }
 
-    img {
-      height: 100%;
+    .photo-full {
+      display: none;
     }
   }
 }
