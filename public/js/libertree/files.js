@@ -85,6 +85,11 @@ Libertree.Files = (function () {
                 syncer.inProgress = false;
                 syncer.controlsRevealed = false;
 
+                if( $('#add-photos').length ) {
+                  window.location.reload();
+                  return;
+                }
+
                 var input = $('#markdown-for-images');
                 if( input.length == 0 ) {
                   return;

@@ -510,7 +510,6 @@ form.comment {
     }
 
     #upload-controls-revealer {
-      cursor: pointer;
       img {
         width: 32px;
       }
@@ -1078,6 +1077,16 @@ a[href*="boingboing.net/"]:before {
 a[href*="rt.com"]:before {
   content: url("../images/site-icons/rt.ico");
   margin-right: 0.5em; }
+
+#upload-controls-revealer {
+  cursor: pointer;
+}
+
+#add-photos {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted $leaf;
+}
 
 #photo-collection {
   .photo {

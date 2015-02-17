@@ -1,6 +1,9 @@
 <h2><%=_('Photos')%></h2>
 
-<!-- TODO: Uploader widget; automatic update of photo list via Vue.js -->
+<form enctype="multipart/form-data" id="add-photos">
+  <span>Add Photos:</span>
+  <%= Controller::Main.render_partial '_file_uploader' %>
+</form>
 
 <div id="photo-collection">
 <% @files.each do |f| %>

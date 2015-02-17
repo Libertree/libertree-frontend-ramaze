@@ -16,8 +16,5 @@ module Controller
     def index
       @files = account.files
     end
-
-    def upload
-    end
   end
 end
