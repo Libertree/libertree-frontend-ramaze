@@ -140,6 +140,11 @@ textarea:focus, input:focus {
     /* TODO: Use some other colour that matches with the Libertree theme */
 }
 
+#upload-widget {
+  text-align: left;
+  margin-top: 0.5em;
+}
+
 .main {
     @include border-box;
     max-width: 1000px;
@@ -501,6 +506,9 @@ form.comment {
 
     #upload-controls-revealer {
       cursor: pointer;
+      img {
+        width: 32px;
+      }
     }
 }
 

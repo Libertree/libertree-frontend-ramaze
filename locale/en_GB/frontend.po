@@ -1059,6 +1059,9 @@ msgstr ""
 msgid "There are no posts matching this hashtag."
 msgstr ""
 
+msgid "Add a photo"
+msgstr ""
+
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"
 msgstr ""
