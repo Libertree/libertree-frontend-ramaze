@@ -2,8 +2,7 @@
   <div id="upload-thumbnails"></div>
   <a id="upload-controls-revealer" v-on="click: revealUploadWidget" v-if="! controlsRevealed"><%= img 'icon-camera.png', {alt:_('Add a photo')}%></a>
   <div id="upload-controls" v-if="controlsRevealed">
-    <input name="file" type="file" id="file-to-upload"/>
-    <input type="button" value="Upload" v-on="click: upload"/>
+    <input name="file" type="file" id="file-to-upload" v-on="change: upload"/>
     <progress v-if="inProgress"></progress>
   </div>
   <div v-if="uploadSuccessful">Upload complete</div>
