@@ -1004,6 +1004,8 @@ msgid "menu|Settings"
 msgstr ""
 msgid "menu|Contact Lists"
 msgstr ""
+msgid "menu|Photos"
+msgstr ""
 msgid "menu|Legible font size"
 msgstr ""
 msgid "menu|Small font size"
@@ -1060,6 +1062,8 @@ msgid "There are no posts matching this hashtag."
 msgstr ""
 
 msgid "Add a photo"
+msgstr ""
+msgid "Photos"
 msgstr ""
 
 #: view/intro/index.xhtml

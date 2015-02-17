@@ -58,9 +58,8 @@ Libertree.Files = (function () {
                   '<img src="' + Libertree.frontendUploadUrlBase + '/' + data.thumbnail + '" alt="uploaded image"/>'
                 );
               },
-              error: function(e) {
-                console.log('Upload error:');
-                console.log(e);
+              error: function(data) {
+                alert("Upload error: " + data.responseJSON.error);
               },
               data: formData,
               // Options to tell jQuery not to process data or worry about content-type.

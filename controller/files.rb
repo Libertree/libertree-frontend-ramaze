@@ -13,8 +13,11 @@ module Controller
       # end
     end
 
+    def index
+      @files = account.files
+    end
+
     def upload
-      @view = 'upload'
     end
   end
 end

@@ -1,0 +1,9 @@
+<h2><%=_('Photos')%></h2>
+
+<div id="photo-collection">
+<% @files.each do |f| %>
+  <div class="photo"><div class="viewport">
+    <img src='<%= $conf["frontend_upload_url_base"] %>/<%= "thumbnail-#{f.filename}" %>'/>
+  </div></div>
+<% end %>
+</div>
