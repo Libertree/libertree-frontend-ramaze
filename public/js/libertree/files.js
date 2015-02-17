@@ -19,7 +19,12 @@ Libertree.Files = (function () {
         openModal: function(ev) {
           ev.preventDefault();
           var fileId = $(ev.target).closest('.thumbnail').data('id');
-          $('.photo-full[data-id="'+fileId+'"]').modalBox();
+          $('.photo-full[data-id="'+fileId+'"]').modalBox({
+            iconClose: true,
+            iconImg: Libertree.imagesPath+'/icon-x.png',
+            keyClose: true,
+            bodyClose: true
+          });
         },
       },
     } ),

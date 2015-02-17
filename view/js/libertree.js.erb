@@ -1,6 +1,7 @@
 var Libertree = {
   currentAccountId: <%= account.id %>,
   frontendUploadUrlBase: <%= $conf['frontend_upload_url_base'].to_json %>,
+  imagesPath: <%= images_path.to_json %>,
 
   // http://stackoverflow.com/a/6158160/28558 , modified to use jQuery selector
   click: function(selector, options) {

@@ -14,8 +14,12 @@ module Ramaze
         "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content=\"#{s}\">?</a>"
       end
 
+      def images_path
+        "/themes/#{self.current_theme}/images"
+      end
+
       def img(src,options={})
-        "<img src='/themes/#{current_theme}/images/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
+        "<img src='#{self.images_path}/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
       end
 
       def css_nocache(file, media="screen")
