@@ -15,7 +15,6 @@ Libertree.Files = (function () {
         el: '#upload-widget',
         data: {
           controlsRevealed: false,
-          uploadSuccessful: false,
           inProgress: false
         },
         methods: {
@@ -28,7 +27,6 @@ Libertree.Files = (function () {
             var syncer = this;
 
             syncer.inProgress = true;
-            syncer.uploadSuccessful = false;
 
             var formData = new FormData($('#upload-widget').closest('form')[0]);
             $.ajax({
@@ -45,7 +43,6 @@ Libertree.Files = (function () {
                 var data = jQuery.parseJSON(json);
                 syncer.inProgress = false;
                 syncer.controlsRevealed = false;
-                syncer.uploadSuccessful = true;
 
                 var input = $('#markdown-for-images');
                 if( input.length == 0 ) {
