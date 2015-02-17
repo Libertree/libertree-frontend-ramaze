@@ -1065,6 +1065,8 @@ msgid "Add a photo"
 msgstr ""
 msgid "Photos"
 msgstr ""
+msgid "Delete photo"
+msgstr ""
 
 #: view/intro/index.xhtml
 msgid "tutorial-river-label|My interests"

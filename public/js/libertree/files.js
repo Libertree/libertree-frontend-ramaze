@@ -18,12 +18,35 @@ Libertree.Files = (function () {
       methods: {
         openModal: function(ev) {
           ev.preventDefault();
-          var fileId = $(ev.target).closest('.thumbnail').data('id');
+          var fileId = $(ev.target).closest('div.thumbnail').data('id');
           $('.photo-full[data-id="'+fileId+'"]').modalBox({
             iconClose: true,
             iconImg: Libertree.imagesPath+'/icon-x.png',
             keyClose: true,
             bodyClose: true
+          });
+        },
+        delete: function(ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+
+          /* TODO: i18n */
+          if( ! confirm("Delete this photo?") ) {
+            return;
+          }
+
+          var fileId = $(ev.target).closest('div.thumbnail').data('id');
+
+          $.ajax({
+            url: '/vue-api/files',
+            type: 'DELETE',
+            success: function(json) {
+              window.location.reload();
+            },
+            error: function(data) {
+              alert("Deletion error: " + data.responseJSON.error);
+            },
+            data: {id: fileId},
           });
         },
       },

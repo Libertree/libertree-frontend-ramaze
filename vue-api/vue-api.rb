@@ -220,8 +220,7 @@ module Libertree
     end
 
     resource 'files' do
-      desc "files of members"
-
+      desc "Add a file"
       post do
         # params['file']
         # {"filename"=>"avatar-mask.png",
@@ -286,6 +285,29 @@ module Libertree
           'filename' => new_name,
           'thumbnail' => thumbnail_name,
         }.to_json
+      end
+
+      desc "Delete a file"
+      params do
+        requires 'id', type: Integer, desc: "File id"
+      end
+      delete do
+        file = Libertree::Model::File.first(
+          account_id: @account.id,
+          id: params['id']
+        )
+
+        if file.nil?
+          error! "File not found", 404
+        end
+
+        local_path = File.expand_path( file.filename, $conf['upload_dir'] )
+        FileUtils.rm local_path
+        thumbnail_name = "thumbnail-#{file.filename}"
+        thumbnail_path = File.expand_path( thumbnail_name, $conf['upload_dir'] )
+        FileUtils.rm thumbnail_path
+
+        file.delete
       end
     end
   end
