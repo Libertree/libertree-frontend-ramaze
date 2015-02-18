@@ -56,10 +56,6 @@ module Controller
       redirect_referrer  if ! request.post?
 
       text = request['text'].to_s
-      markdown_for_images = request['markdown-for-images'].to_s.strip
-      if ! markdown_for_images.empty?
-        text += "\n\n#{markdown_for_images}"
-      end
       # Censor/clean invalid UTF characters
       text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
       text.encode!('UTF-8', 'UTF-16')
