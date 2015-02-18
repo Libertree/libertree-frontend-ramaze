@@ -1,8 +1,8 @@
 <div id="upload-widget">
   <div id="upload-thumbnails"></div>
-  <a id="upload-controls-revealer" v-on="click: revealUploadWidget" v-if="! controlsRevealed"><%= img 'icon-camera.png', {alt:_('Add a photo')}%></a>
-  <div id="upload-controls" v-if="controlsRevealed">
-    <input name="file" type="file" id="file-to-upload" v-on="change: upload"/>
-    <progress v-if="inProgress"></progress>
-  </div>
+  <label for="file-to-upload">
+    <%= img 'icon-camera.png', {alt:_('Add a photo')}%> <%=_('Add a photo')%>
+  </label>
+  <progress v-if="inProgress"></progress>
+  <input name="file" type="file" id="file-to-upload" v-on="change: upload"/>
 </div>

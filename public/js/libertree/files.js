@@ -55,13 +55,12 @@ Libertree.Files = (function () {
       new Vue( {
         el: '#upload-widget',
         data: {
-          controlsRevealed: false,
           inProgress: false
         },
         methods: {
           revealUploadWidget: function(ev) {
             ev.preventDefault();
-            this.controlsRevealed = true;
+            $('#file-to-upload').click();
           },
           upload: function(ev) {
             ev.preventDefault();
@@ -83,7 +82,6 @@ Libertree.Files = (function () {
               success: function(json) {
                 var data = jQuery.parseJSON(json);
                 syncer.inProgress = false;
-                syncer.controlsRevealed = false;
 
                 if( $('#add-photos').length ) {
                   window.location.reload();

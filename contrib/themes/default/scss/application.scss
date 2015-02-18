@@ -148,6 +148,19 @@ textarea:focus, input:focus {
 #upload-widget {
   text-align: left;
   margin-top: 0.5em;
+
+  #file-to-upload {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+    border-bottom: 1px dotted;
+
+    img {
+      height: 16px;
+    }
+  }
 }
 
 .main {
@@ -507,12 +520,6 @@ form.comment {
         #springs {
             margin-top: 1em;
         }
-    }
-
-    #upload-controls-revealer {
-      img {
-        width: 32px;
-      }
     }
 }
 
@@ -1077,10 +1084,6 @@ a[href*="boingboing.net/"]:before {
 a[href*="rt.com"]:before {
   content: url("../images/site-icons/rt.ico");
   margin-right: 0.5em; }
-
-#upload-controls-revealer {
-  cursor: pointer;
-}
 
 #add-photos {
   margin-bottom: 1em;
