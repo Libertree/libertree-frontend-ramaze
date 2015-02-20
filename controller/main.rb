@@ -75,7 +75,13 @@ module Controller
     # TODO: Move to Accounts controller?
     def signup
       @view = 'signup'
-      redirect '/intro'  if logged_in?
+      if logged_in?
+        if $conf['skip_intro']
+          redirect '/home'
+        else
+          redirect '/intro'
+        end
+      end
       redirect_referrer  unless $conf['sign_up']
 
       @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
@@ -121,7 +127,12 @@ module Controller
 
         account_login request.subset('username', 'password')
         flash[:error] = nil
-        redirect Intro.r(:/)
+        if $conf['skip_intro']
+          redirect '/home'
+        else
+          redirect Intro.r(:/)
+        end
+
       rescue Sequel::UniqueConstraintViolation => e
         if e.message =~ /accounts_username_key/
           flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
