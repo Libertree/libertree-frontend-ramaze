@@ -4,14 +4,33 @@ environment: live
 # log HTTP requests in live environment
 #log_http_requests: false
 
+
+#####################################################################
+# Websocket settings
+#
+# The websocket server should only be bound to localhost, not 0.0.0.0.
+# You need to configure your proxying web server to forward requests
+# on http://domain.of.your.tree.com:80/ws to the websocket server
+# spawned by the backend process, which listens by default on
+# localhost:8080.
+#
+# If you choose to expose the websocket server to the Internet and
+# make it listen on 0.0.0.0:8080, you need to set websocket_port to
+# 8080.  This is not recommended.
+
 websocket_js_host: domain.of.your.tree.com
 websocket_path: /ws
-websocket_port: 8080
+websocket_port: 80
 secure_websocket: false
 
 # These accounts (by username) will have websockets disabled
 # websocket_blacklist:
   # - 'ruskie'
+
+
+#####################################################################
+# Other settings
+#
 
 # graphicsmagick: false means use ImageMagick
 graphicsmagick: true
@@ -47,6 +66,9 @@ invitations: true
 
 # allow people to create new accounts
 sign_up: true
+
+# Skip the intro sequence for new accounts
+skip_intro: false
 
 # Uncomment the following settings to authenticate users against LDAP
 #ldap:

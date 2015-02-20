@@ -1,5 +1,5 @@
 # Documentation index
 
-There is currently only one page available in our documentation:
-
-- [Markdown](markdown)
+- [About Libertree-flavoured Markdown](markdown)
+- [Libertree Philosophy](philosophy)
+- [How to use the Custom CSS feature](custom-css-file)

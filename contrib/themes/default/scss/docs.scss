@@ -36,4 +36,12 @@ body.docs {
             margin: 0;
         }
     }
+
+    p {
+        font-size: $font-normal;
+        line-height: 1.6em;
+        text-align: left;
+        word-wrap: break-word;
+        max-width: 40rem;
+    }
 }

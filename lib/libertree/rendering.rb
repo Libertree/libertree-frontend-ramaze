@@ -144,7 +144,7 @@ module Libertree
 
   # This is used by the intro and the docs
   def self.render_unsafe(s)
-    opts = Render::Options.dup - [:filter_html]
+    opts = Render::Options.dup - [:filter_html, :hard_wrap]
     self.render(s, {autoembed: true}, [], opts)
   end
 
