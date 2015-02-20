@@ -223,6 +223,9 @@ Libertree.Chat = (function () {
             var h = $.parseJSON(response);
             if( h.success ) {
               textarea.val('');
+              setTimeout(function() {
+                $('#chat-window .log.active .textarea-chat').focus();
+              }, 0);
             } else {
               alert('Failed to send chat message.');
             }
