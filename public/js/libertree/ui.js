@@ -483,7 +483,7 @@ Libertree.UI = (function () {
         markdown = markdown + "\n\n" + $('#markdown-for-images').val();
       }
 
-      return $.trim(markdown);
+      return markdown.replace(/\s+$/, "");
     },
 
     renderPreview: function () {
