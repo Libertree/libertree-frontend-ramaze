@@ -476,12 +476,22 @@ Libertree.UI = (function () {
       }
     },
 
+    combinedMarkdown: function (seed) {
+      var markdown = seed.closest('form').find('textarea[name="text"]').val();
+
+      if( $('#markdown-for-images').length ) {
+        markdown = markdown + "\n\n" + $('#markdown-for-images').val();
+      }
+
+      return markdown.replace(/\s+$/, "");
+    },
+
     renderPreview: function () {
       var $this = $(this),
-          unrendered = $this.closest('form').find('textarea[name="text"]').val();
+          unrendered = Libertree.UI.combinedMarkdown($this);
 
       // abort unless there is text to be rendered
-      if (unrendered.length === 0) {
+      if( $.trim(unrendered).length === 0) {
         return false;
       }
 

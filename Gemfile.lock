@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 70ed98e357460418486c5248f3fa679690dcedd3
-  branch: vue-js
+  revision: e794220b637f2369a33de439652da7428aa82850
+  branch: uploads
   specs:
     libertree-model (0.9.9)
       bcrypt-ruby (= 3.0.1)
@@ -101,7 +101,7 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     parkdown (1.4.25)
-    pg (0.17.1)
+    pg (0.18.1)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -156,7 +156,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequel (4.16.0)
+    sequel (4.19.0)
     slop (3.4.7)
     subexec (0.2.1)
     thin (1.6.1)

@@ -353,7 +353,12 @@ Libertree.Posts = (function () {
           return false;
         } );
 
-        $(document).on('click', '#post-new input[type="submit"]', Libertree.UI.TextAreaBackup.disable);
+        $(document).on('click', '#post-new input[type="submit"]', function() {
+          Libertree.UI.TextAreaBackup.disable();
+
+          $('#post-new textarea').val( Libertree.UI.combinedMarkdown($('#post-new')) );
+          $('#markdown-for-images').val('');
+        });
       } );
     }
   };

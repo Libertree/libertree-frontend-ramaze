@@ -1,3 +1,5 @@
+require 'fileutils'
+require 'filemagic'
 require 'grape'
 require 'libertree/model'
 require 'libertree/age'
@@ -214,6 +216,98 @@ module Libertree
 
       put do
         Libertree::Model::Notification.mark_seen_for_account(@account, ['all'])
+      end
+    end
+
+    resource 'files' do
+      desc "Add a file"
+      post do
+        # params['file']
+        # {"filename"=>"avatar-mask.png",
+        # "type"=>"application/octet-stream",
+        # "name"=>"file",
+        # "tempfile"=>#<File:/tmp/RackMultipart20150215-32068-1lgzih9>,
+        # "head"=>
+        # "Content-Disposition: form-data; name=\"file\"; filename=\"avatar-mask.png\"\r\nContent-Type: application/octet-stream\r\n"}
+
+        if params['file'].nil?
+          error! "Missing file parameter", 400
+        end
+
+        filename = params['file']['filename'].to_s
+        # temp file is expected to reside in ENV['TMPDIR'] or /tmp
+        temp_file = params['file']['tempfile']  # File object
+
+        if temp_file.size > ( $conf['max_upload_bytes'] || 20*1024*1024 )
+          error! "File too large", 413
+        end
+
+        content_type = nil
+        FileMagic.open(FileMagic::MAGIC_MIME) do |fm|
+          content_type = fm.file(temp_file.path)
+        end
+
+        # This Rack temp file should have a trustworthy name?
+        sha1 = `sha1sum '#{temp_file.path}'`[/^(\S+)/, 1]
+        ext = nil
+        case content_type
+        when 'image/gif; charset=binary'
+          ext = 'gif'
+        when 'image/jpeg; charset=binary'
+          ext = 'jpg'
+        when 'image/png; charset=binary'
+          ext = 'png'
+        else
+          puts "Unknown file content type: #{content_type}"
+          error! "Unknown file content type: #{content_type}", 415
+        end
+        new_name = "#{sha1}.#{ext}"
+
+        new_path = File.expand_path( new_name, $conf['upload_dir'] )
+        FileUtils.mv temp_file.path, new_path
+        FileUtils.chmod "u=wr,go=r", new_path
+
+        Libertree::Model::File.create(
+          'account_id' => @account.id,
+          'filename' => new_name
+        )
+
+        image = MiniMagick::Image.open(new_path)
+        image.combine_options do |c|
+          c.thumbnail "100x100>"
+        end
+        thumbnail_name = "thumbnail-#{new_name}"
+        thumbnail_path = File.expand_path( thumbnail_name, $conf['upload_dir'] )
+        image.write thumbnail_path
+        File.chmod  0644, thumbnail_path
+
+        {
+          'filename' => new_name,
+          'thumbnail' => thumbnail_name,
+        }.to_json
+      end
+
+      desc "Delete a file"
+      params do
+        requires 'id', type: Integer, desc: "File id"
+      end
+      delete do
+        file = Libertree::Model::File.first(
+          account_id: @account.id,
+          id: params['id']
+        )
+
+        if file.nil?
+          error! "File not found", 404
+        end
+
+        local_path = File.expand_path( file.filename, $conf['upload_dir'] )
+        FileUtils.rm local_path
+        thumbnail_name = "thumbnail-#{file.filename}"
+        thumbnail_path = File.expand_path( thumbnail_name, $conf['upload_dir'] )
+        FileUtils.rm thumbnail_path
+
+        file.delete
       end
     end
   end
