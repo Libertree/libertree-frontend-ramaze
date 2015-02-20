@@ -1,6 +1,7 @@
 var Libertree = {
   currentAccountId: <%= account.id %>,
   currenMemberId: <%= account.member.id %>,
+  playAudio: <%= account.settings.audio %>,
 
   // http://stackoverflow.com/a/6158160/28558 , modified to use jQuery selector
   click: function(selector, options) {

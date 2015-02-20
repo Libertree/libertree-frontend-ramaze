@@ -80,6 +80,11 @@
     <input type="checkbox" name="auto_resize_textareas" <%=account.settings.auto_resize_textareas ? "checked" : ""%> />
   </div>
 
+  <div class="field">
+    <label><%=_('Sounds:')%></label>
+    <input type="checkbox" name="audio" <%=account.settings.audio ? "checked" : ""%> />
+  </div>
+
 
   <h3><%=_('Advanced Settings')%></h3>
   <div class="field">
