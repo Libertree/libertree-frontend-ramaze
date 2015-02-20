@@ -105,6 +105,7 @@ module Controller
       end
 
       username = request['username'].to_s.strip
+      name_display = request['name-display'].to_s.strip
 
       # TODO: Constrain email addresses, or at least strip out unsafe HTML, etc. with Loofah, or such.
       email = request['email'].to_s.strip
@@ -113,26 +114,29 @@ module Controller
       end
 
       begin
-        a = Libertree::Model::Account.create(
-          username: username,
-          password_encrypted: BCrypt::Password.create( request['password'].to_s ),
-          email: email
-        )
-        if $conf['post_tools_default'].to_s == 'icons'
-          a.settings.icons = true
-          a.settings.save
-        end
-        invitation.account_id = a.id
-        invitation.save
+        $dbh.transaction do
+          a = Libertree::Model::Account.create(
+            username: username,
+            password_encrypted: BCrypt::Password.create( request['password'].to_s ),
+            email: email
+          )
+          if $conf['post_tools_default'].to_s == 'icons'
+            a.settings.icons = true
+            a.settings.save
+          end
+          a.member.profile.name_display = name_display
+          a.member.profile.save
+          invitation.account_id = a.id
+          invitation.save
 
-        account_login request.subset('username', 'password')
-        flash[:error] = nil
-        if $conf['skip_intro']
-          redirect '/home'
-        else
-          redirect Intro.r(:/)
+          account_login request.subset('username', 'password')
+          flash[:error] = nil
+          if $conf['skip_intro']
+            redirect '/home'
+          else
+            redirect Intro.r(:/)
+          end
         end
-
       rescue Sequel::UniqueConstraintViolation => e
         if e.message =~ /accounts_username_key/
           flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
@@ -140,6 +144,8 @@ module Controller
       rescue Sequel::CheckConstraintViolation => e
         if e.message =~ /username_valid/
           flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
+        elsif e.message =~ /valid_name_display/
+          flash[:error] = _('Please provide a valid display name.')
         else raise e end
       end
     end
