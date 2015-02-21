@@ -92,7 +92,7 @@ Libertree.Chat = (function () {
               animationDuration;
 
           if( ! chatMessage.ownMessage ) {
-            Libertree.Audio.play('#audio-chat-message');
+            Libertree.Audio.play('audio-chat-message');
           }
           o.appendTo(messages);
           height = o.height();

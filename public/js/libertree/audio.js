@@ -5,9 +5,9 @@ Libertree.Audio = (function () {
   "use strict";
 
   return {
-    play: function(selector) {
+    play: function(audioElementId) {
       if( Libertree.playAudio ) {
-        $(selector).get(0).play();
+        document.getElementById(audioElementId).play();
       }
     },
   };

@@ -170,12 +170,16 @@ $( function() {
       },
     },
     methods: {
-      refresh: function() {
+      refresh: function(playAudio) {
         var self = this;
         self.fetchingData = true;
         $.get('/vue-api/notifications', function(data) {
+          var previousN = self.n;
           self.notifications = data;
           self.fetchingData = false;
+          if( playAudio && self.n > previousN ) {
+            Libertree.Audio.play('audio-notification');
+          }
         });
       },
       onIconClick: function(ev) {
@@ -252,5 +256,5 @@ $( function() {
     }
   });
 
-  Libertree.Notifications.notificationsSyncer.refresh();
+  Libertree.Notifications.notificationsSyncer.refresh(false);
 } );
