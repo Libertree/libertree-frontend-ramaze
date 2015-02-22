@@ -118,14 +118,21 @@ $( function() {
     el: '#notifications-icon-and-window',
     data: Libertree.Notifications.data,
     computed: {
+      unseenAndStickyNotifications: function() {
+        return jQuery.grep( this.notifications, function(notif) {
+          return ! notif.seen || Libertree.Notifications.stickyNotificationIds.indexOf(notif.id) > -1;
+        } );
+      },
+      unseenNotifications: function() {
+        return jQuery.grep( this.notifications, function(notif) {
+          return ! notif.seen;
+        } );
+      },
       notificationGroups: function() {
         var grouped = {},
-          keys = [], // so we have a display order
-          unseenNotifs = jQuery.grep( this.notifications, function(notif) {
-            return ! notif.seen || Libertree.Notifications.stickyNotificationIds.indexOf(notif.id) > -1;
-          } );
+          keys = []; // so we have a display order
 
-        jQuery.each( unseenNotifs, function(i, notif) {
+        jQuery.each( this.unseenAndStickyNotifications, function(i, notif) {
           // collect by target and type; we don't want to but comment
           // and post like notifs in the same bin
           key = [notif.targetIdentifier, notif.type];
@@ -147,10 +154,10 @@ $( function() {
         return this.notificationGroups.slice(0, 5);
       },
       n: function() {
-        var unseenNotifs, count = 0;
+        var count = 0;
         jQuery.each(this.notificationGroups, function(i, group) {
           /* Don't count everUnseen */
-          unseenNotifs = jQuery.each( group, function(j, notif) {
+          jQuery.each( group, function(j, notif) {
             if( ! notif.seen ) { count++; }
           } );
         } );
@@ -170,15 +177,51 @@ $( function() {
       },
     },
     methods: {
+      createWebNotification: function(body) {
+        /* Low-level method.  For normal cases, you want to call sendWebNotification */
+        var n;
+        n = new Notification(
+          'Libertree',
+          { body: body, icon: '<%= images_path %>/small-logo.png' }
+        );
+        n.onshow = function() {
+          setTimeout(n.close.bind(n), 5000);
+        }
+      },
+      sendWebNotification: function(body) {
+        if( !("Notification" in window) ) { return; }
+
+        if( Notification.permission === "granted" ) {
+          this.createWebNotification(body);
+        } else if( Notification.permission !== 'denied' ) {
+          Notification.requestPermission( function(permission) {
+            if( permission === "granted" ) {
+              this.createWebNotification(body);
+            }
+          } );
+        }
+      },
       refresh: function(playAudio) {
         var self = this;
         self.fetchingData = true;
         $.get('/vue-api/notifications', function(data) {
           var previousN = self.n;
+          var previousNotificationIds = $.map(
+            JSON.parse(JSON.stringify(self.unseenNotifications)),
+            function(notif, i) { return notif.id; }
+          );
+
           self.notifications = data;
           self.fetchingData = false;
+
           if( playAudio && self.n > previousN ) {
             Libertree.Audio.play('audio-notification');
+
+            $.each( self.unseenNotifications, function(i, notif) {
+              if( previousNotificationIds.indexOf(notif.id) == -1 ) {
+                self.sendWebNotification(notif.webNotificationText);
+              }
+            } );
           }
         });
       },

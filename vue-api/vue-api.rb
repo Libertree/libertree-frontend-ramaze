@@ -94,7 +94,9 @@ module Libertree
                   nameDisplay: comment.post.member.name_display
                 }
               },
-              targetIdentifier: "post-#{comment.post.id}"
+              targetIdentifier: "post-#{comment.post.id}",
+              # TODO: i18n
+              webNotificationText: %{#{comment.member.name_display} commented on #{comment.post.member.name_display}'s post.  "#{comment.glimpse}"}
             )
           when Libertree::Model::CommentLike
             like = notif.subject
@@ -117,7 +119,9 @@ module Libertree
                   },
                 },
               },
-              targetIdentifier: "comment-#{like.comment.id}"
+              targetIdentifier: "comment-#{like.comment.id}",
+              # TODO: i18n
+              webNotificationText: %{#{like.member.name_display} liked your comment ("#{like.comment.glimpse}") on #{like.comment.post.member.name_display}'s post.}
             )
           when Libertree::Model::Message
             message = notif.subject
@@ -138,7 +142,9 @@ module Libertree
                   nameDisplay: message.sender.name_display
                 }
               },
-              targetIdentifier: "message-#{message.id}"
+              targetIdentifier: "message-#{message.id}",
+              # TODO: i18n
+              webNotificationText: %{#{message.sender.name_display} sent you a direct message.  "#{message.glimpse}"}
             )
           when Libertree::Model::PoolPost
             pool = notif.subject.pool
@@ -162,7 +168,9 @@ module Libertree
                   nameDisplay: pool.member.name_display
                 }
               },
-              targetIdentifier: "pool-#{pool.id}"
+              targetIdentifier: "pool-#{pool.id}",
+              # TODO: i18n
+              webNotificationText: "#{pool.member.name_display} added your post to a spring called #{pool.name}."
             )
           when Libertree::Model::PostLike
             like = notif.subject
@@ -183,7 +191,9 @@ module Libertree
                   nameDisplay: like.post.member.name_display
                 }
               },
-              targetIdentifier: "post-#{like.post.id}"
+              targetIdentifier: "post-#{like.post.id}",
+              # TODO: i18n
+              webNotificationText: %{#{like.member.name_display} liked your post. "#{like.post.glimpse}"}
             )
           when Libertree::Model::Post
             post = notif.subject
@@ -204,7 +214,9 @@ module Libertree
                   nameDisplay: post.member.name_display
                 }
               },
-              targetIdentifier: "post-#{post.id}"
+              targetIdentifier: "post-#{post.id}",
+              # TODO: i18n
+              webNotificationText: %{#{post.member.name_display} mentioned you in a post.  "#{post.glimpse}"}
             )
           end
         }.compact
