@@ -2,6 +2,7 @@ var Libertree = {
   currentAccountId: <%= account.id %>,
   currenMemberId: <%= account.member.id %>,
   playAudio: <%= account.settings.audio %>,
+  sendWebNotifications: <%= account.settings.desktop_notifications %>,
   frontendUploadUrlBase: <%= $conf['frontend_upload_url_base'].to_json %>,
   imagesPath: <%= images_path.to_json %>,
 

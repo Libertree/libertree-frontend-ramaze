@@ -189,6 +189,7 @@ $( function() {
         }
       },
       sendWebNotification: function(body) {
+        if( ! Libertree.sendWebNotifications ) { return; }
         if( !("Notification" in window) ) { return; }
 
         if( Notification.permission === "granted" ) {
