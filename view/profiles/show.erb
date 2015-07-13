@@ -31,7 +31,7 @@
     <ul>
     <% @member.springs.each do |spring| %>
       <li class="spring">
-        <a href="/pools/show/<%=spring.id%>"><%=spring.name%></a>
+        <a href="/pools/show/<%=spring.id%>"><%= ::CGI.escape_html(spring.name) %></a>
       </li>
     <% end %>
     </ul>
