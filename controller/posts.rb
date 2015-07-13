@@ -96,10 +96,18 @@ module Controller
       end
 
       begin
+        group = Libertree::Model::Group[ request['group_id'].to_i ]
+        if group
+          group_id = group.id
+        else
+          group_id = nil
+        end
+
         post = Libertree::Model::Post.create(
           member_id:  account.member.id,
           visibility: visibility,
-          text:       text
+          text:       text,
+          group_id:   group_id
         )
       rescue Sequel::DatabaseError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale
@@ -142,6 +150,7 @@ module Controller
 
       if Ramaze::Current.action.wish == 'json'
         message = _("Successfully posted.")
+
         river = Libertree::Model::River[ request['river_id'].to_i ]
         if river
           matches_river = river.matches_post?(post)
@@ -149,6 +158,7 @@ module Controller
             message << ' ' + _("Note that your post cannot be seen here because it does not match this river.")
           end
         end
+
         {
           'success' => true,
           'postId' => post.id,
