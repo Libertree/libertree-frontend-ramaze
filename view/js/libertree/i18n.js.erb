@@ -14,6 +14,7 @@ Libertree.I18n = {
   'list-comma': <%= s_('list-comma|, ').to_json %>,
   'n-more': <%= _('%d more').to_json %>,
   'mentioned-you-in-post': <%= s_("%1$s mentioned you in a %2$spost%3$s.").to_json %>,
+  'posted-to-group': <%= s_("%1$s %2$sposted%3$s to the %4$s%5$s%6$s group.").to_json %>,
   'sent-you-direct-message': <%= s_('%1$s sent you a %2$smessage%3$s.').to_json %>,
   'no-notifications': <%= _('No notifications').to_json %>,
   '1-notification': <%= _('1 notification').to_json %>,
@@ -27,8 +28,8 @@ Libertree.createI18nPartial = function(i18nKey, params) {
   partialBody = Libertree.I18n[i18nKey];
   jQuery.each( params, function( index, value ) {
     partialBody = partialBody.replace(
-    new RegExp('%'+(index+1)+'\\$s'),
-    value
+      new RegExp('%'+(index+1)+'\\$s'),
+      value
     );
   } );
   Vue.partial( 'partial-i18n-'+i18nKey, partialBody );
@@ -143,6 +144,18 @@ Libertree.createI18nPartial(
   [
     '{{actorsPhrase}}',
     '<a href="{{link}}" title="{{glimpse}}">',
+    '</a>',
+  ]
+);
+
+Libertree.createI18nPartial(
+  'posted-to-group',
+  [
+    '{{actorsPhrase}}',
+    '<a href="{{postLink}}" title="{{glimpse}}">',
+    '</a>',
+    '<a href="{{groupLink}}">',
+    '{{groupNameDisplay}}',
     '</a>',
   ]
 );

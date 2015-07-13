@@ -198,26 +198,54 @@ module Libertree
           when Libertree::Model::Post
             post = notif.subject
             account = post.member.account
+            group = post.group
 
-            h.merge!(
-              type: 'mention-in-post',
-              glimpse: CGI.escape_html(post.glimpse),
-              link: "/posts/show/#{post.id}",
-              actor: {
-                id: post.member.id,
-                handle: post.member.handle,
-                nameDisplay: post.member.name_display,
-              },
-              post: {
-                member: {
-                  accountId: account ? account.id: nil,
-                  nameDisplay: post.member.name_display
-                }
-              },
-              targetIdentifier: "post-#{post.id}",
-              # TODO: i18n
-              webNotificationText: %{#{post.member.name_display} mentioned you in a post.  "#{post.glimpse}"}
-            )
+            # TODO: What if a post was made to a group AND mentions the member?
+            if group
+              h.merge!(
+                type: 'post-to-group',
+                glimpse: CGI.escape_html(post.glimpse),
+                postLink: "/posts/show/#{post.id}",
+                groupLink: "/groups/show/#{group.id}",
+                actor: {
+                  id: post.member.id,
+                  handle: post.member.handle,
+                  nameDisplay: post.member.name_display,
+                },
+                post: {
+                  member: {
+                    accountId: account ? account.id: nil,
+                    nameDisplay: post.member.name_display,
+                  }
+                },
+                group: {
+                  nameDisplay: group.name_display,
+                },
+                targetIdentifier: "post-#{post.id}",
+                # TODO: i18n
+                webNotificationText: %{#{post.member.name_display} posted to the #{group.name_display} group.  "#{post.glimpse}"}
+              )
+            else  # mention
+              h.merge!(
+                type: 'mention-in-post',
+                glimpse: CGI.escape_html(post.glimpse),
+                link: "/posts/show/#{post.id}",
+                actor: {
+                  id: post.member.id,
+                  handle: post.member.handle,
+                  nameDisplay: post.member.name_display,
+                },
+                post: {
+                  member: {
+                    accountId: account ? account.id: nil,
+                    nameDisplay: post.member.name_display
+                  }
+                },
+                targetIdentifier: "post-#{post.id}",
+                # TODO: i18n
+                webNotificationText: %{#{post.member.name_display} mentioned you in a post.  "#{post.glimpse}"}
+              )
+            end
           end
         }.compact
       end

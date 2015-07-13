@@ -20,6 +20,7 @@ group 'extensions' do
 end
 
 gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git', branch: 'basic-groups'
+# gem 'libertree-model', path: '../libertree-model-rb'
 
 group 'development' do
   gem 'rspec'
