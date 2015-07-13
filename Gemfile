@@ -19,7 +19,7 @@ group 'extensions' do
   gem 'gpgme'  # to verify PGP public keys before storing them
 end
 
-gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git', branch: 'vue-js'
+gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git', branch: 'basic-groups'
 
 group 'development' do
   gem 'rspec'

@@ -12,6 +12,9 @@ Libertree.PostLoader = (function () {
     case 'river':
       endpoint = '/posts/_excerpts';
       break;
+    case 'group':
+      endpoint = '/posts/_excerpts';
+      break;
     case 'profile':
       endpoint = '/profiles/_more';
       break;
