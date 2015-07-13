@@ -1,5 +1,9 @@
 <div id="header">
-  <h1><%= @group.name_display %></h1>
+  <h1>Group: <%= ::CGI.escape_html(@group.name_display) %></h1>
+
+  <p>
+    <%= ::CGI.escape_html(@group.description) %>
+  </p>
 </div>
 
 <form id="post-new">
