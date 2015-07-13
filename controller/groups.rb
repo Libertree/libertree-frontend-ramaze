@@ -11,7 +11,40 @@ module Controller
     end
 
     def index
+      @name_display = session[:name_display]
+      @description = session[:description]
       @groups = Libertree::Model::Group.order(:name_display)
+    end
+
+    def create
+      redirect_referrer  if ! request.post?
+
+      begin
+        group = Libertree::Model::Group.create(
+          name_display: request['name_display'].to_s,
+          description: request['description'].to_s,
+          admin_member_id: account.member.id
+        )
+
+        session[:name_display] = nil
+        session[:description] = nil
+
+        redirect Controller::Groups.r(:show, group.id)
+      rescue Sequel::CheckConstraintViolation => e
+        case e.message
+        when /non_empty_description/
+          flash[:error] = _('Group description must be given.')
+        when /non_empty_name_display/
+          flash[:error] = _('Group name must be given.')
+        else
+          flash[:error] = _('Invalid group details given.')
+        end
+
+        session[:name_display] = request['name_display']
+        session[:description] = request['description']
+
+        redirect_referrer
+      end
     end
 
     def show(group_id)

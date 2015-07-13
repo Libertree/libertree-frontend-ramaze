@@ -777,6 +777,17 @@ blockquote {
     }
 }
 
+.form-field {
+  margin-bottom: 1em;
+
+  label {
+    display: inline-block;
+    width: 10%;
+    text-align: right;
+    vertical-align: top;
+  }
+}
+
 .form-buttons {
     margin: 10px auto 0px auto;
     display: inline-block;
