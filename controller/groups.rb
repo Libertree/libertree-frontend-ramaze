@@ -10,7 +10,11 @@ module Controller
       :default
     end
 
-    def index(group_id)
+    def index
+      @groups = Libertree::Model::Group.order(:name_display)
+    end
+
+    def show(group_id)
       @group = Libertree::Model::Group[ id: group_id.to_i ]
       if @group.nil?
         flash[:error] = _('Group not found.')
