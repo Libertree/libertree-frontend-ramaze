@@ -6,9 +6,9 @@
   </p>
 
   <% if @group.member?(account.member) %>
-    <a href="/groups/leave/<%=@group.id%>">Leave this group</a>
+    <a href="/groups/leave/<%=@group.id%>"><%= _('Leave this group') %></a>
   <% else %>
-    <a href="/groups/join/<%=@group.id%>">Join this group</a>
+    <a href="/groups/join/<%=@group.id%>"><%= _('Join this group') %></a>
   <% end %>
 </div>
 
