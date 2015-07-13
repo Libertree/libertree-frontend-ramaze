@@ -197,12 +197,13 @@ $( function() {
         if( ! Libertree.sendWebNotifications ) { return; }
         if( !("Notification" in window) ) { return; }
 
+        var self = this;
         if( Notification.permission === "granted" ) {
-          this.createWebNotification(body);
+          self.createWebNotification(body);
         } else if( Notification.permission !== 'denied' ) {
           Notification.requestPermission( function(permission) {
             if( permission === "granted" ) {
-              this.createWebNotification(body);
+              self.createWebNotification(body);
             }
           } );
         }
