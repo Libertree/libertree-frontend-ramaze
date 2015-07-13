@@ -4,6 +4,12 @@
   <p>
     <%= ::CGI.escape_html(@group.description) %>
   </p>
+
+  <% if @group.member?(account.member) %>
+    <a href="/groups/leave/<%=@group.id%>">Leave this group</a>
+  <% else %>
+    <a href="/groups/join/<%=@group.id%>">Join this group</a>
+  <% end %>
 </div>
 
 <form id="post-new">

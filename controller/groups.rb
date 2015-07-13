@@ -48,11 +48,7 @@ module Controller
     end
 
     def show(group_id)
-      @group = Libertree::Model::Group[ id: group_id.to_i ]
-      if @group.nil?
-        flash[:error] = _('Group not found.')
-        redirect_referrer
-      end
+      set_group_or_redirect(group_id)
 
       @view = "excerpts-view group"
       @springs = account.member.springs
@@ -66,16 +62,26 @@ module Controller
       )
     end
 
-    # These are leftovers, copied from Controller::Home
+    def join(group_id)
+      set_group_or_redirect(group_id)
 
-    # def sort_by_time_updated_overall
-      # session[:river_post_order] = :comment
-      # redirect_referrer
-    # end
+      @group.add_member(account.member)
+      redirect_referrer
+    end
 
-    # def sort_by_time_created
-      # session[:river_post_order] = nil
-      # redirect_referrer
-    # end
+    def leave(group_id)
+      set_group_or_redirect(group_id)
+
+      @group.remove_member(account.member)
+      redirect_referrer
+    end
+
+    def set_group_or_redirect(group_id)
+      @group = Libertree::Model::Group[ id: group_id.to_i ]
+      if @group.nil?
+        flash[:error] = _('Group not found.')
+        redirect_referrer
+      end
+    end
   end
 end
