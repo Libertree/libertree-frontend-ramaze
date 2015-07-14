@@ -20,6 +20,16 @@
   </form>
 </div>
 
+<h2><%= _('Your Groups') %></h2>
+
+<ul>
+  <% account.member.groups.each do |group| %>
+    <li>
+      <a href="/groups/show/<%= group.id %>"><%= ::CGI.escape_html(group.name_display) %></a>
+    </li>
+  <% end %>
+</ul>
+
 <h2><%= _('All Groups') %></h2>
 
 <ul>
