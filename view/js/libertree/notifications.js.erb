@@ -138,7 +138,7 @@ $( function() {
           keys = []; // so we have a display order
 
         jQuery.each( this.unseenAndStickyNotifications, function(i, notif) {
-          // collect by target and type; we don't want to but comment
+          // collect by target and type; we don't want to put comment
           // and post like notifs in the same bin
           key = [notif.targetIdentifier, notif.type];
           if( grouped[key] ) {

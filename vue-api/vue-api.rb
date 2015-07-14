@@ -221,7 +221,7 @@ module Libertree
                 group: {
                   nameDisplay: group.name_display,
                 },
-                targetIdentifier: "post-#{post.id}",
+                targetIdentifier: "group-#{group.id}",
                 # TODO: i18n
                 webNotificationText: %{#{post.member.name_display} posted to the #{group.name_display} group.  "#{post.glimpse}"}
               )
