@@ -1,5 +1,9 @@
 <h2><%= _('Ignored Members') %></h2>
 
+<p>
+  <%= _("You won't be shown anything written or done by someone you are ignoring.") %>
+</p>
+
 <% if @ignored_members.empty? %>
   <p>
     <%= _('You are not ignoring anyone.') %>
