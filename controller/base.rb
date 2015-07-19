@@ -42,7 +42,7 @@ module Controller
       if ! $skip_authentication && ! logged_in? && action.name != 'login' && action.name != 'logout'
         flash[:error] = s_('not-authenticated|Please log in.')
         case request.fullpath
-        when %r{seen|/_|/js/}
+        when %r{seen|/_|/js/|accounts/heartbeat}
           # don't store redirect target in the case of AJAX partials or Javascript files
         else
           session[:back] = request.fullpath
