@@ -1,5 +1,5 @@
 <div class="comments">
-  <% all_comments = @post.comments %>
+  <% all_comments = @post.comments(viewing_account: account) %>
   <% fetched_comments = @post.comments(@comment_fetch_options) %>
   <%= render_file 'view/comments/_num_comments_data.erb', num_shown: fetched_comments.count, num_total: all_comments.count %>
 

@@ -172,7 +172,7 @@ module Controller
 
     def show(post_id, from_comment_id = nil)
       @view = "single-post-view"
-      @post = Libertree::Model::Post.get_full( post_id.to_i )
+      @post = Libertree::Model::Post.get_full(post_id.to_i, account)
       if @post.nil?
         respond (render_full "/error_404"), 404
       else
@@ -182,14 +182,12 @@ module Controller
 
         @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
 
+        @comment_fetch_options = { viewing_account: account }
+
         if from_comment_id
-          @comment_fetch_options = {
-            from_id: from_comment_id.to_i,
-          }
+          @comment_fetch_options[:from_id] = from_comment_id.to_i
         else
-          @comment_fetch_options = {
-            limit: 50,
-          }
+          @comment_fetch_options[:limit] = 50
         end
 
         if logged_in?

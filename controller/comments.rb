@@ -55,7 +55,10 @@ module Controller
     # the comment_fetch_options only apply to _excerpt; show provides its own instance variables.
     def _comments_list
       @post ||= Libertree::Model::Post[ post_id.to_i ]
-      @comment_fetch_options ||= { limit: 4 }
+      @comment_fetch_options ||= {
+        viewing_account: account,
+        limit: 4,
+      }
       @comments = @post.comments(@comment_fetch_options)
       Libertree::Model::Notification.mark_seen_for_account_and_comment_id( account, @comments.map(&:id) )
     end
@@ -64,19 +67,20 @@ module Controller
     def _comments(post_id, to_id, old_n)
       # TODO: Check that member is allowed to view the post and its comments
       # (when we introduce such restrictions in the system)
-      @post = Libertree::Model::Post.get_full( post_id.to_i )
+      @post = Libertree::Model::Post.get_full(post_id.to_i, account)
       return ""  if @post.nil?
       return ""  if ! @post.v_internet? && ! logged_in?
 
       # if to_id is undefined (to_id.to_i == 0) refresh the cache.
       opts = {
+        viewing_account: account,
         limit: 8,
         to_id: to_id.to_i,
       }
       opts.merge!({ refresh_cache: true })  if to_id.to_i == 0
       @comments = @post.comments(opts)
 
-      all_comments = @post.comments
+      all_comments = @post.comments(viewing_account: account)
       @commenters = commenters(all_comments)
       @offset = all_comments.index(@comments.first)
       @num_shown = @comments.count + old_n.to_i
@@ -88,8 +92,8 @@ module Controller
     # called by JS: Libertree.Comments.insertHtmlFor
     def _comment(comment_id, old_n = nil)
       @comment = Libertree::Model::Comment[comment_id.to_i]
-      post = Libertree::Model::Post.get_full( @comment.post_id )
-      all_comments = post.comments(:refresh_cache => true)
+      post = Libertree::Model::Post.get_full(@comment.post_id, account)
+      all_comments = post.comments(viewing_account: account, refresh_cache: true)
       @commenters = commenters(all_comments)
       @old_n = old_n ? old_n.to_i : nil
       @n_total = all_comments.count
