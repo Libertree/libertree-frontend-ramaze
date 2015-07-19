@@ -183,6 +183,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  byebug
   capybara
   curb
   dalli
