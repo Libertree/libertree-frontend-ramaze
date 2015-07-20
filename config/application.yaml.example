@@ -67,6 +67,9 @@ invitations: true
 # allow people to create new accounts
 sign_up: true
 
+# When false, people can sign up (create accounts) themselves without an invitation code
+invitation_needed: true
+
 # Skip the intro sequence for new accounts
 skip_intro: false
 

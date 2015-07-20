@@ -127,7 +127,7 @@
   <li><a href="/rivers"><%=_('Manage rivers')%></a></li>
   <li><a href="/pools"><%=_('Manage pools and springs')%></a></li>
   <li><a href="/remotestorage/connection"><%=_('Manage remote storage')%></a></li>
-  <% if $conf['invitations'] %>
+  <% if $conf['invitations'] && $conf['invitation_needed'] %>
   <li><a href="/invitations"><%=_('Invite Others')%></a></li>
   <% end %>
   <li><a href="/accounts/change_password"><%=_('Change password')%></a></li>
