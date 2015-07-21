@@ -3,6 +3,8 @@ module Controller
     helper :user, :xhtml, :age, :comment, :member, :wording, :views, :post, :search
     trait :user_model => ::Libertree::Model::Account
 
+    engine :erb
+
     layout do |path|
       if path =~ /error/
         nil
@@ -40,8 +42,8 @@ module Controller
       if ! $skip_authentication && ! logged_in? && action.name != 'login' && action.name != 'logout'
         flash[:error] = s_('not-authenticated|Please log in.')
         case request.fullpath
-        when %r{seen|/_}
-          # don't store redirect target in the case of AJAX partials
+        when %r{seen|/_|/js/|accounts/heartbeat}
+          # don't store redirect target in the case of AJAX partials or Javascript files
         else
           session[:back] = request.fullpath
         end
@@ -98,7 +100,7 @@ module Controller
 
     def error_404
       @view = "splash"
-      render_file "#{Ramaze.options.views[0]}/404.xhtml"
+      render_file "#{Ramaze.options.views[0]}/404.erb"
     end
 
   end

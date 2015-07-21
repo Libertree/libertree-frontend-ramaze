@@ -16,11 +16,14 @@ module Controller
           post_id:   post.id,
         )
 
+        # bypass cache: fetch the likes by comment_id
+        likes = Libertree::Model::PostLike.where(post_id: post_id.to_i)
+
         # TODO: Use partial for number of likes
         return {
           'post_like_id' => like.id,
-          'num_likes'    => post.likes.count,
-          'liked_by'     => _('Liked by %s') % post.likes.map { |l| l.member.name_display }.join(', '),
+          'num_likes'    => likes.count,
+          'liked_by'     => _('Liked by %s') % likes.map { |l| l.member.name_display }.join(', '),
         }.to_json
       end
 
@@ -33,9 +36,12 @@ module Controller
         like.delete_cascade
       end
 
+      # bypass cache: fetch the likes by comment_id
+      likes = Libertree::Model::PostLike.where(post_id: like.post_id.to_i)
+
       return {
-        'num_likes'    => like.post.likes.count,
-        'liked_by'     => _('Liked by %s') % like.post.likes.map { |l| l.member.name_display }.join(', '),
+        'num_likes'    => likes.count,
+        'liked_by'     => _('Liked by %s') % likes.map { |l| l.member.name_display }.join(', '),
       }.to_json
     end
   end

@@ -3,9 +3,8 @@ require 'libertree/model'
 
 FactoryGirl.define do
   factory :server, :class => Libertree::Model::Server do
-    sequence(:ip) { |n|
-      m = n / 256 # integer division
-      "192.168.#{m}.#{n}"
+    sequence(:domain) { |n|
+      "#{n}.libertreeproject.org"
     }
     public_key OpenSSL::PKey::RSA.new(2048, 65537).public_key.to_pem
   end

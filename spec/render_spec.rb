@@ -1,13 +1,13 @@
 # encoding: utf-8
 
 require 'spec_helper'
+require 'libertree/render'
 
 describe Libertree do
   describe '#render' do
     it 'should not turn a line break into a paragraph break at hashtags' do
-      pending "bug in our fork of peg-markdown"
       text = "There is no paragraph\n #break here."
-      subject.render(text).should == '<p>There is no paragraph<br> <a href="/tags/break" class="hashtag">break</a> here.'
+      expect( Libertree.render(text) ).to eq "<p>There is no paragraph<br><a href=\"/tags/break\" class=\"hashtag\">#break</a> here.</p>"
     end
 
     it 'should escape XHTML tags' do
@@ -74,36 +74,36 @@ tail}).should == %{<p>head</p>
     end
 
     it 'should ignore hashtags in links' do
+      pending "why is this the desired behavior?  Nested links are permitted."
       subject.render('[this is not a #valid hashtag](http://elephly.net)').should == '<p><a href="http://elephly.net">this is not a #valid hashtag</a></p>'
     end
 
   end
 
   describe '#autolinker' do
+    def test(input, expected=nil)
+      html = Libertree::Render.to_html_nodeset(input)
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{input}\">#{input}</a>")
+    end
     it 'should autolink relative URLs' do
-      url = "/posts/show/1234"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/1234/123/"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/987/123#comment-123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
-
-      url = "/posts/show/987/123/#comment-123"
-      subject.autolinker(url).should == %{<a href='#{url}'>#{url}</a>}
+      test "/posts/show/1234"
+      test "/posts/show/1234/"
+      test "/posts/show/1234/123"
+      test "/posts/show/1234/123/"
+      test "/posts/show/987/123#comment-123"
+      test "/posts/show/987/123/#comment-123"
+      test "/posts/show/987/123/#comment-123"
     end
 
     it 'should autolink relative URLs in weird contexts' do
       url = "/posts/show/987/123/#comment-123"
-      subject.autolinker("("+url).should == %{(<a href='#{url}'>#{url}</a>}
-      subject.autolinker("["+url).should == %{[<a href='#{url}'>#{url}</a>}
+      test "(#{url})"
+
+      html = Libertree::Render.to_html_nodeset("[#{url}](whatever)")
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{url}\">#{url}</a>")
+
+      html = Libertree::Render.to_html_nodeset("- #{url}\n- something\n- else\n\n")
+      expect( subject.autolinker(html).to_s ).to match("<a href=\"#{url}\">#{url}</a>")
     end
   end
 end

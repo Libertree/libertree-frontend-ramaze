@@ -1,28 +1,30 @@
 require 'spec_helper'
 
-describe Ramaze::Helper::Comment do
+describe Libertree::Model::Comment do
   before :each do
-    @s = Object.new.extend(subject)
+    @s = Object.new.extend(Ramaze::Helper::Comment)
 
     @server = Libertree::Model::Server.create( FactoryGirl.attributes_for(:server) )
+    @server2 = Libertree::Model::Server.create( FactoryGirl.attributes_for(:server) )
+
     @author = Libertree::Model::Member.create(
-      FactoryGirl.attributes_for(:member, :username => "John Lennon", :server_id => @server.id)
+      FactoryGirl.attributes_for(:member, :username => "john", :server_id => @server.id)
     )
     @paul = Libertree::Model::Member.create(
-      FactoryGirl.attributes_for(:member, :username => "Paul McCartney", :server_id => @server.id)
+      FactoryGirl.attributes_for(:member, :username => "paul", :server_id => @server.id)
     )
     @george = Libertree::Model::Member.create(
-      FactoryGirl.attributes_for(:member, :username => "George Harrison", :server_id => @server.id)
+      FactoryGirl.attributes_for(:member, :username => "george", :server_id => @server.id)
     )
     @george2 = Libertree::Model::Member.create(
-      FactoryGirl.attributes_for(:member, :username => "George Benson", :server_id => @server.id)
+      FactoryGirl.attributes_for(:member, :username => "george", :server_id => @server2.id)
     )
     @post = Libertree::Model::Post.create(
       FactoryGirl.attributes_for(:post, :member_id => @author.id)
     )
   end
 
-  describe '#comment_text_rendered_and_participants_linked' do
+  describe '#text_rendered_and_participants_linked' do
     context 'with more than one comment' do
       it 'should turn @name into a link to last comment by user name' do
         Libertree::Model::Comment.create(
@@ -34,40 +36,10 @@ describe Ramaze::Helper::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@George Harrison: indeed. I thought you'd like that."))
+                                     :text => "@George@#{@george.server.domain}: indeed. I thought you'd like that."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
-        processed.should =~ /data-member-id="#{@george.id}"/
-      end
-
-      it 'should replace partial matches that are longer than 2 characters' do
-        Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => @george.id,
-                                     :post_id => @post.id,
-                                     :text => "Very interesting."))
-        comment = Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => @paul.id,
-                                     :post_id => @post.id,
-                                     :text => "@George: indeed. I thought you'd like that."))
-
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
-        processed.should =~ /data-member-id="#{@george.id}"/
-      end
-
-      it 'should replace lowercase matches of uppercase names' do
-        Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => @george.id,
-                                     :post_id => @post.id,
-                                     :text => "Very interesting."))
-        comment = Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => @paul.id,
-                                     :post_id => @post.id,
-                                     :text => "@george: indeed. I thought you'd like that."))
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        commenters = @s.commenters(@post.comments)
+        processed = comment.text_rendered_and_participants_linked(commenters)
         processed.should =~ /data-member-id="#{@george.id}"/
       end
 
@@ -84,8 +56,10 @@ describe Ramaze::Helper::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@SomeName: indeed. I thought you'd like that."))
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+                                     :text => "@SomeName@#{@server.domain}: indeed. I thought you'd like that."))
+
+        commenters = @s.commenters(@post.comments)
+        processed = comment.text_rendered_and_participants_linked(commenters)
         processed.should =~ /data-member-id="#{lower.id}"/
       end
 
@@ -104,9 +78,10 @@ describe Ramaze::Helper::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@george: I mean you, George Benson."))
+                                     :text => "@george@#{@george2.server.domain}: I mean you, George 2."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        commenters = @s.commenters(@post.comments)
+        processed = comment.text_rendered_and_participants_linked(commenters)
         processed.should =~ /data-member-id="#{@george2.id}"/
         processed.should_not =~ /data-member-id="#{@george.id}"/
       end
@@ -126,32 +101,14 @@ describe Ramaze::Helper::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@george: I agree. @john: I also agree."))
+                                     :text => "@george@#{@george.server.domain}: I agree. @john@#{@author.server.domain}: I also agree."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        commenters = @s.commenters(@post.comments)
+        processed = comment.text_rendered_and_participants_linked(commenters)
         processed.should =~ /data-member-id="#{@george.id}"/
         processed.should =~ /data-member-id="#{@author.id}"/
       end
-
-      it 'should not be confused by Regexp characters in display names' do
-        regexp_boy = Libertree::Model::Member.create(
-          FactoryGirl.attributes_for(:member, :username => ".*-[]()", :server_id => @server.id)
-        )
-        Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => regexp_boy.id,
-                                     :post_id => @post.id,
-                                     :text => "Very interesting, indeed."))
-        comment = Libertree::Model::Comment.create(
-          FactoryGirl.attributes_for(:comment,
-                                     :member_id => @paul.id,
-                                     :post_id => @post.id,
-                                     :text => "@#{regexp_boy.username} you have a weird name."))
-
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
-        processed.should =~ /data-member-id="#{regexp_boy.id}"/
-      end
-    end
+   end
 
     context 'with fewer than two comments' do
       it 'should not do anything on the first comment' do
@@ -159,9 +116,10 @@ describe Ramaze::Helper::Comment do
           FactoryGirl.attributes_for(:comment,
                                      :member_id => @paul.id,
                                      :post_id => @post.id,
-                                     :text => "@George: hope you find this interesting."))
+                                     :text => "@George@#{@george.server.domain}: hope you find this interesting."))
 
-        processed = @s.comment_text_rendered_and_participants_linked(comment, @post.comments)
+        commenters = @s.commenters(@post.comments)
+        processed = comment.text_rendered_and_participants_linked(commenters)
         processed.should == comment.text_rendered(nil)
       end
     end

@@ -47,8 +47,8 @@ Libertree.Posts = (function () {
 
     subscribe   = setSubscription('subscribe'),
     unsubscribe = setSubscription('unsubscribe'),
-    like        = Libertree.mkLike('post'),
-    unlike      = Libertree.mkUnlike('post');
+    like        = Libertree.likeFunction('post'),
+    unlike      = Libertree.unlikeFunction('post');
 
   return {
     markRead: markRead,
@@ -75,9 +75,8 @@ Libertree.Posts = (function () {
                 '/posts/_excerpt/' + result.postId,
                 function(html) {
                   var o = $( $.trim(html) ),
-                    verticalDelta,
-                    animationDuration
-                  ;
+                      verticalDelta,
+                      animationDuration;
 
                   o.insertBefore('#post-excerpts .post-excerpt:first');
                   /* Adjust by 60 pixels to account for navigation bar */
@@ -100,15 +99,174 @@ Libertree.Posts = (function () {
       return false;
     },
 
+    syncers: {},
+    Syncer: Vue.extend({
+      data: function() {
+        return {
+          loadingComments: false,
+          avoidSlidingToLoadedComments: false,
+          // Vue.js doesn't notice DOM changes made by jQuery, so we have to manually inform it
+          numShowingDirty: false,
+          numTotalOnPost: 0,
+          commentCount: {
+            i18n: {
+              allShown: '',
+              someShown: ''
+            }
+          },
+        };
+      },
+
+      computed: {
+        numShowing: function() {
+          // Vue.js dependency which we use to manually dirty this numShowing computed value
+          this.numShowingDirty;
+          return $(this.$el).find('div.comment').length;
+        }
+      },
+
+      methods: {
+        recompile: function() {
+          return this.$compile(this.$el);
+        },
+
+        receiveData: function() {
+          var el = $(this.$el).find('.data');
+          el.remove();
+
+          /* Only one el.data('data-type') for now, but when more than one is
+          possible, we'll need a case/switch here. */
+
+          /* el.data('data-type') assumed to be 'num-comments' */
+
+          /* TODO: this num total should probably be updated from the websocket instead of AJAX like this */
+          this.numTotalOnPost = el.data('num-total');
+          this.commentCount.i18n.allShown = el.data('text-all-showing');
+          this.commentCount.i18n.someShown = el.data('text-some-showing');
+        },
+
+        jumpToCommentBox: function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var commentsDiv = $(event.target).closest('div.comments'),
+              commentsPane = $(event.target).closest('div.comments-pane'),
+              targetScrollTop = commentsDiv.height() - commentsPane.height();
+
+          commentsPane.animate(
+            { scrollTop: targetScrollTop },
+            targetScrollTop - commentsPane.scrollTop(),
+            'easeOutQuint',
+            function() {
+              commentsPane.find('textarea').focus().hide().fadeIn();
+            }
+          );
+        },
+
+        loadMore: function(event) {
+          var syncer = this;
+          if( this.loadingComments ) { return true; }
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          this.loadingComments = true;
+
+          var post = $(event.target).closest('.post, .post-excerpt'),
+            postId = post.data('post-id'),
+            comments = post.find('.comments'),
+            toId = comments.find('.comment:first').data('comment-id');
+
+          /* TODO: spinner visibility based on Vue VM data */
+          Libertree.UI.addSpinner(comments.find('.comment:first'), 'before', 16);
+          $.get(
+            '/comments/_comments/'+postId+'/'+toId+'/'+comments.find('span.num-comments').data('n'),
+            function(html) {
+              if( $.trim(html).length === 0 ) {
+                return;
+              }
+              var o = $( $.trim(html) );
+
+              var scrollable = $('div.comments-pane');
+              if( $('.excerpts-view').length ) {
+                scrollable = Libertree.UI.scrollable();
+              }
+              var initialScrollTop = scrollable.scrollTop();
+              var initialHeight = comments.height();
+              o.insertBefore(comments.find('.comment:first'));
+              syncer.receiveData();
+              syncer.numShowingDirty = ! syncer.numShowingDirty;
+              syncer.recompile();
+              Libertree.UI.initSpoilers();
+              var delta = comments.height() - initialHeight;
+
+              scrollable.scrollTop( initialScrollTop + delta );
+              /* TODO: spinner visibility based on Vue VM data */
+              Libertree.UI.removeSpinner('.comments');
+
+              syncer.loadingComments = false;
+
+              if( syncer.avoidSlidingToLoadedComments ) {
+                // This is only used once per page load.
+                // See "indexOf("#comment-"), below
+                syncer.avoidSlidingToLoadedComments = false;
+              } else {
+                scrollable.animate(
+                  { scrollTop: initialScrollTop },
+                  delta * 1.5,
+                  'easeInOutQuint'
+                );
+              }
+            }
+          );
+
+          return false;
+        },
+
+        like: Libertree.likeFunction('comment'),
+        unlike: Libertree.unlikeFunction('comment'),
+
+        commentDeleted: function(commentId) {
+          var comment = $(this.$el).find('.comment[data-comment-id="'+commentId+'"]');
+          comment.animate(
+            { height: 'toggle', opacity: 'toggle' },
+            3000,
+            function() {
+              comment.remove;
+            }
+          );
+        },
+
+        revealSpoiler: function(event) {
+          return Libertree.UI.revealSpoiler(event);
+        },
+      }
+    }),
+
+    createPostSyncerFor: function(element) {
+      var id = $(element).attr('id');
+      Libertree.Posts.syncers[id] = new Libertree.Posts.Syncer({el: '#'+id});
+      Libertree.Posts.syncers[id].receiveData();
+    },
+
     init: function() {
       $(document).ready( function() {
+        $('.post, .post-excerpt').each( function() {
+          Libertree.Posts.createPostSyncerFor(this);
+
+          if( window.location.hash.indexOf("#comment-") === 0 ) {
+            Libertree.Posts.syncers[$(this).attr('id')].avoidSlidingToLoadedComments = true;
+            Libertree.click('a.load-comments')
+          }
+        } );
+
+        Libertree.UI.initSpoilers();
 
         $(document).on('click', '.post-tools a.like', function(event) {
-          like( $(this), event, 'div.post, .post-excerpt' );
+          like(event);
         } );
 
         $(document).on('click', '.post-tools a.unlike', function(event) {
-          unlike( $(this), event, 'div.post, .post-excerpt' );
+          unlike(event);
         } );
 
         $(document).on('click', '.mark-read', function() {
@@ -120,7 +278,7 @@ Libertree.Posts = (function () {
 
         $(document).on('click', '.mark-unread', function() {
           var post = $(this).closest('div.post, div.post-excerpt'),
-            icon = post.find('.mark-unread img');
+              icon = post.find('.mark-unread img');
 
           Libertree.UI.enableIconSpinner(icon);
           $.get(
@@ -132,26 +290,6 @@ Libertree.Posts = (function () {
             }
           );
           return false;
-        } );
-
-        $('#comments-hide').click( function() {
-          $('div.post').addClass('with-comments-sliding');
-          $('div.comments, #comments-hide').hide();
-          $('#comments-show').show();
-          $('div.post-pane, div.comments-pane').toggleClass(
-            'expanded-post',
-            500
-          );
-        } );
-        $('#comments-show').click( function() {
-          $('#comments-show').hide();
-          $('#comments-hide').show();
-          $('div.comments-pane, div.post-pane').toggleClass('expanded-post', 500).promise().done(
-            function () {
-              $('div.comments').show();
-              $('div.post').removeClass('with-comments-sliding');
-            }
-          );
         } );
 
         $(document).on('click', '.post-tools a.hide', function() {
@@ -189,18 +327,18 @@ Libertree.Posts = (function () {
         $(document).on('click', '.post-tools .delete',
           function (event) {
             var $this = $(this),
-              post = $this.closest('div.post, div.post-excerpt'),
-              postId = post.data('post-id'),
-              poolId = $this.data('pool-id'),
-              fn = function () {
-                     $.get(
-                       '/posts/destroy/' + postId + '.json',
-                       function () {
-                         /* TODO: Check for success */
-                         post.slideUp(1000);
-                       }
-                     );
-                   };
+                post = $this.closest('div.post, div.post-excerpt'),
+                postId = post.data('post-id'),
+                poolId = $this.data('pool-id'),
+                fn = function () {
+                  $.get(
+                    '/posts/destroy/' + postId + '.json',
+                    function () {
+                      /* TODO: Check for success */
+                      post.slideUp(1000);
+                    }
+                  );
+                };
             Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
           });
 
@@ -215,7 +353,12 @@ Libertree.Posts = (function () {
           return false;
         } );
 
-        $(document).on('click', '#post-new input[type="submit"]', Libertree.UI.TextAreaBackup.disable);
+        $(document).on('click', '#post-new input[type="submit"]', function() {
+          Libertree.UI.TextAreaBackup.disable();
+
+          $('#post-new textarea').val( Libertree.UI.combinedMarkdown($('#post-new')) );
+          $('#markdown-for-images').val('');
+        });
       } );
     }
   };

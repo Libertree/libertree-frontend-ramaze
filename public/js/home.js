@@ -29,7 +29,7 @@ $(document).ready( function() {
 
   $(document).on('click', '.post-excerpt .post-tools a.comment', function (event) {
     event.preventDefault();
-    Libertree.UI.jumpToComments( $(this).closest('.post-excerpt') );
+    Libertree.UI.jumpToCommentField( $(this).closest('.post-excerpt') );
   });
 
   /* Displays "show more" when hovering over an image.
@@ -42,7 +42,7 @@ $(document).ready( function() {
   $(document).on('mouseover', '.overflowed img', function() {
     // do not do anything when this post is currently being expanded
     var excerpt = $(this).closest('.excerpt'),
-      overflowed = excerpt.find('.overflowed').not(':animated');
+        overflowed = excerpt.find('.overflowed').not(':animated');
 
     // NOTE: we cannot use Libertree.UI.showShowMores() because that would inspect *all* excerpts
     if( overflowed.length > 0 && excerpt.find('.post-text').height() > overflowed.height() ) {
@@ -72,4 +72,5 @@ $(document).ready( function() {
   /* ---------------------------------------------------- */
 
   Libertree.UI.showShowMores();
+  Libertree.UI.initSpoilers();
 } );

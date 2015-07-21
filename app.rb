@@ -1,54 +1,9 @@
-require 'ramaze'
-require 'sass'
-require 'yaml'
-require 'mini_magick'
-require 'fast_gettext'
-require 'markdown'
-require_relative 'lib/libertree/lang'
-require 'libertree/db'
-
-if ENV['DATABASE_URL']
-  # Heroku
-  ENV['DATABASE_URL'] =~ %r{postgres://(.+?):(.+?)@(.+?):(\d+)/(.+?)$}
-  Libertree::DB.config = {
-    'username' => $1,
-    'password' => $2,
-    'host' => $3,
-    'port' => $4,
-    'database' => $5,
-  }
-else
-  Libertree::DB.load_config("#{ File.dirname( __FILE__ ) }/config/database.yaml")
-end
-$dbh = Libertree::DB.dbh
-require 'libertree/model'
-
 [ 'frontend', 'email' ].each do |domain|
   FastGettext.add_text_domain(domain, :path => 'locale', :type => :po)
 end
 FastGettext.default_text_domain = 'frontend'
 FastGettext.default_available_locales = Libertree::LANG.map(&:first)
 include FastGettext::Translation
-
-conf_filepath = "#{ File.dirname( __FILE__ ) }/config/application.yaml"
-if File.exists?(conf_filepath)
-  $conf = YAML.load( File.read(conf_filepath) )
-else
-  # Please leave these as defined without looping or string construction
-  $conf = {
-    'environment' => ENV['LIBERTREE_ENVIRONMENT'],
-    'websocket_js_host' => ENV['LIBERTREE_WEBSOCKET_JS_HOST'],
-    'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'],
-    'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'],
-    'memcache' => ENV['LIBERTREE_MEMCACHE'],
-    'api_min_time_between' => ENV['LIBERTREE_API_MIN_TIME_BETWEEN'].to_i,
-    'title_insert' => ENV['LIBERTREE_TITLE_INSERT'],
-    'frontend_url_base' => ENV['LIBERTREE_FRONTEND_URL_BASE'],
-    'themes' => ENV['LIBERTREE_THEMES'].split(',').map(&:strip),
-  }
-end
-$conf['websocket_blacklist'] ||= []
-ENV['RACK_ENV'] = $conf['environment'] || 'live'
 
 # compile SCSS to CSS
 Dir.glob("public/themes/*") do |theme_path|
@@ -69,8 +24,15 @@ else
   Libertree::Model::Account.set_auth_settings(:default, nil)
 end
 
+if $conf['domain']
+  Libertree::Model::Server.own_domain = $conf['domain']
+else
+  raise "ERROR: 'domain' setting in configuration file must be set!"
+end
+
+
 require 'libertree/embedder'
-require_relative 'lib/libertree/render'
+require_relative 'lib/libertree/rendering'
 require_relative 'lib/libertree/remotestorage'
 
 require_relative 'controller/base'
@@ -79,9 +41,15 @@ require_relative 'controller/chat-messages'
 require_relative 'controller/comment-likes'
 require_relative 'controller/comments'
 require_relative 'controller/contact-lists'
+require_relative 'controller/docs'
 require_relative 'controller/home'
+require_relative 'controller/files'
+require_relative 'controller/groups'
+require_relative 'controller/ignored-members'
 require_relative 'controller/invitations'
+require_relative 'controller/js'
 require_relative 'controller/main'
+require_relative 'controller/members'
 require_relative 'controller/messages'
 require_relative 'controller/notifications'
 require_relative 'controller/profiles'
@@ -105,7 +73,6 @@ require_relative 'controller/api/v1/notifications'
 require_relative 'controller/admin/base'
 require_relative 'controller/admin/main'
 require_relative 'controller/admin/forests'
-require_relative 'controller/admin/servers'
 require_relative 'controller/admin/jobs'
 
 if $conf['memcache']

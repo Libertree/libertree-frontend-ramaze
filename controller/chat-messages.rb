@@ -55,7 +55,7 @@ module Controller
         )
 
         { 'success' => true }.to_json
-      rescue PGError => e
+      rescue Sequel::CheckConstraintViolation => e
         if e.message =~ /text_not_empty/
           { 'success' => false }.to_json
         else

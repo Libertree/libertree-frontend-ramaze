@@ -1,0 +1,6 @@
+<script type="x-template" id="template-notif-desc-comment-like">
+  <span v-show="commentPostMemberAccountId != currentAccountId && plurality == 'plural'">{{> partial-i18n-liked-comment-on-post-plural}}</span>
+  <span v-show="commentPostMemberAccountId != currentAccountId && plurality == 'singular'">{{> partial-i18n-liked-comment-on-post-singular}}</span>
+  <span v-show="commentPostMemberAccountId == currentAccountId && plurality == 'plural'">{{> partial-i18n-liked-comment-on-your-post-plural}}</span>
+  <span v-show="commentPostMemberAccountId == currentAccountId && plurality == 'singular'">{{> partial-i18n-liked-comment-on-your-post-singular}}</span>
+</script>

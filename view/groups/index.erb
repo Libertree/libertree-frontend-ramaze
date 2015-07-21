@@ -1,0 +1,41 @@
+<h1><%= _('Groups') %></h1>
+
+<div id="group-create">
+  <h3><%= _('Create a New Group') %></h3>
+  <form action="/groups/create" method="POST">
+    <div class="form-field">
+      <label for="name_display"><%= s_('groups|Name:') %></label>
+      <input type="text" name="name_display" size="48" value="<%= @name_display %>"/><br/>
+    </div>
+
+    <div class="form-field">
+      <label for="description"><%= s_('groups|Description:') %></label>
+      <textarea name="description" cols="48" rows="5"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label></label>
+      <input type="submit" value="<%= s_('groups|Create') %>"/>
+    </div>
+  </form>
+</div>
+
+<h2><%= _('Your Groups') %></h2>
+
+<ul>
+  <% account.member.groups.each do |group| %>
+    <li>
+      <a href="/groups/show/<%= group.id %>"><%= ::CGI.escape_html(group.name_display) %></a>
+    </li>
+  <% end %>
+</ul>
+
+<h2><%= _('All Groups') %></h2>
+
+<ul>
+  <% @groups.each do |group| %>
+    <li>
+      <a href="/groups/show/<%= group.id %>"><%= ::CGI.escape_html(group.name_display) %></a>
+    </li>
+  <% end %>
+</ul>

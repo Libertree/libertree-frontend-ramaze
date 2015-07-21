@@ -32,51 +32,7 @@ $(document).ready( function() {
     $("a[rel=popover]").popover('hide');
   } );
 
-
-  $(document).on('click', 'input.preview', function() {
-    var $this = $(this);
-    var unrendered = $this.closest('form').find('textarea[name="text"]').val();
-
-    // abort unless there is text to be rendered
-    if (unrendered.length === 0) {
-      return false;
-    }
-
-    var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message'),
-      preview_heading = $this.data('preview-heading'),
-      close_label = $this.data('preview-close-label'),
-      type = $this.data('type'),
-      textType = null;
-
-    if( type === 'post' ) {
-      textType = 'post-text';
-    }
-
-    $.post(
-      '/_render',
-      { s: unrendered },
-      function(html) {
-        var scrollable = target.closest('div.comments-pane'),
-          delta;
-
-        Libertree.Session.ensureAlive(html);
-        if( target.length > 0 ) {
-          $('.preview-box').remove();
-          target.append( $('<div class="preview-box" class="'+type+'"><a class="close-preview" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
-          if( scrollable.length === 0 ) {
-            scrollable = Libertree.UI.scrollable();
-            delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
-          } else {
-            delta = $('.preview-box').offset().top - 100;
-          }
-          scrollable.animate(
-            { scrollTop: scrollable.scrollTop() + delta },
-            delta * 2
-          );
-        }
-      }
-    );
-  } );
+  $(document).on('click', 'input.preview', Libertree.UI.renderPreview);
 
   $(document).on('click', '.preview-box a.close-preview', function() {
     $(this).closest('.preview-box').remove();
@@ -90,4 +46,72 @@ $(document).ready( function() {
   } );
 
   $(document).on('click', '.markdown-injector a', Libertree.UI.markdownInjector);
+
+  $('textarea, input[type="text"]').libertreeAutocomplete( {
+    source: function( request, response ) {
+      var entireText = request.term,
+          textUpToCursor = entireText.substring(0, this.element.textCursorPosition()),
+          indexOfAtSymbol = textUpToCursor.search(Libertree.UI.memberHandleAutocompletionTriggers),
+          triggerLength = Libertree.UI.memberHandleAutocompletionTriggerLength(textUpToCursor);
+
+      if(
+        indexOfAtSymbol == -1 ||
+        textUpToCursor.charAt(indexOfAtSymbol-1).search(/\S/) > -1  /* Non-space before at symbol */
+      ) {
+        return response([]);
+      }
+
+      var autocompletableWord = textUpToCursor.substring(indexOfAtSymbol+triggerLength),
+          post = $(this.element).closest('[data-post-id]'),
+          post_id;
+
+      if( post.length ) {
+        post_id = post.data('post-id');
+      }
+
+      $.get(
+        '/members/autocomplete_handle.json?q='+autocompletableWord+'&commenters_of_post_id='+post_id,
+        function(data) {
+          var selections = [];
+          if( data.commenting_members.length && data.members.length ) {
+            selections = data.commenting_members.concat(['---------']).concat(data.members);
+          } else if( data.members.length ) {
+            selections = data.members;
+          } else if( data.commenting_members.length ) {
+            selections = data.commenting_members;
+          }
+
+          response(selections);
+        });
+    },
+    focus: Libertree.UI.memberHandleAutocompletion,
+    change: Libertree.UI.memberHandleAutocompletion,
+    select: Libertree.UI.memberHandleAutocompletion
+  } );
+
+  $('textarea#textarea-post-new').on('keypress', function(event) {
+    clearTimeout(Libertree.UI.newPostURLCheckTimeout);
+
+    var text = $(this).val();
+    if(text.search(/https?:/) == -1) {
+      return;
+    }
+
+    Libertree.UI.newPostURLCheckTimeout = setTimeout(
+      function() {
+        $.get(
+          '/posts/urls_already_posted.json',
+          { text: text },
+          function(data) {
+            if(data.post_id) {
+              $('#earlier-post').attr('href', '/posts/show/'+data.post_id);
+              $('#urls-already-posted-message').slideDown();
+            } else {
+              $('#urls-already-posted-message').slideUp();
+            }
+          });
+      },
+      3000
+    );
+  } );
 } );

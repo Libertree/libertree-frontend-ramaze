@@ -1,0 +1,5 @@
+<%= render_file 'view/comments/_num_comments_data.erb', num_shown: @num_shown, num_total: @post.comments(viewing_account: account).count, hidden: true %>
+
+<% @comments.each_with_index do |c,i| %>
+  <%= render_file 'view/comments/_comment.erb', comment: c, commenters: @commenters, i: i+@offset %>
+<% end %>

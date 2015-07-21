@@ -75,21 +75,30 @@ module Controller
     # TODO: Move to Accounts controller?
     def signup
       @view = 'signup'
-      redirect '/intro'  if logged_in?
+      if logged_in?
+        if $conf['skip_intro']
+          redirect '/home'
+        else
+          redirect '/intro'
+        end
+      end
+      redirect_referrer  unless $conf['sign_up']
 
       @invitation_code = request['invitation_code'].to_s.sub(%r{http?://#{request.host_with_port}/signup\?invitation_code=},"")
 
       return  if ! request.post?
 
-      invitation = Libertree::Model::Invitation[ code: @invitation_code ]
-      if invitation.nil?
-        flash[:error] = _('A valid invitation code is required.')
-        return
-      end
+      if $conf['invitation_needed']
+        invitation = Libertree::Model::Invitation[ code: @invitation_code ]
+        if invitation.nil?
+          flash[:error] = _('A valid invitation code is required.')
+          return
+        end
 
-      if ! invitation.account_id.nil?
-        flash[:error] = _('This invitation code has already been used. Try another one!')
-        return
+        if ! invitation.account_id.nil?
+          flash[:error] = _('This invitation code has already been used. Try another one!')
+          return
+        end
       end
 
       if request['password'].to_s != request['password-confirm'].to_s
@@ -98,6 +107,7 @@ module Controller
       end
 
       username = request['username'].to_s.strip
+      name_display = request['name-display'].to_s.strip
 
       # TODO: Constrain email addresses, or at least strip out unsafe HTML, etc. with Loofah, or such.
       email = request['email'].to_s.strip
@@ -106,40 +116,50 @@ module Controller
       end
 
       begin
-        a = Libertree::Model::Account.create(
-          username: username,
-          password_encrypted: BCrypt::Password.create( request['password'].to_s ),
-          email: email
-        )
-        if $conf['post_tools_default'].to_s == 'icons'
-          a.settings.icons = true
-          a.settings.save
-        end
-        invitation.account_id = a.id
-        invitation.save
+        $dbh.transaction do
+          a = Libertree::Model::Account.create(
+            username: username,
+            password_encrypted: BCrypt::Password.create( request['password'].to_s ),
+            email: email
+          )
+          if $conf['post_tools_default'].to_s == 'icons'
+            a.settings.icons = true
+            a.settings.save
+          end
+          a.member.profile.name_display = name_display
+          a.member.profile.save
 
-        account_login request.subset('username', 'password')
-        flash[:error] = nil
-        redirect Intro.r(:/)
-      rescue PGError => e
-        case e.message
-        # TODO: we need to find a better solution than matching on error strings,
-        #       because PostgreSQL translates them under non-English locales.
-        # duplicate key value violates unique constraint "accounts_username_key"
-        when /accounts_username_key/
-          flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
-        # constraint "username_valid"
-        when /username_valid/
-          flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
-        else
-          raise e
+          if $conf['invitation_needed']
+            invitation.account_id = a.id
+            invitation.save
+          end
+
+          account_login request.subset('username', 'password')
+          flash[:error] = nil
+          if $conf['skip_intro']
+            redirect '/home'
+          else
+            redirect Intro.r(:/)
+          end
         end
+      rescue Sequel::UniqueConstraintViolation => e
+        if e.message =~ /accounts_username_key/
+          flash[:error] = _('Username %s is taken.  Please choose another.') % request['username'].inspect
+        else raise e end
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /username_valid/
+          flash[:error] = _('Username must be at least 2 characters long and consist only of lowercase letters, numbers, underscores and dashes.')
+        elsif e.message =~ /valid_name_display/
+          flash[:error] = _('Please provide a valid display name.')
+        else raise e end
       end
     end
 
     def _render
       require_login
-      respond Libertree.render( request['s'].to_s, account.settings.autoembed, account.settings.filter_images )
+      respond Libertree.render( request['s'].to_s,
+                                account.settings,
+                                [ Libertree.method(:jid_renderer) ] )
     end
 
     # This is not in the Posts controller because we will handle many other search
@@ -151,9 +171,19 @@ module Controller
       @q = request['q'].to_s
       redirect_referrer  if @q.empty?
 
-      @posts = Libertree::Model::Post.search(@q)
-      @comments = Libertree::Model::Comment.search(@q)
-      @profiles = Libertree::Model::Profile.search(@q)
+      @posts    = []
+      @comments = []
+      @profiles = []
+
+      query = Libertree::Query.new(@q, account.id)
+      if ! query.parsed.empty?
+        @posts = Libertree::Model::Post.filter_by_query(query.parsed, account).reverse_order(:id).take(50)
+
+        if ! query.simple.empty?
+          @comments = Libertree::Model::Comment.search(query.simple)
+          @profiles = Libertree::Model::Profile.search(query.simple)
+        end
+      end
       @view = 'search'
     end
 

@@ -12,11 +12,6 @@ module Controller
 
       layout :default
 
-      # TODO:
-      def _index
-        @forests = Libertree::Model::Forest.all
-      end
-
       def create
         redirect_referrer  if ! request.post?
 
@@ -58,12 +53,10 @@ module Controller
               )
             end
           end
-        rescue PGError => e
+        rescue Sequel::UniqueConstraintViolation => e
           if e.message =~ /violates unique constraint/
             flash[:error] = _('The tree is already a member of the forest.')
-          else
-            raise e
-          end
+          else raise e end
         end
 
         redirect Admin::Main.r(:/)

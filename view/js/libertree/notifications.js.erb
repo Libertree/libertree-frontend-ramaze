@@ -1,0 +1,310 @@
+$( function() {
+  Libertree.Notifications = {};
+
+  Vue.component('comp-notif-desc-comment', { template: '#template-notif-desc-comment', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-comment-like', { template: '#template-notif-desc-comment-like', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-direct-message', { template: '#template-notif-desc-direct-message', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-mention-in-post', { template: '#template-notif-desc-mention-in-post', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-post-to-group', { template: '#template-notif-desc-post-to-group', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-post-like', { template: '#template-notif-desc-post-like', inherit: true, replace: true, });
+  Vue.component('comp-notif-desc-pool-post', { template: '#template-notif-desc-pool-post', inherit: true, replace: true, });
+
+  /* ----------------------------- */
+
+  Vue.component('comp-notification-group', {
+    template: '#template-notification-group',
+    data: function() {
+      return {
+        expectingUpdate: false,
+      };
+    },
+    computed: {
+      currentAccountId: function() { return Libertree.currentAccountId; },
+      ids: function() {
+        return jQuery.map(this.group, function(notif) { return notif.id; } );
+      },
+      hasUnseenNotifications: function() {
+        var has = false;
+        /* TODO: Should this just be plain jQuery.each?  I don't think this grep is being used as a grep */
+        jQuery.grep(this.group, function(notif) {
+          has = has || ! notif.seen
+        } );
+        return has;
+      },
+      actorNames: function() {
+        return Libertree.uniq(
+          jQuery.map(this.group, function(notif) {
+            return notif.actor.nameDisplay;
+          } )
+        );
+      },
+      actorsPhrase: function() {
+        return Libertree.andedList(this.actorNames);
+      },
+      plurality: function() {
+        return this.actorNames.length == 1 ? 'singular' : 'plural';
+      },
+      /* TODO: All these "this.group[0]" functions are starting to feel like clutter. */
+      link: function() { return this.group[0].link; },
+      glimpse: function() { return this.group[0].glimpse; },
+      ago: function() { return this.group[0].ago; },
+      actor: function() { return this.group[0].actor; },
+      commentPostMemberAccountId: function() { return this.group[0].comment ? this.group[0].comment.post.member.accountId : null; },
+      commentPostMemberNameDisplay: function() { return this.group[0].comment ? this.group[0].comment.post.member.nameDisplay : null; },
+      groupLink: function() { return this.group[0].groupLink; },
+      groupNameDisplay: function() { return this.group[0].group ? this.group[0].group.nameDisplay : null; },
+      poolLink: function() { return this.group[0].poolLink; },
+      poolName: function() { return this.group[0].pool ? this.group[0].pool.name : null; },
+      postLink: function() { return this.group[0].postLink; },
+      postMemberAccountId: function() { return this.group[0].post ? this.group[0].post.member.accountId : null; },
+      postMemberNameDisplay: function() { return this.group[0].post ? this.group[0].post.member.nameDisplay : null; },
+      type: function() { return this.group[0].type; },
+      innerComponent: function() {
+        switch( this.type ) {
+          case 'comment':
+            return 'comp-notif-desc-comment';
+          case 'comment-like':
+            return 'comp-notif-desc-comment-like';
+          case 'direct-message':
+            return 'comp-notif-desc-direct-message';
+          case 'mention-in-post':
+            return 'comp-notif-desc-mention-in-post';
+          case 'pool-post':
+            return 'comp-notif-desc-pool-post';
+          case 'post-like':
+            return 'comp-notif-desc-post-like';
+          case 'post-to-group':
+            return 'comp-notif-desc-post-to-group';
+          /* TODO: the others */
+        }
+      },
+      /* I18n: function() { return Libertree.I18n; } */
+    },
+    methods: {
+      toggleState: function(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+
+        var href = $(ev.target).attr('href');
+
+        /* We don't update the UI ourselves here, we let it come after the websocket message */
+
+        var newState = ev.targetVM.group[0].seen ? 'unseen' : 'seen'
+        if( href && newState == 'unseen' ) {
+          /* Don't mark unseen when clicking directly on a link in a notif */
+          window.location = href;
+        } else {
+          ev.targetVM.expectingUpdate = true;
+          Libertree.Notifications.stickyNotificationIds = Libertree.Notifications.stickyNotificationIds.concat( ev.targetVM.ids );
+
+          $.get('/notifications/'+newState+'/' + ev.targetVM.ids.join('/'), function(data) {
+            /* resume link following when the GET request is complete */
+            if( href ) {
+              window.location = href;
+            }
+          } );
+        }
+      }
+    },
+  });
+
+  /* ----------------------------- */
+
+  /* This data hash is shared between two Vue.js syncers:
+  the notifications icon/popup and the notifications page. */
+  Libertree.Notifications.data = {
+    notifications: [],
+    windowVisible: false,
+    fetchingData: false,
+  };
+  Libertree.Notifications.stickyNotificationIds = [];
+
+  Libertree.Notifications.notificationsSyncer = new Vue({
+    el: '#notifications-icon-and-window',
+    data: Libertree.Notifications.data,
+    computed: {
+      unseenAndStickyNotifications: function() {
+        return jQuery.grep( this.notifications, function(notif) {
+          return ! notif.seen || Libertree.Notifications.stickyNotificationIds.indexOf(notif.id) > -1;
+        } );
+      },
+      unseenNotifications: function() {
+        return jQuery.grep( this.notifications, function(notif) {
+          return ! notif.seen;
+        } );
+      },
+      notificationGroups: function() {
+        var grouped = {},
+          keys = []; // so we have a display order
+
+        jQuery.each( this.unseenAndStickyNotifications, function(i, notif) {
+          // collect by target and type; we don't want to put comment
+          // and post like notifs in the same bin
+          key = [notif.targetIdentifier, notif.type];
+          if( grouped[key] ) {
+            grouped[key].unshift(notif);
+          } else {
+            grouped[key] = [];
+            grouped[key].unshift(notif);
+            keys.unshift(key);
+          }
+        } );
+
+        // get the groups in order of keys
+        return jQuery.map( keys, function(k) {
+          return [grouped[k]]; // Extra nesting: http://stackoverflow.com/questions/703355
+        } )
+      },
+      firstNotificationGroups: function() {
+        return this.notificationGroups.slice(0, 5);
+      },
+      n: function() {
+        var count = 0;
+        jQuery.each(this.notificationGroups, function(i, group) {
+          /* Don't count everUnseen */
+          jQuery.each( group, function(j, notif) {
+            if( ! notif.seen ) { count++; }
+          } );
+        } );
+        return count;
+      },
+      nMore: function() {
+        return Math.max(this.notificationGroups.length - this.firstNotificationGroups.length, 0);
+      },
+      title: function() {
+        if( this.n == 0 ) {
+          return Libertree.I18n['no-notifications'];
+        } else if( this.n == 1 ) {
+          return Libertree.I18n['1-notification'];
+        } else {
+          return Libertree.I18n['n-notifications'].replace( new RegExp('%d'), this.n );
+        }
+      },
+    },
+    methods: {
+      createWebNotification: function(body) {
+        /* Low-level method.  For normal cases, you want to call sendWebNotification */
+        var n;
+        n = new Notification(
+          'Libertree',
+          { body: body, icon: '<%= images_path %>/small-logo.png' }
+        );
+        n.onshow = function() {
+          setTimeout(n.close.bind(n), 5000);
+        }
+      },
+      sendWebNotification: function(body) {
+        if( ! Libertree.sendWebNotifications ) { return; }
+        if( !("Notification" in window) ) { return; }
+
+        var self = this;
+        if( Notification.permission === "granted" ) {
+          self.createWebNotification(body);
+        } else if( Notification.permission !== 'denied' ) {
+          Notification.requestPermission( function(permission) {
+            if( permission === "granted" ) {
+              self.createWebNotification(body);
+            }
+          } );
+        }
+      },
+      refresh: function(playAudio) {
+        var self = this;
+        self.fetchingData = true;
+        $.get('/vue-api/notifications', function(data) {
+          var previousN = self.n;
+          var previousNotificationIds = $.map(
+            JSON.parse(JSON.stringify(self.unseenNotifications)),
+            function(notif, i) { return notif.id; }
+          );
+
+          self.notifications = data;
+          self.fetchingData = false;
+
+          if( playAudio && self.n > previousN ) {
+            Libertree.Audio.play('audio-notification');
+
+            $.each( self.unseenNotifications, function(i, notif) {
+              if( previousNotificationIds.indexOf(notif.id) == -1 ) {
+                self.sendWebNotification(notif.webNotificationText);
+              }
+            } );
+          }
+        });
+      },
+      onIconClick: function(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        var syncer = this;
+
+        if( syncer.windowVisible ) {
+          syncer.windowVisible = false;
+          Libertree.Notifications.stickyNotificationIds = [];
+          Libertree.UI.hideWindows();
+          /* Force update of list since stickyNotificationIds is not watched by Vue.js */
+          Libertree.Notifications.data.notifications.push(Libertree.Notifications.data.notifications.pop());
+          return;
+        } // else we now show the unseen notifications list
+
+        if( syncer.n == 0 ) {
+          window.location = '/notifications';
+          return;
+        }
+
+        Libertree.UI.hideWindows();
+        syncer.windowVisible = true;
+      },
+      markAllSeen: function(ev) {
+        ev.preventDefault();
+        var syncer = this;
+        syncer.fetchingData = true;
+        $.ajax(
+          '/vue-api/notifications',
+          {
+            type: 'PUT',
+            success: function(data) {
+              syncer.fetchingData = false;
+            },
+          }
+        );
+      },
+      updatePageTitle: function(new_value) {
+        /* TODO: In VueJS 0.11+, we will have a vm.$interpolate() method available
+        which will obviate most of this complicated string manipulation. */
+        var title = document.title;
+        if( new_value == 0 ) {
+          title = title.replace( /^\([0-9]+\) /, '' );
+        } else {
+          title = title.replace( /^\([0-9]+\)/, '('+new_value+')' );
+          if( ! title.match(/^\([0-9]+\)/) ) {
+            title = '('+new_value+') ' + title;
+          }
+        }
+        document.title = title;
+      },
+    },
+    ready: function() {
+      this.$watch('n', this.updatePageTitle);
+    },
+  });
+
+  Libertree.Notifications.notificationsPageSyncer = new Vue({
+    el: '#notifications-list',
+    data: Libertree.Notifications.data,
+    computed: {
+      notificationGroups: function() {
+        return jQuery.map(this.notifications, function(notif) {
+          return [[notif]];  // Double brackets: http://stackoverflow.com/questions/703355
+        } );
+      },
+      n: function() {
+        return this.notifications.length;
+      },
+    },
+    methods: {
+      markAllSeen: function(ev) { Libertree.Notifications.notificationsSyncer.markAllSeen(ev); }
+    }
+  });
+
+  Libertree.Notifications.notificationsSyncer.refresh(false);
+} );

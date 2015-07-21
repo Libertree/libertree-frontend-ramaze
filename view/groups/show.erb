@@ -1,0 +1,41 @@
+<div id="header">
+  <h1>Group: <%= ::CGI.escape_html(@group.name_display) %></h1>
+
+  <p>
+    <%= ::CGI.escape_html(@group.description) %>
+  </p>
+
+  <% if @group.member?(account.member) %>
+    <a href="/groups/leave/<%=@group.id%>"><%= _('Leave this group') %></a>
+  <% else %>
+    <a href="/groups/join/<%=@group.id%>"><%= _('Join this group') %></a>
+  <% end %>
+</div>
+
+<form id="post-new">
+  <%= Controller::Main.render_partial 'posts/_form-new', springs: @springs %>
+  <input type="hidden" name="group_id" value="<%=@group.id%>"/>
+  <div class="message"></div>
+</form>
+
+<div
+  id="post-excerpts"
+  class="autoload-container"
+  data-loader-type="group"
+  data-loader-args="<%= @group.id %>"
+  data-group-id="<%= @group.id %>"
+>
+  <div class="more-posts">
+    <a href="#" class="load-more"></a>
+  </div>
+  <% if @posts.empty? %>
+    <div id="no-more-posts" class="panel">
+      <%=_('No posts in this group yet.')%>
+    </div>
+  <% else %>
+    <% @posts.reverse.each_with_index do |post, index| %>
+      <%= Controller::Posts.render_partial '_excerpt', post: post, river_post_order: @post_order, is_first: index == 0 %>
+    <% end %>
+  <% end %>
+  <div class="spinner"></div>
+</div>

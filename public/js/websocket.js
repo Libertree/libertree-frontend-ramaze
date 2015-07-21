@@ -1,4 +1,3 @@
-var port = "8080";
 var ws = null;
 
 $(document).ready( function() {
@@ -7,9 +6,9 @@ $(document).ready( function() {
     protocol = "wss://";
   }
   if( 'MozWebSocket' in window ) {
-    ws = new MozWebSocket(protocol + host + ":" + port);
+    ws = new MozWebSocket(protocol + host + ":" + websocket_port + websocket_path);
   } else if( 'WebSocket' in window ) {
-    ws = new WebSocket(protocol + host + ":" + port);
+    ws = new WebSocket(protocol + host + ":" + websocket_port + websocket_path);
   } else {
     return;
   }
@@ -32,11 +31,14 @@ $(document).ready( function() {
       case 'comment':
         Libertree.Comments.insertHtmlFor( data.postId, data.commentId );
         break;
+      case 'comment-deleted':
+        Libertree.Posts.syncers['post-'+data.postId].commentDeleted(data.commentId);
+        break;
       case 'river-posts':
         Libertree.UI.indicateNewPosts(data);
         break;
       case 'notification':
-        Libertree.Notifications.updateNumUnseen(data.n);
+        Libertree.Notifications.notificationsSyncer.refresh(true);
         break;
     }
   };

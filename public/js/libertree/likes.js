@@ -1,14 +1,18 @@
-Libertree.mkLike = function(type) {
+Libertree.likeFunction = function(type) {
+  var entityPath, update;
+
   // TODO: merge the two update functions
-  var update = (type === 'comment') ?
-    function( entity, response ) {
+  if( type === 'comment' ) {
+    entityPath = 'div.comment';
+    update = function( entity, response ) {
       var num_likes = entity.find('.num-likes');
       num_likes.text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
       num_likes.show();
-    }
-  :
-    function( entity, response ) {
+    };
+  } else { // type === 'post'
+    entityPath = 'div.post, .post-excerpt';
+    update = function( entity, response ) {
       var num_likes = entity.find('.num-likes').first();
       num_likes.find('.value').text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
@@ -19,12 +23,14 @@ Libertree.mkLike = function(type) {
         entity.find('.mark-read').addClass('hidden');
         entity.find('.mark-unread').removeClass('hidden');
       }
-    }
-  ;
+    };
+  }
 
-  return function(link, event, path) {
+  return function(event) {
     event.preventDefault();
-    var entity = link.closest(path);
+    event.stopPropagation();
+    var link = $(event.target).closest('a.like');
+    var entity = link.closest(entityPath);
     Libertree.UI.enableIconSpinner(link.find('img'));
     $.get(
       '/likes/'+type+'s/create/' + entity.data(type+'-id'),
@@ -40,10 +46,13 @@ Libertree.mkLike = function(type) {
 };
 
 
-Libertree.mkUnlike = function(type) {
+Libertree.unlikeFunction = function(type) {
+  var entityPath, update;
+
   // TODO: merge these update functions
-  var update = (type === 'comment') ?
-    function( entity, response ) {
+  if( type === 'comment' ) {
+    entityPath = 'div.comment';
+    update = function( entity, response ) {
       var num_likes = entity.find('.num-likes');
       num_likes.text( response['text'] );
       if( response['num_likes'] === 0 ) {
@@ -51,18 +60,20 @@ Libertree.mkUnlike = function(type) {
       } else {
         num_likes.attr('title', response['liked_by']);
       }
-    }
-  :
-    function( entity, response ) {
+    };
+  } else {
+    entityPath = 'div.post, .post-excerpt';
+    update = function( entity, response ) {
       var num_likes = entity.find('.num-likes').first();
       num_likes.find('.value').text( response['num_likes'] );
       num_likes.attr('title', response['liked_by']);
-    }
-  ;
+    };
+  }
 
-  return function(link, event, path) {
+  return function(event) {
     event.preventDefault();
-    var entity = link.closest(path);
+    var link = $(event.target).closest('a.unlike');
+    var entity = link.closest(entityPath);
     Libertree.UI.enableIconSpinner(link.find('img'));
     $.get(
       '/likes/'+type+'s/destroy/' + link.data(type + '-like-id'),

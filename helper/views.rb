@@ -1,6 +1,7 @@
 module Ramaze
   module Helper
     module Views
+      # TODO: this has to be cached
       def current_theme
         # Under certain conditions when running tests, account is not a Libertree::Model::Account
         if account.settings
@@ -13,12 +14,12 @@ module Ramaze
         "<a class='help' href='#' rel='popover' title='#{s_(title)}' data-content=\"#{s}\">?</a>"
       end
 
-      def img(src,options={})
-        "<img src='/themes/#{current_theme}/images/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
+      def images_path
+        "/themes/#{self.current_theme}/images"
       end
 
-      def js_nocache(file)
-        "<script src=\"/js/#{file}.js?t=#{File.mtime("public/js/#{file}.js").to_i}\" type=\"text/javascript\"></script>"
+      def img(src,options={})
+        "<img src='#{self.images_path}/#{src}' #{options.map{|k,v| "#{k}='#{v}'"}.join(' ')} />"
       end
 
       def css_nocache(file, media="screen")
@@ -30,7 +31,7 @@ module Ramaze
       def controller_js
         filename = self.route.path.gsub(/[^a-z_-]/,'')
         if File.exist?("public/js/controller/#{filename}.js")
-          js_nocache "controller/#{filename}"
+          "<script src=\"/js/controller/#{filename}.js\" type=\"text/javascript\"></script>"
         else
           ""
         end

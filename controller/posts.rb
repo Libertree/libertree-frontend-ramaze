@@ -4,7 +4,9 @@ module Controller
 
     before_all do
       if action.view_value.nil?
-        if Ramaze::Current.request.path !~ %r{^/posts/show/}
+        # authentication is handled in single post view (/posts/show/)
+        # and on spring display (/s/, /pools/_more/)
+        if Ramaze::Current.request.path !~ %r{^(/posts/show/|/s/|/pools/_more/)}
           require_login
         end
         init_locale
@@ -23,6 +25,11 @@ module Controller
 
     def _excerpt(post_id)
       @post = Libertree::Model::Post[ post_id.to_i ]
+      # caution: only give away this post to strangers if it is
+      # visible to the Internet
+      if ! @post.v_internet?
+        require_login
+      end
     end
 
     def _excerpts( river_id, older_or_newer = 'older', time = Time.now.to_i )
@@ -89,12 +96,20 @@ module Controller
       end
 
       begin
+        group = Libertree::Model::Group[ request['group_id'].to_i ]
+        if group
+          group_id = group.id
+        else
+          group_id = nil
+        end
+
         post = Libertree::Model::Post.create(
           member_id:  account.member.id,
           visibility: visibility,
-          text:       text
+          text:       text,
+          group_id:   group_id
         )
-      rescue PGError => e
+      rescue Sequel::DatabaseError => e
         # TODO: test whether this fails when postgresql is running in a non-English locale
         if e.message =~ /value too long/
           error = _('Please submit fewer than 16,000 characters.')
@@ -135,6 +150,7 @@ module Controller
 
       if Ramaze::Current.action.wish == 'json'
         message = _("Successfully posted.")
+
         river = Libertree::Model::River[ request['river_id'].to_i ]
         if river
           matches_river = river.matches_post?(post)
@@ -142,6 +158,7 @@ module Controller
             message << ' ' + _("Note that your post cannot be seen here because it does not match this river.")
           end
         end
+
         {
           'success' => true,
           'postId' => post.id,
@@ -155,7 +172,7 @@ module Controller
 
     def show(post_id, from_comment_id = nil)
       @view = "single-post-view"
-      @post = Libertree::Model::Post[post_id.to_i]
+      @post = Libertree::Model::Post.get_full(post_id.to_i, account)
       if @post.nil?
         respond (render_full "/error_404"), 404
       else
@@ -163,22 +180,14 @@ module Controller
           require_login
         end
 
-        # TODO: move this into post.glimpse?
-        length = 60
-        snippet = Libertree.plain(@post.text, [:no_images, :filter_html])[0...length]
-        if @post.text.length > length
-          snippet + '...'
-        end
-        @subtitle = %{#{@post.member.name_display} - "#{snippet}"}
+        @subtitle = %{#{@post.member.name_display} - "#{@post.glimpse}"}
+
+        @comment_fetch_options = { viewing_account: account }
 
         if from_comment_id
-          @comment_fetch_options = {
-            from_id: from_comment_id.to_i,
-          }
+          @comment_fetch_options[:from_id] = from_comment_id.to_i
         else
-          @comment_fetch_options = {
-            limit: 8,
-          }
+          @comment_fetch_options[:limit] = 50
         end
 
         if logged_in?
@@ -261,6 +270,13 @@ module Controller
       end
 
       redirect Posts.r(:show, post.id)
+    end
+
+    def urls_already_posted
+      post = Libertree::Model::Post.urls_already_posted?(request.params['text'].to_s)
+      {
+        'post_id' => post ? post.id : ''
+      }
     end
   end
 end

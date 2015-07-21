@@ -1,0 +1,22 @@
+<h2><%=_('Notifications')%></h2>
+
+<div id="notifications-list">
+  <div style="margin-bottom: 1.5em;">
+    <a href="#" v-on="click: markAllSeen"><%=_('mark all seen')%></a>
+  </div>
+
+  <!-- TODO: DRY this up into a partial or template. -->
+  <img
+    class="spinner size-32"
+    src="/themes/default/images/spinner.gif"
+    v-if="fetchingData && n == 0"
+  />
+
+  <div v-show="notifications.length == 0">
+    <%=_('You have no new notifications.')%>
+  </div>
+  <div
+    v-repeat="group: notificationGroups"
+    v-component="comp-notification-group"
+  ></div>
+</div>

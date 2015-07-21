@@ -5,29 +5,27 @@ module Ramaze
         "/posts/show/#{comment.post.id}/#{comment.id}#comment-#{comment.id}"
       end
 
-      def comment_text_rendered_and_participants_linked( comment, comments, account = nil )
-        s = comment.text_rendered(account)
-        i = comments.index(comment)
-        dict = {}
+      # get a hash indexed by commenter member handle yielding:
+      # - all comment ids of this member in this thread
+      # - the display name
+      # - the member id
 
-        commenters = comments[0...i].map(&:member) - [comment.member]
-        commenters.each do |commenter|
-          name = commenter.name_display
-          template = %|<a class="commenter-ref" data-member-id="#{commenter.id}" title="#{_("Click to see previous comment by %s") % ::CGI.escape_html(name)}">@%s</a>|
-
-          # Mapping between possible name shortenings and the replacement strings (hyperlinks)
-          partial_names =
-            [ name, name.split(/[ :,-]/, 2)[0] ] +
-            (2..[20,name.length].min).map { |len| name[0...len] }
-          partial_names.each do |part|
-            dict["@#{part.downcase}"] = template % part
+      # TODO: find an fast, efficient way to exclude commenters after
+      # a certain comment id.  We need this for the case when a
+      # comment contains the handle of a later commenter.
+      def commenters(comments)
+        @commenters ||= comments.reduce({}) do |hash,comment|
+          handle = comment.member.handle
+          if hash[handle]
+            hash[handle][:comment_ids] << comment.id
+          else
+            hash[handle] = {
+              comment_ids: [comment.id],
+              id: comment.member.id,
+              name: comment.member.name_display
+            }
           end
-        end
-
-        # Turn possible shortenings into regexp with multiple comparisons,
-        # starting with the longest.
-        s.gsub( /#{dict.keys.map{|k|Regexp.quote(k)}.sort.reverse.join('|')}/i ) do |m|
-          dict[m.downcase]
+          hash
         end
       end
     end

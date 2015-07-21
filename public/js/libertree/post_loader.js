@@ -6,10 +6,13 @@ Libertree.PostLoader = (function () {
 
   var mkLoader = function (type) {
     var endpoint,
-      loading = false;
+        loading = false;
 
     switch (type) {
     case 'river':
+      endpoint = '/posts/_excerpts';
+      break;
+    case 'group':
       endpoint = '/posts/_excerpts';
       break;
     case 'profile':
@@ -50,8 +53,8 @@ Libertree.PostLoader = (function () {
         url: endpoint + '/' + value + '/' + older_or_newer + '/' + time,
         success: function (html) {
           var DOMNodes = $($.trim(html)),
-            excerpts = Libertree.UI.animatableNodesOnly(DOMNodes),
-            container = $('<div/>');
+              excerpts = Libertree.UI.animatableNodesOnly(DOMNodes),
+              container = $('<div/>');
 
           excerpts.css('display', 'none');
 
@@ -70,6 +73,11 @@ Libertree.PostLoader = (function () {
             $('.autoload-container').append(excerpts);
           }
           Libertree.UI.makeTextAreasExpandable();
+
+          excerpts.each( function() {
+            Libertree.Posts.createPostSyncerFor(this);
+          } );
+
           excerpts.slideDown(function () {
             loading = false;
           });
@@ -78,6 +86,7 @@ Libertree.PostLoader = (function () {
 
           // show "show more" links on new excerpts (where required)
           Libertree.UI.showShowMores(excerpts.children('.excerpt'));
+          Libertree.UI.initSpoilers();
           if (onSuccess) {
             onSuccess();
           }
@@ -88,6 +97,6 @@ Libertree.PostLoader = (function () {
 
   return {
     mkLoader: mkLoader,
-    loadFromRiver: mkLoader('river'), /*needed for new post loader in home.js*/
+    loadFromRiver: mkLoader('river') /*needed for new post loader in home.js*/
   };
 }());

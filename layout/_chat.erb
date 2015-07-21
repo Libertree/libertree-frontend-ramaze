@@ -1,0 +1,14 @@
+<a
+  href="#"
+  class="menu-item"
+  id="menu-chat"
+  title="<%=account.num_chat_unseen > 0 ? n_('1 unread chat message from %1$s', '%2$d unread chat messages from %1$s', account.num_chat_unseen) % [account.chat_messages_unseen.map(&:sender).uniq.map(&:name_display).join(', '), account.num_chat_unseen] : _('Chat') %>"><%=img 'icon-chat.png', {alt:_('Chat')}%><span
+  id="num-chat-unseen"
+  class="<%=account.num_chat_unseen == 0 ? 'hidden' : ''%>"><%=account.num_chat_unseen%></span></a>
+<div id="chat-window" class="window has-shadow"></div>
+<!-- http://www.freesound.org/data/previews/193/193258_3598127-lq.mp3 -->
+<audio id="audio-chat-message" preload="auto">
+  <source src="/audio/electronic-twinkle.ogg" type="audio/ogg" />
+  <source src="/audio/electronic-twinkle.mp3" type="audio/mpeg" />
+  <source src="/audio/electronic-twinkle.wav" type="audio/wav" />
+</audio>

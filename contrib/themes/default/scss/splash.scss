@@ -38,7 +38,7 @@ body.splash {
     background: #fff;
   }
 
-  .language-bar {
+  .language-bar, .js-licence-info {
     font-size: 0.7em;
     text-align: center;
   }
@@ -65,6 +65,10 @@ body.signup {
     padding: 30px;
     margin-top: 2em;
     overflow: auto;
+
+    p {
+      margin-top: 1em;
+    }
   }
   label {
       width: 200px;

@@ -21,7 +21,7 @@ module Controller
     # TODO: the first two arguments are ignored.  They are expected in the other post loaders.
     def _more( ignore, older_or_newer = 'older', time = Time.now.to_i )
       @messages = account.messages(limit: 8, time: time.to_f)
-      render_file "#{Ramaze.options.views[0]}/messages/_records.xhtml"
+      render_file "#{Ramaze.options.views[0]}/messages/_records.erb"
     end
 
     def create
@@ -43,14 +43,11 @@ module Controller
           text: request['text'].to_s,
           recipient_member_ids: request['recipients'].split(",")
         )
-      rescue PGError => e
-        # TODO: this may fail when postgresql is running in a non-English locale
+      rescue Sequel::DatabaseError => e
         if e.message =~ /value too long/
           flash[:error] = _('Your message is longer than 4096 characters. Please shorten it and try again.')
           redirect_referrer
-        else
-          raise e
-        end
+        else raise e end
       end
 
       session[:saved_text]["textarea-message-new"] = nil

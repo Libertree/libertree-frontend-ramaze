@@ -1,4 +1,3 @@
-require 'gpgme'
 module Controller
   class Accounts < Base
     map '/accounts'
@@ -23,19 +22,10 @@ module Controller
     def update
       redirect_referrer  if ! request.post?
 
-      begin
-        if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
-          account.settings.excerpt_max_height = nil
-        else
-          account.settings.excerpt_max_height = request['excerpt_max_height'].to_i
-        end
-      rescue PGError => e
-        if e.message =~ /valid_excerpt_max_height/
-          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to 200, or no number for no maximum.')
-          redirect_referrer
-        else
-          raise e
-        end
+      if request['excerpt_max_height'].nil? || request['excerpt_max_height'].to_s.empty?
+        account.settings.excerpt_max_height = nil
+      else
+        account.settings.excerpt_max_height = request['excerpt_max_height'].to_i
       end
 
       if request['custom_link'] && ! request['custom_link'].to_s.empty?
@@ -59,31 +49,19 @@ module Controller
       account.settings.hide_markdown_bar = !! request['hide_markdown_bar']
       account.settings.icons = ( request['post_tools_icons'].to_s == 'icons' )
 
-      # TODO: move validation to the account model?
       if request['pubkey'].nil? || request['pubkey'].to_s.strip.empty?
         account.pubkey = nil
       else
-        # import pubkey into temporary keyring to verify it
-        GPGME::Engine.home_dir = Dir.tmpdir
-        result = GPGME::Key.import request['pubkey'].to_s
-
-        if result.considered == 1 && result.secret_read == 1
-          # Delete the key immediately from the keyring and
-          # alert the user in case a secret key was uploaded
-          keys = GPGME::Key.find(:secret, result.imports.first.fpr)
-          keys.first.delete!(true)  # force deletion of secret key
-          keys = nil; result = nil
-          flash[:error] = _('You imported a secret key!  Although we did not store it you should consider this key compromised.')
-          redirect_referrer
-        elsif result.considered == 1 && (result.imported == 1 || result.unchanged == 1)
-          # We do not check whether the key matches the given email address.
-          # This is not necessary, because we don't search the keyring to get
-          # the encryption key when sending emails.  Instead, we just take
-          # whatever key the user provided.
-
-          account.pubkey = request['pubkey'].to_s
-        else
-          flash[:error] = _('The provided public key could not be read.  Is it a valid PGP public key?')
+        begin
+          account.validate_and_set_pubkey(request['pubkey'].to_s)
+        rescue Libertree::Model::Account::KeyError => e
+          if e.message =~ /secret key imported/
+            flash[:error] = _('You imported a secret key!  Although we did not store it you should consider this key compromised.')
+          elsif e.message =~ /invalid key/
+            flash[:error] = _('The provided public key could not be read.  Is it a valid PGP public key?')
+          else
+            flash[:error] = e.message
+          end
           redirect_referrer
         end
       end
@@ -96,10 +74,20 @@ module Controller
       account.locale = request['locale'].to_s
       account.settings.new_post_in_river = !! request['new_post_in_river']
       account.settings.auto_resize_textareas = !! request['auto_resize_textareas']
+      account.settings.audio = !! request['audio']
+      account.settings.desktop_notifications = !! request['desktop_notifications']
       session[:locale] = account.locale
 
-      account.save
-      account.settings.save
+      begin
+        account.save
+        account.settings.save
+      rescue Sequel::CheckConstraintViolation => e
+        if e.message =~ /valid_excerpt_max_height/
+          flash[:error] = _('Post excerpt maximum height: Please enter a number greater than or equal to zero, or no number for no maximum.')
+          redirect_referrer
+        else raise e end
+      end
+
       flash[:notice] = _('Settings saved.')
       redirect_referrer
     end

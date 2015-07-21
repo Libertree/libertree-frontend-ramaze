@@ -1,14 +1,70 @@
 /*jslint white: true, indent: 2, todo: true */
 /*global $, Libertree */
 
+/* Taken from http://stackoverflow.com/a/14223324/28558 */
+$.fn.textCursorPosition = function() {
+  var pos;
+  if (this[0].setSelectionRange) {
+    pos = this[0].selectionStart;
+  } else if (document.selection && document.selection.createRange) {
+    var range = document.selection.createRange();
+    pos = 0 - range.duplicate().moveStart('character', -100000);
+  }
+  return pos;
+};
+
+/* Taken from http://stackoverflow.com/a/10227475/28558 */
+$.fn.setTextCursorPosition = function(index) {
+  var range;
+
+  /* different ways to do it due to browser differences */
+  if (this[0].createTextRange) {
+    range = this[0].createTextRange();
+    range.move('character', index);
+    range.select();
+  } else {
+    this[0].focus();
+    if (this[0].selectionStart !== undefined) {
+      this[0].setSelectionRange(index, index);
+    }
+  }
+};
+
+$.widget('custom.libertreeAutocomplete', $.ui.autocomplete, {
+  _renderItem: function( ul, item ) {
+    if (item.avatar_img_src) {
+      return $('<li>')
+        .append( $('<img src="'+item.avatar_img_src+'">') )
+        .append( $('<a>').text(item.label) )
+        .appendTo(ul);
+    } else {
+      return $('<li>').appendTo(ul);
+    }
+  }
+});
+
 Libertree.UI = (function () {
   "use strict";
 
-  var setSpeed = function(speed) {
+  var newPostURLCheckTimeout,
+    setSpeed = function(speed) {
       return function(pixels) {
         // calculate the duration to move an amount of pixels at a given speed
         return pixels * 1000 / speed;
       };
+    },
+
+    /* insert clickable prompt before hidden element to show it */
+    initSpoiler = function (spoiler) {
+      if( spoiler.prev('.spoiler-show').length === 0 ) {
+        var msg = $('body').data('msg-spoiler-prompt'),
+            link = $('<p class="spoiler-show" v-on="click: revealSpoiler"><a href="#">'+msg+'</a></p>');
+        link.insertBefore(spoiler);
+        var parent = spoiler.closest('.post, .post-excerpt');
+        if( Libertree.Posts.syncers[parent.attr('id')] ) {
+          Libertree.Posts.syncers[parent.attr('id')].recompile();
+        }
+      }
     };
 
   return {
@@ -16,34 +72,35 @@ Libertree.UI = (function () {
     duration: setSpeed(600),
     threshold: 700, // pixels, same as used by @media queries in CSS
     autoResizeTextareas: true, // overridden by serverside initialization
+    memberHandleAutocompletionTriggers: new RegExp('(@|:from ")\\S{2,}$'),  /* 2 meaning at least 2 chars before activating */
     selectDefaults: {
-        width: '450px',
-        multiple: true,
-        minimumInputLength: 3,
-        //TRANSLATEME
-        //formatSearching: function () { return "Searching ..." },
-        formatInputTooShort: false, // do not show "type n more characters to search"
-        initSelection : function (element, callback) {
-            var data = [];
-            $(element.val().split(",")).each(function () {
-              var parts = this.split("=");
-              data.push({id: parts[0], text: parts[1]});
-            });
-            element.val('');
-            callback(data);
-        },
+      width: '450px',
+      multiple: true,
+      minimumInputLength: 3,
+      //TRANSLATEME
+      //formatSearching: function () { return "Searching ..." },
+      formatInputTooShort: false, // do not show "type n more characters to search"
+      initSelection : function (element, callback) {
+        var data = [];
+        $(element.val().split(",")).each(function () {
+          var parts = this.split("=");
+          data.push({id: parts[0], text: parts[1]});
+        });
+        element.val('');
+        callback(data);
+      },
 
-        // TODO: move search.json out of messages to a shared location
-        ajax: {
-            url: "/messages/search.json",
-            dataType: 'json',
-            data: function (term, page) {
-                return { q: term };
-            },
-            results: function (data, page) {
-                return {results: data};
-            }
+      // TODO: move search.json out of messages to a shared location
+      ajax: {
+        url: "/messages/search.json",
+        dataType: 'json',
+        data: function (term, page) {
+          return { q: term };
         },
+        results: function (data, page) {
+          return {results: data};
+        }
+      }
     },
 
     confirmAction: function (event) {
@@ -69,6 +126,40 @@ Libertree.UI = (function () {
       );
     },
 
+    memberHandleAutocompletionTriggerLength: function(textToScan) {
+      var MHACTriggerMatches = Libertree.UI.memberHandleAutocompletionTriggers.exec(textToScan);
+      if( MHACTriggerMatches ) {
+        return MHACTriggerMatches[1].length;
+      } else {
+        return null;
+      }
+    },
+
+    memberHandleAutocompletion: function (event, ui) {
+      if( ! ui.item ) { return; }
+
+      var textfield = $(event.target),
+        text = textfield.val(),
+        autocompletableText = text.substring(0, textfield.textCursorPosition()),
+        indexOfAtSymbol = autocompletableText.search(Libertree.UI.memberHandleAutocompletionTriggers),
+        triggerLength = Libertree.UI.memberHandleAutocompletionTriggerLength(autocompletableText),
+        newText = text.substring(0, indexOfAtSymbol+triggerLength) + ui.item.value + text.substring(textfield.textCursorPosition());
+
+      textfield.val(newText);
+      textfield.setTextCursorPosition(indexOfAtSymbol + ui.item.value.length + triggerLength);
+
+      return false;
+    },
+
+    revealSpoiler: function(event) {
+      event.preventDefault();
+      $(event.target).
+        hide().
+        parent('.spoiler-show').
+        next('div.spoilers').
+        show();
+    },
+
     showShowMores: function(excerpts) {
       var set = excerpts;
       if (set == undefined || set == null) {
@@ -83,13 +174,13 @@ Libertree.UI = (function () {
 
     showMore: function (showMoreLink) {
       var excerpt = showMoreLink.siblings('.excerpt'),
-        overflowed = excerpt.find('.overflowed'),
-        excerptParent = showMoreLink.closest('.post-excerpt'),
-        postId = excerptParent.data('post-id'),
-        comments = excerptParent.find('div.comments'),
-        commentHeight = comments.get(0).scrollHeight,
-        heightDifference,
-        animationDuration;
+          overflowed = excerpt.find('.overflowed'),
+          excerptParent = showMoreLink.closest('.post-excerpt'),
+          postId = excerptParent.data('post-id'),
+          comments = excerptParent.find('div.comments'),
+          commentHeight = comments.get(0).scrollHeight,
+          heightDifference,
+          animationDuration;
 
       Libertree.Posts.markRead(postId);
       showMoreLink.hide();
@@ -97,7 +188,8 @@ Libertree.UI = (function () {
       //TODO: don't do this. Record the excerpt height somewhere and operate on that.
       overflowed.data( 'contracted-height', overflowed.height() );
 
-      excerptParent.find('div.comments.hidden').removeClass('hidden');
+      /* TODO: convert to Vue.js */
+      excerptParent.find('div.comments-area.hidden').removeClass('hidden');
       heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
       animationDuration = Libertree.UI.duration(heightDifference);
 
@@ -120,14 +212,14 @@ Libertree.UI = (function () {
 
     showLess: function (link) {
       var excerpt = link.closest('.post-excerpt'),
-        overflowed = excerpt.find('.overflowed'),
-        comments = excerpt.find('div.comments'),
-        distance = excerpt.height() - overflowed.data('contracted-height'),
-        animationDuration = Libertree.UI.duration(distance),
-        excerptTop = excerpt.position().top,
-        scrollable = Libertree.UI.scrollable(),
-        windowTop = scrollable.scrollTop(),
-        scrollTop = excerptTop - windowTop;
+          overflowed = excerpt.find('.overflowed'),
+          comments = excerpt.find('div.comments'),
+          distance = excerpt.height() - overflowed.data('contracted-height'),
+          animationDuration = Libertree.UI.duration(distance),
+          excerptTop = excerpt.position().top,
+          scrollable = Libertree.UI.scrollable(),
+          windowTop = scrollable.scrollTop(),
+          scrollTop = excerptTop - windowTop;
 
       link.hide();
 
@@ -146,18 +238,47 @@ Libertree.UI = (function () {
            * more" animation in other themes. */
           overflowed.css('max-height', overflowed.data('contracted-height')+'px');
           overflowed.height('auto');
-          $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
+          /* TODO: convert to Vue.js */
+          $(this).closest('.post-excerpt').find('div.comments-area').addClass('hidden');
           link.siblings('.show-more').show();
         }
       );
     },
 
-    jumpToComments: function (excerpt) {
+    initSpoilers: function () {
+      $('div.spoilers').each( function () { initSpoiler($(this)); } );
+    },
+
+    initLightbox: function () {
+      var reset = function () {
+        $(this)
+          .removeAttr('style')
+          .css({cursor: 'zoom-in'})
+          .click(openLightbox);
+      };
+      var openLightbox = function (event) {
+        event.preventDefault();
+
+        var $this = $(this);
+        $this.unbind('click');
+        // free the img first to allow the modalBox to detect larger dimensions
+        $this.css({'position': 'fixed', height: '90%', cursor: 'inherit'});
+        $this.modalBox({ onClose: reset });
+      };
+
+      // enable lightbox only for resized images in SPV
+      $('.single-post-view .post-text img')
+        .filter(function () { return this.naturalHeight > this.clientHeight; })
+        .css({cursor: 'zoom-in'})
+        .click(openLightbox);
+    },
+
+    jumpToCommentField: function (excerpt) {
       var scrollable = Libertree.UI.scrollable(),
-        scrollTop = scrollable.scrollTop(),
-        heightDifference,
-        excerptTruncation,
-        animationDuration;
+          scrollTop = scrollable.scrollTop(),
+          heightDifference,
+          excerptTruncation,
+          animationDuration;
 
       heightDifference = Libertree.UI.showMore(excerpt.find('.show-more'));
       animationDuration = Libertree.UI.duration(heightDifference);
@@ -180,7 +301,7 @@ Libertree.UI = (function () {
 
     markdownInjector: function () {
       var $this = $(this),
-        textarea = $this.closest('.markdown-injector').siblings('textarea');
+          textarea = $this.closest('.markdown-injector').siblings('textarea');
 
       switch ($this.data('markdown')) {
       case "title":
@@ -221,6 +342,8 @@ Libertree.UI = (function () {
     },
 
     hideWindows: function() {
+      Libertree.Notifications.notificationsSyncer.windowVisible = false;
+
       $('#chat-window.resizable').resizable('destroy');
       $('#chat-window').removeClass('resizable');
       $('.window').hide();
@@ -263,25 +386,19 @@ Libertree.UI = (function () {
       } );
     },
 
-    // TODO: replace with bootstrap popover
-    fadingAlert: function(message, x, y) {
+    fadingAlert: function(message) {
       var div = $('<div class="fading-alert has-shadow">'+message+'</div>');
-      div.appendTo('body');
-
-      if( x !== undefined && y !== undefined ) {
-        div.css( { left: x+'px', top: y+'px' } );
-      }
-      setTimeout(
-        function() {
-          $('.fading-alert').fadeOut(2000);
-        },
-        1000 + message.length * 50
-      );
+      div
+        .appendTo('body')
+        .hide()
+        .fadeIn(500)
+        .delay(1000 + message.length * 50)
+        .fadeOut(1000, function () { $(this).remove(); });
     },
 
     TextAreaBackup: (function () {
       var timer,
-        stored = '';
+          stored = '';
 
       return {
         enable: function() {
@@ -342,10 +459,9 @@ Libertree.UI = (function () {
     },
 
     indicateNewPosts: function (data) {
-      var
-        indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
-        numNewPosts = data.postIds.length
-      ;
+      var indicator = $('#post-excerpts[data-river-id="'+data.riverId+'"] .more-posts'),
+          numNewPosts = data.postIds.length;
+
       if( indicator.length ) {
         /* Don't count posts which are already shown in the river */
         $.each( data.postIds, function(i, postId) {
@@ -360,12 +476,68 @@ Libertree.UI = (function () {
       }
     },
 
+    combinedMarkdown: function (seed) {
+      var markdown = seed.closest('form').find('textarea[name="text"]').val();
+
+      if( $('#markdown-for-images').length ) {
+        markdown = markdown + "\n\n" + $('#markdown-for-images').val();
+      }
+
+      return markdown.replace(/\s+$/, "");
+    },
+
+    renderPreview: function () {
+      var $this = $(this),
+          unrendered = Libertree.UI.combinedMarkdown($this);
+
+      // abort unless there is text to be rendered
+      if( $.trim(unrendered).length === 0) {
+        return false;
+      }
+
+      var target = $this.closest('form.comment, form#post-new, form#post-edit, form#new-message'),
+          preview_heading = $this.data('preview-heading'),
+          close_label = $this.data('preview-close-label'),
+          type = $this.data('type'),
+          textType = null;
+
+      if( type === 'post' ) {
+        textType = 'post-text';
+      }
+
+      $.post(
+        '/_render',
+        { s: unrendered },
+        function(html) {
+          var scrollable = target.closest('div.comments-pane'),
+              delta;
+
+          Libertree.Session.ensureAlive(html);
+          if( target.length > 0 ) {
+            $('.preview-box').remove();
+            target.append( $('<div class="preview-box" class="'+type+'"><a class="close-preview" href="#">'+close_label+'</a><h3 class="preview">'+preview_heading+'</h3><div class="text typed-text '+textType+'">' + html + '</div></div>') );
+            Libertree.UI.initSpoilers();
+            if( scrollable.length === 0 ) {
+              scrollable = Libertree.UI.scrollable();
+              delta = $('.preview-box').offset().top - scrollable.scrollTop() - 100;
+            } else {
+              delta = $('.preview-box').offset().top - 100;
+            }
+            scrollable.animate(
+              { scrollTop: scrollable.scrollTop() + delta },
+              delta * 2
+            );
+          }
+        }
+      );
+    },
+
     // register content loaders as continuous scroll handlers
     registerScrollHandler: function () {
       var loaderContainer = $('.autoload-container'),
-        loaderType,
-        loaderArgs,
-        loader;
+          loaderType,
+          loaderArgs,
+          loader;
 
       if (loaderContainer) {
         loaderType = loaderContainer.data('loader-type');
@@ -402,6 +574,7 @@ Libertree.UI = (function () {
     init: function() {
       $(document).ready( function () {
         Libertree.UI.registerScrollHandler();
+        Libertree.UI.initLightbox();
 
         setInterval( Libertree.UI.updateAges, 60 * 1000 );
         Libertree.UI.TextAreaBackup.enable();

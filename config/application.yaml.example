@@ -4,12 +4,33 @@ environment: live
 # log HTTP requests in live environment
 #log_http_requests: false
 
+
+#####################################################################
+# Websocket settings
+#
+# The websocket server should only be bound to localhost, not 0.0.0.0.
+# You need to configure your proxying web server to forward requests
+# on http://domain.of.your.tree.com:80/ws to the websocket server
+# spawned by the backend process, which listens by default on
+# localhost:8080.
+#
+# If you choose to expose the websocket server to the Internet and
+# make it listen on 0.0.0.0:8080, you need to set websocket_port to
+# 8080.  This is not recommended.
+
 websocket_js_host: domain.of.your.tree.com
+websocket_path: /ws
+websocket_port: 80
 secure_websocket: false
 
 # These accounts (by username) will have websockets disabled
 # websocket_blacklist:
   # - 'ruskie'
+
+
+#####################################################################
+# Other settings
+#
 
 # graphicsmagick: false means use ImageMagick
 graphicsmagick: true
@@ -29,6 +50,9 @@ api_min_time_between: 5
 # The URL base of the frontend web interface
 frontend_url_base: 'http://domain-or-ip-without-trailing-slash'
 
+# The fully qualified host name of the Libertree server (used for user handles)
+domain: 'libertree.domain.net'
+
 # Themes from which members can select.
 # The first in this list will be the default.
 themes:
@@ -36,6 +60,18 @@ themes:
 
 # Uncomment the following line to use post tool icons per default
 #post_tools_default: icons
+
+# allow members to generate invitation links
+invitations: true
+
+# allow people to create new accounts
+sign_up: true
+
+# When false, people can sign up (create accounts) themselves without an invitation code
+invitation_needed: true
+
+# Skip the intro sequence for new accounts
+skip_intro: false
 
 # Uncomment the following settings to authenticate users against LDAP
 #ldap:
@@ -49,3 +85,9 @@ themes:
 #    username:     'uid'
 #    email:        'mail'
 #    display_name: 'displayName'
+
+# These two upload settings need to be set appropriately so that the files will
+# be publicly accessible.
+upload_dir: '/var/www/tree-domain.org/f'
+frontend_upload_url_base: 'http://tree-domain.org/f'
+max_upload_bytes: 20971520  # 20 MB

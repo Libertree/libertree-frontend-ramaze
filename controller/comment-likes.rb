@@ -15,10 +15,13 @@ module Controller
           comment_id: comment.id,
         )
 
+        # bypass cache: fetch the likes by comment_id
+        likes = Libertree::Model::CommentLike.where(comment_id: comment_id.to_i)
+
         return {
           'comment_like_id' => like.id,
-          'num_likes'       => n_('1 like', '%d likes', comment.likes.count) % comment.likes.count,
-          'liked_by'        => comment.likes.map { |l| l.member.name_display }.join(', '),
+          'num_likes'       => n_('1 like', '%d likes', likes.count) % likes.count,
+          'liked_by'        => likes.map { |l| l.member.name_display }.join(', '),
         }.to_json
       end
 
@@ -31,10 +34,13 @@ module Controller
         like.delete_cascade
       end
 
+      # bypass cache: fetch the likes by comment_id
+      likes = Libertree::Model::CommentLike.where(comment_id: like.comment_id.to_i)
+
       return {
-        'num_likes' => like.comment.likes.count,
-        'text'      => n_('1 like', '%d likes', like.comment.likes.count) % like.comment.likes.count,
-        'liked_by'  => like.comment.likes.map { |l| l.member.name_display }.join(', ')
+        'num_likes' => likes.count,
+        'text'      => n_('1 like', '%d likes', likes.count) % likes.count,
+        'liked_by'  => likes.map { |l| l.member.name_display }.join(', ')
       }.to_json
     end
   end
