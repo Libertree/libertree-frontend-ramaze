@@ -5,10 +5,10 @@ gem 'ramaze'
 gem 'innate'
 # gem 'ramaze', git: 'git://github.com/Ramaze/ramaze.git'
 # gem 'innate', git: 'git://github.com/Ramaze/innate.git'
-gem 'json'
+# gem 'json'   # already in extensions group
 gem 'pg'
 gem 'sequel'
-gem 'bcrypt-ruby'
+# gem 'bcrypt-ruby'    # already in extensions group
 gem 'grape'
 gem 'dalli'  # memcached client
 gem 'mini_magick'
