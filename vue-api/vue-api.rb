@@ -1,5 +1,6 @@
 require 'fileutils'
-require 'filemagic'
+# FileMagic not supported on Heroku
+# require 'filemagic'
 require 'grape'
 require 'libertree/model'
 require 'libertree/age'
@@ -262,6 +263,10 @@ module Libertree
     resource 'files' do
       desc "Add a file"
       post do
+        if ! defined?(FileMagic)
+          error! "File uploads not supported on this tree."
+        end
+
         # params['file']
         # {"filename"=>"avatar-mask.png",
         # "type"=>"application/octet-stream",

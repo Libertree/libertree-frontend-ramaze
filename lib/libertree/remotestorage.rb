@@ -62,12 +62,13 @@ module Libertree
       return  unless file.respond_to? :values_at
       tempfile, filename = file.values_at(:tempfile, :filename)
 
-      # fm = FileMagic.new(FileMagic::MAGIC_MIME)
-      # content_type = fm.file(tempfile.path)
-      # fm.close
-
-      # FileMagic not supported on Heroku
-      content_type = 'text'
+      if ! defined?(FileMagic)
+        content_type = 'text'
+      else
+        fm = FileMagic.new(FileMagic::MAGIC_MIME)
+        content_type = fm.file(tempfile.path)
+        fm.close
+      end
 
       data = IO.read(tempfile.path)
 
