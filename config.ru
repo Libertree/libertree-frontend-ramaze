@@ -33,6 +33,8 @@ else
   $conf = {
     'environment' => ENV['LIBERTREE_ENV'],
     'websocket_js_host' => ENV['LIBERTREE_WEBSOCKET_JS_HOST'],
+    'websocket_path' => ENV['LIBERTREE_WEBSOCKET_PATH'],
+    'websocket_port' => ENV['LIBERTREE_WEBSOCKET_PORT'].to_i,
     'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'] == 'true',
     'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'] == 'true',
     'memcache' => ENV['LIBERTREE_MEMCACHE'] == 'true',
