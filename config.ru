@@ -33,12 +33,14 @@ else
   $conf = {
     'environment' => ENV['LIBERTREE_ENV'],
     'websocket_js_host' => ENV['LIBERTREE_WEBSOCKET_JS_HOST'],
-    'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'],
-    'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'],
-    'memcache' => ENV['LIBERTREE_MEMCACHE'],
+    'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'] == 'true',
+    'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'] == 'true',
+    'memcache' => ENV['LIBERTREE_MEMCACHE'] == 'true',
     'api_min_time_between' => ENV['LIBERTREE_API_MIN_TIME_BETWEEN'].to_i,
     'title_insert' => ENV['LIBERTREE_TITLE_INSERT'],
     'frontend_url_base' => ENV['LIBERTREE_FRONTEND_URL_BASE'],
+    'domain' => ENV['LIBERTREE_DOMAIN'],
+    'sign_up' => ENV['LIBERTREE_SIGN_UP'] == 'true',
     'themes' => ENV['LIBERTREE_THEMES'].split(',').map(&:strip),
   }
 end
