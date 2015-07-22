@@ -31,7 +31,7 @@ if File.exists?(conf_filepath)
 else
   # Please leave these as defined without looping or string construction
   $conf = {
-    'environment' => ENV['LIBERTREE_ENVIRONMENT'],
+    'environment' => ENV['LIBERTREE_ENV'],
     'websocket_js_host' => ENV['LIBERTREE_WEBSOCKET_JS_HOST'],
     'secure_websocket' => ENV['LIBERTREE_SECURE_WEBSOCKET'],
     'graphicsmagick' => ENV['LIBERTREE_GRAPHICSMAGICK'],
