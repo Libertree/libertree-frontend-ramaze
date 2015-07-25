@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 11c70d415c684e70995d47321e684949f79ab2ad
+  revision: f167d98a60c009639814fa5ead315f09946eda18
   branch: vue-js
   specs:
     libertree-model (0.9.9)

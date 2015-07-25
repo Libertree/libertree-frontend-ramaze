@@ -3,7 +3,7 @@ module Controller
     map '/js'
 
     before_all do
-      default_before_filter
+      init_locale
     end
 
     layout do |path|
