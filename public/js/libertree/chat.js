@@ -91,6 +91,9 @@ Libertree.Chat = (function () {
               height,
               animationDuration;
 
+          if( ! chatMessage.ownMessage ) {
+            Libertree.Audio.play('audio-chat-message');
+          }
           o.appendTo(messages);
           height = o.height();
           animationDuration = height*5;

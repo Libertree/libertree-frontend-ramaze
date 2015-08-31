@@ -67,6 +67,9 @@ invitations: true
 # allow people to create new accounts
 sign_up: true
 
+# When false, people can sign up (create accounts) themselves without an invitation code
+invitation_needed: true
+
 # Skip the intro sequence for new accounts
 skip_intro: false
 
@@ -82,3 +85,9 @@ skip_intro: false
 #    username:     'uid'
 #    email:        'mail'
 #    display_name: 'displayName'
+
+# These two upload settings need to be set appropriately so that the files will
+# be publicly accessible.
+upload_dir: '/var/www/tree-domain.org/f'
+frontend_upload_url_base: 'http://tree-domain.org/f'
+max_upload_bytes: 20971520  # 20 MB

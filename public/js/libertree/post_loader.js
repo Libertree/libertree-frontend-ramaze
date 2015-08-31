@@ -12,6 +12,9 @@ Libertree.PostLoader = (function () {
     case 'river':
       endpoint = '/posts/_excerpts';
       break;
+    case 'group':
+      endpoint = '/posts/_excerpts';
+      break;
     case 'profile':
       endpoint = '/profiles/_more';
       break;
@@ -70,6 +73,11 @@ Libertree.PostLoader = (function () {
             $('.autoload-container').append(excerpts);
           }
           Libertree.UI.makeTextAreasExpandable();
+
+          excerpts.each( function() {
+            Libertree.Posts.createPostSyncerFor(this);
+          } );
+
           excerpts.slideDown(function () {
             loading = false;
           });

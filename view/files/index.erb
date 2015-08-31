@@ -1,0 +1,19 @@
+<h2><%=_('Photos')%></h2>
+
+<form enctype="multipart/form-data" id="add-photos">
+  <%= Controller::Main.render_partial '_file_uploader' %>
+</form>
+
+<div id="photo-collection">
+<% @files.each do |f| %>
+  <div class="photo" id="photo-<%=f.id%>">
+    <div class="thumbnail" v-on="click: openModal" data-id="<%=f.id%>"><div class="viewport">
+      <img class="thumbnail" src='<%= $conf["frontend_upload_url_base"] %>/<%= "thumbnail-#{f.filename}" %>'/>
+      <%= img 'icon-x.png', {class: 'photo-deleter', alt: _('Delete photo'), 'v-on' => 'click: delete'} %>
+    </div></div>
+    <div class="photo-full" data-id="<%=f.id%>">
+      <img src='<%= $conf["frontend_upload_url_base"] %>/<%= f.filename %>'/>
+    </div>
+  </div>
+<% end %>
+</div>

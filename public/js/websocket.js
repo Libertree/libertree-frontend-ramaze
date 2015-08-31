@@ -31,11 +31,14 @@ $(document).ready( function() {
       case 'comment':
         Libertree.Comments.insertHtmlFor( data.postId, data.commentId );
         break;
+      case 'comment-deleted':
+        Libertree.Posts.syncers['post-'+data.postId].commentDeleted(data.commentId);
+        break;
       case 'river-posts':
         Libertree.UI.indicateNewPosts(data);
         break;
       case 'notification':
-        Libertree.Notifications.updateNumUnseen(data.n);
+        Libertree.Notifications.notificationsSyncer.refresh(true);
         break;
     }
   };

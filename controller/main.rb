@@ -88,15 +88,17 @@ module Controller
 
       return  if ! request.post?
 
-      invitation = Libertree::Model::Invitation[ code: @invitation_code ]
-      if invitation.nil?
-        flash[:error] = _('A valid invitation code is required.')
-        return
-      end
+      if $conf['invitation_needed']
+        invitation = Libertree::Model::Invitation[ code: @invitation_code ]
+        if invitation.nil?
+          flash[:error] = _('A valid invitation code is required.')
+          return
+        end
 
-      if ! invitation.account_id.nil?
-        flash[:error] = _('This invitation code has already been used. Try another one!')
-        return
+        if ! invitation.account_id.nil?
+          flash[:error] = _('This invitation code has already been used. Try another one!')
+          return
+        end
       end
 
       if request['password'].to_s != request['password-confirm'].to_s
@@ -126,8 +128,11 @@ module Controller
           end
           a.member.profile.name_display = name_display
           a.member.profile.save
-          invitation.account_id = a.id
-          invitation.save
+
+          if $conf['invitation_needed']
+            invitation.account_id = a.id
+            invitation.save
+          end
 
           account_login request.subset('username', 'password')
           flash[:error] = nil

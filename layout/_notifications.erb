@@ -1,9 +1,50 @@
 <!-- Bell icon by Randall Barriga http://thenounproject.com/noun/bell/#icon-No3013 -->
-<a
-  href="/notifications"
-  class="menu-item"
-  id="menu-notifications"
-  title="<%= account.num_notifications_unseen == 0 ? _('No notifications') : n_('1 notification', '%d notifications', account.num_notifications_unseen) % account.num_notifications_unseen %>"><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
-  id="num-notifications-unseen"
-  class="<%=account.num_notifications_unseen == 0 ? 'hidden' : ''%>"><%= account.num_notifications_unseen%></span></a>
-<div id="notifications-window" class="window has-shadow"></div>
+<div id="notifications-icon-and-window">
+  <a
+    href="/notifications"
+    class="menu-item"
+    id="menu-notifications"
+    v-on="click: onIconClick"
+    v-attr="title: title"
+  ><%= img 'icon-bell.png', {alt:_('Notifications')}%><span
+    id="num-notifications-unseen"
+    v-show="n > 0" v-text="n"
+  ><%= account.num_notifications_unseen %></span></a>
+  <div id="notifications-window" class="window has-shadow" v-show="windowVisible">
+    <div class="header">
+      <span class="title"><%=_('Notifications')%></span>
+
+      <div class="tools">
+        <a
+          href="/notifications/seen/all"
+          v-if="notifications.length > 0"
+          v-on="click: markAllSeen"
+        ><%=_('mark all seen')%></a>
+        <a href="/notifications"><%=_('view all')%></a>
+      </div>
+    </div>
+
+    <!-- TODO: DRY this up into a partial or template. -->
+    <img
+      class="spinner size-32"
+      src="/themes/default/images/spinner.gif"
+      v-if="fetchingData && n == 0"
+    />
+
+    <div v-show="notifications.length == 0">
+      <%=_('You have no new notifications.')%>
+    </div>
+    <div
+      v-repeat="group: firstNotificationGroups"
+      v-component="comp-notification-group"
+    ></div>
+    <div id="notifications-more" v-show="nMore > 0">
+      <a href="/notifications">{{> partial-i18n-n-more}}</a>
+    </div>
+  </div>
+</div>
+<audio id="audio-notification" preload="auto">
+  <source src="/audio/quick-perfect-fourth-blips.ogg" type="audio/ogg" />
+  <source src="/audio/quick-perfect-fourth-blips.mp3" type="audio/mpeg" />
+  <source src="/audio/quick-perfect-fourth-blips.wav" type="audio/wav" />
+</audio>

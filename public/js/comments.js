@@ -4,48 +4,6 @@
 $(document).ready( function() {
   "use strict";
 
-  $(document).on('click', '.jump-to-comment', function(event) {
-    event.preventDefault();
-    var commentsDiv = $(this).closest('div.comments'),
-        commentsPane = $(this).closest('div.comments-pane'),
-        targetScrollTop = commentsDiv.height() - commentsPane.height();
-
-    commentsPane.animate(
-      { scrollTop: targetScrollTop },
-      targetScrollTop - commentsPane.scrollTop(),
-      'easeOutQuint',
-      function() {
-        commentsPane.find('textarea').focus().hide().fadeIn();
-      }
-    );
-  } );
-
-  $(document).on('click', 'a.load-comments:not(.disabled)', function(event) {
-    event.preventDefault();
-    $(this).addClass('disabled');
-    Libertree.Comments.loadMore($(this));
-    return false;
-  } );
-
-  $(document).on('mouseover', 'div.comment', function() {
-    $(this).find('.comment-tools').css('visibility', 'visible');
-  } );
-  $(document).on('mouseout', 'div.comment', function() {
-    $(this).find('.comment-tools').css('visibility', 'hidden');
-  } );
-
-  $(document).on('click', '.comment .delete', function(event) {
-    event.preventDefault();
-    var $this = $(this),
-        comment = $this.closest('.comment'),
-        fn = function () {
-          $.get( '/comments/destroy/' + comment.data('comment-id') );
-          comment.fadeOut( function() { comment.remove; } );
-        };
-
-    Libertree.UI.confirmAjax(event, $this.data('msg'), fn);
-  });
-
   $(document).on('click', '.commenter-ref', function(event) {
     event.preventDefault();
     var source = $(this),
@@ -87,14 +45,6 @@ $(document).ready( function() {
     $(this).hide();
   } );
 
-  $(document).on('click', 'div.comment a.like', function(event) {
-    Libertree.Comments.like( $(this), event, 'div.comment' );
-  } );
-
-  $(document).on('click', 'div.comment a.unlike', function(event) {
-    Libertree.Comments.unlike( $(this), event, 'div.comment' );
-  } );
-
   $(document).on('click', 'form.comment input.submit', Libertree.Comments.submit);
 
   $(document).on('click', '.detachable .detach', function(event) {
@@ -129,12 +79,4 @@ $(document).ready( function() {
   $(document).on('blur', 'textarea.comment', function() {
     $(this).removeClass('focused');
   } );
-
-  /* ---------------------------------------------------- */
-
-  if( window.location.hash.indexOf("#comment-") === 0 ) {
-    Libertree.Comments.loadMore( $('a.load-comments'), true );
-  }
-
-  Libertree.Comments.hideLoadCommentsLinkIfAllShown( $('.post') );
 } );

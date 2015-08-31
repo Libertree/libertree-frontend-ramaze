@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 1b959d0665d9b8eb8500692ff937633a15993cd4
+  revision: f167d98a60c009639814fa5ead315f09946eda18
+  branch: vue-js
   specs:
     libertree-model (0.9.9)
       bcrypt-ruby (= 3.0.1)
@@ -11,7 +12,6 @@ GIT
       pg
       ruby-oembed (~> 0.8.8)
       sequel
-      timedcache
 
 GIT
   remote: git://github.com/mark-moseley/linecache
@@ -101,7 +101,7 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     parkdown (1.4.25)
-    pg (0.17.1)
+    pg (0.18.2)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -156,7 +156,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequel (4.15.0)
+    sequel (4.24.0)
     slop (3.4.7)
     subexec (0.2.1)
     thin (1.6.1)
@@ -164,7 +164,6 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     thread_safe (0.3.4)
-    timedcache (0.4.0)
     tzinfo (0.3.41)
     unicorn (4.2.0)
       kgio (~> 2.6)
@@ -184,6 +183,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  byebug
   capybara
   curb
   dalli

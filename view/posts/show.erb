@@ -1,4 +1,4 @@
-<div class="post has-shadow" data-post-id="<%=@post.id%>">
+<div class="post has-shadow" data-post-id="<%=@post.id%>" id="post-<%=@post.id%>">
     <div class="post-pane">
       <div class="post-proper">
         <div class="meta">
@@ -57,7 +57,8 @@
       </div>
     </div>
 
-    <div class="comments-pane">
-      <%= Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options, hidden: false %>
+    <div class="comments-pane comments-area" id="comments-for-post-<%= @post.id %>">
+      <div v-component="comp-num-comments" v-with="commentCount"></div>
+      <%= Controller::Comments.render_partial "_comments_list", post: @post, comment_fetch_options: @comment_fetch_options %>
     </div>
 </div>

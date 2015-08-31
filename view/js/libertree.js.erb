@@ -1,0 +1,75 @@
+var Libertree = {
+  <% if logged_in? %>
+    currentAccountId: <%= account.id %>,
+    playAudio: <%= account.settings.audio %>,
+    sendWebNotifications: <%= account.settings.desktop_notifications %>,
+  <% end %>
+  frontendUploadUrlBase: <%= $conf['frontend_upload_url_base'].to_json %>,
+  imagesPath: <%= images_path.to_json %>,
+
+  // http://stackoverflow.com/a/6158160/28558 , modified to use jQuery selector
+  click: function(selector, options) {
+
+    var target = $(selector).get(0);
+    var event = target.ownerDocument.createEvent('MouseEvents'),
+      options = options || {};
+
+    var opts = {
+      type: options.type                      || 'click',
+      canBubble:options.canBubble             || true,
+      cancelable:options.cancelable           || true,
+      view:options.view                       || target.ownerDocument.defaultView,
+      detail:options.detail                   || 1,
+      screenX:options.screenX                 || 0, //The coordinates within the entire page
+      screenY:options.screenY                 || 0,
+      clientX:options.clientX                 || 0, //The coordinates within the viewport
+      clientY:options.clientY                 || 0,
+      ctrlKey:options.ctrlKey                 || false,
+      altKey:options.altKey                   || false,
+      shiftKey:options.shiftKey               || false,
+      metaKey:options.metaKey                 || false, //I *think* 'meta' is 'Cmd/Apple' on Mac, and 'Windows key' on Win. Not sure, though!
+      button:options.button                   || 0, //0 = left, 1 = middle, 2 = right
+      relatedTarget:options.relatedTarget     || null,
+    }
+
+    event.initMouseEvent(
+      opts.type,
+      opts.canBubble,
+      opts.cancelable,
+      opts.view,
+      opts.detail,
+      opts.screenX,
+      opts.screenY,
+      opts.clientX,
+      opts.clientY,
+      opts.ctrlKey,
+      opts.altKey,
+      opts.shiftKey,
+      opts.metaKey,
+      opts.button,
+      opts.relatedTarget
+    );
+
+    target.dispatchEvent(event);
+  },
+
+  andedList: function(array) {
+    if( array.length < 2 ) {
+      return array[0];
+    } else {
+      return array.slice(0, -1).join(Libertree.I18n['list-comma']) +
+        Libertree.I18n['list-and'] +
+        array[array.length-1]
+      ;
+    }
+  },
+
+  /* http://stackoverflow.com/a/16065720/28558 */
+  uniq: function(array) {
+    return array.filter( function (a, b, arr) {
+      // keeps first occurrence
+      return arr.indexOf(a) === b;
+    } );
+  },
+};
+

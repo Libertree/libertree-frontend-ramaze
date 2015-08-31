@@ -40,7 +40,7 @@ module Controller
 
       post = Libertree::Model::Post[ request['commenters_of_post_id'].to_i ]
       if post
-        commenting_members = post.comments.map(&:member) & members
+        commenting_members = post.comments(viewing_account: account).map(&:member) & members
       end
 
       {

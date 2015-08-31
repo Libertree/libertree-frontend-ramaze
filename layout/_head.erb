@@ -22,6 +22,7 @@
   <%= css_nocache 'messages' %>
   <%= css_nocache 'chat' %>
   <%= css_nocache 'docs' %>
+  <%= css_nocache 'group' %>
   <%= css_nocache 'rivers' %>
   <%= css_nocache 'pools' %>
   <%= css_nocache 'search' %>
@@ -64,24 +65,28 @@
   <%= js 'jquery.mousewheel' %>
   <%= js 'remotestorage.min' %>
   <%= js 'select2.min' %>
-  <%= js 'textinputs_jquery' %>
+  <%= js 'rangyinputs-jquery-1.2.0' %>
   <%= js 'bootstrap' %>
   <%= js 'modalBox' %>
+  <%= js 'vue-0.11.0.min' %>
 
   <%= js 'libertree' %>
+  <%= js 'libertree/i18n' %>
   <%= js 'libertree/post_loader' %>
   <%= js 'libertree/ui' %>
   <%= js 'libertree/session' %>
   <%= js 'libertree/pools' %>
   <%= js 'libertree/notifications' %>
+  <%= js 'libertree/audio' %>
   <%= js 'libertree/chat' %>
+  <%= js 'libertree/files' %>
   <%= js 'libertree/likes' %>
   <%= js 'libertree/posts' %>
   <%= js 'libertree/comments' %>
+  <%= js 'libertree/members' %>
   <%= js 'libertree/remotestorage' %>
   <%= js 'application' %>
   <%= js 'comments' %>
-  <%= js 'notifications' %>
   <%= js 'pool' %>
   <%= js 'home' %>
 
@@ -125,4 +130,14 @@
       <%=account.settings.custom_js%>
     <% end %>
   </script>
+
+  <%= render_file 'view/vue/comments/_num_comments.html' %>
+  <%= render_file 'view/vue/notifications/comment.html' %>
+  <%= render_file 'view/vue/notifications/comment-like.html' %>
+  <%= render_file 'view/vue/notifications/direct-message.html' %>
+  <%= render_file 'view/vue/notifications/mention-in-post.html' %>
+  <%= render_file 'view/vue/notifications/notification.html' %>
+  <%= render_file 'view/vue/notifications/pool-post.html' %>
+  <%= render_file 'view/vue/notifications/post-like.html' %>
+  <%= render_file 'view/vue/notifications/post-to-group.html' %>
 </head>

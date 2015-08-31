@@ -1,0 +1,26 @@
+<h2><%= _('Ignored Members') %></h2>
+
+<p>
+  <%= _("You won't be shown anything written or done by someone you are ignoring.") %>
+</p>
+
+<% if @ignored_members.empty? %>
+  <p>
+    <%= _('You are not ignoring anyone.') %>
+  </p>
+<% else %>
+  <ul>
+    <% @ignored_members.each do |member| %>
+      <li>
+        <span title="<%= member.handle %>"><%= member.name_display %></span>
+        <a href="/ignored_members/delete/<%= member.id %>" title="<%= _('Stop ignoring this member') %>">x</a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form method="POST" action="/ignored_members/add">
+  <label for="member_handle"><%= _('Member to ignore:') %></label>
+  <input type="text" name="member_handle" size="24" value="@"/>
+  <input type="submit" value="<%= _('Ignore') %>"/>
+</form>

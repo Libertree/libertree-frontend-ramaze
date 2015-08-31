@@ -1,16 +1,16 @@
-<div class="comments <%=@hidden ? 'hidden' : ''%>">
-  <% all_comments = @post.comments %>
+<div class="comments">
+  <% all_comments = @post.comments(viewing_account: account) %>
   <% fetched_comments = @post.comments(@comment_fetch_options) %>
-  <%= render_file 'view/comments/_num_comments.erb', num_shown: fetched_comments.count, num_total: all_comments.count %>
+  <%= render_file 'view/comments/_num_comments_data.erb', num_shown: fetched_comments.count, num_total: all_comments.count %>
 
   <% if logged_in? %>
-    <a href="#" class="jump-to-comment"><%=s_('jump-to-comment|Comment')%></a>
+    <a href="#" v-on="click: jumpToCommentBox"><%=s_('jump-to-comment|Comment')%></a>
   <% else %>
     <a href="/login">Log in</a> to comment.
   <% end %>
 
   <% loader_hidden = !( @comment_fetch_options && ( @comment_fetch_options[:limit] || @comment_fetch_options[:from_id] ) ) || ( fetched_comments.count == all_comments.count ) %>
-  <a href="#" class="load-comments <%=loader_hidden ? 'hidden' : ''%>"><%=_('more comments')%></a>
+  <a href="#" v-class="disabled: loadingComments" v-on="click: loadMore" v-show="numShowing < numTotalOnPost" class="load-comments <%=loader_hidden ? 'hidden' : ''%>"><%=_('more comments')%></a>
 
   <% commenters = commenters(all_comments) %>
   <% offset = all_comments.count - fetched_comments.count %>

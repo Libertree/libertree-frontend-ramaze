@@ -74,6 +74,8 @@ module Controller
       account.locale = request['locale'].to_s
       account.settings.new_post_in_river = !! request['new_post_in_river']
       account.settings.auto_resize_textareas = !! request['auto_resize_textareas']
+      account.settings.audio = !! request['audio']
+      account.settings.desktop_notifications = !! request['desktop_notifications']
       session[:locale] = account.locale
 
       begin

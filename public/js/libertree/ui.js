@@ -58,13 +58,12 @@ Libertree.UI = (function () {
     initSpoiler = function (spoiler) {
       if( spoiler.prev('.spoiler-show').length === 0 ) {
         var msg = $('body').data('msg-spoiler-prompt'),
-            link = $('<p class="spoiler-show"><a href="#">'+msg+'</a></p>');
-        link.click(function (event) {
-          event.preventDefault();
-          spoiler.show();
-          link.hide();
-        });
+            link = $('<p class="spoiler-show" v-on="click: revealSpoiler"><a href="#">'+msg+'</a></p>');
         link.insertBefore(spoiler);
+        var parent = spoiler.closest('.post, .post-excerpt');
+        if( Libertree.Posts.syncers[parent.attr('id')] ) {
+          Libertree.Posts.syncers[parent.attr('id')].recompile();
+        }
       }
     };
 
@@ -152,6 +151,15 @@ Libertree.UI = (function () {
       return false;
     },
 
+    revealSpoiler: function(event) {
+      event.preventDefault();
+      $(event.target).
+        hide().
+        parent('.spoiler-show').
+        next('div.spoilers').
+        show();
+    },
+
     showShowMores: function(excerpts) {
       var set = excerpts;
       if (set == undefined || set == null) {
@@ -180,7 +188,8 @@ Libertree.UI = (function () {
       //TODO: don't do this. Record the excerpt height somewhere and operate on that.
       overflowed.data( 'contracted-height', overflowed.height() );
 
-      excerptParent.find('div.comments.hidden').removeClass('hidden');
+      /* TODO: convert to Vue.js */
+      excerptParent.find('div.comments-area.hidden').removeClass('hidden');
       heightDifference = excerpt.get(0).scrollHeight - overflowed.height();
       animationDuration = Libertree.UI.duration(heightDifference);
 
@@ -229,14 +238,15 @@ Libertree.UI = (function () {
            * more" animation in other themes. */
           overflowed.css('max-height', overflowed.data('contracted-height')+'px');
           overflowed.height('auto');
-          $(this).closest('.post-excerpt').find('div.comments').addClass('hidden');
+          /* TODO: convert to Vue.js */
+          $(this).closest('.post-excerpt').find('div.comments-area').addClass('hidden');
           link.siblings('.show-more').show();
         }
       );
     },
 
     initSpoilers: function () {
-        $('div.spoilers').each( function () { initSpoiler($(this)); } );
+      $('div.spoilers').each( function () { initSpoiler($(this)); } );
     },
 
     initLightbox: function () {
@@ -332,6 +342,8 @@ Libertree.UI = (function () {
     },
 
     hideWindows: function() {
+      Libertree.Notifications.notificationsSyncer.windowVisible = false;
+
       $('#chat-window.resizable').resizable('destroy');
       $('#chat-window').removeClass('resizable');
       $('.window').hide();
@@ -464,12 +476,22 @@ Libertree.UI = (function () {
       }
     },
 
+    combinedMarkdown: function (seed) {
+      var markdown = seed.closest('form').find('textarea[name="text"]').val();
+
+      if( $('#markdown-for-images').length ) {
+        markdown = markdown + "\n\n" + $('#markdown-for-images').val();
+      }
+
+      return markdown.replace(/\s+$/, "");
+    },
+
     renderPreview: function () {
       var $this = $(this),
-          unrendered = $this.closest('form').find('textarea[name="text"]').val();
+          unrendered = Libertree.UI.combinedMarkdown($this);
 
       // abort unless there is text to be rendered
-      if (unrendered.length === 0) {
+      if( $.trim(unrendered).length === 0) {
         return false;
       }
 
