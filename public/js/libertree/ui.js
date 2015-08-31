@@ -320,13 +320,31 @@ Libertree.UI = (function () {
         textarea.surroundSelectedText("~~", "~~");
         break;
       case "url":
-        textarea.surroundSelectedText("[", "](URL)");
+        var selectedText = textarea.extractSelectedText();
+        if( selectedText == '' ) {
+          selectedText = 'clickable text';
+        }
+        textarea.replaceSelectedText('['+selectedText+'](URL)');
+        var x = textarea.getSelection().start-4;
+        textarea.setSelection(x, x+3);
         break;
       case "image":
-        textarea.surroundSelectedText("![IMAGE TITLE](", ")");
+        var selectedText = textarea.extractSelectedText();
+        if( selectedText == '' ) {
+          selectedText = 'image title';
+        }
+        textarea.replaceSelectedText('!['+selectedText+'](URL)');
+        var x = textarea.getSelection().start-4;
+        textarea.setSelection(x, x+3);
         break;
       case "image-link":
-        textarea.surroundSelectedText("[![image/photo](", ")](URL)");
+        var selectedText = textarea.extractSelectedText();
+        if( selectedText == '' ) {
+          selectedText = 'image title';
+        }
+        textarea.replaceSelectedText('[!['+selectedText+'](image URL)](link URL)');
+        var x = textarea.getSelection().start-4;
+        textarea.setSelection(x, x+3);
         break;
       case "quote":
         textarea.surroundSelectedText("\n\n> ", "");
