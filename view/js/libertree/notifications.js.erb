@@ -141,6 +141,10 @@ $( function() {
           // collect by target and type; we don't want to put comment
           // and post like notifs in the same bin
           key = [notif.targetIdentifier, notif.type];
+          if( notif.type == 'post-to-group' || notif.type == 'mention-in-post' ) {
+            key.push(notif.id);
+          }
+
           if( grouped[key] ) {
             grouped[key].unshift(notif);
           } else {
