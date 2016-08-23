@@ -10,7 +10,7 @@ require 'libertree/age'
 # on params are not necessary.
 
 module Libertree
-  class ValidateNonEmpty < Grape::Validations::Validator
+  class ValidateNonEmpty < Grape::Validations::Base
     def validate_param!(attr_name, params)
       if params[attr_name].strip.empty? || Libertree.plain( params[attr_name] ).empty?
         raise(
@@ -22,7 +22,7 @@ module Libertree
     end
   end
 
-  class ValidatePositiveInteger < Grape::Validations::Validator
+  class ValidatePositiveInteger < Grape::Validations::Base
     def validate_param!(attr_name, params)
       if params[attr_name].to_i < 1
         raise(

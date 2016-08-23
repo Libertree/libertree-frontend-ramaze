@@ -32,6 +32,6 @@ group 'development' do
   gem 'ruby-debug-base19x', '~> 0.11.30.pre4', platforms: [:ruby_19]
   gem 'ruby-debug19', platforms: [:ruby_19]
   gem 'pry-byebug', platforms: [:ruby_20]
-  gem 'byebug', platforms: [:ruby_21, :ruby_22]
+  # gem 'byebug', platforms: [:ruby_21, :ruby_22]
   gem 'thin'  # For debugging, because it doesn't time out the connection like unicorn
 end

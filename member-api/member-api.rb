@@ -8,7 +8,7 @@ require 'libertree/model'
 # on params are not necessary.
 
 module Libertree
-  class ValidateNonEmpty < Grape::Validations::Validator
+  class ValidateNonEmpty < Grape::Validations::Base
     def validate_param!(attr_name, params)
       if params[attr_name].strip.empty? || Libertree.plain( params[attr_name] ).empty?
         raise(
@@ -21,7 +21,7 @@ module Libertree
   end
 
   class URLsAlreadyPostedError < StandardError; end
-  class ValidateUrlsNotPosted < Grape::Validations::Validator
+  class ValidateUrlsNotPosted < Grape::Validations::Base
     def validate_param!(attr_name, params)
       if Libertree::Model::Post.urls_already_posted?( params[attr_name] )
         raise URLsAlreadyPostedError, "#{attr_name.inspect} cannot contain URLs that have already been posted"
@@ -29,7 +29,7 @@ module Libertree
     end
   end
 
-  class ValidatePositiveInteger < Grape::Validations::Validator
+  class ValidatePositiveInteger < Grape::Validations::Base
     def validate_param!(attr_name, params)
       if params[attr_name].to_i < 1
         raise(
