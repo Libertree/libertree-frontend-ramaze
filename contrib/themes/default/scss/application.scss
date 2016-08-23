@@ -495,7 +495,7 @@ a[href*="boingboing.net/"]:before {
   margin-right: 0.5em; }
 
 a[href*="img.rt.com"]:before,
-a[href*="//rt.com"]:before {
+a[href*="www.rt.com"]:before {
 content: url("../images/site-icons/rt.ico");
 margin-right: 0.5em; }
 }
@@ -1171,7 +1171,7 @@ a[href*="boingboing.net/"]:before {
   content: url("../images/site-icons/boingboing.ico");
   margin-right: 0.5em; }
 
-a[href*="rt.com"]:before {
+a[href*="www.rt.com"]:before {
   content: url("../images/site-icons/rt.ico");
   margin-right: 0.5em; }
 
