@@ -1,4 +1,5 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+
 gem 'ramaze'
 gem 'innate'
 gem 'grape'

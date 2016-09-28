@@ -1,14 +1,14 @@
 GIT
   remote: git://github.com/Libertree/libertree-model-rb.git
-  revision: 637a7386d099a29bc7c0c7686af0e86c741a9cd0
+  revision: bf683045103a4145aa005f3fe3b4d9a8fab5a200
   branch: vue-js
   specs:
-    libertree-model (0.9.9)
+    libertree-model (0.9.10)
       bcrypt-ruby (= 3.0.1)
       gpgme
       net-ldap (~> 0.5.1)
       nokogiri (~> 1.5)
-      parkdown (~> 1.4.25)
+      parkdown-libertree (~> 1.4.27)
       pg
       ruby-oembed (~> 0.8.8)
       sequel
@@ -21,7 +21,7 @@ GIT
       ruby_core_source (>= 0.1.4)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (5.0.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -101,8 +101,8 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
-    parkdown (1.4.25)
-    pg (0.18.4)
+    parkdown-libertree (1.4.27)
+    pg (0.19.0)
     pkg-config (1.1.7)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -158,7 +158,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    sequel (4.37.0)
+    sequel (4.38.0)
     slop (3.6.0)
     thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
@@ -212,4 +212,4 @@ DEPENDENCIES
   unicorn
 
 BUNDLED WITH
-   1.12.5
+   1.13.1
