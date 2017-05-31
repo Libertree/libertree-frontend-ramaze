@@ -10,6 +10,10 @@
   <% else %>
     <a href="/groups/join/<%=@group.id%>"><%= _('Join this group') %></a>
   <% end %>
+
+  <% if @group.admin_member_id == account.member.id %>
+    <br/><a href="/groups/edit/<%=@group.id%>"><%= _("Edit this group's details") %></a>
+  <% end %>
 </div>
 
 <form id="post-new">

@@ -62,6 +62,47 @@ module Controller
       )
     end
 
+    def edit(group_id)
+      set_group_or_redirect(group_id)
+      if @group.admin_member_id != account.member.id
+        flash[:error] = _('Group not found.')
+        redirect_referrer
+      end
+    end
+
+    def update(group_id)
+      redirect_referrer  if ! request.post?
+
+      set_group_or_redirect(group_id)
+      if @group.admin_member_id != account.member.id
+        flash[:error] = _('Group not found.')
+        redirect_referrer
+      end
+
+      begin
+        @group.update(
+          name_display: request['name_display'].to_s,
+          description: request['description'].to_s,
+        )
+
+        redirect Controller::Groups.r(:show, @group.id)
+      rescue Sequel::CheckConstraintViolation => e
+        case e.message
+        when /non_empty_description/
+          flash[:error] = _('Group description must be given.')
+        when /non_empty_name_display/
+          flash[:error] = _('Group name must be given.')
+        else
+          flash[:error] = _('Invalid group details given.')
+        end
+
+        session[:name_display] = request['name_display']
+        session[:description] = request['description']
+
+        redirect_referrer
+      end
+    end
+
     def join(group_id)
       set_group_or_redirect(group_id)
 

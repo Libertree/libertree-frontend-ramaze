@@ -1,0 +1,19 @@
+<div id="group-edit">
+  <h3><%= _('Edit Group') %></h3>
+  <form action="/groups/update/<%= @group.id %>" method="POST">
+    <div class="form-field">
+      <label for="name_display"><%= s_('groups|Name:') %></label>
+      <input type="text" name="name_display" size="48" value="<%= @group.name_display %>"/><br/>
+    </div>
+
+    <div class="form-field">
+      <label for="description"><%= s_('groups|Description:') %></label>
+      <textarea name="description" cols="48" rows="5"><%= @group.description %></textarea>
+    </div>
+
+    <div class="form-field">
+      <label></label>
+      <input type="submit" value="<%= s_('groups|Save') %>"/>
+    </div>
+  </form>
+</div>
