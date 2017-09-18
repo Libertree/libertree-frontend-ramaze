@@ -265,8 +265,12 @@ module Controller
         text.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '?')
         text.encode!('UTF-8', 'UTF-16')
 
-        post.revise text, request['visibility'].to_s
-        session[:saved_text]['textarea-post-edit'] = nil
+        begin
+          post.revise text, request['visibility'].to_s
+          session[:saved_text]['textarea-post-edit'] = nil
+        rescue Libertree::VisibilityExpansionError => e
+          flash[:error] = "Post visibility may not be expanded when a post has been commented on or liked."
+        end
       end
 
       redirect Posts.r(:show, post.id)
