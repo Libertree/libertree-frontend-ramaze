@@ -75,11 +75,18 @@ body.search {
     }
     li.profile {
         list-style-type: none;
-    }
-    img.avatar {
-        width: 1.9em;
-        height: 1.9em;
-        margin-bottom: 0;
-        margin-top: 0.2em;
+
+        a {
+          border-bottom: none;
+        }
+
+        img.avatar {
+            width: 1.9em;
+            height: 1.9em;
+            margin-bottom: 0;
+            margin-top: 0.2em;
+            vertical-align: middle;
+            float: none;
+        }
     }
 }
