@@ -74,19 +74,19 @@ body.search {
       }
     }
     li.profile {
-        list-style-type: none;
+      display: inline-block;
+      margin-right: 0.5rem;
 
-        a {
-          border-bottom: none;
-        }
+      a {
+        border-bottom: none;
+      }
 
-        img.avatar {
-            width: 1.9em;
-            height: 1.9em;
-            margin-bottom: 0;
-            margin-top: 0.2em;
-            vertical-align: middle;
-            float: none;
-        }
+      img.avatar {
+        width: 1em;
+        height: 1em;
+        margin: 0;
+        vertical-align: middle;
+        float: none;
+      }
     }
 }
