@@ -103,7 +103,7 @@ module Controller
       query = request['q'].to_s
       return '[]'  if query.empty?
 
-      Libertree::Model::Member.search(query).map do |m|
+      Libertree::Model::Member.search(name: query, include_old: true).map do |m|
         display = m.name_display
         handle = m.handle
         if handle != display

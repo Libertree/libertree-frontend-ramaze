@@ -35,7 +35,7 @@ module Controller
       query = request['q'].to_s.strip
       return []  if query.empty?
 
-      members = Libertree::Model::Member.search(query)
+      members = Libertree::Model::Member.search(name: query, include_old: false)
       commenting_members = []
 
       post = Libertree::Model::Post[ request['commenters_of_post_id'].to_i ]
