@@ -1,27 +1,26 @@
 source 'https://rubygems.org'
 
-gem 'ramaze'
-gem 'innate'
-gem 'grape'
-gem 'dalli'  # memcached client
-gem 'mini_magick'
-gem 'sass'
-gem 'ruby-oembed'
-gem 'fast_gettext'
-gem 'grape-swagger'
+gem 'dalli', '~> 2.7.6'  # memcached client
+gem 'fast_gettext', '~> 1.8.0'
+gem 'grape', '~> 0.19.2'
+gem 'grape-swagger', '~> 0.33.0'
+gem 'innate', '~> 2015.10.28'
+gem 'mini_magick', '~> 4.9.5'
+gem 'ramaze', '~> 2012.12.08'
+gem 'ruby-oembed', '~> 0.12.0'
+gem 'sass', '~> 3.4.25'
 
 group 'extensions' do
-  gem 'json'
-  gem 'bcrypt-ruby'
-  gem 'nokogiri'
-  gem 'unicorn'
-  gem 'curb'           # libcurl-dev (Debian) / libcurl-devel (Fedora)
-  gem 'ruby-filemagic' # libmagic-dev (Debian) / file-devel (Fedora)
-  gem 'gpgme'  # to verify PGP public keys before storing them
+  gem 'bcrypt-ruby', '~> 3.1.5'
+  gem 'curb', '~> 0.9.10'  # libcurl-dev (Debian) / libcurl-devel (Fedora)
+  gem 'gpgme', '~> 2.0.19'  # to verify PGP public keys before storing them
+  gem 'json', '~> 2.2.0'
+  gem 'nokogiri', '~> 1.10.4'
+  gem 'ruby-filemagic', '~> 0.7.2' # libmagic-dev (Debian) / file-devel (Fedora)
+  gem 'unicorn', '~> 5.5.1'
 end
 
-gem 'libertree-model', git: 'git://github.com/Libertree/libertree-model-rb.git', branch: 'vue-js'
-# gem 'libertree-model', path: '../libertree-model-rb'
+gem 'libertree-model', '~> 0.9.12'
 
 group 'development' do
   gem 'rspec'
