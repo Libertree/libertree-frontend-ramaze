@@ -100,7 +100,7 @@ GEM
     mustermann-grape (1.0.0)
       mustermann (~> 1.0.0)
     net-ldap (0.16.1)
-    nokogiri (1.10.4)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     parkdown-libertree (1.4.27)
     pg (1.1.4)
@@ -198,7 +198,7 @@ DEPENDENCIES
   libertree-model (~> 0.9.12)
   linecache19!
   mini_magick (~> 4.9.5)
-  nokogiri (~> 1.10.4)
+  nokogiri (~> 1.10.8)
   pry-byebug
   racksh
   ramaze (~> 2012.12.08)
