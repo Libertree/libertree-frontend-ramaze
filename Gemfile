@@ -7,20 +7,20 @@ gem 'grape-swagger', '~> 0.33.0'
 gem 'innate', '~> 2015.10.28'
 gem 'mini_magick', '~> 4.9.5'
 gem 'ramaze', '~> 2012.12.08'
-gem 'ruby-oembed', '~> 0.12.0'
+gem 'ruby-oembed', '~> 0.13.1'
 gem 'sass', '~> 3.4.25'
 
 group 'extensions' do
   gem 'bcrypt-ruby', '~> 3.1.5'
   gem 'curb', '~> 0.9.10'  # libcurl-dev (Debian) / libcurl-devel (Fedora)
-  gem 'gpgme', '~> 2.0.19'  # to verify PGP public keys before storing them
+  gem 'gpgme', '~> 2.0.20'  # to verify PGP public keys before storing them
   gem 'json', '~> 2.2.0'
-  gem 'nokogiri', '~> 1.10.4'
+  gem 'nokogiri', '~> 1.10.10'
   gem 'ruby-filemagic', '~> 0.7.2' # libmagic-dev (Debian) / file-devel (Fedora)
   gem 'unicorn', '~> 5.5.1'
 end
 
-gem 'libertree-model', '~> 0.9.12'
+gem 'libertree-model', '~> 0.9.13'
 
 group 'development' do
   gem 'rspec'
