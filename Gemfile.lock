@@ -211,6 +211,3 @@ DEPENDENCIES
   selenium-webdriver
   thin
   unicorn (~> 5.5.1)
-
-BUNDLED WITH
-   1.17.2
