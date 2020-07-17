@@ -8,7 +8,7 @@ gem 'innate', '~> 2015.10.28'
 gem 'mini_magick', '~> 4.9.5'
 gem 'ramaze', '~> 2012.12.08'
 gem 'ruby-oembed', '~> 0.13.1'
-gem 'sass', '~> 3.4.25'
+gem 'sass', '~> 3.7.4'
 
 group 'extensions' do
   gem 'bcrypt-ruby', '~> 3.1.5'

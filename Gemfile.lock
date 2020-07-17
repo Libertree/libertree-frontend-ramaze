@@ -54,6 +54,7 @@ GEM
     factory_girl (4.9.0)
       activesupport (>= 3.0.0)
     fast_gettext (1.8.0)
+    ffi (1.13.1)
     gpgme (2.0.20)
       mini_portile2 (~> 2.3)
     grape (0.19.2)
@@ -126,6 +127,9 @@ GEM
     ramaze (2012.12.08)
       innate (>= 2012.12)
       rake
+    rb-fsevent (0.10.4)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
     regexp_parser (1.6.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -156,7 +160,11 @@ GEM
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (2.0.0)
-    sass (3.4.25)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -207,7 +215,7 @@ DEPENDENCIES
   ruby-debug19
   ruby-filemagic (~> 0.7.2)
   ruby-oembed (~> 0.13.1)
-  sass (~> 3.4.25)
+  sass (~> 3.7.4)
   selenium-webdriver
   thin
   unicorn (~> 5.5.1)
