@@ -1,0 +1,92 @@
+@import "../scss-include/mixins.scss";
+@import "colours.scss";
+
+body.search {
+    .main {
+        padding: 0;
+        background-color: transparent;
+
+        .panel, #header {
+            @include shadow;
+            @include rounded;
+            @include border-box;
+            margin: 0 auto;
+            padding: 20px;
+            float: none;
+            overflow: auto;
+        }
+        #header {
+            background-color: $background_colour_3;
+        }
+        #header + .panel, .panel + .panel {
+            margin-top: 1em;
+        }
+    }
+
+    ul.result-links {
+        li {
+            float: left;
+            list-style-type: none;
+        }
+        li + li {
+            margin-left: 0.5em;
+            border-left: 1px solid $text_colour_2;
+            padding-left: 0.5em;
+        }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li.search-result {
+      padding: 1em;
+      margin-bottom: .5em;
+      background: $background_colour_3;
+      border-radius: 3px;
+
+      span {
+        display: block;
+      }
+
+      span.glimpse {
+        margin-bottom: 0.5em;
+      }
+      em.highlight {
+        background: $water;
+        color: $text;
+        font-style: normal;
+        font-weight: bold;
+        padding: 2px;
+      }
+
+      a {
+        color: inherit;
+        display: block;
+        border-bottom: none;
+      }
+      &.post, &.comment {
+        list-style-type: none;
+        .member {
+          display: block;
+          margin-bottom: 0.6em;
+        }
+      }
+    }
+    li.profile {
+      display: inline-block;
+      margin-right: 0.5rem;
+
+      a {
+        border-bottom: none;
+      }
+
+      img.avatar {
+        width: 1em;
+        height: 1em;
+        margin: 0;
+        vertical-align: middle;
+        float: none;
+      }
+    }
+}

@@ -1,0 +1,43 @@
+$autumn_red: #c2503e;
+$faint_green: #EDFAED;
+$leaf:   #699040;
+$red:    #d64e4e; // a bit dark
+$rose:   #f5d3d3; // ugly
+$sand:   #efead7;
+$water:  #d9e1e8;
+
+$night_sky: #001b38;
+$green_darken_4: #1B5E20;
+$grey_lighten_1: #BDBDBD;
+$grey_lighten_2: #E0E0E0;
+$grey_lighten_3: #EEEEEE;
+$grey: #9E9E9E;
+$grey_darken_1: #757575;
+$blue_grey_darken_2: #455A64;
+$blue_grey_darken_3: #37474F;
+$blue_grey_darken_4: #263238;
+$indigo_darken_4: #1A237E;
+
+$text: $grey_lighten_2;
+$text_colour_2: $grey_lighten_1;
+$text_colour_3: $grey_darken_1;
+$border_colour_1: $grey_darken_1;
+$faint_text: $grey_lighten_1;
+$separator: $faint_text;
+$secondary_colour: #c0d595;
+
+
+$main: $night_sky;
+$background_colour_2: $blue_grey_darken_4;
+$background_colour_3: $blue_grey_darken_3;
+$background_colour_3_translucent: rgba($background_colour_3, 0.8);
+$border_colour_1: $blue_grey_darken_4;
+$border_colour_2: $grey_darken_1;
+
+$menu_colour_1: $background_colour_2;
+$menu_colour_2: $background_colour_3;
+
+$shadow: #1a1f10;
+
+$header_gradient_start: top;
+$header_gradient_stop: bottom;
