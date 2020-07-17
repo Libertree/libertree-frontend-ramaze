@@ -15,12 +15,14 @@ html {
     height: 100%;
 }
 
+$background_image_height: 409px;
 body {
-    padding: 0px;
-    margin: 0px;
-    color: $text;
-    background: url('../images/bg-night-sky.png') fixed bottom center repeat-x, linear-gradient(0deg, $main, $main 40%, darken($main, 5%));
-    width: 100%;
+  padding: 0px;
+  margin: 0px;
+  color: $text;
+  background: url('../images/bg-night-sky.png') bottom center repeat-x, linear-gradient(0deg, $main, $main $background_image_height, darken($main, 5%));
+  background-attachment: fixed;
+  width: 100%;
 }
 
 body {
