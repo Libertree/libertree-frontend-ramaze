@@ -23,6 +23,20 @@ body {
     width: 100%;
 }
 
+body {
+  scrollbar-color: $blue_grey_darken_2 $grey_darken_1;
+
+  ::-webkit-scrollbar {
+    background-color: $grey_darken_1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $blue_grey_darken_2;
+    border-radius: 4px;
+    outline: 1px solid $grey_lighten_2;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0px;
 }
