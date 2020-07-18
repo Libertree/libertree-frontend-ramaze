@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dalli', '~> 2.7.6'  # memcached client
 gem 'fast_gettext', '~> 1.8.0'
-gem 'grape', '~> 0.19.2'
+gem 'grape', '~> 1.4.0'
 gem 'grape-swagger', '~> 0.33.0'
 gem 'innate', '~> 2015.10.28'
 gem 'mini_magick', '~> 4.9.5'
