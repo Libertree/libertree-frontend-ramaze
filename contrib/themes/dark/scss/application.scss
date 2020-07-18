@@ -373,6 +373,10 @@ body.accounts.edit, body.profile.edit, body.contact-lists, body.messages, body.n
             @media screen and (max-width: $threshold) {
                 width: 100%;
             }
+
+            a {
+              background-color: inherit;
+            }
         }
         #main-menu-container.with-custom {
             width: 400px;
