@@ -20,7 +20,7 @@ group 'extensions' do
   gem 'unicorn', '~> 5.5.1'
 end
 
-gem 'libertree-model', '~> 0.9.14'
+gem 'libertree-model', '~> 0.9.15'
 
 group 'development' do
   gem 'rspec'
