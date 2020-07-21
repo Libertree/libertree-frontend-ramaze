@@ -35,8 +35,10 @@ module Controller
         Libertree::Model::Pool[ id: pool_id.to_i, member_id: account.member.id ] ||
         Libertree::Model::Pool[ id: pool_id.to_i, sprung: true, ]
       )
+      @river_post_order = session[:river_post_order]
+      order_by_updated = session[:river_post_order] == :comment
       if @pool
-        @posts = @pool.posts( limit: 16 )
+        @posts = @pool.posts(order_by_updated: order_by_updated, limit: 16)
       else
         @posts = []
       end
