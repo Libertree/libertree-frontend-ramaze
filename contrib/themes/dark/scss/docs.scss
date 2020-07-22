@@ -7,7 +7,7 @@ body.docs {
     .main {
         @include shadow;
         @include rounded;
-        background: $background_colour_3;
+        background: $background_colour_2;
         padding: 30px;
     }
 
@@ -18,8 +18,8 @@ body.docs {
             padding-left: 160px;
         }
         @include rounded;
-        color: $text_colour_2;
-        background: $sand url(../images/logo-in-heading.png) no-repeat 20px bottom;
+        color: $text;
+        background: $background_colour_3 url(../images/logo-in-heading.png) no-repeat 20px bottom;
         @media screen and (max-width: $threshold) {
             background-image: none;
             margin: -15px -15px 1em;
@@ -28,9 +28,10 @@ body.docs {
 
     .example {
         @include rounded;
+        color: $white;
         margin-bottom: 1em;
         padding: 0.5em;
-        background: $sand;
+        background: $water;
         border: 2px dashed $text_colour_3;
         pre {
             margin: 0;
