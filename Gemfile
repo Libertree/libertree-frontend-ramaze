@@ -14,7 +14,7 @@ group 'extensions' do
   gem 'bcrypt-ruby', '~> 3.1.5'
   gem 'curb', '~> 0.9.10'  # libcurl-dev (Debian) / libcurl-devel (Fedora)
   gem 'gpgme', '~> 2.0.20'  # to verify PGP public keys before storing them
-  gem 'json', '~> 2.2.0'
+  gem 'json', '~> 2.3.1'
   gem 'nokogiri', '~> 1.10.10'
   gem 'ruby-filemagic', '~> 0.7.2' # libmagic-dev (Debian) / file-devel (Fedora)
   gem 'unicorn', '~> 5.5.1'

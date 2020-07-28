@@ -75,7 +75,7 @@ GEM
     ice_nine (0.11.2)
     innate (2015.10.28)
       rack (~> 1.6.4)
-    json (2.2.0)
+    json (2.3.1)
     kgio (2.11.2)
     libertree-model (0.9.16)
       bcrypt-ruby (~> 3.1.5)
@@ -202,7 +202,7 @@ DEPENDENCIES
   grape (~> 0.19.2)
   grape-swagger (~> 0.33.0)
   innate (~> 2015.10.28)
-  json (~> 2.2.0)
+  json (~> 2.3.1)
   libertree-model (~> 0.9.16)
   linecache19!
   mini_magick (~> 4.9.5)
