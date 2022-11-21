@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dalli', '~> 2.7.6'  # memcached client
+gem 'dalli', '~> 3.2.3'  # memcached client
 gem 'fast_gettext', '~> 1.8.0'
 gem 'grape', '~> 0.19.2'
 gem 'grape-swagger', '~> 0.33.0'
