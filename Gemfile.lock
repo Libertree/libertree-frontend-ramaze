@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/Pistos/innate
+  revision: c70fc89f3770bd13465fb2d25668dc8d60c1eddb
+  branch: ruby-3
+  specs:
+    innate (2025.03.13)
+      rack (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,8 +66,6 @@ GEM
       rack-test (~> 2)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    innate (2023.01.06)
-      rack (~> 3.0)
     json (2.10.2)
     kgio (2.11.2)
     libertree-model (0.9.19)
@@ -157,7 +163,7 @@ DEPENDENCIES
   gpgme (= 2.0.24)
   grape (= 2.3.0)
   grape-swagger (= 2.1.2)
-  innate (= 2023.01.06)
+  innate!
   json (= 2.10.2)
   libertree-model (= 0.9.19)
   mini_magick (= 5.2.0)
