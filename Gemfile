@@ -7,7 +7,7 @@ gem 'grape-swagger', '2.1.2'
 gem 'innate', git: 'https://github.com/Pistos/innate', branch: 'ruby-3'
 gem 'libertree-model', '0.9.19'
 gem 'mini_magick', '5.2.0'
-gem 'ramaze', '2023.01.06'
+gem 'ramaze', git: 'https://github.com/Pistos/ramaze', branch: 'ruby-3'
 gem 'ruby-oembed', '0.18.1'
 gem 'sass', '3.7.4'
 
