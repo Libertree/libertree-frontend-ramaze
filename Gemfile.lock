@@ -29,6 +29,7 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
@@ -103,6 +104,7 @@ GEM
     nokogiri (1.18.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    ostruct (0.6.1)
     parkdown (1.4.31)
     pg (1.5.9)
     prime (0.1.3)
@@ -171,6 +173,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  base64 (= 0.2.0)
   bcrypt (= 3.1.20)
   capybara
   curb (= 1.0.9)
@@ -185,6 +188,7 @@ DEPENDENCIES
   libertree-model (= 0.9.21)
   mini_magick (= 5.2.0)
   nokogiri (= 1.18.3)
+  ostruct (= 0.6.1)
   racksh
   ramaze!
   rspec

@@ -40,7 +40,7 @@ module Controller
       @view = "profile edit"
       @profile = account.member.profile
       avatar_path = "/images/avatars/#{account.member.id}.png"
-      @has_avatar = File.exists?(File.join(Ramaze.options.roots.first, Ramaze.options.publics.first, avatar_path))
+      @has_avatar = File.exist?(File.join(Ramaze.options.roots.first, Ramaze.options.publics.first, avatar_path))
     end
 
     def update

@@ -17,13 +17,13 @@ module Controller
 
       # restrict language to whitelist and default to en_GB
       if Libertree::LANG.map(&:first).include?(lang) &&
-         File.exists?(PATH.call(document) % lang)
+         File.exist?(PATH.call(document) % lang)
         filename = PATH.call(document) % lang
       else
         filename = PATH.call(document) % 'en_GB'
       end
 
-      if File.exists? filename
+      if File.exist? filename
         contents = IO.read(filename)
         @rendered_page = Libertree.render_unsafe(contents)
       else
