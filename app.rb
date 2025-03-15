@@ -15,7 +15,9 @@ Dir.glob("public/themes/*") do |theme_path|
 end
 
 if $conf['graphicsmagick']
-  MiniMagick.processor = :gm
+  MiniMagick.configure do |config|
+    config.graphicsmagick = true
+  end
 end
 
 if $conf['ldap']
